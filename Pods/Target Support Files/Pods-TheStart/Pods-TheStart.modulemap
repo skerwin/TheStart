@@ -1,0 +1,6 @@
+framework module Pods_TheStart {
+  umbrella header "Pods-TheStart-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,114 @@
+PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
+  - Alamofire (5.6.0)
+  - DatePickerDialog (4.0)
+  - FLAnimatedImage (1.0.16)
+  - HXPHPicker (1.4.0):
+    - HXPHPicker/Full (= 1.4.0)
+  - HXPHPicker/Camera (1.4.0):
+    - HXPHPicker/Core
+  - HXPHPicker/Core (1.4.0)
+  - HXPHPicker/Editor (1.4.0):
+    - HXPHPicker/Editor/KF (= 1.4.0)
+    - HXPHPicker/Editor/Lite (= 1.4.0)
+  - HXPHPicker/Editor/KF (1.4.0):
+    - HXPHPicker/Editor/Lite
+    - Kingfisher (~> 7.0)
+  - HXPHPicker/Editor/Lite (1.4.0):
+    - HXPHPicker/Core
+  - HXPHPicker/Full (1.4.0):
+    - HXPHPicker/Camera
+    - HXPHPicker/Editor
+    - HXPHPicker/Picker
+  - HXPHPicker/Picker (1.4.0):
+    - HXPHPicker/Picker/KF (= 1.4.0)
+    - HXPHPicker/Picker/Lite (= 1.4.0)
+  - HXPHPicker/Picker/KF (1.4.0):
+    - HXPHPicker/Picker/Lite
+    - Kingfisher (~> 7.0)
+  - HXPHPicker/Picker/Lite (1.4.0):
+    - HXPHPicker/Core
+  - IQKeyboardManager (6.5.9)
+  - JGProgressHUD (2.2)
+  - Kingfisher (7.2.1)
+  - MJRefresh (3.7.5)
+  - ObjectMapper (3.5.3)
+  - ReachabilitySwift (5.0.0)
+  - SDCycleScrollView (1.82):
+    - SDWebImage (>= 5.0.0)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+  - SnapKit (4.0.1)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.1)
+  - SwiftyUserDefaults (5.3.0)
+  - XHLaunchAd (3.9.12):
+    - FLAnimatedImage (~> 1.0.12)
+  - XHNetworkCache (1.5.0)
+
+DEPENDENCIES:
+  - ActionSheetPicker-3.0
+  - Alamofire (~> 5.2)
+  - DatePickerDialog
+  - HXPHPicker
+  - IQKeyboardManager
+  - JGProgressHUD
+  - Kingfisher
+  - MJRefresh
+  - ObjectMapper (~> 3.3)
+  - ReachabilitySwift
+  - SDCycleScrollView (~> 1.75)
+  - SnapKit (~> 4.0.0)
+  - SVProgressHUD
+  - SwiftyJSON
+  - SwiftyUserDefaults
+  - XHLaunchAd
+  - XHNetworkCache
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - ActionSheetPicker-3.0
+    - Alamofire
+    - DatePickerDialog
+    - FLAnimatedImage
+    - HXPHPicker
+    - IQKeyboardManager
+    - JGProgressHUD
+    - Kingfisher
+    - MJRefresh
+    - ObjectMapper
+    - ReachabilitySwift
+    - SDCycleScrollView
+    - SDWebImage
+    - SnapKit
+    - SVProgressHUD
+    - SwiftyJSON
+    - SwiftyUserDefaults
+    - XHLaunchAd
+    - XHNetworkCache
+
+SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
+  Alamofire: 0c07058209f211e3d32824f8e0766d7c44ac83b3
+  DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
+  FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
+  HXPHPicker: 6f920091e253f1146d3b9299837d5955db0f7162
+  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
+  XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
+  XHNetworkCache: a5a22941471edf6ed08b2e7cf2ec0d800959ca37
+
+PODFILE CHECKSUM: ddd4bd3070d19892036247083c8ab5290e30375d
+
+COCOAPODS: 1.11.3

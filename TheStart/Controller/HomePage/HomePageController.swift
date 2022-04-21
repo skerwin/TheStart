@@ -6,101 +6,173 @@
 //
 
 import UIKit
-
-class HomePageController: BaseViewController {
+import SwiftyJSON
+ 
+class HomePageController: BaseViewController,Requestable {
 
     
-    var rightBarButton:UIButton!
-    var rightBarButton1:UIButton!
-    var rightBarButton2:UIButton!
+    var tableView:UITableView!
     
-    var rightBarButton3:UIButton!
-    var rightBarButton4:UIButton!
+    var dataList = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        rightBarButton = UIButton.init()
-        rightBarButton.setTitle("黑人馆", for: .normal)
-        rightBarButton.setTitleColor(.white, for: .normal)
-        rightBarButton.frame = CGRect.init(x: 0, y: 200, width: screenWidth, height: 50)
-        rightBarButton.addTarget(self, action: #selector(rightNavBtnAction(_:)), for: .touchUpInside)
-        self.view.addSubview(rightBarButton)
-        
-        rightBarButton1 = UIButton.init()
-        rightBarButton1.setTitle("找场的人详情", for: .normal)
-        rightBarButton1.setTitleColor(.white, for: .normal)
-        rightBarButton1.frame = CGRect.init(x: 0, y: 250, width: screenWidth, height: 50)
-        rightBarButton1.addTarget(self, action: #selector(rightNavBtnAction1(_:)), for: .touchUpInside)
-        self.view.addSubview(rightBarButton1)
-        
-        
-        rightBarButton2 = UIButton.init()
-        rightBarButton2.setTitle("发布找场", for: .normal)
-        rightBarButton2.setTitleColor(.white, for: .normal)
-        rightBarButton2.frame = CGRect.init(x: 0, y: 300, width: screenWidth, height: 50)
-        rightBarButton2.addTarget(self, action: #selector(rightNavBtnAction2(_:)), for: .touchUpInside)
-        self.view.addSubview(rightBarButton2)
-        
-        
-        rightBarButton3 = UIButton.init()
-        rightBarButton3.setTitle("发布黑料", for: .normal)
-        rightBarButton3.setTitleColor(.white, for: .normal)
-        rightBarButton3.frame = CGRect.init(x: 0, y: 350, width: screenWidth, height: 50)
-        rightBarButton3.addTarget(self, action: #selector(rightNavBtnAction3(_:)), for: .touchUpInside)
-        self.view.addSubview(rightBarButton3)
-        
-        
-        rightBarButton4 = UIButton.init()
-        rightBarButton4.setTitle("个人中心", for: .normal)
-        rightBarButton4.setTitleColor(.white, for: .normal)
-        rightBarButton4.frame = CGRect.init(x: 0, y: 400, width: screenWidth, height: 50)
-        rightBarButton4.addTarget(self, action: #selector(rightNavBtnAction4(_:)), for: .touchUpInside)
-        self.view.addSubview(rightBarButton4)
+        loadData()
+        initTableView()
+        self.title = "启程APP"
+        // Do any additional setup after loading the view.
     }
     
-    @objc func rightNavBtnAction(_ btn: UIButton){
-        //let controller = UIStoryboard.getFindPersonController()
-       // let controller = TipOffDetailViewController()
-        
-        //let controller = TipOffPostViewController()
-        let controller = TipOffViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    @objc func rightNavBtnAction1(_ btn: UIButton){
-        //let controller = UIStoryboard.getFindPersonController()
-       // let controller = TipOffDetailViewController()
-        
-        //let controller = TipOffPostViewController()
-        let controller = WorkerInfoViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-   
-    @objc func rightNavBtnAction2(_ btn: UIButton){
-         let controller = WorkerPubViewController()
+    func loadData(){
 
-         self.navigationController?.pushViewController(controller, animated: true)
+        let pathAndParams = HomeAPI.departmenListPathAndParams()
+        postRequest(pathAndParams: pathAndParams,showHUD: false)
+        
     }
-    @objc func rightNavBtnAction3(_ btn: UIButton){
-         let controller = TipOffPostViewController()
-         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    @objc func rightNavBtnAction4(_ btn: UIButton){
-        let controller = UIStoryboard.getMineViewController()
-   
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-   
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func initTableView(){
+        
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = ZYJColor.main
+        
+        self.tableView.rowHeight = UITableView.automaticDimension;
+        self.tableView.estimatedRowHeight = 240;
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.registerNibWithTableViewCellName(name: testCell.nameOfClass)
+ 
+        
+        view.addSubview(tableView)
+        tableView.tableFooterView = UIView()
+      
     }
-    */
-
+ 
 }
+
+extension HomePageController:UITableViewDataSource,UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
+
+        return 14
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath) as! testCell
+        cell.selectionStyle = .none
+        if row == 0{
+            cell.nameLabel.text = "黑人馆"
+        }else if row == 1{
+            cell.nameLabel.text = "找场详情"
+        }else if row == 2{
+            cell.nameLabel.text = "找场发布"
+        }else if row == 3{
+            cell.nameLabel.text = "发布黑料"
+        }else if row == 4{
+            cell.nameLabel.text = "个人中心"
+        }else if row == 5{
+            cell.nameLabel.text = "找人详情"
+        }else if row == 6{
+            cell.nameLabel.text = "音乐馆"
+        }else if row == 7{
+            cell.nameLabel.text = "作者馆"
+        }else if row == 8{
+            cell.nameLabel.text = "发布音乐"
+        }else if row == 9{
+            cell.nameLabel.text = "工作列表"
+        }
+        else if row == 10{
+            cell.nameLabel.text = "求职者列表"
+        }
+        else if row == 11{
+            cell.nameLabel.text = "意见反馈"
+        } else if row == 12{
+            cell.nameLabel.text = "个人信息设置"
+        }else if row == 13{
+            cell.nameLabel.text = "聊天页面"
+        }
+        
+        
+        
+        return cell
+ 
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        return 44
+
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+ 
+        let row = indexPath.row
+        if row == 0{
+            let controller = TipOffViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 1{
+            let controller = WorkerInfoViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 2{
+            let controller = WorkerPubViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 3{
+            let controller = TipOffPostViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 4{
+            let controller = UIStoryboard.getMineViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 5{
+            let controller = JobInfoViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 6{
+            let controller = MuiscListController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 7{
+            let controller = AuthorViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 8{
+            let controller = PubMusicController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else if row == 9{
+            let controller = JobListViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        else if row == 10{
+            let controller = WorkListViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        else if row == 11{
+            let controller = UIStoryboard.getFeedBackController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        else if row == 12{
+            let controller = UIStoryboard.getPersonsInfoController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else if row == 13{
+            let controller = UIStoryboard.getMessageController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
+        
+        else{
+            let controller = AuthorViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+     }
+}
+
+
+
+
+ 

@@ -18,9 +18,17 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     /// 当前已选资源
     var previewAssets: [PhotoAsset] = []
     
+    func configCell(isjob:Bool){
+        if isjob {
+            imgLabel.font = UIFont.systemFont(ofSize: 16)
+        }else{
+            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+       
         let localImgAsset1 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
         previewAssets.append(localImgAsset1)
         
@@ -29,7 +37,7 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
         
         let localImgAsset3 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
         previewAssets.append(localImgAsset3)
-        imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        
        
         
 //        let localImgAsset4 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))

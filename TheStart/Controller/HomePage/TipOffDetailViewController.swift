@@ -40,11 +40,11 @@ class TipOffDetailViewController: BaseViewController {
             make.left.right.width.equalTo(self.view)
             if iphoneXOrIphoneX11 {
                 //make.bottom.equalTo(self.view.snp.bottom).offset(-distance)
-                make.bottom.equalTo(self.view.snp.bottom).offset(kChatBarOriginHeight)
+                make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
             }else{
-                make.bottom.equalTo(self.view.snp.bottom).offset(kChatBarOriginHeight)
+                make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
             }
-            make.height.equalTo(kChatBarOriginHeight)
+            make.height.equalTo(ZChatBarOriginHeight)
         }
         barVC.delegate = self
         return barVC
@@ -103,7 +103,7 @@ class TipOffDetailViewController: BaseViewController {
         commentBarVC.resetKeyboard()
         UIApplication.shared.keyWindow?.endEditing(true)
         commentBarVC.view.snp.updateConstraints { (make) in
-            make.bottom.equalTo(self.view.snp.bottom).offset(kChatBarOriginHeight)
+            make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
         }
         UIView.animate(withDuration: kKeyboardChangeFrameTime, animations: {
             self.view.layoutIfNeeded()

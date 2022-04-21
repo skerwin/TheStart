@@ -41,7 +41,14 @@ target 'TheStart' do
   # 手写代码约束
  pod 'SnapKit', '~> 4.0.0'
  
+  # 相机选择
  pod 'HXPHPicker'
+ 
+ pod 'ReachabilitySwift'
+ 
+ # websocket
+ pod 'Starscream', '~> 4.0.0'
+ 
   # Pods for TheStart
   
   target 'TheStartTests' do

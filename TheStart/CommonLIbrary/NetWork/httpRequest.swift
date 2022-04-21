@@ -34,10 +34,10 @@ struct HttpRequest {
  
 
         var request: DataRequest?
-//         print("请求数据：")
-//         print(Url!.absoluteString)
-//         let parametersJson = JSON(parameters!)
-//         print(parametersJson)
+         print("请求数据：")
+         print(Url!.absoluteString)
+         let parametersJson = JSON(parameters!)
+         print(parametersJson)
         var token = ""
         if stringForKey(key: Constants.token) != nil {
             token = stringForKey(key: Constants.token)!
@@ -67,15 +67,23 @@ struct HttpRequest {
                     return
                 }
                 let responseJson = JSON(dict)
-//                print(Url!.absoluteString)
-//                print(responseJson)
+                print(Url!.absoluteString)
+                print(responseJson)
+                if requestPath == HomeAPI.departmenListPath{
+                    XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: requestPath) { (result) in
+                        if(result){
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
 
                 
                 completionHandler(.Success(responseJson))
             case .failure:
                 completionHandler(.Failure(JSON(["code":"100888"])))
                  DialogueUtils.dismiss()
-               // completionHandler(.Failure(Error.self as! Error))
             }
         })
     }

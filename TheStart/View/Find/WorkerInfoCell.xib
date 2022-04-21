@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自我介绍:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJT-wT-bqM">
-                        <rect key="frame" x="20" y="10" width="75" height="20"/>
+                        <rect key="frame" x="20" y="10" width="84" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="75" id="EgJ-81-7J1"/>
+                            <constraint firstAttribute="width" constant="84" id="EgJ-81-7J1"/>
                             <constraint firstAttribute="height" constant="20" id="Tzb-t2-C7Q"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>

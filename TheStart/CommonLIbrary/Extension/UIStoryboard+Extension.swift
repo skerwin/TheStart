@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum StoryBoardType: String {
-    case Home = "Home",Channel = "Channel", Artic = "Artic",  Mine = "Mine", WardManagement = "WardManagement"
+    case Home = "Home",Message = "Message", Artic = "Artic",  Mine = "Mine", WardManagement = "WardManagement"
 }
 
 extension UIStoryboard {
@@ -20,19 +20,31 @@ extension UIStoryboard {
         let storyboard = UIStoryboard(name: type.rawValue, bundle: nil)
         return storyboard
     }
-    
-    class func getFindPersonController() -> FindPersonController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "FindPersonController") as! FindPersonController
-    }
-    
+  
     
     class func getMineViewController() -> MineViewController
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "MineViewController") as! MineViewController
     }
     
+    class func getFeedBackController() -> FeedBackController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "FeedBackController") as! FeedBackController
+    }
     
+    class func getPersonsInfoController() -> PersonsInfoController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "PersonsInfoController") as! PersonsInfoController
+    }
+    class func getViewController() -> ViewController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+    }
+    
+    class func getMessageController() -> MessageController
+    {
+        return getStoryboardByType(type: .Message).instantiateViewController(withIdentifier: "MessageController") as! MessageController
+    }
     
 }
 

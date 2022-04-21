@@ -11,9 +11,11 @@ import SnapKit
 
 //let kChatKeyboardBgColor: UIColor = RGBAOVER(r: 0.96, g: 0.96, b: 0.96, a: 1.0)
 let kChatKeyboardBgColor: UIColor = UIColor.groupTableViewBackground
-let kChatBarOriginHeight: CGFloat = 50.0
-let kChatBarTextViewMaxHeight: CGFloat = 100
-let kChatBarTextViewHeight: CGFloat = kChatBarOriginHeight - 14.0
+let ZChatBarOriginHeight: CGFloat = 50.0
+let ZChatBarTextViewMaxHeight: CGFloat = 100
+let ZChatBarTextViewHeight: CGFloat = ZChatBarOriginHeight - 14.0
+
+
 // 分割线颜色
 let kSplitLineColor = RGBA(r: 0.78, g: 0.78, b: 0.80, a: 1.00)
 
@@ -35,7 +37,7 @@ class ChatBarView: UIView {
      // MARK:- 记录属性
     var keyboardType: ChatKeyboardType = .noting
     weak var delegate: ChatBarViewDelegate?
-    var inputTextViewCurHeight: CGFloat = kChatBarOriginHeight
+    var inputTextViewCurHeight: CGFloat = ZChatBarOriginHeight
     // MARK:- 懒加载
     lazy var commonButton: UIButton = {
         let commonBtn = UIButton(type: .custom)
@@ -222,9 +224,9 @@ extension ChatBarView : UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         var height = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: CGFloat(Float.greatestFiniteMagnitude))).height
-        height = height > kChatBarTextViewHeight ? height : kChatBarTextViewHeight
-        height = height < kChatBarTextViewMaxHeight ? height : textView.frame.size.height
-        inputTextViewCurHeight = height + kChatBarOriginHeight - kChatBarTextViewHeight
+        height = height > ZChatBarTextViewHeight ? height : ZChatBarTextViewHeight
+        height = height < ZChatBarTextViewMaxHeight ? height : textView.frame.size.height
+        inputTextViewCurHeight = height + ZChatBarOriginHeight - ZChatBarTextViewHeight
         if inputTextViewCurHeight != textView.frame.size.height {
             UIView.animate(withDuration: 0.05, animations: {
                 // 调用代理方法

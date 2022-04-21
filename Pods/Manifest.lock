@@ -40,6 +40,7 @@ PODS:
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
   - SnapKit (4.0.1)
+  - Starscream (4.0.4)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.1)
   - SwiftyUserDefaults (5.3.0)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - ReachabilitySwift
   - SDCycleScrollView (~> 1.75)
   - SnapKit (~> 4.0.0)
+  - Starscream (~> 4.0.0)
   - SVProgressHUD
   - SwiftyJSON
   - SwiftyUserDefaults
@@ -82,6 +84,7 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - SnapKit
+    - Starscream
     - SVProgressHUD
     - SwiftyJSON
     - SwiftyUserDefaults
@@ -103,12 +106,13 @@ SPEC CHECKSUMS:
   SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   XHNetworkCache: a5a22941471edf6ed08b2e7cf2ec0d800959ca37
 
-PODFILE CHECKSUM: ddd4bd3070d19892036247083c8ab5290e30375d
+PODFILE CHECKSUM: cc843d88a07aae08c5400431be47cebebd13401c
 
 COCOAPODS: 1.11.3

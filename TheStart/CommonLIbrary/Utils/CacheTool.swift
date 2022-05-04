@@ -76,3 +76,25 @@ class CacheTool: NSObject {
     }
 
 }
+//方法封装
+func delay(second:TimeInterval=1.0, complete:@escaping() ->Void) {
+    DispatchQueue.main.asyncAfter(deadline: .now()+second) {
+        complete()
+    }
+}
+func getAcctount() -> String {
+    
+    if stringForKey(key: Constants.account) != nil && stringForKey(key: Constants.account) != ""{
+        return stringForKey(key: Constants.account)!
+    }else{
+        return ""
+    }
+}
+func getToken() -> String {
+    
+    if stringForKey(key: Constants.token) != nil && stringForKey(key: Constants.token) != ""{
+        return stringForKey(key: Constants.token)!
+    }else{
+        return ""
+    }
+}

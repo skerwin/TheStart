@@ -111,7 +111,7 @@
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 #define kTableViewCellHeight 43
-#define kTableViewCellWidth 17
+#define kTableViewCellWidth 15
 #define kTableViewHeight 500
 #define kButtomImageViewHeight 21
 
@@ -357,12 +357,13 @@
         _rightTableView.rowHeight = kTableViewCellHeight;
         _rightTableView.dataSource = self;
         _rightTableView.delegate = self;
-        _leftTableView.backgroundColor = UIColor.grayColor;
+        _rightTableView.backgroundColor = UIColor.grayColor;
         _rightTableView.separatorColor = kSeparatorColor;
         //_rightTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _rightTableView.separatorInset = UIEdgeInsetsZero;
         _rightTableView.tableFooterView = [[UIView alloc]init];
-     
+        _rightTableView.layer.borderWidth = 0.5;
+        _rightTableView.layer.borderColor = kSeparatorColor.CGColor;
         
         _buttomImageView = [[UIImageView alloc]initWithFrame:CGRectMake(origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, kButtomImageViewHeight)];
         _buttomImageView.image = [UIImage imageNamed:@"icon_chose_bottom"];
@@ -599,6 +600,10 @@
         [self.superview addSubview:_buttomImageView];
         
         NSInteger num = [_leftTableView numberOfRowsInSection:0];
+        
+        if (num > 8){
+            num = 8;
+        }
         CGFloat tableViewHeight = num * kTableViewCellHeight > _tableViewHeight+1 ? _tableViewHeight:num*kTableViewCellHeight+1;
         
         [UIView animateWithDuration:0.2 animations:^{

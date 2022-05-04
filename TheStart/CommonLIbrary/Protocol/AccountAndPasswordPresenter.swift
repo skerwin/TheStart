@@ -90,7 +90,6 @@ protocol AccountAndPasswordPresenter: class {
         removeValueForKey(key: Constants.truename)
         removeValueForKey(key: Constants.nickname)
         removeValueForKey(key: Constants.gender)
-        removeValueForKey(key: Constants.ExemptionAgreement)
         removeValueForKey(key: Constants.live_status)
         removeValueForKey(key: Constants.IMUserSig)
         

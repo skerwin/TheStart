@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyDataView" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-qL-HGN">
+                    <rect key="frame" x="67.5" y="123" width="240" height="310"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抱歉暂无数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxr-T3-Eyz">
+                            <rect key="frame" x="10" y="198.5" width="220" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="qSz-DE-CRd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" systemColor="systemGray4Color"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Pxr-T3-Eyz" firstAttribute="leading" secondItem="gbg-qL-HGN" secondAttribute="leading" constant="10" id="IQm-5i-xSB"/>
+                        <constraint firstAttribute="width" constant="240" id="bDd-9k-ddI"/>
+                        <constraint firstAttribute="height" constant="310" id="eKE-oK-vSc"/>
+                        <constraint firstAttribute="trailing" secondItem="Pxr-T3-Eyz" secondAttribute="trailing" constant="10" id="zPu-Uw-AJc"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kongbaiye" translatesAutoresizingMaskIntoConstraints="NO" id="dUW-7y-Y7J">
+                    <rect key="frame" x="122.5" y="184" width="130" height="118"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="118" id="Y1P-k6-JXg"/>
+                        <constraint firstAttribute="width" constant="130" id="tey-51-zE1"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dUW-7y-Y7J" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-90.5" id="5ai-Oz-bGV"/>
+                <constraint firstItem="dUW-7y-Y7J" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Aq4-Wc-OFE"/>
+                <constraint firstItem="gbg-qL-HGN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Cym-s7-XNi"/>
+                <constraint firstItem="gbg-qL-HGN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-55.5" id="MpQ-FO-5vw"/>
+                <constraint firstItem="Pxr-T3-Eyz" firstAttribute="top" secondItem="dUW-7y-Y7J" secondAttribute="bottom" constant="19.5" id="mUC-EM-g5o"/>
+            </constraints>
+            <connections>
+                <outlet property="tipsImageView" destination="dUW-7y-Y7J" id="82K-xI-HTT"/>
+                <outlet property="tipsLabel" destination="Pxr-T3-Eyz" id="sys-hn-mdP"/>
+            </connections>
+            <point key="canvasLocation" x="354.39999999999998" y="150.67466266866569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="kongbaiye" width="60" height="86"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

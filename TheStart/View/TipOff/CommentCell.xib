@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headNotify" translatesAutoresizingMaskIntoConstraints="NO" id="taQ-VL-j4S">
-                        <rect key="frame" x="10" y="11" width="35" height="35"/>
+                        <rect key="frame" x="10" y="9" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="1Tv-1E-6be"/>
                             <constraint firstAttribute="width" constant="35" id="dhc-Wr-B95"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="咸鱼翻身还是咸鱼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhE-Ze-Jwk">
-                        <rect key="frame" x="55" y="12" width="265" height="21"/>
+                        <rect key="frame" x="55" y="10" width="265" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="y9c-nF-MAc"/>
                         </constraints>
@@ -37,23 +37,15 @@
                         <rect key="frame" x="55" y="143" width="265" height="35"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-3H-I0N">
-                                <rect key="frame" x="220" y="0.0" width="45" height="35"/>
+                                <rect key="frame" x="196" y="0.0" width="61" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="1lH-BQ-Pco"/>
+                                    <constraint firstAttribute="width" constant="61" id="1lH-BQ-Pco"/>
                                 </constraints>
-                                <state key="normal" image="gengduo"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="投诉" image="jubao"/>
                                 <connections>
                                     <action selector="complainActiion:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MIb-Qx-SZp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aah-Iv-MTB">
-                                <rect key="frame" x="175" y="0.0" width="45" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="b7M-F6-Bkh"/>
-                                </constraints>
-                                <state key="normal" image="gengduo"/>
-                                <connections>
-                                    <action selector="commentACtion:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lcK-uR-MN3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-07-12 12:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtm-Dq-JpS">
@@ -66,12 +58,24 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aah-Iv-MTB">
+                                <rect key="frame" x="135" y="0.0" width="60" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="b7M-F6-Bkh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="-3" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="回复" image="huifu"/>
+                                <connections>
+                                    <action selector="commentACtion:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lcK-uR-MN3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Mep-3H-I0N" secondAttribute="bottom" id="0vL-lK-8vg"/>
                             <constraint firstItem="gtm-Dq-JpS" firstAttribute="leading" secondItem="3Lf-wz-mLl" secondAttribute="leading" id="8X6-ao-qHL"/>
-                            <constraint firstItem="Mep-3H-I0N" firstAttribute="leading" secondItem="aah-Iv-MTB" secondAttribute="trailing" id="D6A-h1-05c"/>
-                            <constraint firstAttribute="trailing" secondItem="Mep-3H-I0N" secondAttribute="trailing" id="GsI-0g-VFx"/>
+                            <constraint firstItem="Mep-3H-I0N" firstAttribute="leading" secondItem="aah-Iv-MTB" secondAttribute="trailing" constant="1" id="D6A-h1-05c"/>
+                            <constraint firstAttribute="trailing" secondItem="Mep-3H-I0N" secondAttribute="trailing" constant="8" id="GsI-0g-VFx"/>
                             <constraint firstAttribute="bottom" secondItem="aah-Iv-MTB" secondAttribute="bottom" id="Kit-Xr-5NT"/>
                             <constraint firstAttribute="height" constant="35" id="Tgf-hx-Ygt"/>
                             <constraint firstItem="gtm-Dq-JpS" firstAttribute="centerY" secondItem="3Lf-wz-mLl" secondAttribute="centerY" constant="-1" id="g2m-TI-y3r"/>
@@ -87,7 +91,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="有同学会问，光知道主机数量不行，我当然还要知道网段的起始和结束地址。别急，我们慢慢讲。比如192.168.1.37/28，判断这个网段的网段标识和广播地址有同学会问，光知道主机数量不行，我当然还要知道网段的起始和结束地址。别急，我们慢慢讲。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RX6-Sr-kfm">
-                        <rect key="frame" x="55" y="39" width="255" height="104"/>
+                        <rect key="frame" x="55" y="37" width="255" height="101"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
@@ -102,14 +106,14 @@
                     <constraint firstAttribute="bottom" secondItem="hwb-jg-NI6" secondAttribute="bottom" id="RcW-jv-Bi0"/>
                     <constraint firstAttribute="trailing" secondItem="3Lf-wz-mLl" secondAttribute="trailing" id="VVj-lM-ZcQ"/>
                     <constraint firstItem="VhE-Ze-Jwk" firstAttribute="leading" secondItem="taQ-VL-j4S" secondAttribute="trailing" constant="10" id="Zpd-rm-j6b"/>
-                    <constraint firstItem="VhE-Ze-Jwk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="bSI-dP-iWG"/>
+                    <constraint firstItem="VhE-Ze-Jwk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bSI-dP-iWG"/>
                     <constraint firstItem="hwb-jg-NI6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="enk-DD-RCs"/>
                     <constraint firstAttribute="trailing" secondItem="VhE-Ze-Jwk" secondAttribute="trailing" id="iDV-Kc-Owd"/>
                     <constraint firstAttribute="trailing" secondItem="RX6-Sr-kfm" secondAttribute="trailing" constant="10" id="k4i-ll-63X"/>
                     <constraint firstAttribute="trailing" secondItem="hwb-jg-NI6" secondAttribute="trailing" constant="6" id="mME-gH-kmE"/>
                     <constraint firstAttribute="bottom" secondItem="3Lf-wz-mLl" secondAttribute="bottom" constant="1" id="qJk-aj-BWb"/>
-                    <constraint firstItem="taQ-VL-j4S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="rrE-Wd-sqF"/>
-                    <constraint firstItem="3Lf-wz-mLl" firstAttribute="top" secondItem="RX6-Sr-kfm" secondAttribute="bottom" id="sT5-jo-tUO"/>
+                    <constraint firstItem="taQ-VL-j4S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="rrE-Wd-sqF"/>
+                    <constraint firstItem="3Lf-wz-mLl" firstAttribute="top" secondItem="RX6-Sr-kfm" secondAttribute="bottom" constant="5" id="sT5-jo-tUO"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -126,7 +130,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="gengduo" width="22" height="22"/>
         <image name="headNotify" width="45" height="45"/>
+        <image name="huifu" width="16" height="16"/>
+        <image name="jubao" width="16" height="16"/>
     </resources>
 </document>

@@ -19,12 +19,14 @@ struct ZYJColor {
     // 34 140 252
     static let main = colorWithHexString(hex: "#0F0F11")
     static let mainText = colorWithHexString(hex: "#EBEBEB")
-    static let barColor = colorWithHexString(hex: "#202322")
+    static let barColor = colorWithHexString(hex: "#202322")//
     static let blueTextColor = colorWithHexString(hex: "#6A90CA")
     static let backColor = colorWithHexString(hex: "616161")
     static let mainLine = colorWithHexString(hex: "e2effd")
     
+    static let backBlue = colorWithHexString(hex: "228CFC")
     
+    static let tabBarColor = UIColor(red: 225, green: 225, blue: 225, alpha: 1) 
    
     static let translucent = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) // 半透明
     

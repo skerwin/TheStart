@@ -190,7 +190,45 @@
 		B8AC510A2807FF9800C2CF26 /* ParamsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC51042807FF9800C2CF26 /* ParamsUtils.swift */; };
 		B8AC510D280800C700C2CF26 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC510B280800C700C2CF26 /* Requestable.swift */; };
 		B8AC510E280800C700C2CF26 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC510C280800C700C2CF26 /* AlertPresenter.swift */; };
+		B8AD4011281A7D920001D7F4 /* SuperManCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD400D281A7D920001D7F4 /* SuperManCell.swift */; };
+		B8AD4012281A7D920001D7F4 /* SuperManCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD400E281A7D920001D7F4 /* SuperManCell.xib */; };
+		B8AD4013281A7D920001D7F4 /* HomeSubscribeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD400F281A7D920001D7F4 /* HomeSubscribeCell.xib */; };
+		B8AD4014281A7D920001D7F4 /* HomeSubscribeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4010281A7D920001D7F4 /* HomeSubscribeCell.swift */; };
+		B8AD4017281A81D60001D7F4 /* GuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4015281A81D60001D7F4 /* GuideCell.swift */; };
+		B8AD4018281A81D60001D7F4 /* GuideCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4016281A81D60001D7F4 /* GuideCell.xib */; };
+		B8AD401D281AB5680001D7F4 /* HomeRankHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD401B281AB5680001D7F4 /* HomeRankHeaderView.xib */; };
+		B8AD401E281AB5680001D7F4 /* HomeRankHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD401C281AB5680001D7F4 /* HomeRankHeaderView.swift */; };
+		B8AD4021281B7D410001D7F4 /* HomeJobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD401F281B7D410001D7F4 /* HomeJobCell.swift */; };
+		B8AD4022281B7D410001D7F4 /* HomeJobCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4020281B7D410001D7F4 /* HomeJobCell.xib */; };
+		B8AD4024281B85080001D7F4 /* AdverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4023281B85080001D7F4 /* AdverModel.swift */; };
+		B8AD4026281B875F0001D7F4 /* 111222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4025281B875F0001D7F4 /* 111222.jpg */; };
+		B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4027281B8E0E0001D7F4 /* SuperManPostCell.swift */; };
+		B8AD402A281B8E0E0001D7F4 /* SuperManPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4028281B8E0E0001D7F4 /* SuperManPostCell.xib */; };
+		B8AD402E281B8E940001D7F4 /* SuperManListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD402C281B8E940001D7F4 /* SuperManListController.swift */; };
+		B8AD4031281B94210001D7F4 /* TipOffMenuPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4030281B94210001D7F4 /* TipOffMenuPageController.swift */; };
+		B8AD4033281B94590001D7F4 /* ClarifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4032281B94590001D7F4 /* ClarifyViewController.swift */; };
+		B8AD4035281C00420001D7F4 /* TipOffAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */; };
+		B8AD4037281C008B0001D7F4 /* TipOffAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */; };
+		B8AD403F281CD6990001D7F4 /* cityjson.json in Resources */ = {isa = PBXBuildFile; fileRef = B8AD403E281CD6990001D7F4 /* cityjson.json */; };
+		B8AD4041281CD6C90001D7F4 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4040281CD6C90001D7F4 /* AddressModel.swift */; };
+		B8AD4043281E293F0001D7F4 /* TipOffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4042281E293F0001D7F4 /* TipOffModel.swift */; };
+		B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4044281E5B8D0001D7F4 /* EmptyDataView.swift */; };
+		B8AD4047281E5B8D0001D7F4 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4045281E5B8D0001D7F4 /* EmptyDataView.xib */; };
+		B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD404A281EE1550001D7F4 /* TitleCell.swift */; };
+		B8AD404D281EE1550001D7F4 /* ActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD404B281EE1550001D7F4 /* ActionSheetViewController.swift */; };
+		B8AD4050281FD6D30001D7F4 /* TipOffListCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD404E281FD6D30001D7F4 /* TipOffListCell2.swift */; };
+		B8AD4051281FD6D30001D7F4 /* TipOffListCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD404F281FD6D30001D7F4 /* TipOffListCell2.xib */; };
+		B8AD4054281FD6EF0001D7F4 /* TipOffListCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4052281FD6EF0001D7F4 /* TipOffListCell1.swift */; };
+		B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4053281FD6EF0001D7F4 /* TipOffListCell1.xib */; };
+		B8AD405928201FA90001D7F4 /* NewLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD405828201FA90001D7F4 /* NewLoginController.swift */; };
+		B8AD405D2820254B0001D7F4 /* GetBackPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD405C2820254B0001D7F4 /* GetBackPasswordController.swift */; };
+		B8AD405F282101540001D7F4 /* DictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD405E282101530001D7F4 /* DictModel.swift */; };
+		B8AD4062282283790001D7F4 /* PubMediaCellVod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4060282283790001D7F4 /* PubMediaCellVod.swift */; };
+		B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4061282283790001D7F4 /* PubMediaCellVod.xib */; };
+		B8AD40652822951C0001D7F4 /* JobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD40642822951C0001D7F4 /* JobModel.swift */; };
 		B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C52F2811897F00B882FC /* ContactListController.swift */; };
+		B8B6C53328118A1800B882FC /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C53128118A1800B882FC /* ContactViewCell.swift */; };
+		B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B6C53228118A1800B882FC /* ContactViewCell.xib */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -407,7 +445,45 @@
 		B8AC51042807FF9800C2CF26 /* ParamsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParamsUtils.swift; sourceTree = "<group>"; };
 		B8AC510B280800C700C2CF26 /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		B8AC510C280800C700C2CF26 /* AlertPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		B8AD400D281A7D920001D7F4 /* SuperManCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperManCell.swift; sourceTree = "<group>"; };
+		B8AD400E281A7D920001D7F4 /* SuperManCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuperManCell.xib; sourceTree = "<group>"; };
+		B8AD400F281A7D920001D7F4 /* HomeSubscribeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeSubscribeCell.xib; sourceTree = "<group>"; };
+		B8AD4010281A7D920001D7F4 /* HomeSubscribeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeSubscribeCell.swift; sourceTree = "<group>"; };
+		B8AD4015281A81D60001D7F4 /* GuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCell.swift; sourceTree = "<group>"; };
+		B8AD4016281A81D60001D7F4 /* GuideCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideCell.xib; sourceTree = "<group>"; };
+		B8AD401B281AB5680001D7F4 /* HomeRankHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRankHeaderView.xib; sourceTree = "<group>"; };
+		B8AD401C281AB5680001D7F4 /* HomeRankHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRankHeaderView.swift; sourceTree = "<group>"; };
+		B8AD401F281B7D410001D7F4 /* HomeJobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeJobCell.swift; sourceTree = "<group>"; };
+		B8AD4020281B7D410001D7F4 /* HomeJobCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeJobCell.xib; sourceTree = "<group>"; };
+		B8AD4023281B85080001D7F4 /* AdverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdverModel.swift; sourceTree = "<group>"; };
+		B8AD4025281B875F0001D7F4 /* 111222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111222.jpg; sourceTree = "<group>"; };
+		B8AD4027281B8E0E0001D7F4 /* SuperManPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperManPostCell.swift; sourceTree = "<group>"; };
+		B8AD4028281B8E0E0001D7F4 /* SuperManPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperManPostCell.xib; sourceTree = "<group>"; };
+		B8AD402C281B8E940001D7F4 /* SuperManListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperManListController.swift; sourceTree = "<group>"; };
+		B8AD4030281B94210001D7F4 /* TipOffMenuPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffMenuPageController.swift; sourceTree = "<group>"; };
+		B8AD4032281B94590001D7F4 /* ClarifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClarifyViewController.swift; sourceTree = "<group>"; };
+		B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffAddressView.swift; sourceTree = "<group>"; };
+		B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffAddressView.xib; sourceTree = "<group>"; };
+		B8AD403E281CD6990001D7F4 /* cityjson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityjson.json; sourceTree = "<group>"; };
+		B8AD4040281CD6C90001D7F4 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		B8AD4042281E293F0001D7F4 /* TipOffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffModel.swift; sourceTree = "<group>"; };
+		B8AD4044281E5B8D0001D7F4 /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
+		B8AD4045281E5B8D0001D7F4 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
+		B8AD404A281EE1550001D7F4 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		B8AD404B281EE1550001D7F4 /* ActionSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetViewController.swift; sourceTree = "<group>"; };
+		B8AD404E281FD6D30001D7F4 /* TipOffListCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffListCell2.swift; sourceTree = "<group>"; };
+		B8AD404F281FD6D30001D7F4 /* TipOffListCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffListCell2.xib; sourceTree = "<group>"; };
+		B8AD4052281FD6EF0001D7F4 /* TipOffListCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffListCell1.swift; sourceTree = "<group>"; };
+		B8AD4053281FD6EF0001D7F4 /* TipOffListCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffListCell1.xib; sourceTree = "<group>"; };
+		B8AD405828201FA90001D7F4 /* NewLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLoginController.swift; sourceTree = "<group>"; };
+		B8AD405C2820254B0001D7F4 /* GetBackPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBackPasswordController.swift; sourceTree = "<group>"; };
+		B8AD405E282101530001D7F4 /* DictModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictModel.swift; sourceTree = "<group>"; };
+		B8AD4060282283790001D7F4 /* PubMediaCellVod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubMediaCellVod.swift; sourceTree = "<group>"; };
+		B8AD4061282283790001D7F4 /* PubMediaCellVod.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PubMediaCellVod.xib; sourceTree = "<group>"; };
+		B8AD40642822951C0001D7F4 /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
 		B8B6C52F2811897F00B882FC /* ContactListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListController.swift; sourceTree = "<group>"; };
+		B8B6C53128118A1800B882FC /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
+		B8B6C53228118A1800B882FC /* ContactViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactViewCell.xib; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheStart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F88421BB679DB879E0690 /* Pods-TheStart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart.release.xcconfig"; path = "Target Support Files/Pods-TheStart/Pods-TheStart.release.xcconfig"; sourceTree = "<group>"; };
@@ -487,6 +563,8 @@
 				B83C639C280D56F100A3282D /* WokerPubIntroCell.xib */,
 				B83C6391280D166600A3282D /* PubMediaCell.swift */,
 				B83C6392280D166600A3282D /* PubMediaCell.xib */,
+				B8AD4060282283790001D7F4 /* PubMediaCellVod.swift */,
+				B8AD4061282283790001D7F4 /* PubMediaCellVod.xib */,
 				B85FAF82280E8BDB00D25B66 /* JobBaseInfo.swift */,
 				B85FAF84280E8BE600D25B66 /* JobBaseInfo.xib */,
 			);
@@ -496,11 +574,11 @@
 		B83C6374280CEE3000A3282D /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				B83C6372280CEDE500A3282D /* WorkerInfoViewController.swift */,
-				B85FAF86280E93D500D25B66 /* JobInfoViewController.swift */,
 				B83C638F280D15E100A3282D /* WorkerPubViewController.swift */,
 				B85FAFA8280F9A6600D25B66 /* JobListViewController.swift */,
+				B85FAF86280E93D500D25B66 /* JobInfoViewController.swift */,
 				B85FAFAA280F9A7E00D25B66 /* WorkListViewController.swift */,
+				B83C6372280CEDE500A3282D /* WorkerInfoViewController.swift */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -540,18 +618,24 @@
 				B8AB69F32809985A0064861C /* TipOffHeaderView.xib */,
 				B8AB69F52809A12B0064861C /* TipOffContentView.swift */,
 				B8AB69F62809A12B0064861C /* TipOffContentView.xib */,
+				B83C6369280C357A00A3282D /* TipOffDetailImgCell.swift */,
+				B83C636A280C357A00A3282D /* TipOffDetailImgCell.xib */,
 				B83C6345280ABE9700A3282D /* TipOffpootContentCell.swift */,
 				B83C6346280ABE9700A3282D /* TipOffpootContentCell.xib */,
 				B83C6349280ACD7100A3282D /* TipOffPostIImgCell.swift */,
 				B83C634A280ACD7100A3282D /* TipOffPostIImgCell.xib */,
 				B83C635F280C050900A3282D /* TipOffListCell.swift */,
 				B83C6360280C050900A3282D /* TipOffListCell.xib */,
+				B8AD404E281FD6D30001D7F4 /* TipOffListCell2.swift */,
+				B8AD404F281FD6D30001D7F4 /* TipOffListCell2.xib */,
+				B8AD4052281FD6EF0001D7F4 /* TipOffListCell1.swift */,
+				B8AD4053281FD6EF0001D7F4 /* TipOffListCell1.xib */,
 				B83C6365280C2EC900A3282D /* TipOffListNoImgCell.swift */,
 				B83C6366280C2EC900A3282D /* TipOffListNoImgCell.xib */,
-				B83C6369280C357A00A3282D /* TipOffDetailImgCell.swift */,
-				B83C636A280C357A00A3282D /* TipOffDetailImgCell.xib */,
 				B83C636D280C440D00A3282D /* TipOffCommentHeaderView.swift */,
 				B83C636F280C441C00A3282D /* TipOffCommentHeaderView.xib */,
+				B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */,
+				B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */,
 			);
 			path = TipOff;
 			sourceTree = "<group>";
@@ -637,6 +721,8 @@
 				B85FAFE928116A8200D25B66 /* TextTableViewCell.swift */,
 				B85FAFEA28116A8200D25B66 /* ChatImageCell.swift */,
 				B85FAFEB28116A8300D25B66 /* ChatAudioCell.swift */,
+				B8B6C53128118A1800B882FC /* ContactViewCell.swift */,
+				B8B6C53228118A1800B882FC /* ContactViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -686,14 +772,24 @@
 		B8AB69CD2808FBDC0064861C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B8AB69FB280A9FBF0064861C /* testCell.swift */,
-				B8AB69FC280A9FBF0064861C /* testCell.xib */,
+				B8AD4015281A81D60001D7F4 /* GuideCell.swift */,
+				B8AD4016281A81D60001D7F4 /* GuideCell.xib */,
+				B8AD401C281AB5680001D7F4 /* HomeRankHeaderView.swift */,
+				B8AD401B281AB5680001D7F4 /* HomeRankHeaderView.xib */,
+				B8AD4010281A7D920001D7F4 /* HomeSubscribeCell.swift */,
+				B8AD400F281A7D920001D7F4 /* HomeSubscribeCell.xib */,
+				B8AD400D281A7D920001D7F4 /* SuperManCell.swift */,
+				B8AD400E281A7D920001D7F4 /* SuperManCell.xib */,
 				B83C634D280AD65E00A3282D /* ResultViewCell.swift */,
 				B83C634F280AD6C200A3282D /* ResultAddViewCell.swift */,
 				B85FAFA0280F05D400D25B66 /* JobViewCell.swift */,
 				B85FAFA1280F05D400D25B66 /* JobViewCell.xib */,
+				B8AD401F281B7D410001D7F4 /* HomeJobCell.swift */,
+				B8AD4020281B7D410001D7F4 /* HomeJobCell.xib */,
 				B85FAFA4280F065E00D25B66 /* WorkerViewCell.swift */,
 				B85FAFA5280F065E00D25B66 /* WorkerViewCell.xib */,
+				B8AD4027281B8E0E0001D7F4 /* SuperManPostCell.swift */,
+				B8AD4028281B8E0E0001D7F4 /* SuperManPostCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -701,9 +797,13 @@
 		B8AB69EC280971F80064861C /* CommonClass */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD404B281EE1550001D7F4 /* ActionSheetViewController.swift */,
+				B8AD404A281EE1550001D7F4 /* TitleCell.swift */,
+				B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */,
+				B8AD4044281E5B8D0001D7F4 /* EmptyDataView.swift */,
+				B8AD4045281E5B8D0001D7F4 /* EmptyDataView.xib */,
 				B85FAFD12810076000D25B66 /* WebSocketManager.swift */,
 				B85FAFD22810076000D25B66 /* WKWebSocket.swift */,
-				B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */,
 				B8AB69ED2809720E0064861C /* CommentBarController.swift */,
 				B8AB69EF28097E340064861C /* ChatBarView.swift */,
 				B83C633D280AAD7D00A3282D /* TextViewCell.h */,
@@ -713,6 +813,7 @@
 				B83C6363280C291E00A3282D /* CustomTapGestureRecognizer.swift */,
 				B83C6385280D0B0300A3282D /* BaseImageBrowserCell.swift */,
 				B83C6386280D0B0300A3282D /* BaseImageBrowserCell.xib */,
+				B85FAFAC280FA26A00D25B66 /* DropView */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -742,6 +843,8 @@
 		B8AC4FDA2807BE4200C2CF26 /* TheStart */ = {
 			isa = PBXGroup;
 			children = (
+				B8AB69FB280A9FBF0064861C /* testCell.swift */,
+				B8AB69FC280A9FBF0064861C /* testCell.xib */,
 				B8AC50452807C86F00C2CF26 /* Message */,
 				B8AC500D2807C58500C2CF26 /* Model */,
 				B8AC500C2807C57100C2CF26 /* View */,
@@ -804,10 +907,15 @@
 		B8AC500D2807C58500C2CF26 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD4023281B85080001D7F4 /* AdverModel.swift */,
 				B85FAFCF280FF36C00D25B66 /* UserModel.swift */,
 				B85FAFC7280FD54000D25B66 /* ImageModel.swift */,
 				B8AB69D6280904140064861C /* CommentModel.swift */,
 				B85FAFB2280FAE7C00D25B66 /* DepartmentModel.swift */,
+				B8AD4040281CD6C90001D7F4 /* AddressModel.swift */,
+				B8AD4042281E293F0001D7F4 /* TipOffModel.swift */,
+				B8AD405E282101530001D7F4 /* DictModel.swift */,
+				B8AD40642822951C0001D7F4 /* JobModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -828,7 +936,9 @@
 		B8AC500F2807C5A200C2CF26 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD403E281CD6990001D7F4 /* cityjson.json */,
 				B85FAFB4280FAFFD00D25B66 /* gifImages */,
+				B8AD4025281B875F0001D7F4 /* 111222.jpg */,
 				B83C635D280C015F00A3282D /* 7921650182607_.pic.jpg */,
 			);
 			path = Resource;
@@ -888,9 +998,12 @@
 			isa = PBXGroup;
 			children = (
 				B8AC504D2807C93E00C2CF26 /* HomePageController.swift */,
+				B8AD4030281B94210001D7F4 /* TipOffMenuPageController.swift */,
 				B8AB69D8280904FA0064861C /* TipOffViewController.swift */,
+				B8AD4032281B94590001D7F4 /* ClarifyViewController.swift */,
 				B8AB69DA280905250064861C /* TipOffDetailViewController.swift */,
 				B8AB69F9280A9F3A0064861C /* TipOffPostViewController.swift */,
+				B8AD402C281B8E940001D7F4 /* SuperManListController.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -920,6 +1033,8 @@
 		B8AC50462807C87800C2CF26 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B8AD405828201FA90001D7F4 /* NewLoginController.swift */,
+				B8AD405C2820254B0001D7F4 /* GetBackPasswordController.swift */,
 				B85FAFCD280FF2E100D25B66 /* PersonsInfoController.swift */,
 				B83C63A2280D6DDF00A3282D /* MineViewController.swift */,
 				B85FAFC5280FD44600D25B66 /* FeedBackController.swift */,
@@ -950,7 +1065,6 @@
 		B8AC50972807EBBF00C2CF26 /* ThirdLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				B85FAFAC280FA26A00D25B66 /* DropView */,
 			);
 			path = ThirdLibrary;
 			sourceTree = "<group>";
@@ -1082,26 +1196,35 @@
 				B83C634C280ACD7100A3282D /* TipOffPostIImgCell.xib in Resources */,
 				B8AB69F82809A12B0064861C /* TipOffContentView.xib in Resources */,
 				B85FB01F28116A8300D25B66 /* Expression.plist in Resources */,
+				B8AD403F281CD6990001D7F4 /* cityjson.json in Resources */,
+				B8AD4047281E5B8D0001D7F4 /* EmptyDataView.xib in Resources */,
 				B85FAF92280E9F9D00D25B66 /* MusicViewCell.xib in Resources */,
 				B85FAF85280E8BE600D25B66 /* JobBaseInfo.xib in Resources */,
 				B83C635E280C015F00A3282D /* 7921650182607_.pic.jpg in Resources */,
 				B83C636C280C357A00A3282D /* TipOffDetailImgCell.xib in Resources */,
 				B8AB69D3280901490064861C /* CommentCell.xib in Resources */,
 				B85FAFBD280FAFFD00D25B66 /* Loading_4@2x.tiff in Resources */,
+				B8AD4051281FD6D30001D7F4 /* TipOffListCell2.xib in Resources */,
 				B83C6394280D166600A3282D /* PubMediaCell.xib in Resources */,
 				B83C639A280D4D7600A3282D /* WokerPubHeaderView.xib in Resources */,
+				B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */,
 				B83C637C280CFC3000A3282D /* WorkerInfoCell.xib in Resources */,
 				B8AB69FE280A9FBF0064861C /* testCell.xib in Resources */,
+				B8AD4026281B875F0001D7F4 /* 111222.jpg in Resources */,
 				B85FAFC1280FAFFD00D25B66 /* Loading_3@2x.tiff in Resources */,
 				B85FB01428116A8300D25B66 /* Message.storyboard in Resources */,
 				B83C6378280CF48D00A3282D /* WorkerBaseInfo.xib in Resources */,
+				B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */,
 				B83C6388280D0B0300A3282D /* BaseImageBrowserCell.xib in Resources */,
 				B85FAFA7280F065E00D25B66 /* WorkerViewCell.xib in Resources */,
+				B8AD4013281A7D920001D7F4 /* HomeSubscribeCell.xib in Resources */,
 				B83C6348280ABE9700A3282D /* TipOffpootContentCell.xib in Resources */,
+				B8AD402A281B8E0E0001D7F4 /* SuperManPostCell.xib in Resources */,
 				B85FAF9C280EBBBF00D25B66 /* PubMusicHeader.xib in Resources */,
 				B85FB01E28116A8300D25B66 /* Expression.bundle in Resources */,
 				B83C6370280C441D00A3282D /* TipOffCommentHeaderView.xib in Resources */,
 				B83C6368280C2EC900A3282D /* TipOffListNoImgCell.xib in Resources */,
+				B8AD4018281A81D60001D7F4 /* GuideCell.xib in Resources */,
 				B83C6384280CFC6100A3282D /* WorkerVideoCell.xib in Resources */,
 				B8AB69EB280960FA0064861C /* CommemtFooerLineView.xib in Resources */,
 				B8AC4FE82807BE4400C2CF26 /* LaunchScreen.storyboard in Resources */,
@@ -1112,20 +1235,25 @@
 				B8AB69D5280901490064861C /* reCommentCell.xib in Resources */,
 				B85FAFA3280F05D400D25B66 /* JobViewCell.xib in Resources */,
 				B8AB69F42809985A0064861C /* TipOffHeaderView.xib in Resources */,
+				B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */,
 				B85FAFBF280FAFFD00D25B66 /* Loading_7@2x.tiff in Resources */,
 				B85FAFC0280FAFFD00D25B66 /* Loading_6@2x.tiff in Resources */,
 				B8AC4FE52807BE4400C2CF26 /* Assets.xcassets in Resources */,
 				B8AB69E92809562D0064861C /* TipOffBottomView.xib in Resources */,
+				B8AD4022281B7D410001D7F4 /* HomeJobCell.xib in Resources */,
 				B85FB01D28116A8300D25B66 /* EmotionCell.xib in Resources */,
 				B85FAFC3280FAFFD00D25B66 /* Loading_1@2x.tiff in Resources */,
 				B85FB01728116A8300D25B66 /* MoreActionCell.xib in Resources */,
 				B83C6362280C050900A3282D /* TipOffListCell.xib in Resources */,
+				B8AD401D281AB5680001D7F4 /* HomeRankHeaderView.xib in Resources */,
 				B8AC4FE32807BE4200C2CF26 /* Main.storyboard in Resources */,
 				B83C6380280CFC4300A3282D /* WorkerImgCell.xib in Resources */,
+				B8AD4012281A7D920001D7F4 /* SuperManCell.xib in Resources */,
 				B8AB69CC28081C800064861C /* Home.storyboard in Resources */,
 				B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */,
 				B85FAFBE280FAFFD00D25B66 /* Loading_5@2x.tiff in Resources */,
 				B85FAF96280E9FB900D25B66 /* AuthorViewCell.xib in Resources */,
+				B8AD4037281C008B0001D7F4 /* TipOffAddressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,13 +1382,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
+				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,
 				B85FAFC6280FD44600D25B66 /* FeedBackController.swift in Sources */,
 				B85FAFA6280F065E00D25B66 /* WorkerViewCell.swift in Sources */,
 				B8AC510D280800C700C2CF26 /* Requestable.swift in Sources */,
+				B8AD4043281E293F0001D7F4 /* TipOffModel.swift in Sources */,
+				B8AD401E281AB5680001D7F4 /* HomeRankHeaderView.swift in Sources */,
 				B85FB01828116A8300D25B66 /* ImMessageModel.swift in Sources */,
+				B8AD4033281B94590001D7F4 /* ClarifyViewController.swift in Sources */,
 				B8AB69DB280905250064861C /* TipOffDetailViewController.swift in Sources */,
+				B8AD405D2820254B0001D7F4 /* GetBackPasswordController.swift in Sources */,
 				B85FB00A28116A8300D25B66 /* BaseTableViewCell.swift in Sources */,
 				B85FB02128116A8300D25B66 /* UIView+Extension.swift in Sources */,
+				B8AD405F282101540001D7F4 /* DictModel.swift in Sources */,
 				B85FAFCE280FF2E100D25B66 /* PersonsInfoController.swift in Sources */,
 				B8AC508D2807CF6B00C2CF26 /* UIImageView+Extension.swift in Sources */,
 				B85FAFB3280FAE7C00D25B66 /* DepartmentModel.swift in Sources */,
@@ -1284,6 +1418,7 @@
 				B8AB69F72809A12B0064861C /* TipOffContentView.swift in Sources */,
 				B85FB01928116A8300D25B66 /* ChatMsgModel.swift in Sources */,
 				B8AC503F2807C60E00C2CF26 /* UserDefaultsUtils.swift in Sources */,
+				B8AD4014281A7D920001D7F4 /* HomeSubscribeCell.swift in Sources */,
 				B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */,
 				B85FB00528116A8300D25B66 /* ChatFindEmotion.swift in Sources */,
 				B8AC50162807C5CF00C2CF26 /* BaseTableController.swift in Sources */,
@@ -1294,12 +1429,14 @@
 				B85FB00428116A8300D25B66 /* ChatMsgDataHelper.swift in Sources */,
 				B8AC503A2807C60E00C2CF26 /* ScreenUtils.swift in Sources */,
 				B85FB01B28116A8300D25B66 /* ChatSelectorModel.swift in Sources */,
+				B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */,
 				B85FAF9A280EBBB300D25B66 /* PubMusicHeader.swift in Sources */,
 				B8AC50912807CF6B00C2CF26 /* UIImage+Extension.swift in Sources */,
 				B8AC50152807C5CF00C2CF26 /* BaseViewController.swift in Sources */,
 				B85FAFC8280FD54000D25B66 /* ImageModel.swift in Sources */,
 				B85FB01A28116A8300D25B66 /* ChatEmotion.swift in Sources */,
 				B8AC51062807FF9800C2CF26 /* Result.swift in Sources */,
+				B8AD4011281A7D920001D7F4 /* SuperManCell.swift in Sources */,
 				B8AC50202807C5F400C2CF26 /* AccountAndPasswordPresenter.swift in Sources */,
 				B83C6398280D4D6800A3282D /* WokerPubHeaderView.swift in Sources */,
 				B8AC50352807C60E00C2CF26 /* JSONUtils.swift in Sources */,
@@ -1311,9 +1448,12 @@
 				B8AC50362807C60E00C2CF26 /* CacheTool.swift in Sources */,
 				B83C639D280D56F100A3282D /* WokerPubIntroCell.swift in Sources */,
 				B85FB00B28116A8300D25B66 /* ChatFileCell.swift in Sources */,
+				B8AD402E281B8E940001D7F4 /* SuperManListController.swift in Sources */,
+				B8AD4035281C00420001D7F4 /* TipOffAddressView.swift in Sources */,
 				B83C636B280C357A00A3282D /* TipOffDetailImgCell.swift in Sources */,
 				B8AB69EE2809720E0064861C /* CommentBarController.swift in Sources */,
 				B8AB69E52809277E0064861C /* CommemtFooerLineView.swift in Sources */,
+				B8AD4041281CD6C90001D7F4 /* AddressModel.swift in Sources */,
 				B85FAF89280E9C4F00D25B66 /* MuiscListController.swift in Sources */,
 				B8AC50922807CF6B00C2CF26 /* NSObject.swift in Sources */,
 				B83C6383280CFC6100A3282D /* WorkerVideoCell.swift in Sources */,
@@ -1324,6 +1464,8 @@
 				B85FB00828116A8300D25B66 /* MsgListViewModel.swift in Sources */,
 				B85FAFB1280FADB800D25B66 /* HomeAPI.swift in Sources */,
 				B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */,
+				B8AD405928201FA90001D7F4 /* NewLoginController.swift in Sources */,
+				B8AD4050281FD6D30001D7F4 /* TipOffListCell2.swift in Sources */,
 				B85FB01028116A8300D25B66 /* TextTableViewCell.swift in Sources */,
 				B83C637B280CFC3000A3282D /* WorkerInfoCell.swift in Sources */,
 				B8AC51082807FF9800C2CF26 /* BerResponseConstants.swift in Sources */,
@@ -1331,6 +1473,7 @@
 				B85FAFA2280F05D400D25B66 /* JobViewCell.swift in Sources */,
 				B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */,
 				B85FAFD42810076000D25B66 /* WKWebSocket.swift in Sources */,
+				B8AD4054281FD6EF0001D7F4 /* TipOffListCell1.swift in Sources */,
 				B83C6356280AF4FD00A3282D /* RowTypeRule.swift in Sources */,
 				B85FB01C28116A8300D25B66 /* EmotionCell.swift in Sources */,
 				B85FB01328116A8300D25B66 /* CustomResponderTextView.swift in Sources */,
@@ -1342,17 +1485,21 @@
 				B85FB00628116A8300D25B66 /* ChatEmotionHelper.swift in Sources */,
 				B8AC50402807C60E00C2CF26 /* DatePickerDialog.swift in Sources */,
 				B8AC503E2807C60E00C2CF26 /* Colors.swift in Sources */,
+				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
 				B8AC50952807CF6B00C2CF26 /* UITextField+Extension.swift in Sources */,
 				B8AC508F2807CF6B00C2CF26 /* UIColor-Extension.swift in Sources */,
 				B85FAF83280E8BDB00D25B66 /* JobBaseInfo.swift in Sources */,
 				B85FB01528116A8300D25B66 /* MoreActionViewModel.swift in Sources */,
 				B8AC510A2807FF9800C2CF26 /* ParamsUtils.swift in Sources */,
+				B8AD4017281A81D60001D7F4 /* GuideCell.swift in Sources */,
+				B8B6C53328118A1800B882FC /* ContactViewCell.swift in Sources */,
 				B8AC50392807C60E00C2CF26 /* EWImageAmplification.swift in Sources */,
 				B85FB00F28116A8300D25B66 /* MyTextView.swift in Sources */,
 				B85FB00C28116A8300D25B66 /* ChatVideoCell.swift in Sources */,
 				B85FB01228116A8300D25B66 /* ChatAudioCell.swift in Sources */,
 				B83C6350280AD6C200A3282D /* ResultAddViewCell.swift in Sources */,
+				B8AD4062282283790001D7F4 /* PubMediaCellVod.swift in Sources */,
 				B83C6367280C2EC900A3282D /* TipOffListNoImgCell.swift in Sources */,
 				B8AC50182807C5CF00C2CF26 /* MainNavigationController.swift in Sources */,
 				B85FAFD0280FF36C00D25B66 /* UserModel.swift in Sources */,
@@ -1368,9 +1515,11 @@
 				B8AC510E280800C700C2CF26 /* AlertPresenter.swift in Sources */,
 				B8AC50412807C60E00C2CF26 /* DialogueUtils.swift in Sources */,
 				B83C6393280D166600A3282D /* PubMediaCell.swift in Sources */,
+				B8AD4024281B85080001D7F4 /* AdverModel.swift in Sources */,
 				B8AC504A2807C91E00C2CF26 /* MessageController.swift in Sources */,
 				B85FAF95280E9FB900D25B66 /* AuthorViewCell.swift in Sources */,
 				B8AC50942807CF6B00C2CF26 /* UIStoryboard+Extension.swift in Sources */,
+				B8AD404D281EE1550001D7F4 /* ActionSheetViewController.swift in Sources */,
 				B8AB69D4280901490064861C /* reCommentCell.swift in Sources */,
 				B8AC50932807CF6B00C2CF26 /* String+Extension.swift in Sources */,
 				B85FAF91280E9F9D00D25B66 /* MusicViewCell.swift in Sources */,
@@ -1378,9 +1527,12 @@
 				B8AB69F028097E350064861C /* ChatBarView.swift in Sources */,
 				B85FB01628116A8300D25B66 /* MoreActionCell.swift in Sources */,
 				B8AC501E2807C5F400C2CF26 /* LoadingPresenter.swift in Sources */,
+				B8AD40652822951C0001D7F4 /* JobModel.swift in Sources */,
 				B83C6364280C291E00A3282D /* CustomTapGestureRecognizer.swift in Sources */,
 				B8AC508E2807CF6B00C2CF26 /* MJRefresh+Extension.swift in Sources */,
 				B8AC504C2807C92C00C2CF26 /* MmallController.swift in Sources */,
+				B8AD4021281B7D410001D7F4 /* HomeJobCell.swift in Sources */,
+				B8AD4031281B94210001D7F4 /* TipOffMenuPageController.swift in Sources */,
 				B8AC50242807C60500C2CF26 /* Constants.swift in Sources */,
 				B8AC503D2807C60E00C2CF26 /* CheckoutUtils.swift in Sources */,
 				B83C6361280C050900A3282D /* TipOffListCell.swift in Sources */,
@@ -1570,11 +1722,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K5D362K5J9;
+				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "启程";
+				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1586,8 +1743,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KL.XinNaoHuWei.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DevQiChengPro;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1603,11 +1761,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K5D362K5J9;
+				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "启程";
+				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1619,8 +1782,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KL.XinNaoHuWei.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DevQiChengPro;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

@@ -18,11 +18,13 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
     
     let homePageController = HomePageController()
     
-    let messageController = MessageController()
+  
     
-    let mmallController = MmallController()
+    let mmallController = MuiscListController()
     
-    let mineController = UIStoryboard.getMineViewController()
+    let messageController = ContactListController()
+    
+    let mineController = UIStoryboard.getPersonsInfoController()
     
     
     
@@ -43,7 +45,8 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
             self.tabBar.scrollEdgeAppearance = self.tabBar.standardAppearance
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = ZYJColor.main
+            appearance.selectionIndicatorTintColor = UIColor.white
+            appearance.backgroundColor = ZYJColor.barColor
             self.tabBar.standardAppearance = appearance;
             self.tabBar.scrollEdgeAppearance = self.tabBar.standardAppearance
  
@@ -52,7 +55,7 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         } else {
             
                 UITabBar.appearance().isTranslucent = true
-                UITabBar.appearance().backgroundColor = ZYJColor.main
+                UITabBar.appearance().backgroundColor = ZYJColor.barColor
                 UITabBar.appearance().backgroundImage = UIImage()
                 UITabBar.appearance().tintColor = UIColor.white
         }
@@ -68,11 +71,11 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
                                   image: UIImage(named: "iconHome")!,
                                   selectedImage: UIImage(named: "iconHomeSelected")!,
                                   tag: TabbarContentType.HomePage.rawValue)
-        addNavChildViewController(controller: messageController, title: "云学院",
+        addNavChildViewController(controller: mmallController, title: "音乐馆",
                                   image: UIImage(named: "iconArctile")!,
                                   selectedImage: UIImage(named: "iconArctileSelected")!,
                                   tag: TabbarContentType.Articl.rawValue)
-        addNavChildViewController(controller: mmallController, title: "医学专区",
+        addNavChildViewController(controller: messageController, title: "消息",
                                   image: UIImage(named: "iconHome")!,
                                   selectedImage: UIImage(named: "iconHomeSelected")!,
                                   tag: TabbarContentType.Cases.rawValue)

@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3r-vW-iCY">
-                    <rect key="frame" x="50" y="22" width="314" height="40"/>
+                    <rect key="frame" x="40" y="22" width="334" height="40"/>
                     <color key="backgroundColor" red="0.41568627450980389" green="0.56470588235294117" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="xMB-mJ-jwZ"/>
@@ -32,9 +32,9 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3r-vW-iCY" secondAttribute="trailing" constant="50" id="36H-VW-BBa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3r-vW-iCY" secondAttribute="trailing" constant="40" id="36H-VW-BBa"/>
                 <constraint firstItem="F3r-vW-iCY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xso-sy-D31"/>
-                <constraint firstItem="F3r-vW-iCY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="Yxd-T6-bDu"/>
+                <constraint firstItem="F3r-vW-iCY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="Yxd-T6-bDu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

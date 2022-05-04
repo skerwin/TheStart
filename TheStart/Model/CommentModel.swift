@@ -11,24 +11,20 @@ import ObjectMapper
 
 struct CommentModel: Mappable {
     
-    var full_name = ""
-    var create_time = 0.0
-    var child_list = [CommentModel]()
-    var format_create_time = ""
     var id = 0
-    var user_id = 0
-    var parent_id = 0
-    var content = ""
-    var table_name = ""
-    var is_report = 0
+    var rid = 0
+    var comment = ""
+    var add_time = ""
+    var nickname = ""
+    var avatar = ""
+    var article_id = 0
+    var dianzan = 0
+    var uid = 0
+    var pinglun_dianzan = 0
+    var is_dianzan = 0
+    var children_count = 0
+    var children = [CommentModel]()
     
-    var dislike_count = 0
-    var like_count = 0
-    var object_id = 0
-    
-    
- 
- 
     init?(map: Map) {
            
     }
@@ -36,31 +32,22 @@ struct CommentModel: Mappable {
            
     }
     mutating func mapping(map: Map) {
-        
-        
-        
-        dislike_count <- map["dislike_count"]
-        like_count <- map["like_count"]
-        object_id <- map["object_id"]
-        
-        is_report <- map["is_report"]
-        table_name <- map["table_name"]
+                
         id <- map["id"]
+        rid <- map["rid"]
+        comment <- map["comment"]
+     
+        add_time <- map["add_time"]
+        nickname <- map["nickname"]
+        avatar <- map["avatar"]
         
-        
-        parent_id <- map["parent_id"]
-        user_id <- map["user_id"]
-       
-        
-        full_name <- map["full_name"]
-        create_time <- map["create_time"]
-        child_list <- map["child_list"]
-        
-        
-        format_create_time <- map["format_create_time"]
-        content <- map["content"]
+        dianzan <- map["dianzan"]
+        uid <- map["uid"]
+        pinglun_dianzan <- map["pinglun_dianzan"]
          
-        
+        is_dianzan <- map["is_dianzan"]
+        children_count <- map["children_count"]
+        children <- map["children"]
      }
  
 

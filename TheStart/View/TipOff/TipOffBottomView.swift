@@ -32,11 +32,33 @@ class TipOffBottomView: UIView {
     override func awakeFromNib(){
         
  
+        
         addGestureRecognizerToView(view: defecateView, target: self, actionName: "defecateViewAction")
         addGestureRecognizerToView(view: commentView, target: self, actionName: "commentViewAction")
         addGestureRecognizerToView(view: goodView, target: self, actionName: "goodViewAction")
         
      }
+    
+    
+    func configBootomView(){
+        
+  
+    }
+    func configModel(model:TipOffModel){
+      
+        if model.type == 1{
+            defecateLabel.text = "我要澄清"
+        }else{
+            defecateLabel.text = "原文链接"
+        }
+        if model.is_dianzan == 1{
+            goodImg.image = UIImage.init(named: "dianzanzhong")
+        }else{
+           goodImg.image = UIImage.init(named: "dianzan")
+        }
+        goodLabel.text = "\(String(describing: model.dianzan))"
+ 
+    }
     @objc func defecateViewAction(){
         
         delegate.defecateViewAction()

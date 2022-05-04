@@ -18,10 +18,11 @@ class WorkerInfoCell: UITableViewCell {
         
         // Initialization code
     }
-    func configCell(isjob:Bool){
+    func configCell(model:JobModel,isjob:Bool){
         if isjob {
             introLabel.text = "项目详情"
             introLabel.font = UIFont.systemFont(ofSize: 16)
+            contentLabel.text = model.detail
         }else{
             introLabel.font = UIFont.boldSystemFont(ofSize: 16)
             introLabel.text = "自我介绍"

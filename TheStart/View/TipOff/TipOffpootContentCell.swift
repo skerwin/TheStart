@@ -21,7 +21,7 @@ class TipOffpootContentCell: UITableViewCell,UITextViewDelegate {
         self.backgroundColor = ZYJColor.main
         self.contentView.backgroundColor = ZYJColor.main
         countLabel.text = "0" + "/" + "\(maxFontNum)"
-        self.contentTV.placeHolder = "写标题并使用合适的话题，让更多人看到～～";
+        self.contentTV.placeHolder = "使用合适的话题，让更多人看到～～";
         contentTV.delegate = self
     }
     func textViewDidChange(_ textView: UITextView) {
@@ -55,7 +55,7 @@ class TipOffpootContentCell: UITableViewCell,UITextViewDelegate {
             
             let height:CGFloat = toBeString.getStringSize(width: self.contentTV.frame.size.width, fontSize: 17).height
             if height >= 70{
-                self.textViewHeightConstant.constant = height + 20;
+                self.textViewHeightConstant.constant = height + 10;
             }else{
                 self.textViewHeightConstant.constant = 80;
             }

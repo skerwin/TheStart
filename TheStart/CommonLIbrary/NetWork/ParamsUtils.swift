@@ -9,6 +9,35 @@ import Foundation
 
 typealias PathAndParams = (String, Dictionary<String, AnyObject>?)
 
+
+//拼get链接
+
+func generateUrlWithParams(_ parameters:[String: Any],path:String) -> String {
+    //默认URL
+    var urlStr = URLs.getHostAddress() + path
+    //"demo://"
+    var flag = true
+    let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+    let subDelimitersToEncode = "!$&'()*+,;="
+    var allowedCharacterSet = CharacterSet.urlQueryAllowed
+    allowedCharacterSet.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+    for (key,value) in parameters {
+        var anyValue: Any = value
+        if let value = value as? String{
+            anyValue = value.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? ""
+        }
+        
+        if flag{
+            flag = false
+            urlStr += "?" + key + "=\(anyValue)"
+        }else{
+            urlStr += "&" + key + "=\(anyValue)"
+        }
+    }
+    return urlStr
+}
+
+
 /// 获取通用的请求Dictionary[主要是针对POST和PUT的HTTP请求方法]
 func getRequestParamsDictionary(paramsDictionary: Dictionary<String, AnyObject>?) -> Dictionary<String, AnyObject> {
  

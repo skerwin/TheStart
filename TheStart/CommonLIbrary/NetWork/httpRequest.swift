@@ -28,25 +28,27 @@ struct HttpRequest {
         
         let requestPath = pathAndParams.0
         let parameters  = pathAndParams.1
-       
-       
-        let  Url = URL.init(string: URLs.getHostAddress() + requestPath)
- 
 
-        var request: DataRequest?
+     
+        var Url:URL!
+        if methodType == .get{
+            Url = URL.init(string: requestPath)
+        }else{
+            Url = URL.init(string: URLs.getHostAddress() + requestPath)
+        }
+      
+ 
+         var request: DataRequest?
          print("请求数据：")
          print(Url!.absoluteString)
          let parametersJson = JSON(parameters!)
          print(parametersJson)
-        var token = ""
-        if stringForKey(key: Constants.token) != nil {
-            token = stringForKey(key: Constants.token)!
-        }
-        ////        构造header
+        var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
+//        if stringForKey(key: Constants.token) != nil {
+//            token = stringForKey(key: Constants.token)!
+//        }
         let headers: HTTPHeaders = [
-            "XX-Api-Version": "1.0.0",
-            "XX-Device-Type": "iphone",
-            "Token": token
+            "Authori-zation": token
         ]
         switch methodType {
         case .get, .delete:
@@ -69,18 +71,16 @@ struct HttpRequest {
                 let responseJson = JSON(dict)
                 print(Url!.absoluteString)
                 print(responseJson)
-                if requestPath == HomeAPI.departmenListPath{
-                    XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: requestPath) { (result) in
-                        if(result){
-                        }
-                        else
-                        {
-                        }
-                    }
+                if requestPath.containsStr(find: HomeAPI.salaryPath){
+                    XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: HomeAPI.salaryPath) { (result) in
+                     }
+                }else if requestPath.containsStr(find: HomeAPI.workCategoryPath){
+                    XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: HomeAPI.workCategoryPath) { (result) in
+                     }
+                    
                 }
-
                 
-                completionHandler(.Success(responseJson))
+                 completionHandler(.Success(responseJson))
             case .failure:
                 completionHandler(.Failure(JSON(["code":"100888"])))
                  DialogueUtils.dismiss()
@@ -110,40 +110,39 @@ struct HttpRequest {
         restfulRequest(methodType: .delete, pathAndParams: pathAndParams, completionHandler: completionHandler)
     }
     
-    
-    static func uploadImage(url:String,filePath:String,success: @escaping (_ content:JSON) -> Void, failure: @escaping (_ errorInfo: String?) -> Void){
-        let fileUrl = URL.init(fileURLWithPath: filePath)
-        var token = ""
-        if stringForKey(key: Constants.token) != nil {
-            token = stringForKey(key: Constants.token)!
-        }
+    static func uploadImage(url:String,filePath:[URL],success: @escaping (_ content:JSON) -> Void, failure: @escaping (_ errorInfo: String?) -> Void){
+        
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
+         
         let upUrlstr = URLs.getHostAddress() + url
         let headers: HTTPHeaders = [
-            "Device-Type": "ios",
-            "Token": token
+            "Authori-zation": token
         ]
         
-        var fileNamepara = ""
-        if url == "/users/api/editAvatar" {
-            fileNamepara = "avatar"
-        }else{
-            fileNamepara = "file"
-        }
          AF.upload(multipartFormData: { multipartFormData in
-             multipartFormData.append(fileUrl, withName: fileNamepara)
+ 
+//             let data = "5".data(using: String.Encoding.utf8)!
+//             multipartFormData.append(data, withName: "count")
+             var count = 0
+             for fileUrl in filePath {
+                 print(fileUrl)
+                 multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).png", mimeType: "image/png")
+                 count = count + 1
+             }
+ 
          }, to: upUrlstr, usingThreshold: MultipartFormData.encodingMemoryThreshold,method: .post, headers: headers, interceptor: nil, fileManager:.default).responseJSON { (response) in
+ 
             switch response.result {
             case .success:
                 guard let dict = response.value else {
-                    //failure("图片服务器出错")
-                    //("图片上传出错")
+                    failure("图片服务器出错")
                     return
                 }
                 let responseJson = JSON(dict)
                 let responseData = responseJson[BerResponseConstants.responseData]
-//                print(upUrlstr)
-//                print(responseJson)
-                if responseJson["code"].intValue == 1 {
+                print(upUrlstr)
+                print(responseJson)
+                if responseJson["status"].intValue == 200 {
                     success(responseData)
                 }else{
                     let msg = responseJson["msg"].stringValue
@@ -156,6 +155,64 @@ struct HttpRequest {
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    static func uploadImage2(url:String,filePath:[Data],success: @escaping (_ content:JSON) -> Void, failure: @escaping (_ errorInfo: String?) -> Void){
+        //let fileUrl = URL.init(fileURLWithPath: filePath)
+        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
+         
+        let upUrlstr = URLs.getHostAddress() + url
+        let headers: HTTPHeaders = [
+            "Authori-zation": token
+        ]
+        
+         AF.upload(multipartFormData: { multipartFormData in
+             
+             var count = 0
+             for fileUrl in filePath {
+ 
+                 multipartFormData.append(fileUrl, withName: "file\(count)",fileName: "image_\(count).png", mimeType: "image/png")
+                 count = count + 1
+             }
+             
+ 
+         }, to: upUrlstr, usingThreshold: MultipartFormData.encodingMemoryThreshold,method: .post, headers: headers, interceptor: nil, fileManager:.default).responseJSON { (response) in
+            let dict = response.value
+             let responseJson = JSON(dict)
+             let responseData = responseJson[BerResponseConstants.responseData]
+             print(upUrlstr)
+             print(responseJson)
+             
+            switch response.result {
+            case .success:
+                guard let dict = response.value else {
+                    failure("图片服务器出错")
+                    return
+                }
+                let responseJson = JSON(dict)
+                print(responseJson)
+                let responseData = responseJson[BerResponseConstants.responseData]
+              
+                if responseJson["status"].intValue == 200 {
+                    success(responseData)
+                }else{
+                    let msg = responseJson["msg"].stringValue
+                    failure(msg)
+                   // print(content + msg)
+                }
+            case .failure:
+                failure("图片服务器出错")
+                print("图片上传出错")
+            }
+        }
+    }
+    
+    
+    
     
 }
 

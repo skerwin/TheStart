@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 import Kingfisher
 
+
+//func clearCache() {
+//        KingfisherManager.shared.cache.clearMemoryCache()
+//        KingfisherManager.shared.cache.clearDiskCache()
+//    }
+
+
 class ImageCacheManager {
     static let `default` = ImageCache(name: "imageCache")
     //KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)
@@ -18,26 +25,20 @@ extension UIImageView {
     
     func displayImageWithURL(url: String?,isOpenScale: Bool = true) {
         contentMode = .scaleToFill
-        
-        
-//         if url == nil || url! == ""{
-//             self.image = UIImage.init(named: "zhanweitu2")
-//        }else{
-//            guard let imageUrl = URL.init(string:url!) else { return }
-//
-//            self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu2"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
-//            }
-//         }
-        
         if url == nil || url! == ""{
-                  self.image = UIImage.init(named: "zhanweitu2")
+                  self.image = UIImage.init(named: "zhanweitu")
              }else{
                  guard let imageUrl = URL.init(string:url!.urlEncoded()) else { return }
                  
-                 self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu2"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
-                 }
-              // KingfisherOptionsInfoItem.forceRefresh
-              // [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)]
+                 let resource = ImageResource.init(downloadURL: imageUrl)
+                 
+                // self.sd_image(withGIFData: <#T##NSData?#>)
+                // self.sd_setImage(with: imageUrl)
+                 
+                 self.kf.setImage(with: resource,placeholder: UIImage.init(named: "zhanweitu"),options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)])
+//                 self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
+//                 }
+                 //,options: [.transition(ImageTransition.fade(1))]
              }
     }
     
@@ -45,24 +46,23 @@ extension UIImageView {
         contentMode = .scaleToFill
         
          if url == nil || url! == ""{
-             self.image = UIImage.init(named: "zhanweitu2")
+             self.image = UIImage.init(named: "zhanweitu")
         }else{
             guard let imageUrl = URL.init(string:url!.urlEncoded()) else { return }
             
-            self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu2"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
+            self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
             }
-         // KingfisherOptionsInfoItem.forceRefresh
-         // [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)]
+      
         }
     }
     
     func displayHeadImageWithURL(url: String?,isOpenScale: Bool = true) {
          contentMode = .scaleToFill
           if url == nil || url! == ""{
-              self.image = UIImage.init(named: "wodetouxiang")
+              self.image = UIImage.init(named: "ziran")
          }else{
              guard let imageUrl = URL.init(string:url!) else { return }
-             self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "wodetouxiang"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
+             self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "ziran"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
              }
          }
      }

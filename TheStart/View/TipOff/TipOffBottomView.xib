@@ -29,11 +29,11 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-lj-7vG">
-                                            <rect key="frame" x="29.5" y="16.5" width="15" height="15"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiezi" translatesAutoresizingMaskIntoConstraints="NO" id="Zc9-lj-7vG">
+                                            <rect key="frame" x="24.5" y="14" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="15" id="byb-be-23k"/>
-                                                <constraint firstAttribute="height" constant="15" id="p8l-4t-gPV"/>
+                                                <constraint firstAttribute="width" constant="20" id="byb-be-23k"/>
+                                                <constraint firstAttribute="height" constant="20" id="p8l-4t-gPV"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -67,11 +67,11 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="2KH-tP-4Rk">
-                                            <rect key="frame" x="45.5" y="16.5" width="15" height="15"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pinglun" translatesAutoresizingMaskIntoConstraints="NO" id="2KH-tP-4Rk">
+                                            <rect key="frame" x="40.5" y="15" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="15" id="AQz-B2-Blf"/>
-                                                <constraint firstAttribute="width" constant="15" id="Wgi-Da-5R6"/>
+                                                <constraint firstAttribute="height" constant="20" id="AQz-B2-Blf"/>
+                                                <constraint firstAttribute="width" constant="20" id="Wgi-Da-5R6"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -85,31 +85,31 @@
                                         <constraint firstItem="pBo-3o-9js" firstAttribute="top" secondItem="6On-1r-SmK" secondAttribute="top" constant="12" id="bT8-i7-hLj"/>
                                         <constraint firstItem="o1F-PS-kHw" firstAttribute="leading" secondItem="2KH-tP-4Rk" secondAttribute="trailing" constant="2" id="dPF-0F-Axt"/>
                                         <constraint firstAttribute="trailing" secondItem="pBo-3o-9js" secondAttribute="trailing" id="o2i-Wy-NX8"/>
-                                        <constraint firstItem="2KH-tP-4Rk" firstAttribute="centerY" secondItem="6On-1r-SmK" secondAttribute="centerY" id="qLo-F8-vQt"/>
+                                        <constraint firstItem="2KH-tP-4Rk" firstAttribute="centerY" secondItem="6On-1r-SmK" secondAttribute="centerY" constant="1" id="qLo-F8-vQt"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzk-Vc-NX3">
                                     <rect key="frame" x="276" y="0.0" width="138" height="48"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-gC-xse">
-                                            <rect key="frame" x="62.5" y="14.5" width="33" height="19.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dianzan" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-eZ-YGP">
+                                            <rect key="frame" x="39.5" y="9" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="KrY-xr-wHu"/>
+                                                <constraint firstAttribute="height" constant="30" id="pgH-lz-QFP"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHp-gC-xse">
+                                            <rect key="frame" x="74.5" y="16.5" width="20" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gengduo" translatesAutoresizingMaskIntoConstraints="NO" id="MBj-eZ-YGP">
-                                            <rect key="frame" x="45.5" y="16.5" width="15" height="15"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="15" id="KrY-xr-wHu"/>
-                                                <constraint firstAttribute="height" constant="15" id="pgH-lz-QFP"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="DHp-gC-xse" firstAttribute="leading" secondItem="MBj-eZ-YGP" secondAttribute="trailing" constant="2" id="IgN-hK-i7q"/>
-                                        <constraint firstItem="DHp-gC-xse" firstAttribute="centerX" secondItem="Gzk-Vc-NX3" secondAttribute="centerX" constant="10" id="XCt-Nj-ToY"/>
+                                        <constraint firstItem="DHp-gC-xse" firstAttribute="leading" secondItem="MBj-eZ-YGP" secondAttribute="trailing" constant="5" id="IgN-hK-i7q"/>
+                                        <constraint firstItem="DHp-gC-xse" firstAttribute="centerX" secondItem="Gzk-Vc-NX3" secondAttribute="centerX" constant="15.5" id="XCt-Nj-ToY"/>
                                         <constraint firstItem="MBj-eZ-YGP" firstAttribute="centerY" secondItem="Gzk-Vc-NX3" secondAttribute="centerY" id="bmQ-93-3zm"/>
-                                        <constraint firstItem="DHp-gC-xse" firstAttribute="centerY" secondItem="Gzk-Vc-NX3" secondAttribute="centerY" id="npr-76-i4l"/>
+                                        <constraint firstItem="DHp-gC-xse" firstAttribute="centerY" secondItem="Gzk-Vc-NX3" secondAttribute="centerY" constant="2" id="npr-76-i4l"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -148,6 +148,8 @@
         </view>
     </objects>
     <resources>
-        <image name="gengduo" width="22" height="22"/>
+        <image name="dianzan" width="16" height="16"/>
+        <image name="pinglun" width="16" height="16"/>
+        <image name="xiezi" width="16" height="16"/>
     </resources>
 </document>

@@ -13,7 +13,7 @@ let keychainServiceName = "YiLuHuWei" // Keychain
 
 struct Constants {
     
-    static let firebaseToken = "firebaseRegistration"
+    static let verCodeKey = "verCodeKey" 
     static let appVersion = "appVersion" // 程序版本号
     static let account = "account" // 帐号
     static let lastTimeLoginAccount = "lastTimeLoginAccount" // 上一次登录的账号
@@ -63,20 +63,7 @@ struct Constants {
     static let TokenChangeRefreshNotification = "TokenChangeRefreshNotification"
     
     static let TokenChangeDeleteNotification = "TokenChangeDeleteNotification"
- 
-    static let serverIp = "serverIp"
+  
     
-    //搜索历史
-     static let historyWord = "historyWord"
- 
-    static let ExemptionAgreement = "ExemptionAgreement"
-    static let UpdateVerion = "UpdateVerion"
-    static let isForceUpdateVerion = "isForceUpdateVerion"
     
-    static let videoNetWork = "videoNetWork"
-    
-    static let hidePublish = "hidePublish"
-    
-    static let historySearchDrug = "historySearchDrug"
-    static let historySearchDisease = "historySearchDisease"
  }

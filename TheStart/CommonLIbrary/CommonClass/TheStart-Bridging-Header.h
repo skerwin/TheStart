@@ -6,3 +6,4 @@
 #import "TextViewCell.h"
 #import "DOPDropDownMenu.h"
 #import "XHNetworkCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>

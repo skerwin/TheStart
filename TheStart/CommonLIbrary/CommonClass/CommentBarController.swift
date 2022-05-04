@@ -16,7 +16,6 @@ protocol CommentBarControllerDelegate : NSObjectProtocol {
     /* ============================= barView =============================== */
     func commentBarUpdateHeight(height: CGFloat)
     func commentBarVC(commentBarVC: CommentBarController, didChageChatBoxBottomDistance distance: CGFloat)
-    func forLoginVC()
     func commentBarGood()
     func sendMessage(messge: String)
 }
@@ -95,7 +94,6 @@ extension CommentBarController: ChatBarViewDelegate{
     func chatBarShowTextKeyboard() {
         
         keyboardType = .text
-        delegate?.forLoginVC()
         delegate?.commentBarVC(commentBarVC: self, didChageChatBoxBottomDistance: keyboardFrame?.height ?? 0)
     }
  

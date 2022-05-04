@@ -134,6 +134,17 @@
                             <constraint firstItem="iPh-1k-rka" firstAttribute="centerY" secondItem="I2Q-5R-g0o" secondAttribute="centerY" id="m1w-L3-YvE"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图文" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZg-Hl-BuX">
+                        <rect key="frame" x="259" y="21" width="30" height="14"/>
+                        <color key="backgroundColor" red="0.79894145526748739" green="0.4696389291505686" blue="0.17451457011195382" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="Ix5-0Q-foC"/>
+                            <constraint firstAttribute="width" constant="30" id="SdJ-hp-HJV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
@@ -151,20 +162,28 @@
                     <constraint firstItem="I2Q-5R-g0o" firstAttribute="leading" secondItem="d0R-Fh-T6e" secondAttribute="leading" constant="58" id="XbB-eP-veG"/>
                     <constraint firstItem="poX-SZ-bkw" firstAttribute="top" secondItem="X3k-zM-8S8" secondAttribute="bottom" constant="12" id="clL-Kh-djK"/>
                     <constraint firstAttribute="trailing" secondItem="qeO-aF-Ons" secondAttribute="trailing" constant="6" id="daO-Eq-AqH"/>
+                    <constraint firstItem="OZg-Hl-BuX" firstAttribute="top" secondItem="d0R-Fh-T6e" secondAttribute="top" constant="21" id="jst-i0-5nq"/>
                     <constraint firstItem="I2Q-5R-g0o" firstAttribute="top" secondItem="cTY-ZD-Nfp" secondAttribute="bottom" constant="3" id="ljz-3K-IeV"/>
                     <constraint firstItem="aco-u9-tMZ" firstAttribute="leading" secondItem="d0R-Fh-T6e" secondAttribute="leading" constant="55" id="q7d-Q5-0we"/>
                     <constraint firstItem="poX-SZ-bkw" firstAttribute="leading" secondItem="d0R-Fh-T6e" secondAttribute="leadingMargin" constant="42" id="rSL-wI-Ydt"/>
                     <constraint firstItem="Spr-qf-QLN" firstAttribute="leading" secondItem="d0R-Fh-T6e" secondAttribute="leading" constant="10" id="sRP-Az-e2V"/>
                     <constraint firstAttribute="trailing" secondItem="X3k-zM-8S8" secondAttribute="trailing" constant="118" id="tQ8-Cj-TcG"/>
+                    <constraint firstItem="qeO-aF-Ons" firstAttribute="leading" secondItem="OZg-Hl-BuX" secondAttribute="trailing" constant="10" id="vOj-fq-g1x"/>
                     <constraint firstItem="cTY-ZD-Nfp" firstAttribute="leading" secondItem="d0R-Fh-T6e" secondAttribute="leading" constant="58" id="wsv-4Y-CVy"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Vzu-uY-yyT"/>
             <connections>
+                <outlet property="addressLabel" destination="pNJ-FH-m6D" id="tVK-cT-IX7"/>
+                <outlet property="comentLabel" destination="khq-hx-ps6" id="noL-ek-pKV"/>
                 <outlet property="contentLabel" destination="poX-SZ-bkw" id="rin-5F-E4F"/>
-                <outlet property="headImage" destination="Spr-qf-QLN" id="d9X-BN-E37"/>
-                <outlet property="nameLabel" destination="qeO-aF-Ons" id="CdK-f8-tc6"/>
+                <outlet property="headImage" destination="Spr-qf-QLN" id="t0q-TK-HvB"/>
+                <outlet property="likeLbael" destination="51C-wg-bbT" id="qpQ-xJ-Xzc"/>
+                <outlet property="nameLabel" destination="X3k-zM-8S8" id="dWV-A7-ILh"/>
+                <outlet property="timeLabel" destination="JvK-Bm-C8z" id="E8b-1b-Cu6"/>
+                <outlet property="tip2Label" destination="OZg-Hl-BuX" id="wuz-wd-uHc"/>
                 <outlet property="tipsLabel" destination="qeO-aF-Ons" id="GxD-hT-6Hl"/>
+                <outlet property="visitLabel" destination="iPh-1k-rka" id="zLD-CE-YUM"/>
             </connections>
             <point key="canvasLocation" x="192.0289855072464" y="102.79017857142857"/>
         </tableViewCell>

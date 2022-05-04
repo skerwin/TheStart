@@ -8,29 +8,55 @@
 import UIKit
 import IQKeyboardManager
 import HXPHPicker
+import SwiftUI
+import CoreMIDI
+import SwiftyJSON
+import ObjectMapper
+import ActionSheetPicker_3_0
 
-class TipOffPostViewController: BaseViewController {
+class TipOffPostViewController: BaseViewController,Requestable {
     
     var contentTV:UITextView!
 
     var tableView:UITableView!
+    var footerView:ChatBtnView!
+    var footerBgView:UIView!
+    
+    var tipOffID = 0
+    var articleType = 1
+    
+    
+    var reloadBlock:(() -> Void)?
+    
+    
     
     weak var collectionView: UICollectionView!
     /// 当前已选资源
     var selectedAssets: [PhotoAsset] = []
     /// 是否选中的原图
     var isOriginal: Bool = false
-
     
     var localAssetArray: [PhotoAsset] = []
     
     var imageCell:TipOffPostIImgCell = TipOffPostIImgCell.init()
     
+    var addressView:TipOffAddressView!
+    
+    var imageDataArr = [Data]()
+    var imageURLArr = [URL]()
+    
+    
+    
+    var uploadImgArr =  [ImageModel]()
+    var articleModel = TipOffModel()
+    var contentCell =  TipOffpootContentCell()
+    
+   
     /// 相机拍摄的本地资源
     var localCameraAssetArray: [PhotoAsset] = []
     /// 相关配置
     var config: PickerConfiguration = PhotoTools.getWXPickerConfig(isMoment: true)
-    
+    var rightBarButton:UIButton!
     
     var canSetAddCell: Bool {
         if selectedAssets.count == config.maximumSelectedCount &&
@@ -43,9 +69,69 @@ class TipOffPostViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "报黑信息"
+        if articleType == 1{
+            self.title = "报黑信息"
+        }else{
+            self.title = "澄清信息"
+        }
+        createRightNavItem()
+        loadCityJson()
+        initFooterView()
         initTableView()
         // Do any additional setup after loading the view.
+    }
+    
+    func loadCityJson(){
+        do {
+              if let file = Bundle.main.url(forResource: "cityjson", withExtension: "json") {
+                  let data = try Data(contentsOf: file)
+                  let json = try JSONSerialization.jsonObject(with: data, options: [])
+                  if json is [String: Any] {
+                      // json is a dictionary
+                  } else if let object = json as? [Any] {
+                      // json is an array
+                      let responseJson = JSON(object)
+                      addressList = getArrayFromJson(content:responseJson)
+                  } else {
+                      print("JSON is invalid")
+                  }
+              } else {
+                  print("no file")
+              }
+          } catch {
+              print(error.localizedDescription)
+          }
+    }
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+            
+        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 63, height: 28)
+        rightBarButton.setTitle("发布", for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+      
+        rightBarButton.setTitleColor(.white, for: .normal)
+        rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        rightBarButton.layer.masksToBounds = true
+        rightBarButton.layer.cornerRadius = 5;
+        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+    }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        
+        if imageURLArr.count == 0{
+            showOnlyTextHUD(text: "请添加图片")
+            return
+        }
+        self.uploadPhoto(filePath:imageURLArr)
     }
     
     func presentPickerController() {
@@ -64,6 +150,15 @@ class TipOffPostViewController: BaseViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
+    func initFooterView(){
+        addressView = Bundle.main.loadNibNamed("TipOffAddressView", owner: nil, options: nil)!.first as? TipOffAddressView
+        addressView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 113)
+        addressView.delegate = self
+        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 113))
+        footerBgView.backgroundColor = ZYJColor.main
+        footerBgView.addSubview(addressView)
+    }
+ 
     func initTableView(){
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - bottomBlankHeight - navigationHeaderAndStatusbarHeight), style: .plain)
         tableView.delegate = self
@@ -74,10 +169,10 @@ class TipOffPostViewController: BaseViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+        tableView.tableFooterView = footerBgView
         tableView.registerNibWithTableViewCellName(name: TipOffpootContentCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffPostIImgCell.nameOfClass)
         tableView.tableHeaderView = UIView()
-        tableView.tableFooterView = UIView()
         view.addSubview(tableView)
         
     }
@@ -98,16 +193,88 @@ class TipOffPostViewController: BaseViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    func uploadPhoto(filePath: [URL]) {
+        DialogueUtils.showWithStatus("正在上传")
+    
+        HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { [self] (content) -> Void in
+            
+            self.uploadImgArr = getArrayFromJson(content: content)
+            postAtricle()
+           
+         }) { (errorInfo) -> Void in
+            DialogueUtils.dismiss()
+            DialogueUtils.showError(withStatus: "图片上传失败，请重试")
+         
+        }
+    }
+    
+    func postAtricle(){
+        
+        articleModel?.type = articleType
+        articleModel?.clarify_id = tipOffID
+        articleModel?.title = addressView.titleLabel.text ?? ""
+        articleModel?.content = contentCell.contentTV.text
+        var imgstr = ""
+        if uploadImgArr.count != 0{
+            for imgM in self.uploadImgArr {
+                imgstr = imgstr + imgM.url + ","
+            }
+            imgstr.remove(at: imgstr.index(before: imgstr.endIndex))
+        }
+        articleModel?.upLoadImg = imgstr
+        
+        if articleModel?.content == ""{
+            DialogueUtils.showError(withStatus: "内容不能为空")
+            return
+        }
+        articleModel?.address = province + city
+        let pathAndParams = HomeAPI.addTipOffPathAndParams(model: articleModel!)
+        postRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+    }
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+        DialogueUtils.dismiss()
+        DialogueUtils.showError(withStatus: "发布失败，请重试")
+    }
+    
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        DialogueUtils.dismiss()
+        DialogueUtils.showSuccess(withStatus: "发布成功")
+        delay(second: 1) { [self] in
+            if (self.reloadBlock != nil) {
+                self.reloadBlock!()
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    var officesChoosePicker:ActionSheetCustomPicker? = nil //城市选择器
+    var nextDepartmentsList = [AddressModel]()
+    var addressList = [AddressModel]()
+    var isNextDepartment = false
+    var isNextDepartment1 = false
+    
+    
+    var province = ""
+    var city = ""
+    
+}
+
+extension TipOffPostViewController:TipOffAddressViewDelegate{
+    func addrerssAction() {
+        isNextDepartment = false
+        isNextDepartment1 = false
+        nextDepartmentsList = addressList.first!.children
+        self.officesChoosePicker = ActionSheetCustomPicker.init(title: "选择城市", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
+        self.officesChoosePicker?.delegate = self
+        officesChoosePicker?.tapDismissAction  = .success;
+        officesChoosePicker?.show()
+    }
+ 
 }
 extension TipOffPostViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,16 +283,18 @@ extension TipOffPostViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffpootContentCell", for: indexPath) as! TipOffpootContentCell
             cell.selectionStyle = .none
             cell.tableview = tableView;
             self.contentTV = cell.contentTV
+            contentCell = cell
             return cell;
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffPostIImgCell", for: indexPath) as! TipOffPostIImgCell
             cell.selectionStyle = .none
+            cell.backgroundColor = ZYJColor.main
+            cell.contentView.backgroundColor = ZYJColor.main
             cell.delegate = self
             cell.selectedAssets = self.selectedAssets
             cell.canSetAddCell = self.canSetAddCell
@@ -137,6 +306,7 @@ extension TipOffPostViewController:UITableViewDataSource,UITableViewDelegate {
  
     }
     
+ 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.contentTV.resignFirstResponder()
     }
@@ -150,6 +320,99 @@ extension TipOffPostViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // self.presentPickerController()
+    }
+ 
+}
+extension TipOffPostViewController:ActionSheetCustomPickerDelegate,UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            
+            if component == 0{
+                return addressList.count
+            }else{
+                return nextDepartmentsList.count
+            }
+
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+            if component == 0{
+                return addressList[row].label
+            }else{
+                return nextDepartmentsList[row].label
+            }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+ 
+            if component == 0{
+                isNextDepartment = true
+                province = addressList[row].label
+                nextDepartmentsList = addressList[row].children
+                
+                pickerView.selectRow(0, inComponent: 1, animated: true)
+                pickerView.reloadComponent(1)
+            }else{
+                isNextDepartment1 = true
+                city = nextDepartmentsList[row].label
+                
+               
+            }
+       
+    }
+    func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
+ 
+            if isNextDepartment {
+                if isNextDepartment1{
+                }else{
+                    city = nextDepartmentsList[0].label
+                 }
+
+            }else{
+                if isNextDepartment1 {
+                     province = addressList[0].label
+                    
+                }else{
+                    province = addressList[0].label
+                    
+                    nextDepartmentsList = addressList[0].children
+                    city = nextDepartmentsList[0].label
+                    
+                }
+
+         }
+           addressView.addrerssLabel.text = province + city
+     
+    }
+    
+    
+    func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
+        print("123")
+        addressView.addrerssLabel.text = province + city
+        
+    }
+    
+    //重置label
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var lable:UILabel? = view as? UILabel
+        if lable == nil{
+            lable = UILabel.init()
+        }
+        
+            if component == 0{
+                
+                lable?.text = addressList[row].label
+                lable?.font = UIFont.systemFont(ofSize: 17)
+            }else{
+                lable?.text = nextDepartmentsList[row].label
+                lable?.font = UIFont.systemFont(ofSize: 16)
+            }
+        lable?.textAlignment = .center
+        return lable!
     }
 }
 
@@ -349,19 +612,25 @@ extension TipOffPostViewController: PhotoPickerControllerDelegate {
         
         
         pickerController.dismiss(animated: true, completion: nil)
-        result.getURLs { urls in
-            print(urls)
-        }
         
-        result.getImage { (image, photoAsset, index) in
-            if let image = image {
-                print("success", image)
-            }else {
-                print("failed")
-            }
-        } completionHandler: { (images) in
-            print(images)
+        result.getURLs { urls in
+            self.imageURLArr = urls
         }
+       
+//        result.getImage { (image, photoAsset, index) in
+//
+//            print(photoAsset)
+//            if let image = image {
+//                self.imageDataArr.append(image.pngData()!)
+//                print("success", image)
+//            }else {
+//                print("failed")
+//            }
+//        } completionHandler: { (images) in
+//            print(images)
+//        }
+//        print(imageDataArr)
+        
     }
     /// Asset 编辑完后调用
     func pickerController(

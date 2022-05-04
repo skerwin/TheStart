@@ -20,15 +20,32 @@ class JobBaseInfo: UIView {
     
     @IBOutlet weak var timeLabel: UILabel!
     
-   
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBAction func phoneBtnAction(_ sender: Any) {
     }
     @IBOutlet weak var phoneBtn: UIButton!
     
+    
+    func configModel(model:JobModel){
+        headImg.displayImageWithURL(url: model.avatar)
+        nameLabel.text = model.name
+        if model.is_shiming == 1{
+            isAuthLabel.text = "已实名"
+        }else{
+            isAuthLabel.text = "未实名"
+        }
+        jobLabel.text = model.cate_name
+        salaryLabel.text = model.salary_value
+        addressLabel.text = model.city
+        timeLabel.text = model.add_time + "发布"
+        titleLabel.text = model.title
+        
+    }
     override func awakeFromNib(){
  
         phoneBtn.layer.masksToBounds = true
-        phoneBtn.layer.cornerRadius = 15
+        phoneBtn.layer.cornerRadius = 5
         
         
         isAuthLabel.layer.masksToBounds = true
@@ -39,4 +56,5 @@ class JobBaseInfo: UIView {
         
      
     }
+   
 }

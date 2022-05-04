@@ -186,6 +186,8 @@ extension PubMusicController:UITableViewDataSource,UITableViewDelegate {
 }
 
 extension PubMusicController: PubMediaCellDelegate {
+    
+    
     func deleteItem(index: Int) {
         selectedAssets.remove(at: index)
         mediaCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! PubMediaCell
@@ -194,7 +196,7 @@ extension PubMusicController: PubMediaCellDelegate {
         mediaCell.updateCollectionViewHeight()
     }
     
-    func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, row: Int) {
         presentPickerController()
     }
 }

@@ -17,9 +17,9 @@ struct URLs {
      }
 
     static var currentEnvironment       = Environment.SIT
-    static let currentEnvironmentKey    = "http://product.gskanglin.cn/api"
-    static let sitHostAddress           = "http://product.gskanglin.cn/api"
-    static let productHostAddress       = "http://product.gskanglin.cn/api"
+    static let currentEnvironmentKey    = "http://122.114.14.227"
+    static let sitHostAddress           = "http://122.114.14.227"
+    static let productHostAddress       = "http://122.114.14.227"
     
     
 //    static func getAPIIp() -> String {

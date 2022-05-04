@@ -7,8 +7,15 @@
 
 import UIKit
 
+
+protocol  ChatBtnViewDelegate {
+    func sumbitAction()
+}
+ 
+
 class ChatBtnView: UIView {
 
+    var delegate:ChatBtnViewDelegate!
     @IBOutlet weak var chatBtn: UIButton!
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,6 +25,7 @@ class ChatBtnView: UIView {
     }
     */
     @IBAction func chatBtnAction(_ sender: Any) {
+        delegate.sumbitAction()
     }
     override func awakeFromNib(){
  

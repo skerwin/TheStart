@@ -51,6 +51,7 @@ class TipOffPostIImgCell: UITableViewCell,UICollectionViewDataSource,
             collectionView.dataSource = self
             collectionView.dragInteractionEnabled = true
         }
+        collectionView.backgroundColor = ZYJColor.main
         collectionView.register(ResultViewCell.self, forCellWithReuseIdentifier: "ResultViewCellID")
         collectionView.register(ResultAddViewCell.self, forCellWithReuseIdentifier: "ResultAddViewCellID")
     }

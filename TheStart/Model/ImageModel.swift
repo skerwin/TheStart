@@ -15,12 +15,10 @@ struct ImageModel : Mappable {
     var id = 0
     var filename = ""
     var file_path = ""
+
+    var preview_url = ""
     var url = ""
     var name = ""
-    var preview_url = ""
-    
-    var picurl = ""
-    
     
     init?(map: Map) {
         
@@ -32,10 +30,9 @@ struct ImageModel : Mappable {
         id <- map["id"]
         filename <- map["filename"]
         file_path <- map["file_path"]
-        //url <- map["url"]
+        url <- map["url"]
         name <- map["name"]
         preview_url <- map["preview_url"]
-        picurl <- map["picurl"]
         
  
     }

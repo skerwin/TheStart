@@ -16,7 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window?.backgroundColor = ZYJColor.main
-        self.window?.rootViewController =  MainTabBarController()
+        if getAcctount() != "" && getToken() != ""{
+            self.window?.rootViewController = MainTabBarController()
+            //
+        }else{
+            self.window?.rootViewController = UIStoryboard.getNewLoginController()
+        }
+        
+        //
         window?.makeKeyAndVisible()
         
         return true

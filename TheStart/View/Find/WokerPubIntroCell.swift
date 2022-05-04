@@ -7,8 +7,8 @@
 
 import UIKit
 
+ 
 class WokerPubIntroCell: UITableViewCell,UITextViewDelegate {
-    
     
     @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var contentTV: UITextView!
@@ -16,14 +16,25 @@ class WokerPubIntroCell: UITableViewCell,UITextViewDelegate {
     
     var tableview:UITableView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentTV.layer.masksToBounds = true
         contentTV.layer.cornerRadius = 15
         self.backgroundColor = ZYJColor.main
         self.contentView.backgroundColor = ZYJColor.main
-        self.contentTV.placeHolder = "请介绍一下您或填写您的工作经历～～";
+       
         contentTV.delegate = self
+    }
+    
+    func initUI(type:Int){
+        if type == 1{
+            introLabel.text = "项目介绍"
+            self.contentTV.placeHolder = "请介绍一下本项目情况～～";
+        }else{
+            introLabel.text = "自我介绍"
+            self.contentTV.placeHolder = "请介绍一下您或填写您的工作经历～～";
+        }
     }
     func textViewDidChange(_ textView: UITextView) {
         let toBeString:String = textView.text!

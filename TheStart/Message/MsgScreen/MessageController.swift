@@ -74,6 +74,7 @@ class MessageController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "聊天详情"
         // Do any additional setup after loading the view, typically from a nib.
         bind()
         

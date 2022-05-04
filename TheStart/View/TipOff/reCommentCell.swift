@@ -22,14 +22,20 @@ class reCommentCell: UITableViewCell {
     @IBOutlet weak var complainBtn: UIButton!
     
     var delegeta:ReCommentCellDelegate?
-    var model:CommentModel?
     var sectoin = 0
  
     @IBAction func complainActiion(_ sender: Any) {
         delegeta?.reComplainActiion(cmodel: model!,onView:complainBtn)
     }
   
-    
+    var model:CommentModel? {
+        didSet {
+            headImage.displayHeadImageWithURL(url: model?.avatar)
+            nameLable.text = model?.nickname
+            contentlabel.text = model?.comment
+            publishlabel.text = model?.add_time
+         }
+    }
     
     func configModel(){
 //        headImage.displayHeadImageWithURL(url: model?.users?.avatar_url)

@@ -6,8 +6,12 @@
 //
 
 import UIKit
-
-class WorkerInfoViewController: BaseViewController {
+import ObjectMapper
+import SwiftyJSON
+import MJRefresh
+import Reachability
+import SnapKit
+class WorkerInfoViewController: BaseViewController,Requestable {
 
     var tableView:UITableView!
     
@@ -19,14 +23,42 @@ class WorkerInfoViewController: BaseViewController {
     
     var footerBgView:UIView!
     
+    var dateID = 0
+    
+    var dataModel = JobModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "找场详情"
+        self.title = "职位详情"
+        loadData()
         initHeadView()
         initFooterView()
         initTableView()
         // Do any additional setup after loading the view.
     }
+    
+    func loadData(){
+        let requestParams = HomeAPI.workDetailPathAndParams(id: dateID)
+        getRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+    
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+     }
+
+
+    
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        
+//         dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
+//         headerView.configModel(model: dataModel!)
+//         bottoomView.configModel(model: dataModel!)
+//         self.tableView.reloadData()
+    }
+    
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("WorkerBaseInfo", owner: nil, options: nil)!.first as? WorkerBaseInfo
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 186)
@@ -66,10 +98,7 @@ class WorkerInfoViewController: BaseViewController {
         
         self.tableView.tableHeaderView = headerBgView
         tableView.tableFooterView = footerBgView
-//        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
-//        tableView.mj_header = addressHeadRefresh
-//         let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
-//        tableView.mj_footer = footerRefresh
+ 
         
         view.addSubview(tableView)
         

@@ -26,39 +26,23 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
         }
     }
     
+    var model:JobModel? {
+        didSet {
+            previewAssets.removeAll()
+            for imageV in model!.images {
+                let networkImageURL = URL.init(string: imageV)!
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                previewAssets.append(networkImageAsset)
+            }
+            collectionView.reloadData()
+           
+            configCollectionViewHeight()
+         }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
-        let localImgAsset1 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset1)
-        
-        let localImgAsset2 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset2)
-        
-        let localImgAsset3 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset3)
-        
-       
-        
-//        let localImgAsset4 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset4)
-//
-//
-//        let localImgAsset5 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset5)
-//
-//
-//        let localImgAsset6 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset6)
-//
-//
-//        let localImgAsset7 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset7)
-//
-//
-//        let localImgAsset8 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset8)
-        
+ 
         
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 46 - CGFloat(row_Count - 1) * 5)) / row_Count

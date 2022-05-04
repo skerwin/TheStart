@@ -11,7 +11,7 @@ import HXPHPicker
 
 
 @objc protocol PubMediaCellDelegate: AnyObject {
-    @objc func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    @objc func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int)
     @objc func deleteItem(index: Int)
     
 }
@@ -38,6 +38,17 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     var canSetAddCell: Bool = false
     /// 是否选中的原图
     var isOriginal: Bool = false
+    
+    
+    var row = 0
+    
+    func initUI(type:Int){
+        if row == 1{
+            imgLabel.text = "上传图片资料(选填)"
+        } else if row == 2{
+            imgLabel.text = "上传视频资料(选填)"
+        }
+    }
  
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -81,10 +92,11 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     }
     
     func updateCollectionViewHeight() {
+      
         configCollectionViewHeight()
-        
         self.tableview.beginUpdates()
         self.tableview.endUpdates()
+     
 
     }
  
@@ -115,6 +127,7 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
+ 
         return canSetAddCell ? selectedAssets.count + 1 : selectedAssets.count
     }
     
@@ -151,7 +164,7 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     /// 跳转单独预览界面
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if canSetAddCell && indexPath.item == selectedAssets.count {
-            delegate?.didSelected(collectionView: collectionView, didSelectItemAt: indexPath)
+            delegate?.didSelected(collectionView: collectionView, didSelectItemAt: indexPath,row:self.row)
             return
         }
         if selectedAssets.isEmpty {

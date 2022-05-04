@@ -6,19 +6,78 @@
 //
 
 import UIKit
+import ObjectMapper
+import SwiftyJSON
+import MJRefresh
 
-class TipOffViewController: BaseViewController {
+class TipOffViewController: BaseViewController,Requestable {
 
     
     var tableView:UITableView!
     
-    var dataList = [String]()
+    var dataList = [TipOffModel]()
+        
+    var pubBtn:UIButton!
+    var type = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
+        loadData()
+        createPubBtn()
         self.title = "黑人馆"
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func createPubBtn() {
+        
+        pubBtn = UIButton.init()
+        pubBtn.frame = CGRect.init(x: 0, y: 4, width: 60, height: 60)
+        pubBtn.addTarget(self, action: #selector(pubBtnClick(_:)), for: .touchUpInside)
+        pubBtn.setImage(UIImage.init(named: "tipOffPost"), for: .normal)
+        
+        let bgview = UIView.init()
+        bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - 120, width: 60, height: 60)
+        bgview.addSubview(pubBtn)
+        
+        self.view.addSubview(bgview)
+        
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+    }
+    @objc func pubBtnClick(_ btn: UIButton){
+    
+        let controller = TipOffPostViewController()
+        controller.articleType = 1
+        controller.reloadBlock = {[weak self] () -> Void in
+            self!.refreshList()
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func loadData(){
+        let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+        getRequest(pathAndParams: requestParams,showHUD:false)
+
+    }
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+              tableView.mj_header?.endRefreshing()
+              tableView.mj_footer?.endRefreshing()
+              self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+    }
+
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        tableView.mj_header?.endRefreshing()
+        tableView.mj_footer?.endRefreshing()
+
+        let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
+
+        dataList.append(contentsOf: list)
+        if list.count < 10 {
+            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+        }
+        self.tableView.reloadData()
     }
     
     func initTableView(){
@@ -28,24 +87,40 @@ class TipOffViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main
-        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         self.tableView.rowHeight = UITableView.automaticDimension;
-        self.tableView.estimatedRowHeight = 240;
+        self.tableView.estimatedRowHeight = 294;
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.registerNibWithTableViewCellName(name: TipOffListCell.nameOfClass)
+        tableView.registerNibWithTableViewCellName(name: TipOffListCell2.nameOfClass)
+        tableView.registerNibWithTableViewCellName(name: TipOffListCell1.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListNoImgCell.nameOfClass)
  
-//        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
-//        tableView.mj_header = addressHeadRefresh
-//
-//        let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
-//        tableView.mj_footer = footerRefresh
+        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
+        tableView.mj_header = addressHeadRefresh
+
+        let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
+        tableView.mj_footer = footerRefresh
         
         view.addSubview(tableView)
         tableView.tableFooterView = UIView()
       
     }
+    @objc func pullRefreshList() {
+        page = page + 1
+        self.loadData()
+    }
+    
+    @objc func refreshList() {
+        self.tableView.mj_footer?.resetNoMoreData()
+        dataList.removeAll()
+        page = 1
+        self.loadData()
+    }
+    
  
 }
 
@@ -55,35 +130,27 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
-
-        return 10
+        tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
-        if indexPath.row % 2 == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffListCell", for: indexPath) as! TipOffListCell
-            cell.selectionStyle = .none
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffListNoImgCell", for: indexPath) as! TipOffListNoImgCell
-            cell.selectionStyle = .none
-            return cell
-        }
-      
+  //        if dataList[indexPath.row].images.count != 0{
+ 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffListNoImgCell", for: indexPath) as! TipOffListNoImgCell
+        cell.selectionStyle = .none
+        cell.model = dataList[indexPath.row]
+        return cell
+ 
         
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return 308
-//
-//    }
+ 
+// 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = TipOffDetailViewController()
-      
+         controller.dateID = dataList[indexPath.row].id
          self.navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -39,12 +39,14 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeB-PL-UNW">
-                                        <rect key="frame" x="185" y="-1.5" width="22" height="25"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeB-PL-UNW">
+                                        <rect key="frame" x="168" y="-1.5" width="39" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="DzL-QD-sdx"/>
                                         </constraints>
-                                        <state key="normal" image="gengduo"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="举报" image="jubao"/>
                                         <connections>
                                             <action selector="complainActiion:" destination="Afd-jA-tUR" eventType="touchUpInside" id="qFm-CE-YCA"/>
                                         </connections>
@@ -111,7 +113,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="gengduo" width="22" height="22"/>
         <image name="headNotify" width="45" height="45"/>
+        <image name="jubao" width="16" height="16"/>
     </resources>
 </document>

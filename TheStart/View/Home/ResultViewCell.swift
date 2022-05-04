@@ -46,6 +46,7 @@ class ResultViewCell: PhotoPickerViewCell {
     }
     override func initView() {
         super.initView()
+        self.backgroundColor = ZYJColor.main
         contentView.addSubview(deleteButton)
     }
     

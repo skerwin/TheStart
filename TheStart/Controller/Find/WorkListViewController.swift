@@ -16,7 +16,7 @@ class WorkListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
-        self.title = "作者馆"
+        self.title = "牛人列表"
         // Do any additional setup after loading the view.
     }
     

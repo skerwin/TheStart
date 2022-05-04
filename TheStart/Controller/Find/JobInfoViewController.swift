@@ -6,8 +6,13 @@
 //
 
 import UIKit
- 
-class JobInfoViewController: BaseViewController {
+import ObjectMapper
+import SwiftyJSON
+import MJRefresh
+import Reachability
+import SnapKit
+
+class JobInfoViewController: BaseViewController,Requestable{
 
     var tableView:UITableView!
     
@@ -19,19 +24,44 @@ class JobInfoViewController: BaseViewController {
     
     var footerBgView:UIView!
     
+    var dateID = 0
+    
+    var dataModel = JobModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "用工详情"
+        self.title = "职位详情"
+        loadData()
         initHeadView()
         initFooterView()
         initTableView()
         // Do any additional setup after loading the view.
     }
+    func loadData(){
+        let requestParams = HomeAPI.workDetailPathAndParams(id: dateID)
+        getRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+     }
+
+
+    
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        
+        dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
+        headView.configModel(model: dataModel!)
+        // bottoomView.configModel(model: dataModel!)
+         self.tableView.reloadData()
+    }
+    
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("JobBaseInfo", owner: nil, options: nil)!.first as? JobBaseInfo
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 139)
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 188)
         
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 139))
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 188))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         
@@ -93,11 +123,12 @@ extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
             cell.selectionStyle = .none
-            cell.configCell(isjob: true)
+            cell.configCell(model: self.dataModel!, isjob: true)
             return cell
         }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
             cell.selectionStyle = .none
+            cell.model = dataModel
             cell.configCell(isjob: true)
             return cell
            

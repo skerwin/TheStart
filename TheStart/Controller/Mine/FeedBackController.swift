@@ -186,11 +186,9 @@ class FeedBackController: BaseViewController ,Requestable,UIImagePickerControlle
     var imgModel2 = ImageModel()
     var imgModel3 = ImageModel()
     var imgModel4 = ImageModel()
-    func uploadPhoto(filePath: String) {
+    func uploadPhoto(filePath: [URL]) {
         DialogueUtils.showWithStatus("正在上传")
-        
-       // /common/api/up_img
-       // /users/api/editAvatar
+       
         HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { (content) -> Void in
             DialogueUtils.dismiss()
             DialogueUtils.showSuccess(withStatus: "上传成功")
@@ -297,7 +295,7 @@ class FeedBackController: BaseViewController ,Requestable,UIImagePickerControlle
                         }else if imageNum == 4{
                             image4.image = image
                         }
-                        uploadPhoto(filePath: imagePath)
+                        //uploadPhoto(filePath: imagePath)
                     }
                 }
             }

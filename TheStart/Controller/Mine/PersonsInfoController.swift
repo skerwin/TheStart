@@ -28,38 +28,38 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     
     @IBAction func saveAction(_ sender: Any) {
         
-        userModel?.user_nickname = nickNameText.text!
-
-        if userModel!.user_nickname.count > 10 {
-            showOnlyTextHUD(text: "昵称不能超过10个字符")
-            return
-        }
-
-        if userModel!.user_nickname.isLengthEmpty() {
-            showOnlyTextHUD(text: "昵称不能为空")
-            return
-        }
-
-        if userModel!.user_nickname.isContainsEmoji() {
-            showOnlyTextHUD(text: "不支持输入表情")
-            return
-        }
+//        userModel?.user_nickname = nickNameText.text!
+//
+//        if userModel!.user_nickname.count > 10 {
+//            showOnlyTextHUD(text: "昵称不能超过10个字符")
+//            return
+//        }
+//
+//        if userModel!.user_nickname.isLengthEmpty() {
+//            showOnlyTextHUD(text: "昵称不能为空")
+//            return
+//        }
+//
+//        if userModel!.user_nickname.isContainsEmoji() {
+//            showOnlyTextHUD(text: "不支持输入表情")
+//            return
+//        }
  
 //        let authenPersonalParams = HomeAPI.editProfilePathAndParams(usermodel: userModel!)
 //        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
         
     }
     @IBAction func menActioin(_ sender: Any) {
-        userModel?.sex = 1
-        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        userModel?.sex = 1
+//        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
     }
     
     @IBAction func wonmen(_ sender: Any) {
         
-        userModel?.sex = 2
-        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        userModel?.sex = 2
+//        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
     }
     
     
@@ -82,28 +82,28 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
         profileActionController.addAction(UIAlertAction.init(title: "拍照", style: .default, handler: { (action) in
             self.openCamera()
         }))
-        
-        mobileText.text = userModel?.user_login
-        mobileText.isEnabled = false
-
-       
-        if !(userModel?.user_nickname.isLengthEmpty())!{
-            nickNameText.text = userModel?.user_nickname
-        }
-        
-        
-        if userModel?.sex == 0 {
-            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-        }else if userModel?.sex == 2 {
-            wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-        }else{
-            menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-        }
-        
-        headImage.displayHeadImageWithURL(url: userModel?.avatar_url)
+//
+//        mobileText.text = userModel?.user_login
+//        mobileText.isEnabled = false
+//
+//
+//        if !(userModel?.user_nickname.isLengthEmpty())!{
+//            nickNameText.text = userModel?.user_nickname
+//        }
+//
+//
+//        if userModel?.sex == 0 {
+//            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        }else if userModel?.sex == 2 {
+//            wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        }else{
+//            menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        }
+//
+//        headImage.displayHeadImageWithURL(url: userModel?.avatar_url)
         
         headImage.layer.cornerRadius = 30;
         headImage.layer.masksToBounds = true
@@ -115,16 +115,16 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     
     
     @IBAction func menBtnAction(_ sender: Any) {
-        userModel?.sex = 1
-        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        userModel?.sex = 1
+//        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
         
     }
     
     @IBAction func wommenBtnAction(_ sender: Any) {
-        userModel?.sex = 2
-        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+//        userModel?.sex = 2
+//        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
+//        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
         
     }
  
@@ -165,22 +165,22 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     
     @objc func rightNavBtnClick(){
    
-        userModel?.user_nickname = nickNameText.text!
-
-        if userModel!.user_nickname.count > 10 {
-            showOnlyTextHUD(text: "昵称不能超过10个字符")
-            return
-        }
-
-        if userModel!.user_nickname.isLengthEmpty() {
-            showOnlyTextHUD(text: "昵称不能为空")
-            return
-        }
-
-        if userModel!.user_nickname.isContainsEmoji() {
-            showOnlyTextHUD(text: "不支持输入表情")
-            return
-        }
+//        userModel?.user_nickname = nickNameText.text!
+//
+//        if userModel!.user_nickname.count > 10 {
+//            showOnlyTextHUD(text: "昵称不能超过10个字符")
+//            return
+//        }
+//
+//        if userModel!.user_nickname.isLengthEmpty() {
+//            showOnlyTextHUD(text: "昵称不能为空")
+//            return
+//        }
+//
+//        if userModel!.user_nickname.isContainsEmoji() {
+//            showOnlyTextHUD(text: "不支持输入表情")
+//            return
+//        }
  
 //        let authenPersonalParams = HomeAPI.editProfilePathAndParams(usermodel: userModel!)
 //        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
@@ -244,35 +244,35 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     }
     var imagePath = ""
     var headimgModel = ImageModel()
-    func uploadPhoto(filePath: String) {
+    func uploadPhoto(filePath: [URL]) {
         DialogueUtils.showWithStatus("正在上传")
         
        // /common/api/up_img
        // /users/api/editAvatar
-        HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { (content) -> Void in
-            DialogueUtils.dismiss()
-            DialogueUtils.showSuccess(withStatus: "上传成功")
-            
-            
-            self.headimgModel = Mapper<ImageModel>().map(JSONObject: content.rawValue)
-            
-            if self.headimgModel!.id == 0{
-                let imageId = content["id"].stringValue
-                if imageId != ""{
-                    self.userModel?.avatar =  imageId
-                }
-            }else{
-                self.userModel?.avatar =  String.init(self.headimgModel!.id)
-            }
- 
-            
-        }) { (errorInfo) -> Void in
-            DialogueUtils.dismiss()
-            DialogueUtils.showError(withStatus: errorInfo)
-            self.headImage.image = UIImage.init(named: "HeaderCamera")
-            self.headimgModel = ImageModel()
-            self.userModel?.avatar = ""
-        }
+//        HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { (content) -> Void in
+//            DialogueUtils.dismiss()
+//            DialogueUtils.showSuccess(withStatus: "上传成功")
+//            
+//            
+//            self.headimgModel = Mapper<ImageModel>().map(JSONObject: content.rawValue)
+//            
+//            if self.headimgModel!.id == 0{
+//                let imageId = content["id"].stringValue
+//                if imageId != ""{
+//                    self.userModel?.avatar =  imageId
+//                }
+//            }else{
+//                self.userModel?.avatar =  String.init(self.headimgModel!.id)
+//            }
+// 
+//            
+//        }) { (errorInfo) -> Void in
+//            DialogueUtils.dismiss()
+//            DialogueUtils.showError(withStatus: errorInfo)
+//            self.headImage.image = UIImage.init(named: "HeaderCamera")
+//            self.headimgModel = ImageModel()
+//            self.userModel?.avatar = ""
+//        }
     }
     
     // 打开照相功能
@@ -311,7 +311,7 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
                         imagePath = docPath.appendingPathComponent(imageName);
                         data?.write(toFile: imagePath, atomically: true)
                         headImage.image = image
-                        uploadPhoto(filePath: imagePath)
+                        //uploadPhoto(filePath: imagePath)
                     }
                 }
             }

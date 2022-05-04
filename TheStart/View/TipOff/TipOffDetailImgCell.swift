@@ -18,40 +18,13 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
     /// 当前已选资源
     var previewAssets: [PhotoAsset] = []
     
+    var imageUrl = [String]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let localImgAsset1 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset1)
-        
-        let localImgAsset2 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset2)
-        
-        let localImgAsset3 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-        previewAssets.append(localImgAsset3)
-        
-       
-        
-//        let localImgAsset4 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset4)
-//
-//
-//        let localImgAsset5 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset5)
-//
-//
-//        let localImgAsset6 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset6)
-//
-//
-//        let localImgAsset7 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset7)
-//
-//
-//        let localImgAsset8 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset8)
-        
-        
+//        let localImgAsset1 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
+//        previewAssets.append(localImgAsset1)
+ 
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 40 - CGFloat(row_Count - 1) * 5)) / row_Count
         print(itemWidth)
@@ -71,7 +44,21 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
         configCollectionViewHeight()
         // Initialization code
     }
-   
+    var model:TipOffModel? {
+        didSet {
+            previewAssets.removeAll()
+            for imageV in model!.image_input {
+                let networkImageURL = URL.init(string: imageV)!
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                previewAssets.append(networkImageAsset)
+            }
+            collectionView.reloadData()
+           
+            configCollectionViewHeight()
+         }
+    }
+    
+    
 
     func configCollectionViewHeight() {
         var rowCount = 1
@@ -118,7 +105,6 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        print("1234567")
         let cell = collectionView.cellForItem(
             at: indexPath
         ) as? ResultViewCell

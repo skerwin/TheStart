@@ -25,6 +25,11 @@ class WorkerBaseInfo: UIView {
     @IBAction func phoneBtnAction(_ sender: Any) {
     }
     @IBOutlet weak var phoneBtn: UIButton!
+    
+    
+    func configModel(model:JobModel){
+        headImg.displayImageWithURL(url: model.avatar)
+    }
     override func awakeFromNib(){
  
         phoneBtn.layer.masksToBounds = true

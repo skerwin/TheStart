@@ -8,9 +8,8 @@
 
 import UIKit
 
-protocol CommentCellDelegate: class {
-    func complainActiion(cmodel:CommentModel,onView:UIButton)
- 
+protocol  CommentCellDelegate {
+    func complainActiion(cmodel:CommentModel,section:Int)
     func commentACtion(cmodel:CommentModel,section:Int)
    
 }
@@ -27,19 +26,23 @@ class CommentCell: UITableViewCell {
     var delegeta:CommentCellDelegate?
     @IBOutlet weak var lineView: UIView!
     
-    var model:CommentModel?
-    
+ 
     var sectoin = 0
     
     @IBAction func complainActiion(_ sender: Any) {
-        delegeta?.complainActiion(cmodel: model!,onView:complainBtn)
+        delegeta?.complainActiion(cmodel: model!,section: sectoin)
     }
     @IBAction func commentACtion(_ sender: Any) {
         delegeta?.commentACtion(cmodel: model!,section: sectoin)
     }
 
-    func configModel(){
- 
+    var model:CommentModel? {
+        didSet {
+            headImage.displayHeadImageWithURL(url: model?.avatar)
+            nameLable.text = model?.nickname
+            contentlabel.text = model?.comment
+            publishlabel.text = model?.add_time
+         }
     }
     
     override func awakeFromNib() {

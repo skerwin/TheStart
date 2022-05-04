@@ -12,12 +12,24 @@ class JobListViewController: BaseViewController,Requestable {
 
     var tableView:UITableView!
     
-    var dataList = [String]()
-    let moneyList = ["薪资","5K以下","5K-1W","1W-1.5W","1.5W以上"]
+    var dataList = [JobModel]()
     
+    var salaryList = [DictModel]()
+    var workCateList = [DictModel]()
+    let genderList = ["不限","男","女"]
+    var addressList = [AddressModel]()
+ 
     var dropView:DOPDropDownMenu!
+        
     
-    var departmentList = [DepartmentModel]()
+    var type = 1
+    var cate_id = 0
+    var salary = 0
+    var city = ""
+    var keyword = ""
+    var gender = ""
+    var rightBarButton:UIButton!
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -25,33 +37,110 @@ class JobListViewController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCache()
+        loadData()
+        loadCityJson()
+        createRightNavItem()
         initDropView()
         initTableView()
-        self.title = "用工列表"
+        self.title = "职位列表"
         // Do any additional setup after loading the view.
     }
     
-    func loadCache(){
-            let departmenResult = XHNetworkCache.check(withURL: HomeAPI.departmenListPath)
-            if departmenResult {
-                let dict = XHNetworkCache.cacheJson(withURL: HomeAPI.departmenListPath)
-                let responseJson = JSON(dict)
-                departmentList = getArrayFromJson(content: responseJson["data"])
-                
-                var modelall = DepartmentModel()
-                modelall?.name = "科室"
-                modelall?.id = 0
-                
-                var sunModelall = DepartmentModel()
-                sunModelall?.name = "科室"
-                sunModelall?.id = 0
-                modelall?.child.append(sunModelall!)
-                departmentList.insert(modelall!, at: 0)
-            }
+    func  loadData(){
+         let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
+         getRequest(pathAndParams: pathAndParams,showHUD: false)
+    }
+    
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+            
+        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
+        rightBarButton.setTitle("发布职位", for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+      
+        rightBarButton.setTitleColor(.white, for: .normal)
+        rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        rightBarButton.layer.masksToBounds = true
+        rightBarButton.layer.cornerRadius = 5;
+        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
     }
-  
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        let controller = WorkerPubViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func loadCityJson(){
+        do {
+              if let file = Bundle.main.url(forResource: "cityjson", withExtension: "json") {
+                  let data = try Data(contentsOf: file)
+                  let json = try JSONSerialization.jsonObject(with: data, options: [])
+                  if json is [String: Any] {
+                      // json is a dictionary
+                  } else if let object = json as? [Any] {
+                      // json is an array
+                      let responseJson = JSON(object)
+                      addressList = getArrayFromJson(content:responseJson)
+                      
+                      var modelall = AddressModel()
+                      modelall?.name = "城市"
+                      modelall?.level = "0"
+                      
+                      var sunModelall = AddressModel()
+                      sunModelall?.name = "城市"
+                      sunModelall?.level = "0"
+                      modelall?.children.append(sunModelall!)
+                      addressList.insert(modelall!, at: 0)
+                  } else {
+                      print("JSON is invalid")
+                  }
+              } else {
+                  print("no file")
+              }
+          } catch {
+              print(error.localizedDescription)
+          }
+        
+        let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
+        if workcateResult {
+            let dict = XHNetworkCache.cacheJson(withURL: HomeAPI.workCategoryPath)
+            let responseJson = JSON(dict)
+            workCateList = getArrayFromJson(content: responseJson["data"]["cate"])
+            
+            var modelall = DictModel()
+            modelall?.title = "工种"
+            modelall?.id = 0
+            
+            var sunModelall = DictModel()
+            sunModelall?.title = "工种"
+            sunModelall?.id = 0
+            modelall?.child.append(sunModelall!)
+            workCateList.insert(modelall!, at: 0)
+            
+        }
+        
+        let salaryResult = XHNetworkCache.check(withURL: HomeAPI.salaryPath)
+        if salaryResult {
+            let dict = XHNetworkCache.cacheJson(withURL: HomeAPI.salaryPath)
+            let responseJson = JSON(dict)
+            salaryList = getArrayFromJson(content: responseJson["data"])
+            
+            var modelall = DictModel()
+            modelall?.salary = "薪资"
+            modelall?.id = 0
+            salaryList.insert(modelall!, at: 0)
+        }
+        
+    }
     
     func initDropView(){
         
@@ -92,18 +181,13 @@ class JobListViewController: BaseViewController,Requestable {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
-        if requestPath == HomeAPI.departmenListPath{
-            departmentList = getArrayFromJson(content: responseResult)
-            
-            var modelall = DepartmentModel()
-            modelall?.name = "科室"
-            modelall?.id = 0
-            
-            var sunModelall = DepartmentModel()
-            sunModelall?.name = "科室"
-            sunModelall?.id = 0
-            modelall?.child.append(sunModelall!)
-            departmentList.insert(modelall!, at: 0)
+        
+        
+        let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
+
+        dataList.append(contentsOf: list)
+        if list.count < 10 {
+            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
         }
         self.tableView.reloadData()
     }
@@ -114,19 +198,15 @@ class JobListViewController: BaseViewController,Requestable {
         super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
     }
     @objc func pullRefreshList() {
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.endRefreshing()
-//        page = page + 1
-//        self.loadData()
+        page = page + 1
+        self.loadData()
     }
     
     @objc func refreshList() {
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.endRefreshing()
-//        dateModelList.removeAll()
-//        self.tableView.mj_footer?.resetNoMoreData()
-//        page = 1
-//        self.loadData()
+        self.tableView.mj_footer?.resetNoMoreData()
+        dataList.removeAll()
+        page = 1
+        self.loadData()
     }
  
 }
@@ -137,15 +217,15 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
-
-        return 10
+        tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobViewCell", for: indexPath) as! JobViewCell
+        cell.model = dataList[indexPath.row]
         cell.selectionStyle = .none
         return cell
        
@@ -159,9 +239,9 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let controller = TipOffDetailViewController()
-      
-         self.navigationController?.pushViewController(controller, animated: true)
+        let controller = JobInfoViewController()
+        controller.dateID = dataList[indexPath.row].id
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     
@@ -174,13 +254,13 @@ extension JobListViewController: DOPDropDownMenuDataSource,DOPDropDownMenuDelega
     func menu(_ menu: DOPDropDownMenu!, numberOfRowsInColumn column: Int) -> Int {
         switch column {
         case 0:
-            return departmentList.count
+            return addressList.count
         case 1:
-            return departmentList.count
+            return workCateList.count
         case 2:
-            return moneyList.count
+            return salaryList.count
         case 3:
-            return moneyList.count
+            return genderList.count
             
         default:
             return 0
@@ -190,13 +270,13 @@ extension JobListViewController: DOPDropDownMenuDataSource,DOPDropDownMenuDelega
     func menu(_ menu: DOPDropDownMenu!, titleForRowAt indexPath: DOPIndexPath!) -> String! {
         switch indexPath.column {
         case 0:
-            return departmentList[indexPath.row].name
+            return addressList[indexPath.row].name
         case 1:
-            return departmentList[indexPath.row].name
+            return workCateList[indexPath.row].title
         case 2:
-            return moneyList[indexPath.row]
+            return salaryList[indexPath.row].salary
         case 3:
-            return moneyList[indexPath.row]
+            return genderList[indexPath.row]
             
         default:
             return ""
@@ -206,14 +286,19 @@ extension JobListViewController: DOPDropDownMenuDataSource,DOPDropDownMenuDelega
     func menu(_ menu: DOPDropDownMenu!, numberOfItemsInRow row: Int, column: Int) -> Int {
         
         if column == 0{
-           return departmentList[row].child.count
+           return addressList[row].children.count
+        }else if column == 1{
+           return workCateList[row].child.count
         }
         return 0
     }
     func menu(_ menu: DOPDropDownMenu!, titleForItemsInRowAt indexPath: DOPIndexPath!) -> String! {
         if indexPath.column == 0{
-            let nextList = departmentList[indexPath.row].child
+            let nextList = addressList[indexPath.row].children
             return nextList[indexPath.item].name
+        }else  if indexPath.column == 1{
+            let nextList = workCateList[indexPath.row].child
+            return nextList[indexPath.item].title
         }
         return ""
     }
@@ -223,19 +308,23 @@ extension JobListViewController: DOPDropDownMenuDataSource,DOPDropDownMenuDelega
         let colum = indexPath.column
         let row = indexPath.row
         let item = indexPath.item
-        
         if colum == 0{
-          
             if item != -1{
-                 refreshList()
+              let nextArr = addressList[row].children
+              city = nextArr[indexPath.item].label
             }
         }else if colum == 1{
-             refreshList()
+            if item != -1{
+              let nextArr = workCateList[row].child
+              cate_id = nextArr[indexPath.item].id
+            }
         }else if colum == 2{
-           
-            refreshList()
+ 
+            salary = salaryList[row].id
+        }else if colum == 3{
+            gender = genderList[row]
         }
-        
+        refreshList()
         
     }
     func menu(_ menu: DOPDropDownMenu!, confirmBtnClick indexPathList: NSMutableDictionary!) {

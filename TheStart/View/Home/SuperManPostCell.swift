@@ -1,17 +1,18 @@
 //
-//  testCell.swift
+//  SuperManPostCell.swift
 //  TheStart
 //
-//  Created by zhaoyuanjing on 2022/04/16.
+//  Created by zhaoyuanjing on 2022/04/29.
 //
 
 import UIKit
 
-class testCell: UITableViewCell {
+class SuperManPostCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        postImage.image = UIImage.init(named: "111222.jpg")
         // Initialization code
     }
 

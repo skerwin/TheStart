@@ -24,7 +24,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         flowLayout.minimumInteritemSpacing = 8
         flowLayout.minimumLineSpacing = 3
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
-        let collectionViewY = navigationController?.navigationBar.frame.maxY ?? UIDevice.navigationBarHeight
+        let collectionViewY = UIDevice.navigationBarHeight
         collectionView.frame = CGRect(
             x: 0,
             y: collectionViewY,

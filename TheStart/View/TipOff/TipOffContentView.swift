@@ -7,15 +7,55 @@
 
 import UIKit
 
+
+protocol TipOffContentViewDelegate {
+    func clarifyBtnAction()
+  
+}
 class TipOffContentView: UITableViewCell {
 
+    @IBOutlet weak var clarifyBtn: UIButton!
+    
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var vistiLabel: UILabel!
+    
     @IBOutlet weak var contextLabel: UILabel!
+    var delegate: TipOffContentViewDelegate!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        contextLabel.text = "如果读者是初学者，那估计每个老司机都会告诉你，要熟悉2的指数。1、2、4、8、16、32、64、128。熟悉这几个数在网络基础入门会轻松很多。假设我们现在的A部门需要50个IP地址，对192.168.2.0/24进行子网划分，我下面介绍一下我的思路：在原来的网段中我们有256个IP地址，子网划分不管怎么分，都是对网段中的IP地址数量进行平均分配（不平均分配的VLSM我们在后面讲），有这样的概念我们就好办很多了。我们看下面这两个网段：192.168.1.0/24192.168.1.0/25 (这里我们划/25，网络位向主机位借了一位"
         
     }
-
+    var model:TipOffModel? {
+        didSet {
+           
+            if model?.title != ""{
+                contextLabel.text = model!.title + "\n" + "\n" + model!.content
+            }else{
+                contextLabel.text = model?.content
+            }
+           
+            vistiLabel.text = "浏览:" + "\(String(describing: model!.visit))"
+            commentLabel.text = "赞:" + "\(String(describing: model!.dianzan))"
+            
+            if model?.type == 3{
+                clarifyBtn.isHidden = true
+            }else{
+                if model?.clarify_count != 0{
+                    clarifyBtn.setTitle("查看" + "\(String(describing: model!.clarify_count))" + "篇澄清声明" , for: .normal)
+                }else{
+                    clarifyBtn.isHidden = true
+                }
+            }
+           
+           
+         }
+    }
+    
+    @IBAction func clarifyBtnAction(_ sender: Any) {
+        delegate.clarifyBtnAction()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

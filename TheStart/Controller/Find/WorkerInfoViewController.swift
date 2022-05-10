@@ -29,7 +29,7 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "职位详情"
+        self.title = "求职详情"
         loadData()
         initHeadView()
         initFooterView()
@@ -53,17 +53,16 @@ class WorkerInfoViewController: BaseViewController,Requestable {
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         
-//         dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
-//         headerView.configModel(model: dataModel!)
-//         bottoomView.configModel(model: dataModel!)
-//         self.tableView.reloadData()
+         dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
+         headView.configModel(model: dataModel!)
+         self.tableView.reloadData()
     }
     
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("WorkerBaseInfo", owner: nil, options: nil)!.first as? WorkerBaseInfo
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 186)
-        
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 186))
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 210)
+        headView.delegate = self
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 210))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         
@@ -73,12 +72,14 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     func initFooterView(){
         footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
         footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-        
+        footerView.delegate = self
         footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
         footerBgView.backgroundColor = UIColor.clear
         footerBgView.addSubview(footerView)
         
       }
+    
+
     
     func initTableView(){
         
@@ -105,6 +106,37 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     }
  
 }
+extension WorkerInfoViewController:WorkerBaseInfoDelegate {
+    func WorkerCommunicateAction(){
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+ 
+            let urlstr = "telprompt://" + self.dataModel!.mobile
+             if let url = URL.init(string: urlstr){
+                  if #available(iOS 10, *) {
+                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(url)
+                  }
+               }
+ 
+        }))
+        
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+    }
+    
+    
+}
+extension WorkerInfoViewController:ChatBtnViewDelegate {
+    func sumbitAction() {
+            let controller = UIStoryboard.getMessageController()
+            self.navigationController?.pushViewController(controller, animated: true)
+    }
+ 
+}
 extension WorkerInfoViewController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,15 +154,18 @@ extension WorkerInfoViewController:UITableViewDataSource,UITableViewDelegate {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
             cell.selectionStyle = .none
+            cell.configCell(model: self.dataModel!, isjob: false)
             return cell
         }else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
-            cell.selectionStyle = .none
+            cell.model = dataModel
+             cell.selectionStyle = .none
             return cell
            
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
             cell.selectionStyle = .none
+            cell.model = dataModel
             return cell
         }
       
@@ -138,8 +173,6 @@ extension WorkerInfoViewController:UITableViewDataSource,UITableViewDelegate {
     }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let controller = TipOffDetailViewController()
-      
-         self.navigationController?.pushViewController(controller, animated: true)
+        
     }
 }

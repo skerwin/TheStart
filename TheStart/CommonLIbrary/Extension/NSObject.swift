@@ -25,4 +25,8 @@ extension NSObject {
     public func intToString(number: Int) -> String {
         return String.init(number)
     }
+    
+    public func int2str(num:Int)-> String {
+       return  "\(String(describing: num))"
+    }
 }

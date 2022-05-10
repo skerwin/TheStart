@@ -247,6 +247,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
             if (self.reloadBlock != nil) {
                 self.reloadBlock!()
             }
+            DialogueUtils.dismiss()
             self.navigationController?.popViewController(animated: true)
         }
         

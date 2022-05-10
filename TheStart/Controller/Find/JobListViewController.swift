@@ -22,7 +22,7 @@ class JobListViewController: BaseViewController,Requestable {
     var dropView:DOPDropDownMenu!
         
     
-    var type = 1
+    var type = 1 //牛人列表
     var cate_id = 0
     var salary = 0
     var city = ""
@@ -58,7 +58,7 @@ class JobListViewController: BaseViewController,Requestable {
  
             
         rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
-        rightBarButton.setTitle("发布职位", for: .normal)
+        rightBarButton.setTitle("我要求职", for: .normal)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
         
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
@@ -76,6 +76,7 @@ class JobListViewController: BaseViewController,Requestable {
 
     @objc func rightNavBtnClic(_ btn: UIButton){
         let controller = WorkerPubViewController()
+        controller.pubType = 2
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -210,7 +211,32 @@ class JobListViewController: BaseViewController,Requestable {
     }
  
 }
-
+extension JobListViewController:JobViewCellDelegate {
+    func JobCellCommunicateAction(mobile:String) {
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        
+         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+             
+             
+             let urlstr = "telprompt://" + mobile
+             if let url = URL.init(string: urlstr){
+                  if #available(iOS 10, *) {
+                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(url)
+                  }
+               }
+ 
+        }))
+        
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+    }
+    
+    
+}
 extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -225,6 +251,7 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobViewCell", for: indexPath) as! JobViewCell
+        cell.delegate = self
         cell.model = dataList[indexPath.row]
         cell.selectionStyle = .none
         return cell

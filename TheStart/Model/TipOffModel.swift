@@ -29,9 +29,10 @@ struct TipOffModel : Mappable {
     var is_collect = 0
     var is_dianzan = 0
     var images = [String]()
-    var link_url = [String]()
+    var link_url = ""
     
     var clarify_count = 1
+ 
     
     init?(map: Map) {
         
@@ -41,7 +42,7 @@ struct TipOffModel : Mappable {
     }
     mutating func mapping(map: Map) {
         
-        clarify_count <- map["clarify_count"]
+         clarify_count <- map["clarify_count"]
         id <- map["id"]
         type <- map["type"]
         title <- map["title"]

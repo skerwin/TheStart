@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol JobHomeCellDelegate {
+    func JobHomeCommunicateAction(mobile:String)
+}
+
 class HomeJobCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
@@ -15,6 +19,8 @@ class HomeJobCell: UITableViewCell {
     @IBOutlet weak var contactBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var delegate:JobHomeCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.layer.masksToBounds = true
@@ -25,6 +31,16 @@ class HomeJobCell: UITableViewCell {
         // Initialization code
     }
 
+    var model:JobModel? {
+        didSet {
+            titleLabel.text = model?.title
+            needsLabel.text = model!.cate + "   " + model!.gender
+            //model?.cateValue + model?.gender
+            headImg.displayImageWithURL(url: model?.avatar)
+            nameLabel.text = model?.nickname
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -32,5 +48,6 @@ class HomeJobCell: UITableViewCell {
     }
     
     @IBAction func contactBtnAction(_ sender: Any) {
+        delegate.JobHomeCommunicateAction(mobile: "")
     }
 }

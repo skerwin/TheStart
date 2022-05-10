@@ -69,6 +69,15 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "个人信息"
+        
+        
+        let attributedName = NSAttributedString.init(string: "请输入昵称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        nickNameText.attributedPlaceholder = attributedName
+        
+        let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        mobileText.attributedPlaceholder = attributedPwd
+        
+        self.tableView.separatorStyle = .none
         self.tableView.showsVerticalScrollIndicator = false
         //createRightNavItem()
         addGestureRecognizerToView(view: headImage, target: self, actionName: "headImageAction")

@@ -39,11 +39,7 @@ class TipOffBottomView: UIView {
         
      }
     
-    
-    func configBootomView(){
-        
-  
-    }
+ 
     func configModel(model:TipOffModel){
       
         if model.type == 1{

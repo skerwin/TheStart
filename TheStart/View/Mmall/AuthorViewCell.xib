@@ -52,11 +52,21 @@
                         <color key="textColor" systemColor="systemGray4Color"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdN-2d-ZzI">
+                        <rect key="frame" x="75" y="80.5" width="240" height="0.5"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="zdV-gP-1sp"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="37o-YO-yqX" firstAttribute="top" secondItem="ohq-Lz-kWB" secondAttribute="bottom" constant="7.5" id="2jq-jk-Rlf"/>
                     <constraint firstItem="ohq-Lz-kWB" firstAttribute="leading" secondItem="3EF-aW-m4Y" secondAttribute="trailing" constant="8" id="7o1-g9-oey"/>
+                    <constraint firstItem="hdN-2d-ZzI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="75" id="EfM-Jb-WCD"/>
                     <constraint firstItem="3EF-aW-m4Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FJZ-pE-CRs"/>
+                    <constraint firstAttribute="bottom" secondItem="hdN-2d-ZzI" secondAttribute="bottom" id="Hcf-nw-pX8"/>
+                    <constraint firstAttribute="trailing" secondItem="hdN-2d-ZzI" secondAttribute="trailing" constant="5" id="QDt-x4-asa"/>
                     <constraint firstItem="DP4-7j-e2o" firstAttribute="leading" secondItem="ohq-Lz-kWB" secondAttribute="trailing" constant="5" id="RXX-Sb-Uci"/>
                     <constraint firstItem="37o-YO-yqX" firstAttribute="leading" secondItem="3EF-aW-m4Y" secondAttribute="trailing" constant="8" id="juz-NX-GLk"/>
                     <constraint firstAttribute="trailing" secondItem="DP4-7j-e2o" secondAttribute="trailing" constant="10" id="kVL-WE-wb5"/>
@@ -67,6 +77,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <connections>
+                <outlet property="audioNunLabel" destination="DP4-7j-e2o" id="O2h-A6-1IX"/>
+                <outlet property="headImage" destination="3EF-aW-m4Y" id="L0q-iN-VCY"/>
+                <outlet property="namelabel" destination="ohq-Lz-kWB" id="AEC-YD-Nel"/>
+                <outlet property="workTypeLabel" destination="37o-YO-yqX" id="eBy-tC-gVn"/>
+            </connections>
             <point key="canvasLocation" x="73.913043478260875" y="136.27232142857142"/>
         </tableViewCell>
     </objects>

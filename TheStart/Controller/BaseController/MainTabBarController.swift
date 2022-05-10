@@ -20,13 +20,12 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
     
   
     
-    let mmallController = MuiscListController()
+    let mmallController = MmallController()
     
     let messageController = ContactListController()
     
-    let mineController = UIStoryboard.getPersonsInfoController()
-    
-    
+    let mineController = UIStoryboard.getMineViewController()
+ 
     
     
     var isClearInfo = false
@@ -69,15 +68,15 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         
         addNavChildViewController(controller: homePageController, title: "首页",
                                   image: UIImage(named: "iconHome")!,
-                                  selectedImage: UIImage(named: "iconHomeSelected")!,
+                                  selectedImage: UIImage(named: "iconHomeSelceted")!,
                                   tag: TabbarContentType.HomePage.rawValue)
         addNavChildViewController(controller: mmallController, title: "音乐馆",
-                                  image: UIImage(named: "iconArctile")!,
-                                  selectedImage: UIImage(named: "iconArctileSelected")!,
+                                  image: UIImage(named: "iconMusic")!,
+                                  selectedImage: UIImage(named: "iconMusicSelceted")!,
                                   tag: TabbarContentType.Articl.rawValue)
         addNavChildViewController(controller: messageController, title: "消息",
-                                  image: UIImage(named: "iconHome")!,
-                                  selectedImage: UIImage(named: "iconHomeSelected")!,
+                                  image: UIImage(named: "iconMsg")!,
+                                  selectedImage: UIImage(named: "iconMsgSelceted")!,
                                   tag: TabbarContentType.Cases.rawValue)
         addNavChildViewController(controller: mineController, title: "我的",
                                   image: UIImage(named: "iconMine")!,
@@ -106,7 +105,7 @@ extension MainTabBarController: UITabBarControllerDelegate {
         return true
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        viewController.viewWillAppear(true)
+        //viewController.viewWillAppear(true)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

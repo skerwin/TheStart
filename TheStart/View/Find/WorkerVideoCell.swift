@@ -18,52 +18,49 @@ class WorkerVideoCell:UITableViewCell,UICollectionViewDataSource, UICollectionVi
     /// 当前已选资源
     var previewAssets: [PhotoAsset] = []
     
-    
-    func configCell(isjob:Bool){
-        if isjob {
-            imgLabel.font = UIFont.systemFont(ofSize: 16)
-        }else{
-            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
+    func configAudioCell(model:AudioModel){
+        imgLabel.text = "音频/视频小样"
+        previewAssets.removeAll()
+        if model.audio_path != ""{
+            let networkVideoURL = URL.init(string: model.audio_path)!
+            let networkVideoAsset = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL))
+            previewAssets.append(networkVideoAsset)
         }
+        
+        collectionView.reloadData()
+       
+        configCollectionViewHeight()
     }
+    
+    
+//    func configCell(isjob:Bool){
+//        if isjob {
+//            imgLabel.font = UIFont.systemFont(ofSize: 16)
+//        }else{
+//            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
+//        }
+//    }
+    var model:JobModel? {
+        didSet {
+            previewAssets.removeAll()
+            for imageV in model!.video {
+                if imageV != ""{
+                    let networkVideoURL = URL.init(string: imageV)!
+                    let networkVideoAsset = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL))
+                    previewAssets.append(networkVideoAsset)
+                }
+               
+            }
+            collectionView.reloadData()
+           
+            configCollectionViewHeight()
+         }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let networkVideoURL1 = URL.init(string: "http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/picker_examle_video.mp4")!
-        let networkVideoAsset1 = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL1))
-        previewAssets.append(networkVideoAsset1)
-        
-//        let localImgAsset1 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset1)
-//
-//        let localImgAsset2 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset2)
-//
-//        let localImgAsset3 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset3)
-      
-       
-        
-//        let localImgAsset4 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset4)
-//
-//
-//        let localImgAsset5 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset5)
-//
-//
-//        let localImgAsset6 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset6)
-//
-//
-//        let localImgAsset7 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset7)
-//
-//
-//        let localImgAsset8 = PhotoAsset.init(localImageAsset: .init(image: UIImage.init(named: "testimg")!))
-//        previewAssets.append(localImgAsset8)
-        
-        
+        imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 46 - CGFloat(row_Count - 1) * 5)) / row_Count
         print(itemWidth)
@@ -130,7 +127,6 @@ class WorkerVideoCell:UITableViewCell,UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        print("1234567")
         let cell = collectionView.cellForItem(
             at: indexPath
         ) as? ResultViewCell

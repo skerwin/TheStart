@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = MainTabBarController()
             //
         }else{
-            self.window?.rootViewController = UIStoryboard.getNewLoginController()
+            self.window?.rootViewController = MainTabBarController()
+            //self.window?.rootViewController = MainTabBarController()
+            //self.window?.rootViewController = UIStoryboard.getNewLoginController()
         }
         
         //

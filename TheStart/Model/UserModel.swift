@@ -17,7 +17,6 @@ struct UserModel: Mappable {
     var confirm_pwd = ""
     var nickname = ""
  
-  
     
     mutating func mapping(map: Map) {
         

@@ -66,6 +66,8 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var headerBgView:UIView!
     var footerView:ChatBtnView!
     var footerBgView:UIView!
+ 
+    
     
     
     var pubType = 1   //1发布职位 2发布求职
@@ -77,7 +79,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var salaryList = [DictModel]()
     
     var genderPicker:ActionSheetStringPicker? = nil //性别选择器
-    let genderList = ["不限","男","女"]
+    let genderList = ["保密","男","女"]
     
     var cityChoosePicker:ActionSheetCustomPicker? = nil //城市选择器
     var addressList = [AddressModel]()
@@ -87,7 +89,6 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var province = ""
     var city = ""
     var isWorkType = false
-    
     var workTypeChoosePicker:ActionSheetCustomPicker? = nil //工种选择器
     var workTypeList = [DictModel]()
     var nextworkTypeList = [DictModel]()
@@ -95,10 +96,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var isNextWorkType1 = false
     var workType = ""
     var workTypeSub = ""
-    
-    
     var isImgFile = true
-    
     var jobModel = JobModel()
     
     
@@ -109,7 +107,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
         initFooterView()
         initTableView()
         if pubType == 1{
-            self.title = "发布招工"
+            self.title = "发布职位"
         }else{
             self.title = "发布求职"
         }
@@ -235,8 +233,6 @@ class WorkerPubViewController: BaseViewController,Requestable {
         tableView.registerNibWithTableViewCellName(name: PubMediaCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: PubMediaCellVod.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: WokerPubIntroCell.nameOfClass)
-        
-        
         self.tableView.tableHeaderView = headerBgView
         tableView.tableFooterView = footerBgView
         
@@ -281,10 +277,11 @@ class WorkerPubViewController: BaseViewController,Requestable {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         DialogueUtils.dismiss()
         DialogueUtils.showSuccess(withStatus: "发布成功")
-        delay(second: 1) { [self] in
+        delay(second: 0.1) { [self] in
 //            if (self.reloadBlock != nil) {
 //                self.reloadBlock!()
 //            }
+            DialogueUtils.dismiss()
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -344,7 +341,18 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
             imgstr.remove(at: imgstr.index(before: imgstr.endIndex))
         }
         jobModel?.imagesURL = imgstr
-        jobModel?.name = "张总"
+        
+        
+        var vodstr = ""
+        if uploadVodArr.count != 0{
+            for vodM in self.uploadVodArr {
+                vodstr = vodstr + vodM.url + ","
+            }
+            vodstr.remove(at: vodstr.index(before: vodstr.endIndex))
+        }
+ 
+        jobModel?.videoURL = vodstr
+        jobModel?.name = ""
         
         let pathAndParams = HomeAPI.workAddPathAndParams(model: jobModel!)
         postRequest(pathAndParams: pathAndParams,showHUD: false)
@@ -529,9 +537,11 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
         pickerController.dismiss(animated: true, completion: nil)
         result.getURLs { [self] urls in
             if self.isImgFile {
+                print(self.isImgFile)
                 self.imageURLArr = urls
                 uploadPhoto(filePath: self.imageURLArr)
             }else{
+                print(self.isImgFile)
                 self.vodURLArr = urls
                 uploadPhoto(filePath: self.vodURLArr)
             }

@@ -15,17 +15,24 @@ class WorkerInfoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        
+        introLabel.font = UIFont.boldSystemFont(ofSize: 16)
         // Initialization code
+    }
+    
+  
+    
+    func configAudioCell(model:AudioModel){
+        introLabel.text = "音乐详情"
+         contentLabel.text = model.info
+        
     }
     func configCell(model:JobModel,isjob:Bool){
         if isjob {
             introLabel.text = "项目详情"
-            introLabel.font = UIFont.systemFont(ofSize: 16)
             contentLabel.text = model.detail
         }else{
-            introLabel.font = UIFont.boldSystemFont(ofSize: 16)
             introLabel.text = "自我介绍"
+            contentLabel.text = model.detail
         }
     }
 

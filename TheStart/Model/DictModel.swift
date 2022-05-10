@@ -17,6 +17,10 @@ struct DictModel : Mappable {
     var child = [DictModel]()
     var salary = ""
     
+    var price = ""
+    var give_money = ""
+    
+    
     init?(map: Map) {
         
     }
@@ -28,6 +32,9 @@ struct DictModel : Mappable {
         title <- map["title"]
         child <- map["child"]
         salary <- map["salary"]
+        
+        price <- map["price"]
+        give_money <- map["give_money"]
  
     }
 }

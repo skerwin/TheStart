@@ -126,7 +126,11 @@ struct HttpRequest {
              var count = 0
              for fileUrl in filePath {
                  print(fileUrl)
-                 multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).png", mimeType: "image/png")
+                 if fileUrl.absoluteString.containsStr(find: "mp4"){
+                     multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).mp4", mimeType: "image/png")
+                  }else{
+                     multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).png", mimeType: "image/png")
+                 }
                  count = count + 1
              }
  

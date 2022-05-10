@@ -17,11 +17,12 @@ class HomePageController: BaseViewController,Requestable {
     
     var tableView:UITableView!
     
-    var dataList = [String]()
+    var dataLWokerList = [JobModel]()
+    var dataLJobList = [JobModel]()
+    var bannerList = [ImageModel]()
     
     var advertisementView:SDCycleScrollView!
     var bannerView:UIView!
-    var adverModelList = [AdverModel]()
     
     let topAdvertisementViewHeight = screenWidth * 0.40
     
@@ -31,51 +32,71 @@ class HomePageController: BaseViewController,Requestable {
         self.view.backgroundColor = ZYJColor.main
         loadData()
        
-        
+        loadDictData()
         self.title = "首页"
         // Do any additional setup after loading the view.
     }
-    
     func loadData(){
-
-        
-        
+       
+        let workParams = HomeAPI.homePathAndParams()
+        getRequest(pathAndParams: workParams,showHUD: false)
+    }
+    
+    func loadDictData(){
         
         let workParams = HomeAPI.workCategoryPathAndParams()
         getRequest(pathAndParams: workParams,showHUD: false)
         
-        
-        
         let salaryParams = HomeAPI.salaryPathAndParams()
         getRequest(pathAndParams: salaryParams,showHUD: false)
         
+    }
+    
+    func UpdateAdvertisementView(imageArr:[ImageModel]) {
         
-//        let testParas = HomeAPI.testPathAndParams()
-//        getRequest(pathAndParams: testParas,showHUD:false)
-        //getRequest(pathAndParams: testParas, showHUD: <#T##Bool#>, needCache: <#T##Bool#>)
-        //postRequest(pathAndParams: testParas,showHUD: true)
-        
+        let prarModel = imageArr
+        var imageArrTemp = [String]()
+        if imageArr.count == 0{
+            tableView.tableHeaderView = getAdvertisementView(imageArr: prarModel)
+        }else{
+            for model in imageArr {
+                imageArrTemp.append(model.pic)
+            }
+             if advertisementView == nil {
+                 advertisementView = SDCycleScrollView.init(frame: CGRect.init(x: 5, y: 0 , width: screenWidth - 10, height: topAdvertisementViewHeight), imageURLStringsGroup:imageArrTemp)
+                advertisementView.pageControlAliment = SDCycleScrollViewPageContolAliment(rawValue: 1)
+                advertisementView.pageControlStyle = SDCycleScrollViewPageContolStyle(rawValue: 1)
+                //pageControlBottomOffset
+                advertisementView.delegate = self
+                advertisementView.backgroundColor = ZYJColor.main
+                advertisementView.layer.cornerRadius = 5;
+                advertisementView.layer.masksToBounds = true;
+                bannerView.addSubview(advertisementView)
+                tableView.tableHeaderView = bannerView
+             }else{
+                 advertisementView.imageURLStringsGroup = imageArrTemp
+             }
+        }
         
     }
     
-    func getAdvertisementView(imageArr:[AdverModel]) -> UIView {
+    func getAdvertisementView(imageArr:[ImageModel]) -> UIView {
         
         bannerView = UIView.init(frame:  CGRect.init(x: 0, y:0 , width: screenWidth, height: topAdvertisementViewHeight))
+        bannerView.backgroundColor = ZYJColor.main
  
-//        var imageArrTemp = [String]()
-//        if imageArr.count == 0{
-//            return UIView()
-//        }else{
-//            for model in imageArr {
-//                imageArrTemp.append(model.image)
-//            }
-//        }
-//
+        var imageArrTemp = [String]()
+        if imageArr.count == 0{
+            return UIView()
+        }else{
+            for model in imageArr {
+                imageArrTemp.append(model.pic)
+            }
+        }
         
         SDCycleScrollView.clearImagesCache()
-//        advertisementView = SDCycleScrollView.init(frame: CGRect.init(x: 0, y: 0 , width: screenWidth, height: topAdvertisementViewHeight), imageURLStringsGroup:imageArrTemp)
-        advertisementView = SDCycleScrollView.init(frame: CGRect.init(x: 0, y: 0 , width: screenWidth, height: topAdvertisementViewHeight), imageNamesGroup: [UIImage.init(named: "111222.jpg")!,UIImage.init(named: "111222.jpg")!,UIImage.init(named: "111222.jpg")!])
-        
+        advertisementView = SDCycleScrollView.init(frame: CGRect.init(x: 5, y: 0 , width: screenWidth - 10, height: topAdvertisementViewHeight), imageURLStringsGroup:imageArrTemp)
+ 
         if advertisementView == nil{
             return UIView() as! SDCycleScrollView
        
@@ -85,12 +106,10 @@ class HomePageController: BaseViewController,Requestable {
         advertisementView.pageControlStyle = SDCycleScrollViewPageContolStyle(rawValue: 1)
         //pageControlBottomOffset
         advertisementView.delegate = self
-        
+        advertisementView.backgroundColor = ZYJColor.main
         advertisementView.layer.cornerRadius = 5;
         advertisementView.layer.masksToBounds = true;
-        
-        
-        
+ 
         bannerView.addSubview(advertisementView)
         return bannerView
     }
@@ -114,21 +133,66 @@ class HomePageController: BaseViewController,Requestable {
         tableView.registerNibWithTableViewCellName(name: HomeSubscribeCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: JobViewCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: HomeJobCell.nameOfClass)
-        tableView.tableHeaderView = getAdvertisementView(imageArr: adverModelList)
+        tableView.tableHeaderView = getAdvertisementView(imageArr: bannerList)
+        
+        
+        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
+        tableView.mj_header = addressHeadRefresh
+
+//        let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
+//        tableView.mj_footer = footerRefresh
+        
         view.addSubview(tableView)
         tableView.tableFooterView = UIView()
       
     }
  
+    @objc func pullRefreshList() {
+        page = page + 1
+        self.loadData()
+    }
+    
+    @objc func refreshList() {
+        self.tableView.mj_footer?.resetNoMoreData()
+        dataLJobList.removeAll()
+        dataLWokerList.removeAll()
+        page = 1
+        self.loadData()
+    }
+    
+    
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
+            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+    }
+
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        tableView.mj_header?.endRefreshing()
+        tableView.mj_footer?.endRefreshing()
+        if requestPath.containsStr(find: HomeAPI.homePath){
+            dataLJobList = getArrayFromJsonByArrayName(arrayName: "list_zr", content:  responseResult)
+            dataLWokerList = getArrayFromJsonByArrayName(arrayName: "list_zc", content:  responseResult)
+            bannerList = getArrayFromJsonByArrayName(arrayName: "banner", content:  responseResult)
+            UpdateAdvertisementView(imageArr: bannerList)
+            self.tableView.reloadData()
+        }
+
+
+    }
+    
+ 
 }
 extension HomePageController:SDCycleScrollViewDelegate{
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-//        if adverModelList[index].url == ""{
-//            return
-//        }
-//        let controller = AdverController()
-//        controller.urlString = adverModelList[index].url
-//        self.navigationController?.pushViewController(controller, animated: true)
+        if bannerList[index].link == ""{
+            return
+        }
+        let controller = NotifyWebDetailController()
+        controller.urlString = bannerList[index].link
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
 }
@@ -157,7 +221,32 @@ extension HomePageController:GuideCellDelegate{
  
 }
 
-
+extension HomePageController:JobHomeCellDelegate{
+    func JobHomeCommunicateAction(mobile: String) {
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        
+         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+             
+             
+             let urlstr = "telprompt://" + "18153684982"
+             if let url = URL.init(string: urlstr){
+                  if #available(iOS 10, *) {
+                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(url)
+                  }
+               }
+ 
+        }))
+        
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+    }
+    
+    
+}
 extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -167,7 +256,7 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
         //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
 
         if section == 2{
-            return 10
+            return dataLJobList.count
         }
         return 1
     }
@@ -213,7 +302,13 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         
+        
+        if indexPath.section == 2{
+            let controller = JobInfoViewController()
+            controller.dateID = dataLJobList[indexPath.row].id
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+       
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -227,9 +322,14 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
         }else if section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeSubscribeCell", for: indexPath) as! HomeSubscribeCell
             cell.selectionStyle = .none
+            cell.parentNavigationController = self.navigationController
+            cell.dataLWokerList = self.dataLWokerList
+            cell.collectionView.reloadData()
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeJobCell", for: indexPath) as! HomeJobCell
+            cell.model = dataLJobList[indexPath.row]
+            cell.delegate = self
             cell.selectionStyle = .none
             return cell
         }
@@ -239,104 +339,3 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
    
 }
 
-//
-//
-//func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//
-//    let row = indexPath.row
-//    if row == 0{
-
-//    }else if row == 1{
-
-//    }else if row == 2{
-
-//    }else if row == 3{
-//        let controller = TipOffPostViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 4{
-//        let controller = UIStoryboard.getMineViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 5{
-//        let controller = JobInfoViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 6{
-//        let controller = MuiscListController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 7{
-//        let controller = AuthorViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 8{
-//        let controller = PubMusicController()
-//        self.navigationController?.pushViewController(controller, animated: true)
- 
-//    else if row == 11{
-//        let controller = UIStoryboard.getFeedBackController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-//    else if row == 12{
-//        let controller = UIStoryboard.getPersonsInfoController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    } else if row == 13{
-//        let controller = UIStoryboard.getMessageController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }else if row == 14{
-//        let controller = ContactListController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-//
-//    else{
-//        let controller = AuthorViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-// }
-//
-//
-//func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-//{
-//
-//    let row = indexPath.row
-//    let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath) as! testCell
-//    cell.selectionStyle = .none
-//    if row == 0{
-//        cell.nameLabel.text = "黑人馆"
-//    }else if row == 1{
-//        cell.nameLabel.text = "找场详情"
-//    }else if row == 2{
-//        cell.nameLabel.text = "找场发布"
-//    }else if row == 3{
-//        cell.nameLabel.text = "发布黑料"
-//    }else if row == 4{
-//        cell.nameLabel.text = "个人中心"
-//    }else if row == 5{
-//        cell.nameLabel.text = "找人详情"
-//    }else if row == 6{
-//        cell.nameLabel.text = "音乐馆"
-//    }else if row == 7{
-//        cell.nameLabel.text = "作者馆"
-//    }else if row == 8{
-//        cell.nameLabel.text = "发布音乐"
-//    }else if row == 9{
-//        cell.nameLabel.text = "工作列表"
-//    }
-//    else if row == 10{
-//        cell.nameLabel.text = "求职者列表"
-//    }
-//    else if row == 11{
-//        cell.nameLabel.text = "意见反馈"
-//    } else if row == 12{
-//        cell.nameLabel.text = "个人信息设置"
-//    }else if row == 13{
-//        cell.nameLabel.text = "聊天页面"
-//    }
-//    else if row == 14{
-//        cell.nameLabel.text = "聊天列表"
-//    }
-//
-//
-//
-//    return cell
-//
-//
-//}
- 

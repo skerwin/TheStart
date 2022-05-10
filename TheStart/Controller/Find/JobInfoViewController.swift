@@ -60,7 +60,7 @@ class JobInfoViewController: BaseViewController,Requestable{
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("JobBaseInfo", owner: nil, options: nil)!.first as? JobBaseInfo
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 188)
-        
+        headView.delegate = self
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 188))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
@@ -71,7 +71,7 @@ class JobInfoViewController: BaseViewController,Requestable{
     func initFooterView(){
         footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
         footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-        
+        footerView.delegate = self
         footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
         footerBgView.backgroundColor = UIColor.clear
         footerBgView.addSubview(footerView)
@@ -106,6 +106,39 @@ class JobInfoViewController: BaseViewController,Requestable{
     }
  
 }
+extension JobInfoViewController:ChatBtnViewDelegate {
+    func sumbitAction() {
+            let controller = UIStoryboard.getMessageController()
+            self.navigationController?.pushViewController(controller, animated: true)
+    }
+ 
+}
+extension JobInfoViewController:JobBaseInfoDelegate {
+    func JobCommunicateAction(){
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+             
+             
+            let urlstr = "telprompt://" + self.dataModel!.mobile
+             if let url = URL.init(string: urlstr){
+                  if #available(iOS 10, *) {
+                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(url)
+                  }
+               }
+ 
+        }))
+        
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+    }
+    
+    
+}
 extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,13 +162,12 @@ extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
             cell.selectionStyle = .none
             cell.model = dataModel
-            cell.configCell(isjob: true)
             return cell
            
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
             cell.selectionStyle = .none
-            cell.configCell(isjob: true)
+            cell.model = dataModel
             return cell
         }
       
@@ -143,8 +175,6 @@ extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
     }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let controller = TipOffDetailViewController()
       
-         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

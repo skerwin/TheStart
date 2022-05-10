@@ -20,6 +20,9 @@ struct ImageModel : Mappable {
     var url = ""
     var name = ""
     
+    var link = ""
+    var pic = ""
+    
     init?(map: Map) {
         
     }
@@ -27,6 +30,9 @@ struct ImageModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
+        
+        pic <- map["pic"]
+        link <- map["link"]
         id <- map["id"]
         filename <- map["filename"]
         file_path <- map["file_path"]

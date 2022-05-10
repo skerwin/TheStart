@@ -18,14 +18,31 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     /// 当前已选资源
     var previewAssets: [PhotoAsset] = []
     
-    func configCell(isjob:Bool){
-        if isjob {
-            imgLabel.font = UIFont.systemFont(ofSize: 16)
-        }else{
-            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        }
-    }
     
+    func configAudioCell(model:AudioModel){
+        imgLabel.text = "更多图片"
+        previewAssets.removeAll()
+        for imageV in model.images {
+            if imageV != ""{
+               let networkImageURL = URL.init(string: imageV)!
+               let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+               previewAssets.append(networkImageAsset)
+            }
+        }
+        collectionView.reloadData()
+       
+        configCollectionViewHeight()
+    }
+
+    
+    
+//    func configCell(isjob:Bool){
+//        if isjob {
+//            imgLabel.font = UIFont.systemFont(ofSize: 16)
+//        }else{
+//            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
+//        }
+//    }
     var model:JobModel? {
         didSet {
             previewAssets.removeAll()
@@ -43,7 +60,7 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     override func awakeFromNib() {
         super.awakeFromNib()
  
-        
+        imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 46 - CGFloat(row_Count - 1) * 5)) / row_Count
         print(itemWidth)
@@ -110,7 +127,6 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
         
-        print("1234567")
         let cell = collectionView.cellForItem(
             at: indexPath
         ) as? ResultViewCell

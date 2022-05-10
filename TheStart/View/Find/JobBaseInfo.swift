@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol JobBaseInfoDelegate {
+    func JobCommunicateAction()
+}
+
 class JobBaseInfo: UIView {
 
+    
+    var delegate: JobBaseInfoDelegate!
     @IBOutlet weak var headImg: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,13 +29,14 @@ class JobBaseInfo: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func phoneBtnAction(_ sender: Any) {
+        delegate.JobCommunicateAction()
     }
     @IBOutlet weak var phoneBtn: UIButton!
     
     
     func configModel(model:JobModel){
         headImg.displayImageWithURL(url: model.avatar)
-        nameLabel.text = model.name
+        nameLabel.text = model.nickname
         if model.is_shiming == 1{
             isAuthLabel.text = "已实名"
         }else{

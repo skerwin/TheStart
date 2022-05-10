@@ -18,7 +18,8 @@ class HomeSubscribeCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
     
-    //var recommendList = [SubscribeModel]()
+    var dataLWokerList = [JobModel]()
+    
     var collectionView:UICollectionView!  //collectView
     
     var parentNavigationController: UINavigationController?
@@ -33,7 +34,6 @@ class HomeSubscribeCell: UITableViewCell {
         bgView.layer.masksToBounds = true
         initCollectView()
     
-        initCollectView()
      }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -108,8 +108,7 @@ extension HomeSubscribeCell:UICollectionViewDataSource,UICollectionViewDelegate 
     }
     
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int) -> Int {
-        return 10
-        //recommendList.count
+        return dataLWokerList.count
          
     }
     
@@ -117,23 +116,18 @@ extension HomeSubscribeCell:UICollectionViewDataSource,UICollectionViewDelegate 
  
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuperManCell.nameOfClass, for: indexPath) as! SuperManCell
         cell.delegate = self
-        //cell.model = recommendList[indexPath.row]
+        cell.model = dataLWokerList[indexPath.row]
         return cell
         
      }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        let controller = ColumForDetailController()
-//        controller.columForModel = recommendList[indexPath.row]
-//        self.parentNavigationController?.pushViewController(controller, animated: true)
+        let controller = WorkerInfoViewController()
+        controller.dateID = dataLWokerList[indexPath.row].id
+        self.parentNavigationController?.pushViewController(controller, animated: true)
         
-//        let vc = ChannelViewController()
-//        vc.menupagetype = MenuPageType.ColumForDetail
-//        vc.cid = ColumnForModelList[indexPath.row].id
-//        vc.columForModel = ColumnForModelList[indexPath.row]
-//        self.navigationController?.pushViewController(vc, animated: true)
+ 
     }
 
 }

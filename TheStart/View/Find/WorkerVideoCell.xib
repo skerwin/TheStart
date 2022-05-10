@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视频资料:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cS-sK-luk">
-                        <rect key="frame" x="20" y="12" width="88" height="20"/>
+                        <rect key="frame" x="20" y="12" width="186" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="DGZ-HB-9iP"/>
-                            <constraint firstAttribute="width" constant="88" id="l90-NM-alu"/>
+                            <constraint firstAttribute="width" constant="186" id="l90-NM-alu"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" systemColor="systemGray6Color"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Rkt-3D-YN9">
-                        <rect key="frame" x="0.0" y="42" width="414" height="405"/>
+                        <rect key="frame" x="0.0" y="46" width="414" height="406"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="l5Y-ru-o9K"/>
@@ -47,8 +47,8 @@
                     <constraint firstItem="4cS-sK-luk" firstAttribute="top" secondItem="S4G-lO-Rvc" secondAttribute="top" constant="12" id="6lx-nC-OJv"/>
                     <constraint firstItem="Rkt-3D-YN9" firstAttribute="leading" secondItem="S4G-lO-Rvc" secondAttribute="leading" id="CDk-QG-KJI"/>
                     <constraint firstItem="4cS-sK-luk" firstAttribute="leading" secondItem="S4G-lO-Rvc" secondAttribute="leading" constant="20" id="Jt7-cK-2sn"/>
-                    <constraint firstAttribute="bottom" secondItem="Rkt-3D-YN9" secondAttribute="bottom" constant="5" id="a6G-dZ-kqT"/>
-                    <constraint firstItem="Rkt-3D-YN9" firstAttribute="top" secondItem="4cS-sK-luk" secondAttribute="bottom" constant="10" id="nNT-gj-hcl"/>
+                    <constraint firstAttribute="bottom" secondItem="Rkt-3D-YN9" secondAttribute="bottom" id="a6G-dZ-kqT"/>
+                    <constraint firstItem="Rkt-3D-YN9" firstAttribute="top" secondItem="4cS-sK-luk" secondAttribute="bottom" constant="14" id="nNT-gj-hcl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="a7C-Kp-XwZ"/>

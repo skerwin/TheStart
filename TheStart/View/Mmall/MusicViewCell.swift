@@ -15,6 +15,15 @@ class MusicViewCell: UICollectionViewCell {
     @IBOutlet weak var moneyLabel: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var model:AudioModel? {
+        didSet {
+            moneyLabel.titleLabel?.text = model?.price
+            nameLabel.text = model!.name
+            imageV.displayImageWithURL(url: model?.image)
+            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         imageV.layer.masksToBounds = true

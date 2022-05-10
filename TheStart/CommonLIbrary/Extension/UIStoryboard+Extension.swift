@@ -50,9 +50,20 @@ extension UIStoryboard {
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "NewLoginController") as! NewLoginController
     }
+    
     class func getGetBackPasswordController() -> GetBackPasswordController
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "GetBackPasswordController") as! GetBackPasswordController
+    }
+    
+    class func getAuthenController() -> AuthenController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "AuthenController") as! AuthenController
+    }
+    
+    class func getCashOutViewController() -> CashOutViewController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
     }
     
     

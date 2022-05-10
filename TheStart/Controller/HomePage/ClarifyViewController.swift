@@ -17,6 +17,8 @@ class ClarifyViewController: BaseViewController,Requestable {
     var dataList = [TipOffModel]()
         
     var type = 3
+    var isFromTipOffPage = false
+    var clarifyId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,13 @@ class ClarifyViewController: BaseViewController,Requestable {
         // Do any additional setup after loading the view.
     }
     func loadData(){
-        let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
-        getRequest(pathAndParams: requestParams,showHUD:false)
-
+        if isFromTipOffPage{
+            let requestParams = HomeAPI.clarifyListPathAndParams(clarify_id: clarifyId, page: page, limit: pagenum)
+            postRequest(pathAndParams: requestParams, showHUD: false)
+        }else{
+            let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+            getRequest(pathAndParams: requestParams,showHUD:false)
+        }
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {
             tableView.mj_header?.endRefreshing()
@@ -67,16 +73,12 @@ class ClarifyViewController: BaseViewController,Requestable {
         tableView.showsVerticalScrollIndicator = false
         tableView.registerNibWithTableViewCellName(name: TipOffListCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListNoImgCell.nameOfClass)
- 
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh
-
         let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
         tableView.mj_footer = footerRefresh
-        
         view.addSubview(tableView)
         tableView.tableFooterView = UIView()
-      
     }
  
     @objc func pullRefreshList() {

@@ -31,9 +31,14 @@ class WokerPubIntroCell: UITableViewCell,UITextViewDelegate {
         if type == 1{
             introLabel.text = "项目介绍"
             self.contentTV.placeHolder = "请介绍一下本项目情况～～";
-        }else{
+        }else if type == 2{
             introLabel.text = "自我介绍"
             self.contentTV.placeHolder = "请介绍一下您或填写您的工作经历～～";
+        }else if type == 3{
+            introLabel.text = "音乐介绍"
+            self.contentTV.placeHolder = "请介绍一下您的音乐作品～～";
+        }else{
+            
         }
     }
     func textViewDidChange(_ textView: UITextView) {

@@ -471,14 +471,36 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
 
 extension TipOffDetailViewController:TipOffHeaderViewDelegate{
     func msgBtnAction() {
-        print("1234567")
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        
+         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+             
+             
+             let urlstr = "telprompt://" + "18153684982"
+             if let url = URL.init(string: urlstr){
+                  if #available(iOS 10, *) {
+                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(url)
+                  }
+               }
+ 
+        }))
+        
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
     }
     
     
 }
 extension TipOffDetailViewController:TipOffContentViewDelegate{
     func clarifyBtnAction() {
-        print("67788")
+        let controller = ClarifyViewController()
+        controller.isFromTipOffPage = true
+        controller.clarifyId = dataModel!.id
+        self.navigationController?.pushViewController(controller, animated: true)
     }
  }
 extension TipOffDetailViewController:ReCommentCellDelegate{
@@ -524,7 +546,9 @@ extension TipOffDetailViewController:TipOffBottomViewDelegate{
             }
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
-            //澄清的话跳转原文
+            let controller = TipOffDetailViewController()
+            controller.dateID = dataModel!.clarify_id
+            self.navigationController?.pushViewController(controller, animated: true)
         }
        
     }

@@ -32,7 +32,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZH-Ev-kwc">
-                                    <rect key="frame" x="8" y="53.5" width="388" height="0.5"/>
+                                    <rect key="frame" x="8" y="48.5" width="388" height="0.5"/>
                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="soq-0O-7hY"/>
@@ -48,7 +48,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="ZCA-iG-e8E" secondAttribute="trailing" id="02Z-8P-QJM"/>
                                 <constraint firstItem="7xY-nb-voo" firstAttribute="centerY" secondItem="86K-JF-5Gr" secondAttribute="centerY" id="Fdj-pk-4fU"/>
-                                <constraint firstAttribute="bottom" secondItem="SZH-Ev-kwc" secondAttribute="bottom" id="KgR-OL-KKR"/>
+                                <constraint firstAttribute="bottom" secondItem="SZH-Ev-kwc" secondAttribute="bottom" constant="5" id="KgR-OL-KKR"/>
                                 <constraint firstItem="ZCA-iG-e8E" firstAttribute="top" secondItem="86K-JF-5Gr" secondAttribute="top" id="UGl-GB-A9a"/>
                                 <constraint firstItem="SZH-Ev-kwc" firstAttribute="leading" secondItem="86K-JF-5Gr" secondAttribute="leading" constant="8" id="Ycs-2u-qK4"/>
                                 <constraint firstAttribute="height" constant="54" id="ZgA-VW-TYu"/>
@@ -72,14 +72,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST2-eh-GLK">
-                                    <rect key="frame" x="8" y="53.5" width="388" height="0.5"/>
+                                    <rect key="frame" x="8" y="48.5" width="388" height="0.5"/>
                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="inc-sb-ADG"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音乐价格" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YF-K1-hdX">
-                                    <rect key="frame" x="147" y="0.0" width="257" height="53.5"/>
+                                    <rect key="frame" x="147" y="0.0" width="257" height="48.5"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -87,7 +87,7 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="5YF-K1-hdX" firstAttribute="top" secondItem="kCa-ZW-Tgr" secondAttribute="top" id="0Er-72-oJf"/>
-                                <constraint firstAttribute="bottom" secondItem="ST2-eh-GLK" secondAttribute="bottom" id="4va-65-7qX"/>
+                                <constraint firstAttribute="bottom" secondItem="ST2-eh-GLK" secondAttribute="bottom" constant="5" id="4va-65-7qX"/>
                                 <constraint firstItem="2dG-tJ-dfd" firstAttribute="centerY" secondItem="kCa-ZW-Tgr" secondAttribute="centerY" id="5su-VD-Sqr"/>
                                 <constraint firstItem="2dG-tJ-dfd" firstAttribute="leading" secondItem="kCa-ZW-Tgr" secondAttribute="leading" constant="15" id="Djz-Po-UaX"/>
                                 <constraint firstAttribute="trailing" secondItem="ST2-eh-GLK" secondAttribute="trailing" constant="8" id="Jlp-tT-JH7"/>
@@ -112,7 +112,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yby-RD-hDS">
-                                    <rect key="frame" x="8" y="53.5" width="388" height="0.5"/>
+                                    <rect key="frame" x="8" y="48.5" width="388" height="0.5"/>
                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="z4h-Mo-uwG"/>
@@ -134,7 +134,7 @@
                                 <constraint firstAttribute="trailing" secondItem="yby-RD-hDS" secondAttribute="trailing" constant="8" id="lyW-K7-T9m"/>
                                 <constraint firstItem="C5Y-Tk-6Mb" firstAttribute="leading" secondItem="MoO-uy-QWx" secondAttribute="leading" constant="15" id="ofY-Cf-S2z"/>
                                 <constraint firstAttribute="height" constant="54" id="tac-cK-3mE"/>
-                                <constraint firstAttribute="bottom" secondItem="yby-RD-hDS" secondAttribute="bottom" id="z19-6V-tBW"/>
+                                <constraint firstAttribute="bottom" secondItem="yby-RD-hDS" secondAttribute="bottom" constant="5" id="z19-6V-tBW"/>
                                 <constraint firstItem="DpY-yj-oFN" firstAttribute="top" secondItem="MoO-uy-QWx" secondAttribute="top" id="zAp-BB-BDy"/>
                             </constraints>
                         </view>
@@ -152,14 +152,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELE-KO-Y2k">
-                                    <rect key="frame" x="8" y="53.5" width="388" height="0.5"/>
+                                    <rect key="frame" x="8" y="48.5" width="388" height="0.5"/>
                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="QmA-5K-i9t"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入提取码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-0h-8D0">
-                                    <rect key="frame" x="147" y="0.0" width="257" height="53.5"/>
+                                    <rect key="frame" x="147" y="0.0" width="257" height="48.5"/>
                                     <color key="textColor" red="0.98039215690000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -170,7 +170,7 @@
                                 <constraint firstItem="Zo9-DG-IcP" firstAttribute="leading" secondItem="nEf-KN-Ogb" secondAttribute="leading" constant="15" id="PK9-bm-mMf"/>
                                 <constraint firstAttribute="trailing" secondItem="ELE-KO-Y2k" secondAttribute="trailing" constant="8" id="Urx-zz-jQg"/>
                                 <constraint firstItem="ELE-KO-Y2k" firstAttribute="top" secondItem="fgO-0h-8D0" secondAttribute="bottom" id="UsY-SK-O4Y"/>
-                                <constraint firstAttribute="bottom" secondItem="ELE-KO-Y2k" secondAttribute="bottom" id="VVk-oC-X7r"/>
+                                <constraint firstAttribute="bottom" secondItem="ELE-KO-Y2k" secondAttribute="bottom" constant="5" id="VVk-oC-X7r"/>
                                 <constraint firstItem="fgO-0h-8D0" firstAttribute="top" secondItem="nEf-KN-Ogb" secondAttribute="top" id="Vpl-2k-ps2"/>
                                 <constraint firstItem="ELE-KO-Y2k" firstAttribute="leading" secondItem="nEf-KN-Ogb" secondAttribute="leading" constant="8" id="lin-o1-Usg"/>
                                 <constraint firstAttribute="height" constant="54" id="qc3-YB-BRA"/>

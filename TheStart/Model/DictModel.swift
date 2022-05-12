@@ -20,6 +20,7 @@ struct DictModel : Mappable {
     var price = ""
     var give_money = ""
     
+    var image = ""
     
     init?(map: Map) {
         
@@ -28,6 +29,7 @@ struct DictModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
+        image <- map["image"]
         id <- map["id"]
         title <- map["title"]
         child <- map["child"]

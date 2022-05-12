@@ -12,7 +12,7 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import ObjectMapper
 import IQKeyboardManager
- 
+
 
 class PersonsInfoController: BaseTableController,Requestable,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var headImage: UIImageView!
@@ -23,53 +23,52 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     
     @IBOutlet weak var saveBtn: UIButton!
     
-    @IBOutlet weak var menBtn: UIButton!
-    @IBOutlet weak var wommen: UIButton!
+    @IBOutlet weak var addressLabel: UILabel!
     
-    @IBAction func saveAction(_ sender: Any) {
-        
-//        userModel?.user_nickname = nickNameText.text!
-//
-//        if userModel!.user_nickname.count > 10 {
-//            showOnlyTextHUD(text: "昵称不能超过10个字符")
-//            return
-//        }
-//
-//        if userModel!.user_nickname.isLengthEmpty() {
-//            showOnlyTextHUD(text: "昵称不能为空")
-//            return
-//        }
-//
-//        if userModel!.user_nickname.isContainsEmoji() {
-//            showOnlyTextHUD(text: "不支持输入表情")
-//            return
-//        }
- 
-//        let authenPersonalParams = HomeAPI.editProfilePathAndParams(usermodel: userModel!)
-//        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
-        
-    }
-    @IBAction func menActioin(_ sender: Any) {
-//        userModel?.sex = 1
-//        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-    }
-    
-    @IBAction func wonmen(_ sender: Any) {
-        
-//        userModel?.sex = 2
-//        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-    }
-    
+    var cityChoosePicker:ActionSheetCustomPicker? = nil //城市选择器
+    var addressList = [AddressModel]()
+    var nexCityList = [AddressModel]()
+    var isNextCitytment = false
+    var isNextCitytment1 = false
+    var province = ""
+    var city = ""
     
     var userModel = UserModel()
     
-    var imageToken = ""
+    
+    @IBAction func saveAction(_ sender: Any) {
+        
+                userModel?.nickname = nickNameText.text!
+        
+                if userModel!.nickname.count > 10 {
+                    showOnlyTextHUD(text: "昵称不能超过10个字符")
+                    return
+                }
+        
+                if userModel!.nickname.isLengthEmpty() {
+                    showOnlyTextHUD(text: "昵称不能为空")
+                    return
+                }
+        
+                if userModel!.nickname.isContainsEmoji() {
+                    showOnlyTextHUD(text: "不支持输入表情")
+                    return
+                }
+        
+        let editPersonalParams = HomeAPI.userEditPathAndParams(model: userModel!)
+                postRequest(pathAndParams: editPersonalParams,showHUD: false)
+        
+    }
+    
+    
+    
+  
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "个人信息"
-        
+        loadCityJson()
         
         let attributedName = NSAttributedString.init(string: "请输入昵称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         nickNameText.attributedPlaceholder = attributedName
@@ -91,52 +90,43 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
         profileActionController.addAction(UIAlertAction.init(title: "拍照", style: .default, handler: { (action) in
             self.openCamera()
         }))
-//
-//        mobileText.text = userModel?.user_login
-//        mobileText.isEnabled = false
-//
-//
-//        if !(userModel?.user_nickname.isLengthEmpty())!{
-//            nickNameText.text = userModel?.user_nickname
-//        }
-//
-//
-//        if userModel?.sex == 0 {
-//            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//        }else if userModel?.sex == 2 {
-//            wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//        }else{
-//            menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//        }
-//
-//        headImage.displayHeadImageWithURL(url: userModel?.avatar_url)
+        
+        headImage.displayHeadImageWithURL(url: userModel?.avatar_check)
+        mobileText.text = userModel?.phone
+        nickNameText.text = userModel?.nickname
+        addressLabel.text = userModel?.addres
+        
         
         headImage.layer.cornerRadius = 30;
         headImage.layer.masksToBounds = true
         
         //self.tableView.tableFooterView = UIView()
-      
-    }
-    
-    
-    
-    @IBAction func menBtnAction(_ sender: Any) {
-//        userModel?.sex = 1
-//        menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//        wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
         
     }
     
-    @IBAction func wommenBtnAction(_ sender: Any) {
-//        userModel?.sex = 2
-//        wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//        menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+    func loadCityJson(){
+        do {
+            if let file = Bundle.main.url(forResource: "cityjson", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if json is [String: Any] {
+                } else if let object = json as? [Any] {
+                    let responseJson = JSON(object)
+                    addressList = getArrayFromJson(content:responseJson)
+                    
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         
     }
- 
+    
     lazy var profileActionController: UIAlertController = UIAlertController.init(title: "选择照片", message: "", preferredStyle: .actionSheet)
     
     lazy var pickerController: UIImagePickerController = {
@@ -149,15 +139,15 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     
     @objc func headImageAction(){
         self.present(profileActionController, animated: true, completion: nil)
-       // profileActionController.message = "请选择您的照片"
+        // profileActionController.message = "请选择您的照片"
         
     }
- 
+    
     
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
-       
-          showOnlyTextHUD(text: description)
+        
+        showOnlyTextHUD(text: description)
         //super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
     }
     
@@ -165,44 +155,10 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         
-        let imcode = stringForKey(key: Constants.IMUserSig)
-    
-        
         showOnlyTextHUD(text: "保存成功")
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func rightNavBtnClick(){
-   
-//        userModel?.user_nickname = nickNameText.text!
-//
-//        if userModel!.user_nickname.count > 10 {
-//            showOnlyTextHUD(text: "昵称不能超过10个字符")
-//            return
-//        }
-//
-//        if userModel!.user_nickname.isLengthEmpty() {
-//            showOnlyTextHUD(text: "昵称不能为空")
-//            return
-//        }
-//
-//        if userModel!.user_nickname.isContainsEmoji() {
-//            showOnlyTextHUD(text: "不支持输入表情")
-//            return
-//        }
- 
-//        let authenPersonalParams = HomeAPI.editProfilePathAndParams(usermodel: userModel!)
-//        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
-        
-    }
-    func createRightNavItem(title:String = "保存",imageStr:String = "") {
-        if imageStr == ""{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: title, style: .plain, target: self, action:  #selector(rightNavBtnClick))
-        }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: imageStr), style: .plain, target: self, action: #selector(rightNavBtnClick))
-        }
-        
-    }
     
     // MARK: - Table view data source
     
@@ -224,6 +180,18 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            isNextCitytment = false
+            isNextCitytment1 = false
+            nexCityList  = addressList.first!.children
+            self.cityChoosePicker = ActionSheetCustomPicker.init(title: "选择城市", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
+            self.cityChoosePicker?.delegate = self
+            cityChoosePicker?.tapDismissAction  = .success;
+            cityChoosePicker?.show()
+        }
     }
     
     
@@ -253,40 +221,37 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
     }
     var imagePath = ""
     var headimgModel = ImageModel()
+    
     func uploadPhoto(filePath: [URL]) {
-        DialogueUtils.showWithStatus("正在上传")
         
-       // /common/api/up_img
-       // /users/api/editAvatar
-//        HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { (content) -> Void in
-//            DialogueUtils.dismiss()
-//            DialogueUtils.showSuccess(withStatus: "上传成功")
-//            
-//            
-//            self.headimgModel = Mapper<ImageModel>().map(JSONObject: content.rawValue)
-//            
-//            if self.headimgModel!.id == 0{
-//                let imageId = content["id"].stringValue
-//                if imageId != ""{
-//                    self.userModel?.avatar =  imageId
-//                }
-//            }else{
-//                self.userModel?.avatar =  String.init(self.headimgModel!.id)
-//            }
-// 
-//            
-//        }) { (errorInfo) -> Void in
-//            DialogueUtils.dismiss()
-//            DialogueUtils.showError(withStatus: errorInfo)
-//            self.headImage.image = UIImage.init(named: "HeaderCamera")
-//            self.headimgModel = ImageModel()
-//            self.userModel?.avatar = ""
-//        }
+        DialogueUtils.showWithStatus("正在上传")
+        HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { (content) -> Void in
+            DialogueUtils.dismiss()
+            
+            DialogueUtils.showSuccess(withStatus: "上传成功")
+            
+            let imgArr:[ImageModel] = getArrayFromJson(content: content)
+            
+            if imgArr.count > 0{
+                self.userModel?.avatar =  imgArr.first!.url
+            }
+            
+            
+            
+        }) { (errorInfo) -> Void in
+            DialogueUtils.dismiss()
+            DialogueUtils.showError(withStatus: errorInfo)
+            self.headImage.image = UIImage.init(named: "headNotify")
+            self.headimgModel = ImageModel()
+            self.userModel?.avatar = ""
+            
+        }
     }
+    
     
     // 打开照相功能
     func openCamera() {
-    
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             pickerController.sourceType = .camera
             pickerController.allowsEditing = true
@@ -320,7 +285,9 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
                         imagePath = docPath.appendingPathComponent(imageName);
                         data?.write(toFile: imagePath, atomically: true)
                         headImage.image = image
-                        //uploadPhoto(filePath: imagePath)
+                        let fileUrl = URL.init(fileURLWithPath: imagePath)
+                        
+                        uploadPhoto(filePath: [fileUrl])
                     }
                 }
             }
@@ -332,4 +299,99 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
         picker .dismiss(animated: true, completion: nil)
     }
     
+}
+extension PersonsInfoController:ActionSheetCustomPickerDelegate,UIPickerViewDelegate{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if component == 0{
+            return addressList.count
+        }else{
+            return nexCityList.count
+        }
+        
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+        if component == 0{
+            return addressList[row].label
+        }else{
+            return nexCityList[row].label
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if component == 0{
+            isNextCitytment = true
+            province = addressList[row].label
+            nexCityList = addressList[row].children
+            
+            pickerView.selectRow(0, inComponent: 1, animated: true)
+            pickerView.reloadComponent(1)
+        }else{
+            isNextCitytment1 = true
+            city = nexCityList[row].label
+        }
+        
+        
+    }
+    func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
+        
+        
+        if isNextCitytment {
+            if isNextCitytment1{
+            }else{
+                city = nexCityList[0].label
+            }
+        }else{
+            if isNextCitytment1 {
+                province = addressList[0].label
+            }else{
+                province = addressList[0].label
+                nexCityList = addressList[0].children
+                city = nexCityList[0].label
+            }
+            
+        }
+        addressLabel.text = province + city
+        
+        
+    }
+    
+    
+    func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
+        
+        
+    }
+    
+    //重置label
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var lable:UILabel? = view as? UILabel
+        if lable == nil{
+            lable = UILabel.init()
+        }
+        
+        
+        if component == 0{
+            
+            lable?.text = addressList[row].label
+            
+            
+            lable?.font = UIFont.systemFont(ofSize: 17)
+        }else{
+            
+            lable?.text = nexCityList[row].label
+            
+            lable?.font = UIFont.systemFont(ofSize: 16)
+        }
+        lable?.textAlignment = .center
+        return lable!
+    }
 }

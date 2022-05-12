@@ -188,8 +188,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     }
     
     func uploadPhoto(filePath: [URL]) {
-        DialogueUtils.showWithStatus("正在上传")
-    
+ 
         HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { [self] (content) -> Void in
             DialogueUtils.dismiss()
             if self.isImgFile{
@@ -456,7 +455,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
     /// 选择完成之后调用
     func pickerController(_ pickerController: PhotoPickerController, didFinishSelection result: PickerResult) {
       
-       
+        DialogueUtils.showWithStatus("正在上传")
         if isImgFile{
             selectedAssetsImg = result.photoAssets
             isOriginalImg = result.isOriginal

@@ -16,6 +16,8 @@ class AuthorViewController: BaseViewController,Requestable {
     
     var dataList = [AuthorModel]()
     
+    var isFromMine = false
+    
     var parentNavigationController: UINavigationController?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +54,11 @@ class AuthorViewController: BaseViewController,Requestable {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
-        
+        if isFromMine{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeight), style: .plain)
+        }else{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main

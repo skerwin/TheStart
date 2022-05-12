@@ -43,10 +43,12 @@ struct HttpRequest {
          print(Url!.absoluteString)
          let parametersJson = JSON(parameters!)
          print(parametersJson)
-        var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
-//        if stringForKey(key: Constants.token) != nil {
-//            token = stringForKey(key: Constants.token)!
-//        }
+         let token = getToken()
+        
+         if token == ""{
+            return
+         }
+ 
         let headers: HTTPHeaders = [
             "Authori-zation": token
         ]
@@ -112,7 +114,11 @@ struct HttpRequest {
     
     static func uploadImage(url:String,filePath:[URL],success: @escaping (_ content:JSON) -> Void, failure: @escaping (_ errorInfo: String?) -> Void){
         
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
+        let token = getToken()
+       
+        if token == ""{
+           return
+        }
          
         let upUrlstr = URLs.getHostAddress() + url
         let headers: HTTPHeaders = [
@@ -167,7 +173,11 @@ struct HttpRequest {
     
     static func uploadImage2(url:String,filePath:[Data],success: @escaping (_ content:JSON) -> Void, failure: @escaping (_ errorInfo: String?) -> Void){
         //let fileUrl = URL.init(fileURLWithPath: filePath)
-        let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaWNoZW5nLnhpZXlha291LmNuIiwiYXVkIjoicWljaGVuZy54aWV5YWtvdS5jbiIsImlhdCI6MTY0MjQxMDI1MSwibmJmIjoxNjQyNDEwMjUxLCJleHAiOjE3MzcxMDQ2NTEsImp0aSI6eyJpZCI6MSwidHlwZSI6InVzZXIifX0.9W6TZ85LJp1SLXPEHmzuwbvBiMsFfJP_lCuT0oYodcc"
+        let token = getToken()
+       
+        if token == ""{
+           return
+        }
          
         let upUrlstr = URLs.getHostAddress() + url
         let headers: HTTPHeaders = [

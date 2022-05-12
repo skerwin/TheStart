@@ -25,6 +25,10 @@ class NewLoginController: BaseViewController,Requestable {
     
     @IBOutlet weak var changeloginStyleBtn: UIButton!
     
+    
+    var userAgreementHtml = ""
+    var privasyHtml = ""
+    
     var isAgreement = false
  
     @IBAction func agreementAction(_ sender: Any) {
@@ -132,14 +136,15 @@ class NewLoginController: BaseViewController,Requestable {
     
     func loadPrivateAndAbouutUs() {
         
-//        let requestParamsP = HomeAPI.privacyStatementAndParam()
-//        getRequest(pathAndParams: requestParamsP,showHUD: false)
-//
-//        let requestParamsA = HomeAPI.aboutUsPathAndParam()
-//        getRequest(pathAndParams: requestParamsA,showHUD: false)
-//
-//        let requestParamsU = HomeAPI.userAgreementAndParam()
-//        getRequest(pathAndParams: requestParamsU,showHUD: false)
+        let requestParamsP0 = HomeAPI.privacyUserAgreementPathAndParam(id:2)
+        getRequest(pathAndParams: requestParamsP0,showHUD: false)
+
+        let requestParamsP1 = HomeAPI.privacyUserAgreementPathAndParam(id:3)
+        getRequest(pathAndParams: requestParamsP1,showHUD: false)
+        
+        let requestParamsP2 = HomeAPI.privacyUserAgreementPathAndParam(id:4)
+        getRequest(pathAndParams: requestParamsP2,showHUD: false)
+       
     }
     
     
@@ -158,14 +163,16 @@ class NewLoginController: BaseViewController,Requestable {
         self.present(controller, animated: true, completion: nil)
     }
     @IBAction func privateAgreement(_ sender: Any) {
-//        let conroller = PrivateStatusViewController()
-//        self.present(conroller, animated: true, completion: nil)
+        let conroller = PrivateStatusViewController()
+        conroller.htmlString = privasyHtml
+        self.present(conroller, animated: true, completion: nil)
     }
      
     @IBAction func userAgreementAction(_ sender: Any) {
-      //  let conroller = PrivateStatusViewController()
-//        conroller.userAgreemrnt = true
-//        self.present(conroller, animated: true, completion: nil)
+        let conroller = PrivateStatusViewController()
+        conroller.htmlString = userAgreementHtml
+        //conroller.userAgreemrnt = true
+        self.present(conroller, animated: true, completion: nil)
     }
     
     @IBAction func loginBtnAction(_ sender: Any) {
@@ -270,6 +277,11 @@ class NewLoginController: BaseViewController,Requestable {
             verCodeBtn.isEnabled = false
             passwordTextF.placeholder = "请在5分钟内输入"
             verCode = responseResult["code"].stringValue
+        }else if requestPath.containsStr(find: "/api/danye/4"){
+            privasyHtml = responseResult["content"].stringValue
+        }
+        else if requestPath.containsStr(find: "/api/danye/3"){
+            userAgreementHtml = responseResult["content"].stringValue
         }
  
     }

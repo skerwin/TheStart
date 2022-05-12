@@ -47,26 +47,26 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-r1-cyI">
-                    <rect key="frame" x="315" y="28" width="79" height="31"/>
+                    <rect key="frame" x="257" y="28" width="137" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="bg9-j8-EF6"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="提现">
+                    <state key="normal" title="首次提现">
                         <color key="titleColor" red="0.94375187159999996" green="0.75826561449999996" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="cashBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="BXm-R7-7dj"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-W5-WK6">
-                    <rect key="frame" x="243" y="48" width="150.5" height="31"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-W5-WK6">
+                    <rect key="frame" x="15" y="28" width="150.5" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="31" id="0Pw-kD-1Gz"/>
+                        <constraint firstAttribute="height" constant="31" id="5zE-OW-tPc"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="提现中/已提现">
-                        <color key="titleColor" red="0.94375187159999996" green="0.75826561449999996" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="titleColor" red="0.96078431372549022" green="0.7803921568627451" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="cashDoneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="SlY-pN-O6E"/>
@@ -76,18 +76,18 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="aPA-W5-WK6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="0sy-My-8Ez"/>
                 <constraint firstItem="VIb-z6-Lcf" firstAttribute="top" secondItem="76i-G6-c6v" secondAttribute="bottom" constant="21" id="3HM-mU-tpp"/>
-                <constraint firstItem="Jja-r1-cyI" firstAttribute="leading" secondItem="pl7-Tc-xJ6" secondAttribute="trailing" constant="76.5" id="CR4-ut-Xqu"/>
+                <constraint firstItem="Jja-r1-cyI" firstAttribute="leading" secondItem="pl7-Tc-xJ6" secondAttribute="trailing" constant="18.5" id="CR4-ut-Xqu"/>
+                <constraint firstItem="aPA-W5-WK6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="EiL-xv-laL"/>
                 <constraint firstItem="VIb-z6-Lcf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="GGP-ix-prS"/>
-                <constraint firstItem="aPA-W5-WK6" firstAttribute="leading" secondItem="pl7-Tc-xJ6" secondAttribute="trailing" constant="4.5" id="HQh-gK-009"/>
-                <constraint firstItem="aPA-W5-WK6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="4" id="LBd-l5-o8e"/>
+                <constraint firstItem="pl7-Tc-xJ6" firstAttribute="leading" secondItem="aPA-W5-WK6" secondAttribute="trailing" constant="10" id="Qxu-wn-97i"/>
                 <constraint firstItem="lgA-F6-aJ7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="U6M-3o-BUz"/>
                 <constraint firstItem="Jja-r1-cyI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="ZOJ-HZ-poc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="76i-G6-c6v" secondAttribute="trailing" constant="15" id="Zjk-tY-7Wg"/>
                 <constraint firstItem="76i-G6-c6v" firstAttribute="top" secondItem="lgA-F6-aJ7" secondAttribute="bottom" constant="20" id="aC4-tc-AZg"/>
                 <constraint firstItem="76i-G6-c6v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="c3s-Tj-Buy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jja-r1-cyI" secondAttribute="trailing" constant="20" id="eV5-ju-gF7"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aPA-W5-WK6" secondAttribute="trailing" constant="20.5" id="kz0-fg-03X"/>
                 <constraint firstItem="pl7-Tc-xJ6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="osw-Qx-Ugh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lgA-F6-aJ7" secondAttribute="trailing" constant="50" id="rNY-jd-dJ5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VIb-z6-Lcf" secondAttribute="trailing" constant="30" id="rru-Lq-JKG"/>

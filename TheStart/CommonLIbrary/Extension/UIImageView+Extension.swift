@@ -28,17 +28,21 @@ extension UIImageView {
         if url == nil || url! == ""{
                   self.image = UIImage.init(named: "zhanweitu")
              }else{
-                 guard let imageUrl = URL.init(string:url!.urlEncoded()) else { return }
                  
+                 var PinUrl = url!
+                 
+                 
+                 if PinUrl.containsStr(find: "http"){
+                     
+                 }else{
+                     PinUrl = URLs.getHostAddress() + PinUrl
+                     print(PinUrl)
+                 }
+                 
+                 guard let imageUrl = URL.init(string:PinUrl.urlEncoded()) else { return }
                  let resource = ImageResource.init(downloadURL: imageUrl)
-                 
-                // self.sd_image(withGIFData: <#T##NSData?#>)
-                // self.sd_setImage(with: imageUrl)
-                 
                  self.kf.setImage(with: resource,placeholder: UIImage.init(named: "zhanweitu"),options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)])
-//                 self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
-//                 }
-                 //,options: [.transition(ImageTransition.fade(1))]
+  
              }
     }
     
@@ -108,3 +112,9 @@ extension UIImageView {
         }
     }
 }
+
+// self.sd_image(withGIFData: <#T##NSData?#>)
+// self.sd_setImage(with: imageUrl)
+//                 self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "zhanweitu"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
+//                 }
+//,options: [.transition(ImageTransition.fade(1))]

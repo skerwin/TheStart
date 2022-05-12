@@ -37,7 +37,7 @@ class JobBaseInfo: UIView {
     func configModel(model:JobModel){
         headImg.displayImageWithURL(url: model.avatar)
         nameLabel.text = model.nickname
-        if model.is_shiming == 1{
+        if model.is_shiming == 2{
             isAuthLabel.text = "已实名"
         }else{
             isAuthLabel.text = "未实名"

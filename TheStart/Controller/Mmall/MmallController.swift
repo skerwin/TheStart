@@ -16,8 +16,7 @@ class MmallController: BaseViewController {
     var controllerArray : [UIViewController] = []
     var controller1:MuiscListController!
     var controller2:AuthorViewController!
-    var controller3:AuthorViewController!
-    
+ 
  
  
     var pageMenuController: PMKPageMenuController? = nil
@@ -38,9 +37,7 @@ class MmallController: BaseViewController {
         controller2.title = "作者"
         controller2.parentNavigationController = self.navigationController
        
-        controller3 = AuthorViewController()
-        controller3.title = "作1者"
-        
+ 
         toTopHeight = navigationHeaderAndStatusbarHeight
         
         

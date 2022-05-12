@@ -10,6 +10,8 @@ import SwiftyJSON
  
 class JobListViewController: BaseViewController,Requestable {
 
+    var parentNavigationController: UINavigationController?
+    
     var tableView:UITableView!
     
     var dataList = [JobModel]()
@@ -18,10 +20,7 @@ class JobListViewController: BaseViewController,Requestable {
     var workCateList = [DictModel]()
     let genderList = ["不限","男","女"]
     var addressList = [AddressModel]()
- 
     var dropView:DOPDropDownMenu!
-        
-    
     var type = 1 //牛人列表
     var cate_id = 0
     var salary = 0
@@ -29,7 +28,9 @@ class JobListViewController: BaseViewController,Requestable {
     var keyword = ""
     var gender = ""
     var rightBarButton:UIButton!
-    
+    var isFromMine = false
+    var isMypub = false
+    var isMyCollect = false
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -39,16 +40,30 @@ class JobListViewController: BaseViewController,Requestable {
         super.viewDidLoad()
         loadData()
         loadCityJson()
-        createRightNavItem()
-        initDropView()
+        if isFromMine {
+        }else{
+            createRightNavItem()
+            initDropView()
+        }
+       
         initTableView()
         self.title = "职位列表"
         // Do any additional setup after loading the view.
     }
     
     func  loadData(){
-         let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
-         getRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+        if isMypub {
+            let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type:type)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else if isMyCollect{
+            let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else{
+            let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }
+      
     }
     
     func createRightNavItem() {
@@ -56,7 +71,6 @@ class JobListViewController: BaseViewController,Requestable {
         rightBarButton = UIButton.init()
         let bgview = UIView.init()
  
-            
         rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
         rightBarButton.setTitle("我要求职", for: .normal)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
@@ -156,7 +170,12 @@ class JobListViewController: BaseViewController,Requestable {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48), style: .plain)
+        if isFromMine{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
+        }else{
+            tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48), style: .plain)
+        }
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -183,13 +202,29 @@ class JobListViewController: BaseViewController,Requestable {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
         
-        
-        let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
+        if requestPath.containsStr(find: HomeAPI.collectJobWorkerListPath){
+            let list:[JobModel]  = getArrayFromJson(content: responseResult)
 
-        dataList.append(contentsOf: list)
-        if list.count < 10 {
-            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+        } else if requestPath.containsStr(find: HomeAPI.myJobWorkerListPath){
+            let list:[JobModel]  = getArrayFromJson(content: responseResult)
+
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+        }else{
+            let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
+
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
         }
+     
         self.tableView.reloadData()
     }
     
@@ -251,6 +286,11 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
     {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobViewCell", for: indexPath) as! JobViewCell
+        if isFromMine{
+            cell.communiteBtn.isHidden = true
+        }else{
+            cell.communiteBtn.isHidden = false
+        }
         cell.delegate = self
         cell.model = dataList[indexPath.row]
         cell.selectionStyle = .none

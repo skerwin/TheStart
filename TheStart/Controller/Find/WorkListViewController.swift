@@ -10,6 +10,8 @@ import SwiftyJSON
 
 class WorkListViewController: BaseViewController,Requestable  {
 
+    
+    var parentNavigationController: UINavigationController?
     var tableView:UITableView!
     
     var dataList = [JobModel]()
@@ -30,6 +32,10 @@ class WorkListViewController: BaseViewController,Requestable  {
     var gender = ""
     var rightBarButton:UIButton!
     
+    var isFromMine = false
+    var isMypub = false
+    var isMyCollect = false
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -38,16 +44,29 @@ class WorkListViewController: BaseViewController,Requestable  {
     override func viewDidLoad() {
         loadData()
         loadCityJson()
-        createRightNavItem()
-        initDropView()
+        if isFromMine {
+        }else{
+            createRightNavItem()
+            initDropView()
+        }
         initTableView()
         self.title = "求职列表"
         // Do any additional setup after loading the view.
     }
     
     func  loadData(){
-         let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
-         getRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+        if isMypub {
+            let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type:type)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else if isMyCollect{
+            let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else{
+            let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }
+       
     }
     
     
@@ -150,8 +169,11 @@ class WorkListViewController: BaseViewController,Requestable  {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48), style: .plain)
-        
+        if isFromMine{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
+        }else{
+            tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48), style: .plain)
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main
@@ -177,12 +199,27 @@ class WorkListViewController: BaseViewController,Requestable  {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
         
-        
-        let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
+        if requestPath.containsStr(find: HomeAPI.collectJobWorkerListPath){
+            let list:[JobModel]  = getArrayFromJson(content: responseResult)
 
-        dataList.append(contentsOf: list)
-        if list.count < 10 {
-            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+        } else if requestPath.containsStr(find: HomeAPI.myJobWorkerListPath){
+            let list:[JobModel]  = getArrayFromJson(content: responseResult)
+
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+        }else{
+            let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
+
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
         }
         self.tableView.reloadData()
     }
@@ -221,6 +258,11 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerViewCell", for: indexPath) as! WorkerViewCell
         cell.model = dataList[indexPath.row]
+        if isFromMine{
+            cell.communiteBtn.isHidden = true
+        }else{
+            cell.communiteBtn.isHidden = false
+        }
         cell.delegate = self
         cell.selectionStyle = .none
         return cell

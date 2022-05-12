@@ -28,9 +28,14 @@ class MusicDetailController: BaseViewController,Requestable{
     
     var dataModel = AudioModel()
     
+    var rightBarButton:UIButton!
+    
+    var isCollect = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "音乐详情"
+        createRightNavItem() 
         loadData()
         initHeadView()
         initFooterView()
@@ -42,6 +47,42 @@ class MusicDetailController: BaseViewController,Requestable{
         getRequest(pathAndParams: requestParams,showHUD:false)
     }
     
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+        rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+        
+        rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+    }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        
+        if isCollect == 1{
+            let requestParams = HomeAPI.delAudioCollectPathAndParams(id: dateID)
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }else{
+            let requestParams = HomeAPI.audioCollectPathAndParams(id: dateID)
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }
+     }
+    func changeCollectBtn(){
+        if isCollect == 1{
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+        }else{
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+        }
+    }
+    
+    
     override func onFailure(responseCode: String, description: String, requestPath: String) {
      }
 
@@ -51,9 +92,23 @@ class MusicDetailController: BaseViewController,Requestable{
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         
-        dataModel = Mapper<AudioModel>().map(JSONObject: responseResult.rawValue)
-        headView.configModel(model: dataModel!)
-         self.tableView.reloadData()
+        if requestPath == HomeAPI.audioCollectPath{
+            isCollect = responseResult["if_collect"].intValue
+            changeCollectBtn()
+            showOnlyTextHUD(text: "收藏成功")
+        }else if requestPath == HomeAPI.delAudioCollectPath{
+            isCollect = responseResult["if_collect"].intValue
+            changeCollectBtn()
+            showOnlyTextHUD(text: "取消收藏成功")
+        }else{
+            dataModel = Mapper<AudioModel>().map(JSONObject: responseResult.rawValue)
+            headView.configModel(model: dataModel!)
+             self.tableView.reloadData()
+            isCollect = dataModel!.userCollect
+            changeCollectBtn()
+        }
+        
+      
     }
     
     func initHeadView(){

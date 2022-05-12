@@ -17,8 +17,24 @@ struct HomeAPI {
     static let imageUpLoadUrl       = "/api/upload/image"
     
     
+    static let privacyUserAgreementPath = "/api/danye/"
+    static func privacyUserAgreementPathAndParam(id:Int) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+ 
+        let urlPath = URLs.getHostAddress() + privacyUserAgreementPath + "\(id)"
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
     
    
+    static let userinfoPath = "/api/userinfo"
+    static func userinfoPathAndParam() -> PathAndParams {
+ 
+        let urlPath = URLs.getHostAddress() + userinfoPath
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+ 
     
     //工种
     static let homePath = "/api/index/index"
@@ -160,6 +176,49 @@ struct HomeAPI {
         let urlPath = URLs.getHostAddress() + workDetailPath + "\(id)"
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
+    
+    //找人找厂收藏
+    static let workCollectPath = "/api/work/collect/add"
+    static func workCollectPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+ 
+         return (workCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    //找人找厂取消收藏
+    static let delWorkCollectPath = "/api/work/collect/del"
+    static func delWorkCollectPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+ 
+         return (delWorkCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //音乐收藏
+    static let audioCollectPath = "/api/audio/collect/add"
+    static func audioCollectPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+ 
+         return (audioCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    //音乐取消收藏
+    static let delAudioCollectPath = "/api/audio/collect/del"
+    static func delAudioCollectPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+ 
+         return (delAudioCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    
     
     //音乐详情
     static let audioDetailPath = "/api/audio/details/"
@@ -353,6 +412,104 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
+    
+    //我的厂招人列表
+    static let myJobWorkerListPath = "/api/work/index"
+    static func myJobWorkerListPathAndParams(type:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["type"] = type as AnyObject
+        paramsDictionary["page"] = 1 as AnyObject
+        paramsDictionary["limit"] = 10 as AnyObject
+   
+         let urlPath = generateUrlWithParams(paramsDictionary,path: myJobWorkerListPath)
+         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    //我的收藏厂招人列表
+    static let collectJobWorkerListPath = "/api/work/collect/user"
+    static func collectJobWorkerListPathAndParams(type:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["type"] = type as AnyObject
+        paramsDictionary["page"] = 1 as AnyObject
+        paramsDictionary["limit"] = 10 as AnyObject
+   
+         let urlPath = generateUrlWithParams(paramsDictionary,path: collectJobWorkerListPath)
+         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    //我的收藏音乐
+    static let collectaudioListPath = "/api/audio/collect/user"
+    static func collectaudioListPathAndParams() -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = 1 as AnyObject
+        paramsDictionary["limit"] = 10 as AnyObject
+   
+         let urlPath = generateUrlWithParams(paramsDictionary,path: collectaudioListPath)
+         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    
+    //下线
+    static let showMyJobWorkerPath = "/api/work/set/show"
+    static func ShowMyJobWorkerPathAndParams(dateID:Int,status:Int) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = dateID as AnyObject
+        paramsDictionary["status"] = status as AnyObject
+         return (showMyJobWorkerPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    //删除
+    static let delMyJobWorkerPath = "/api/work/del"
+    static func delMyJobWorkerPathAndParams(dateID:Int) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = dateID as AnyObject
+         return (delMyJobWorkerPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    //我的黑人发布
+    static let myArticleListPath = "/api/article/article/list"
+    static func myArticleListPathAndParams() -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = 1 as AnyObject
+        paramsDictionary["limit"] = 10 as AnyObject
+   
+         let urlPath = generateUrlWithParams(paramsDictionary,path: myArticleListPath)
+         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    //我的音乐发布
+    static let myaudioListPath = "/api/audio/index"
+    static func myaudioListPathAndParams() -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = 1 as AnyObject
+        paramsDictionary["limit"] = 10 as AnyObject
+   
+         let urlPath = generateUrlWithParams(paramsDictionary,path: myaudioListPath)
+         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    
+    //编辑个人信息
+    static let userEditPath = "/api/user/edit"
+    static func userEditPathAndParams(model:UserModel) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["nickname"] = model.nickname as AnyObject
+        paramsDictionary["pone"] = model.phone as AnyObject
+        paramsDictionary["avatar"] = model.avatar as AnyObject
+        paramsDictionary["address"] = model.addres as AnyObject
+        
+         return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+
 
     static let testPath = "/api/work/list"
     static func testPathAndParams() -> PathAndParams {

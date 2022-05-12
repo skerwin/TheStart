@@ -43,7 +43,7 @@ struct JobModel : Mappable {
     
     
     var uid = 0
-    var is_collect = ""
+    var is_collect = 0
     
     init?(map: Map) {
         

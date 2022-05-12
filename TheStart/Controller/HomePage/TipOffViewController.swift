@@ -13,12 +13,18 @@ import MJRefresh
 class TipOffViewController: BaseViewController,Requestable {
 
     
+    
+    var parentNavigationController: UINavigationController?
     var tableView:UITableView!
     
     var dataList = [TipOffModel]()
         
     var pubBtn:UIButton!
     var type = 1
+    
+    var isFromMine = false
+    var isMypub = false
+    var isMyCollect = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +62,17 @@ class TipOffViewController: BaseViewController,Requestable {
     }
     
     func loadData(){
-        let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
-        getRequest(pathAndParams: requestParams,showHUD:false)
+        if isMypub {
+            let pathAndParams = HomeAPI.myArticleListPathAndParams()
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else if isMyCollect{
+        
+        }else{
+            let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+            getRequest(pathAndParams: requestParams,showHUD:false)
+        }
+       
+     
 
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -81,9 +96,13 @@ class TipOffViewController: BaseViewController,Requestable {
     }
     
     func initTableView(){
-        
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
-        
+
+        if isFromMine{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
+        }else{
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main

@@ -28,9 +28,14 @@ class JobInfoViewController: BaseViewController,Requestable{
     
     var dataModel = JobModel()
     
+    var rightBarButton:UIButton!
+    
+    var isCollect = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "职位详情"
+        createRightNavItem()
         loadData()
         initHeadView()
         initFooterView()
@@ -42,6 +47,41 @@ class JobInfoViewController: BaseViewController,Requestable{
         getRequest(pathAndParams: requestParams,showHUD:false)
     }
     
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+        rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+        
+        rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+    }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        
+        if isCollect == 1{
+            let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }else{
+            let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }
+     }
+    func changeCollectBtn(){
+        if isCollect == 1{
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+        }else{
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+        }
+    }
+    
     override func onFailure(responseCode: String, description: String, requestPath: String) {
      }
 
@@ -50,9 +90,22 @@ class JobInfoViewController: BaseViewController,Requestable{
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+
+        if requestPath == HomeAPI.workCollectPath{
+            isCollect = responseResult["if_collect"].intValue
+            changeCollectBtn()
+            showOnlyTextHUD(text: "收藏成功")
+        }else if requestPath == HomeAPI.delWorkCollectPath{
+            isCollect = responseResult["if_collect"].intValue
+            changeCollectBtn()
+            showOnlyTextHUD(text: "取消收藏成功")
+        }else{
+            dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
+            headView.configModel(model: dataModel!)
+            isCollect = dataModel!.is_collect
+            changeCollectBtn()
+        }
         
-        dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
-        headView.configModel(model: dataModel!)
         // bottoomView.configModel(model: dataModel!)
          self.tableView.reloadData()
     }

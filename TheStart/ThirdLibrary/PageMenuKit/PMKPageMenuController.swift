@@ -81,6 +81,8 @@ public class PMKPageMenuController: UIViewController, UIScrollViewDelegate
   private var itemMargin: CGFloat = 0.0
   private var separatorHeight: CGFloat = kSeparatorHeight
   private var indicatorHeight: CGFloat = kIndicatorHeight
+    
+  private var itemWidth: CGFloat = 90
 
   private var menuSeparator: CALayer = {
     let layer: CALayer = CALayer()
@@ -137,6 +139,13 @@ public class PMKPageMenuController: UIViewController, UIScrollViewDelegate
                       : 0
     self.topBarHeight = topBarHeight
     self.currentIndex = 0
+      
+      if controllers.count == 2{
+          self.itemWidth = screenWidth/2 - 20
+      }else{
+          self.itemWidth = screenWidth/CGFloat(controllers.count) - 10
+      }
+    
 
     self.childControllers = controllers
 
@@ -225,14 +234,14 @@ public class PMKPageMenuController: UIViewController, UIScrollViewDelegate
     self.willMoveIndicator(at: index)
   
     // そのあとタブの装飾をする
-    let w: CGFloat = kMenuItemWidth + itemMargin
+    let w: CGFloat = self.itemWidth + itemMargin
     let x: CGFloat = w * CGFloat(index)
 
     let item: PMKPageMenuItem = self.menuItems[index]
     switch (menuStyle) {
       case .plain, .suite:
         var frame: CGRect = menuIndicator.frame
-        frame.origin.x = x + (kMenuItemWidth - kIndicatorWidth)/2
+        frame.origin.x = x + (self.itemWidth - kIndicatorWidth)/2
         menuIndicator.frame = frame
       case .tab:
         menuSeparator.backgroundColor = item.color.cgColor
@@ -250,7 +259,7 @@ public class PMKPageMenuController: UIViewController, UIScrollViewDelegate
   }
 
   func willMoveIndicator(at index: Int) {
-    let w: CGFloat = kMenuItemWidth + itemMargin
+    let w: CGFloat = self.itemWidth + itemMargin
     var x: CGFloat = w * CGFloat(index)
     let y: CGFloat = 0.0
 
@@ -397,7 +406,7 @@ extension PMKPageMenuController
     let y: CGFloat = menuStyle == .smart || menuStyle == .hacka
                    ? kSmartTabMargin
                    : 0.0
-    let w: CGFloat = kMenuItemWidth
+    let w: CGFloat = self.itemWidth
     let h: CGFloat = kMenuItemHeight - y
 
     let count: Int = self.titles.count

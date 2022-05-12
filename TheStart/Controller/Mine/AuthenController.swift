@@ -52,9 +52,8 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     
     
     var isFormMine = false
-    
-    
     var isAddressPicker = true
+    
     
     lazy var profileActionController: UIAlertController = UIAlertController.init(title: "选择照片", message: "", preferredStyle: .actionSheet)
     

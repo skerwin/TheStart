@@ -13,11 +13,16 @@ import MJRefresh
 
 class MuiscListController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate,Requestable {
 
-    var row_Count = 3
     
     var parentNavigationController: UINavigationController?
+    var row_Count = 3
+    
     var dataList = [AudioModel]()
     var pubBtn:UIButton!
+    
+    var isFromMine = false
+    var isMypub = false
+    var isMyCollect = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         flowLayout.minimumLineSpacing = 3
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
         let collectionViewY = UIDevice.navigationBarHeight
+        
         collectionView.frame = CGRect(
             x: 0,
             y: 10,
@@ -43,8 +49,18 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     }
     
     func loadData(){
-        let requestParams = HomeAPI.audioListPathAndParams(page: 1, limit: 20)
-        getRequest(pathAndParams: requestParams,showHUD:false)
+        
+        if isMypub {
+            let pathAndParams = HomeAPI.myaudioListPathAndParams()
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else if isMyCollect{
+            let pathAndParams = HomeAPI.collectaudioListPathAndParams()
+            getRequest(pathAndParams: pathAndParams,showHUD: false)
+        }else{
+            let requestParams = HomeAPI.audioListPathAndParams(page: 1, limit: 20)
+            getRequest(pathAndParams: requestParams,showHUD:false)
+        }
+     
 
     }
     

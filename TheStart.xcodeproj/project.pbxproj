@@ -15,6 +15,16 @@
 		B802E22F282A45C200B5057A /* CashOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E22D282A45C200B5057A /* CashOutCell.xib */; };
 		B802E231282A47DC00B5057A /* CashOutHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E230282A47DC00B5057A /* CashOutHeader.swift */; };
 		B802E233282A47F200B5057A /* CashOutHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E232282A47F200B5057A /* CashOutHeader.xib */; };
+		B802E236282B44FB00B5057A /* VipCenterHeader1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E234282B44FB00B5057A /* VipCenterHeader1.swift */; };
+		B802E237282B44FB00B5057A /* VipCenterHeader1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E235282B44FB00B5057A /* VipCenterHeader1.xib */; };
+		B802E23C282B456100B5057A /* VipCenterHeader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E23A282B456100B5057A /* VipCenterHeader2.swift */; };
+		B802E23D282B456100B5057A /* VipCenterHeader2.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E23B282B456100B5057A /* VipCenterHeader2.xib */; };
+		B802E23F282B638000B5057A /* 120icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B802E23E282B638000B5057A /* 120icon.png */; };
+		B802E243282B67C800B5057A /* PrivateStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E242282B67C800B5057A /* PrivateStatusViewController.swift */; };
+		B802E245282BF1EC00B5057A /* MyToPubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E244282BF1EC00B5057A /* MyToPubController.swift */; };
+		B802E247282BF76800B5057A /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E246282BF76800B5057A /* MyOrderViewController.swift */; };
+		B802E249282BF7B700B5057A /* SellOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E248282BF7B700B5057A /* SellOrderViewController.swift */; };
+		B802E24B282BF7CA00B5057A /* BuyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */; };
 		B81420C82828B09400B4F6B5 /* MusicDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */; };
 		B81420CA2828B0A800B4F6B5 /* MusicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */; };
 		B81420CE2828E71000B4F6B5 /* AuthorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */; };
@@ -309,6 +319,16 @@
 		B802E22D282A45C200B5057A /* CashOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashOutCell.xib; sourceTree = "<group>"; };
 		B802E230282A47DC00B5057A /* CashOutHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutHeader.swift; sourceTree = "<group>"; };
 		B802E232282A47F200B5057A /* CashOutHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashOutHeader.xib; sourceTree = "<group>"; };
+		B802E234282B44FB00B5057A /* VipCenterHeader1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipCenterHeader1.swift; sourceTree = "<group>"; };
+		B802E235282B44FB00B5057A /* VipCenterHeader1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VipCenterHeader1.xib; sourceTree = "<group>"; };
+		B802E23A282B456100B5057A /* VipCenterHeader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipCenterHeader2.swift; sourceTree = "<group>"; };
+		B802E23B282B456100B5057A /* VipCenterHeader2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VipCenterHeader2.xib; sourceTree = "<group>"; };
+		B802E23E282B638000B5057A /* 120icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120icon.png; sourceTree = "<group>"; };
+		B802E242282B67C800B5057A /* PrivateStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateStatusViewController.swift; sourceTree = "<group>"; };
+		B802E244282BF1EC00B5057A /* MyToPubController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyToPubController.swift; sourceTree = "<group>"; };
+		B802E246282BF76800B5057A /* MyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
+		B802E248282BF7B700B5057A /* SellOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellOrderViewController.swift; sourceTree = "<group>"; };
+		B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrderViewController.swift; sourceTree = "<group>"; };
 		B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailHeader.swift; sourceTree = "<group>"; };
 		B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicDetailHeader.xib; sourceTree = "<group>"; };
 		B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailController.swift; sourceTree = "<group>"; };
@@ -689,6 +709,10 @@
 			children = (
 				B85FDA6A2824B9B500EDA845 /* MineStarCoinHeder.swift */,
 				B85FDA6B2824B9B500EDA845 /* MineStarCoinHeder.xib */,
+				B802E234282B44FB00B5057A /* VipCenterHeader1.swift */,
+				B802E235282B44FB00B5057A /* VipCenterHeader1.xib */,
+				B802E23A282B456100B5057A /* VipCenterHeader2.swift */,
+				B802E23B282B456100B5057A /* VipCenterHeader2.xib */,
 				B85FDA762824BFCD00EDA845 /* MyStarCollectionViewCell.swift */,
 				B85FDA772824BFCD00EDA845 /* MyStarCollectionViewCell.xib */,
 				B85FDA7A2824BFF700EDA845 /* MyVipCenterCell.swift */,
@@ -1076,6 +1100,7 @@
 		B8AC500F2807C5A200C2CF26 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B802E23E282B638000B5057A /* 120icon.png */,
 				B85FDA7E28250B1500EDA845 /* launch.png */,
 				B85FDA682824B76800EDA845 /* test.png */,
 				B8AD4025281B875F0001D7F4 /* 111222.jpg */,
@@ -1178,6 +1203,7 @@
 		B8AC50462807C87800C2CF26 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B802E242282B67C800B5057A /* PrivateStatusViewController.swift */,
 				B85FAFCD280FF2E100D25B66 /* PersonsInfoController.swift */,
 				B83C63A2280D6DDF00A3282D /* MineViewController.swift */,
 				B8AE0315282A000D00FBE3B7 /* AuthenController.swift */,
@@ -1191,6 +1217,10 @@
 				B85FDA742824BCB500EDA845 /* MyCollectViewController.swift */,
 				B802E226282A389200B5057A /* CashOutViewController.swift */,
 				B802E22A282A458400B5057A /* CashOutStutateController.swift */,
+				B802E244282BF1EC00B5057A /* MyToPubController.swift */,
+				B802E246282BF76800B5057A /* MyOrderViewController.swift */,
+				B802E248282BF7B700B5057A /* SellOrderViewController.swift */,
+				B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1401,6 +1431,7 @@
 				B85FAFA3280F05D400D25B66 /* JobViewCell.xib in Resources */,
 				B8AB69F42809985A0064861C /* TipOffHeaderView.xib in Resources */,
 				B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */,
+				B802E237282B44FB00B5057A /* VipCenterHeader1.xib in Resources */,
 				B85FAFBF280FAFFD00D25B66 /* Loading_7@2x.tiff in Resources */,
 				B8AE0322282A08A500FBE3B7 /* MusicAuthorHeader.xib in Resources */,
 				B85FAFC0280FAFFD00D25B66 /* Loading_6@2x.tiff in Resources */,
@@ -1414,11 +1445,13 @@
 				B83C6362280C050900A3282D /* TipOffListCell.xib in Resources */,
 				B8AD401D281AB5680001D7F4 /* HomeRankHeaderView.xib in Resources */,
 				B8AC4FE32807BE4200C2CF26 /* Main.storyboard in Resources */,
+				B802E23D282B456100B5057A /* VipCenterHeader2.xib in Resources */,
 				B83C6380280CFC4300A3282D /* WorkerImgCell.xib in Resources */,
 				B8AD4012281A7D920001D7F4 /* SuperManCell.xib in Resources */,
 				B8AB69CC28081C800064861C /* Home.storyboard in Resources */,
 				B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */,
 				B85FAFBE280FAFFD00D25B66 /* Loading_5@2x.tiff in Resources */,
+				B802E23F282B638000B5057A /* 120icon.png in Resources */,
 				B85FAF96280E9FB900D25B66 /* AuthorViewCell.xib in Resources */,
 				B8AD4037281C008B0001D7F4 /* TipOffAddressView.xib in Resources */,
 			);
@@ -1577,6 +1610,7 @@
 				B83C6376280CF44E00A3282D /* WorkerBaseInfo.swift in Sources */,
 				B8AB69D9280904FA0064861C /* TipOffViewController.swift in Sources */,
 				B8AC503C2807C60E00C2CF26 /* UIColor+Ext.swift in Sources */,
+				B802E243282B67C800B5057A /* PrivateStatusViewController.swift in Sources */,
 				B8AC4FE02807BE4200C2CF26 /* ViewController.swift in Sources */,
 				B8AB69FD280A9FBF0064861C /* testCell.swift in Sources */,
 				B85FAFD32810076000D25B66 /* WebSocketManager.swift in Sources */,
@@ -1685,6 +1719,7 @@
 				B85FB00F28116A8300D25B66 /* MyTextView.swift in Sources */,
 				B85FB00C28116A8300D25B66 /* ChatVideoCell.swift in Sources */,
 				B85FB01228116A8300D25B66 /* ChatAudioCell.swift in Sources */,
+				B802E24B282BF7CA00B5057A /* BuyOrderViewController.swift in Sources */,
 				B83C6350280AD6C200A3282D /* ResultAddViewCell.swift in Sources */,
 				B85FDA672823E36200EDA845 /* AuthorModel.swift in Sources */,
 				B8AD4062282283790001D7F4 /* PubMediaCellVod.swift in Sources */,
@@ -1710,12 +1745,15 @@
 				B8AE031E282A05B800FBE3B7 /* MusicAuthorVideoHeader.swift in Sources */,
 				B8AC504A2807C91E00C2CF26 /* MessageController.swift in Sources */,
 				B85FAF95280E9FB900D25B66 /* AuthorViewCell.swift in Sources */,
+				B802E236282B44FB00B5057A /* VipCenterHeader1.swift in Sources */,
 				B8AC50942807CF6B00C2CF26 /* UIStoryboard+Extension.swift in Sources */,
 				B85FDA602823BB3800EDA845 /* PMKPageMenuItemSuite.swift in Sources */,
 				B8AD404D281EE1550001D7F4 /* ActionSheetViewController.swift in Sources */,
 				B85FDA592823BB3800EDA845 /* PMKPageMenuItem.swift in Sources */,
+				B802E245282BF1EC00B5057A /* MyToPubController.swift in Sources */,
 				B802E227282A389200B5057A /* CashOutViewController.swift in Sources */,
 				B81420C82828B09400B4F6B5 /* MusicDetailHeader.swift in Sources */,
+				B802E249282BF7B700B5057A /* SellOrderViewController.swift in Sources */,
 				B802E231282A47DC00B5057A /* CashOutHeader.swift in Sources */,
 				B8AB69D4280901490064861C /* reCommentCell.swift in Sources */,
 				B85FDA562823BB3800EDA845 /* PMKPageMenuControllerDelegate.swift in Sources */,
@@ -1723,6 +1761,7 @@
 				B85FAF91280E9F9D00D25B66 /* MusicViewCell.swift in Sources */,
 				B83C6387280D0B0300A3282D /* BaseImageBrowserCell.swift in Sources */,
 				B8AB69F028097E350064861C /* ChatBarView.swift in Sources */,
+				B802E247282BF76800B5057A /* MyOrderViewController.swift in Sources */,
 				B85FDA732824BC7A00EDA845 /* MyPubViewController.swift in Sources */,
 				B85FDA572823BB3800EDA845 /* PMKPageMenuController.swift in Sources */,
 				B85FDA7C2824BFF700EDA845 /* MyVipCenterCell.swift in Sources */,
@@ -1735,6 +1774,7 @@
 				B8AD4021281B7D410001D7F4 /* HomeJobCell.swift in Sources */,
 				B8AD4031281B94210001D7F4 /* TipOffMenuPageController.swift in Sources */,
 				B8AC50242807C60500C2CF26 /* Constants.swift in Sources */,
+				B802E23C282B456100B5057A /* VipCenterHeader2.swift in Sources */,
 				B8AC503D2807C60E00C2CF26 /* CheckoutUtils.swift in Sources */,
 				B802E22B282A458400B5057A /* CashOutStutateController.swift in Sources */,
 				B83C6361280C050900A3282D /* TipOffListCell.swift in Sources */,
@@ -1949,7 +1989,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DevQiChengPro;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220207;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1990,7 +2030,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DevQiChengPro;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220207;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

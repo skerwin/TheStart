@@ -34,7 +34,13 @@ class HomeJobCell: UITableViewCell {
     var model:JobModel? {
         didSet {
             titleLabel.text = model?.title
-            needsLabel.text = model!.cate + "   " + model!.gender
+            if model!.gender == "保密" || model!.gender == "不限"{
+                needsLabel.text = model!.cate
+            }else{
+                needsLabel.text = model!.cate + "   " + model!.gender
+            }
+            
+            
             //model?.cateValue + model?.gender
             headImg.displayImageWithURL(url: model?.avatar)
             nameLabel.text = model?.nickname

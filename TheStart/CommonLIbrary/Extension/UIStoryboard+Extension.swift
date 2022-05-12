@@ -66,6 +66,12 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
     }
     
+    class func getMyToPubController() -> MyToPubController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "MyToPubController") as! MyToPubController
+    }
+    
+    
     
 }
 

@@ -12,7 +12,7 @@ import ObjectMapper
 import SDCycleScrollView
 import UIKit
 
-class MineViewController: BaseTableController{
+class MineViewController: BaseTableController,Requestable{
     
     
     @IBOutlet weak var guideCellBgView: UIView!
@@ -28,10 +28,12 @@ class MineViewController: BaseTableController{
     
     @IBOutlet weak var VipCenterVIew: UIView!
     
+    var usermodel = UserModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadData()
         addGestureRecognizerIgnoreTableView(view: pubView, target: self, actionName: "pubViewAction")
         addGestureRecognizerIgnoreTableView(view: collectView, target: self, actionName: "collectViewAction")
         addGestureRecognizerIgnoreTableView(view: VipCenterVIew, target: self, actionName: "VipCenterVIewAction")
@@ -44,6 +46,45 @@ class MineViewController: BaseTableController{
         }
         tableView.separatorColor = UIColor.gray
         self.tableView.tableFooterView = UIView()
+        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
+        tableView.mj_header = addressHeadRefresh
+        
+        
+        headImg.layer.cornerRadius = 29;
+        headImg.layer.masksToBounds = true
+    }
+    
+    
+    @objc func refreshList() {
+        loadData()
+     }
+    func loadData(){
+        let requestParams = HomeAPI.userinfoPathAndParam()
+        getRequest(pathAndParams: requestParams,showHUD:false)
+
+    }
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+     }
+
+
+    
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        tableView.mj_header?.endRefreshing()
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        
+         usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
+         nameLabel.text = usermodel?.nickname
+         if usermodel?.is_shiming == 2{
+            isAuthon.image = UIImage.init(named: "yirenzheng")
+         }else{
+            isAuthon.image = UIImage.init(named: "weirenzheng")
+         }
+      
+         
+         headImg.displayImageWithURL(url: usermodel?.avatar_check)
+        
+         self.tableView.reloadData()
     }
     
     @objc private func pubViewAction() {
@@ -61,6 +102,7 @@ class MineViewController: BaseTableController{
  
     @IBAction func editPersons(_ sender: Any) {
         let controller = UIStoryboard.getPersonsInfoController()
+        controller.userModel = self.usermodel
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -124,19 +166,25 @@ class MineViewController: BaseTableController{
         }
         
         else if indexPath.row == 3{
-            let controller = WorkerPubViewController()
-            controller.pubType = 2
+            let controller = UIStoryboard.getMyToPubController()
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+        else if indexPath.row == 4{
+            let controller = MyOrderViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
         }
         
-        else if indexPath.row == 4{
-            let controller = PubMusicController()
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
         
         else if indexPath.row == 5{
             let controller = UIStoryboard.getFeedBackController()
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
+        else if indexPath.row == 6{
+            
+          
+          
         }
  
         

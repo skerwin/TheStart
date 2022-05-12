@@ -195,7 +195,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     
     
     func uploadPhoto(filePath: [URL]) {
-        DialogueUtils.showWithStatus("正在上传")
+       
     
         HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { [self] (content) -> Void in
             
@@ -603,6 +603,8 @@ extension TipOffPostViewController: PhotoPickerControllerDelegate {
     
     /// 选择完成之后调用
     func pickerController(_ pickerController: PhotoPickerController, didFinishSelection result: PickerResult) {
+        
+        DialogueUtils.showWithStatus("正在上传")
         selectedAssets = result.photoAssets
         isOriginal = result.isOriginal
         imageCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! TipOffPostIImgCell

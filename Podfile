@@ -49,6 +49,11 @@ target 'TheStart' do
  # websocket
  pod 'Starscream', '~> 4.0.0'
  
+ # 微信支付
+ pod 'WechatOpenSDK'
+ # 支付宝支付
+ pod 'AlipaySDK-iOS'
+ 
   # Pods for TheStart
   
   target 'TheStartTests' do

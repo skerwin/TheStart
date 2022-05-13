@@ -31,12 +31,14 @@ class JobListViewController: BaseViewController,Requestable {
     var isFromMine = false
     var isMypub = false
     var isMyCollect = false
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         loadData()
         loadCityJson()

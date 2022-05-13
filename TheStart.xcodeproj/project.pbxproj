@@ -25,6 +25,20 @@
 		B802E247282BF76800B5057A /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E246282BF76800B5057A /* MyOrderViewController.swift */; };
 		B802E249282BF7B700B5057A /* SellOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E248282BF7B700B5057A /* SellOrderViewController.swift */; };
 		B802E24B282BF7CA00B5057A /* BuyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */; };
+		B802E252282DF12900B5057A /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E251282DF12800B5057A /* PayModel.swift */; };
+		B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E253282DF1EE00B5057A /* PaySDK.swift */; };
+		B802E256282E09DB00B5057A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E255282E09DB00B5057A /* libc++.tbd */; };
+		B802E258282E0A1100B5057A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E257282E0A1100B5057A /* libz.tbd */; };
+		B802E25A282E0A2200B5057A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E259282E0A2200B5057A /* SystemConfiguration.framework */; };
+		B802E25C282E0A2A00B5057A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E25B282E0A2A00B5057A /* CoreTelephony.framework */; };
+		B802E25E282E0A3700B5057A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E25D282E0A3700B5057A /* QuartzCore.framework */; };
+		B802E260282E0A4100B5057A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E25F282E0A4100B5057A /* CoreText.framework */; };
+		B802E262282E0A4800B5057A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E261282E0A4800B5057A /* CoreGraphics.framework */; };
+		B802E264282E0A5F00B5057A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E263282E0A5F00B5057A /* UIKit.framework */; };
+		B802E265282E0A6500B5057A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85FAFC9280FD61600D25B66 /* Foundation.framework */; };
+		B802E267282E0A6C00B5057A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E266282E0A6C00B5057A /* CFNetwork.framework */; };
+		B802E269282E0A7300B5057A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E268282E0A7300B5057A /* CoreMotion.framework */; };
+		B802E26B282E279500B5057A /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E26A282E279500B5057A /* PayViewController.swift */; };
 		B81420C82828B09400B4F6B5 /* MusicDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */; };
 		B81420CA2828B0A800B4F6B5 /* MusicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */; };
 		B81420CE2828E71000B4F6B5 /* AuthorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */; };
@@ -170,6 +184,7 @@
 		B85FDA7C2824BFF700EDA845 /* MyVipCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FDA7A2824BFF700EDA845 /* MyVipCenterCell.swift */; };
 		B85FDA7D2824BFF700EDA845 /* MyVipCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B85FDA7B2824BFF700EDA845 /* MyVipCenterCell.xib */; };
 		B85FDA7F28250B1500EDA845 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B85FDA7E28250B1500EDA845 /* launch.png */; };
+		B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */; };
 		B8AB69CC28081C800064861C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CB28081C800064861C /* Home.storyboard */; };
 		B8AB69D2280901490064861C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB69CE280901480064861C /* CommentCell.swift */; };
 		B8AB69D3280901490064861C /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CF280901480064861C /* CommentCell.xib */; };
@@ -217,7 +232,6 @@
 		B8AC503D2807C60E00C2CF26 /* CheckoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC502F2807C60E00C2CF26 /* CheckoutUtils.swift */; };
 		B8AC503E2807C60E00C2CF26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC50302807C60E00C2CF26 /* Colors.swift */; };
 		B8AC503F2807C60E00C2CF26 /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC50312807C60E00C2CF26 /* UserDefaultsUtils.swift */; };
-		B8AC50402807C60E00C2CF26 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC50322807C60E00C2CF26 /* DatePickerDialog.swift */; };
 		B8AC50412807C60E00C2CF26 /* DialogueUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC50332807C60E00C2CF26 /* DialogueUtils.swift */; };
 		B8AC504A2807C91E00C2CF26 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC50492807C91E00C2CF26 /* MessageController.swift */; };
 		B8AC504C2807C92C00C2CF26 /* MmallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AC504B2807C92C00C2CF26 /* MmallController.swift */; };
@@ -329,6 +343,20 @@
 		B802E246282BF76800B5057A /* MyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
 		B802E248282BF7B700B5057A /* SellOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellOrderViewController.swift; sourceTree = "<group>"; };
 		B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrderViewController.swift; sourceTree = "<group>"; };
+		B802E250282CE85400B5057A /* TheStart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStart.entitlements; sourceTree = "<group>"; };
+		B802E251282DF12800B5057A /* PayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
+		B802E253282DF1EE00B5057A /* PaySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaySDK.swift; sourceTree = "<group>"; };
+		B802E255282E09DB00B5057A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B802E257282E0A1100B5057A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B802E259282E0A2200B5057A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B802E25B282E0A2A00B5057A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B802E25D282E0A3700B5057A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B802E25F282E0A4100B5057A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		B802E261282E0A4800B5057A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B802E263282E0A5F00B5057A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B802E266282E0A6C00B5057A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B802E268282E0A7300B5057A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B802E26A282E279500B5057A /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailHeader.swift; sourceTree = "<group>"; };
 		B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicDetailHeader.xib; sourceTree = "<group>"; };
 		B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailController.swift; sourceTree = "<group>"; };
@@ -480,6 +508,9 @@
 		B85FDA7A2824BFF700EDA845 /* MyVipCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVipCenterCell.swift; sourceTree = "<group>"; };
 		B85FDA7B2824BFF700EDA845 /* MyVipCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyVipCenterCell.xib; sourceTree = "<group>"; };
 		B85FDA7E28250B1500EDA845 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = "../../../../医路护卫/YiLuHuWei/YiLuHuWei/CommonLIbrary/Utils/DatePickerDialog.swift"; sourceTree = "<group>"; };
+		B89B78C6282E34EC007D7D54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStartRelease.entitlements; sourceTree = "<group>"; };
 		B8AB69CB28081C800064861C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B8AB69CE280901480064861C /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		B8AB69CF280901480064861C /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
@@ -507,7 +538,6 @@
 		B8AC4FE22807BE4200C2CF26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8AC4FE42807BE4400C2CF26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8AC4FE72807BE4400C2CF26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B8AC4FE92807BE4400C2CF26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8AC4FEE2807BE4400C2CF26 /* TheStartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheStartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AC4FF22807BE4400C2CF26 /* TheStartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheStartTests.swift; sourceTree = "<group>"; };
 		B8AC4FF82807BE4400C2CF26 /* TheStartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheStartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,7 +561,6 @@
 		B8AC502F2807C60E00C2CF26 /* CheckoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutUtils.swift; sourceTree = "<group>"; };
 		B8AC50302807C60E00C2CF26 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B8AC50312807C60E00C2CF26 /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
-		B8AC50322807C60E00C2CF26 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		B8AC50332807C60E00C2CF26 /* DialogueUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogueUtils.swift; sourceTree = "<group>"; };
 		B8AC50492807C91E00C2CF26 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		B8AC504B2807C92C00C2CF26 /* MmallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MmallController.swift; sourceTree = "<group>"; };
@@ -612,6 +641,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B802E269282E0A7300B5057A /* CoreMotion.framework in Frameworks */,
+				B802E267282E0A6C00B5057A /* CFNetwork.framework in Frameworks */,
+				B802E265282E0A6500B5057A /* Foundation.framework in Frameworks */,
+				B802E264282E0A5F00B5057A /* UIKit.framework in Frameworks */,
+				B802E262282E0A4800B5057A /* CoreGraphics.framework in Frameworks */,
+				B802E260282E0A4100B5057A /* CoreText.framework in Frameworks */,
+				B802E25E282E0A3700B5057A /* QuartzCore.framework in Frameworks */,
+				B802E25C282E0A2A00B5057A /* CoreTelephony.framework in Frameworks */,
+				B802E25A282E0A2200B5057A /* SystemConfiguration.framework in Frameworks */,
+				B802E258282E0A1100B5057A /* libz.tbd in Frameworks */,
+				B802E256282E09DB00B5057A /* libc++.tbd in Frameworks */,
 				B85FAFCC280FD69400D25B66 /* AVFoundation.framework in Frameworks */,
 				88E61900AA56B5025C0B6628 /* Pods_TheStart.framework in Frameworks */,
 			);
@@ -652,6 +692,16 @@
 		B32DADD1A9DA71D4D6D75F4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B802E268282E0A7300B5057A /* CoreMotion.framework */,
+				B802E266282E0A6C00B5057A /* CFNetwork.framework */,
+				B802E263282E0A5F00B5057A /* UIKit.framework */,
+				B802E261282E0A4800B5057A /* CoreGraphics.framework */,
+				B802E25F282E0A4100B5057A /* CoreText.framework */,
+				B802E25D282E0A3700B5057A /* QuartzCore.framework */,
+				B802E25B282E0A2A00B5057A /* CoreTelephony.framework */,
+				B802E259282E0A2200B5057A /* SystemConfiguration.framework */,
+				B802E257282E0A1100B5057A /* libz.tbd */,
+				B802E255282E09DB00B5057A /* libc++.tbd */,
 				B85FAFCB280FD69400D25B66 /* AVFoundation.framework */,
 				B85FAFC9280FD61600D25B66 /* Foundation.framework */,
 				F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */,
@@ -960,6 +1010,7 @@
 		B8AB69EC280971F80064861C /* CommonClass */ = {
 			isa = PBXGroup;
 			children = (
+				B802E253282DF1EE00B5057A /* PaySDK.swift */,
 				B8AD404B281EE1550001D7F4 /* ActionSheetViewController.swift */,
 				B8AD404A281EE1550001D7F4 /* TitleCell.swift */,
 				B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */,
@@ -1006,6 +1057,8 @@
 		B8AC4FDA2807BE4200C2CF26 /* TheStart */ = {
 			isa = PBXGroup;
 			children = (
+				B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */,
+				B802E250282CE85400B5057A /* TheStart.entitlements */,
 				B8AB69FB280A9FBF0064861C /* testCell.swift */,
 				B8AB69FC280A9FBF0064861C /* testCell.xib */,
 				B8AC50452807C86F00C2CF26 /* Message */,
@@ -1018,9 +1071,9 @@
 				B8AC50972807EBBF00C2CF26 /* ThirdLibrary */,
 				B8AC4FDF2807BE4200C2CF26 /* ViewController.swift */,
 				B8AC4FE12807BE4200C2CF26 /* Main.storyboard */,
+				B89B78C6282E34EC007D7D54 /* Info.plist */,
 				B8AC4FE42807BE4400C2CF26 /* Assets.xcassets */,
 				B8AC4FE62807BE4400C2CF26 /* LaunchScreen.storyboard */,
-				B8AC4FE92807BE4400C2CF26 /* Info.plist */,
 			);
 			path = TheStart;
 			sourceTree = "<group>";
@@ -1080,6 +1133,7 @@
 				B8AD40642822951C0001D7F4 /* JobModel.swift */,
 				B85FDA622823CB2D00EDA845 /* AudioModel.swift */,
 				B85FDA662823E36200EDA845 /* AuthorModel.swift */,
+				B802E251282DF12800B5057A /* PayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1144,6 +1198,7 @@
 		B8AC50252807C60E00C2CF26 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */,
 				B8AC50272807C60E00C2CF26 /* JSONUtils.swift */,
 				B8AC50282807C60E00C2CF26 /* CacheTool.swift */,
 				B8AC50292807C60E00C2CF26 /* DateUtils.swift */,
@@ -1155,7 +1210,6 @@
 				B8AC502F2807C60E00C2CF26 /* CheckoutUtils.swift */,
 				B8AC50302807C60E00C2CF26 /* Colors.swift */,
 				B8AC50312807C60E00C2CF26 /* UserDefaultsUtils.swift */,
-				B8AC50322807C60E00C2CF26 /* DatePickerDialog.swift */,
 				B8AC50332807C60E00C2CF26 /* DialogueUtils.swift */,
 			);
 			path = Utils;
@@ -1172,6 +1226,7 @@
 				B8AB69F9280A9F3A0064861C /* TipOffPostViewController.swift */,
 				B8AD402C281B8E940001D7F4 /* SuperManListController.swift */,
 				B8AD406628239A450001D7F4 /* NotifyWebDetailController.swift */,
+				B802E26A282E279500B5057A /* PayViewController.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1279,6 +1334,7 @@
 				B8AC4FD52807BE4200C2CF26 /* Frameworks */,
 				B8AC4FD62807BE4200C2CF26 /* Resources */,
 				E3E057DF9328DA4B64D6230C /* [CP] Embed Pods Frameworks */,
+				B2CF387602E153C83C882A2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1317,6 +1373,7 @@
 				B8AC4FF52807BE4400C2CF26 /* Frameworks */,
 				B8AC4FF62807BE4400C2CF26 /* Resources */,
 				CB47D9E99673F51FF0DA243D /* [CP] Embed Pods Frameworks */,
+				2FC51328B41A7492DC11C22E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1474,6 +1531,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2FC51328B41A7492DC11C22E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		90373418B4AC9A8A44A928EC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1494,6 +1568,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2CF387602E153C83C882A2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B4C11E66516ACB74FA7A41F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -1582,6 +1673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
+				B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */,
 				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,
 				B85FAFC6280FD44600D25B66 /* FeedBackController.swift in Sources */,
 				B85FDA752824BCB500EDA845 /* MyCollectViewController.swift in Sources */,
@@ -1631,6 +1723,7 @@
 				B85FDA552823BB3800EDA845 /* PMKPageMenuItemPlain.swift in Sources */,
 				B8AC503F2807C60E00C2CF26 /* UserDefaultsUtils.swift in Sources */,
 				B8AD4014281A7D920001D7F4 /* HomeSubscribeCell.swift in Sources */,
+				B802E26B282E279500B5057A /* PayViewController.swift in Sources */,
 				B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */,
 				B85FB00528116A8300D25B66 /* ChatFindEmotion.swift in Sources */,
 				B8AC50162807C5CF00C2CF26 /* BaseTableController.swift in Sources */,
@@ -1653,6 +1746,7 @@
 				B85FB01A28116A8300D25B66 /* ChatEmotion.swift in Sources */,
 				B8AC51062807FF9800C2CF26 /* Result.swift in Sources */,
 				B8AD4011281A7D920001D7F4 /* SuperManCell.swift in Sources */,
+				B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */,
 				B8AC50202807C5F400C2CF26 /* AccountAndPasswordPresenter.swift in Sources */,
 				B83C6398280D4D6800A3282D /* WokerPubHeaderView.swift in Sources */,
 				B8AC50352807C60E00C2CF26 /* JSONUtils.swift in Sources */,
@@ -1673,6 +1767,7 @@
 				B85FAF89280E9C4F00D25B66 /* MuiscListController.swift in Sources */,
 				B8AC50922807CF6B00C2CF26 /* NSObject.swift in Sources */,
 				B83C6383280CFC6100A3282D /* WorkerVideoCell.swift in Sources */,
+				B802E252282DF12900B5057A /* PayModel.swift in Sources */,
 				B85FB01128116A8300D25B66 /* ChatImageCell.swift in Sources */,
 				B8AC503B2807C60E00C2CF26 /* UIViewUtils.swift in Sources */,
 				B85FAF9E280EE7BE00D25B66 /* PubMusicController.swift in Sources */,
@@ -1703,7 +1798,6 @@
 				B85FB00328116A8300D25B66 /* WeChatTools.swift in Sources */,
 				B8AC50372807C60E00C2CF26 /* DateUtils.swift in Sources */,
 				B85FB00628116A8300D25B66 /* ChatEmotionHelper.swift in Sources */,
-				B8AC50402807C60E00C2CF26 /* DatePickerDialog.swift in Sources */,
 				B8AC503E2807C60E00C2CF26 /* Colors.swift in Sources */,
 				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
@@ -1965,6 +2059,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1989,7 +2084,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220207;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2006,6 +2101,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2030,7 +2126,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220207;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

@@ -71,6 +71,12 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "MyToPubController") as! MyToPubController
     }
     
+    class func getPayViewController() -> PayViewController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
+    }
+    
+    
     
     
 }

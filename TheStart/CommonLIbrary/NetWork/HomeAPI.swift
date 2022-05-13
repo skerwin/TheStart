@@ -509,6 +509,59 @@ struct HomeAPI {
          return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    //提交实名认证
+    static let shimingSumbitPath = "/api/user/shiming"
+    static func shimingSumbitPathAndParams(model:UserModel) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["real_name"] = model.real_name as AnyObject
+        paramsDictionary["card_id"] = model.card_id as AnyObject
+        paramsDictionary["gender"] = model.gender as AnyObject
+        paramsDictionary["phone"] = model.phone as AnyObject
+        
+        paramsDictionary["birthday"] = model.birthday as AnyObject
+        paramsDictionary["shiming_work"] = model.shiming_work as AnyObject
+        paramsDictionary["address"] = model.address as AnyObject
+        paramsDictionary["shiming_company"] = model.shiming_company as AnyObject
+        
+         return (shimingSumbitPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //音乐人认证
+    static let audioUserSumbitPath = "/api/user/audio"
+    static func audioUserSumbitPathAndParams(model:UserModel) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["logo"] = model.real_name as AnyObject
+        paramsDictionary["video_type"] = model.card_id as AnyObject
+        paramsDictionary["video_path"] = model.gender as AnyObject
+        paramsDictionary["images"] = model.phone as AnyObject
+        paramsDictionary["introduce"] = model.birthday as AnyObject
+        
+         return (audioUserSumbitPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //下单微信
+    static let wechatPayPath = "/api/recharge/wechat"
+    static func wechatPayPathAndParams(price:String,leixing:Int) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["price"] = price as AnyObject
+        paramsDictionary["leixing"] = leixing as AnyObject
+ 
+        return (wechatPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    //下单支付宝
+    static let aliPayPath = "/api/recharge/alipay"
+    static func aliPayPathPathAndParams(price:String,leixing:Int) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["price"] = price as AnyObject
+        paramsDictionary["leixing"] = leixing as AnyObject
+ 
+        return (aliPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
 
 
     static let testPath = "/api/work/list"

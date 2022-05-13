@@ -98,6 +98,8 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var isNextWorkType1 = false
     var workType = ""
     var workTypeSub = ""
+    
+    
     var isImgFile = true
     var jobModel = JobModel()
     

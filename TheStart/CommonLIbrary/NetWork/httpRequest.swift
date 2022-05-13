@@ -45,9 +45,9 @@ struct HttpRequest {
          print(parametersJson)
          let token = getToken()
         
-         if token == ""{
-            return
-         }
+//         if token == ""{
+//            return
+//         }
  
         let headers: HTTPHeaders = [
             "Authori-zation": token

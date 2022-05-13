@@ -7,3 +7,8 @@
 #import "DOPDropDownMenu.h"
 #import "XHNetworkCache.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "WechatAuthSDK.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
+# import <AlipaySDK/AlipaySDK.h>
+

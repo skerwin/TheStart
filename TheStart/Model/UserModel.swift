@@ -19,7 +19,7 @@ struct UserModel: Mappable {
     
     var uid = 0
     var gender = ""
-    var birthday = 0
+    var birthday = ""
     
     var work = ""
     var avatar = ""
@@ -43,6 +43,9 @@ struct UserModel: Mappable {
     
     var audio_status = 0
     var images = [String]()
+    var imagesUrl = ""
+    
+    
     var logo = ""
     var audio_remark = ""
     var vip = true
@@ -52,18 +55,21 @@ struct UserModel: Mappable {
     
     var avatar_check = ""
     
-    var shiming_work = ""
+    //卡信息
+    var shiming_work = 0
     var shiming_company = ""
     var music_num = 0
     var introduce = ""
     var bank_name = ""
     var bank_realname = ""
     var bank_code = ""
+    var address = ""
     
+    //音乐人信息
     
     
     mutating func mapping(map: Map) {
- 
+        address <- map["address"]
         
         shiming_work <- map["shiming_work"]
         shiming_company <- map["shiming_company"]
@@ -83,8 +89,8 @@ struct UserModel: Mappable {
         
         uid <- map["uid"]
         gender <- map["gender"]
-        birthday <- map["work"]
-        work <- map["confirm_pwd"]
+        birthday <- map["birthday"]
+        work <- map["work"]
         avatar <- map["avatar"]
         now_money <- map["now_money"]
         brokerage_pric <- map["brokerage_pric"]

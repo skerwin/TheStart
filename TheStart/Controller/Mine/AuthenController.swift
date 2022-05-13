@@ -20,166 +20,111 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var mobileText: UITextField!
     @IBOutlet weak var shenfenIDText: UITextField!
-    @IBOutlet weak var ageText: UITextField!
+    //@IBOutlet weak var ageText: UITextField!
     
-   
+    @IBOutlet weak var ageLabel: UILabel!
+    
     @IBOutlet weak var workTypeLabel: UILabel!
     @IBOutlet weak var addresslabel: UILabel!
-   
     @IBOutlet weak var companyName: UITextField!
     
     @IBOutlet weak var summbitBtn: UIButton!
     
     
-    var professionalModelList = [DepartmentModel]()
-    var departmentsModelList = [DepartmentModel]()
-    var nextDepartmentsList = [DepartmentModel]()
+    var genderPicker:ActionSheetStringPicker? = nil //性别选择器
+    let genderList = ["男","女"]
     
-    
+    var cityChoosePicker:ActionSheetCustomPicker? = nil //城市选择器
     var addressList = [AddressModel]()
-    var cityList = [AddressModel]()
-    var districtList = [AddressModel]()
+    var nexCityList = [AddressModel]()
+    var isNextCitytment = false
+    var isNextCitytment1 = false
+    var province = ""
+    var city = ""
     
     
-    var officesChoosePicker:ActionSheetCustomPicker? = nil //科室选择器
-    var titlePicker:ActionSheetStringPicker? = nil //职称选择器
+    var isWorkType = false
+    var workTypeChoosePicker:ActionSheetCustomPicker? = nil //工种选择器
+    var workTypeList = [DictModel]()
+    var nextworkTypeList = [DictModel]()
+    var isNextWorkType = false
+    var isNextWorkType1 = false
+    var workType = ""
+    var workTypeSub = ""
     
-    var addressPicker:ActionSheetCustomPicker? = nil //地址选择器
+   
+    var usermodel = UserModel()
     
-    var uploadTag = 0
-    
-    var userModel = UserModel()
-    
-    
-    var isFormMine = false
-    var isAddressPicker = true
-    
-    
-    lazy var profileActionController: UIAlertController = UIAlertController.init(title: "选择照片", message: "", preferredStyle: .actionSheet)
-    
-    lazy var pickerController: UIImagePickerController = {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        return pickerController
-    }()
-    
-    
-    
-    func createRightNavItem(title:String = "返回",imageStr:String = "") {
-        if imageStr == ""{
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: title, style: .plain, target: self, action:  #selector(rightNavBtnClick))
-        }else{
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: imageStr), style: .plain, target: self, action: #selector(rightNavBtnClick))
-        }
-        
-        
-    }
-    
-    
-    @objc func rightNavBtnClick(){
-        
-        self.dismiss(animated: true, completion: nil)
-        //跳转前的操作写这里
-        
-    }
+    let datePicker = DatePickerDialog()
+
+ 
     func initView(){
         
- 
-        
-//        summbitBtn.backgroundColor = ZYJColor.main
-//        summbitBtn.setTitle("提交", for:.normal)
-//        summbitBtn.setTitleColor(UIColor.white, for: .normal)
-//        summbitBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         summbitBtn.layer.cornerRadius = 10
         summbitBtn.layer.masksToBounds = true
         
- 
         
-//
-//        mobileText.isEnabled = false
-//        mobileText.text = stringForKey(key: Constants.account)!
-//       // userModel?.mobile = mobileText.text!
-//        userModel?.password = stringForKey(key: Constants.password) ?? ""
-//
-//
-//        if let gender = objectForKey(key: Constants.gender)  {
-//
-//            if gender is NSNull {
-//                wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                //userModel!.sex = 0
-//            }else{
-//                if (gender as! Int) == 0 {
-//                    wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                    menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                }else if (gender as! Int) == 2 {
-//                   // userModel?.sex = 2
-//                    wommen.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//                    menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                }else{
-//                    //userModel?.sex = 1
-//                    menBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
-//                    wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//                }
-//            }
-//        }else{
-//            wommen.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//            menBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
-//           // userModel!.sex = 0
-//        }
-//
-//        let truename = stringForKey(key: Constants.truename)
-//        if truename != nil && !(truename?.isLengthEmpty())!{
-//            nameText.text = truename
-//            //nameText.isEnabled = false
-//        }
-    }
+        let attributedName = NSAttributedString.init(string: "请输入真实姓名", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        nameText.attributedPlaceholder = attributedName
+        
+       let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        mobileText.attributedPlaceholder = attributedPwd
+        
+        let attributedcard = NSAttributedString.init(string: "请输入身份证号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        shenfenIDText.attributedPlaceholder = attributedcard
+        
+        
+        let attributedcoompanyy = NSAttributedString.init(string: "请输入您的公司", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+         companyName.attributedPlaceholder = attributedcoompanyy
+        
+     }
     
  
     
     @IBAction func summbitAction(_ sender: Any) {
         
         
-//        userModel?.user_realname = nameText.text!
-//
-//        if userModel!.user_realname.isLengthEmpty() {
-//            showOnlyTextHUD(text: "请完善您的姓名")
-//            return
-//        }
-//
-//        
-//        if userModel!.sex == 0 {
-//            showOnlyTextHUD(text: "请选择您的性别")
-//            return
-//        }
-//
-//        if userModel!.mobile.isLengthEmpty(){
-//            showOnlyTextHUD(text: "请输入您的手机号")
-//            return
-//        }
-//
-//
-//
-//
-//        if userModel!.province_id == 0  {
-//            showOnlyTextHUD(text: "请填写您的地址")
-//            return
-//        }
-//
-//        if userModel!.hospital.isLengthEmpty() {
-//            showOnlyTextHUD(text: "请填写您的医院")
-//            return
-//        }
-//
-//        //TODO ZHAO
-//        if userModel!.user_realname.isContainsEmoji() || (userModel!.hospital).isContainsEmoji() {
-//            showOnlyTextHUD(text: "不支持输入表情")
-//            return
-//        }
-//
-//        let authenPersonalParams = HomeAPI.authDoctorPathAndParams(usermodel: userModel!)
-//        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
+        usermodel?.real_name = nameText.text!
+
+        if usermodel!.real_name.isLengthEmpty() {
+            showOnlyTextHUD(text: "请完善您的姓名")
+            return
+        }
+
+        
+        if usermodel!.gender == "" {
+            showOnlyTextHUD(text: "请选择您的性别")
+            return
+        }
+
+        usermodel!.phone = mobileText.text ?? ""
+        
+        if usermodel!.phone.isLengthEmpty(){
+            showOnlyTextHUD(text: "请输入您的手机号")
+            return
+        }
+
+
+        usermodel!.address = province + city
+
+        if usermodel!.address == "" {
+            showOnlyTextHUD(text: "请选择您的地址")
+            return
+        }
+
+        if usermodel!.shiming_work == 0 {
+            showOnlyTextHUD(text: "请选择您的职业")
+            return
+        }
+        
+        usermodel?.card_id = shenfenIDText.text ?? ""
+        usermodel?.shiming_company = companyName.text ?? ""
+        
+
+       
+
+     let authenPersonalParams = HomeAPI.shimingSumbitPathAndParams(model: usermodel!)
+      postRequest(pathAndParams: authenPersonalParams,showHUD: false)
         
     }
     
@@ -188,14 +133,9 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "实名认证"
-       // prepareData()
+        prepareData()
         initView()
-        if isFormMine == false{
-            createRightNavItem(title: "返回", imageStr: "backarrow")
-        }
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
+    
         tableView.separatorColor = UIColor.darkGray
         
     }
@@ -216,28 +156,34 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     
     
     func prepareData(){
-//        let jobtitleParams = HomeAPI.professionalPathAndParams()
-//        postRequest(pathAndParams: jobtitleParams,showHUD: false)
-//
-//        let result = XHNetworkCache.check(withURL: HomeAPI.addressPath)
-//
-//        if result {
-//            DispatchQueue.main.async(execute: {
-//                DialogueUtils.showWithStatus()
-//                let dict = XHNetworkCache.cacheJson(withURL: HomeAPI.addressPath)
-//                let responseJson = JSON(dict)
-//                //print("缓存读取")
-//                self.addressList = getArrayFromJson(content: responseJson["data"])
-//
-//                self.cityList = self.addressList.first!.children
-//                self.districtList = self.addressList.first!.children.first!.children
-//                DialogueUtils.dismiss()
-//           })
-//
-//        }else{
-//            let addressParams = HomeAPI.addressPathAndParams()
-//            getRequest(pathAndParams: addressParams,showHUD:false)
-//        }
+ 
+        do {
+            if let file = Bundle.main.url(forResource: "cityjson", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if json is [String: Any] {
+                } else if let object = json as? [Any] {
+                    let responseJson = JSON(object)
+                    addressList = getArrayFromJson(content:responseJson)
+                    
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
+        if workcateResult {
+            let dict = XHNetworkCache.cacheJson(withURL: HomeAPI.workCategoryPath)
+            let responseJson = JSON(dict)
+            workTypeList = getArrayFromJson(content: responseJson["data"]["cate"])
+        }
+        
+      
     }
     
     
@@ -274,18 +220,7 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     }
     
     // MARK: - Table view data source
-    @objc func badgeImageAction(){
-        self.present(profileActionController, animated: true, completion: nil)
-        profileActionController.message = "请选择您的胸牌照片"
-        uploadTag = 0
-        
-    }
-    @objc func certificateImage1Action(){
-        self.present(profileActionController, animated: true, completion: nil)
-        profileActionController.message = "请选择您的医师资格证照片"
-        uploadTag = 1
-        
-    }
+ 
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -333,335 +268,202 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        if indexPath.section == 0{
-//
-//        }
-//        else if indexPath.section == 1{
-//            if indexPath.row == 0{
-//                isAddressPicker = false
-//                isNextDepartment = false
-//                isNextDepartment1 = false
-//                nextDepartmentsList = departmentsModelList.first!.child
-//                self.officesChoosePicker = ActionSheetCustomPicker.init(title: "科室选择", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
-//                self.officesChoosePicker?.delegate = self
-//                officesChoosePicker?.tapDismissAction  = .success;
-//                officesChoosePicker?.show()
-//
-//
-//            }else if indexPath.row == 1 {
-//                var nextstrArr = [String]()
-//                if professionalModelList.count == 0{
-//                    return
-//                }
-//                for model in professionalModelList {
-//                    nextstrArr.append(model.name)
-//                }
-//                self.titlePicker = ActionSheetStringPicker(title: "职称选择", rows: nextstrArr, initialSelection: 0, doneBlock: { (picker, index, value) in
-//                    let model = self.professionalModelList[index]
-//                    self.titleLabel.text = model.name
-//                    self.userModel?.professional_text = model.name
-//                    self.userModel?.professional_id = model.id
-//                }, cancel: { (picker) in
-//
-//                }, origin: self.view)
-//                self.titlePicker!.tapDismissAction = .cancel
-//                self.titlePicker!.show()
-//            }else if indexPath.row == 2{
-//
-//                    cityList = addressList.first!.children
-//                    districtList = addressList.first!.children.first!.children
-//                    isAddressScroll = false
-//                    isCityScroll = false
-//                    isDistrictScroll = false
-//
-//                    isAddressPicker = true
-//                    self.addressPicker = ActionSheetCustomPicker.init(title: "地址选择", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0,0])
-//                    self.addressPicker?.delegate = self
-//                    addressPicker?.tapDismissAction  = .success;
-//                    addressPicker?.show()
-//
-//
-//            }else if indexPath.row == 3{
-//                let controller = HospitalViewController()
-//
-//                if provincetext == "" || citytext == ""{
-//                    showOnlyTextHUD(text: "请先选择您的地址")
-//                    return
-//                }
-//                controller.provinceName = provincetext
-//                controller.cityName = citytext
-//                controller.searchCallBack = {[weak self] (nickName) -> Void in
-//                    self?.hospiitalName.text = nickName
-//                    self?.userModel!.hospital = nickName
-//                 }
-//                self.navigationController?.pushViewController(controller, animated: true)
-//                //
-//            }
-//        }
-    }
-    
+        let section = indexPath.section
+        let row = indexPath.row
+          if section == 0{
+            if row == 0{
+            
+                
+            }else if  row == 1{
+                self.genderPicker = ActionSheetStringPicker(title: "性别选择", rows: genderList, initialSelection: 0, doneBlock: { [self] (picker, index, value) in
+                    self.genderLabel.text = self.genderList[index]
+                    self.usermodel?.gender = self.genderList[index]
+                }, cancel: { (picker) in
+                    
+                }, origin: self.view)
+                self.genderPicker!.tapDismissAction = .success
+                self.genderPicker!.show()
+            }
+        }else{
+            if row == 1{
+                isWorkType = true
+                isNextWorkType = false
+                isNextWorkType1 = false
+                nextworkTypeList = workTypeList.first!.child
+                self.workTypeChoosePicker = ActionSheetCustomPicker.init(title: "选择职业", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
+                self.workTypeChoosePicker?.delegate = self
+                workTypeChoosePicker?.tapDismissAction  = .success;
+                workTypeChoosePicker?.show()
+            }else if row == 2{
+                isWorkType = false
+                isNextCitytment = false
+                isNextCitytment1 = false
+                nexCityList  = addressList.first!.children
+                self.cityChoosePicker = ActionSheetCustomPicker.init(title: "选择城市", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
+                self.cityChoosePicker?.delegate = self
+                cityChoosePicker?.tapDismissAction  = .success;
+                cityChoosePicker?.show()
+            }else if row == 0{
+                
+                let currentDate = Date()
+                var minCom = DateComponents()
+                minCom.month = -1200
+                let minDate = Calendar.current.date(byAdding: minCom, to: currentDate)
+                
+                var maxCom = DateComponents()
+                maxCom.month = 0
+                let maxDate = Calendar.current.date(byAdding: maxCom, to: currentDate)
+                
+                datePicker.show("请选择日期",
+                                doneButtonTitle: "确定",
+                                cancelButtonTitle: "取消",
+                                minimumDate: minDate,
+                                maximumDate: maxDate,
+                                datePickerMode: .date) { [self] (date) in
+                    if let dt = date {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy-MM-dd"
+                        usermodel?.birthday = formatter.string(from: dt)
+                        ageLabel.text =  formatter.string(from: dt)
+                    }
+                }
+            }
+        }
  
-    
+    }
+ 
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         nameText.resignFirstResponder()
         mobileText.resignFirstResponder()
-       // hospitalText.resignFirstResponder()
-    }
-    //13336088188
- 
-    
-    var isNextDepartment = false
-    var isNextDepartment1 = false
-    
-    
-    var isAddressScroll = false
-    var isCityScroll = false
-    var isDistrictScroll = false
-    
-    var provincetext = ""
-    var citytext = ""
-    var districttext = ""
-    var addressAll = ""
+     }
+  
     
     
 }
 
 extension AuthenController:ActionSheetCustomPickerDelegate,UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        if isAddressPicker == false {
-            return 2
-        }else{
-            return 3
-        }
-        
+        return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if isAddressPicker == false {
-            
+        
+        if isWorkType == true{
             if component == 0{
-                return departmentsModelList.count
+                return workTypeList.count
             }else{
-                return nextDepartmentsList.count
+                return nextworkTypeList.count
             }
-            
         }else{
             if component == 0{
                 return addressList.count
-            }else if component == 1{
-                
-                if cityList.count == 0{
-                    return 0
-                }
-                return (cityList.count)
-                
             }else{
-                
-                if districtList.count == 0{
-                    return 0
-                }
-                return (districtList.count)
+                return nexCityList.count
             }
         }
+        
         
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        
-        if isAddressPicker == false {
+        if isWorkType == true{
             if component == 0{
-                return departmentsModelList[row].name
+                return workTypeList[row].title
             }else{
-                return nextDepartmentsList[row].name
+                return nextworkTypeList[row].title
             }
         }else{
             if component == 0{
-                return addressList[row].name
-            }else if component == 1{
-                return cityList[row].name
+                return addressList[row].label
             }else{
-                return districtList[row].name
+                return nexCityList[row].label
             }
         }
- 
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if isWorkType == true{
+            if component == 0{
+                isNextWorkType = true
+                workType = workTypeList[row].title
+                nextworkTypeList = workTypeList[row].child
+                
+                pickerView.selectRow(0, inComponent: 1, animated: true)
+                pickerView.reloadComponent(1)
+            }else{
+                isNextWorkType1 = true
+                workTypeSub = nextworkTypeList[row].title
+                usermodel?.shiming_work = nextworkTypeList[row].id
+            }
+        }else{
+            if component == 0{
+                isNextCitytment = true
+                province = addressList[row].label
+                nexCityList = addressList[row].children
+                
+                pickerView.selectRow(0, inComponent: 1, animated: true)
+                pickerView.reloadComponent(1)
+            }else{
+                isNextCitytment1 = true
+                city = nexCityList[row].label
+            }
+        }
         
-//        if isAddressPicker == false {
-//
-//            if component == 0{
-//                isNextDepartment = true
-//                nextDepartmentsList = departmentsModelList[row].child
-//
-//                pickerView.selectRow(0, inComponent: 1, animated: true)
-//                pickerView.reloadComponent(1)
-//            }else{
-//                isNextDepartment1 = true
-//                self.userModel?.department_text = nextDepartmentsList[row].name
-//                self.userModel?.department_id = nextDepartmentsList[row].id
-//                officesLabel.text = nextDepartmentsList[row].name
-//            }
-//        }else{
-//            if component == 0{
-//                isAddressScroll = true
-//                cityList = addressList[row].children
-//                pickerView.reloadComponent(1)
-//                pickerView.selectRow(0, inComponent: 1, animated: true)
-//
-//                districtList = cityList.first!.children
-//
-//                pickerView.reloadComponent(2)
-//                pickerView.selectRow(0, inComponent: 2, animated: true)
-//
-//
-//                self.userModel?.province_id = addressList[row].id
-//                provincetext = addressList[row].name
-//
-//            }else if component == 1{
-//                isCityScroll = true
-//                districtList = cityList[row].children
-//                pickerView.reloadComponent(2)
-//                pickerView.selectRow(0, inComponent: 2, animated: true)
-//
-//                self.userModel?.city_id = cityList[row].id
-//                citytext = cityList[row].name
-//            }else{
-//                 isDistrictScroll = true
-//                 self.userModel?.district_id = districtList[row].id
-//                 districttext = districtList[row].name
-//                // addresslabel.text = provincetext + citytext + districttext
-//            }
-//        }
+        
     }
     func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
-//        if isAddressPicker == false {
-//            if isNextDepartment {
-//                if isNextDepartment1{
-//
-//                }else{
-//                    self.userModel?.department_text = nextDepartmentsList[0].name
-//                    self.userModel?.department_id = nextDepartmentsList[0].id
-//                    officesLabel.text = nextDepartmentsList[0].name
-//                }
-//
-//            }else{
-//                if isNextDepartment1 {
-//
-//                }else{
-//                    nextDepartmentsList = departmentsModelList[0].child
-//                    self.userModel?.department_text = nextDepartmentsList[0].name
-//                    self.userModel?.department_id = nextDepartmentsList[0].id
-//                    officesLabel.text = nextDepartmentsList[0].name
-//                }
-//
-//        }
-//        }else{
-//            if isAddressScroll {
-//                if isCityScroll{
-//                    if isDistrictScroll{
-//                        addresslabel.text = provincetext + citytext + districttext
-//                    }else{
-//
-//                        if districtList.count == 0{
-//                            self.userModel?.district_id = 0
-//                        }else{
-//                            self.userModel?.district_id = districtList[0].id
-//                        }
-//
-//                        if districtList.count == 0{
-//                            districttext = ""
-//                        }else{
-//                            districttext = districtList[0].name
-//                        }
-//
-//
-//                        addresslabel.text = provincetext + citytext + districttext
-//                    }
-//                }else{
-//                    if isDistrictScroll{
-//                        self.userModel?.city_id = cityList[0].id
-//                        citytext = cityList[0].name
-//
-//                        addresslabel.text = provincetext + citytext + districttext
-//
-//                    }else{
-//
-//                        self.userModel?.city_id = cityList[0].id
-//                        citytext = cityList[0].name
-//
-//                        if districtList.count == 0{
-//                            self.userModel?.district_id = 0
-//                        }else{
-//                            self.userModel?.district_id = districtList[0].id
-//                        }
-//                        if districtList.count == 0{
-//                            districttext = ""
-//                        }else{
-//                            districttext = districtList[0].name
-//                        }
-//                        addresslabel.text = provincetext + citytext + districttext
-//                    }
-//                }
-//            }else{
-//                if isCityScroll{
-//                    if isDistrictScroll{
-//
-//                        self.userModel?.province_id = addressList[0].id
-//                        provincetext = addressList[0].name
-//
-//                        addresslabel.text = provincetext + citytext + districttext
-//                    }else{
-//
-//                        self.userModel?.province_id = addressList[0].id
-//                        provincetext = addressList[0].name
-//
-//                        if districtList.count == 0{
-//                            self.userModel?.district_id = 0
-//                        }else{
-//                            self.userModel?.district_id = districtList[0].id
-//                        }
-//                        if districtList.count == 0{
-//                            districttext = ""
-//                        }else{
-//                            districttext = districtList[0].name
-//                        }
-//
-//                        addresslabel.text = provincetext + citytext + districttext
-//                    }
-//                }else{
-//                    if isDistrictScroll{
-//
-//
-//                        self.userModel?.province_id = addressList[0].id
-//                        provincetext = addressList[0].name
-//
-//                        self.userModel?.city_id = cityList[0].id
-//                        citytext = cityList[0].name
-//
-//                        addresslabel.text = provincetext + citytext + districttext
-//
-//                    }else{
-//
-////                        self.userModel?.province_id = addressList[0].id
-////                        provincetext = addressList[0].name
-////
-////                        self.userModel?.city_id = cityList[0].id
-////                        citytext = cityList[0].name
-////
-////                        self.userModel?.district_id = districtList[0].id
-////                        districttext = districtList[0].name
-////                        addresslabel.text = provincetext + citytext + districttext
-//                    }
-//                }
-//             }
-//         }
+        
+        if isWorkType == true{
+            if isNextWorkType {
+                if isNextWorkType1{
+                }else{
+                    workTypeSub = nextworkTypeList[0].title
+                    usermodel?.shiming_work = nextworkTypeList[0].id
+                }
+            }else{
+                if isNextWorkType1 {
+                    workType = workTypeList[0].title
+                }else{
+                    workType = workTypeList[0].title
+                    nextworkTypeList = workTypeList[0].child
+                    workTypeSub = nextworkTypeList[0].title
+                    usermodel?.shiming_work = nextworkTypeList[0].id
+                }
+            }
+            
+            workTypeLabel.text = workTypeSub
+        }else{
+            if isNextCitytment {
+                if isNextCitytment1{
+                }else{
+                    city = nexCityList[0].label
+                }
+            }else{
+                if isNextCitytment1 {
+                    province = addressList[0].label
+                }else{
+                    province = addressList[0].label
+                    nexCityList = addressList[0].children
+                    city = nexCityList[0].label
+                }
+                
+            }
+            addresslabel.text = province + city
+        }
+   
         
     }
     
     
     func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
+        print("123")
+//        if isWorkType == true{
+//            headView.jobTypeText.text = workTypeSub
+//        }else{
+//            headView.addressTypeText.text = province + city
+//        }
+       
         
     }
     
@@ -674,33 +476,24 @@ extension AuthenController:ActionSheetCustomPickerDelegate,UIPickerViewDelegate{
         }
         
         
-        if isAddressPicker == false {
-            if component == 0{
-                
-                lable?.text = departmentsModelList[row].name
-                lable?.font = UIFont.systemFont(ofSize: 17)
+        if component == 0{
+            if isWorkType == true{
+                lable?.text = workTypeList[row].title
             }else{
-                lable?.text = nextDepartmentsList[row].name
-                lable?.font = UIFont.systemFont(ofSize: 16)
+                lable?.text = addressList[row].label
             }
+           
+            
+            lable?.font = UIFont.systemFont(ofSize: 17)
         }else{
-            if component == 0{
-                
-                lable?.text = addressList[row].name
-                lable?.font = UIFont.systemFont(ofSize: 17)
+            if isWorkType == true{
+                lable?.text = nextworkTypeList[row].title
+            }else{
+                lable?.text = nexCityList[row].label
             }
-            else if component == 1{
-                lable?.text = cityList[row].name
-                lable?.font = UIFont.systemFont(ofSize: 16)
-            }
-            else{
-                lable?.text = districtList[row].name
-                lable?.font = UIFont.systemFont(ofSize: 16)
-            }
+ 
+            lable?.font = UIFont.systemFont(ofSize: 16)
         }
-     
-        
-        
         lable?.textAlignment = .center
         return lable!
     }

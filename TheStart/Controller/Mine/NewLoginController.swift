@@ -25,6 +25,7 @@ class NewLoginController: BaseViewController,Requestable {
     
     @IBOutlet weak var changeloginStyleBtn: UIButton!
     
+    @IBOutlet weak var logoImg: UIImageView!
     
     var userAgreementHtml = ""
     var privasyHtml = ""
@@ -46,6 +47,8 @@ class NewLoginController: BaseViewController,Requestable {
     @IBOutlet weak var backBtn: UIButton!
     
     var isCodeLogin = false
+    
+    var imgUrl = "http://122.114.14.227/uploads/store/comment/20220215/18d9141f060849f8eba076ca29a68278.png"
  
     @IBAction func changeloginStyleBtnAction(_ sender: Any) {
         
@@ -104,7 +107,7 @@ class NewLoginController: BaseViewController,Requestable {
     
      override func viewDidLoad() {
         super.viewDidLoad()
-         
+         //logoImg.displayImageWithURL(url: imgUrl)
          let attributedName = NSAttributedString.init(string: "请输入账号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
          accountTextF.attributedPlaceholder = attributedName
          
@@ -266,7 +269,7 @@ class NewLoginController: BaseViewController,Requestable {
             let token = responseResult["token"].stringValue
             setStringValueForKey(value: token, key: Constants.token)
             setStringValueForKey(value: account, key: Constants.account)
-            delay(second: 1) { [self] in
+            delay(second: 0.5) { [self] in
                  UIApplication.shared.keyWindow?.rootViewController = MainTabBarController()
             }
         } else if requestPath == HomeAPI.getVerifyCodePath{

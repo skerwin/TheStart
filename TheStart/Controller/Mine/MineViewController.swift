@@ -158,8 +158,6 @@ class MineViewController: BaseTableController,Requestable{
             let controller = UIStoryboard.getAuthenController()
             self.navigationController?.pushViewController(controller, animated: true)
         }
- 
-        
         else if indexPath.row == 2{
             let controller = MusicianAuthorController()
             self.navigationController?.pushViewController(controller, animated: true)
@@ -170,20 +168,17 @@ class MineViewController: BaseTableController,Requestable{
             self.navigationController?.pushViewController(controller, animated: true)
         }
         else if indexPath.row == 4{
-            let controller = MyOrderViewController()
+            //let controller = MyOrderViewController()
+            let controller = UIStoryboard.getPayViewController()
             self.navigationController?.pushViewController(controller, animated: true)
             
         }
-        
-        
         else if indexPath.row == 5{
             let controller = UIStoryboard.getFeedBackController()
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
         else if indexPath.row == 6{
-            
-          
           
         }
  

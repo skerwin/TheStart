@@ -89,8 +89,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var EmojiViewToTop: NSLayoutConstraint!
     @IBOutlet weak var MoreViewToTop: NSLayoutConstraint!
-    
-    
+ 
     
     var heightArr: [CGFloat] = []
     var dataArr: [ChatMsgModel] = []
@@ -98,13 +97,25 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     var dataCloneArr: [ChatMsgModel] = []
     
     weak var delegate: CellMenuItemActionDelegate?
+    
+    var toID = 0
+    var nameTitle = ""
     //weak var tableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !WebSocketManager.instance.socket.isConnected {
+            WebSocketManager.instance.socketReconnect()
+        }
+        
+         WebSocketManager.instance.setOntext(onTextBlock: { [weak self] (text) in
+              self?.analyzeResult(result: text)
+        })
+ 
         self.limit = 20
         loadData()
-        self.title = "聊天详情"
+        self.title = nameTitle
         // Do any additional setup after loading the view, typically from a nib.
         bind()
         
@@ -117,11 +128,33 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         }
         
     }
-    
+    func analyzeResult(result:String){
+        
+        let dict = stringValueDic(result)
+        let data = dict!["data"] as! [String : Any]
+        
+        
+        let chatMode = ChatMsgModel()
+        chatMode.modelType = .text
+        chatMode.text = data["msn"] as? String
+        let touid = data["to_uid"] as! Int
+        if touid == getUserId() {
+            chatMode.userType = .friend
+        }else{
+            chatMode.userType = .me
+        }
+        chatMode.fromUserId = data["nickname"] as? String
+        chatMode.headImg = data["avatar"] as? String
+        
+        inputTextView.text = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.insertNewMessage(new: chatMode)
+        }
+        
+    }
     func loadData(){
-        let requestParams = HomeAPI.getMessageListPathAndParams(page: page, limit: limit, toUid: 317)
+        let requestParams = HomeAPI.getMessageListPathAndParams(page: page, limit: limit, toUid: toID)
         getRequest(pathAndParams: requestParams,showHUD:false)
-
     }
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -133,6 +166,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         tableView.mj_header?.endRefreshing()
  
         let list:[CloneMsgModel]  = getArrayFromJson(content: responseResult)
+        
  
         for model in list {
             let chatMode = ChatMsgModel()
@@ -156,10 +190,12 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
             self.scrollToBottom()
         }else{
             
+            if list.count == 0{
+                showOnlyTextHUD(text: "没有更多记录了～～")
+            }
             self.tableView.mj_header?.endRefreshing()
             self.tableView?.refreshControl?.endRefreshing()
             self.insertRowModel(model: dataCloneArr, isBottom: false)
-            
         }
        
     }
@@ -208,9 +244,10 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     }
     
     
+    
+    
     @IBAction func sendBtnAction(_ sender: Any) {
-        print("sendBtn")
-        
+         sendCurrentInput()
     }
     
     func bind() {
@@ -228,10 +265,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         tableView?.backgroundColor = ZYJColor.main
         tableView?.estimatedSectionFooterHeight = 0
         tableView?.estimatedSectionHeaderHeight = 0
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(reloadOldMessages), for: .valueChanged)
-//        tableView?.refreshControl = refreshControl
-        
+ 
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh
  
@@ -521,11 +555,25 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         new.modelType = .text
         new.userType = .me
         
-        
-        inputTextView.text = ""
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.insertNewMessage(new: new)
+        if inputTextView.text == ""{
+            showOnlyTextHUD(text: "请输入内容")
+            return
         }
+        
+        var data = Dictionary<String, AnyObject>()
+        data["to_uid"] = self.toID as AnyObject
+        data["msn"] = inputTextView.text as AnyObject
+        data["type"] = "1" as AnyObject
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["type"] = "chat" as AnyObject
+        paramsDictionary["data"] =  data as AnyObject
+
+        let jsonStr = dicValueString(paramsDictionary)
+        print(jsonStr!)
+
+        WebSocketManager.instance.sendMessage(msg: jsonStr!)
+ 
  
     }
     
@@ -561,7 +609,7 @@ extension MessageController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             print(textView.text)
-           sendCurrentInput()
+            sendCurrentInput()
             return false
         }
         //删除

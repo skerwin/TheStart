@@ -307,26 +307,12 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        var data = Dictionary<String, AnyObject>()
-        data["to_uid"] = 317 as AnyObject
-        data["msn"] = "ggghahhhahahhahha" as AnyObject
-        data["type"] = "1" as AnyObject
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["type"] = "chat" as AnyObject
-        paramsDictionary["data"] =  data as AnyObject
-
-        let jsonStr = dicValueString(paramsDictionary)
-        print(jsonStr!)
-
-        WebSocketManager.instance.socket.socketWrite(string: jsonStr!)
-        
-//        if indexPath.section == 2{
-//            let controller = JobInfoViewController()
-//            controller.dateID = dataLJobList[indexPath.row].id
-//            self.navigationController?.pushViewController(controller, animated: true)
-//        }
+ 
+        if indexPath.section == 2{
+            let controller = JobInfoViewController()
+            controller.dateID = dataLJobList[indexPath.row].id
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
        
         
     }

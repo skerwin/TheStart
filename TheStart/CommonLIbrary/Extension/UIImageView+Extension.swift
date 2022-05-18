@@ -28,21 +28,15 @@ extension UIImageView {
         if url == nil || url! == ""{
                   self.image = UIImage.init(named: "zhanweitu")
              }else{
-                 
                  var PinUrl = url!
                  
-                 
                  if PinUrl.containsStr(find: "http"){
-                     
                  }else{
                      PinUrl = URLs.getHostAddress() + PinUrl
-                     print(PinUrl)
                  }
-                 
                  guard let imageUrl = URL.init(string:PinUrl.urlEncoded()) else { return }
                  let resource = ImageResource.init(downloadURL: imageUrl)
                  self.kf.setImage(with: resource,placeholder: UIImage.init(named: "zhanweitu"),options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)])
-  
              }
     }
     

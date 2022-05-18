@@ -47,6 +47,7 @@
 		B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */; };
 		B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1702834D6F90008670C /* CloneMsgModel.swift */; };
 		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
+		B831E175283511EB0008670C /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E174283511EB0008670C /* ContactModel.swift */; };
 		B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */; };
 		B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633B280AAD7D00A3282D /* TextViewCell.m */; };
 		B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C6345280ABE9700A3282D /* TipOffpootContentCell.swift */; };
@@ -366,6 +367,7 @@
 		B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianAuthorController.swift; sourceTree = "<group>"; };
 		B831E1702834D6F90008670C /* CloneMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloneMsgModel.swift; sourceTree = "<group>"; };
 		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		B831E174283511EB0008670C /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheStart-Bridging-Header.h"; sourceTree = "<group>"; };
 		B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 		B83C633B280AAD7D00A3282D /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 				B831E1702834D6F90008670C /* CloneMsgModel.swift */,
 				B85FAFF628116A8300D25B66 /* ChatEmotion.swift */,
 				B85FAFF728116A8300D25B66 /* ChatSelectorModel.swift */,
+				B831E174283511EB0008670C /* ContactModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1675,6 +1678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B831E175283511EB0008670C /* ContactModel.swift in Sources */,
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
 				B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */,
 				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,

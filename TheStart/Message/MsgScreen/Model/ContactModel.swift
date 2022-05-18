@@ -1,14 +1,14 @@
 //
-//  CloneMsgModel.swift
+//  ContactModel.swift
 //  TheStart
 //
 //  Created by zhaoyuanjing on 2022/05/18.
 //
- 
-import UIKit
+
+import Foundation
 import ObjectMapper
 
-struct CloneMsgModel : Mappable {
+struct ContactModel : Mappable {
     
  
     var id = 0
@@ -16,14 +16,14 @@ struct CloneMsgModel : Mappable {
     var to_uid = 0
 
     var msn = ""
-    var add_time = 0.0
+    var add_time = ""
     var type = 0
     
     var msn_type = 0
     var nickname = ""
     var avatar = ""
     
-    
+    var count = 0
     
     init?(map: Map) {
         
@@ -42,6 +42,6 @@ struct CloneMsgModel : Mappable {
         msn_type <- map["msn_type"]
         nickname <- map["nickname"]
         avatar <- map["avatar"]
- 
+        count <- map["count"]
     }
 }

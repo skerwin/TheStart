@@ -184,7 +184,14 @@ extension WorkerInfoViewController:WorkerBaseInfoDelegate {
 }
 extension WorkerInfoViewController:ChatBtnViewDelegate {
     func sumbitAction() {
+        if dataModel!.uid == getUserId(){
+            showOnlyTextHUD(text: "不能跟自己发起聊天哦")
+            return
+        }
             let controller = UIStoryboard.getMessageController()
+       
+            controller.toID = dataModel!.uid
+            controller.nameTitle = dataModel!.nickname
             self.navigationController?.pushViewController(controller, animated: true)
     }
  

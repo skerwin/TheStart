@@ -595,7 +595,11 @@ struct HomeAPI {
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["page"] = page as AnyObject
         paramsDictionary["limit"] = limit as AnyObject
-        paramsDictionary["keyword"] = keyword as AnyObject
+        if keyword != ""{
+            paramsDictionary["keyword"] = keyword as AnyObject
+        }
+            
+       
    
          let urlPath = generateUrlWithParams(paramsDictionary,path: getContactListPath)
  

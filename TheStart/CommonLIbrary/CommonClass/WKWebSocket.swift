@@ -55,7 +55,7 @@ class WKWebSocket:NSObject{
         var map:[String:Any]
         map = ["type":"chat","data":"ping"] as [String : Any]
         let j = dicValueString(map)
-        print(j)
+        //print(j)
         socketWrite(string: j!)
         //socketWrite(string: "")
     }
@@ -99,25 +99,33 @@ extension WKWebSocket:WebSocketDelegate{
                 onConnect!()
             }
         case .text(let string):
-            
+            print("Received text:")
             if string != ""{
                 let dict = stringValueDic(string)
+                print(dict!)
                 if dict != nil{
                     let type = dict!["type"] as! String
-                    print(type)
                     if type == "OK"{
                         isConnected = true
                     }else if type == "timeout"{
                         if onConnect != nil {
                             onConnect!()
                         }
-                    }
+                    }else if type == "err_tip"{
+                       let data = dict!["data"] as! [String : Any]
+                        DialogueUtils.showError(withStatus: (data["msg"] as! String))
+                    }else if type == "chat"{
+                        if onText != nil {
+                            onText!(string)
+                        }
+
+                     }
                     
                 }else{
                     
                 }
             }
-            print("Received text: \(string)")
+            //print("Received text: \(string)")
         case .binary(let data):
             print("Received data: \(data.count)")
         case .ping(_):

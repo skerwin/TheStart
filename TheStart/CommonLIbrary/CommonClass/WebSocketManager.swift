@@ -41,19 +41,23 @@ class WebSocketManager: NSObject {
             self?.reConnectTime = 0
         }
         
-        socket.onData = {(data) in
-            
-        }
-        
-        socket.onText = {(text) in
-            
-        }
+//        socket.onData = {(data) in
+//
+//        }
+//
+//        socket.onText = {(text) in
+//
+//        }
         
         //失败的重连
         socket.onDisconnect = {[weak self](error) in
             self?.socketReconnect()
         }
     }
+    
+    func setOntext(onTextBlock:((String)->Void)?){
+        socket.onText = onTextBlock
+     }
 
     func openSocket(){
         let paramsStr = "?type=login&token=" + getToken()
@@ -79,7 +83,7 @@ class WebSocketManager: NSObject {
     }
     
     func sendMessage(msg:String){
-        self.socket.socketWrite(string: "")
+        self.socket.socketWrite(string: msg)
     }
     
     

@@ -159,8 +159,7 @@ class MusicDetailController: BaseViewController,Requestable{
 }
 extension MusicDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
-            //let controller = UIStoryboard.getMessageController()
-           // self.navigationController?.pushViewController(controller, animated: true)
+            
     }
  
 }

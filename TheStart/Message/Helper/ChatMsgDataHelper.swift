@@ -41,6 +41,19 @@ class ChatMsgDataHelper: NSObject {
     }
 }
 
+
+//            self.text = message.message
+//            userType = message.fromUserId == WeChatTools.shared.getCurrentUserId() ? .me : .friend
+//            self.fromUserId = message.fromUserId
+//
+//            if message.msgType == "image" {
+//                self.modelType = .image
+//            } else if message.msgType == "text" {
+//                self.modelType = .text
+//            } else {
+//                self.modelType = .time
+//            }
+
 // MARK:- 获取格式化消息
 extension ChatMsgDataHelper {
     func getFormatMsgs(nimMsgs: [ImMessageModel]?) -> [ChatMsgModel] {
@@ -48,7 +61,15 @@ extension ChatMsgDataHelper {
         guard let nimMsgs = nimMsgs else { return formatMsgs }
         for nimMsg in nimMsgs {
             let model = ChatMsgModel()
-            model.message = nimMsg
+            model.text = nimMsg.message
+            if nimMsg.msgType == "image" {
+                model.modelType = .image
+            } else if nimMsg.msgType == "text" {
+                model.modelType = .text
+            } else {
+                model.modelType = .time
+            }
+           // model.message = nimMsg
             formatMsgs.append(model)
         }
         return formatMsgs
@@ -118,7 +139,7 @@ extension ChatMsgDataHelper {
     // MARK: 创建时间模型
     fileprivate func createTimeModel(model: ChatMsgModel) -> ChatMsgModel {
         let timeModel: ChatMsgModel = ChatMsgModel()
-        timeModel.message = model.message
+        //timeModel.message = model.message
         timeModel.modelType = .time
         timeModel.time = model.time
 //        timeModel.timeStr = ChatMsgTimeHelper.shared.chatTimeString(with: timeModel.time)

@@ -18,6 +18,7 @@ class MusicViewCell: UICollectionViewCell {
     var model:AudioModel? {
         didSet {
             moneyLabel.titleLabel?.text = model?.price
+            moneyLabel.setTitle(model?.price, for: .normal)
             nameLabel.text = model!.name
             imageV.displayImageWithURL(url: model?.image)
             

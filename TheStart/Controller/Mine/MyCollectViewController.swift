@@ -50,7 +50,7 @@ class MyCollectViewController: BaseViewController {
        
        controller4 = AuthorViewController()
        controller4.isFromMine = true
-       //controller4.isMyCollect = true
+       controller4.isMyCollect = true
        controller4.title = "作者"
        controller4.parentNavigationController = self.navigationController
       

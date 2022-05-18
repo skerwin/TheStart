@@ -32,11 +32,11 @@
                     <color key="textColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已实名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hy-g4-drJ">
-                    <rect key="frame" x="81" y="43" width="150" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已实名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hy-g4-drJ">
+                    <rect key="frame" x="81" y="43" width="58" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Oz4-Er-8oY"/>
-                        <constraint firstAttribute="width" constant="150" id="Ujl-NS-UXI"/>
+                        <constraint firstAttribute="width" constant="58" id="Ujl-NS-UXI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -88,6 +88,13 @@
                 <constraint firstItem="4hy-g4-drJ" firstAttribute="top" secondItem="vzt-E8-LXn" secondAttribute="bottom" constant="5" id="zXB-cw-Z1O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headImage" destination="h7j-fj-dcz" id="Srz-5Y-4IH"/>
+                <outlet property="isMusicLabel" destination="b2P-LO-Ycs" id="tln-n4-TXO"/>
+                <outlet property="isRealabel" destination="4hy-g4-drJ" id="yru-P1-pI3"/>
+                <outlet property="musicNumLabel" destination="fIr-lN-p21" id="FvM-uF-bd5"/>
+                <outlet property="nameLabel" destination="vzt-E8-LXn" id="oV1-02-TCg"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="400.78125"/>
         </view>
     </objects>

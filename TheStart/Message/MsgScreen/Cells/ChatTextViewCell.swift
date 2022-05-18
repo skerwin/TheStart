@@ -163,6 +163,7 @@ extension ChatTextViewCell {
         // 设置泡泡
         let img = self.model?.userType == .me ? #imageLiteral(resourceName: "message_sender_background_normal") : #imageLiteral(resourceName: "message_receiver_background_normal")
         let normalImg = img.resizableImage(withCapInsets: UIEdgeInsets(top: 30, left: 28, bottom: 85, right: 28), resizingMode: .stretch)
+        avatar.displayButtonHeadImageWithURL(url: model?.headImg)
         bubbleView.image = normalImg
         
         contentTextView.contentSize = contentSize
@@ -178,6 +179,9 @@ extension ChatTextViewCell {
             make.width.height.equalTo(40)
             make.top.equalTo(self.snp.top)
         }
+        avatar.layer.masksToBounds = true
+        avatar.layer.cornerRadius = 20
+        
         bubbleView.snp.remakeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(-2)
             make.bottom.equalTo(contentTextView.snp.bottom).offset(12)

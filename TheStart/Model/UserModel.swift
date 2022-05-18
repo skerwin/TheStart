@@ -66,9 +66,14 @@ struct UserModel: Mappable {
     var address = ""
     
     //音乐人信息
+     var work_name = ""
     
     
     mutating func mapping(map: Map) {
+        
+        music_num <- map["music_num"]
+        work_name <- map["work_name"]
+        
         address <- map["address"]
         
         shiming_work <- map["shiming_work"]

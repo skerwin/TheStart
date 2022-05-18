@@ -57,10 +57,10 @@ class WorkListViewController: BaseViewController,Requestable  {
     func  loadData(){
         
         if isMypub {
-            let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type:type)
+            let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type: type, page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else if isMyCollect{
-            let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type)
+            let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type, page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else{
             let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)

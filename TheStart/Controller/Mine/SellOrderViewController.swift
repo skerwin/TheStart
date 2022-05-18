@@ -9,6 +9,8 @@ import UIKit
 
 class SellOrderViewController: BaseViewController {
 
+    
+    var parentNavigationController: UINavigationController?
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -19,7 +19,6 @@ class AuthorDetailController: BaseViewController,Requestable {
     var row_Count = 3
     
     var parentNavigationController: UINavigationController?
-    var dataList = [DictModel]()
     var pubBtn:UIButton!
     var bannerList = [ImageModel]()
     
@@ -29,11 +28,26 @@ class AuthorDetailController: BaseViewController,Requestable {
     
     var collectionView: UICollectionView!
     
+    var authorId = 0
+    
+    var dataList = [AudioModel]()
+    
+    var userModel = UserModel()
+    
+    var headView: AuthorDetailHeader!
+    
+
+    var rightBarButton:UIButton!
+    
+    var isCollect = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
         //loadData()
         self.title = "他/她的音乐"
+        loadData()
+        createRightNavItem()
         view.backgroundColor = ZYJColor.main
      
        
@@ -61,8 +75,8 @@ class AuthorDetailController: BaseViewController,Requestable {
         }
         collectionView.register(UINib(nibName:"AuthorDetailHeader", bundle:nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AuthorDetailHeader.nameOfClass)
         
-        collectionView.register(UINib(nibName:"MyStarCollectionViewCell", bundle:nil),
-                                      forCellWithReuseIdentifier: "MyStarCollectionViewCell")
+        collectionView.register(UINib(nibName:"MusicViewCell", bundle:nil),
+                                      forCellWithReuseIdentifier: "MusicViewCell")
         
         collectionView.frame = CGRect(
             x: 0,
@@ -75,29 +89,67 @@ class AuthorDetailController: BaseViewController,Requestable {
         view.addSubview(collectionView)
         // Do any additional setup after loading the view.
     }
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+        rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+        
+        rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+    }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        
+        let requestParams = HomeAPI.authorCollectionPathAndParams(musician_id: authorId)
+        postRequest(pathAndParams: requestParams,showHUD:false)
+        
+     }
+  
+    
     
     func loadData(){
-        let requestParams = HomeAPI.MyCoinListPathAndParams()
-        getRequest(pathAndParams: requestParams,showHUD:false)
+        let requestParams = HomeAPI.authorDetailPathAndParams(id: authorId)
+        postRequest(pathAndParams: requestParams,showHUD:false)
 
     }
  
     override func onFailure(responseCode: String, description: String, requestPath: String) {
-        collectionView.mj_header?.endRefreshing()
+        DialogueUtils.dismiss()
+        DialogueUtils.showError(withStatus: description)
         
+        collectionView.mj_header?.endRefreshing()
         self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
     }
 
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-        collectionView.mj_header?.endRefreshing()
- 
-//        myCoins = responseResult["coins"].intValue
-//
-//        dataList = getArrayFromJsonByArrayName(arrayName: "recharge_quota", content: responseResult)
-//        bannerList = getArrayFromJsonByArrayName(arrayName: "banner", content: responseResult)
-//
-//        self.collectionView.reloadData()
+        if requestPath == HomeAPI.authorCollectionPath{
+            isCollect = responseResult["if_collect"].intValue
+            if isCollect == 1{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+                showOnlyTextHUD(text: "收藏成功")
+            }else{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+                showOnlyTextHUD(text: "取消收藏")
+            }
+            
+        }else{
+            collectionView.mj_header?.endRefreshing()
+            userModel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
+            dataList = getArrayFromJsonByArrayName(arrayName: "audio_list", content: responseResult)
+            headView.configModel(model: userModel!)
+            self.collectionView.reloadData()
+        }
+        
+       
 
  
     }
@@ -113,33 +165,30 @@ class AuthorDetailController: BaseViewController,Requestable {
     
  }
 
+
 extension AuthorDetailController:UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         
-        let itemWidth = Int((view.hx.width - 24 - CGFloat(row_Count - 1) * 10)) / row_Count
-        return CGSize(width: itemWidth, height: 110)
+        let itemWidth = Int((view.hx.width - 24 - CGFloat(row_Count - 1) * 8)) / row_Count
+        return CGSize(width: itemWidth, height: 165)
     }
     
     //itme间的上下距离
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
+        return 5
     }
     //itme间的左右距离
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 10
+        return 8
     }
     //头section的高度
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForHeaderInSection section:Int) -> CGSize {
         return CGSize.init(width: screenWidth , height: 127)
     }
-  
-//    //尾section的高度
-//    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForFooterInSection section:Int) -> CGSize {
-//        return CGSize.init(width: screenWidth , height: 314)
-//    }
+ 
     //整个itme区域上下左右的编剧
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
@@ -161,9 +210,9 @@ extension AuthorDetailController:UICollectionViewDataSource,UICollectionViewDele
 
 
         if kind == UICollectionView.elementKindSectionHeader {
-            let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:AuthorDetailHeader.nameOfClass, for: indexPath) as! AuthorDetailHeader
+            headView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:AuthorDetailHeader.nameOfClass, for: indexPath) as! AuthorDetailHeader
  
-             return filerView
+            return headView
         }else{
        
             return UICollectionReusableView()
@@ -171,14 +220,16 @@ extension AuthorDetailController:UICollectionViewDataSource,UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyStarCollectionViewCell.nameOfClass, for: indexPath) as! MyStarCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MusicViewCell.nameOfClass, for: indexPath) as! MusicViewCell
         cell.model = dataList[indexPath.item]
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     
+        let controller = MusicDetailController()
+        controller.dateID = dataList[indexPath.item].id
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     

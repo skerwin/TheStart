@@ -156,7 +156,6 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     
     
     func prepareData(){
- 
         do {
             if let file = Bundle.main.url(forResource: "cityjson", withExtension: "json") {
                 let data = try Data(contentsOf: file)

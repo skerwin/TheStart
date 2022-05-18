@@ -111,9 +111,9 @@ extension BaseTableViewCell {
 
     @objc func resend() {
         print("重新发送操作")
-        guard let message = model?.message else {
-            return
-        }
+//        guard let message = model?.message else {
+//            return
+//        }
         // MARK: 重发
         // 因为网络原因等导致的发送消息失败而需要重发的情况，直接调用
         // 此时如果再次调用 sendMessage，则会被 NIM SDK 认作新消息。

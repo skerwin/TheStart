@@ -51,10 +51,10 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     func loadData(){
         
         if isMypub {
-            let pathAndParams = HomeAPI.myaudioListPathAndParams()
+            let pathAndParams = HomeAPI.myaudioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else if isMyCollect{
-            let pathAndParams = HomeAPI.collectaudioListPathAndParams()
+            let pathAndParams = HomeAPI.collectaudioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else{
             let requestParams = HomeAPI.audioListPathAndParams(page: 1, limit: 20)
@@ -167,7 +167,6 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         controller.dateID = dataList[indexPath.item].id
         self.navigationController?.pushViewController(controller, animated: true)
         
-     
     }
 
     

@@ -19,28 +19,23 @@ enum WKSocketMSGType:Int {
 //对Starscream的封装，包含了重新登陆的机制，重连的机制留给外部
 class WKWebSocket:NSObject{
     var websocketUrl:String =  ""
-    var socket:WebSocket
+    var socket:WebSocket!
     
     var onConnect:(()->Void)?
     var onDisconnect:((Error?)->Void)?
     var onText:((String)->Void)?
     var onData:((Data)->Void)?
     
-    var isConnected = true
+    var isConnected = false
     
     
-    init(url:String) {
+    func initOpen(url:String) {
         
         websocketUrl = url
-        if URL.init(string: websocketUrl) != nil{
-            socket = WebSocket.init(request: URLRequest(url: URL.init(string: websocketUrl)!))
-        }else{
-            socket = WebSocket.init(request: URLRequest(url: URL.init(string: websocketUrl)!))
-        }
+        print(websocketUrl)
         
-                    
-        super.init()
-        
+        let requeest =  URLRequest(url: URL.init(string: websocketUrl)!)
+        socket = WebSocket.init(request:requeest)
         socket.delegate = self
     }
     
@@ -49,57 +44,30 @@ class WKWebSocket:NSObject{
         socket.disconnect()
     }
     
+    
+    
+    
     func connect(){
         socket.connect()
     }
     
-    
+    func socketHeartBeat(){
+        var map:[String:Any]
+        map = ["type":"chat","data":"ping"] as [String : Any]
+        let j = dicValueString(map)
+        print(j)
+        socketWrite(string: j!)
+        //socketWrite(string: "")
+    }
     
 }
 
-//MARK: - 封装diaoyong
-extension WKWebSocket{
-    //重新连接后，再次重新登陆
-    func socketLogin(){
-        wkSocketWrite(type: .login)
-    }
-    
-    //心跳包
-    func socketHeartBeat(){
-        wkSocketWrite(type: .syn)
-    }
-}
+
 
 
 //MARK: - write
 extension WKWebSocket{
-    //统一格式调用
-    func wkSocketWrite(type:WKSocketMSGType){
-//        AccountManager.getAccount().token = "h5_waykimain_5ccb28d4-89fc-481f-8deb-5856b744bd24"
-//
-//        let token = AccountManager.getAccount().token
-//
-//        if token.count>0{
-//
-//            let map:[String:Any]
-//            if type != .syn{
-//                let msgUuid:String = UUIDTool.createRandomString(withKey: "132")
-//                let deviceId:String = UUIDTool.getUUIDInKeychain()
-//                map = ["msgType":type.rawValue,"msgUuid":msgUuid,"msgBody":["accessToken": token,
-//                                                                                "platform":"ios",
-//                                                                                "deviceId":deviceId,
-//                    ]] as [String : Any]
-//            }else{
-//                //心跳包
-//                map = ["msgType":type.rawValue] as [String : Any]
-//            }
-//
-//
-//            let j = String.getJSONStringFromDictionary(dictionary: map as NSDictionary)
-//            print("websocket is write ",j)
-//            socketWrite(string: j)
-//        }
-    }
+    
     
     func socketWrite(data:Data) {
         socket.write(data: data)
@@ -121,30 +89,59 @@ extension WKWebSocket{
 extension WKWebSocket:WebSocketDelegate{
     func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
-            case .connected(let headers):
-                isConnected = true
-                print("websocket is connected: \(headers)")
-            case .disconnected(let reason, let code):
-                isConnected = false
-                print("websocket is disconnected: \(reason) with code: \(code)")
-            case .text(let string):
-                print("Received text: \(string)")
-            case .binary(let data):
-                print("Received data: \(data.count)")
-            case .ping(_):
-                break
-            case .pong(_):
-                break
-            case .viabilityChanged(_):
-                break
-            case .reconnectSuggested(_):
-                break
-            case .cancelled:
-                isConnected = false
-            case .error(let error):
-                isConnected = false
-               // handleError(error)
+        case .connected(let headers):
+            isConnected = true
+            print("websocket is connected: \(headers)")
+        case .disconnected(let reason, let code):
+            isConnected = false
+            print("websocket is disconnected: \(reason) with code: \(code)")
+            if onConnect != nil {
+                onConnect!()
             }
+        case .text(let string):
+            
+            if string != ""{
+                let dict = stringValueDic(string)
+                if dict != nil{
+                    let type = dict!["type"] as! String
+                    print(type)
+                    if type == "OK"{
+                        isConnected = true
+                    }else if type == "timeout"{
+                        if onConnect != nil {
+                            onConnect!()
+                        }
+                    }
+                    
+                }else{
+                    
+                }
+            }
+            print("Received text: \(string)")
+        case .binary(let data):
+            print("Received data: \(data.count)")
+        case .ping(_):
+            break
+        case .pong(_):
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            print("cancelled")
+            isConnected = false
+            if onConnect != nil {
+                onConnect!()
+            }
+        case .error(_):
+            print("error")
+            isConnected = false
+            if onConnect != nil {
+                onConnect!()
+            }
+            
+        }
     }
     
     func websocketDidConnect(socket: WebSocketClient){
@@ -154,19 +151,22 @@ extension WKWebSocket:WebSocketDelegate{
         }
         
     }
+    
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?){
-        print("websocket is disconnected: \(error?.localizedDescription)")
+        print("websocket is disconnected: \(error?.localizedDescription ?? "")")
         if onDisconnect != nil {
             onDisconnect!(error)
         }
         
     }
+    
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String){
         print("got some text: \(text)")
         if onText != nil {
             onText!(text)
         }
     }
+    
     func websocketDidReceiveData(socket: WebSocketClient, data: Data){
         print("got some data: \(data.count)")
         if onData != nil {
@@ -177,8 +177,6 @@ extension WKWebSocket:WebSocketDelegate{
 
 /*
  ### Wicc 客户端向服务端消息结构
- 
- 
  ##报文结构：
  | 字段名 | 类型 | 说明 |
  |-------|------|-----|
@@ -224,3 +222,49 @@ extension WKWebSocket:WebSocketDelegate{
  
  
  */
+//统一格式调用
+//func wkSocketWrite(type:WKSocketMSGType){
+////        AccountManager.getAccount().token = "h5_waykimain_5ccb28d4-89fc-481f-8deb-5856b744bd24"
+////
+////        let token = AccountManager.getAccount().token
+////
+////        if token.count>0{
+////
+////            let map:[String:Any]
+////            if type != .syn{
+////                let msgUuid:String = UUIDTool.createRandomString(withKey: "132")
+////                let deviceId:String = UUIDTool.getUUIDInKeychain()
+////                map = ["msgType":type.rawValue,"msgUuid":msgUuid,"msgBody":["accessToken": token,
+////                                                                                "platform":"ios",
+////                                                                                "deviceId":deviceId,
+////                    ]] as [String : Any]
+////            }else{
+////                //心跳包
+////                map = ["msgType":type.rawValue] as [String : Any]
+////            }
+////
+////
+////            let j = String.getJSONStringFromDictionary(dictionary: map as NSDictionary)
+////            print("websocket is write ",j)
+////            socketWrite(string: j)
+////        }
+//
+//    var map:[String:Any]
+//    map = ["msgType":type.rawValue,"msgUuid":"msgUuid","msgBody":["accessToken": "1234","platform":"ios","deviceId":"deviceId",]] as [String : Any]
+//    map = ["msgType":"type.rawValue"] as [String : Any]
+//    let j = dicValueString(map)
+//    socketWrite(string: j!)
+//
+//}
+////MARK: - 封装diaoyong
+//extension WKWebSocket{
+//    //重新连接后，再次重新登陆
+//    func socketLogin(){
+//        wkSocketWrite(type: .login)
+//    }
+//
+//    //心跳包
+//    func socketHeartBeat(){
+//        wkSocketWrite(type: .syn)
+//    }
+//}

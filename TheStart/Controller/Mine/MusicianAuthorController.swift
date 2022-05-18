@@ -21,7 +21,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     
     var mediaCell:PubMediaCell = PubMediaCell.init()
     var mediaVodCell:PubMediaCellVod = PubMediaCellVod.init()
-    var introCell:WokerPubIntroCell = WokerPubIntroCell.init()
+    var introCell:SelfIntroCell = SelfIntroCell.init()
     var configImg: PickerConfiguration = PhotoTools.getWXPickerConfig(isMoment: true)
     var configVod: PickerConfiguration = PhotoTools.getWXPickerConfig(isMoment: true)
     
@@ -59,12 +59,16 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     
     var headView:MusicAuthorHeader!
     var headerBgView:UIView!
+    
     var footerView:ChatBtnView!
     var footerBgView:UIView!
     
-    var audioModel = AudioModel()
+     var isImgFile = true
     
-    var isImgFile = true
+    
+    var userModel = UserModel()
+    var sectionFooter:MusicAuthorVideoFooter!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +77,16 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
         initFooterView()
         initTableView()
         self.title = "音乐人认证"
+        
+        profileActionController.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        profileActionController.addAction(UIAlertAction.init(title: "从相机选择", style: .default, handler: { (action) in
+            self.openPhotoLibrary()
+        }))
+        profileActionController.addAction(UIAlertAction.init(title: "拍照", style: .default, handler: { (action) in
+            self.openCamera()
+        }))
         // Do any additional setup after loading the view.
     }
     
@@ -121,7 +135,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("MusicAuthorHeader", owner: nil, options: nil)!.first as? MusicAuthorHeader
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 161)
-        
+        headView.delegate = self
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 161))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
@@ -133,7 +147,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
         footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
         footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
         footerView.delegate = self
-        footerView.chatBtn.setTitle("发布", for: .normal)
+        footerView.chatBtn.setTitle("提交", for: .normal)
         footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
         footerBgView.backgroundColor = UIColor.clear
         footerBgView.addSubview(footerView)
@@ -142,7 +156,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         DialogueUtils.dismiss()
-        DialogueUtils.showError(withStatus: "发布失败，请重试")
+        DialogueUtils.showError(withStatus: description)
     }
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
@@ -187,124 +201,172 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
         
     }
     
+   
+    
+    
+    var imagePath = ""
+    var headimgModel = ImageModel()
+    
+    var isLogoCamera = false
+    
     func uploadPhoto(filePath: [URL]) {
  
         HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { [self] (content) -> Void in
             DialogueUtils.dismiss()
-            if self.isImgFile{
-                self.uploadImgArr = getArrayFromJson(content: content)
+            if isLogoCamera{
+                let imgArr:[ImageModel] = getArrayFromJson(content: content)
+                if imgArr.count > 0{
+                    self.userModel?.logo =  imgArr.first!.url
+                }
+                isLogoCamera = false
             }else{
-                self.uploadVodArr = getArrayFromJson(content: content)
+                if self.isImgFile{
+                    self.uploadImgArr = getArrayFromJson(content: content)
+                }else{
+                    self.uploadVodArr = getArrayFromJson(content: content)
+                }
             }
-           
-            //postAtricle()
-           
-         }) { (errorInfo) -> Void in
+ 
+        }) { [self] (errorInfo) -> Void in
             DialogueUtils.dismiss()
-             if self.isImgFile{
-                 DialogueUtils.showError(withStatus: "图片上传失败，请重试")
-              
+             if isLogoCamera{
+                 DialogueUtils.showError(withStatus: errorInfo)
+                 self.headView.headImage.image = UIImage.init(named: "ziran")
+                 self.headimgModel = ImageModel()
+                 self.userModel?.logo = ""
+                 isLogoCamera = false
              }else{
-                 DialogueUtils.showError(withStatus: "视频上传失败，请重试")
-              
+                 if self.isImgFile{
+                     DialogueUtils.showError(withStatus: "图片上传失败，请重试")
+                  }else{
+                     DialogueUtils.showError(withStatus: "视频上传失败，请重试")
+                 }
              }
-           
         }
     }
     
     
     func imagePickerController(_ picker:UIImagePickerController,didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey:Any]){
-//        let publicImageType = "public.image"
-//        if let typeInfo = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.mediaType.rawValue)] as? String {
-//            if typeInfo == publicImageType {
-//                if let image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.editedImage.rawValue)] as? UIImage {
-//                    var data: NSData?
-//                    if image.pngData() == nil {
-//                        data = image.jpegData(compressionQuality: 0.8) as NSData?
-//                    } else {
-//                        data = image.pngData() as NSData?
-//                    }
-//                    if data != nil {//上传头像到服务器
-//                        let home = NSHomeDirectory() as NSString
-//                        let docPath = home.appendingPathComponent("Documents") as NSString;
-//                        let imageName = DateUtils.getStampString() + ".png"
-//                        imagePath = docPath.appendingPathComponent(imageName);
-//                        data?.write(toFile: imagePath, atomically: true)
-//                        headImage.image = image
-//                        //uploadPhoto(filePath: imagePath)
-//                    }
-//                }
-//            }
-//        }
-//        pickerController.dismiss(animated: true, completion: nil)
+        let publicImageType = "public.image"
+        if let typeInfo = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.mediaType.rawValue)] as? String {
+            if typeInfo == publicImageType {
+                if let image = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.editedImage.rawValue)] as? UIImage {
+                    var data: NSData?
+                    if image.pngData() == nil {
+                        data = image.jpegData(compressionQuality: 0.8) as NSData?
+                    } else {
+                        data = image.pngData() as NSData?
+                    }
+                    if data != nil {//上传头像到服务器
+                        let home = NSHomeDirectory() as NSString
+                        let docPath = home.appendingPathComponent("Documents") as NSString;
+                        let imageName = DateUtils.getStampString() + ".png"
+                        imagePath = docPath.appendingPathComponent(imageName);
+                        data?.write(toFile: imagePath, atomically: true)
+                        
+                        headView.headImage.image = image
+                        let fileUrl = URL.init(fileURLWithPath: imagePath)
+                        DialogueUtils.showWithStatus("正在上传")
+                        uploadPhoto(filePath: [fileUrl])
+                    }
+                }
+            }
+        }
+        pickerController.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker .dismiss(animated: true, completion: nil)
     }
+    
+    lazy var profileActionController: UIAlertController = UIAlertController.init(title: "选择照片", message: "", preferredStyle: .actionSheet)
+    
+    lazy var pickerController: UIImagePickerController = {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        return pickerController
+    }()
+    
+    
+    // 打开照相功能
+    func openCamera() {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            pickerController.sourceType = .camera
+            pickerController.allowsEditing = true
+            present(pickerController, animated: true, completion: nil)
+        } else {
+            print("模拟器没有摄像头，请使用真机调试")
+        }
+    }
+    
+    func openPhotoLibrary() {
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true, completion: nil)
+    }
+ 
  
 }
+extension MusicianAuthorController:MusicAuthorHeaderDelegate {
+    func openCameradelegate() {
+        isLogoCamera = true
+        self.present(profileActionController, animated: true, completion: nil)
+
+    }
+    
+    
+}
+
+
  
 extension MusicianAuthorController:ChatBtnViewDelegate {
     func sumbitAction() {
 
-//        audioModel?.name = headView.nameTV.text!
-//        if audioModel!.name.isEmptyStr(){
-//            showOnlyTextHUD(text: "请输入名称")
-//            return
-//        }
-//        audioModel?.price = headView.MoneyTF.text!
-//        if audioModel!.price.isEmptyStr(){
-//            showOnlyTextHUD(text: "请输入价格")
-//            return
-//        }
-//
-//        audioModel?.link = headView.wanpanTV.text!
-//        if audioModel!.link.isEmptyStr(){
-//            showOnlyTextHUD(text: "请输入网盘链接")
-//            return
-//        }
-//
-//        audioModel?.code = headView.wangpanCode.text!
-//        if audioModel!.code.isEmptyStr(){
-//            showOnlyTextHUD(text: "请输入提取码")
-//            return
-//        }
-//
-//
-//
-//        introCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! WokerPubIntroCell
-//        audioModel?.info = introCell.contentTV.text
-//        if audioModel!.info.isEmptyStr(){
-//            showOnlyTextHUD(text: "请简要介绍音乐")
-//            return
-//        }
-//
-//        var imgstr = ""
-//        if uploadImgArr.count != 0{
-//            for imgM in self.uploadImgArr {
-//                imgstr = imgstr + imgM.url + ","
-//            }
-//            imgstr.remove(at: imgstr.index(before: imgstr.endIndex))
-//
-//            audioModel?.image = self.uploadImgArr.first!.url
-//
-//        }
-//        audioModel?.imagesUrl = imgstr
-//
-//
-//        var vodstr = ""
-//        if uploadVodArr.count != 0{
-//            for vodM in self.uploadVodArr {
-//                vodstr = vodstr + vodM.url + ","
-//            }
-//            vodstr.remove(at: vodstr.index(before: vodstr.endIndex))
-//        }
-//
-//        audioModel?.audio_path = vodstr
-// //
-//        let pathAndParams = HomeAPI.audioPubPathAndParams(model: audioModel!)
-//        postRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+        
+        introCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! SelfIntroCell
+        userModel?.introduce = introCell.contentTV.text
+        if userModel!.introduce.isEmptyStr(){
+            showOnlyTextHUD(text: "简要自我介绍")
+            return
+        }
+        
+        
+        if sectionFooter.isOrigin == true{
+            userModel?.video_type = 1
+        }else{
+            userModel?.video_type = 2
+        }
+ 
+        var imgstr = ""
+        if uploadImgArr.count != 0{
+            for imgM in self.uploadImgArr {
+                imgstr = imgstr + imgM.url + ","
+            }
+            imgstr.remove(at: imgstr.index(before: imgstr.endIndex))
+        }
+        userModel?.imagesUrl = imgstr
+        
+
+
+        var vodstr = ""
+        if uploadVodArr.count != 0{
+            for vodM in self.uploadVodArr {
+                vodstr = vodstr + vodM.url + ","
+            }
+            vodstr.remove(at: vodstr.index(before: vodstr.endIndex))
+        }
+        if vodstr == ""{
+            showOnlyTextHUD(text: "请上传才艺资料")
+            return
+        }
+        
+        userModel?.video_path = vodstr
+        
+        let pathAndParams = HomeAPI.audioUserSumbitPathAndParams(model: userModel!)
+        postRequest(pathAndParams: pathAndParams,showHUD: false)
 //
 
         
@@ -358,9 +420,9 @@ extension MusicianAuthorController:UITableViewDataSource,UITableViewDelegate {
         
         
         if section == 1{
-            let sectionView = Bundle.main.loadNibNamed("MusicAuthorVideoFooter", owner: nil, options: nil)!.first as! MusicAuthorVideoFooter
-            sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 50)
-            return sectionView
+            sectionFooter = Bundle.main.loadNibNamed("MusicAuthorVideoFooter", owner: nil, options: nil)!.first as! MusicAuthorVideoFooter
+            sectionFooter.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 50)
+            return sectionFooter
         }else{
             return UIView()
         }
@@ -420,7 +482,7 @@ extension MusicianAuthorController:UITableViewDataSource,UITableViewDelegate {
 extension MusicianAuthorController: PubMediaCellDelegate {
     func deleteItem(index: Int) {
         selectedAssetsImg.remove(at: index)
-        mediaCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PubMediaCell
+        mediaCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 2)) as! PubMediaCell
         mediaCell.selectedAssets = self.selectedAssetsImg
         mediaCell.canSetAddCell = self.canSetAddCellImg
         mediaCell.updateCollectionViewHeight()
@@ -428,15 +490,17 @@ extension MusicianAuthorController: PubMediaCellDelegate {
     
     func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
         isImgFile = true
-        configImg.maximumSelectedCount = 3
+        configImg.maximumSelectedCount = 5
         configImg.selectOptions = PickerAssetOptions.photo
         presentPickerController()
     }
 }
+
+
 extension MusicianAuthorController: PubMediaCellVodDelegate {
     func deleteItemVod(index: Int) {
         selectedAssetsVod.remove(at: index)
-        mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
+        mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
         mediaVodCell.selectedAssets = self.selectedAssetsVod
         mediaVodCell.canSetAddCell = self.canSetAddCellVod
         mediaVodCell.updateCollectionViewHeight()
@@ -459,7 +523,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         if isImgFile{
             selectedAssetsImg = result.photoAssets
             isOriginalImg = result.isOriginal
-            mediaCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PubMediaCell
+            mediaCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! PubMediaCell
             mediaCell.selectedAssets = self.selectedAssetsImg
             mediaCell.canSetAddCell = self.canSetAddCellImg
             mediaCell.updateCollectionViewHeight()
@@ -467,7 +531,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         }else{
             selectedAssetsVod = result.photoAssets
             isOriginalVod = result.isOriginal
-            mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
+            mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
             mediaVodCell.selectedAssets = self.selectedAssetsVod
             mediaVodCell.canSetAddCell = self.canSetAddCellVod
             mediaVodCell.updateCollectionViewHeight()
@@ -500,10 +564,10 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
                 
                 if isImgFile{
                     selectedAssetsImg[atIndex] = photoAsset
-                    collectionViewImg.reloadItems(at: [IndexPath.init(item: atIndex, section: 0)])
+                    collectionViewImg.reloadItems(at: [IndexPath.init(item: atIndex, section: 2)])
                 }else{
                     selectedAssetsVod[atIndex] = photoAsset
-                    collectionViewVod.reloadItems(at: [IndexPath.init(item: atIndex, section: 0)])
+                    collectionViewVod.reloadItems(at: [IndexPath.init(item: atIndex, section: 1)])
                 }
                 
             }
@@ -553,7 +617,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         if isImgFile{
             let isFull = selectedAssetsImg.count == configImg.maximumSelectedCount
             selectedAssetsImg.remove(at: index)
-            mediaCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PubMediaCell
+            mediaCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! PubMediaCell
             mediaCell.selectedAssets = self.selectedAssetsImg
             mediaCell.canSetAddCell = self.canSetAddCellImg
             
@@ -565,7 +629,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
                 }
                 
             }else {
-                collectionViewImg.deleteItems(at: [IndexPath.init(item: index, section: 0)])
+                collectionViewImg.deleteItems(at: [IndexPath.init(item: index, section: 2)])
                 mediaCell.updateCollectionViewHeight()
                 collectionViewImg.reloadData()
                 
@@ -574,7 +638,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
             
             let isFull = selectedAssetsVod.count == configVod.maximumSelectedCount
             selectedAssetsVod.remove(at: index)
-            mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
+            mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
             mediaVodCell.selectedAssets = self.selectedAssetsVod
             mediaVodCell.canSetAddCell = self.canSetAddCellVod
             
@@ -586,7 +650,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
                 }
  
             }else {
-                collectionViewVod.deleteItems(at: [IndexPath.init(item: index, section: 0)])
+                collectionViewVod.deleteItems(at: [IndexPath.init(item: index, section: 1)])
                 mediaVodCell.updateCollectionViewHeight()
                 collectionViewVod.reloadData()
               }
@@ -598,10 +662,10 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         presentPreviewViewForIndexAt index: Int) -> UIView? {
             if isImgFile{
-                let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PubMediaCell
+                let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! PubMediaCell
                 return cell
             }else{
-                let cell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
+                let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
                 return cell
             }
             //return UIView()
@@ -611,10 +675,10 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         _ pickerController: PhotoPickerController,
         presentPreviewImageForIndexAt index: Int) -> UIImage? {
             if isImgFile{
-                let cell = collectionViewImg.cellForItem(at: IndexPath(item: index, section: 0)) as? ResultViewCell
+                let cell = collectionViewImg.cellForItem(at: IndexPath(item: index, section: 2)) as? ResultViewCell
                 return cell?.photoView.image
             }else{
-                let cell = collectionViewVod.cellForItem(at: IndexPath(item: index, section: 0)) as? ResultViewCell
+                let cell = collectionViewVod.cellForItem(at: IndexPath(item: index, section: 1)) as? ResultViewCell
                 return cell?.photoView.image
             }
             
@@ -625,10 +689,10 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         dismissPreviewViewForIndexAt index: Int) -> UIView? {
             
             if isImgFile{
-                let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 0)) as! PubMediaCell
+                let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! PubMediaCell
                 return cell
             }else{
-                let cell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
+                let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
                 return cell
             }
            

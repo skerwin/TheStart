@@ -63,7 +63,7 @@ class TipOffViewController: BaseViewController,Requestable {
     
     func loadData(){
         if isMypub {
-            let pathAndParams = HomeAPI.myArticleListPathAndParams()
+            let pathAndParams = HomeAPI.myArticleListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else if isMyCollect{
         

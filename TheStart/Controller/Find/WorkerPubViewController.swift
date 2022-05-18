@@ -273,7 +273,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         DialogueUtils.dismiss()
-        DialogueUtils.showError(withStatus: "发布失败，请重试")
+        DialogueUtils.showError(withStatus: description)
     }
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {

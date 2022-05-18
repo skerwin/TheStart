@@ -93,6 +93,8 @@ extension WeChatTools {
                 msg.msgType = "image"
             } else if i == 2 {
                 msg.msgType = "text"
+            }else{
+                msg.msgType = "text"
             }
             imModels.append(msg)
         }

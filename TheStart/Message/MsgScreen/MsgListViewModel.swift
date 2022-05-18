@@ -9,13 +9,13 @@
 import UIKit
 
 // cellID
-fileprivate let ChatTextCellID = "ChatTextCellID"
-fileprivate let ChatTextViewCellID = "ChatTextViewCellID"
-fileprivate let ChatImageCellID = "ChatImageCellID"
-fileprivate let ChatTimeCellID = "ChatTimeCellID"
-fileprivate let ChatFileCellID = "ChatFileCellID"
-fileprivate let ChatAudioCellID = "ChatAudioCellID"
-fileprivate let ChatVideoCellID = "ChatVideoCellID"
+ let ChatTextCellID = "ChatTextCellID"
+ let ChatTextViewCellID = "ChatTextViewCellID"
+ let ChatImageCellID = "ChatImageCellID"
+ let ChatTimeCellID = "ChatTimeCellID"
+ let ChatFileCellID = "ChatFileCellID"
+ let ChatAudioCellID = "ChatAudioCellID"
+ let ChatVideoCellID = "ChatVideoCellID"
 
 @objc protocol CellMenuItemActionDelegate {
     func willShowMenu(view: MyTextView, row: Int)
@@ -23,10 +23,13 @@ fileprivate let ChatVideoCellID = "ChatVideoCellID"
 }
 
 class MsgListViewModel: NSObject, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+ 
     var heightArr: [CGFloat] = []
     var dataArr: [ChatMsgModel] = []
+    
     weak var delegate: CellMenuItemActionDelegate?
     weak var weakTableView: UITableView?
+    
     func bind() {
         weakTableView?.register(TextTableViewCell.classForCoder(), forCellReuseIdentifier: ChatTextCellID)
         weakTableView?.register(ChatImageCell.classForCoder(), forCellReuseIdentifier: ChatImageCellID)

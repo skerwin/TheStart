@@ -22,12 +22,17 @@ enum ChatMsgModelType: Int {
     case file
 }
 
+
+
 class ChatMsgModel: NSObject {
     var cellHeight: CGFloat = 0
     // 会话类型
     var modelType: ChatMsgModelType = .text
     // 会话来源
     var userType: ChatMsgUserType = .me
+    
+    // 头像
+    var headImg: String?
     
     // 信息来源id
     var fromUserId: String?
@@ -58,6 +63,10 @@ class ChatMsgModel: NSObject {
     var imgSize: CGSize?
     // 文件大小
     var fileLength: Int64?
+    
+    var showName: Bool = false
+    
+    
     /* ============================== 语音 ============================== */
     // 语音的本地路径
     var audioPath: String?
@@ -80,24 +89,25 @@ class ChatMsgModel: NSObject {
     var videoCoverSize: CGSize?
     // 视频时长，毫秒为单位
     var videoDuration: Int?
+//
+
     
-    var showName: Bool = false
-    
-    var message: ImMessageModel? {
-        didSet {
-            guard let message = message else {
-                return
-            }
-            self.text = message.message
-            userType = message.fromUserId == WeChatTools.shared.getCurrentUserId() ? .me : .friend
-            self.fromUserId = message.fromUserId
-            if message.msgType == "image" {
-                self.modelType = .image
-            } else if message.msgType == "text" {
-                self.modelType = .text
-            } else {
-                self.modelType = .time
-            }
-        }
-    }
+//    var message: ImMessageModel? {
+//        didSet {
+//            guard let message = message else {
+//                return
+//            }
+//            self.text = message.message
+//            userType = message.fromUserId == WeChatTools.shared.getCurrentUserId() ? .me : .friend
+//            self.fromUserId = message.fromUserId
+//            
+//            if message.msgType == "image" {
+//                self.modelType = .image
+//            } else if message.msgType == "text" {
+//                self.modelType = .text
+//            } else {
+//                self.modelType = .time
+//            }
+//        }
+//    }
 }

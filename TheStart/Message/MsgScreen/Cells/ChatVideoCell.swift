@@ -68,6 +68,7 @@ extension ChatVideoCell {
         
         chatImgView.image = #imageLiteral(resourceName: "image")
         durationLabel.text = self.getFormatDuration(with: model?.videoDuration)
+        avatar.displayButtonHeadImageWithURL(url: model?.headImg)
         durationLabel.sizeToFit()
         
         // 获取缩略图size
@@ -78,6 +79,8 @@ extension ChatVideoCell {
             make.width.height.equalTo(40)
             make.top.equalTo(self.snp.top)
         }
+        avatar.layer.masksToBounds = true
+        avatar.layer.cornerRadius = 20
         chatImgView.snp.remakeConstraints { (make) in
             make.top.equalTo(avatar.snp.top)
             make.width.equalTo(thumbSize.width)

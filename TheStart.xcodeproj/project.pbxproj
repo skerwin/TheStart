@@ -45,6 +45,8 @@
 		B81420D02828E9A600B4F6B5 /* AuthorDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */; };
 		B81420D22828E9B200B4F6B5 /* AuthorDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */; };
 		B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */; };
+		B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1702834D6F90008670C /* CloneMsgModel.swift */; };
+		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
 		B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */; };
 		B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633B280AAD7D00A3282D /* TextViewCell.m */; };
 		B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C6345280ABE9700A3282D /* TipOffpootContentCell.swift */; };
@@ -131,7 +133,6 @@
 		B85FB00528116A8300D25B66 /* ChatFindEmotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFDB28116A8200D25B66 /* ChatFindEmotion.swift */; };
 		B85FB00628116A8300D25B66 /* ChatEmotionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFDC28116A8200D25B66 /* ChatEmotionHelper.swift */; };
 		B85FB00728116A8300D25B66 /* MoreActionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFDD28116A8200D25B66 /* MoreActionHelper.swift */; };
-		B85FB00828116A8300D25B66 /* MsgListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFE028116A8200D25B66 /* MsgListViewModel.swift */; };
 		B85FB00A28116A8300D25B66 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFE328116A8200D25B66 /* BaseTableViewCell.swift */; };
 		B85FB00B28116A8300D25B66 /* ChatFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFE428116A8200D25B66 /* ChatFileCell.swift */; };
 		B85FB00C28116A8300D25B66 /* ChatVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAFE528116A8200D25B66 /* ChatVideoCell.swift */; };
@@ -363,6 +364,8 @@
 		B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailHeader.swift; sourceTree = "<group>"; };
 		B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorDetailHeader.xib; sourceTree = "<group>"; };
 		B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianAuthorController.swift; sourceTree = "<group>"; };
+		B831E1702834D6F90008670C /* CloneMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloneMsgModel.swift; sourceTree = "<group>"; };
+		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheStart-Bridging-Header.h"; sourceTree = "<group>"; };
 		B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 		B83C633B280AAD7D00A3282D /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
@@ -454,7 +457,6 @@
 		B85FAFDB28116A8200D25B66 /* ChatFindEmotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFindEmotion.swift; sourceTree = "<group>"; };
 		B85FAFDC28116A8200D25B66 /* ChatEmotionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatEmotionHelper.swift; sourceTree = "<group>"; };
 		B85FAFDD28116A8200D25B66 /* MoreActionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreActionHelper.swift; sourceTree = "<group>"; };
-		B85FAFE028116A8200D25B66 /* MsgListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgListViewModel.swift; sourceTree = "<group>"; };
 		B85FAFE328116A8200D25B66 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		B85FAFE428116A8200D25B66 /* ChatFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFileCell.swift; sourceTree = "<group>"; };
 		B85FAFE528116A8200D25B66 /* ChatVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVideoCell.swift; sourceTree = "<group>"; };
@@ -901,7 +903,6 @@
 		B85FAFDF28116A8200D25B66 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B85FAFE028116A8200D25B66 /* MsgListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -939,6 +940,7 @@
 			children = (
 				B85FAFF428116A8300D25B66 /* ImMessageModel.swift */,
 				B85FAFF528116A8300D25B66 /* ChatMsgModel.swift */,
+				B831E1702834D6F90008670C /* CloneMsgModel.swift */,
 				B85FAFF628116A8300D25B66 /* ChatEmotion.swift */,
 				B85FAFF728116A8300D25B66 /* ChatSelectorModel.swift */,
 			);
@@ -1288,6 +1290,7 @@
 				B83C6353280AF4FD00A3282D /* UIDevice+Extension.swift */,
 				B83C6352280AF4FD00A3282D /* UIFont+Extension.swift */,
 				B8AC50832807CF6B00C2CF26 /* UIImageView+Extension.swift */,
+				B831E1722834F1700008670C /* UIButton+Extension.swift */,
 				B8AC50842807CF6B00C2CF26 /* MJRefresh+Extension.swift */,
 				B8AC50852807CF6B00C2CF26 /* UIColor-Extension.swift */,
 				B8AC50872807CF6B00C2CF26 /* UIImage+Extension.swift */,
@@ -1709,6 +1712,7 @@
 				B83C634B280ACD7100A3282D /* TipOffPostIImgCell.swift in Sources */,
 				B83C638C280D0ECE00A3282D /* ChatBtnView.swift in Sources */,
 				B85FAFA9280F9A6600D25B66 /* JobListViewController.swift in Sources */,
+				B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */,
 				B85FB02228116A8300D25B66 /* StringExtension.swift in Sources */,
 				B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */,
 				B8AB69FA280A9F3A0064861C /* TipOffPostViewController.swift in Sources */,
@@ -1772,13 +1776,13 @@
 				B8AC503B2807C60E00C2CF26 /* UIViewUtils.swift in Sources */,
 				B85FAF9E280EE7BE00D25B66 /* PubMusicController.swift in Sources */,
 				B83C636E280C440D00A3282D /* TipOffCommentHeaderView.swift in Sources */,
-				B85FB00828116A8300D25B66 /* MsgListViewModel.swift in Sources */,
 				B85FAFB1280FADB800D25B66 /* HomeAPI.swift in Sources */,
 				B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */,
 				B8AD405928201FA90001D7F4 /* NewLoginController.swift in Sources */,
 				B8AD4050281FD6D30001D7F4 /* TipOffListCell2.swift in Sources */,
 				B85FB01028116A8300D25B66 /* TextTableViewCell.swift in Sources */,
 				B83C637B280CFC3000A3282D /* WorkerInfoCell.swift in Sources */,
+				B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */,
 				B8AC51082807FF9800C2CF26 /* BerResponseConstants.swift in Sources */,
 				B85FDA652823CE5700EDA845 /* MusicDetailController.swift in Sources */,
 				B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */,

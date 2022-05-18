@@ -83,6 +83,7 @@ extension ChatFileCell {
         let img = self.model?.userType == .me ? #imageLiteral(resourceName: "message_sender_background_normal") : #imageLiteral(resourceName: "message_receiver_background_normal")
         let normalImg = img.resizableImage(withCapInsets: UIEdgeInsets(top: 30, left: 28, bottom: 85, right: 28), resizingMode: .stretch)
         bubbleView.image = normalImg
+        avatar.displayButtonHeadImageWithURL(url: model?.headImg)
     
         if model?.showName == true {
             userNameLabel.isHidden = false
@@ -97,6 +98,9 @@ extension ChatFileCell {
             make.width.height.equalTo(40)
             make.top.equalTo(self.snp.top)
         }
+        
+        avatar.layer.masksToBounds = true
+        avatar.layer.cornerRadius = 20
         bubbleView.snp.remakeConstraints { (make) in
             make.top.equalTo(self.snp.top).offset(-2)
             make.height.equalTo(60)

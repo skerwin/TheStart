@@ -18,6 +18,10 @@ class AuthorViewController: BaseViewController,Requestable {
     
     var isFromMine = false
     
+    var isMyCollect = false
+    
+    
+    
     var parentNavigationController: UINavigationController?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +32,14 @@ class AuthorViewController: BaseViewController,Requestable {
     }
     
     func loadData(){
-        let requestParams = HomeAPI.authorListPathAndParams()
-        postRequest(pathAndParams: requestParams,showHUD:false)
+        if isMyCollect{
+            let requestParams = HomeAPI.UserAuthorDetailPathAndParams()
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }else{
+            let requestParams = HomeAPI.authorListPathAndParams()
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }
+        
 
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -123,6 +133,7 @@ extension AuthorViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = AuthorDetailController()
+        controller.authorId = dataList[indexPath.row].uid
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

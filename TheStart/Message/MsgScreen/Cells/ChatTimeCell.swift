@@ -62,9 +62,10 @@ class ChatTimeCell: BaseTableViewCell {
 
 extension ChatTimeCell {
     fileprivate func setModel() {
-        guard let model = model else {
+        guard var model = model else {
             return
         }
+        
         model.cellHeight = 40
         
 //        timeLabel.text = ChatMsgTimeHelper.shared.chatTimeString(with: model.time)

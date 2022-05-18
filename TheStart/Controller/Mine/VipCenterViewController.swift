@@ -39,11 +39,9 @@ class VipCenterViewController: BaseViewController,Requestable {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //loadData()
-        
+ 
         loadLocalData()
-//        var paramsDictionary = Dictionary<String, AnyObject>()
-//        paramsDictionary["type"] = model.type as AnyObject
+ 
         self.title = "会员中心"
         view.backgroundColor = ZYJColor.main
      
@@ -113,11 +111,7 @@ class VipCenterViewController: BaseViewController,Requestable {
         }
     }
     
-    func loadData(){
-        let requestParams = HomeAPI.MyCoinListPathAndParams()
-        getRequest(pathAndParams: requestParams,showHUD:false)
-
-    }
+  
  
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         collectionView.mj_header?.endRefreshing()
@@ -129,12 +123,7 @@ class VipCenterViewController: BaseViewController,Requestable {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         collectionView.mj_header?.endRefreshing()
  
-        myCoins = responseResult["coins"].intValue
-        
-        dataList = getArrayFromJsonByArrayName(arrayName: "recharge_quota", content: responseResult)
-        bannerList = getArrayFromJsonByArrayName(arrayName: "banner", content: responseResult)
-        
-        self.collectionView.reloadData()
+         self.collectionView.reloadData()
  
     }
  
@@ -143,7 +132,6 @@ class VipCenterViewController: BaseViewController,Requestable {
         self.collectionView.mj_footer?.resetNoMoreData()
         dataList.removeAll()
         page = 1
-        self.loadData()
     }
     
     

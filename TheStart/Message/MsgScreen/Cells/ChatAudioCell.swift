@@ -86,7 +86,7 @@ extension ChatAudioCell {
 // MARK:- 设置数据
 extension ChatAudioCell {
     fileprivate func setModel() {
-        guard let model = model else {
+        guard var model = model else {
             return
         }
         model.cellHeight = 50

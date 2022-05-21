@@ -66,7 +66,18 @@ class MineViewController: BaseTableController,Requestable{
         
          usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
         
-         setIntValueForKey(value:  usermodel?.uid, key: Constants.userid)
+         setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+        
+        //|| usermodel!.vip == 1
+        
+        if usermodel!.vip {
+            setIntValueForKey(value: 1, key: Constants.isVip)
+            setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+        }else{
+            setIntValueForKey(value: 0, key: Constants.isVip)
+            setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+        }
+        
         
          nameLabel.text = usermodel?.nickname
          if usermodel?.is_shiming == 2{
@@ -74,7 +85,7 @@ class MineViewController: BaseTableController,Requestable{
          }else{
             isAuthon.image = UIImage.init(named: "weirenzheng")
          }
-        headImg.displayImageWithURL(url: usermodel?.avatar_check)
+         headImg.displayImageWithURL(url: usermodel?.avatar_check)
         
          self.tableView.reloadData()
     }

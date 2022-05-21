@@ -24,6 +24,9 @@ struct ZYJColor {
     static let backColor = colorWithHexString(hex: "616161")
     static let mainLine = colorWithHexString(hex: "e2effd")
     
+    static let coinColor = colorWithHexString(hex: "E2A010")
+    
+    
     static let backBlue = colorWithHexString(hex: "228CFC")
     
     static let tabBarColor = UIColor(red: 225, green: 225, blue: 225, alpha: 1) 

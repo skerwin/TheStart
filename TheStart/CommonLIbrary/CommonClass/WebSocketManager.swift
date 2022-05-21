@@ -150,6 +150,8 @@ extension WebSocketManager{
     @objc func heartBeat(){
         if socket.isConnected {
             socket.socketHeartBeat()
+        }else{
+            //socketReconnect()
         }
     }
 }

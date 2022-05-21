@@ -255,6 +255,10 @@ class NewLoginController: BaseViewController,Requestable {
         }
     }
     
+    func loadUserInfoData(){
+        let requestParams = HomeAPI.userinfoPathAndParam()
+        getRequest(pathAndParams: requestParams,showHUD:false)
+     }
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         //ischeck 是否审核  0 未审核  1  审核中  2 通过审核 3 审核为通过
@@ -264,14 +268,14 @@ class NewLoginController: BaseViewController,Requestable {
             let verCodeKey = responseResult["key"].stringValue
             setStringValueForKey(value: verCodeKey, key: Constants.verCodeKey)
         }else if requestPath == HomeAPI.acountCodeLoginPath || requestPath == HomeAPI.verifyCodeLoginPath{
-            DialogueUtils.showSuccess(withStatus: "登陆成功")
+            
             
             let token = responseResult["token"].stringValue
             setStringValueForKey(value: token, key: Constants.token)
             setStringValueForKey(value: account, key: Constants.account)
-            delay(second: 0.5) { [self] in
-                 UIApplication.shared.keyWindow?.rootViewController = MainTabBarController()
-            }
+            
+            loadUserInfoData()
+           
         } else if requestPath == HomeAPI.getVerifyCodePath{
             DialogueUtils.dismiss()
             verCodeBtn.titleLabel?.text = "验证码已发送"
@@ -285,6 +289,14 @@ class NewLoginController: BaseViewController,Requestable {
         }
         else if requestPath.containsStr(find: "/api/danye/3"){
             userAgreementHtml = responseResult["content"].stringValue
+        }else if requestPath.containsStr(find: HomeAPI.userinfoPath) {
+            DialogueUtils.showSuccess(withStatus: "登陆成功")
+            let usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
+            setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+            print("12345678")
+            delay(second: 0.5) { [self] in
+            UIApplication.shared.keyWindow?.rootViewController = MainTabBarController()
+            }
         }
  
     }

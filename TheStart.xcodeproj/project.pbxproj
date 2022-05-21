@@ -91,6 +91,10 @@
 		B83C639D280D56F100A3282D /* WokerPubIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C639B280D56F100A3282D /* WokerPubIntroCell.swift */; };
 		B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83C639C280D56F100A3282D /* WokerPubIntroCell.xib */; };
 		B83C63A3280D6DE000A3282D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C63A2280D6DDF00A3282D /* MineViewController.swift */; };
+		B85093272837A05C001E5A8B /* CashierDeskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85093262837A05C001E5A8B /* CashierDeskController.swift */; };
+		B85093292837A169001E5A8B /* StarCoinChargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85093282837A169001E5A8B /* StarCoinChargeController.swift */; };
+		B855361C2835F20900E3C287 /* MyStarCoinFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */; };
+		B855361D2835F20900E3C287 /* MyStarCoinFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855361B2835F20900E3C287 /* MyStarCoinFootView.xib */; };
 		B85FAF83280E8BDB00D25B66 /* JobBaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAF82280E8BDB00D25B66 /* JobBaseInfo.swift */; };
 		B85FAF85280E8BE600D25B66 /* JobBaseInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = B85FAF84280E8BE600D25B66 /* JobBaseInfo.xib */; };
 		B85FAF87280E93D500D25B66 /* JobInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FAF86280E93D500D25B66 /* JobInfoViewController.swift */; };
@@ -186,6 +190,10 @@
 		B85FDA7C2824BFF700EDA845 /* MyVipCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FDA7A2824BFF700EDA845 /* MyVipCenterCell.swift */; };
 		B85FDA7D2824BFF700EDA845 /* MyVipCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B85FDA7B2824BFF700EDA845 /* MyVipCenterCell.xib */; };
 		B85FDA7F28250B1500EDA845 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = B85FDA7E28250B1500EDA845 /* launch.png */; };
+		B86AEFE02838F68F0065B96E /* BuyBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFDF2838F68F0065B96E /* BuyBtnView.swift */; };
+		B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86AEFE12838F69E0065B96E /* BuyBtnView.xib */; };
+		B86AEFEA283926C10065B96E /* AudioLinkInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */; };
+		B86AEFEC283926CD0065B96E /* AudioLinkInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86AEFEB283926CD0065B96E /* AudioLinkInfoView.xib */; };
 		B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */; };
 		B8AB69CC28081C800064861C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CB28081C800064861C /* Home.storyboard */; };
 		B8AB69D2280901490064861C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB69CE280901480064861C /* CommentCell.swift */; };
@@ -414,6 +422,10 @@
 		B83C639B280D56F100A3282D /* WokerPubIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WokerPubIntroCell.swift; sourceTree = "<group>"; };
 		B83C639C280D56F100A3282D /* WokerPubIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WokerPubIntroCell.xib; sourceTree = "<group>"; };
 		B83C63A2280D6DDF00A3282D /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		B85093262837A05C001E5A8B /* CashierDeskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashierDeskController.swift; sourceTree = "<group>"; };
+		B85093282837A169001E5A8B /* StarCoinChargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCoinChargeController.swift; sourceTree = "<group>"; };
+		B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStarCoinFootView.swift; sourceTree = "<group>"; };
+		B855361B2835F20900E3C287 /* MyStarCoinFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStarCoinFootView.xib; sourceTree = "<group>"; };
 		B85FAF82280E8BDB00D25B66 /* JobBaseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobBaseInfo.swift; sourceTree = "<group>"; };
 		B85FAF84280E8BE600D25B66 /* JobBaseInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobBaseInfo.xib; sourceTree = "<group>"; };
 		B85FAF86280E93D500D25B66 /* JobInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoViewController.swift; sourceTree = "<group>"; };
@@ -512,6 +524,10 @@
 		B85FDA7A2824BFF700EDA845 /* MyVipCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVipCenterCell.swift; sourceTree = "<group>"; };
 		B85FDA7B2824BFF700EDA845 /* MyVipCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyVipCenterCell.xib; sourceTree = "<group>"; };
 		B85FDA7E28250B1500EDA845 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		B86AEFDF2838F68F0065B96E /* BuyBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyBtnView.swift; sourceTree = "<group>"; };
+		B86AEFE12838F69E0065B96E /* BuyBtnView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyBtnView.xib; sourceTree = "<group>"; };
+		B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLinkInfoView.swift; sourceTree = "<group>"; };
+		B86AEFEB283926CD0065B96E /* AudioLinkInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioLinkInfoView.xib; sourceTree = "<group>"; };
 		B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = "../../../../医路护卫/YiLuHuWei/YiLuHuWei/CommonLIbrary/Utils/DatePickerDialog.swift"; sourceTree = "<group>"; };
 		B89B78C6282E34EC007D7D54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStartRelease.entitlements; sourceTree = "<group>"; };
@@ -763,6 +779,8 @@
 			children = (
 				B85FDA6A2824B9B500EDA845 /* MineStarCoinHeder.swift */,
 				B85FDA6B2824B9B500EDA845 /* MineStarCoinHeder.xib */,
+				B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */,
+				B855361B2835F20900E3C287 /* MyStarCoinFootView.xib */,
 				B802E234282B44FB00B5057A /* VipCenterHeader1.swift */,
 				B802E235282B44FB00B5057A /* VipCenterHeader1.xib */,
 				B802E23A282B456100B5057A /* VipCenterHeader2.swift */,
@@ -800,6 +818,10 @@
 				B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */,
 				B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */,
 				B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */,
+				B86AEFDF2838F68F0065B96E /* BuyBtnView.swift */,
+				B86AEFE12838F69E0065B96E /* BuyBtnView.xib */,
+				B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */,
+				B86AEFEB283926CD0065B96E /* AudioLinkInfoView.xib */,
 			);
 			path = Mmall;
 			sourceTree = "<group>";
@@ -1281,6 +1303,8 @@
 				B802E246282BF76800B5057A /* MyOrderViewController.swift */,
 				B802E248282BF7B700B5057A /* SellOrderViewController.swift */,
 				B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */,
+				B85093262837A05C001E5A8B /* CashierDeskController.swift */,
+				B85093282837A169001E5A8B /* StarCoinChargeController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1470,6 +1494,7 @@
 				B85FB01428116A8300D25B66 /* Message.storyboard in Resources */,
 				B83C6378280CF48D00A3282D /* WorkerBaseInfo.xib in Resources */,
 				B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */,
+				B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */,
 				B83C6388280D0B0300A3282D /* BaseImageBrowserCell.xib in Resources */,
 				B85FAFA7280F065E00D25B66 /* WorkerViewCell.xib in Resources */,
 				B8AD4013281A7D920001D7F4 /* HomeSubscribeCell.xib in Resources */,
@@ -1482,9 +1507,11 @@
 				B85FDA7D2824BFF700EDA845 /* MyVipCenterCell.xib in Resources */,
 				B83C6368280C2EC900A3282D /* TipOffListNoImgCell.xib in Resources */,
 				B8AD4018281A81D60001D7F4 /* GuideCell.xib in Resources */,
+				B86AEFEC283926CD0065B96E /* AudioLinkInfoView.xib in Resources */,
 				B83C6384280CFC6100A3282D /* WorkerVideoCell.xib in Resources */,
 				B8AB69EB280960FA0064861C /* CommemtFooerLineView.xib in Resources */,
 				B8AC4FE82807BE4400C2CF26 /* LaunchScreen.storyboard in Resources */,
+				B855361D2835F20900E3C287 /* MyStarCoinFootView.xib in Resources */,
 				B85FAFC4280FAFFD00D25B66 /* Loading_8@2x.tiff in Resources */,
 				B83C638A280D0EB800A3282D /* ChatBtnView.xib in Resources */,
 				B85FAFC2280FAFFD00D25B66 /* Loading_2@2x.tiff in Resources */,
@@ -1698,6 +1725,7 @@
 				B8AB69DB280905250064861C /* TipOffDetailViewController.swift in Sources */,
 				B8AD405D2820254B0001D7F4 /* GetBackPasswordController.swift in Sources */,
 				B85FB00A28116A8300D25B66 /* BaseTableViewCell.swift in Sources */,
+				B85093272837A05C001E5A8B /* CashierDeskController.swift in Sources */,
 				B85FB02128116A8300D25B66 /* UIView+Extension.swift in Sources */,
 				B802E22E282A45C200B5057A /* CashOutCell.swift in Sources */,
 				B8AE0316282A000D00FBE3B7 /* AuthenController.swift in Sources */,
@@ -1715,6 +1743,7 @@
 				B85FAFD32810076000D25B66 /* WebSocketManager.swift in Sources */,
 				B83C634B280ACD7100A3282D /* TipOffPostIImgCell.swift in Sources */,
 				B83C638C280D0ECE00A3282D /* ChatBtnView.swift in Sources */,
+				B855361C2835F20900E3C287 /* MyStarCoinFootView.swift in Sources */,
 				B85FAFA9280F9A6600D25B66 /* JobListViewController.swift in Sources */,
 				B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */,
 				B85FB02228116A8300D25B66 /* StringExtension.swift in Sources */,
@@ -1780,6 +1809,7 @@
 				B8AC503B2807C60E00C2CF26 /* UIViewUtils.swift in Sources */,
 				B85FAF9E280EE7BE00D25B66 /* PubMusicController.swift in Sources */,
 				B83C636E280C440D00A3282D /* TipOffCommentHeaderView.swift in Sources */,
+				B86AEFEA283926C10065B96E /* AudioLinkInfoView.swift in Sources */,
 				B85FAFB1280FADB800D25B66 /* HomeAPI.swift in Sources */,
 				B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */,
 				B8AD405928201FA90001D7F4 /* NewLoginController.swift in Sources */,
@@ -1810,6 +1840,7 @@
 				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
 				B8AC50952807CF6B00C2CF26 /* UITextField+Extension.swift in Sources */,
+				B86AEFE02838F68F0065B96E /* BuyBtnView.swift in Sources */,
 				B8AC508F2807CF6B00C2CF26 /* UIColor-Extension.swift in Sources */,
 				B85FDA5C2823BB3800EDA845 /* PMKPageMenuItemEllipse.swift in Sources */,
 				B85FAF83280E8BDB00D25B66 /* JobBaseInfo.swift in Sources */,
@@ -1867,6 +1898,7 @@
 				B85FDA732824BC7A00EDA845 /* MyPubViewController.swift in Sources */,
 				B85FDA572823BB3800EDA845 /* PMKPageMenuController.swift in Sources */,
 				B85FDA7C2824BFF700EDA845 /* MyVipCenterCell.swift in Sources */,
+				B85093292837A169001E5A8B /* StarCoinChargeController.swift in Sources */,
 				B85FB01628116A8300D25B66 /* MoreActionCell.swift in Sources */,
 				B8AC501E2807C5F400C2CF26 /* LoadingPresenter.swift in Sources */,
 				B8AD40652822951C0001D7F4 /* JobModel.swift in Sources */,
@@ -2068,7 +2100,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJING ZHAO (64Z8QMKT5M)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
@@ -2092,7 +2124,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = AdHoc20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2110,7 +2142,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJING ZHAO (64Z8QMKT5M)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
@@ -2134,7 +2166,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = AdHoc20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

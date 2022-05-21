@@ -107,6 +107,15 @@ func getUserId() -> Int {
     }
 }
 
+func checkVip() -> Bool {
+    
+    if intForKey(key: Constants.isVip) != nil && intForKey(key: Constants.isVip) != 0 && intForKey(key: Constants.vipId) != nil && intForKey(key: Constants.vipId) != 0{
+        return true
+    }else{
+        return false
+    }
+}
+
 func dicValueString(_ dic:[String : Any]) -> String?{
        let data = try? JSONSerialization.data(withJSONObject: dic, options: [])
        let str = String(data: data!, encoding: String.Encoding.utf8)

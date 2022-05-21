@@ -20,10 +20,14 @@ extension NSObject {
     public func isNumberOdd(number: Int) -> Bool {
         return (number & 1) != 0
     }
-    
-    
+
     public func intToString(number: Int) -> String {
         return String.init(number)
+    }
+    
+    public func stringToFloat(test: String) -> Float {
+        let num = Float(test) ?? 0
+        return num
     }
     
     public func int2str(num:Int)-> String {

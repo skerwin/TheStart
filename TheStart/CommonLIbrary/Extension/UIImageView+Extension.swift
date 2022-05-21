@@ -35,7 +35,7 @@ extension UIImageView {
                      PinUrl = URLs.getHostAddress() + PinUrl
                  }
                  guard let imageUrl = URL.init(string:PinUrl.urlEncoded()) else { return }
-                 let resource = ImageResource.init(downloadURL: imageUrl)
+                 let resource = ImageResource.init(downloadURL: imageUrl,cacheKey: PinUrl.urlEncoded())
                  self.kf.setImage(with: resource,placeholder: UIImage.init(named: "zhanweitu"),options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)])
              }
     }

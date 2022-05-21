@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MyStarCoinFootView" reuseIdentifier="MyStarCoinFootView" id="O0r-Cd-apE" customClass="MyStarCoinFootView" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdX-cX-8Y9">
+                    <rect key="frame" x="45" y="16.5" width="230" height="42"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.78039215689999997" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="qwr-T1-AGB"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="立即购买">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="buyAction:" destination="O0r-Cd-apE" eventType="touchUpInside" id="1cW-6W-gx0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="cIG-oA-n4B"/>
+            <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="cIG-oA-n4B" firstAttribute="trailing" secondItem="gdX-cX-8Y9" secondAttribute="trailing" constant="45" id="Bqv-vT-u0m"/>
+                <constraint firstItem="gdX-cX-8Y9" firstAttribute="leading" secondItem="cIG-oA-n4B" secondAttribute="leading" constant="45" id="cnL-9d-Cxq"/>
+                <constraint firstItem="gdX-cX-8Y9" firstAttribute="centerY" secondItem="O0r-Cd-apE" secondAttribute="centerY" id="kdt-Aq-7VU"/>
+            </constraints>
+            <connections>
+                <outlet property="buyBtn" destination="gdX-cX-8Y9" id="ds8-ct-hkH"/>
+            </connections>
+            <point key="canvasLocation" x="-30.434782608695656" y="-38.504464285714285"/>
+        </collectionReusableView>
+    </objects>
+</document>

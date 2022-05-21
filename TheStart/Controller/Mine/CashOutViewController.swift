@@ -64,9 +64,6 @@ class CashOutViewController: BaseTableController,Requestable,UIImagePickerContro
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         
-        let imcode = stringForKey(key: Constants.IMUserSig)
-    
-        
         showOnlyTextHUD(text: "保存成功")
         self.navigationController?.popViewController(animated: true)
     }

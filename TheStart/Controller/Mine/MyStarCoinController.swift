@@ -60,8 +60,13 @@ class MyStarCoinController: BaseViewController,Requestable {
         }
         collectionView.register(UINib(nibName:"MineStarCoinHeder", bundle:nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MineStarCoinHeder.nameOfClass)
         
+        collectionView.register(UINib(nibName:"MyStarCoinFootView", bundle:nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyStarCoinFootView.nameOfClass)
+        
+        
         collectionView.register(UINib(nibName:"MyStarCollectionViewCell", bundle:nil),
                                       forCellWithReuseIdentifier: "MyStarCollectionViewCell")
+        
+        
         
         collectionView.frame = CGRect(
             x: 0,
@@ -135,10 +140,10 @@ extension MyStarCoinController:UICollectionViewDelegateFlowLayout{
         return CGSize.init(width: screenWidth , height: 314)
     }
   
-//    //尾section的高度
-//    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForFooterInSection section:Int) -> CGSize {
-//        return CGSize.init(width: screenWidth , height: 314)
-//    }
+    //尾section的高度
+    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForFooterInSection section:Int) -> CGSize {
+        return CGSize.init(width: screenWidth , height: 80)
+    }
     //整个itme区域上下左右的编剧
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
@@ -152,6 +157,17 @@ extension MyStarCoinController:MineStarCoinHederDelegate {
     
     func cashOut() {
         let controller = UIStoryboard.getCashOutViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
+}
+
+extension MyStarCoinController:MyStarCoinFootViewDelegate{
+
+    
+    func buyAction() {
+        let controller = UIStoryboard.getPayViewController()
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -180,7 +196,11 @@ extension MyStarCoinController:UICollectionViewDataSource,UICollectionViewDelega
              return filerView
         }else{
        
-            return UICollectionReusableView()
+            let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:MyStarCoinFootView.nameOfClass, for: indexPath) as! MyStarCoinFootView
+            
+             filerView.delegate = self
+ 
+             return filerView
         }
     }
     

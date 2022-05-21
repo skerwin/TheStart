@@ -26,6 +26,9 @@ class HomeJobCell: UITableViewCell {
         bgView.layer.masksToBounds = true
         bgView.layer.cornerRadius = 10
         
+        headImg.layer.masksToBounds = true
+        headImg.layer.cornerRadius = 15
+        
         contactBtn.layer.masksToBounds = true
         contactBtn.layer.cornerRadius = 8
         // Initialization code

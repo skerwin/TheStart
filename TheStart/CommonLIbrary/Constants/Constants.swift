@@ -31,10 +31,11 @@ struct Constants {
     static let truename = "truename" //
     static let gender = "gender" //
     static let nickname = "nickname" //
-    static let IMUserSig = "IMUserSig" 
-    static let live_status = "live_status"  // 是否直播
-    static let checkStatus = "checkStatus"  // 是否认证
-    static let new_registration = "new_registration"  // 是否认证
+    
+    
+    static let vipId = "vipId" //
+    static let isVip = "isVip" //
+ 
     
     static let mjorVersion = "mjorVersion"  // 是否认证
     

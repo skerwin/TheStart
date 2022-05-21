@@ -76,7 +76,10 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
     }
     
-    
+    class func getCashierDeskController() -> CashierDeskController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashierDeskController") as! CashierDeskController
+    }
     
     
 }

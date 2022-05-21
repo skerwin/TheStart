@@ -34,21 +34,22 @@ struct UserModel: Mappable {
     var card_id = ""
     var front_img = ""
     var back_img = ""
-    var shiming_status = 0
+  
     var shiming_remark = ""
     var shiming_time = 0
     var is_audio = 0
     var video_type = 0
     var video_path = ""
     
-    var audio_status = 0
+    var shiming_status = -2
+    var audio_status = -2
     var images = [String]()
     var imagesUrl = ""
     
     
     var logo = ""
     var audio_remark = ""
-    var vip = true
+    var vip = false
     var vip_id = 0
     var vip_icon = ""
     var vip_name = ""

@@ -54,10 +54,8 @@ class WKWebSocket:NSObject{
     func socketHeartBeat(){
         var map:[String:Any]
         map = ["type":"chat","data":"ping"] as [String : Any]
-        let j = dicValueString(map)
-        //print(j)
-        socketWrite(string: j!)
-        //socketWrite(string: "")
+        let ping = dicValueString(map)
+        socketWrite(string: ping!)
     }
     
 }
@@ -118,14 +116,17 @@ extension WKWebSocket:WebSocketDelegate{
                         if onText != nil {
                             onText!(string)
                         }
+                    }else if type == "reply"{
+                        if onText != nil {
+                            onText!(string)
+                        }
 
-                     }
+                    }
                     
                 }else{
                     
                 }
             }
-            //print("Received text: \(string)")
         case .binary(let data):
             print("Received data: \(data.count)")
         case .ping(_):

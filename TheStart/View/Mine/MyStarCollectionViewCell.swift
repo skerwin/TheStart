@@ -30,9 +30,9 @@ class MyStarCollectionViewCell: UICollectionViewCell {
     
     var model:DictModel? {
         didSet {
-             priceLabel.text =  "¥" + " " +  model!.give_money
-            coinBtn.setTitle(model!.price, for: .normal)
-            coinBtn.titleLabel!.text = model!.price
+            priceLabel.text =  "¥" + " " +  model!.price
+            coinBtn.setTitle(model!.give_money + "星币", for: .normal)
+            coinBtn.titleLabel!.text = model!.give_money + "星币"
         }
     }
 

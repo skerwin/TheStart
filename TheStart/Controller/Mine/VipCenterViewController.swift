@@ -166,9 +166,9 @@ extension VipCenterViewController:UICollectionViewDelegateFlowLayout{
         
     }
   
-//    //尾section的高度
+    //尾section的高度
 //    func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForFooterInSection section:Int) -> CGSize {
-//        return CGSize.init(width: screenWidth , height: 314)
+//        return CGSize.init(width: screenWidth , height: 75)
 //    }
     //整个itme区域上下左右的编剧
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -188,6 +188,15 @@ extension VipCenterViewController:UICollectionViewDelegateFlowLayout{
 //
 //
 //}
+extension VipCenterViewController:VipCenterHeader1Delegate {
+    func sureOpenAction() {
+        let controller = UIStoryboard.getCashierDeskController()
+        controller.paytype = .chargeVip
+        controller.priceStr = "98.00"
+        self.present(controller, animated: true)
+        //self.navigationController?.pushViewController(controller, animated: true)
+    }
+ }
 extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDelegate {
     
     func numberOfSections(in collectionView:UICollectionView) ->Int{
@@ -212,7 +221,7 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
             if  indexPath.section == 0{
                 let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:VipCenterHeader1.nameOfClass, for: indexPath) as! VipCenterHeader1
                 
-                 //filerView.delegate = self
+                 filerView.delegate = self
      
                  return filerView
             }else{
@@ -251,3 +260,4 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
 
     
 }
+

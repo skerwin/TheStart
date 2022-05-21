@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AudioLinkInfoView" id="J7a-Pa-tqR" customClass="AudioLinkInfoView" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网盘链接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1g-ZO-mDS">
+                    <rect key="frame" x="15" y="25" width="78" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="09X-Gf-fOr"/>
+                        <constraint firstAttribute="height" constant="21" id="6VG-l3-o5O"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提取码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-VR-mxt">
+                    <rect key="frame" x="15" y="128" width="78" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="JvG-Vj-aYr"/>
+                        <constraint firstAttribute="height" constant="21" id="fon-Nf-W4m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJd-8K-xU8">
+                    <rect key="frame" x="108" y="20" width="80" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="4yr-3y-1I2"/>
+                        <constraint firstAttribute="height" constant="31" id="Ovu-3J-gDY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="复制"/>
+                    <connections>
+                        <action selector="linkTvCopyAction:" destination="J7a-Pa-tqR" eventType="touchUpInside" id="DIm-Bv-p4v"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybP-XI-yOZ">
+                    <rect key="frame" x="108" y="123" width="80" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="2E4-d4-fDu"/>
+                        <constraint firstAttribute="width" constant="80" id="vew-Vd-cRH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="复制"/>
+                    <connections>
+                        <action selector="codeTvCopyAction:" destination="J7a-Pa-tqR" eventType="touchUpInside" id="N7J-m0-A48"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="https://lanhuapp.com/web/#/item/project/detailDetach?pihttps://lanhuapp.com/web/#/item/project/detailDetach?pi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="odm-Ie-14o">
+                    <rect key="frame" x="15" y="51" width="389" height="67"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="67" id="f9N-RO-Kge"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="https:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DHd-rT-ya1">
+                    <rect key="frame" x="15" y="155" width="394" height="30"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="dbS-9H-0ip"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="p27-aa-Koy"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="odm-Ie-14o" firstAttribute="top" secondItem="NJd-8K-xU8" secondAttribute="bottom" id="4kc-6Y-HY0"/>
+                <constraint firstItem="DHd-rT-ya1" firstAttribute="leading" secondItem="p27-aa-Koy" secondAttribute="leading" constant="15" id="PsX-mL-Rao"/>
+                <constraint firstItem="odm-Ie-14o" firstAttribute="leading" secondItem="p27-aa-Koy" secondAttribute="leading" constant="15" id="RKI-xL-g6B"/>
+                <constraint firstItem="ybP-XI-yOZ" firstAttribute="leading" secondItem="Wsf-VR-mxt" secondAttribute="trailing" constant="15" id="SVj-ZD-p67"/>
+                <constraint firstItem="k1g-ZO-mDS" firstAttribute="top" secondItem="J7a-Pa-tqR" secondAttribute="top" constant="25" id="TVV-3S-TFn"/>
+                <constraint firstItem="p27-aa-Koy" firstAttribute="trailing" secondItem="odm-Ie-14o" secondAttribute="trailing" constant="10" id="Wbf-Sq-Q7E"/>
+                <constraint firstItem="ybP-XI-yOZ" firstAttribute="top" secondItem="odm-Ie-14o" secondAttribute="bottom" constant="5" id="brX-sp-7A7"/>
+                <constraint firstItem="k1g-ZO-mDS" firstAttribute="leading" secondItem="J7a-Pa-tqR" secondAttribute="leading" constant="15" id="csS-Qs-jhx"/>
+                <constraint firstItem="DHd-rT-ya1" firstAttribute="top" secondItem="ybP-XI-yOZ" secondAttribute="bottom" constant="1" id="csb-Ad-mPV"/>
+                <constraint firstItem="p27-aa-Koy" firstAttribute="trailing" secondItem="DHd-rT-ya1" secondAttribute="trailing" constant="5" id="rZh-Pf-4Fp"/>
+                <constraint firstItem="NJd-8K-xU8" firstAttribute="top" secondItem="J7a-Pa-tqR" secondAttribute="top" constant="20" id="sSl-DB-AMq"/>
+                <constraint firstItem="Wsf-VR-mxt" firstAttribute="top" secondItem="odm-Ie-14o" secondAttribute="bottom" constant="10" id="tyH-vp-Bjg"/>
+                <constraint firstItem="NJd-8K-xU8" firstAttribute="leading" secondItem="k1g-ZO-mDS" secondAttribute="trailing" constant="15" id="u5q-lM-7xM"/>
+                <constraint firstItem="Wsf-VR-mxt" firstAttribute="leading" secondItem="p27-aa-Koy" secondAttribute="leading" constant="15" id="xcG-Kz-J9Z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="codeTv" destination="DHd-rT-ya1" id="y8j-8I-MFR"/>
+                <outlet property="linkTv" destination="odm-Ie-14o" id="KUc-nQ-PuN"/>
+            </connections>
+            <point key="canvasLocation" x="108.69565217391305" y="364.28571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

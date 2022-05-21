@@ -46,6 +46,7 @@ PODS:
   - SwiftyJSON (5.0.1)
   - SwiftyUserDefaults (5.3.0)
   - WechatOpenSDK (1.8.7.1)
+  - WMZDialog (1.4.6)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
   - XHNetworkCache (1.5.0)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyUserDefaults
   - WechatOpenSDK
+  - WMZDialog
   - XHLaunchAd
   - XHNetworkCache
 
@@ -94,6 +96,7 @@ SPEC REPOS:
     - SwiftyJSON
     - SwiftyUserDefaults
     - WechatOpenSDK
+    - WMZDialog
     - XHLaunchAd
     - XHNetworkCache
 
@@ -118,9 +121,10 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
+  WMZDialog: 629b5ceaab043291394952143a6cb08b2c1c500d
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   XHNetworkCache: a5a22941471edf6ed08b2e7cf2ec0d800959ca37
 
-PODFILE CHECKSUM: e37a6205a543e06f6ab85e251506ba386bd1bb90
+PODFILE CHECKSUM: 36ba55d4ce46d6a319ee3a9e15dd923baf5a5fb8
 
 COCOAPODS: 1.11.3

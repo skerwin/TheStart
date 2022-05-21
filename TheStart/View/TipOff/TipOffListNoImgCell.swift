@@ -75,6 +75,9 @@ class TipOffListNoImgCell: UITableViewCell {
         tip2Label.layer.masksToBounds = true
         tip2Label.layer.cornerRadius = 2
         
+        
+        headImage.layer.masksToBounds = true
+        headImage.layer.cornerRadius = 2
         // Initialization code
     }
 

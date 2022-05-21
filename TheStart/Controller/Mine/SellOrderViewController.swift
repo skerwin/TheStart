@@ -7,17 +7,23 @@
 
 import UIKit
 
-class SellOrderViewController: BaseViewController {
+class SellOrderViewController: BaseViewController,Requestable {
 
     
     var parentNavigationController: UINavigationController?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadData()
         // Do any additional setup after loading the view.
     }
     
+    func loadData(){
+        let requestParams = HomeAPI.orderListPathAndParams()
+        getRequest(pathAndParams: requestParams,showHUD:false)
 
+    }
+    
+   
     /*
     // MARK: - Navigation
 

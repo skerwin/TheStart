@@ -37,6 +37,10 @@ class JobViewCell: UITableViewCell {
             if cateName == ""{
                 cateName = model!.cate_name
             }
+            
+            if model!.cate_name == ""{
+                cateName = model!.work_name
+            }
             if model!.gender == "保密" || model!.gender == "不限"{
                 
                 needsLabel.text = cateName
@@ -51,6 +55,9 @@ class JobViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        headImg.layer.masksToBounds = true
+        headImg.layer.cornerRadius = 5
         communiteBtn.layer.masksToBounds = true
         communiteBtn.layer.cornerRadius = 3
         // Initialization code

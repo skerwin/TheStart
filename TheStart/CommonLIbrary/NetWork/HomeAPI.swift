@@ -519,7 +519,27 @@ struct HomeAPI {
          let urlPath = generateUrlWithParams(paramsDictionary,path: myaudioListPath)
          return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
+    //购买音乐
+    static let buyAudioListPath = "/api/audio/create"
+    static func buyAudioListPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+   
+        return (buyAudioListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
     
+    //会员免费购买音乐
+    static let buyAudioFreeListPath = "/api/audio/free"
+    static func buyAudioFreeListPathAndParams(id:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+   
+        return (buyAudioFreeListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+  
     
     //编辑个人信息
     static let userEditPath = "/api/user/edit"
@@ -531,7 +551,7 @@ struct HomeAPI {
         paramsDictionary["avatar"] = model.avatar as AnyObject
         paramsDictionary["address"] = model.addres as AnyObject
         
-         return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+        return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
     //提交实名认证
@@ -566,6 +586,17 @@ struct HomeAPI {
          return (audioUserSumbitPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    //开通会员
+    static let openVipPath = "/api/user/vip"
+    static func openVipPathAndParams(pay_type:String,level_id:Int,price:String) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["price"] = price as AnyObject
+        paramsDictionary["pay_type"] = pay_type as AnyObject
+        paramsDictionary["level_id"] = level_id as AnyObject
+        return (openVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
     //下单微信
     static let wechatPayPath = "/api/recharge/wechat"
     static func wechatPayPathAndParams(price:String,leixing:Int) -> PathAndParams {
@@ -576,6 +607,7 @@ struct HomeAPI {
  
         return (wechatPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
+    
     //下单支付宝
     static let aliPayPath = "/api/recharge/alipay"
     static func aliPayPathPathAndParams(price:String,leixing:Int) -> PathAndParams {
@@ -586,6 +618,29 @@ struct HomeAPI {
  
         return (aliPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
+    
+    //开通会员
+    static let buyVipPath = "/api/user/vip"
+    static func buyVipPathAndParams(level_id:Int,pay_type:String,price:String) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["level_id"] = level_id as AnyObject
+        paramsDictionary["pay_type"] = pay_type as AnyObject
+        paramsDictionary["price"] = price as AnyObject
+   
+        return (buyVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+     //订单
+    static let orderListPath = "/api/order/list?page=1&limit=10&type"
+    static func orderListPathAndParams() -> PathAndParams {
+ 
+        let urlPath = URLs.getHostAddress() + orderListPath
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    
+    
+  
     
     //聊天列表
     static let getContactListPath = "/api/user/service/news_list"

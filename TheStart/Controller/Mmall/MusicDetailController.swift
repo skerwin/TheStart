@@ -4,23 +4,28 @@
 //
 //  Created by zhaoyuanjing on 2022/05/05.
 //
- 
+
 import UIKit
 import ObjectMapper
 import SwiftyJSON
 import MJRefresh
 import Reachability
 import SnapKit
+import WMZDialog
 
 class MusicDetailController: BaseViewController,Requestable{
-
+    
     var tableView:UITableView!
     
     var headView:MusicDetailHeader!
-        
+    
     var headerBgView:UIView!
     
     var footerView:ChatBtnView!
+    var footerViewVip:BuyBtnView!
+    
+    var lookInfoView:AudioLinkInfoView!
+    
     
     var footerBgView:UIView!
     
@@ -32,13 +37,23 @@ class MusicDetailController: BaseViewController,Requestable{
     
     var isCollect = 0
     
+    var dataCoinList = [DictModel]()
+    var myCoins:Float = 0
+    
+    var isVipAuudio = true
+    
+    var isBought = false
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "音乐详情"
-        createRightNavItem() 
+        createRightNavItem()
         loadData()
+        loadDataCoin()
         initHeadView()
-        initFooterView()
+        initFooterView(bought: isBought)
         initTableView()
         // Do any additional setup after loading the view.
     }
@@ -46,24 +61,29 @@ class MusicDetailController: BaseViewController,Requestable{
         let requestParams = HomeAPI.audioDetailPathAndParams(id: dateID)
         getRequest(pathAndParams: requestParams,showHUD:false)
     }
+    func loadDataCoin(){
+        let requestParams = HomeAPI.MyCoinListPathAndParams()
+        getRequest(pathAndParams: requestParams,showHUD:false)
+        
+    }
     
     func createRightNavItem() {
         
         rightBarButton = UIButton.init()
         let bgview = UIView.init()
- 
+        
         rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
         
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
         
         rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
-     
+        
         bgview.addSubview(rightBarButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
     }
-
+    
     @objc func rightNavBtnClic(_ btn: UIButton){
         
         if isCollect == 1{
@@ -73,7 +93,7 @@ class MusicDetailController: BaseViewController,Requestable{
             let requestParams = HomeAPI.audioCollectPathAndParams(id: dateID)
             postRequest(pathAndParams: requestParams,showHUD:false)
         }
-     }
+    }
     func changeCollectBtn(){
         if isCollect == 1{
             rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
@@ -84,9 +104,9 @@ class MusicDetailController: BaseViewController,Requestable{
     
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
-     }
-
-
+    }
+    
+    
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         
@@ -100,15 +120,70 @@ class MusicDetailController: BaseViewController,Requestable{
             isCollect = responseResult["if_collect"].intValue
             changeCollectBtn()
             showOnlyTextHUD(text: "取消收藏成功")
-        }else{
+        }else if requestPath.containsStr(find: HomeAPI.MyCoinListPath){
+            
+            myCoins = responseResult["coins"].floatValue
+            dataCoinList = getArrayFromJsonByArrayName(arrayName: "recharge_quota", content: responseResult)
+            
+        }else if requestPath == HomeAPI.buyAudioListPath{
+            
+            let token = responseResult["status"].stringValue
+            if token == "-2"{
+                let noticeView = UIAlertController.init(title: "", message: "您的星币不足无法购买，请充值后购买", preferredStyle: .alert)
+                noticeView.addAction(UIAlertAction.init(title: "充值", style: .default, handler: { [self] (action) in
+                    self.chooseCoin()
+                }))
+                
+                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }else{
+                buySuccess()
+            }
+ 
+        }else if requestPath == HomeAPI.buyAudioFreeListPath{
+            let is_vip = responseResult["result"]["is_vip"].boolValue
+            if is_vip{
+                buySuccess()
+            }else{
+                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                    let controller = UIStoryboard.getCashierDeskController()
+                    controller.paytype = .chargeVip
+                    controller.priceStr = "98.00"
+                    self.present(controller, animated: true)
+                }))
+                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }
+        }
+ 
+        else{
             dataModel = Mapper<AudioModel>().map(JSONObject: responseResult.rawValue)
             headView.configModel(model: dataModel!)
-             self.tableView.reloadData()
+            self.tableView.reloadData()
             isCollect = dataModel!.userCollect
             changeCollectBtn()
         }
         
-      
+        
+    }
+    
+    func buySuccess(){
+        isBought = true
+        if isVipAuudio{
+            initFooterView(bought: isBought)
+            tableView.tableFooterView = footerBgView
+        }
+        footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
+        let noticeView = UIAlertController.init(title: "", message: "购买成功！", preferredStyle: .alert)
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
     }
     
     func initHeadView(){
@@ -118,19 +193,42 @@ class MusicDetailController: BaseViewController,Requestable{
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         
-      }
+    }
     
     
-    func initFooterView(){
-        footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
-        footerView.chatBtn.setTitle("立即购买", for: .normal)
-        footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-        footerView.delegate = self
-        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-        footerBgView.backgroundColor = UIColor.clear
-        footerBgView.addSubview(footerView)
+    func initFooterView(bought:Bool){
         
-      }
+        if isBought{
+            footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
+            footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
+            footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+            footerView.delegate = self
+           
+            footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+            footerBgView.addSubview(footerView)
+            footerBgView.backgroundColor = UIColor.clear
+            
+        }else{
+            if isVipAuudio{
+                
+                footerViewVip = Bundle.main.loadNibNamed("BuyBtnView", owner: nil, options: nil)!.first as? BuyBtnView
+                footerViewVip.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                footerViewVip.delegate = self
+                footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                footerBgView.backgroundColor = UIColor.clear
+                footerBgView.addSubview(footerViewVip)
+ 
+            }else{
+                footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
+                footerView.chatBtn.setTitle("立即购买", for: .normal)
+                footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                footerView.delegate = self
+                footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                footerBgView.backgroundColor = UIColor.clear
+                footerBgView.addSubview(footerView)
+            }
+        }
+    }
     
     func initTableView(){
         
@@ -150,20 +248,160 @@ class MusicDetailController: BaseViewController,Requestable{
         
         self.tableView.tableHeaderView = headerBgView
         tableView.tableFooterView = footerBgView
- 
-        
         view.addSubview(tableView)
         
     }
- 
+    func chooseCoin(){
+        
+        var coinStr = [String]()
+        
+        
+        for index in 0..<dataCoinList.count {
+            coinStr.append(dataCoinList[index].give_money + "星币")
+        }
+        
+        let dialog = Dialog()
+        dialog
+            .wTypeSet()(DialogTypeSelect)
+            .wEventFinishSet()({(anyID:Any?,path:IndexPath?,type:DialogType) in
+                print("选择",anyID as Any);
+            })
+            .wCustomCellSet()(
+                
+                { [self]
+                    (indexPath:IndexPath?,tableView:UITableView?,model:Any?,isSelected:Bool) -> UITableViewCell?  in
+                    var cell = tableView!.dequeueReusableCell(withIdentifier: "Starcell")
+                    if cell == nil {
+                        cell = UITableViewCell(style: .value1, reuseIdentifier: "Starcell")
+                    }
+                    cell?.textLabel?.textColor = isSelected ? ZYJColor.coinColor :UIColor.black
+                    cell?.textLabel?.text = (model as! String)
+                    cell?.detailTextLabel?.text = "¥" + " " +  dataCoinList[indexPath!.row].price
+                    cell?.selectionStyle = .none
+                    
+                    return cell
+                }
+            )
+            .wTitleSet()("抱歉，您没有足够星币购买")
+            .wTitleColorSet()(ZYJColor.coinColor)
+            .wTitleFontSet()(16.0)
+           //.wMessageSet()("请充值")
+            .wListDefaultValueSet()([2])
+            .wDataSet()(coinStr)
+            .wSeparatorStyleSet()(.singleLine)
+            .wOKTitleSet()("去充值")
+            .wAddBottomViewSet()(true)
+            .wEventCancelFinishSet()(
+                {(anyID:Any?,otherData:Any?) in
+                    print("选择quxai",anyID as Any);
+                }
+            )
+            .wEventOKFinishSet()(
+                {(anyID:Any?,otherData:Any?) in
+                    
+                    let controller = UIStoryboard.getCashierDeskController()
+                    controller.modalPresentationStyle = .automatic
+                    self.present(controller, animated: true)
+                 }
+            )
+        _ = dialog.wStart()
+    }
+    
+    func lookInfo(){
+        let dialog = Dialog()
+        dialog
+            .wTypeSet()(DialogTypeMyView)
+            .wMyDiaLogViewSet()(
+                {
+                    [self]
+                    (mainView:UIView?) -> UIView?  in
+                    lookInfoView = Bundle.main.loadNibNamed("AudioLinkInfoView", owner: nil, options: nil)!.first as? AudioLinkInfoView
+                    lookInfoView.frame = CGRect.init(x: 0, y: 0, width: screenWidth - 50, height: 200)
+                    lookInfoView.linkTv.text = dataModel?.link
+                    lookInfoView.codeTv.text = dataModel?.code
+                    
+                    let lookInfoBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth - 50, height: 200))
+                    lookInfoBgView.backgroundColor = UIColor.clear
+                    lookInfoBgView.addSubview(lookInfoView)
+                    
+                    mainView?.addSubview(lookInfoBgView)
+                    mainView?.layer.masksToBounds = true;
+                    mainView?.layer.cornerRadius = 10;
+                    return lookInfoBgView
+                }
+            )
+        
+        _ = dialog.wStart()
+    }
+    
+    
+    func commonBuy(){
+        if isBought{
+            lookInfo()
+        }else{
+            let coinNum = stringToFloat(test: dataModel!.price)
+            
+            if myCoins < coinNum{
+                self.chooseCoin()
+            }else{
+                let noticeView = UIAlertController.init(title: "", message: "您确定花费" + dataModel!.price + "星币购买此音乐么", preferredStyle: .alert)
+                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                    let requestParams = HomeAPI.buyAudioListPathAndParams(id: self.dateID)
+                    self.postRequest(pathAndParams: requestParams,showHUD:false)
+                }))
+                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }
+        }
+    }
+   
+}
+extension MusicDetailController:BuyBtnViewDelegate {
+    func buyBtnAction(){
+         commonBuy()
+     }
+    
+    func vipBtnAction(){
+        
+        print("656667")
+        if checkVip() {
+        //if 1 == 0 {
+            let noticeView = UIAlertController.init(title: "", message: "您是Vip会员可免费购买此音乐", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let requestParams = HomeAPI.buyAudioFreeListPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
+        
+      
+    }
+    
 }
 extension MusicDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
-            
+        commonBuy()
+       
     }
- 
 }
- 
+
 extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,7 +420,7 @@ extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
         if dataModel?.audio_path == "" || dataModel?.images.count == 0{
             return 2
         }
-
+        
         return 3
     }
     
@@ -207,19 +445,19 @@ extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
                 cell.configAudioCell(model: dataModel!)
                 return cell
             }
-           
-           
+            
+            
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
             cell.selectionStyle = .none
             cell.configAudioCell(model: dataModel!)
             return cell
         }
-      
+        
         
     }
- 
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
+        
     }
 }

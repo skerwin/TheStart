@@ -53,6 +53,9 @@ class WorkerViewCell: UITableViewCell {
         super.awakeFromNib()
         communiteBtn.layer.masksToBounds = true
         communiteBtn.layer.cornerRadius = 3
+        
+        headImg.layer.masksToBounds = true
+        headImg.layer.cornerRadius = 5
         // Initialization code
     }
 

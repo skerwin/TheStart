@@ -41,6 +41,8 @@ target 'TheStart' do
   # 手写代码约束
  pod 'SnapKit', '~> 4.0.0'
  
+ pod 'WMZDialog'
+ 
   # 相机选择
  pod 'HXPHPicker'
  

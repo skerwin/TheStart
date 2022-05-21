@@ -17,5 +17,6 @@ ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework
+${BUILT_PRODUCTS_DIR}/WMZDialog/WMZDialog.framework
 ${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework
 ${BUILT_PRODUCTS_DIR}/XHNetworkCache/XHNetworkCache.framework

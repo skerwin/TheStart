@@ -82,9 +82,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mb-0E-oBv">
                     <rect key="frame" x="0.0" y="91" width="320" height="42"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="开通会员即可享受全部会员权益" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50n-RB-wDY">
-                            <rect key="frame" x="15" y="12" width="200" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="98元开通会员即可享受全部会员权益" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50n-RB-wDY">
+                            <rect key="frame" x="15" y="12.5" width="295" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="Mep-8u-Y2L"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.93593233819999999" green="0.77005410190000001" blue="0.31356874109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
@@ -93,6 +95,9 @@
                     <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="bEK-Q3-pYI"/>
+                        <constraint firstItem="50n-RB-wDY" firstAttribute="centerY" secondItem="5mb-0E-oBv" secondAttribute="centerY" id="eBO-w5-PYX"/>
+                        <constraint firstItem="50n-RB-wDY" firstAttribute="leading" secondItem="5mb-0E-oBv" secondAttribute="leading" constant="15" id="g5u-et-c9b"/>
+                        <constraint firstAttribute="trailing" secondItem="50n-RB-wDY" secondAttribute="trailing" constant="10" id="hOR-52-NjC"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xXb-Kn-OQP">
@@ -102,9 +107,12 @@
                         <constraint firstAttribute="height" constant="40" id="y5w-ud-1ko"/>
                     </constraints>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="确认开通">
+                    <state key="normal" title="¥98 确认开通">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="sureOpenAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Ozj-fQ-AbS"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员权益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-Cs-d0H">
                     <rect key="frame" x="120" y="216" width="80" height="21"/>
@@ -152,6 +160,15 @@
                 <constraint firstItem="19k-nX-cgf" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="odd-LW-sHA"/>
                 <constraint firstItem="GMB-Cs-d0H" firstAttribute="leading" secondItem="Lcg-RU-rLv" secondAttribute="trailing" constant="5" id="vZV-dT-NBE"/>
             </constraints>
+            <connections>
+                <outlet property="headImage" destination="dlv-pt-lMQ" id="Qyk-Ml-bbZ"/>
+                <outlet property="isKaitongLabel" destination="rIr-rK-AQ4" id="bw8-e8-PTL"/>
+                <outlet property="isVipLabel" destination="VDM-7t-Bfu" id="0L9-pm-1w7"/>
+                <outlet property="nameLabel" destination="b6L-WB-bKw" id="XL9-eL-quA"/>
+                <outlet property="sureOpen" destination="xXb-Kn-OQP" id="00y-De-wzc"/>
+                <outlet property="tipLabel" destination="50n-RB-wDY" id="H7Q-xU-1kH"/>
+                <outlet property="vipNumLabel" destination="CgR-V3-Agx" id="lqF-zl-ks7"/>
+            </connections>
             <point key="canvasLocation" x="-30.434782608695656" y="17.745535714285712"/>
         </collectionReusableView>
     </objects>

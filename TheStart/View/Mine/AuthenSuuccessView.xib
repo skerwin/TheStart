@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AuthenSuuccessView" id="iN0-l3-epB" customClass="AuthenSuuccessView" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您已经通过实名认证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OH2-WL-xdv">
+                    <rect key="frame" x="0.0" y="144" width="414" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="IH9-rc-sEG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.94509803920000002" green="0.75826561449999996" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OH2-WL-xdv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="59p-pj-TTR"/>
+                <constraint firstItem="OH2-WL-xdv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iXb-zH-VD3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OH2-WL-xdv" secondAttribute="trailing" id="q47-DY-Ra6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="OH2-WL-xdv" id="9Jv-yW-Jum"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="217.63392857142856"/>
+        </view>
+    </objects>
+</document>

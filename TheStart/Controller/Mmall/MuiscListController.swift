@@ -27,6 +27,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        self.limit = 20
         loadData()
         self.title = "音乐馆"
         view.backgroundColor = ZYJColor.main
@@ -36,7 +37,15 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         flowLayout.minimumInteritemSpacing = 8
         flowLayout.minimumLineSpacing = 3
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
-        let collectionViewY = UIDevice.navigationBarHeight
+        
+        var collectionViewY = UIDevice.navigationBarHeight
+        if isMypub {
+            
+        }else if isMyCollect{
+            
+        }else{
+            collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
+        }
         
         collectionView.frame = CGRect(
             x: 0,
@@ -57,7 +66,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
             let pathAndParams = HomeAPI.collectaudioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else{
-            let requestParams = HomeAPI.audioListPathAndParams(page: 1, limit: 20)
+            let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: requestParams,showHUD:false)
         }
      

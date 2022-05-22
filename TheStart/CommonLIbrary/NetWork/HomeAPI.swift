@@ -630,19 +630,22 @@ struct HomeAPI {
    
         return (buyVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
-     //订单
-    static let orderListPath = "/api/order/list?page=1&limit=10&type"
-    static func orderListPathAndParams() -> PathAndParams {
- 
-        let urlPath = URLs.getHostAddress() + orderListPath
-        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
-    }
     
+    //订单列表
+   static let orderListPath = "/api/order/order_list"
+   static func orderListPathAndParams(type:Int,order_type:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {
+
+       var paramsDictionary = Dictionary<String, AnyObject>()
+       paramsDictionary["type"] = type as AnyObject
+       paramsDictionary["order_type"] = order_type as AnyObject
+       paramsDictionary["page"] = page as AnyObject
+       paramsDictionary["limit"] = limit as AnyObject
+       
+       return (orderListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+   }
+   
     
-    
-  
-    
-    //聊天列表
+      //聊天列表
     static let getContactListPath = "/api/user/service/news_list"
     static func getContactListPathAndParams(keyword:String,page:Int = 1,limit:Int = 10) -> PathAndParams {
 

@@ -110,7 +110,7 @@ func getUserId() -> Int {
 func checkVip() -> Bool {
     
     if intForKey(key: Constants.isVip) != nil && intForKey(key: Constants.isVip) != 0 && intForKey(key: Constants.vipId) != nil && intForKey(key: Constants.vipId) != 0{
-        return true
+        return false
     }else{
         return false
     }

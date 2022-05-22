@@ -38,7 +38,7 @@ class JobViewCell: UITableViewCell {
                 cateName = model!.cate_name
             }
             
-            if model!.cate_name == ""{
+            if cateName == ""{
                 cateName = model!.work_name
             }
             if model!.gender == "保密" || model!.gender == "不限"{

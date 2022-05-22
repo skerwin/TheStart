@@ -141,6 +141,8 @@ class TipOffDetailViewController: BaseViewController,Requestable {
          }
         else if requestPath == HomeAPI.collectAddPath{
             showOnlyTextHUD(text: "点赞成功")
+            let num = responseResult["number"].intValue
+            dataModel?.dianzan = num
             dataModel?.is_dianzan = 1
             bottoomView.configModel(model: dataModel!)
             
@@ -148,6 +150,8 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         }
         else if requestPath == HomeAPI.collectDelPath{
             showOnlyTextHUD(text: "取消点赞成功")
+            let num = responseResult["number"].intValue
+            dataModel?.dianzan = num
             dataModel?.is_dianzan = 0
             bottoomView.configModel(model: dataModel!)
         }
@@ -476,14 +480,14 @@ extension TipOffDetailViewController:TipOffHeaderViewDelegate{
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              
              
-             let urlstr = "telprompt://" + "18153684982"
-             if let url = URL.init(string: urlstr){
-                  if #available(iOS 10, *) {
-                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                 } else {
-                     UIApplication.shared.openURL(url)
-                  }
-               }
+//             let urlstr = "telprompt://" + "18153684982"
+//             if let url = URL.init(string: urlstr){
+//                  if #available(iOS 10, *) {
+//                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                 } else {
+//                     UIApplication.shared.openURL(url)
+//                  }
+//               }
  
         }))
         

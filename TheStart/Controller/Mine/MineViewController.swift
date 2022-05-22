@@ -24,6 +24,9 @@ class MineViewController: BaseTableController,Requestable{
     @IBOutlet weak var pubView: UIView!
     @IBOutlet weak var collectView: UIView!
     @IBOutlet weak var VipCenterVIew: UIView!
+    
+    @IBOutlet weak var myorderView: UIView!
+    
     var usermodel = UserModel()
     
     
@@ -33,6 +36,7 @@ class MineViewController: BaseTableController,Requestable{
         addGestureRecognizerIgnoreTableView(view: pubView, target: self, actionName: "pubViewAction")
         addGestureRecognizerIgnoreTableView(view: collectView, target: self, actionName: "collectViewAction")
         addGestureRecognizerIgnoreTableView(view: VipCenterVIew, target: self, actionName: "VipCenterVIewAction")
+        addGestureRecognizerIgnoreTableView(view: myorderView, target: self, actionName: "myorderViewAction")
         self.title = "我的"
         guideCellBgView.layer.masksToBounds = true
         guideCellBgView.layer.cornerRadius = 10
@@ -105,6 +109,10 @@ class MineViewController: BaseTableController,Requestable{
         self.navigationController?.pushViewController(controller, animated: true)
       }
     
+    @objc private func myorderViewAction() {
+        let controller = MyOrderViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+      }
  
     @IBAction func editPersons(_ sender: Any) {
         let controller = UIStoryboard.getPersonsInfoController()
@@ -126,7 +134,7 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -158,17 +166,27 @@ class MineViewController: BaseTableController,Requestable{
         }
         
         else if indexPath.row == 1{
-            let controller = UIStoryboard.getAuthenController()
+            let controller = InfoAuthenController()
+            if usermodel?.is_shiming == 2 || usermodel?.shiming_status == 0{
+                controller.isShimin = true
+            }else{
+                controller.isShimin = false
+            }
+            if usermodel?.is_audio == 2 || usermodel?.audio_status == 0{
+                controller.isAudio = true
+            }else{
+                controller.isAudio = false
+            }
             self.navigationController?.pushViewController(controller, animated: true)
         }
         else if indexPath.row == 2{
-            let controller = MusicianAuthorController()
+            let controller = UIStoryboard.getFeedBackController()
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
         else if indexPath.row == 3{
-            let controller = UIStoryboard.getMyToPubController()
-            self.navigationController?.pushViewController(controller, animated: true)
+ 
+         
         }
         else if indexPath.row == 4{
               let controller = MyOrderViewController()
@@ -180,8 +198,11 @@ class MineViewController: BaseTableController,Requestable{
         }
         
         else if indexPath.row == 6{
-            let controller = UIStoryboard.getPayViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+//            let controller = UIStoryboard.getPayViewController()
+//            self.navigationController?.pushViewController(controller, animated: true)
+//
+//            let controller = UIStoryboard.getMyToPubController()
+//            self.navigationController?.pushViewController(controller, animated: true)
         }
  
     }

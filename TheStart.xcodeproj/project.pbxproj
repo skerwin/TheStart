@@ -194,6 +194,10 @@
 		B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86AEFE12838F69E0065B96E /* BuyBtnView.xib */; };
 		B86AEFEA283926C10065B96E /* AudioLinkInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */; };
 		B86AEFEC283926CD0065B96E /* AudioLinkInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86AEFEB283926CD0065B96E /* AudioLinkInfoView.xib */; };
+		B86AEFEE283A1C040065B96E /* AuthenSuuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86AEFED283A1C040065B96E /* AuthenSuuccessView.xib */; };
+		B86AEFF0283A1C150065B96E /* AuthenSuuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */; };
+		B86AEFF2283A1FCD0065B96E /* InfoAuthenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */; };
+		B86AEFF4283A26240065B96E /* AuthenSuuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */; };
 		B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */; };
 		B8AB69CC28081C800064861C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CB28081C800064861C /* Home.storyboard */; };
 		B8AB69D2280901490064861C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB69CE280901480064861C /* CommentCell.swift */; };
@@ -528,6 +532,10 @@
 		B86AEFE12838F69E0065B96E /* BuyBtnView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyBtnView.xib; sourceTree = "<group>"; };
 		B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLinkInfoView.swift; sourceTree = "<group>"; };
 		B86AEFEB283926CD0065B96E /* AudioLinkInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioLinkInfoView.xib; sourceTree = "<group>"; };
+		B86AEFED283A1C040065B96E /* AuthenSuuccessView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenSuuccessView.xib; sourceTree = "<group>"; };
+		B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenSuuccessView.swift; sourceTree = "<group>"; };
+		B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAuthenController.swift; sourceTree = "<group>"; };
+		B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenSuuccessController.swift; sourceTree = "<group>"; };
 		B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = "../../../../医路护卫/YiLuHuWei/YiLuHuWei/CommonLIbrary/Utils/DatePickerDialog.swift"; sourceTree = "<group>"; };
 		B89B78C6282E34EC007D7D54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStartRelease.entitlements; sourceTree = "<group>"; };
@@ -801,6 +809,8 @@
 				B802E22D282A45C200B5057A /* CashOutCell.xib */,
 				B802E230282A47DC00B5057A /* CashOutHeader.swift */,
 				B802E232282A47F200B5057A /* CashOutHeader.xib */,
+				B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */,
+				B86AEFED283A1C040065B96E /* AuthenSuuccessView.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1305,6 +1315,8 @@
 				B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */,
 				B85093262837A05C001E5A8B /* CashierDeskController.swift */,
 				B85093282837A169001E5A8B /* StarCoinChargeController.swift */,
+				B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */,
+				B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1522,6 +1534,7 @@
 				B8AB69F42809985A0064861C /* TipOffHeaderView.xib in Resources */,
 				B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */,
 				B802E237282B44FB00B5057A /* VipCenterHeader1.xib in Resources */,
+				B86AEFEE283A1C040065B96E /* AuthenSuuccessView.xib in Resources */,
 				B85FAFBF280FAFFD00D25B66 /* Loading_7@2x.tiff in Resources */,
 				B8AE0322282A08A500FBE3B7 /* MusicAuthorHeader.xib in Resources */,
 				B85FAFC0280FAFFD00D25B66 /* Loading_6@2x.tiff in Resources */,
@@ -1745,9 +1758,11 @@
 				B83C638C280D0ECE00A3282D /* ChatBtnView.swift in Sources */,
 				B855361C2835F20900E3C287 /* MyStarCoinFootView.swift in Sources */,
 				B85FAFA9280F9A6600D25B66 /* JobListViewController.swift in Sources */,
+				B86AEFF2283A1FCD0065B96E /* InfoAuthenController.swift in Sources */,
 				B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */,
 				B85FB02228116A8300D25B66 /* StringExtension.swift in Sources */,
 				B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */,
+				B86AEFF4283A26240065B96E /* AuthenSuuccessController.swift in Sources */,
 				B8AB69FA280A9F3A0064861C /* TipOffPostViewController.swift in Sources */,
 				B85FB02028116A8300D25B66 /* EmotionViewModel.swift in Sources */,
 				B8AB69D7280904140064861C /* CommentModel.swift in Sources */,
@@ -1898,6 +1913,7 @@
 				B85FDA732824BC7A00EDA845 /* MyPubViewController.swift in Sources */,
 				B85FDA572823BB3800EDA845 /* PMKPageMenuController.swift in Sources */,
 				B85FDA7C2824BFF700EDA845 /* MyVipCenterCell.swift in Sources */,
+				B86AEFF0283A1C150065B96E /* AuthenSuuccessView.swift in Sources */,
 				B85093292837A169001E5A8B /* StarCoinChargeController.swift in Sources */,
 				B85FB01628116A8300D25B66 /* MoreActionCell.swift in Sources */,
 				B8AC501E2807C5F400C2CF26 /* LoadingPresenter.swift in Sources */,
@@ -2100,7 +2116,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJING ZHAO (64Z8QMKT5M)";
+				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
@@ -2124,7 +2140,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AdHoc20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2142,7 +2158,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJING ZHAO (64Z8QMKT5M)";
+				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
@@ -2166,7 +2182,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = AdHoc20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

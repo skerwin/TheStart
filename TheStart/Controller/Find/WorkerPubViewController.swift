@@ -267,13 +267,33 @@ class WorkerPubViewController: BaseViewController,Requestable {
                  DialogueUtils.showError(withStatus: "视频上传失败，请重试")
               
              }
-           
         }
     }
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         DialogueUtils.dismiss()
-        DialogueUtils.showError(withStatus: description)
+        //DialogueUtils.showError(withStatus: description)
+        
+        if checkVip(){
+            let noticeView = UIAlertController.init(title: "", message: "每天仅可发布3条招人找场哦，请看看其他的吧", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: {(action) in
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            let noticeView = UIAlertController.init(title: "", message: "非会员每天仅可以发布1条找人找场，请¥98元充值会员", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
+        return
+
     }
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
@@ -359,9 +379,7 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
         
         let pathAndParams = HomeAPI.workAddPathAndParams(model: jobModel!)
         postRequest(pathAndParams: pathAndParams,showHUD: false)
-        
-
-        
+ 
     }
     
     
@@ -489,8 +507,32 @@ extension WorkerPubViewController: PubMediaCellDelegate {
     }
     
     func didSelected(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
+        
+     
+        if indexPath.item == configImg.maximumSelectedCount{
+
+            if !checkVip(){
+                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                    let controller = UIStoryboard.getCashierDeskController()
+                    controller.paytype = .chargeVip
+                    controller.priceStr = "98.00"
+                    self.present(controller, animated: true)
+                }))
+                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }
+            return
+        }
+        
         isImgFile = true
-        configImg.maximumSelectedCount = 3
+        if checkVip(){
+            configImg.maximumSelectedCount = 9
+        }else{
+            configImg.maximumSelectedCount = 3
+        }
         configImg.selectOptions = PickerAssetOptions.photo
         presentPickerController()
     }
@@ -505,8 +547,35 @@ extension WorkerPubViewController: PubMediaCellVodDelegate {
     }
     
     func didSelectedVod(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
+        
+        if indexPath.item == configVod.maximumSelectedCount{
+
+            if !checkVip(){
+                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                    let controller = UIStoryboard.getCashierDeskController()
+                    controller.paytype = .chargeVip
+                    controller.priceStr = "98.00"
+                    self.present(controller, animated: true)
+                }))
+                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }
+            return
+        }
+        
         isImgFile = false
-        configVod.maximumSelectedCount = 1
+        if checkVip(){
+            configVod.maximumSelectedCount = 3
+        }else{
+            configVod.maximumSelectedCount = 1
+        }
+       
+        configVod.maximumSelectedVideoDuration = 30
+        configVod.maximumVideoEditDuration = 30
+        
         configVod.selectOptions = PickerAssetOptions.video
         presentPickerController()
     }
@@ -517,7 +586,7 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
     /// 选择完成之后调用
     func pickerController(_ pickerController: PhotoPickerController, didFinishSelection result: PickerResult) {
       
-        DialogueUtils.showWithStatus("正在上传")
+       // DialogueUtils.showWithStatus("正在上传")
         if isImgFile{
             selectedAssetsImg = result.photoAssets
             isOriginalImg = result.isOriginal

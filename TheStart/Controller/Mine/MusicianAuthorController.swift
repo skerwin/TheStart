@@ -162,7 +162,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         DialogueUtils.dismiss()
-        DialogueUtils.showSuccess(withStatus: "发布成功")
+        DialogueUtils.showSuccess(withStatus: "上传成功")
         delay(second: 1) { [self] in
 //            if (self.reloadBlock != nil) {
 //                self.reloadBlock!()
@@ -175,7 +175,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight - 40), style: .plain)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -470,6 +470,12 @@ extension MusicianAuthorController:UITableViewDataSource,UITableViewDelegate {
         }
       }
     
+      func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+         
+         introCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! SelfIntroCell
+          introCell.contentTV.resignFirstResponder()
+ 
+     }
     
 
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

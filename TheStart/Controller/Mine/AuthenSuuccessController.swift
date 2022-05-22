@@ -1,25 +1,23 @@
 //
-//  SellOrderViewController.swift
+//  AuthenSuuccessController.swift
 //  TheStart
 //
-//  Created by zhaoyuanjing on 2022/05/11.
+//  Created by zhaoyuanjing on 2022/05/22.
 //
 
 import UIKit
 
-class SellOrderViewController: BaseViewController,Requestable {
+class AuthenSuuccessController: BaseViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     
-    var parentNavigationController: UINavigationController?
+    var titlestr = "您已认证通过"
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        // Do any additional setup after loading the view.
+        titleLabel.text = titlestr
     }
     
 
-    
-   
     /*
     // MARK: - Navigation
 

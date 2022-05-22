@@ -36,6 +36,7 @@ class TipOffHeaderView: UIView {
         tipLabel.layer.cornerRadius = 5
         tipLabel.layer.masksToBounds = true
  
+        msgBtn.isHidden = true
     }
     
     func configModel(model:TipOffModel){

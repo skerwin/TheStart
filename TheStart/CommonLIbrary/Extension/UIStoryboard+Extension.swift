@@ -80,6 +80,10 @@ extension UIStoryboard {
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashierDeskController") as! CashierDeskController
     }
+    class func getAuthenSuuccessController() -> AuthenSuuccessController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "AuthenSuuccessController") as! AuthenSuuccessController
+    }
     
     
 }

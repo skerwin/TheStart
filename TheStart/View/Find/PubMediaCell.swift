@@ -77,7 +77,14 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
         collectionView.register(ResultAddViewCell.self, forCellWithReuseIdentifier: "ResultAddViewCellID")
     }
     func getCollectionViewrowCount() -> Int {
-        let assetCount = canSetAddCell ? selectedAssets.count + 1 : selectedAssets.count
+        
+        var assetCount = 0
+        if checkVip(){
+            assetCount = canSetAddCell ? selectedAssets.count + 1 : selectedAssets.count
+        }else{
+            assetCount = selectedAssets.count + 1
+        }
+        
         var rowCount = assetCount / row_Count + 1
         if assetCount % 3 == 0 {
             rowCount -= 1
@@ -132,15 +139,28 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
+            
+            if checkVip(){
+                return canSetAddCell ? selectedAssets.count + 1 : selectedAssets.count
+            }else{
+                return selectedAssets.count + 1
+            }
  
-        return canSetAddCell ? selectedAssets.count + 1 : selectedAssets.count
+       
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if canSetAddCell && indexPath.item == selectedAssets.count {
-            return addCell
+            
+        if indexPath.item == selectedAssets.count {
+            if canSetAddCell {
+                return addCell
+            }else{
+                if !checkVip(){
+                    return addCell
+                }
+             }
         }
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "ResultViewCellID",
@@ -168,9 +188,16 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     // MARK: UICollectionViewDelegate
     /// 跳转单独预览界面
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if canSetAddCell && indexPath.item == selectedAssets.count {
-            delegate?.didSelected(collectionView: collectionView, didSelectItemAt: indexPath,row:self.row)
-            return
+        if indexPath.item == selectedAssets.count {
+            if canSetAddCell{
+                delegate?.didSelected(collectionView: collectionView, didSelectItemAt: indexPath,row:self.row)
+                return
+            }else{
+                if !checkVip(){
+                    delegate?.didSelected(collectionView: collectionView, didSelectItemAt: indexPath,row:self.row)
+                    return
+                }
+            }
         }
         if selectedAssets.isEmpty {
             return

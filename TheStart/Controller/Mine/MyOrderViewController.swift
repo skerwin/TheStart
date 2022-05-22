@@ -29,19 +29,11 @@ class MyOrderViewController: BaseViewController {
        
        self.title = "我的订单"
        controller1 = SellOrderViewController()
-       controller1.title = "待支付"
+       controller1.title = "已购买"
        controller1.parentNavigationController = self.navigationController
     
        controller2 = SellOrderViewController()
-     
-       controller2.title = "已完成"
-       controller2.parentNavigationController = self.navigationController
-       
-       controller3 = SellOrderViewController()
-    
-       controller3.title = "已取消"
-       controller3.parentNavigationController = self.navigationController
-       
+ 
        controller4 = BuyOrderViewController()
        controller4.title = "已售出"
        controller4.parentNavigationController = self.navigationController
@@ -50,8 +42,7 @@ class MyOrderViewController: BaseViewController {
        
        controllerArray.append(controller1)
        controllerArray.append(controller2)
-       controllerArray.append(controller3)
-       controllerArray.append(controller4)
+      
        
        pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
       pageMenuController?.delegate = self

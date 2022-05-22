@@ -41,10 +41,7 @@ class MusicDetailController: BaseViewController,Requestable{
     var myCoins:Float = 0
     
     var isVipAuudio = true
-    
     var isBought = false
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -298,10 +295,18 @@ class MusicDetailController: BaseViewController,Requestable{
             )
             .wEventOKFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
-                    
-                    let controller = UIStoryboard.getCashierDeskController()
-                    controller.modalPresentationStyle = .automatic
-                    self.present(controller, animated: true)
+                     //let arr1 = anyID as! Array<String>
+                     if otherData != nil{
+                        let arr = otherData as! Array<IndexPath>
+                        let priceStr = self.dataCoinList[arr.first!.row].price
+                        let controller = UIStoryboard.getCashierDeskController()
+                        controller.paytype = .ChargeStarCoin
+                        controller.priceStr = priceStr
+                        self.present(controller, animated: true)
+                    }
+                      
+                
+ 
                  }
             )
         _ = dialog.wStart()

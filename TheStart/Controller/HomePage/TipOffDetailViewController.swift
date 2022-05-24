@@ -160,6 +160,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             dataModel = Mapper<TipOffModel>().map(JSONObject: responseResult.rawValue)
             headerView.configModel(model: dataModel!)
             bottoomView.configModel(model: dataModel!)
+            
             self.tableView.reloadData()
         }
     }

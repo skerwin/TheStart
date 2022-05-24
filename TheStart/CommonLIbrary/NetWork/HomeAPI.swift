@@ -34,6 +34,13 @@ struct HomeAPI {
         let urlPath = URLs.getHostAddress() + userinfoPath
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
+    
+    static let logoutPath = "/api/logout"
+    static func logoutPathAndParam() -> PathAndParams {
+ 
+        let urlPath = URLs.getHostAddress() + logoutPath
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
  
     
     //工种
@@ -116,6 +123,7 @@ struct HomeAPI {
         paramsDictionary["audio_path"] = model.audio_path as AnyObject
         paramsDictionary["images"] = model.imagesUrl as AnyObject
         paramsDictionary["image"] = model.image as AnyObject
+        paramsDictionary["vip_free"] = model.vip_free as AnyObject
         return (audioPubPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
@@ -427,16 +435,7 @@ struct HomeAPI {
         paramsDictionary["confirm_pwd"] = password as AnyObject
          return (resetPwdPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
-    //推出登陆
  
-    static let logoutPath = "/api/logout"
-    static func logoutPathAndParams(phone:String,captcha:String,password:String) -> PathAndParams {
-
-        let paramsDictionary = Dictionary<String, AnyObject>()
-        let urlPath = generateUrlWithParams(paramsDictionary,path: verifyCodeKeyPath)
-        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
-    }
-    
     
     //我的厂招人列表
     static let myJobWorkerListPath = "/api/work/index"

@@ -120,9 +120,9 @@ class PubMusicController: BaseViewController,Requestable {
     
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("PubMusicHeader", owner: nil, options: nil)!.first as? PubMusicHeader
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 235)
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 290)
         
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 235))
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 290))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         
@@ -220,25 +220,46 @@ extension PubMusicController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "请输入名称")
             return
         }
+        
         audioModel?.price = headView.MoneyTF.text!
         if audioModel!.price.isEmptyStr(){
             showOnlyTextHUD(text: "请输入价格")
             return
         }
+        
+        if !(CheckoutUtils.isValidNumber(number: audioModel!.price)){
+            showOnlyTextHUD(text: "价格只能为数字")
+            return
+        }
+        
  
         audioModel?.link = headView.wanpanTV.text!
         if audioModel!.link.isEmptyStr(){
             showOnlyTextHUD(text: "请输入网盘链接")
             return
         }
+        
+        if !(CheckoutUtils.isValidURL(url: audioModel!.link)){
+            showOnlyTextHUD(text: "请输入正确的链接")
+            return
+        }
+        
  
         audioModel?.code = headView.wangpanCode.text!
         if audioModel!.code.isEmptyStr(){
             showOnlyTextHUD(text: "请输入提取码")
             return
         }
+        if audioModel!.code.count > 8{
+            showOnlyTextHUD(text: "提取码过长，请检查")
+            return
+        }
  
- 
+        audioModel?.vip_free = headView.isFree
+        if audioModel?.vip_free == -1{
+            showOnlyTextHUD(text: "请选择是否免费下载")
+            return
+        }
 
         introCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! WokerPubIntroCell
         audioModel?.info = introCell.contentTV.text

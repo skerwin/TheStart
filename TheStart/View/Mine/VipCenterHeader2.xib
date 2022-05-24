@@ -15,10 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="非会员权益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEG-Rf-831">
-                    <rect key="frame" x="115.5" y="7" width="89" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员权益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEG-Rf-831">
+                    <rect key="frame" x="120" y="7" width="80" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="89" id="DRx-Nd-HPT"/>
+                        <constraint firstAttribute="width" constant="80" id="DRx-Nd-HPT"/>
                         <constraint firstAttribute="height" constant="21" id="lF0-7R-TF2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -26,7 +26,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wn-TX-Fmf">
-                    <rect key="frame" x="209.5" y="17" width="90" height="1"/>
+                    <rect key="frame" x="205" y="17" width="90" height="1"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="ecU-Ma-5ZC"/>
@@ -34,7 +34,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-Jj-YqA">
-                    <rect key="frame" x="20.5" y="17" width="90" height="1"/>
+                    <rect key="frame" x="25" y="17" width="90" height="1"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="D3s-K7-JuH"/>

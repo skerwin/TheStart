@@ -22,16 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="136" height="117"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0b-3K-0A2">
-                                <rect key="frame" x="33" y="68" width="70" height="21"/>
+                                <rect key="frame" x="23" y="68" width="90" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="PJs-MY-YUr"/>
+                                    <constraint firstAttribute="width" constant="90" id="PJs-MY-YUr"/>
                                     <constraint firstAttribute="height" constant="21" id="aon-3U-SjI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.94509803921568625" green="0.75686274509803919" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2r-eG-f9H">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2r-eG-f9H">
                                 <rect key="frame" x="0.0" y="23.5" width="136" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gFP-oK-HIU"/>

@@ -14,6 +14,12 @@ class PubMusicHeader: UIView {
     @IBOutlet weak var wanpanTV: UITextField!
     @IBOutlet weak var wangpanCode: UITextField!
     
+    @IBOutlet weak var yesBtn: UIButton!
+    
+    @IBOutlet weak var nobtn: UIButton!
+    
+    var isFree = -1
+    
     override func awakeFromNib(){
          
         
@@ -29,6 +35,22 @@ class PubMusicHeader: UIView {
         let attributedCode = NSAttributedString.init(string: "请输入提取码", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         wangpanCode.attributedPlaceholder = attributedCode
         
+        isFree = 0
+        nobtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+        yesBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+        
     }
 
+    @IBAction func yesBtnAction(_ sender: Any) {
+        isFree = 1
+        yesBtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+        nobtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+    }
+    
+    @IBAction func noBtnAction(_ sender: Any) {
+        isFree = 0
+        nobtn.setImage(UIImage.init(named: "quanYES"), for: .normal)
+        yesBtn.setImage(UIImage.init(named: "quanNO"), for: .normal)
+    }
+    
 }

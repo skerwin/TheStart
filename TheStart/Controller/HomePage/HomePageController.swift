@@ -31,7 +31,7 @@ class HomePageController: BaseViewController,Requestable {
         
         WebSocketManager.instance.openSocket()
         
- 
+       // logoutAccount(account: "")
         initTableView()
         self.view.backgroundColor = ZYJColor.main
         loadData()

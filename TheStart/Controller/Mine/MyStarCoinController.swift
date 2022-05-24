@@ -25,8 +25,12 @@ class MyStarCoinController: BaseViewController,Requestable {
     var myCoins = 0
     var flowLayout:UICollectionViewFlowLayout!
     
+    var rowNum = -1
+    
     
     var collectionView: UICollectionView!
+    
+    var usermodel = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +141,7 @@ extension MyStarCoinController:UICollectionViewDelegateFlowLayout{
     }
     //头section的高度
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, referenceSizeForHeaderInSection section:Int) -> CGSize {
-        return CGSize.init(width: screenWidth , height: 314)
+        return CGSize.init(width: screenWidth , height: 258)
     }
   
     //尾section的高度
@@ -151,7 +155,9 @@ extension MyStarCoinController:UICollectionViewDelegateFlowLayout{
 }
 extension MyStarCoinController:MineStarCoinHederDelegate {
     func cashDone() {
-        let controller = CashOutStutateController()
+      
+        let controller = ChargeOrderController()
+        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -167,8 +173,15 @@ extension MyStarCoinController:MyStarCoinFootViewDelegate{
 
     
     func buyAction() {
-        let controller = UIStoryboard.getPayViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        if rowNum == -1{
+            showOnlyTextHUD(text: "请选择要充值的金额")
+            return
+        }
+        let priceStr = self.dataList[rowNum].price
+        let controller = UIStoryboard.getCashierDeskController()
+        controller.paytype = .ChargeStarCoin
+        controller.priceStr = priceStr
+        self.present(controller, animated: true)
     }
     
     
@@ -192,27 +205,40 @@ extension MyStarCoinController:UICollectionViewDataSource,UICollectionViewDelega
             let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:MineStarCoinHeder.nameOfClass, for: indexPath) as! MineStarCoinHeder
             
              filerView.delegate = self
- 
+             filerView.titleLabel.text = intToString(number: usermodel!.coins)
+            
              return filerView
         }else{
        
             let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:MyStarCoinFootView.nameOfClass, for: indexPath) as! MyStarCoinFootView
             
              filerView.delegate = self
- 
-             return filerView
+            return filerView
         }
     }
     
     func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyStarCollectionViewCell.nameOfClass, for: indexPath) as! MyStarCollectionViewCell
         cell.model = dataList[indexPath.item]
+        if indexPath.item == rowNum{
+            cell.BgView.layer.borderColor = ZYJColor.coinColor.cgColor
+            cell.BgView.layer.borderWidth = 1
+        }else{
+            //BgView.layer.borderColor = ZYJColor.coinColor.cgColor
+            cell.BgView.layer.borderWidth = 0
+        }
+        
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
      
+        rowNum = indexPath.item
+     
+        collectionView.reloadData()
+        
+        
     }
 
     

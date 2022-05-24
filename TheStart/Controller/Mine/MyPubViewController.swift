@@ -34,13 +34,13 @@ class MyPubViewController: BaseViewController {
         controller1 = JobListViewController()
         controller1.isFromMine = true
         controller1.isMypub = true
-        controller1.title = "我的职位"
+        controller1.title = "我的招人"
         controller1.parentNavigationController = self.navigationController
      
         controller2 = WorkListViewController()
         controller2.isFromMine = true
         controller2.isMypub = true
-        controller2.title = "我的求职"
+        controller2.title = "我的找场"
         controller2.parentNavigationController = self.navigationController
         
         controller3 = TipOffViewController()

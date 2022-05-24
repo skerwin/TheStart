@@ -21,6 +21,7 @@ struct DictModel : Mappable {
     var give_money = ""
     
     var image = ""
+    var isSelected = false
     
     init?(map: Map) {
         

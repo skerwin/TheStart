@@ -293,7 +293,7 @@ class NewLoginController: BaseViewController,Requestable {
             DialogueUtils.showSuccess(withStatus: "登陆成功")
             let usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
             setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
-            if usermodel!.vip {
+            if usermodel!.vip == 1{
                 setIntValueForKey(value: 1, key: Constants.isVip)
                 setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
             }else{
@@ -301,9 +301,8 @@ class NewLoginController: BaseViewController,Requestable {
                 setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
             }
             
-            print("12345678")
-            delay(second: 0.5) { [self] in
-            UIApplication.shared.keyWindow?.rootViewController = MainTabBarController()
+             delay(second: 0.5) { [self] in
+             UIApplication.shared.keyWindow?.rootViewController = MainTabBarController()
             }
         }
  

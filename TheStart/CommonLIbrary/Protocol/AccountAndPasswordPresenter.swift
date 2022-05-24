@@ -82,16 +82,13 @@ protocol AccountAndPasswordPresenter: class {
         removeValueForKey(key: Constants.userid)
         removeValueForKey(key: Constants.account)
         removeValueForKey(key: Constants.password)
-        
-        
-        removeValueForKey(key: Constants.isCheck)
+        removeValueForKey(key: Constants.vipId)
         removeValueForKey(key: Constants.avatar)
-        
         removeValueForKey(key: Constants.truename)
         removeValueForKey(key: Constants.nickname)
-        removeValueForKey(key: Constants.gender)
-    
-        
+        removeValueForKey(key: Constants.isVip)
+        removeValueForKey(key: Constants.isVip)
+        removeValueForKey(key: Constants.verCodeKey)
         
         
         isLogin = false

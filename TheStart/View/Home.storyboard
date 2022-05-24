@@ -294,7 +294,7 @@
                                                                                         <constraint firstAttribute="height" constant="38" id="hVJ-eY-opJ"/>
                                                                                     </constraints>
                                                                                 </imageView>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flr-qN-nu2">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flr-qN-nu2">
                                                                                     <rect key="frame" x="10" y="50" width="75.5" height="17"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="17" id="2iM-b3-6H0"/>
@@ -339,7 +339,7 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-nc-DOZ">
                                                                             <rect key="frame" x="0.0" y="0.0" width="95" height="79"/>
                                                                             <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huiyuanzhongxin" translatesAutoresizingMaskIntoConstraints="NO" id="JhL-yJ-ocN">
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order" translatesAutoresizingMaskIntoConstraints="NO" id="JhL-yJ-ocN">
                                                                                     <rect key="frame" x="28.5" y="9" width="38" height="38"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="38" id="3jP-oI-lL3"/>
@@ -478,7 +478,7 @@
                                                         <constraint firstAttribute="width" constant="25" id="mCs-KJ-03Q"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="信息认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYM-rt-bN1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYM-rt-bN1">
                                                     <rect key="frame" x="56" y="12" width="150" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="Swe-1i-KtG"/>
@@ -521,7 +521,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="z7X-58-GBu"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意见反馈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd9-iN-AZj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系客服" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd9-iN-AZj">
                                                     <rect key="frame" x="56" y="14" width="150" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="6ZH-CR-cCI"/>
@@ -2531,7 +2531,7 @@
                                         <fragment content="¥100.00">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="33" name=".HiraKakuInterface-W3"/>
+                                                <font key="NSFont" metaFont="system" size="33"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -2767,6 +2767,7 @@
         <image name="hx_picker_add_img" width="100" height="100"/>
         <image name="jinru" width="16" height="16"/>
         <image name="mima" width="16" height="16"/>
+        <image name="order" width="38" height="38"/>
         <image name="shiming" width="26" height="26"/>
         <image name="shoucang" width="38" height="39"/>
         <image name="successCircle" width="24" height="24"/>

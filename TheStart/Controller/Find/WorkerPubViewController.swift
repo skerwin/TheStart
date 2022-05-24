@@ -315,6 +315,11 @@ class WorkerPubViewController: BaseViewController,Requestable {
 extension WorkerPubViewController:ChatBtnViewDelegate {
     func sumbitAction() {
         
+        jobModel?.mobile = headView.phoneTextF.text!
+        if !(CheckoutUtils.isMobile(mobile: jobModel!.mobile)){
+            showOnlyTextHUD(text: "请输入正确的电话号码")
+            return
+        }
         jobModel?.type = pubType
         jobModel?.title = headView.titleTextF.text!
         if jobModel!.title.isEmptyStr(){
@@ -326,17 +331,13 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "请选择城市")
             return
         }
-        jobModel?.mobile = headView.phoneTextF.text!
+       
         if jobModel!.mobile.isEmptyStr(){
             showOnlyTextHUD(text: "请输入联系方式")
             return
         }
         jobModel?.wechat = headView.phoneTextF.text!
-     
-        
         introCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! WokerPubIntroCell
-        
-        
         jobModel?.detail = introCell.contentTV.text
         if jobModel!.detail.isEmptyStr(){
             showOnlyTextHUD(text: "请简要介绍项目")
@@ -355,7 +356,6 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "请选择性别")
             return
         }
-        
         var imgstr = ""
         if uploadImgArr.count != 0{
             for imgM in self.uploadImgArr {

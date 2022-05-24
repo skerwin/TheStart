@@ -49,7 +49,7 @@ struct UserModel: Mappable {
     
     var logo = ""
     var audio_remark = ""
-    var vip = false
+    var vip = 0
     var vip_id = 0
     var vip_icon = ""
     var vip_name = ""

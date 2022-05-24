@@ -33,13 +33,13 @@ class MyCollectViewController: BaseViewController {
        controller1 = JobListViewController()
        controller1.isFromMine = true
        controller1.isMyCollect = true
-       controller1.title = "职位"
+       controller1.title = "找人"
        controller1.parentNavigationController = self.navigationController
     
        controller2 = WorkListViewController()
        controller2.isFromMine = true
        controller2.isMyCollect = true
-       controller2.title = "求职者"
+       controller2.title = "找场"
        controller2.parentNavigationController = self.navigationController
        
        controller3 = MuiscListController()

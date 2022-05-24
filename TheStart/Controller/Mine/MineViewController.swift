@@ -66,32 +66,36 @@ class MineViewController: BaseTableController,Requestable{
  
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         tableView.mj_header?.endRefreshing()
-        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-        
-         usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
-        
-         setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
-        
-        //|| usermodel!.vip == 1
-        
-        if usermodel!.vip {
-            setIntValueForKey(value: 1, key: Constants.isVip)
-            setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
-        }else{
-            setIntValueForKey(value: 0, key: Constants.isVip)
-            setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+        if requestPath.containsStr(find: HomeAPI.userinfoPath){
+            super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+           
+            usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
+           
+            setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+                      
+           if usermodel!.vip == 1{
+               setIntValueForKey(value: 1, key: Constants.isVip)
+               setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+           }else{
+               setIntValueForKey(value: 0, key: Constants.isVip)
+               setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+           }
+           
+           
+            nameLabel.text = usermodel?.nickname
+            if usermodel?.is_shiming == 2{
+               isAuthon.image = UIImage.init(named: "yirenzheng")
+            }else{
+               isAuthon.image = UIImage.init(named: "weirenzheng")
+            }
+            headImg.displayImageWithURL(url: usermodel?.avatar_check)
+           
+            self.tableView.reloadData()
+        }else if requestPath.containsStr(find: HomeAPI.logoutPath){
+            logoutAccount(account: "")
+            UIApplication.shared.keyWindow?.rootViewController = UIStoryboard.getNewLoginController()
         }
-        
-        
-         nameLabel.text = usermodel?.nickname
-         if usermodel?.is_shiming == 2{
-            isAuthon.image = UIImage.init(named: "yirenzheng")
-         }else{
-            isAuthon.image = UIImage.init(named: "weirenzheng")
-         }
-         headImg.displayImageWithURL(url: usermodel?.avatar_check)
-        
-         self.tableView.reloadData()
+      
     }
     
     @objc private func pubViewAction() {
@@ -106,6 +110,7 @@ class MineViewController: BaseTableController,Requestable{
     
     @objc private func VipCenterVIewAction() {
         let controller = VipCenterViewController()
+        controller.usermodel = self.usermodel
         self.navigationController?.pushViewController(controller, animated: true)
       }
     
@@ -162,6 +167,7 @@ class MineViewController: BaseTableController,Requestable{
         
         if indexPath.row == 0{
             let controller = MyStarCoinController()
+            controller.usermodel = self.usermodel
             self.navigationController?.pushViewController(controller, animated: true)
         }
         
@@ -180,12 +186,39 @@ class MineViewController: BaseTableController,Requestable{
             self.navigationController?.pushViewController(controller, animated: true)
         }
         else if indexPath.row == 2{
-            let controller = UIStoryboard.getFeedBackController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            let noticeView = UIAlertController.init(title: "", message: "您确定拨打客服联系电话吗？", preferredStyle: .alert)
+            
+             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+                 
+                 
+                 let urlstr = "telprompt://" + "15002500877"
+                 if let url = URL.init(string: urlstr){
+                      if #available(iOS 10, *) {
+                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                     } else {
+                         UIApplication.shared.openURL(url)
+                      }
+                   }
+     
+            }))
+             noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
         }
         
         else if indexPath.row == 3{
+            let noticeView = UIAlertController.init(title: "提示", message: "您确定退出账号，退出后需要重新登陆", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
  
+                  let requestParams = HomeAPI.logoutPathAndParam()
+                 self.getRequest(pathAndParams: requestParams,showHUD:false)
+     
+            }))
+             noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
          
         }
         else if indexPath.row == 4{
@@ -193,8 +226,10 @@ class MineViewController: BaseTableController,Requestable{
               self.navigationController?.pushViewController(controller, animated: true)
          }
         else if indexPath.row == 5{
-            let controller = UIStoryboard.getFeedBackController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            
+            
+//            let controller = UIStoryboard.getFeedBackController()
+//            self.navigationController?.pushViewController(controller, animated: true)
         }
         
         else if indexPath.row == 6{

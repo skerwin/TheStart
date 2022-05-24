@@ -114,18 +114,18 @@
                         <action selector="sureOpenAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Ozj-fQ-AbS"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员权益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-Cs-d0H">
-                    <rect key="frame" x="120" y="216" width="80" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="非会员权益" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-Cs-d0H">
+                    <rect key="frame" x="116" y="216" width="88" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="5iT-S8-Zp6"/>
-                        <constraint firstAttribute="width" constant="80" id="WzE-cg-ehR"/>
+                        <constraint firstAttribute="width" constant="88" id="WzE-cg-ehR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxs-76-USJ">
-                    <rect key="frame" x="205" y="227" width="90" height="1"/>
+                    <rect key="frame" x="209" y="227" width="90" height="1"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="2hl-di-aZc"/>
@@ -133,7 +133,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcg-RU-rLv">
-                    <rect key="frame" x="25" y="227" width="90" height="1"/>
+                    <rect key="frame" x="21" y="227" width="90" height="1"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="HCQ-qp-2oh"/>

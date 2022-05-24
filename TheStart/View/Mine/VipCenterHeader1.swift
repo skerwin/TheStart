@@ -31,6 +31,30 @@ class VipCenterHeader1: UICollectionReusableView {
         delegate.sureOpenAction()
     }
     
+    func configModel(user:UserModel){
+        headImage.displayHeadImageWithURL(url: user.avatar)
+        nameLabel.text = user.nickname
+        
+        if user.vip == 1{
+            isVipLabel.isHidden = false
+            vipNumLabel.text = "NO." + intToString(number: user.vip_id)
+            isKaitongLabel.setTitle("已开通", for: .normal)
+            isKaitongLabel.setTitleColor(ZYJColor.coinColor, for: .normal)
+            tipLabel.text = "您已开通会员正在享受全部会员权益"
+            sureOpen.setTitle("您已开通会员", for: .normal)
+            sureOpen.isEnabled = false
+        }else{
+            isVipLabel.isHidden = true
+            vipNumLabel.text = "NO." + "--"
+            isKaitongLabel.setTitle("未开通", for: .normal)
+            isKaitongLabel.setTitleColor(UIColor.white, for: .normal)
+            tipLabel.text = "98元开通会员即可享受全部会员权益"
+            sureOpen.setTitle("98¥ 确认开通", for: .normal)
+            sureOpen.isEnabled = true
+        }
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

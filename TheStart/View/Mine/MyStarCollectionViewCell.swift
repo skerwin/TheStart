@@ -33,6 +33,7 @@ class MyStarCollectionViewCell: UICollectionViewCell {
             priceLabel.text =  "¥" + " " +  model!.price
             coinBtn.setTitle(model!.give_money + "星币", for: .normal)
             coinBtn.titleLabel!.text = model!.give_money + "星币"
+          
         }
     }
 

@@ -16,29 +16,25 @@ class BuyOrderViewController: BaseViewController,Requestable {
     
     var tableView:UITableView!
     
-    var dataList = [TipOffModel]()
+    var dataList = [OrderModel]()
         
     var pubBtn:UIButton!
     
     var type = 2
+    var parentNavigationController: UINavigationController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         initTableView()
-        self.title = "大咖秀"
+        self.title = "我的购买"
         // Do any additional setup after loading the view.
     }
     
     
     func loadData(){
-        let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
-        getRequest(pathAndParams: requestParams,showHUD:false)
-        
-//        func loadData(){
-//            let requestParams = HomeAPI.orderListPathAndParams()
-//            getRequest(pathAndParams: requestParams,showHUD:false)
-//
-//        }
+        let requestParams = HomeAPI.orderListPathAndParams(type: 2, order_type: 3, page: page, limit: limit)
+        postRequest(pathAndParams: requestParams,showHUD:false)
 
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -52,7 +48,7 @@ class BuyOrderViewController: BaseViewController,Requestable {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
 
-        let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
+        let list:[OrderModel]  = getArrayFromJson(content: responseResult)
 
         dataList.append(contentsOf: list)
         if list.count < 10 {
@@ -63,7 +59,7 @@ class BuyOrderViewController: BaseViewController,Requestable {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight - 40), style: .plain)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -73,7 +69,7 @@ class BuyOrderViewController: BaseViewController,Requestable {
         self.tableView.estimatedRowHeight = 240;
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-         tableView.registerNibWithTableViewCellName(name: SuperManPostCell.nameOfClass)
+         tableView.registerNibWithTableViewCellName(name: OrderCell.nameOfClass)
  
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh
@@ -113,18 +109,18 @@ extension BuyOrderViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuperManPostCell", for: indexPath) as! SuperManPostCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell", for: indexPath) as! OrderCell
         cell.selectionStyle = .none
         cell.model = dataList[indexPath.row]
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 155
+        return 110
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = NotifyWebDetailController()
-        controller.urlString = dataList[indexPath.row].link_url
+        let controller = MusicDetailController()
+        controller.dateID = dataList[indexPath.row].audio_id
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

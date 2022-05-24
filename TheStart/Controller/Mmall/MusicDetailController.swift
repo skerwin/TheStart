@@ -40,7 +40,7 @@ class MusicDetailController: BaseViewController,Requestable{
     var dataCoinList = [DictModel]()
     var myCoins:Float = 0
     
-    var isVipAuudio = true
+    var isVipAuudio = false
     var isBought = false
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class MusicDetailController: BaseViewController,Requestable{
         loadData()
         loadDataCoin()
         initHeadView()
-        initFooterView(bought: isBought)
+        //initFooterView(bought: isBought)
         initTableView()
         // Do any additional setup after loading the view.
     }
@@ -164,6 +164,19 @@ class MusicDetailController: BaseViewController,Requestable{
             self.tableView.reloadData()
             isCollect = dataModel!.userCollect
             changeCollectBtn()
+            if dataModel?.vip_free == 0{
+                isVipAuudio = false
+            }else{
+                isVipAuudio = true
+            }
+            if dataModel?.if_order == 0{
+                isBought = false
+            }else{
+                isBought = true
+            }
+           
+            initFooterView(bought: isBought)
+            tableView.tableFooterView = footerBgView
         }
         
         

@@ -29,11 +29,13 @@ class VipCenterViewController: BaseViewController,Requestable {
     
     var collectionView: UICollectionView!
     
-    var strsVip = ["尊享会员标识","无限次查看联系方式","无限次发起聊天","每天发布3条找人求职信息","发布信息可添加9张图片","发布信息可添加3条视频"]
+    var usermodel = UserModel()
+    
+    var strsVip = ["免费下载会员音乐","无限次查看联系方式","无限次发起聊天","每天发布3条找人求职信息","发布信息可添加9张图片","发布信息可添加3条视频"]
     var imagesVip = ["huiyuan","vipnoti","vipmsg","vipsou","vipvod","vipvod"]
     
     
-    var strs = ["每天限拨打3次求职电话","每天限拨打3次找人电话","每天限沟通3人","每天限发布1条信息","发布信息限添加3张图片","发布信息限添加1条视频"]
+    var strs = ["充值下载会员音乐","每天限拨打3次找人电话","每天限沟通3人","每天限发布1条信息","发布信息限添加3张图片","发布信息限添加1条视频"]
     var images = ["vipnoti","vipnoti","vipmsg","vipsou","vipvod","vipvod"]
     
     override func viewDidLoad() {
@@ -114,16 +116,18 @@ class VipCenterViewController: BaseViewController,Requestable {
   
  
     override func onFailure(responseCode: String, description: String, requestPath: String) {
-        collectionView.mj_header?.endRefreshing()
+        self.collectionView.mj_header?.endRefreshing()
+        self.collectionView.mj_footer?.endRefreshing()
         
         self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
     }
 
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-        collectionView.mj_header?.endRefreshing()
+        self.collectionView.mj_header?.endRefreshing()
+        self.collectionView.mj_footer?.endRefreshing()
  
-         self.collectionView.reloadData()
+        self.collectionView.reloadData()
  
     }
  
@@ -207,9 +211,10 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0{
-            return dataVipList.count
-        }else{
             return dataList.count
+        }else{
+            return dataVipList.count
+          
         }
     }
     
@@ -221,6 +226,7 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
             if  indexPath.section == 0{
                 let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:VipCenterHeader1.nameOfClass, for: indexPath) as! VipCenterHeader1
                 
+                filerView.configModel(user: self.usermodel!)
                  filerView.delegate = self
      
                  return filerView
@@ -231,7 +237,6 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
             }
           
         }else{
-       
             return UICollectionReusableView()
         }
     }
@@ -243,10 +248,10 @@ extension VipCenterViewController:UICollectionViewDataSource,UICollectionViewDel
         let itme = indexPath.item
         
         if section == 0{
-            cell.title.text = dataVipList[itme].title
+            cell.title.text = dataList[itme].title
             cell.images.image = UIImage.init(named: dataVipList[itme].image)
         }else{
-            cell.title.text = dataList[itme].title
+            cell.title.text = dataVipList[itme].title
             cell.images.image = UIImage.init(named: dataVipList[itme].image)
         }
         //cell.model = dataList[indexPath.item]

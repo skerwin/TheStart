@@ -14,11 +14,11 @@ class MyOrderViewController: BaseViewController {
 
    
    var controllerArray : [UIViewController] = []
-   var controller1:SellOrderViewController!
+    
+   var controller1:BuyOrderViewController!
    var controller2:SellOrderViewController!
-
-   var controller3:SellOrderViewController!
-   var controller4:BuyOrderViewController!
+ 
+ 
 
 
    var pageMenuController: PMKPageMenuController? = nil
@@ -28,15 +28,14 @@ class MyOrderViewController: BaseViewController {
        super.viewDidLoad()
        
        self.title = "我的订单"
-       controller1 = SellOrderViewController()
+       controller1 = BuyOrderViewController()
        controller1.title = "已购买"
        controller1.parentNavigationController = self.navigationController
     
-       controller2 = SellOrderViewController()
  
-       controller4 = BuyOrderViewController()
-       controller4.title = "已售出"
-       controller4.parentNavigationController = self.navigationController
+       controller2 = SellOrderViewController()
+       controller2.title = "已售出"
+       controller2.parentNavigationController = self.navigationController
       
        toTopHeight = navigationHeaderAndStatusbarHeight
        

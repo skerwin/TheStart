@@ -118,9 +118,8 @@ class AuthorDetailController: BaseViewController,Requestable {
     func loadData(){
         let requestParams = HomeAPI.authorDetailPathAndParams(id: authorId)
         postRequest(pathAndParams: requestParams,showHUD:false)
-
     }
- 
+
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         DialogueUtils.dismiss()
         DialogueUtils.showError(withStatus: description)
@@ -128,11 +127,10 @@ class AuthorDetailController: BaseViewController,Requestable {
         collectionView.mj_header?.endRefreshing()
         self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
     }
-
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         if requestPath == HomeAPI.authorCollectionPath{
-            isCollect = responseResult["if_collect"].intValue
+            isCollect = responseResult["if_collection"].intValue
             if isCollect == 1{
                 rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
                 showOnlyTextHUD(text: "收藏成功")
@@ -140,7 +138,6 @@ class AuthorDetailController: BaseViewController,Requestable {
                 rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
                 showOnlyTextHUD(text: "取消收藏")
             }
-            
         }else{
             collectionView.mj_header?.endRefreshing()
             userModel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)

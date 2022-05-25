@@ -25,6 +25,13 @@ class MusicViewCell: UICollectionViewCell {
         }
     }
     
+    func configModel(model:GoodsModel){
+        moneyLabel.titleLabel?.text = model.price
+        moneyLabel.setTitle( "¥" + model.price, for: .normal)
+        nameLabel.text = model.goods_name
+        imageV.displayImageWithURL(url: model.image)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         imageV.layer.masksToBounds = true

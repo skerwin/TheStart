@@ -30,9 +30,20 @@ class MineViewController: BaseTableController,Requestable{
     var usermodel = UserModel()
     
     
+    @IBOutlet weak var huiyuanLabel: UILabel!
+    @IBOutlet weak var xingbiLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        if checkMarketVer(){
+            huiyuanLabel.text = "信息发布"
+            xingbiLabel.text = "地址管理"
+        }else{
+            huiyuanLabel.text = "我的会员"
+            xingbiLabel.text = "我的星币"
+        }
         addGestureRecognizerIgnoreTableView(view: pubView, target: self, actionName: "pubViewAction")
         addGestureRecognizerIgnoreTableView(view: collectView, target: self, actionName: "collectViewAction")
         addGestureRecognizerIgnoreTableView(view: VipCenterVIew, target: self, actionName: "VipCenterVIewAction")
@@ -70,7 +81,7 @@ class MineViewController: BaseTableController,Requestable{
             super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
            
             usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
-           
+            
             setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
                       
            if usermodel!.vip == 1{
@@ -166,9 +177,19 @@ class MineViewController: BaseTableController,Requestable{
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0{
-            let controller = MyStarCoinController()
-            controller.usermodel = self.usermodel
-            self.navigationController?.pushViewController(controller, animated: true)
+            
+            if checkMarketVer(){
+                let controller = addressListController()
+                //controller.usermodel = self.usermodel
+                self.navigationController?.pushViewController(controller, animated: true)
+            }else{
+                let controller = MyStarCoinController()
+                controller.usermodel = self.usermodel
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+           
+            
+           
         }
         
         else if indexPath.row == 1{

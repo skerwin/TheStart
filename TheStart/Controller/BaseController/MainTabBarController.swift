@@ -26,7 +26,7 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
     
     let mineController = UIStoryboard.getMineViewController()
  
-    
+    let goodsController = goodsListController()
     
     var isClearInfo = false
     
@@ -70,10 +70,19 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
                                   image: UIImage(named: "iconHome")!,
                                   selectedImage: UIImage(named: "iconHomeSelceted")!,
                                   tag: TabbarContentType.HomePage.rawValue)
-        addNavChildViewController(controller: mmallController, title: "音乐馆",
-                                  image: UIImage(named: "iconMusic")!,
-                                  selectedImage: UIImage(named: "iconMusicSelceted")!,
-                                  tag: TabbarContentType.Articl.rawValue)
+        
+        if checkMarketVer(){
+            addNavChildViewController(controller: goodsController, title: "商城",
+                                      image: UIImage(named: "iconMusic")!,
+                                      selectedImage: UIImage(named: "iconMusicSelceted")!,
+                                      tag: TabbarContentType.Articl.rawValue)
+        }else{
+            addNavChildViewController(controller: mmallController, title: "音乐馆",
+                                      image: UIImage(named: "iconMusic")!,
+                                      selectedImage: UIImage(named: "iconMusicSelceted")!,
+                                      tag: TabbarContentType.Articl.rawValue)
+        }
+     
         addNavChildViewController(controller: messageController, title: "消息",
                                   image: UIImage(named: "iconMsg")!,
                                   selectedImage: UIImage(named: "iconMsgSelceted")!,

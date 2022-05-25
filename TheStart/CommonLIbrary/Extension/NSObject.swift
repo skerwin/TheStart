@@ -29,7 +29,10 @@ extension NSObject {
         let num = Float(test) ?? 0
         return num
     }
-    
+    public func stringToInt(test: String) -> Int {
+        let num = Int(test) ?? 0
+        return num
+    }
     public func int2str(num:Int)-> String {
        return  "\(String(describing: num))"
     }

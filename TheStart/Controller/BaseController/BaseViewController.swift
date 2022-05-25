@@ -19,7 +19,10 @@ class BaseViewController: UIViewController,AlertPresenter,LoadingPresenter,Accou
     var limit = 10
     var pagenum = 10
     
-    
+//    override func loadView() {
+//        super.loadView()
+//        self.edgesForExtendedLayout = []
+//    }
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

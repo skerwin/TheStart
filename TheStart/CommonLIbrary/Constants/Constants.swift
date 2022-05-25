@@ -35,7 +35,8 @@ struct Constants {
     
     static let vipId = "vipId" //
     static let isVip = "isVip" //
- 
+    
+    static let isMarketVer = "isMarketVer" //
     
     static let mjorVersion = "mjorVersion"  // 是否认证
     

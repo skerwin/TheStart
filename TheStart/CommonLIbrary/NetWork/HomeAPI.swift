@@ -676,7 +676,91 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
+    
+    
+    
+    //商品列表
+    static let goodsListPath = "/api/goods/goods_list"
+    static func goodsListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+   
+         return (goodsListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    //商品详情
+    static let goodsInfoPath = "/api/goods/goods_info"
+    static func goodsInfoPathAndParams(id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["id"] = id as AnyObject
+   
+          return (goodsInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //商品下单
+    static let orderAddPath = "/api/goods/order_add"
+    static func orderAddPathAndParams(goods_id:Int,address_id:Int,pay_type:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["goods_id"] = goods_id as AnyObject
+          paramsDictionary["address_id"] = address_id as AnyObject
+          paramsDictionary["pay_type"] = pay_type as AnyObject
+   
+          return (orderAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //收获地址列表
+    static let addressListPath = "/api/goods/address_list"
+    static func addressListPathAndParams() -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        return (addressListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
 
+    //收获地址详情
+    static let addressInfoPath = "/api/goods/address_info"
+    static func addressInfoPathAndParams(id:Int) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+        return (addressInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+ 
+    //收获地址添加
+    static let addressAddPath = "/api/goods/address_add"
+    static func addressAddPathAndParams(model:AddressModel) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["real_name"] = model.real_name as AnyObject
+        paramsDictionary["phone"] = model.phone as AnyObject
+        paramsDictionary["province"] = model.province as AnyObject
+        paramsDictionary["city"] = model.city as AnyObject
+        paramsDictionary["district"] = model.district as AnyObject
+        
+        paramsDictionary["detail"] = model.detail as AnyObject
+        paramsDictionary["post_code"] = model.post_code as AnyObject
+        paramsDictionary["is_default"] = model.is_default as AnyObject
+        print(paramsDictionary)
+         return (addressAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+
+    //收获地址编辑
+    static let addressEditPath = "/api/goods/address_edit"
+    static func addressEditPathAndParams(model:AddressModel) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["real_name"] = model.real_name as AnyObject
+        paramsDictionary["phone"] = model.phone as AnyObject
+        paramsDictionary["province"] = model.province as AnyObject
+        paramsDictionary["city"] = model.city as AnyObject
+        paramsDictionary["district"] = model.district as AnyObject
+        
+        paramsDictionary["detail"] = model.detail as AnyObject
+        paramsDictionary["post_code"] = model.post_code as AnyObject
+        paramsDictionary["is_default"] = model.is_default as AnyObject
+        
+        
+        paramsDictionary["id"] = model.id as AnyObject
+        return (addressEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
 
     static let testPath = "/api/work/list"
     static func testPathAndParams() -> PathAndParams {

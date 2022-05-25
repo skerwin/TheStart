@@ -45,9 +45,14 @@
 		B81420D02828E9A600B4F6B5 /* AuthorDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */; };
 		B81420D22828E9B200B4F6B5 /* AuthorDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */; };
 		B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */; };
+		B822E7CE283BB0FF002558D9 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822E7CC283BB0FF002558D9 /* OrderCell.swift */; };
+		B822E7CF283BB0FF002558D9 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B822E7CD283BB0FF002558D9 /* OrderCell.xib */; };
 		B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1702834D6F90008670C /* CloneMsgModel.swift */; };
 		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
 		B831E175283511EB0008670C /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E174283511EB0008670C /* ContactModel.swift */; };
+		B839AF58283E13E400C9B25C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF57283E13E400C9B25C /* AddressModel.swift */; };
+		B839AF5B283E71A300C9B25C /* GoodDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF59283E71A200C9B25C /* GoodDetailCell.swift */; };
+		B839AF5C283E71A300C9B25C /* GoodDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */; };
 		B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */; };
 		B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633B280AAD7D00A3282D /* TextViewCell.m */; };
 		B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C6345280ABE9700A3282D /* TipOffpootContentCell.swift */; };
@@ -286,7 +291,6 @@
 		B8AD4035281C00420001D7F4 /* TipOffAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */; };
 		B8AD4037281C008B0001D7F4 /* TipOffAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */; };
 		B8AD403F281CD6990001D7F4 /* cityjson.json in Resources */ = {isa = PBXBuildFile; fileRef = B8AD403E281CD6990001D7F4 /* cityjson.json */; };
-		B8AD4041281CD6C90001D7F4 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4040281CD6C90001D7F4 /* AddressModel.swift */; };
 		B8AD4043281E293F0001D7F4 /* TipOffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4042281E293F0001D7F4 /* TipOffModel.swift */; };
 		B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD4044281E5B8D0001D7F4 /* EmptyDataView.swift */; };
 		B8AD4047281E5B8D0001D7F4 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AD4045281E5B8D0001D7F4 /* EmptyDataView.xib */; };
@@ -315,6 +319,24 @@
 		B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C52F2811897F00B882FC /* ContactListController.swift */; };
 		B8B6C53328118A1800B882FC /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C53128118A1800B882FC /* ContactViewCell.swift */; };
 		B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B6C53228118A1800B882FC /* ContactViewCell.xib */; };
+		B8B804F2283BC2DB00EB9109 /* ChargeRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F0283BC2DB00EB9109 /* ChargeRecordCell.swift */; };
+		B8B804F3283BC2DB00EB9109 /* ChargeRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B804F1283BC2DB00EB9109 /* ChargeRecordCell.xib */; };
+		B8B804F5283BC64500EB9109 /* ChargeOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */; };
+		B8B804F7283CF97E00EB9109 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F6283CF97E00EB9109 /* OrderModel.swift */; };
+		B8B804F9283CFF1E00EB9109 /* CheckTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F8283CFF1E00EB9109 /* CheckTool.swift */; };
+		B8B804FC283DC8F500EB9109 /* goodsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FB283DC8F500EB9109 /* goodsListController.swift */; };
+		B8B804FE283DCD3700EB9109 /* GoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */; };
+		B8B80500283DD17A00EB9109 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FF283DD17A00EB9109 /* GoodsModel.swift */; };
+		B8B80502283DD42300EB9109 /* GoodDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */; };
+		B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */; };
+		B8B80508283DDC4800EB9109 /* part-00167-3579.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */; };
+		B8B8050B283DE59200EB9109 /* GoodeDetailLineewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */; };
+		B8B8050C283DE59200EB9109 /* GoodeDetailLineewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */; };
+		B8B8050E283E042200EB9109 /* GoodsCashDeskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */; };
+		B8B80510283E0AED00EB9109 /* addressListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8050F283E0AED00EB9109 /* addressListController.swift */; };
+		B8B80513283E0B1300EB9109 /* addressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80511283E0B1300EB9109 /* addressListCell.swift */; };
+		B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80512283E0B1300EB9109 /* addressListCell.xib */; };
+		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -377,9 +399,14 @@
 		B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailHeader.swift; sourceTree = "<group>"; };
 		B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorDetailHeader.xib; sourceTree = "<group>"; };
 		B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicianAuthorController.swift; sourceTree = "<group>"; };
+		B822E7CC283BB0FF002558D9 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		B822E7CD283BB0FF002558D9 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		B831E1702834D6F90008670C /* CloneMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloneMsgModel.swift; sourceTree = "<group>"; };
 		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B831E174283511EB0008670C /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		B839AF57283E13E400C9B25C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		B839AF59283E71A200C9B25C /* GoodDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailCell.swift; sourceTree = "<group>"; };
+		B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailCell.xib; sourceTree = "<group>"; };
 		B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheStart-Bridging-Header.h"; sourceTree = "<group>"; };
 		B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 		B83C633B280AAD7D00A3282D /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
@@ -629,7 +656,6 @@
 		B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffAddressView.swift; sourceTree = "<group>"; };
 		B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffAddressView.xib; sourceTree = "<group>"; };
 		B8AD403E281CD6990001D7F4 /* cityjson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityjson.json; sourceTree = "<group>"; };
-		B8AD4040281CD6C90001D7F4 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		B8AD4042281E293F0001D7F4 /* TipOffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffModel.swift; sourceTree = "<group>"; };
 		B8AD4044281E5B8D0001D7F4 /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		B8AD4045281E5B8D0001D7F4 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
@@ -658,6 +684,24 @@
 		B8B6C52F2811897F00B882FC /* ContactListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListController.swift; sourceTree = "<group>"; };
 		B8B6C53128118A1800B882FC /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		B8B6C53228118A1800B882FC /* ContactViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactViewCell.xib; sourceTree = "<group>"; };
+		B8B804F0283BC2DB00EB9109 /* ChargeRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeRecordCell.swift; sourceTree = "<group>"; };
+		B8B804F1283BC2DB00EB9109 /* ChargeRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeRecordCell.xib; sourceTree = "<group>"; };
+		B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeOrderController.swift; sourceTree = "<group>"; };
+		B8B804F6283CF97E00EB9109 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		B8B804F8283CFF1E00EB9109 /* CheckTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTool.swift; sourceTree = "<group>"; };
+		B8B804FB283DC8F500EB9109 /* goodsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodsListController.swift; sourceTree = "<group>"; };
+		B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDetailController.swift; sourceTree = "<group>"; };
+		B8B804FF283DD17A00EB9109 /* GoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = "<group>"; };
+		B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailHeader.swift; sourceTree = "<group>"; };
+		B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailHeader.xib; sourceTree = "<group>"; };
+		B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "part-00167-3579.jpg"; sourceTree = "<group>"; };
+		B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodeDetailLineewCell.swift; sourceTree = "<group>"; };
+		B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodeDetailLineewCell.xib; sourceTree = "<group>"; };
+		B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCashDeskController.swift; sourceTree = "<group>"; };
+		B8B8050F283E0AED00EB9109 /* addressListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressListController.swift; sourceTree = "<group>"; };
+		B8B80511283E0B1300EB9109 /* addressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressListCell.swift; sourceTree = "<group>"; };
+		B8B80512283E0B1300EB9109 /* addressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressListCell.xib; sourceTree = "<group>"; };
+		B8B80515283E0B8500EB9109 /* addressDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressDetailController.swift; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheStart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F88421BB679DB879E0690 /* Pods-TheStart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart.release.xcconfig"; path = "Target Support Files/Pods-TheStart/Pods-TheStart.release.xcconfig"; sourceTree = "<group>"; };
@@ -811,6 +855,10 @@
 				B802E232282A47F200B5057A /* CashOutHeader.xib */,
 				B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */,
 				B86AEFED283A1C040065B96E /* AuthenSuuccessView.xib */,
+				B822E7CC283BB0FF002558D9 /* OrderCell.swift */,
+				B822E7CD283BB0FF002558D9 /* OrderCell.xib */,
+				B8B804F0283BC2DB00EB9109 /* ChargeRecordCell.swift */,
+				B8B804F1283BC2DB00EB9109 /* ChargeRecordCell.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1094,6 +1142,7 @@
 		B8AC4FDA2807BE4200C2CF26 /* TheStart */ = {
 			isa = PBXGroup;
 			children = (
+				B8B804FA283DC89900EB9109 /* Market */,
 				B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */,
 				B802E250282CE85400B5057A /* TheStart.entitlements */,
 				B8AB69FB280A9FBF0064861C /* testCell.swift */,
@@ -1164,13 +1213,14 @@
 				B85FAFC7280FD54000D25B66 /* ImageModel.swift */,
 				B8AB69D6280904140064861C /* CommentModel.swift */,
 				B85FAFB2280FAE7C00D25B66 /* DepartmentModel.swift */,
-				B8AD4040281CD6C90001D7F4 /* AddressModel.swift */,
 				B8AD4042281E293F0001D7F4 /* TipOffModel.swift */,
 				B8AD405E282101530001D7F4 /* DictModel.swift */,
 				B8AD40642822951C0001D7F4 /* JobModel.swift */,
 				B85FDA622823CB2D00EDA845 /* AudioModel.swift */,
 				B85FDA662823E36200EDA845 /* AuthorModel.swift */,
 				B802E251282DF12800B5057A /* PayModel.swift */,
+				B8B804F6283CF97E00EB9109 /* OrderModel.swift */,
+				B839AF57283E13E400C9B25C /* AddressModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1191,6 +1241,7 @@
 		B8AC500F2807C5A200C2CF26 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */,
 				B802E23E282B638000B5057A /* 120icon.png */,
 				B85FDA7E28250B1500EDA845 /* launch.png */,
 				B85FDA682824B76800EDA845 /* test.png */,
@@ -1235,6 +1286,7 @@
 		B8AC50252807C60E00C2CF26 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B8B804F8283CFF1E00EB9109 /* CheckTool.swift */,
 				B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */,
 				B8AC50272807C60E00C2CF26 /* JSONUtils.swift */,
 				B8AC50282807C60E00C2CF26 /* CacheTool.swift */,
@@ -1313,6 +1365,7 @@
 				B802E246282BF76800B5057A /* MyOrderViewController.swift */,
 				B802E248282BF7B700B5057A /* SellOrderViewController.swift */,
 				B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */,
+				B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */,
 				B85093262837A05C001E5A8B /* CashierDeskController.swift */,
 				B85093282837A169001E5A8B /* StarCoinChargeController.swift */,
 				B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */,
@@ -1362,6 +1415,27 @@
 				B8AC51042807FF9800C2CF26 /* ParamsUtils.swift */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		B8B804FA283DC89900EB9109 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				B8B804FB283DC8F500EB9109 /* goodsListController.swift */,
+				B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */,
+				B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */,
+				B8B8050F283E0AED00EB9109 /* addressListController.swift */,
+				B8B80515283E0B8500EB9109 /* addressDetailController.swift */,
+				B8B804FF283DD17A00EB9109 /* GoodsModel.swift */,
+				B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */,
+				B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */,
+				B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */,
+				B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */,
+				B8B80511283E0B1300EB9109 /* addressListCell.swift */,
+				B8B80512283E0B1300EB9109 /* addressListCell.xib */,
+				B839AF59283E71A200C9B25C /* GoodDetailCell.swift */,
+				B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */,
+			);
+			path = Market;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1490,13 +1564,16 @@
 				B85FDA7F28250B1500EDA845 /* launch.png in Resources */,
 				B8AB69D3280901490064861C /* CommentCell.xib in Resources */,
 				B85FAFBD280FAFFD00D25B66 /* Loading_4@2x.tiff in Resources */,
+				B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */,
 				B8AD4051281FD6D30001D7F4 /* TipOffListCell2.xib in Resources */,
 				B8AE031A282A051700FBE3B7 /* MusicAuthorVideoFooter.xib in Resources */,
 				B83C6394280D166600A3282D /* PubMediaCell.xib in Resources */,
 				B85FDA692824B76800EDA845 /* test.png in Resources */,
+				B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */,
 				B83C639A280D4D7600A3282D /* WokerPubHeaderView.xib in Resources */,
 				B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */,
 				B8AE031C282A05A800FBE3B7 /* MusicAuthorVideoHeader.xib in Resources */,
+				B839AF5C283E71A300C9B25C /* GoodDetailCell.xib in Resources */,
 				B83C637C280CFC3000A3282D /* WorkerInfoCell.xib in Resources */,
 				B8AB69FE280A9FBF0064861C /* testCell.xib in Resources */,
 				B8AD4026281B875F0001D7F4 /* 111222.jpg in Resources */,
@@ -1508,6 +1585,7 @@
 				B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */,
 				B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */,
 				B83C6388280D0B0300A3282D /* BaseImageBrowserCell.xib in Resources */,
+				B8B8050C283DE59200EB9109 /* GoodeDetailLineewCell.xib in Resources */,
 				B85FAFA7280F065E00D25B66 /* WorkerViewCell.xib in Resources */,
 				B8AD4013281A7D920001D7F4 /* HomeSubscribeCell.xib in Resources */,
 				B83C6348280ABE9700A3282D /* TipOffpootContentCell.xib in Resources */,
@@ -1554,7 +1632,10 @@
 				B8AB69CC28081C800064861C /* Home.storyboard in Resources */,
 				B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */,
 				B85FAFBE280FAFFD00D25B66 /* Loading_5@2x.tiff in Resources */,
+				B822E7CF283BB0FF002558D9 /* OrderCell.xib in Resources */,
 				B802E23F282B638000B5057A /* 120icon.png in Resources */,
+				B8B80508283DDC4800EB9109 /* part-00167-3579.jpg in Resources */,
+				B8B804F3283BC2DB00EB9109 /* ChargeRecordCell.xib in Resources */,
 				B85FAF96280E9FB900D25B66 /* AuthorViewCell.xib in Resources */,
 				B8AD4037281C008B0001D7F4 /* TipOffAddressView.xib in Resources */,
 			);
@@ -1719,6 +1800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B831E175283511EB0008670C /* ContactModel.swift in Sources */,
+				B8B80513283E0B1300EB9109 /* addressListCell.swift in Sources */,
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
 				B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */,
 				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,
@@ -1770,6 +1852,7 @@
 				B85FB00E28116A8300D25B66 /* ChatTimeCell.swift in Sources */,
 				B85FAF87280E93D500D25B66 /* JobInfoViewController.swift in Sources */,
 				B8AE0325282A113C00FBE3B7 /* SelfIntroCell.swift in Sources */,
+				B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */,
 				B8AB69F72809A12B0064861C /* TipOffContentView.swift in Sources */,
 				B85FB01928116A8300D25B66 /* ChatMsgModel.swift in Sources */,
 				B85FDA552823BB3800EDA845 /* PMKPageMenuItemPlain.swift in Sources */,
@@ -1784,6 +1867,7 @@
 				B8AC50172807C5CF00C2CF26 /* MainTabBarController.swift in Sources */,
 				B85FAF8B280E9C6200D25B66 /* AuthorViewController.swift in Sources */,
 				B8AB69E7280955FB0064861C /* TipOffBottomView.swift in Sources */,
+				B839AF58283E13E400C9B25C /* AddressModel.swift in Sources */,
 				B85FDA582823BB3800EDA845 /* PMKPageMenuItemSmart.swift in Sources */,
 				B85FB00428116A8300D25B66 /* ChatMsgDataHelper.swift in Sources */,
 				B8AC503A2807C60E00C2CF26 /* ScreenUtils.swift in Sources */,
@@ -1812,31 +1896,35 @@
 				B85FB00B28116A8300D25B66 /* ChatFileCell.swift in Sources */,
 				B8AD402E281B8E940001D7F4 /* SuperManListController.swift in Sources */,
 				B8AD4035281C00420001D7F4 /* TipOffAddressView.swift in Sources */,
+				B839AF5B283E71A300C9B25C /* GoodDetailCell.swift in Sources */,
 				B83C636B280C357A00A3282D /* TipOffDetailImgCell.swift in Sources */,
 				B8AB69EE2809720E0064861C /* CommentBarController.swift in Sources */,
 				B8AB69E52809277E0064861C /* CommemtFooerLineView.swift in Sources */,
-				B8AD4041281CD6C90001D7F4 /* AddressModel.swift in Sources */,
 				B85FAF89280E9C4F00D25B66 /* MuiscListController.swift in Sources */,
 				B8AC50922807CF6B00C2CF26 /* NSObject.swift in Sources */,
 				B83C6383280CFC6100A3282D /* WorkerVideoCell.swift in Sources */,
 				B802E252282DF12900B5057A /* PayModel.swift in Sources */,
 				B85FB01128116A8300D25B66 /* ChatImageCell.swift in Sources */,
+				B8B8050B283DE59200EB9109 /* GoodeDetailLineewCell.swift in Sources */,
 				B8AC503B2807C60E00C2CF26 /* UIViewUtils.swift in Sources */,
 				B85FAF9E280EE7BE00D25B66 /* PubMusicController.swift in Sources */,
 				B83C636E280C440D00A3282D /* TipOffCommentHeaderView.swift in Sources */,
 				B86AEFEA283926C10065B96E /* AudioLinkInfoView.swift in Sources */,
+				B8B804F9283CFF1E00EB9109 /* CheckTool.swift in Sources */,
 				B85FAFB1280FADB800D25B66 /* HomeAPI.swift in Sources */,
 				B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */,
 				B8AD405928201FA90001D7F4 /* NewLoginController.swift in Sources */,
 				B8AD4050281FD6D30001D7F4 /* TipOffListCell2.swift in Sources */,
 				B85FB01028116A8300D25B66 /* TextTableViewCell.swift in Sources */,
 				B83C637B280CFC3000A3282D /* WorkerInfoCell.swift in Sources */,
+				B8B80502283DD42300EB9109 /* GoodDetailHeader.swift in Sources */,
 				B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */,
 				B8AC51082807FF9800C2CF26 /* BerResponseConstants.swift in Sources */,
 				B85FDA652823CE5700EDA845 /* MusicDetailController.swift in Sources */,
 				B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */,
 				B83C634E280AD65E00A3282D /* ResultViewCell.swift in Sources */,
 				B85FAFA2280F05D400D25B66 /* JobViewCell.swift in Sources */,
+				B8B804FC283DC8F500EB9109 /* goodsListController.swift in Sources */,
 				B85FDA5B2823BB3800EDA845 /* PMKPageMenuItemHacka.swift in Sources */,
 				B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */,
 				B85FAFD42810076000D25B66 /* WKWebSocket.swift in Sources */,
@@ -1844,6 +1932,7 @@
 				B83C6356280AF4FD00A3282D /* RowTypeRule.swift in Sources */,
 				B85FB01C28116A8300D25B66 /* EmotionCell.swift in Sources */,
 				B85FDA712824BC6800EDA845 /* VipCenterViewController.swift in Sources */,
+				B8B80500283DD17A00EB9109 /* GoodsModel.swift in Sources */,
 				B85FB01328116A8300D25B66 /* CustomResponderTextView.swift in Sources */,
 				B8AC51092807FF9800C2CF26 /* URL.swift in Sources */,
 				B8AB69F2280997100064861C /* TipOffHeaderView.swift in Sources */,
@@ -1855,6 +1944,7 @@
 				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
 				B8AC50952807CF6B00C2CF26 /* UITextField+Extension.swift in Sources */,
+				B8B804FE283DCD3700EB9109 /* GoodsDetailController.swift in Sources */,
 				B86AEFE02838F68F0065B96E /* BuyBtnView.swift in Sources */,
 				B8AC508F2807CF6B00C2CF26 /* UIColor-Extension.swift in Sources */,
 				B85FDA5C2823BB3800EDA845 /* PMKPageMenuItemEllipse.swift in Sources */,
@@ -1872,6 +1962,7 @@
 				B85FDA672823E36200EDA845 /* AuthorModel.swift in Sources */,
 				B8AD4062282283790001D7F4 /* PubMediaCellVod.swift in Sources */,
 				B83C6367280C2EC900A3282D /* TipOffListNoImgCell.swift in Sources */,
+				B8B804F2283BC2DB00EB9109 /* ChargeRecordCell.swift in Sources */,
 				B8AC50182807C5CF00C2CF26 /* MainNavigationController.swift in Sources */,
 				B85FAFD0280FF36C00D25B66 /* UserModel.swift in Sources */,
 				B83C637F280CFC4300A3282D /* WorkerImgCell.swift in Sources */,
@@ -1879,10 +1970,12 @@
 				B83C6358280AF4FD00A3282D /* UIDevice+Extension.swift in Sources */,
 				B85FDA5E2823BB3800EDA845 /* PMKPageMenuItemNetLab.swift in Sources */,
 				B83C6390280D15E100A3282D /* WorkerPubViewController.swift in Sources */,
+				B8B804F5283BC64500EB9109 /* ChargeOrderController.swift in Sources */,
 				B85FDA5A2823BB3800EDA845 /* PMKPageMenuItemNHK.swift in Sources */,
 				B85FB00D28116A8300D25B66 /* ChatTextViewCell.swift in Sources */,
 				B8AB69D2280901490064861C /* CommentCell.swift in Sources */,
 				B8AE0320282A089700FBE3B7 /* MusicAuthorHeader.swift in Sources */,
+				B822E7CE283BB0FF002558D9 /* OrderCell.swift in Sources */,
 				B8AC51052807FF9800C2CF26 /* OCAFManger.swift in Sources */,
 				B85FB00728116A8300D25B66 /* MoreActionHelper.swift in Sources */,
 				B8AC4FDC2807BE4200C2CF26 /* AppDelegate.swift in Sources */,
@@ -1897,6 +1990,8 @@
 				B8AC50942807CF6B00C2CF26 /* UIStoryboard+Extension.swift in Sources */,
 				B85FDA602823BB3800EDA845 /* PMKPageMenuItemSuite.swift in Sources */,
 				B8AD404D281EE1550001D7F4 /* ActionSheetViewController.swift in Sources */,
+				B8B80510283E0AED00EB9109 /* addressListController.swift in Sources */,
+				B8B804F7283CF97E00EB9109 /* OrderModel.swift in Sources */,
 				B85FDA592823BB3800EDA845 /* PMKPageMenuItem.swift in Sources */,
 				B802E245282BF1EC00B5057A /* MyToPubController.swift in Sources */,
 				B802E227282A389200B5057A /* CashOutViewController.swift in Sources */,
@@ -1926,6 +2021,7 @@
 				B8AC50242807C60500C2CF26 /* Constants.swift in Sources */,
 				B802E23C282B456100B5057A /* VipCenterHeader2.swift in Sources */,
 				B8AC503D2807C60E00C2CF26 /* CheckoutUtils.swift in Sources */,
+				B8B8050E283E042200EB9109 /* GoodsCashDeskController.swift in Sources */,
 				B802E22B282A458400B5057A /* CashOutStutateController.swift in Sources */,
 				B83C6361280C050900A3282D /* TipOffListCell.swift in Sources */,
 			);

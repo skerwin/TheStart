@@ -227,10 +227,10 @@ extension WorkerInfoViewController:UITableViewDataSource,UITableViewDelegate {
             cell.model = dataModel
             return cell
         }
-      
-        
+    
     }
  
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }

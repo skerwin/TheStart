@@ -163,6 +163,7 @@ extension MyStarCoinController:MineStarCoinHederDelegate {
     
     func cashOut() {
         let controller = UIStoryboard.getCashOutViewController()
+        controller.userModel = self.usermodel
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -205,7 +206,7 @@ extension MyStarCoinController:UICollectionViewDataSource,UICollectionViewDelega
             let filerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier:MineStarCoinHeder.nameOfClass, for: indexPath) as! MineStarCoinHeder
             
              filerView.delegate = self
-             filerView.titleLabel.text = intToString(number: usermodel!.coins)
+             filerView.titleLabel.text = usermodel!.coins
             
              return filerView
         }else{

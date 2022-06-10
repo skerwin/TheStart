@@ -52,6 +52,7 @@ class WorkerBaseInfo: UIView {
     }
     override func awakeFromNib(){
  
+        
         phoneBtn.layer.masksToBounds = true
         phoneBtn.layer.cornerRadius = 15
         

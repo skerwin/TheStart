@@ -142,6 +142,9 @@ class AuthorDetailController: BaseViewController,Requestable {
             collectionView.mj_header?.endRefreshing()
             userModel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
             dataList = getArrayFromJsonByArrayName(arrayName: "audio_list", content: responseResult)
+            if userModel?.music_num == 0{
+                userModel?.music_num = dataList.count
+            }
             headView.configModel(model: userModel!)
             self.collectionView.reloadData()
         }

@@ -24,6 +24,10 @@ extension NSObject {
     public func intToString(number: Int) -> String {
         return String.init(number)
     }
+    public func floatToString(number: Float) -> String {
+        
+        return String.init(number)
+    }
     
     public func stringToFloat(test: String) -> Float {
         let num = Float(test) ?? 0

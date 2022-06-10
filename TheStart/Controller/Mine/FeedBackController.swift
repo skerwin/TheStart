@@ -259,7 +259,7 @@ class FeedBackController: BaseViewController ,Requestable,UIImagePickerControlle
             pickerController.allowsEditing = true
             present(pickerController, animated: true, completion: nil)
         } else {
-            print("模拟器没有摄像头，请使用真机调试")
+            //print("模拟器没有摄像头，请使用真机调试")
         }
     }
     

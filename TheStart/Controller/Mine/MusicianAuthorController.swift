@@ -297,7 +297,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
             pickerController.allowsEditing = true
             present(pickerController, animated: true, completion: nil)
         } else {
-            print("模拟器没有摄像头，请使用真机调试")
+            //print("模拟器没有摄像头，请使用真机调试")
         }
     }
     
@@ -548,16 +548,16 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
         pickerController.dismiss(animated: true, completion: nil)
         result.getURLs { [self] urls in
             if self.isImgFile {
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.imageURLArr = urls
                 uploadPhoto(filePath: self.imageURLArr)
             }else{
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.vodURLArr = urls
                 uploadPhoto(filePath: self.vodURLArr)
             }
             
-            print(urls)
+            //print(urls)
         }
         
        

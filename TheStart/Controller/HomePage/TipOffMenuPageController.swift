@@ -35,8 +35,8 @@ class TipOffMenuPageController: BaseViewController {
         tipOffVCButton = UIButton.init()
         tipOffVCButton.frame = CGRect.init(x: 0, y: 0, width: 100, height: 44)
         tipOffVCButton.addTarget(self, action: #selector(tipOffButtonACtion(_:)), for: .touchUpInside)
-        tipOffVCButton.setTitle("黑人馆", for: .normal)
-        tipOffVCButton.setTitleColor(UIColor.white, for: .normal)
+        tipOffVCButton.setTitle("吐槽馆", for: .normal)
+        tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
         tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
         lineView1 = UIView.init(frame: CGRect.init(x: (100 - 30)/2, y: 40, width:23, height: 2))
@@ -46,7 +46,7 @@ class TipOffMenuPageController: BaseViewController {
         clarifyButton.frame = CGRect.init(x: 100, y: 2, width: 100, height: 38)
         clarifyButton.addTarget(self, action: #selector(clarifyButtonACtion(_:)), for: .touchUpInside)
         clarifyButton.setTitle("澄清馆", for: .normal)
-        clarifyButton.setTitleColor(UIColor.lightGray, for: .normal)
+        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
         clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         
         lineView2 = UIView.init(frame: CGRect.init(x: 100 + (100 - 30)/2, y: 40, width:23, height: 2))
@@ -95,10 +95,10 @@ class TipOffMenuPageController: BaseViewController {
             clarifyVC.view.removeFromSuperview()
         }
         
-        clarifyButton.setTitleColor(UIColor.lightGray, for: .normal)
+        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
         clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         
-        tipOffVCButton.setTitleColor(UIColor.white, for: .normal)
+        tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
         tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
  
         lineView1.isHidden = false
@@ -116,10 +116,10 @@ class TipOffMenuPageController: BaseViewController {
         }
         
         
-        tipOffVCButton.setTitleColor(UIColor.lightGray, for: .normal)
+        tipOffVCButton.setTitleColor(UIColor.darkGray, for: .normal)
         tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         
-        clarifyButton.setTitleColor(UIColor.white ,for: .normal)
+        clarifyButton.setTitleColor(ZYJColor.barText ,for: .normal)
         clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         lineView1.isHidden = true
         lineView2.isHidden = false

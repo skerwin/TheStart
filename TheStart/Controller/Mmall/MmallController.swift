@@ -22,9 +22,42 @@ class MmallController: BaseViewController {
     var pageMenuController: PMKPageMenuController? = nil
     var toTopHeight:CGFloat = 0 //pagemenu距顶部位置
     
+    var rightBarButton:UIButton!
+    
+    var bgview:UIView!
+
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        bgview = UIView.init()
+ 
+            
+        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 66, height: 28)
+        rightBarButton.setTitle("会员免费", for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 66, height: 44)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+      
+        rightBarButton.setTitleColor(.white, for: .normal)
+        rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        rightBarButton.layer.masksToBounds = true
+        rightBarButton.layer.cornerRadius = 5;
+        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+    }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        let controller = MuiscListController()
+        controller.isFreeZone = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        createRightNavItem()
         self.title = "音乐馆"
         // self.navigationController?.navigationBar.topItem?.title = ""
         
@@ -44,11 +77,13 @@ class MmallController: BaseViewController {
         controllerArray.append(controller1)
         controllerArray.append(controller2)
        
-        pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
+        pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 0, topBarHeight: toTopHeight)
        pageMenuController?.delegate = self
        self.addChild(pageMenuController!)
        self.view.addSubview(pageMenuController!.view)
        pageMenuController?.didMove(toParent: self)
+        
+       createRightNavItem()
  
         // Do any additional setup after loading the view.
     }
@@ -73,6 +108,12 @@ extension MmallController: PMKPageMenuControllerDelegate
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int) {
+        //print(menuIndex)
+        if menuIndex == 0{
+            self.navigationItem.rightBarButtonItem = nil
+        }else{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        }
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didPrepare menuItems: [PMKPageMenuItem]) {

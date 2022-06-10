@@ -32,6 +32,8 @@ class JobListViewController: BaseViewController,Requestable {
     var isMypub = false
     var isMyCollect = false
     
+    var callMobile = ""
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -118,13 +120,13 @@ class JobListViewController: BaseViewController,Requestable {
                       modelall?.children.append(sunModelall!)
                       addressList.insert(modelall!, at: 0)
                   } else {
-                      print("JSON is invalid")
+                      //print("JSON is invalid")
                   }
               } else {
-                  print("no file")
+                  //print("no file")
               }
           } catch {
-              print(error.localizedDescription)
+              //print(error.localizedDescription)
           }
         
         let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
@@ -218,6 +220,8 @@ class JobListViewController: BaseViewController,Requestable {
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
+        }else if requestPath == HomeAPI.userCallPath{
+            callPhone()
         }else{
             let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
 
@@ -230,10 +234,34 @@ class JobListViewController: BaseViewController,Requestable {
         self.tableView.reloadData()
     }
     
+    func callPhone(){
+        let urlstr = "telprompt://" + callMobile
+        if let url = URL.init(string: urlstr){
+             if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+             }
+        }
+    }
+    
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
         super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
+        if requestPath == HomeAPI.userCallPath{
+            let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
     }
     @objc func pullRefreshList() {
         page = page + 1
@@ -250,19 +278,19 @@ class JobListViewController: BaseViewController,Requestable {
 }
 extension JobListViewController:JobViewCellDelegate {
     func JobCellCommunicateAction(mobile:String) {
-        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        
+        
+        callMobile = mobile
+        
+        if mobile == getAcctount(){
+            showOnlyTextHUD(text: "不能给自己拨打电话")
+            return
+        }
+         let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
         
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
-             
-             
-             let urlstr = "telprompt://" + mobile
-             if let url = URL.init(string: urlstr){
-                  if #available(iOS 10, *) {
-                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                 } else {
-                     UIApplication.shared.openURL(url)
-                  }
-               }
+             let pathAndParams = HomeAPI.userCallPathAndParams(type: 2)
+             self.postRequest(pathAndParams: pathAndParams,showHUD: false)
  
         }))
         
@@ -275,6 +303,54 @@ extension JobListViewController:JobViewCellDelegate {
     
 }
 extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+        return false
+    }
+
+    // 适配 iOS11.0之前
+        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+            if #available(iOS 11.0, *) {
+                
+            } else {
+                let deleteAction = UITableViewRowAction(style: .destructive, title: "取消收藏") { (action, indexPath) in
+                    //print("1234")
+                }
+                
+                let shareAction = UITableViewRowAction(style: .normal, title: "分享") { (action, indexPath) in
+                    // TODO
+                    //print("4353")
+                }
+                shareAction.backgroundColor = RGBA(r: 255, g: 153, b: 0, a: 1.0)
+                //MSFColor.RGBA(red: 255, green: 153, blue: 0, alpha: 1.0)
+                return [deleteAction, shareAction]
+            }
+            return nil
+        }
+    
+    @available(iOS 11.0, *)
+        func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .normal, title: "删除") { [weak self] (action, view, resultClosure) in
+                guard self != nil else {
+                    return
+                }
+                //print("32454")
+            }
+//            let shareAction = UIContextualAction(style: .normal, title: "") { [weak self] (action, view, resultClosure) in
+//                guard let `self` = self else {
+//                    return
+//                }
+//                //print("534534")
+//            }
+            deleteAction.backgroundColor = .red
+            //shareAction.backgroundColor = RGBA(r: 255, g: 153, b: 0, a: 1.0)
+            //let actions = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
+            let actions = UISwipeActionsConfiguration(actions: [deleteAction])
+            actions.performsFirstActionWithFullSwipe = false; // 禁止侧滑到最左边触发删除或者分享回调事件
+            return actions
+        }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -310,6 +386,7 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = JobInfoViewController()
         controller.dateID = dataList[indexPath.row].id
+        controller.isFromMine = self.isMypub
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

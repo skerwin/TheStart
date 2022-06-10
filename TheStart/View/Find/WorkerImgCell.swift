@@ -63,7 +63,7 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
         imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 46 - CGFloat(row_Count - 1) * 5)) / row_Count
-        print(itemWidth)
+        //print(itemWidth)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.minimumLineSpacing = 5

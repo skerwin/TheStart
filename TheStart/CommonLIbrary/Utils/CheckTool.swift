@@ -32,6 +32,35 @@ func isUrl (test:String) -> Bool {
       return false
  }
  
+func checkBankCardNumber(_ cardNumber: String?) -> Bool {
+    var oddSum: Int = 0 // 奇数和
+    var evenSum: Int = 0 // 偶数和
+    var allSum: Int = 0 // 总和
+    // 循环加和
+    for i in 1...(cardNumber?.count ?? 0) {
+        let theNumber = (cardNumber as NSString?)?.substring(with: NSRange(location: (cardNumber?.count ?? 0) - i, length: 1))
+        var lastNumber = Int(theNumber ?? "") ?? 0
+        if i % 2 == 0 {
+            // 偶数位
+            lastNumber *= 2
+            if lastNumber > 9 {
+                lastNumber -= 9
+            }
+            evenSum += lastNumber
+        } else {
+            // 奇数位
+            oddSum += lastNumber
+        }
+    }
+    allSum = oddSum + evenSum
+    // 是否合法
+    if allSum % 10 == 0 {
+        return true
+    } else {
+        return false
+    }
+}
+
 func validateIDCardNumber(sfz: String) -> Bool {
         let value = sfz.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         var length = 0

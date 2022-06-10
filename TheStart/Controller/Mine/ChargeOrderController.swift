@@ -16,7 +16,7 @@ class ChargeOrderController: BaseViewController,Requestable {
    
    var tableView:UITableView!
    
-   var dataList = [TipOffModel]()
+   var dataList = [OrderModel]()
        
    var pubBtn:UIButton!
    
@@ -32,11 +32,11 @@ class ChargeOrderController: BaseViewController,Requestable {
    }
    
    
-   func loadData(){
-       let requestParams = HomeAPI.orderListPathAndParams(type: 2, order_type: 3, page: page, limit: limit)
-       postRequest(pathAndParams: requestParams,showHUD:false)
+    func loadData(){
+        let requestParams = HomeAPI.orderListPathAndParams(type: 1, order_type: 1, page: page, limit: limit)
+        postRequest(pathAndParams: requestParams,showHUD:false)
 
-   }
+    }
    override func onFailure(responseCode: String, description: String, requestPath: String) {
              tableView.mj_header?.endRefreshing()
              tableView.mj_footer?.endRefreshing()
@@ -48,12 +48,12 @@ class ChargeOrderController: BaseViewController,Requestable {
        tableView.mj_header?.endRefreshing()
        tableView.mj_footer?.endRefreshing()
 
-//        let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
-//
-//        dataList.append(contentsOf: list)
-//        if list.count < 10 {
-//            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
-//        }
+       let list:[OrderModel]  = getArrayFromJson(content: responseResult)
+
+       dataList.append(contentsOf: list)
+       if list.count < 10 {
+           self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+       }
        self.tableView.reloadData()
    }
    
@@ -104,7 +104,6 @@ extension ChargeOrderController:UITableViewDataSource,UITableViewDelegate {
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
 
-       return 10
        return dataList.count
    }
    
@@ -112,7 +111,7 @@ extension ChargeOrderController:UITableViewDataSource,UITableViewDelegate {
    {
        let cell = tableView.dequeueReusableCell(withIdentifier: "ChargeRecordCell", for: indexPath) as! ChargeRecordCell
        cell.selectionStyle = .none
-       //cell.model = dataList[indexPath.row]
+       cell.model = dataList[indexPath.row]
        return cell
    }
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -120,8 +119,6 @@ extension ChargeOrderController:UITableViewDataSource,UITableViewDelegate {
    }
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let controller = NotifyWebDetailController()
-       controller.urlString = dataList[indexPath.row].link_url
-       self.navigationController?.pushViewController(controller, animated: true)
+    
    }
 }

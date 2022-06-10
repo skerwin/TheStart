@@ -32,7 +32,7 @@ class WKWebSocket:NSObject{
     func initOpen(url:String) {
         
         websocketUrl = url
-        print(websocketUrl)
+        //print(websocketUrl)
         
         let requeest =  URLRequest(url: URL.init(string: websocketUrl)!)
         socket = WebSocket.init(request:requeest)
@@ -89,18 +89,18 @@ extension WKWebSocket:WebSocketDelegate{
         switch event {
         case .connected(let headers):
             isConnected = true
-            print("websocket is connected: \(headers)")
+            //print("websocket is connected: \(headers)")
         case .disconnected(let reason, let code):
             isConnected = false
-            print("websocket is disconnected: \(reason) with code: \(code)")
+            //print("websocket is disconnected: \(reason) with code: \(code)")
             if onConnect != nil {
                 onConnect!()
             }
         case .text(let string):
-            print("Received text:")
+            //print("Received text:")
             if string != ""{
                 let dict = stringValueDic(string)
-                print(dict!)
+                //print(dict!)
                 if dict != nil{
                     let type = dict!["type"] as! String
                     if type == "OK"{
@@ -138,13 +138,13 @@ extension WKWebSocket:WebSocketDelegate{
         case .reconnectSuggested(_):
             break
         case .cancelled:
-            print("cancelled")
+            //print("cancelled")
             isConnected = false
             if onConnect != nil {
                 onConnect!()
             }
         case .error(_):
-            print("error")
+            //print("error")
             isConnected = false
             if onConnect != nil {
                 onConnect!()
@@ -154,7 +154,7 @@ extension WKWebSocket:WebSocketDelegate{
     }
     
     func websocketDidConnect(socket: WebSocketClient){
-        print("websocket is connected")
+        //print("websocket is connected")
         if onConnect != nil {
             onConnect!()
         }
@@ -162,7 +162,7 @@ extension WKWebSocket:WebSocketDelegate{
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?){
-        print("websocket is disconnected: \(error?.localizedDescription ?? "")")
+        //print("websocket is disconnected: \(error?.localizedDescription ?? "")")
         if onDisconnect != nil {
             onDisconnect!(error)
         }
@@ -170,14 +170,14 @@ extension WKWebSocket:WebSocketDelegate{
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String){
-        print("got some text: \(text)")
+        //print("got some text: \(text)")
         if onText != nil {
             onText!(text)
         }
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data){
-        print("got some data: \(data.count)")
+        //print("got some data: \(data.count)")
         if onData != nil {
             onData!(data)
         }
@@ -254,7 +254,7 @@ extension WKWebSocket:WebSocketDelegate{
 ////
 ////
 ////            let j = String.getJSONStringFromDictionary(dictionary: map as NSDictionary)
-////            print("websocket is write ",j)
+////            //print("websocket is write ",j)
 ////            socketWrite(string: j)
 ////        }
 //

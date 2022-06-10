@@ -34,7 +34,6 @@ class addressListController: BaseViewController,Requestable {
     func loadData(){
         let requestParams = HomeAPI.addressListPathAndParams()
         postRequest(pathAndParams: requestParams,showHUD:false)
-
     }
     func createRightNavItem() {
         
@@ -85,24 +84,20 @@ class addressListController: BaseViewController,Requestable {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
         
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main
-        
         self.tableView.rowHeight = UITableView.automaticDimension;
         self.tableView.estimatedRowHeight = 240;
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-         tableView.registerNibWithTableViewCellName(name: addressListCell.nameOfClass)
- 
+        tableView.registerNibWithTableViewCellName(name: addressListCell.nameOfClass)
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh
-
         let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
         tableView.mj_footer = footerRefresh
-        
         view.addSubview(tableView)
         tableView.tableFooterView = UIView()
       

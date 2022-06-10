@@ -48,7 +48,7 @@ class ChatTextViewCell: BaseTableViewCell {
             if contentTextView.point(inside: location, with: nil) {
                 return
             }
-            print("长按")
+            //print("长按")
 //            contentTextView.setFirstResponder()
 //            contentTextView.showMenu()
 //            if bubbleView.gestureRecognizers?.contains(longPress!) == true {
@@ -66,7 +66,7 @@ class ChatTextViewCell: BaseTableViewCell {
     
     @objc func menuItemCopyAction() {
         let text = ChatFindEmotion.shared.textString(attrStr: self.contentTextView.attributedText)
-        print(text)
+        //print(text)
         UIPasteboard.general.string = self.contentTextView.realStr
     }
     
@@ -277,7 +277,7 @@ extension ChatTextViewCell {
                 }
             }
         }
-//        print(contentTextView.contentSize.height)
+//        //print(contentTextView.contentSize.height)
 //        model?.cellHeight = getCellHeight()
     }
 }

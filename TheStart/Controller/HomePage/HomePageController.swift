@@ -26,6 +26,8 @@ class HomePageController: BaseViewController,Requestable {
     
     let topAdvertisementViewHeight = screenWidth * 0.40
     
+    var callMobile = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -167,9 +169,23 @@ class HomePageController: BaseViewController,Requestable {
     
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
+        super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
             tableView.mj_header?.endRefreshing()
             tableView.mj_footer?.endRefreshing()
             self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+        if requestPath == HomeAPI.userCallPath{
+            let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
     }
 
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
@@ -182,9 +198,22 @@ class HomePageController: BaseViewController,Requestable {
             bannerList = getArrayFromJsonByArrayName(arrayName: "banner", content:  responseResult)
             UpdateAdvertisementView(imageArr: bannerList)
             self.tableView.reloadData()
+        }else if requestPath == HomeAPI.userCallPath{
+            callPhone()
         }
 
 
+    }
+    
+    func callPhone(){
+        let urlstr = "telprompt://" + callMobile
+        if let url = URL.init(string: urlstr){
+             if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+             }
+        }
     }
     
  
@@ -227,20 +256,22 @@ extension HomePageController:GuideCellDelegate{
 
 extension HomePageController:JobHomeCellDelegate{
     func JobHomeCommunicateAction(mobile: String) {
-        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
         
+        
+        callMobile = mobile
+        
+        if mobile == getAcctount(){
+            showOnlyTextHUD(text: "不能给自己拨打电话")
+            return
+        }
+        
+        
+        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              
+             let pathAndParams = HomeAPI.userCallPathAndParams(type: 1)
+             self.postRequest(pathAndParams: pathAndParams,showHUD: false)
              
-             let urlstr = "telprompt://" + "18153684982"
-             if let url = URL.init(string: urlstr){
-                  if #available(iOS 10, *) {
-                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                 } else {
-                     UIApplication.shared.openURL(url)
-                  }
-               }
- 
         }))
         
         noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
@@ -273,9 +304,9 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
             sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 44)
             
             if section == 1{
-                sectionView.name.text = "牛人找场"
+                sectionView.name.text = "达人区"
             }else{
-                sectionView.name.text = "夜场寻人"
+                sectionView.name.text = "最新职位"
             }
             return sectionView
             
@@ -296,7 +327,7 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
 
         let section = indexPath.section
         if section == 0{
-            return 145
+            return 110
         }else if section == 1{
             return 102
         }else{

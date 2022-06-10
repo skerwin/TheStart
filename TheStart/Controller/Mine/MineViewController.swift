@@ -63,6 +63,11 @@ class MineViewController: BaseTableController,Requestable{
         headImg.layer.masksToBounds = true
     }
     
+    @IBAction func editHeaderAction(_ sender: Any) {
+        let controller = UIStoryboard.getPersonsInfoController()
+        controller.userModel = self.usermodel
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func refreshList() {
         loadData()
@@ -120,14 +125,29 @@ class MineViewController: BaseTableController,Requestable{
       }
     
     @objc private func VipCenterVIewAction() {
-        let controller = VipCenterViewController()
-        controller.usermodel = self.usermodel
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        if checkMarketVer(){
+            let controller = UIStoryboard.getMyToPubController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        
+        }else{
+            let controller = VipCenterViewController()
+            controller.usermodel = self.usermodel
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    
+       
       }
     
     @objc private func myorderViewAction() {
-        let controller = MyOrderViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        if checkMarketVer(){
+            let controller = GoodsMenuController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            let controller = MyOrderViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+      
       }
  
     @IBAction func editPersons(_ sender: Any) {
@@ -187,9 +207,7 @@ class MineViewController: BaseTableController,Requestable{
                 controller.usermodel = self.usermodel
                 self.navigationController?.pushViewController(controller, animated: true)
             }
-           
-            
-           
+ 
         }
         
         else if indexPath.row == 1{
@@ -257,8 +275,7 @@ class MineViewController: BaseTableController,Requestable{
 //            let controller = UIStoryboard.getPayViewController()
 //            self.navigationController?.pushViewController(controller, animated: true)
 //
-//            let controller = UIStoryboard.getMyToPubController()
-//            self.navigationController?.pushViewController(controller, animated: true)
+
         }
  
     }

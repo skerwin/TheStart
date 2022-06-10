@@ -51,7 +51,7 @@ public class PMKPageMenuItemSmart: PMKPageMenuItem {
 
     self.style = .smart
 
-    self.titleColor = .white
+    self.titleColor = .darkGray
     self.label.backgroundColor = design.themeColor
   }
 

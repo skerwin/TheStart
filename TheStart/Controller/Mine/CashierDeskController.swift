@@ -37,13 +37,22 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
  
     
     func payRequestSuccess(data: String) {
-        print(data)
+        //print(data)
         DialogueUtils.showSuccess(withStatus: "购买成功")
+        delay(second: 1) { [self] in
+ 
+            DialogueUtils.dismiss()
+            self.dismiss(animated: true)
+        }
     }
     
     
     func payRequestError(error: String) {
-        DialogueUtils.showError(withStatus: "支付失败")
+        delay(second: 1) { [self] in
+            DialogueUtils.dismiss()
+            self.dismiss(animated: true)
+        }
+       
     }
  
     
@@ -70,11 +79,11 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
         if paytype == .ChargeStarCoin{
             if payMode == 0 {
                 PaySDK.instance.payDelegate = self
-                let requestParams = HomeAPI.wechatPayPathAndParams(price: "0.01", leixing: 1)
+                let requestParams = HomeAPI.wechatPayPathAndParams(price: priceStr, leixing: 1)
                 postRequest(pathAndParams: requestParams,showHUD:false)
             }else{
                 PaySDK.instance.payDelegate = self
-                let requestParams = HomeAPI.aliPayPathPathAndParams(price: "0.01", leixing: 1)
+                let requestParams = HomeAPI.aliPayPathPathAndParams(price: priceStr, leixing: 1)
                 postRequest(pathAndParams: requestParams,showHUD:false)
             }
         }else{
@@ -85,7 +94,7 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
                 payStr = "alipay"
             }
             PaySDK.instance.payDelegate = self
-            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 1, pay_type: payStr, price: "0.01")
+            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
             postRequest(pathAndParams: requestParams,showHUD:false)
         }
       

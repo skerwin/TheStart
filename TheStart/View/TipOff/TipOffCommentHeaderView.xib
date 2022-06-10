@@ -25,25 +25,25 @@
                                 <constraint firstAttribute="width" constant="50" id="y9r-vq-NsU"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" systemColor="systemGray3Color"/>
+                            <color key="textColor" red="0.21718394760000001" green="0.45885652300000002" blue="0.9647597671" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KpA-Sd-IK6">
                             <rect key="frame" x="15" y="15.5" width="152" height="0.5"/>
-                            <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            <color key="backgroundColor" systemColor="tintColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="QDr-1s-qeh"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iy8-cD-qRF">
                             <rect key="frame" x="247" y="15.5" width="152" height="0.5"/>
-                            <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            <color key="backgroundColor" systemColor="tintColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="2de-AK-hME"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="8Dn-0z-bi7" firstAttribute="leading" secondItem="KpA-Sd-IK6" secondAttribute="trailing" constant="15" id="4gd-u3-Ptj"/>
                         <constraint firstItem="Iy8-cD-qRF" firstAttribute="centerY" secondItem="yfp-Ab-Mk2" secondAttribute="centerY" constant="3" id="5Xs-0x-gob"/>
@@ -57,7 +57,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yfp-Ab-Mk2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MvK-wm-uwo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yfp-Ab-Mk2" secondAttribute="trailing" id="ONb-ac-a16"/>
@@ -69,11 +69,8 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

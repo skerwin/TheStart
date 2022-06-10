@@ -47,10 +47,10 @@ class WokerPubHeaderView: UIView {
         bgView.layer.masksToBounds = true
         bgView.layer.cornerRadius = 15
         
-        let attributedName = NSAttributedString.init(string: "请输入标题", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedName = NSAttributedString.init(string: "请输入标题", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         titleTextF.attributedPlaceholder = attributedName
         
-       let attributedPwd = NSAttributedString.init(string: "请输入电话号码", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+       let attributedPwd = NSAttributedString.init(string: "请输入电话号码", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         phoneTextF.attributedPlaceholder = attributedPwd
         
         addGestureRecognizerToView(view: jobTypeText, target: self, actionName: "jobTypeTextAction")

@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,37 +21,37 @@
                         <rect key="frame" x="5" y="5" width="145" height="89"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQK-hQ-wfc">
-                        <rect key="frame" x="5" y="102" width="145" height="18"/>
+                        <rect key="frame" x="8" y="102" width="142" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="AT8-6s-ZaR"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" systemColor="systemGray4Color"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ii2-fO-z5j">
-                        <rect key="frame" x="6" y="125" width="144" height="17"/>
+                        <rect key="frame" x="10" y="125" width="140" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="yej-jn-866"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="1000.00" image="jifen">
-                            <color key="titleColor" systemColor="systemGray4Color"/>
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ii2-fO-z5j" secondAttribute="trailing" constant="5" id="2bf-lL-cAq"/>
                 <constraint firstItem="Ii2-fO-z5j" firstAttribute="top" secondItem="FQK-hQ-wfc" secondAttribute="bottom" constant="5" id="5Cu-hD-doa"/>
                 <constraint firstAttribute="bottom" secondItem="Ii2-fO-z5j" secondAttribute="bottom" constant="10" id="Avd-ep-tfI"/>
-                <constraint firstItem="Ii2-fO-z5j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="JP7-NG-Y8k"/>
+                <constraint firstItem="Ii2-fO-z5j" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="JP7-NG-Y8k"/>
                 <constraint firstItem="1mE-aa-O5u" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="JZY-IX-9if"/>
                 <constraint firstItem="1mE-aa-O5u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="SeE-Bz-wva"/>
-                <constraint firstItem="FQK-hQ-wfc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Xp5-kl-4Xk"/>
+                <constraint firstItem="FQK-hQ-wfc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Xp5-kl-4Xk"/>
                 <constraint firstAttribute="trailing" secondItem="1mE-aa-O5u" secondAttribute="trailing" constant="5" id="aEe-4B-3x1"/>
                 <constraint firstAttribute="trailing" secondItem="FQK-hQ-wfc" secondAttribute="trailing" constant="5" id="gx0-bl-es9"/>
                 <constraint firstItem="FQK-hQ-wfc" firstAttribute="top" secondItem="1mE-aa-O5u" secondAttribute="bottom" constant="8" id="x9G-cD-Lug"/>
@@ -69,8 +68,5 @@
     <resources>
         <image name="jifen" width="16" height="16"/>
         <image name="testimg" width="375" height="667"/>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

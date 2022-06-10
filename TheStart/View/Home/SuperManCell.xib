@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +20,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Fc-En-5Vm">
                         <rect key="frame" x="5" y="0.0" width="207" height="102"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lanmuBg" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-zZ-jRd">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="102"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headNotify" translatesAutoresizingMaskIntoConstraints="NO" id="kbN-FS-Dg8">
                                 <rect key="frame" x="15" y="15" width="40" height="40"/>
                                 <constraints>
@@ -31,7 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三的" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Okn-il-x7d">
                                 <rect key="frame" x="70" y="13" width="137" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.98039215690000003" green="0.99215686270000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男 dj" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8C-lK-2bi">
@@ -40,38 +42,42 @@
                                     <constraint firstAttribute="height" constant="17" id="aNc-dB-t0z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" systemColor="systemGray4Color"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要找个好场子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hw4-Sc-hJi">
-                                <rect key="frame" x="15" y="68" width="177" height="20"/>
+                                <rect key="frame" x="15" y="70" width="177" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="PKN-hd-boF"/>
+                                    <constraint firstAttribute="height" constant="20" id="tXA-CP-XcA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" systemColor="systemGray5Color"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.13373881579999999" green="0.15546643730000001" blue="0.21961647270000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="S2h-zZ-jRd" firstAttribute="top" secondItem="5Fc-En-5Vm" secondAttribute="top" id="2pn-r0-sLU"/>
                             <constraint firstItem="Okn-il-x7d" firstAttribute="leading" secondItem="kbN-FS-Dg8" secondAttribute="trailing" constant="15" id="33V-VX-e6w"/>
+                            <constraint firstAttribute="bottom" secondItem="hw4-Sc-hJi" secondAttribute="bottom" constant="12" id="4WB-n4-CPK"/>
                             <constraint firstAttribute="trailing" secondItem="h8C-lK-2bi" secondAttribute="trailing" constant="20" id="ArW-Ys-sEU"/>
                             <constraint firstItem="h8C-lK-2bi" firstAttribute="top" secondItem="Okn-il-x7d" secondAttribute="bottom" constant="7.5" id="L8L-6a-eXL"/>
                             <constraint firstItem="kbN-FS-Dg8" firstAttribute="top" secondItem="5Fc-En-5Vm" secondAttribute="top" constant="15" id="OWu-oN-xvM"/>
                             <constraint firstItem="h8C-lK-2bi" firstAttribute="leading" secondItem="kbN-FS-Dg8" secondAttribute="trailing" constant="15" id="RqR-pW-scn"/>
+                            <constraint firstItem="S2h-zZ-jRd" firstAttribute="leading" secondItem="5Fc-En-5Vm" secondAttribute="leading" id="ZNn-cl-ON3"/>
                             <constraint firstItem="kbN-FS-Dg8" firstAttribute="leading" secondItem="5Fc-En-5Vm" secondAttribute="leading" constant="15" id="au3-eS-r7v"/>
                             <constraint firstAttribute="trailing" secondItem="Okn-il-x7d" secondAttribute="trailing" id="cMJ-dc-PFP"/>
-                            <constraint firstAttribute="trailing" secondItem="hw4-Sc-hJi" secondAttribute="trailing" constant="15" id="gSH-S7-zHD"/>
-                            <constraint firstItem="hw4-Sc-hJi" firstAttribute="leading" secondItem="5Fc-En-5Vm" secondAttribute="leading" constant="15" id="hP2-g2-5oc"/>
-                            <constraint firstItem="hw4-Sc-hJi" firstAttribute="top" secondItem="h8C-lK-2bi" secondAttribute="bottom" constant="11" id="vYA-wW-7CA"/>
+                            <constraint firstItem="hw4-Sc-hJi" firstAttribute="leading" secondItem="5Fc-En-5Vm" secondAttribute="leading" constant="15" id="eR6-Nu-vLE"/>
+                            <constraint firstAttribute="trailing" secondItem="hw4-Sc-hJi" secondAttribute="trailing" constant="15" id="rko-Ej-iOl"/>
+                            <constraint firstAttribute="bottom" secondItem="S2h-zZ-jRd" secondAttribute="bottom" id="vl6-10-Lb5"/>
                             <constraint firstItem="Okn-il-x7d" firstAttribute="top" secondItem="5Fc-En-5Vm" secondAttribute="top" constant="13" id="xcV-Lq-RZV"/>
+                            <constraint firstAttribute="trailing" secondItem="S2h-zZ-jRd" secondAttribute="trailing" id="yRr-YS-Hv2"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="5Fc-En-5Vm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AQN-Aa-ybc"/>
                 <constraint firstItem="5Fc-En-5Vm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Ldb-uJ-irW"/>
@@ -90,12 +96,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="headNotify" width="45" height="45"/>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="headNotify" width="24" height="24"/>
+        <image name="lanmuBg" width="361" height="120"/>
     </resources>
 </document>

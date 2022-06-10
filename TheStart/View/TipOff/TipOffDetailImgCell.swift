@@ -27,7 +27,7 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
  
         let flowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let itemWidth = Int((screenWidth - 40 - CGFloat(row_Count - 1) * 5)) / row_Count
-        print(itemWidth)
+        //print(itemWidth)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         flowLayout.minimumInteritemSpacing = 5
         flowLayout.minimumLineSpacing = 5

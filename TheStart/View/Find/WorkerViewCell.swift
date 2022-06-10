@@ -49,6 +49,7 @@ class WorkerViewCell: UITableViewCell {
             pubtimeLabel.text = model!.add_time + "发布"
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         communiteBtn.layer.masksToBounds = true

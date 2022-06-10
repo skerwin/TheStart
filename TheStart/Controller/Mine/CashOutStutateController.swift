@@ -14,24 +14,28 @@ class CashOutStutateController: BaseViewController,Requestable {
 
     var tableView:UITableView!
     
-    var dataList = [AuthorModel]()
+    var dataList = [CashOutModel]()
     
     var headView:CashOutHeader!
         
     var headerBgView:UIView!
     
     var parentNavigationController: UINavigationController?
+    
+    var process = 0
+    var complete = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initHeadView()
-        //loadData()
+        loadData()
         initTableView()
         self.title = "提现进度"
         // Do any additional setup after loading the view.
     }
     
     func loadData(){
-        let requestParams = HomeAPI.authorListPathAndParams()
+        let requestParams = HomeAPI.bankOutListPathAndParams(page: page, limit: limit)
         postRequest(pathAndParams: requestParams,showHUD:false)
 
     }
@@ -56,7 +60,13 @@ class CashOutStutateController: BaseViewController,Requestable {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
 
-        let list:[AuthorModel]  = getArrayFromJson(content: responseResult)
+        process =  responseResult["info"]["process"].intValue
+        complete =  responseResult["info"]["complete"].intValue
+        
+        headView.processLabel.text = "¥" + intToString(number: process)
+        headView.compltetLabel.text = "¥" + intToString(number: complete)
+        
+        let list:[CashOutModel]  = getArrayFromJson(content: responseResult["list"])
 
         dataList.append(contentsOf: list)
         if list.count < 10 {
@@ -113,8 +123,8 @@ extension CashOutStutateController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
 
-        return 10
-        //return dataList.count
+       // return 10
+        return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -122,7 +132,7 @@ extension CashOutStutateController:UITableViewDataSource,UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CashOutCell", for: indexPath) as! CashOutCell
         cell.selectionStyle = .none
-        //cell.model = dataList[indexPath.row]
+        cell.model = dataList[indexPath.row]
         return cell
        
       
@@ -135,8 +145,7 @@ extension CashOutStutateController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = AuthorDetailController()
-        self.navigationController?.pushViewController(controller, animated: true)
+      
     }
     
 

@@ -19,7 +19,7 @@ struct GoodsModel : Mappable {
     var content = ""
     
     var add_time = ""
-   
+    var h5_url = ""
     
     init?(map: Map) {
         
@@ -35,6 +35,7 @@ struct GoodsModel : Mappable {
         image <- map["image"]
         content <- map["content"]
         add_time <- map["add_time"]
+        h5_url <- map["h5_url"]
      }
 }
 //marketTest

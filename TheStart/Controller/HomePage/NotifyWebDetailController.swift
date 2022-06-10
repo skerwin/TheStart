@@ -30,7 +30,7 @@ class NotifyWebDetailController: BaseViewController ,Requestable, UIWebViewDeleg
     }
      func loadWebView() {
  
-       // print(urlString)
+       // //print(urlString)
         var myRequest = URLRequest(url: URL.init(string: urlString!)!)
         //var myRequest = URLRequest(url: URL.init(string: (urlstr.urlEncoded()))!)
         myRequest.cachePolicy = .useProtocolCachePolicy

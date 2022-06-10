@@ -39,7 +39,7 @@ class SuperManCell: UICollectionViewCell {
         didSet {
             deseLabel.text = model?.title
             typeLabe.text = model!.cate + "   " + model!.gender
-            leftImage.displayImageWithURL(url: model?.avatar)
+            leftImage.displayHeadImageWithURL(url: model?.avatar)
             nameLabel.text = model?.nickname
         }
     }

@@ -125,7 +125,7 @@ import UIKit
 
             return modifiedString
         } catch {
-            print(error)
+            //print(error)
         }
         return ""
     }
@@ -139,7 +139,7 @@ import UIKit
                                                       .characterEncoding: String.Encoding.utf8.rawValue],
                                             documentAttributes: nil)
           } catch {
-              print("error: ", error)
+              //print("error: ", error)
               return nil
           }
       }

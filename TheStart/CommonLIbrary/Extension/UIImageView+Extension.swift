@@ -59,7 +59,13 @@ extension UIImageView {
           if url == nil || url! == ""{
               self.image = UIImage.init(named: "ziran")
          }else{
-             guard let imageUrl = URL.init(string:url!) else { return }
+             var PinUrl = url!
+             
+             if PinUrl.containsStr(find: "http"){
+             }else{
+                 PinUrl = URLs.getHostAddress() + PinUrl
+             }
+             guard let imageUrl = URL.init(string:PinUrl.urlEncoded()) else { return }
              self.kf.setImage(with: ImageResource.init(downloadURL: imageUrl), placeholder: UIImage.init(named: "ziran"), options:  [KingfisherOptionsInfoItem.targetCache(ImageCacheManager.default)], progressBlock: nil){ (reslt) in
              }
          }

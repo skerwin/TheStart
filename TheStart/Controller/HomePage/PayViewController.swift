@@ -33,7 +33,7 @@ class PayViewController: BaseViewController, PayRequestDelegate,Requestable {
     
     
     func payRequestSuccess(data: String) {
-        print(data)
+        //print(data)
         DialogueUtils.showSuccess(withStatus: "购买成功")
     }
     

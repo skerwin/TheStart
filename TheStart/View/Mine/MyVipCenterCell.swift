@@ -13,6 +13,12 @@ class MyVipCenterCell: UICollectionViewCell {
     @IBOutlet weak var images: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.layer.cornerRadius = 5;
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 2, height: 3)
+        self.layer.shadowRadius = 1
+        self.layer.shadowOpacity = 0.2
         // Initialization code
     }
 

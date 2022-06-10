@@ -118,9 +118,8 @@ func checkVip() -> Bool {
 
 func checkMarketVer() -> Bool {
     
-    return true
     if stringForKey(key: Constants.isMarketVer) != nil{
-        if stringForKey(key: Constants.token) == "1" {
+        if stringForKey(key: Constants.isMarketVer) == "1" {
             return true
         }else{
             return false

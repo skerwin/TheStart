@@ -38,10 +38,15 @@ class MusicDetailController: BaseViewController,Requestable{
     var isCollect = 0
     
     var dataCoinList = [DictModel]()
-    var myCoins:Float = 0
+    var myCoins = ""
     
     var isVipAuudio = false
     var isBought = false
+    
+    
+    var isFromMine = false
+    
+    var bgview:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +72,7 @@ class MusicDetailController: BaseViewController,Requestable{
     func createRightNavItem() {
         
         rightBarButton = UIButton.init()
-        let bgview = UIView.init()
+        bgview = UIView.init()
         
         rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
@@ -83,24 +88,50 @@ class MusicDetailController: BaseViewController,Requestable{
     
     @objc func rightNavBtnClic(_ btn: UIButton){
         
-        if isCollect == 1{
-            let requestParams = HomeAPI.delAudioCollectPathAndParams(id: dateID)
-            postRequest(pathAndParams: requestParams,showHUD:false)
+        
+        if dataModel?.uid == getUserId() && isFromMine{
+            let noticeView = UIAlertController.init(title: "", message: "你确定要删除本条信息么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let requestParams = HomeAPI.audioDelPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
         }else{
-            let requestParams = HomeAPI.audioCollectPathAndParams(id: dateID)
-            postRequest(pathAndParams: requestParams,showHUD:false)
+            if isCollect == 1{
+                let requestParams = HomeAPI.delAudioCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }else{
+                let requestParams = HomeAPI.audioCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }
         }
+      
     }
     func changeCollectBtn(){
-        if isCollect == 1{
-            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+        
+        if isFromMine{
+            rightBarButton.setBackgroundImage(UIImage.init(named: ""), for: .normal)
+            rightBarButton.setTitle("删除", for: .normal)
+            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            rightBarButton.setTitleColor(colorWithHexString(hex: "#228CFC"), for: .normal)
+            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
         }else{
-            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            if isCollect == 1{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+            }else{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            }
         }
+       
     }
     
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
+        super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
     }
     
     
@@ -119,7 +150,7 @@ class MusicDetailController: BaseViewController,Requestable{
             showOnlyTextHUD(text: "取消收藏成功")
         }else if requestPath.containsStr(find: HomeAPI.MyCoinListPath){
             
-            myCoins = responseResult["coins"].floatValue
+            myCoins = responseResult["coins"].stringValue
             dataCoinList = getArrayFromJsonByArrayName(arrayName: "recharge_quota", content: responseResult)
             
         }else if requestPath == HomeAPI.buyAudioListPath{
@@ -156,6 +187,16 @@ class MusicDetailController: BaseViewController,Requestable{
                 }))
                 self.present(noticeView, animated: true, completion: nil)
             }
+        }else if requestPath == HomeAPI.audioDelPath{
+            DialogueUtils.showSuccess(withStatus: "删除成功")
+            delay(second: 0.1) { [self] in
+    //            if (self.reloadBlock != nil) {
+    //                self.reloadBlock!()
+    //            }
+                DialogueUtils.dismiss()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
         }
  
         else{
@@ -176,7 +217,12 @@ class MusicDetailController: BaseViewController,Requestable{
             }
            
             initFooterView(bought: isBought)
-            tableView.tableFooterView = footerBgView
+            if dataModel!.uid == getUserId(){
+                tableView.tableFooterView = UIView()
+            }else{
+                tableView.tableFooterView = footerBgView
+            }
+            
         }
         
         
@@ -274,7 +320,7 @@ class MusicDetailController: BaseViewController,Requestable{
         dialog
             .wTypeSet()(DialogTypeSelect)
             .wEventFinishSet()({(anyID:Any?,path:IndexPath?,type:DialogType) in
-                print("选择",anyID as Any);
+                //print("选择",anyID as Any);
             })
             .wCustomCellSet()(
                 
@@ -303,7 +349,7 @@ class MusicDetailController: BaseViewController,Requestable{
             .wAddBottomViewSet()(true)
             .wEventCancelFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
-                    print("选择quxai",anyID as Any);
+                    //print("选择quxai",anyID as Any);
                 }
             )
             .wEventOKFinishSet()(
@@ -358,8 +404,9 @@ class MusicDetailController: BaseViewController,Requestable{
             lookInfo()
         }else{
             let coinNum = stringToFloat(test: dataModel!.price)
+            let coinmy = stringToFloat(test: myCoins)
             
-            if myCoins < coinNum{
+            if coinmy < coinNum{
                 self.chooseCoin()
             }else{
                 let noticeView = UIAlertController.init(title: "", message: "您确定花费" + dataModel!.price + "星币购买此音乐么", preferredStyle: .alert)
@@ -383,7 +430,7 @@ extension MusicDetailController:BuyBtnViewDelegate {
     
     func vipBtnAction(){
         
-        print("656667")
+        //print("656667")
         if checkVip() {
         //if 1 == 0 {
             let noticeView = UIAlertController.init(title: "", message: "您是Vip会员可免费购买此音乐", preferredStyle: .alert)

@@ -27,6 +27,12 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
+    static let openMarketPath = "/api/goods/if_goods"
+    static func openMarketPathAndParam() -> PathAndParams {
+         return (openMarketPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+ 
+ 
    
     static let userinfoPath = "/api/userinfo"
     static func userinfoPathAndParam() -> PathAndParams {
@@ -64,11 +70,12 @@ struct HomeAPI {
  
     //音乐列表
     static let audioListPath = "/api/audio/list"
-    static func audioListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+    static func audioListPathAndParams(page:Int = 1,limit:Int = 10,vip_free:Int) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["page"] = page as AnyObject
         paramsDictionary["limit"] = limit as AnyObject
+        paramsDictionary["vip_free"] = vip_free as AnyObject
         let urlPath = generateUrlWithParams(paramsDictionary,path: audioListPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
@@ -231,6 +238,30 @@ struct HomeAPI {
          return (delWorkCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    
+    //打电话控制接口
+    static let userCallPath = "/api/user/user_call"
+    static func userCallPathAndParams(type:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["type"] = type as AnyObject
+ 
+        return (userCallPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //聊一聊控制
+    
+    static let userImPathPath = "/api/user/user_im"
+    static func userImPathPathAndParams(type:Int,to_uid:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["type"] = type as AnyObject
+        paramsDictionary["to_uid"] = type as AnyObject
+ 
+        return (userImPathPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
     //音乐收藏
     static let audioCollectPath = "/api/audio/collect/add"
     static func audioCollectPathAndParams(id:Int) -> PathAndParams {
@@ -238,7 +269,7 @@ struct HomeAPI {
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["id"] = id as AnyObject
  
-         return (audioCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+        return (audioCollectPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
     
@@ -553,6 +584,41 @@ struct HomeAPI {
         return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    
+    //银行信息提交
+    static let bankInfoPath = "/api/user/extract"
+    static func bankInfoPathAndParams(model:UserModel) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["bank_name"] = model.bank_name as AnyObject
+        paramsDictionary["bank_realname"] = model.bank_realname as AnyObject
+        paramsDictionary["bank_code"] = model.bank_code as AnyObject
+ 
+        return (bankInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //申请提现
+    static let bankOutCashPath = "/api/user/cash"
+    static func bankOutCashPathAndParams(extract_price:Float) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["extract_price"] = extract_price as AnyObject
+   
+ 
+        return (bankOutCashPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //提现记录
+    static let bankOutListPath = "/api/user/cash_list"
+    static func bankOutListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+ 
+        return (bankOutListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
     //提交实名认证
     static let shimingSumbitPath = "/api/user/shiming"
     static func shimingSumbitPathAndParams(model:UserModel) -> PathAndParams {
@@ -642,6 +708,17 @@ struct HomeAPI {
        
        return (orderListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
    }
+    
+    //订单列表
+   static let myAudioOrderPath = "/api/order/my_audio_order"
+   static func myAudioOrderPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+
+       var paramsDictionary = Dictionary<String, AnyObject>()
+       paramsDictionary["page"] = page as AnyObject
+       paramsDictionary["limit"] = limit as AnyObject
+       
+       return (myAudioOrderPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+   }
    
     
       //聊天列表
@@ -676,9 +753,6 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
-    
-    
-    
     //商品列表
     static let goodsListPath = "/api/goods/goods_list"
     static func goodsListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
@@ -711,6 +785,49 @@ struct HomeAPI {
           return (orderAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    
+    
+    
+    //商品订单列表
+    static let goodsOrderListPath = "/api/goods/order_list"
+    static func goodsOrderListPathAndParams(order_status:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["order_status"] = order_status as AnyObject
+          paramsDictionary["page"] = page as AnyObject
+          paramsDictionary["limit"] = limit as AnyObject
+   
+          return (goodsOrderListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+ 
+    //商品订单详情
+    static let goodsOrderDetailPath = "/api/goods/order_info"
+    static func goodsOrderDetailPathAndParams(id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["id"] = id as AnyObject
+          return (goodsOrderDetailPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //商品订单取消
+    static let goodsOrderCanclePath = "/api/goods/order_cancel"
+    static func goodsOrderCanclePathAndParams(id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["id"] = id as AnyObject
+          return (goodsOrderCanclePath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    //商品订单继续支付
+    static let goodsOrderNextPayPath = "/api/goods/order_pay"
+    static func goodsOrderNextPayPathAndParams(id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["id"] = id as AnyObject
+          return (goodsOrderNextPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    
     //收获地址列表
     static let addressListPath = "/api/goods/address_list"
     static func addressListPathAndParams() -> PathAndParams {
@@ -739,7 +856,7 @@ struct HomeAPI {
         paramsDictionary["detail"] = model.detail as AnyObject
         paramsDictionary["post_code"] = model.post_code as AnyObject
         paramsDictionary["is_default"] = model.is_default as AnyObject
-        print(paramsDictionary)
+        //print(paramsDictionary)
          return (addressAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
 
@@ -760,6 +877,30 @@ struct HomeAPI {
         
         paramsDictionary["id"] = model.id as AnyObject
         return (addressEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    
+    //删除文章
+    static let articleDelPath = "/api/article/del"
+    static func articleDelPathAndParams(id:Int) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+        return (articleDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //删除音乐
+    static let audioDelPath = "/api/audio/audio_del"
+    static func audioDelPathAndParams(id:Int) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+        return (audioDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    //删除招人招场
+    static let workDelPath = "/api/work/del"
+    static func workDelPathAndParams(id:Int) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["id"] = id as AnyObject
+        return (workDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
 
     static let testPath = "/api/work/list"

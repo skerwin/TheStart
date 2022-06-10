@@ -36,6 +36,8 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     var reportID = 0
     var reportReason = ""
     
+    var isFromMine = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "详情内容"
@@ -55,7 +57,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         getRequest(pathAndParams: requestParams,showHUD:false)
     }
     func loadComment(){
-        print(page,limit)
+        //print(page,limit)
         let requestCommentParams = HomeAPI.comentListPathAndParams(articleId: dateID,page: page,limit: limit)
         getRequest(pathAndParams: requestCommentParams,showHUD:false)
      }
@@ -67,12 +69,18 @@ class TipOffDetailViewController: BaseViewController,Requestable {
  
             
         rightBarButton.frame = CGRect.init(x: 0, y: 8, width: 63, height: 28)
-        rightBarButton.setTitle("投诉", for: .normal)
+        if isFromMine{
+            rightBarButton.setTitle("删除", for: .normal)
+        }else{
+            rightBarButton.setImage(UIImage.init(named: "jubao"), for: .normal)
+            rightBarButton.setTitle("投诉", for: .normal)
+        }
+      
         bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
-        rightBarButton.setImage(UIImage.init(named: "jubao"), for: .normal)
+       
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
         rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
-        rightBarButton.setTitleColor(.white, for: .normal)
+        rightBarButton.setTitleColor(.darkGray, for: .normal)
         rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
      
         bgview.addSubview(rightBarButton)
@@ -81,10 +89,23 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     }
 
     @objc func rightNavBtnClic(_ btn: UIButton){
-        reportType = 1
-        reportID = dateID
-        didRecommetnClick()
-    
+        if isFromMine{
+            let noticeView = UIAlertController.init(title: "", message: "你确定要删除本条信息么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let requestParams = HomeAPI.articleDelPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            reportType = 1
+            reportID = dateID
+            didRecommetnClick()
+        }
+        
+        
     }
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -155,6 +176,16 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             dataModel?.is_dianzan = 0
             bottoomView.configModel(model: dataModel!)
         }
+        else if requestPath == HomeAPI.articleDelPath{
+            DialogueUtils.showSuccess(withStatus: "删除成功")
+            delay(second: 0.1) { [self] in
+    //            if (self.reloadBlock != nil) {
+    //                self.reloadBlock!()
+    //            }
+                DialogueUtils.dismiss()
+                self.navigationController?.popViewController(animated: true)
+            }
+         }
         
         else{
             dataModel = Mapper<TipOffModel>().map(JSONObject: responseResult.rawValue)
@@ -188,7 +219,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         bottoomView.delegate = self
         
         let bottoombgView = UIView.init(frame:  CGRect.init(x: 0, y: screenHeight - navigationHeaderAndStatusbarHeight - 48 - bottomBlankHeight, width: screenWidth, height: 48 + bottomBlankHeight))
-        bottoombgView.backgroundColor = ZYJColor.barColor
+        bottoombgView.backgroundColor = UIColor.systemGray6
         bottoombgView.addSubview(bottoomView)
         self.view.addSubview(bottoombgView)
         
@@ -329,7 +360,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     func didRecommetnClick() {
         
-        let acVC = ActionSheetViewController(cellTitleList: ["垃圾广告", "低俗色情","骚扰信息"])!
+        let acVC = ActionSheetViewController(cellTitleList: ["垃圾广告", "不良信息","骚扰信息"])!
         acVC.valueBlock = { index in
             if index == 0{
                 self.reportReason = "垃圾广告"
@@ -519,7 +550,7 @@ extension TipOffDetailViewController:CommentCellDelegate{
         
         reportType = 2
         reportID = commentList[section - 1].id
-        print(commentList[section - 1].comment)
+        //print(commentList[section - 1].comment)
         self.adjustFrame = true
         didRecommetnClick()
     }

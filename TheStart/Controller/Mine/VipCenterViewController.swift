@@ -136,6 +136,11 @@ class VipCenterViewController: BaseViewController,Requestable {
         self.collectionView.mj_footer?.resetNoMoreData()
         dataList.removeAll()
         page = 1
+        delay(second: 1) { [self] in
+            self.collectionView.mj_header?.endRefreshing()
+            self.collectionView.mj_footer?.endRefreshing()
+        }
+        
     }
     
     

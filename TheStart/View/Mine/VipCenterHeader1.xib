@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="height" constant="21" id="ang-n6-NOe"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIr-rK-AQ4">
@@ -49,7 +49,7 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="未开通">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO.431" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgR-V3-Agx">
@@ -58,11 +58,11 @@
                                 <constraint firstAttribute="height" constant="16" id="Q6T-tN-L4o"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="VDM-7t-Bfu" firstAttribute="centerY" secondItem="19k-nX-cgf" secondAttribute="centerY" constant="-29" id="0E5-fq-DUj"/>
                         <constraint firstItem="rIr-rK-AQ4" firstAttribute="leading" secondItem="b6L-WB-bKw" secondAttribute="trailing" constant="50" id="1Wx-aW-zpO"/>
@@ -88,11 +88,11 @@
                                 <constraint firstAttribute="height" constant="17" id="Mep-8u-Y2L"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.93593233819999999" green="0.77005410190000001" blue="0.31356874109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.86702561379999998" green="0.61156332810000003" blue="0.07165958167" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="bEK-Q3-pYI"/>
                         <constraint firstItem="50n-RB-wDY" firstAttribute="centerY" secondItem="5mb-0E-oBv" secondAttribute="centerY" id="eBO-w5-PYX"/>
@@ -121,12 +121,12 @@
                         <constraint firstAttribute="width" constant="88" id="WzE-cg-ehR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxs-76-USJ">
                     <rect key="frame" x="209" y="227" width="90" height="1"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="2hl-di-aZc"/>
                         <constraint firstAttribute="height" constant="1" id="i3b-kM-SOI"/>
@@ -134,7 +134,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcg-RU-rLv">
                     <rect key="frame" x="21" y="227" width="90" height="1"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="HCQ-qp-2oh"/>
                         <constraint firstAttribute="width" constant="90" id="Q8b-0n-q7s"/>
@@ -142,7 +142,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="19k-nX-cgf" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="70J-Zs-ztE"/>
                 <constraint firstItem="5mb-0E-oBv" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="A6u-uP-eTz"/>
@@ -174,9 +174,9 @@
     </objects>
     <resources>
         <image name="huiyuan" width="34" height="30"/>
-        <image name="ziran" width="45" height="45"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="ziran" width="24" height="24"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

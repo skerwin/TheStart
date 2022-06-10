@@ -36,14 +36,23 @@ class GoodsDetailController: BaseViewController,Requestable {
  
     var type = 2
     
+    var addressmodel = AddressModel()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initHeadView()
         initFooterView()
         loadData()
+        loadAddressData()
         initTableView()
-        self.title = "大咖秀"
+        self.title = "商品详情"
         // Do any additional setup after loading the view.
+    }
+    
+    func loadAddressData(){
+        let requestParams = HomeAPI.addressListPathAndParams()
+        postRequest(pathAndParams: requestParams,showHUD:false)
     }
     
     func initHeadView(){
@@ -73,7 +82,6 @@ class GoodsDetailController: BaseViewController,Requestable {
     func loadData(){
         let requestParams = HomeAPI.goodsInfoPathAndParams(id: dateID)
         postRequest(pathAndParams: requestParams,showHUD:false)
-
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {
               tableView.mj_header?.endRefreshing()
@@ -83,12 +91,28 @@ class GoodsDetailController: BaseViewController,Requestable {
 
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.endRefreshing()
+        if requestPath == HomeAPI.addressListPath{
+            let list:[AddressModel]  = getArrayFromJson(content: responseResult)
+            if list.count == 0{
+                return
+            }else{
+                addressmodel = list.first
+                for model in list {
+                    if model.is_default == 1{
+                        addressmodel = model
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }else{
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
 
-        dataModel = Mapper<GoodsModel>().map(JSONObject: responseResult.rawValue)
-        headView.configModel(model: dataModel!)
-        self.tableView.reloadData()
+            dataModel = Mapper<GoodsModel>().map(JSONObject: responseResult.rawValue)
+            headView.configModel(model: dataModel!)
+            self.tableView.reloadData()
+        }
+        
     }
     
     func initTableView(){
@@ -125,6 +149,7 @@ class GoodsDetailController: BaseViewController,Requestable {
         self.tableView.mj_footer?.resetNoMoreData()
         page = 1
         self.loadData()
+        loadAddressData()
     }
     
  
@@ -132,8 +157,12 @@ class GoodsDetailController: BaseViewController,Requestable {
 extension GoodsDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
         let controller = UIStoryboard.getGoodsCashDeskController()
-        controller.paytype = .chargeVip
-        controller.priceStr = "98.00"
+        controller.goodModel = self.dataModel
+        if addressmodel?.id == 0{
+            showOnlyTextHUD(text: "请选择送货地址")
+            return
+        }
+        controller.addressmodel = self.addressmodel
         self.present(controller, animated: true)
     }
  
@@ -152,31 +181,29 @@ extension GoodsDetailController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if indexPath.row == 0{
-            print("model.content.html2String")
-           // print(model.content.html2String)
-            
-            print(dataModel!.content.html2String.count)
-            if dataModel!.content.containsStr(find: "<img"){
+             if dataModel!.content.containsStr(find: "<img"){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "GoodDetailCell", for: indexPath) as! GoodDetailCell
                 cell.selectionStyle = .none
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
                 cell.selectionStyle = .none
-                cell.configGoodsCell(model: self.dataModel!, num: 0)
+                cell.configGoodsCell(model: self.dataModel!, num: 0, address: addressmodel!)
                 return cell
             }
             
            
         }else if indexPath.row == 2{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
             cell.selectionStyle = .none
-            cell.configGoodsCell(model: self.dataModel!, num: 1)
+            cell.configGoodsCell(model: self.dataModel!, num: 2, address: addressmodel!)
             return cell
         }else if indexPath.row == 3 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
             cell.selectionStyle = .none
-            cell.configGoodsCell(model: self.dataModel!, num: 2)
+            cell.configGoodsCell(model: self.dataModel!, num: 1, address: addressmodel!)
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "GoodeDetailLineewCell", for: indexPath) as! GoodeDetailLineewCell
@@ -194,6 +221,18 @@ extension GoodsDetailController:UITableViewDataSource,UITableViewDelegate {
      }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
-    }
+        
+        if indexPath.row == 0{
+            if dataModel!.content.containsStr(find: "<img"){
+                let controller = NotifyWebDetailController()
+                controller.urlString = dataModel?.h5_url
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+ 
+        if indexPath.row == 2{
+            let controller = addressListController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+     }
 }

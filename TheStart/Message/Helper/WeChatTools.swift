@@ -40,10 +40,10 @@ extension WeChatTools {
             pwd = myPwd
         }
         if account == nil || pwd == nil { // 没有保存账号或密码
-            print("没有保存账号或密码")
+            //print("没有保存账号或密码")
             return false
         } else {    // 自动登录
-            print("启用自动登录")
+            //print("启用自动登录")
  
             return true
         }

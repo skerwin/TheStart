@@ -226,11 +226,10 @@ extension PubMusicController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "请输入价格")
             return
         }
-        
-        if !(CheckoutUtils.isValidNumber(number: audioModel!.price)){
-            showOnlyTextHUD(text: "价格只能为数字")
-            return
-        }
+//        if !(CheckoutUtils.isValidNumber(number: audioModel!.price)){
+//            showOnlyTextHUD(text: "价格只能为数字")
+//            return
+//        }
         
  
         audioModel?.link = headView.wanpanTV.text!
@@ -414,16 +413,16 @@ extension PubMusicController: PhotoPickerControllerDelegate {
         pickerController.dismiss(animated: true, completion: nil)
         result.getURLs { [self] urls in
             if self.isImgFile {
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.imageURLArr = urls
                 uploadPhoto(filePath: self.imageURLArr)
             }else{
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.vodURLArr = urls
                 uploadPhoto(filePath: self.vodURLArr)
             }
             
-            print(urls)
+            //print(urls)
         }
         
        

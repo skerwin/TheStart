@@ -43,9 +43,8 @@ class HomeJobCell: UITableViewCell {
                 needsLabel.text = model!.cate + "   " + model!.gender
             }
             
-            
             //model?.cateValue + model?.gender
-            headImg.displayImageWithURL(url: model?.avatar)
+            headImg.displayHeadImageWithURL(url: model?.avatar)
             nameLabel.text = model?.nickname
         }
     }
@@ -57,6 +56,6 @@ class HomeJobCell: UITableViewCell {
     }
     
     @IBAction func contactBtnAction(_ sender: Any) {
-        delegate.JobHomeCommunicateAction(mobile: "")
+        delegate.JobHomeCommunicateAction(mobile: model!.mobile)
     }
 }

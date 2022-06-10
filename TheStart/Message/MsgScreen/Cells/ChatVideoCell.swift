@@ -58,14 +58,7 @@ extension ChatVideoCell {
         }
         insertSubview(chatImgView, at: 1)
         
-        // 数据
-        print("urlStr --- \(model?.videoCoverUrl)")
-        print("urlStrURL --- \(URL(string: model?.videoCoverUrl ?? ""))")
-        print("videoDuration --- \(model?.videoDuration)")
-        
-        print("messageType --- \(model?.modelType)")
-        print("videoCoverUrl --- \(model?.videoCoverUrl) -- \(model?.videoUrl) --- \(model?.videoPath)")
-        
+     
         chatImgView.image = #imageLiteral(resourceName: "image")
         durationLabel.text = self.getFormatDuration(with: model?.videoDuration)
         avatar.displayButtonHeadImageWithURL(url: model?.headImg)

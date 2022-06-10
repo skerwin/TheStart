@@ -28,7 +28,7 @@ class ChatFindEmotion: NSObject {
     }
     
     private func stringForImage(image: UIImage) -> String {
-        print(image)
+        //print(image)
         var imageName = ""
         let emotions = ChatEmotionHelper.getAllEmotions()
         let imageData = image.pngData()
@@ -36,7 +36,7 @@ class ChatFindEmotion: NSObject {
             if let image = UIImage(contentsOfFile: emo.imgPath!) {
                 if image.pngData() == imageData {
                     imageName = emo.text ?? ""
-                    print("匹配成功")
+                    //print("匹配成功")
                 }
             }
         }

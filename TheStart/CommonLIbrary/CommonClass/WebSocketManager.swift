@@ -62,7 +62,7 @@ class WebSocketManager: NSObject {
     func openSocket(){
         let paramsStr = "?type=login&token=" + getToken()
  
-        print(websocketUrl + paramsStr)
+        //print(websocketUrl + paramsStr)
         
         socket = WKWebSocket.init()
         socket.initOpen(url: websocketUrl + paramsStr)
@@ -114,7 +114,7 @@ extension WebSocketManager{
             reachability = try Reachability.init()
             networkStatusListener()
         } catch {
-            print("Unable to create Reachability")
+            //print("Unable to create Reachability")
             return
         }
         
@@ -129,7 +129,7 @@ extension WebSocketManager{
             // 3、开启网络状态消息监听
             try reachability.startNotifier()
         }catch{
-            print("could not start reachability notifier")
+            //print("could not start reachability notifier")
         }
     }
     
@@ -222,22 +222,22 @@ extension WebSocketManager{
 //    do {
 //        reachability = try Reachability.init()
 //    } catch {
-//        print("Unable to create Reachability")
+//        //print("Unable to create Reachability")
 //        return
 //    }
 //
 //    // 检测网络连接状态
 //    if reachability.connection == .wifi{
-//        print("网络连接：wifi")
+//        //print("网络连接：wifi")
 //    }
 //    else if reachability.connection == .cellular{
 //
 //    }
 //    else if reachability.connection == .unavailable{
-//        print("网络连接：不可用")
+//        //print("网络连接：不可用")
 //    }
 //    else {
-//        print("网络连接：不可用")
+//        //print("网络连接：不可用")
 //    }
 //}
 ////MARK: - analyze

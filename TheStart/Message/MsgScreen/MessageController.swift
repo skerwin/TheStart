@@ -431,7 +431,6 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         
         self.keyboardHeight = height ?? 0
         if let tmpH = height {
-            print( self.bottomMargin.constant)
             UIView.animate(withDuration: CATransaction.animationDuration()) { [weak self] in
                 guard let `self` = self else { return }
                 self.bottomMargin.constant = -(tmpH - safeMargin)
@@ -442,7 +441,6 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     }
     
     @objc private func handleKeyboardWillHide(notification: NSNotification) {
-        print( self.bottomMargin.constant)
         if self.bottomMargin.constant == 0 {
             return
         }
@@ -452,7 +450,6 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         
         UIView.animate(withDuration: CATransaction.animationDuration()) { [weak self] in
             guard let `self` = self else { return }
-            print( self.bottomMargin.constant)
             self.bottomMargin.constant = 0
             self.view.layoutIfNeeded()
             self.scrollToBottom(animated: true, top: false)
@@ -460,7 +457,6 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     }
     
     func resetBarFrame() {
-        print( self.bottomMargin.constant)
         if (self.currentKeyboardType == .more || self.currentKeyboardType == .emotion) && self.bottomMargin.constant != -240 {
             UIView.animate(withDuration: CATransaction.animationDuration()) { [weak self] in
                 guard let `self` = self else { return }
@@ -570,7 +566,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         paramsDictionary["data"] =  data as AnyObject
 
         let jsonStr = dicValueString(paramsDictionary)
-        print(jsonStr!)
+        //print(jsonStr!)
 
         WebSocketManager.instance.sendMessage(msg: jsonStr!)
  
@@ -608,7 +604,7 @@ extension MessageController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            print(textView.text)
+            //print(textView.text)
             sendCurrentInput()
             return false
         }
@@ -634,7 +630,7 @@ extension MessageController: UITextViewDelegate {
         // 获取光标位置
         var oldRange = inputTextView.selectedRange
         let loction = inputTextView.selectedRange.location
-        print(loction)
+        //print(loction)
         // 获取光标位置前的字符串
         let frontContent = NSString(string: inputTextView.text).substring(to: loction)
         // 字符串以结尾比较,存在“]”
@@ -645,7 +641,7 @@ extension MessageController: UITextViewDelegate {
                 let length = lastRange.location - nsrange.location + 1
                 let targetRange = NSRange(location: nsrange.location, length: length)
                 let subStr = (frontContent as NSString).substring(with: targetRange)
-                print(subStr)
+                //print(subStr)
                 if !ChatEmotionHelper.isEmotionStr(str: subStr) {
                     return false
                 }
@@ -689,11 +685,11 @@ extension MessageController: EmotionViewModelDelegate {
 extension MessageController: MoreSelectorDelegate {
     
     func chosePicture() {
-        print("选择照片")
+        //print("选择照片")
     }
     
     func takePhoto() {
-        print("照相")
+        //print("照相")
     }
     
     func sendFile() {
@@ -748,7 +744,7 @@ extension MessageController: UIDocumentPickerDelegate {
                         new.fileLength = (fileSize[FileAttributeKey.size] as? Int64)!
                     }
                     self?.sendMsg(msg: new)
-                    print(fileName)
+                    //print(fileName)
                 }
             }
             urls.first?.stopAccessingSecurityScopedResource()
@@ -788,7 +784,7 @@ extension MessageController: CellMenuItemActionDelegate {
     }
     
 //    func delete(msg: ChatMsgModel) {
-//        print("删除这条消息")
+//        //print("删除这条消息")
 //    }
 //
 //    func zhuanfa(text: String) {
@@ -810,12 +806,12 @@ extension MessageController: CellMenuItemActionDelegate {
     }
     
     @objc func menuItemCopyAction() {
-        print("复制")
+        //print("复制")
     }
     
     @objc func menuItemForwardAction() {
 
-        print("转发")
+        //print("转发")
         self.currentKeyboardType = .noting
         self.view.endEditing(true)
         self.inputTextView.resignFirstResponder()
@@ -823,7 +819,7 @@ extension MessageController: CellMenuItemActionDelegate {
         guard let indexRow = self.menuIndex else {
             return
         }
-        print(indexRow)
+        //print(indexRow)
         let sb = UIStoryboard(name: "ZhuanFaViewController", bundle: nil)
         let nav = sb.instantiateInitialViewController() as! UINavigationController
         let vc = nav.viewControllers.first as! ZhuanFaViewController
@@ -836,7 +832,7 @@ extension MessageController: CellMenuItemActionDelegate {
     }
     
     @objc func menuItemDeleteAction() {
-        print("删除")
+        //print("删除")
         self.currentKeyboardType = .noting
         self.view.endEditing(true)
         self.inputTextView.resignFirstResponder()
@@ -845,7 +841,7 @@ extension MessageController: CellMenuItemActionDelegate {
             return
         }
         self.deleteMessage(row: indexRow)
-        print(indexRow)
+        //print(indexRow)
         self.menuIndex = nil
     }
 }

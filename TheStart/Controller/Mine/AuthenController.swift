@@ -64,17 +64,17 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
         summbitBtn.layer.masksToBounds = true
         
         
-        let attributedName = NSAttributedString.init(string: "请输入真实姓名", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedName = NSAttributedString.init(string: "请输入真实姓名", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         nameText.attributedPlaceholder = attributedName
         
-       let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+       let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         mobileText.attributedPlaceholder = attributedPwd
         
-        let attributedcard = NSAttributedString.init(string: "请输入身份证号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedcard = NSAttributedString.init(string: "请输入身份证号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         shenfenIDText.attributedPlaceholder = attributedcard
         
         
-        let attributedcoompanyy = NSAttributedString.init(string: "请输入您的公司", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedcoompanyy = NSAttributedString.init(string: "请输入您的公司", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
          companyName.attributedPlaceholder = attributedcoompanyy
         
      }
@@ -137,6 +137,9 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
         initView()
     
         tableView.separatorColor = UIColor.darkGray
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -166,13 +169,13 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
                     addressList = getArrayFromJson(content:responseJson)
                     
                 } else {
-                    print("JSON is invalid")
+                    //print("JSON is invalid")
                 }
             } else {
-                print("no file")
+                //print("no file")
             }
         } catch {
-            print(error.localizedDescription)
+            //print(error.localizedDescription)
         }
         
         let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
@@ -456,7 +459,7 @@ extension AuthenController:ActionSheetCustomPickerDelegate,UIPickerViewDelegate{
     
     
     func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
-        print("123")
+        //print("123")
 //        if isWorkType == true{
 //            headView.jobTypeText.text = workTypeSub
 //        }else{

@@ -30,7 +30,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3r-vW-iCY" secondAttribute="trailing" constant="40" id="36H-VW-BBa"/>
                 <constraint firstItem="F3r-vW-iCY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xso-sy-D31"/>

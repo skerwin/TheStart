@@ -24,12 +24,48 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     var isMypub = false
     var isMyCollect = false
     
+    var rightBarButton:UIButton!
+    
+    var isFreeZone = false
+
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+            
+        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 63, height: 28)
+        rightBarButton.setTitle("提现记录", for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+      
+        rightBarButton.setTitleColor(.white, for: .normal)
+        rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        rightBarButton.layer.masksToBounds = true
+        rightBarButton.layer.cornerRadius = 5;
+        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+     }
+
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        let controller = CashOutStutateController()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        //createRightNavItem()
         self.limit = 20
         loadData()
-        self.title = "音乐馆"
+        if isFreeZone{
+            self.title = "会员免费专区"
+        }else{
+            self.title = "音乐馆"
+        }
+        
         view.backgroundColor = ZYJColor.main
         view.addSubview(collectionView)
         let itemWidth = Int((view.hx.width - 24 - CGFloat(row_Count - 1) * 8)) / row_Count
@@ -39,21 +75,35 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
         
         var collectionViewY = UIDevice.navigationBarHeight
+        var y:CGFloat = 10
+        
+        
         if isMypub {
             
         }else if isMyCollect{
             
         }else{
-            collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
+            if isFreeZone{
+               y = navigationHeaderAndStatusbarHeight
+               collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
+            }else{
+                collectionViewY = UIDevice.navigationBarHeight
+                y = 10
+            }
         }
         
         collectionView.frame = CGRect(
             x: 0,
-            y: 10,
+            y: y,
             width: view.hx.width,
             height: view.hx.height - collectionViewY
         )
-        createPubBtn()
+        if isFreeZone{
+            
+        }else{
+            createPubBtn()
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -66,8 +116,15 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
             let pathAndParams = HomeAPI.collectaudioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: false)
         }else{
-            let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit)
-            getRequest(pathAndParams: requestParams,showHUD:false)
+            if isFreeZone{
+                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 1)
+                getRequest(pathAndParams: requestParams,showHUD:false)
+              
+            }else{
+                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 0)
+                getRequest(pathAndParams: requestParams,showHUD:false)
+            }
+           
         }
      
 
@@ -174,6 +231,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = MusicDetailController()
         controller.dateID = dataList[indexPath.item].id
+        controller.isFromMine = self.isMypub
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "touxiang.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ziran.png",
+      "filename" : "touxiang@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "touxiang@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

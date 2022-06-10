@@ -36,6 +36,9 @@ class WorkListViewController: BaseViewController,Requestable  {
     var isMypub = false
     var isMyCollect = false
     
+    var callMobile = ""
+
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -115,13 +118,13 @@ class WorkListViewController: BaseViewController,Requestable  {
                       modelall?.children.append(sunModelall!)
                       addressList.insert(modelall!, at: 0)
                   } else {
-                      print("JSON is invalid")
+                      //print("JSON is invalid")
                   }
               } else {
-                  print("no file")
+                  //print("no file")
               }
           } catch {
-              print(error.localizedDescription)
+              //print(error.localizedDescription)
           }
         
         let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
@@ -159,9 +162,9 @@ class WorkListViewController: BaseViewController,Requestable  {
     func initDropView(){
         
         dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
-        dropView.indicatorColor = UIColor.white
+        dropView.indicatorColor = UIColor.darkGray
         dropView.fontSize = 16
-        dropView.textColor = UIColor.white
+        dropView.textColor = UIColor.darkGray
         dropView.delegate = self
         dropView.dataSource = self
         self.view.addSubview(dropView)
@@ -213,7 +216,10 @@ class WorkListViewController: BaseViewController,Requestable  {
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
-        }else{
+        }else if requestPath == HomeAPI.userCallPath{
+            callPhone()
+        }
+        else{
             let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
 
             dataList.append(contentsOf: list)
@@ -228,6 +234,30 @@ class WorkListViewController: BaseViewController,Requestable  {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
         super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
+        if requestPath == HomeAPI.userCallPath{
+            let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
+    }
+    
+    func callPhone(){
+        let urlstr = "telprompt://" + callMobile
+        if let url = URL.init(string: urlstr){
+             if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+             }
+        }
     }
     @objc func pullRefreshList() {
         page = page + 1
@@ -277,6 +307,7 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = WorkerInfoViewController()
          controller.dateID = dataList[indexPath.row].id
+         controller.isFromMine = self.isMypub
          self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -284,19 +315,18 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
 }
 extension WorkListViewController:WorkerViewCellDelegate {
     func WorkerCellCommunicateAction(mobile:String) {
-        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+ 
         
+        callMobile = mobile
+ 
+        if mobile == getAcctount(){
+            showOnlyTextHUD(text: "不能给自己拨打电话")
+            return
+        }
+         let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
-             
-             
-             let urlstr = "telprompt://" + mobile
-             if let url = URL.init(string: urlstr){
-                  if #available(iOS 10, *) {
-                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                 } else {
-                     UIApplication.shared.openURL(url)
-                  }
-               }
+             let pathAndParams = HomeAPI.userCallPathAndParams(type: 1)
+             self.postRequest(pathAndParams: pathAndParams,showHUD: false)
  
         }))
         

@@ -45,7 +45,7 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.selectionIndicatorTintColor = UIColor.white
-            appearance.backgroundColor = ZYJColor.barColor
+            //appearance.backgroundColor = ZYJColor.barColor
             self.tabBar.standardAppearance = appearance;
             self.tabBar.scrollEdgeAppearance = self.tabBar.standardAppearance
  
@@ -54,7 +54,7 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         } else {
             
                 UITabBar.appearance().isTranslucent = true
-                UITabBar.appearance().backgroundColor = ZYJColor.barColor
+                //UITabBar.appearance().backgroundColor = ZYJColor.barColor
                 UITabBar.appearance().backgroundImage = UIImage()
                 UITabBar.appearance().tintColor = UIColor.white
         }
@@ -73,8 +73,8 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         
         if checkMarketVer(){
             addNavChildViewController(controller: goodsController, title: "商城",
-                                      image: UIImage(named: "iconMusic")!,
-                                      selectedImage: UIImage(named: "iconMusicSelceted")!,
+                                      image: UIImage(named: "shangcheng")!,
+                                      selectedImage: UIImage(named: "shangchengxuanzhong")!,
                                       tag: TabbarContentType.Articl.rawValue)
         }else{
             addNavChildViewController(controller: mmallController, title: "音乐馆",

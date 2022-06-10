@@ -33,17 +33,34 @@ class OrderCell: UITableViewCell {
             nameLabel.text = model?.name
             tiemLabel.text = model?.add_time
             orderLabel.text = "订单号:" + model!.order_id
-            if model?.pay_type == "alipay" {
-                orderType.text = "支付方式:支付宝"
+            orderType.isHidden = true
+            if model?.vip_free == 1{
+                zhifuLabel.text = "会员免费"
+                
             }else{
-                orderType.text = "支付方式:微信支付"
+                zhifuLabel.text = "金额:" + model!.price
             }
-            zhifuLabel.text = "实付:" + model!.price
+           
             
           
         }
     }
 
+    func config(model:OrderModel){
+        leftImage.displayImageWithURL(url: model.image)
+        nameLabel.text = model.goods_name
+        tiemLabel.isHidden = true
+        tiemLabel.text = model.add_time
+        orderLabel.text = "订单时间:" + model.add_time
+        orderType.isHidden = true
+        
+            if model.pay_type == 2 {
+                orderType.text = "支付方式:支付宝"
+            }else{
+                orderType.text = "支付方式:微信支付"
+            }
+        zhifuLabel.text = "实付:" + model.price
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

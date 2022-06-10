@@ -11,32 +11,29 @@ import Foundation
 import UIKit
 
 // 标题栏颜色
-//let navigationBarColor = colorWithHexString(hex: "#28B944")
+
 
 let navigationBarColor = UIColor.white
 
+
 struct ZYJColor {
     // 34 140 252
-    static let main = colorWithHexString(hex: "#0F0F11")
+    static let main = UIColor.white //"#0F0F11"  F0F0F0 FAFDFF
+    
+    static let barText = colorWithHexString(hex: "#A255FF")
     static let mainText = colorWithHexString(hex: "#EBEBEB")
     static let barColor = colorWithHexString(hex: "#202322")//
     static let blueTextColor = colorWithHexString(hex: "#6A90CA")
     static let backColor = colorWithHexString(hex: "616161")
     static let mainLine = colorWithHexString(hex: "e2effd")
     
+    
     static let coinColor = colorWithHexString(hex: "E2A010")
-    
-    
     static let backBlue = colorWithHexString(hex: "228CFC")
-    
-    static let tabBarColor = UIColor(red: 225, green: 225, blue: 225, alpha: 1) 
-   
+    static let tabBarColor = UIColor(red: 225, green: 225, blue: 225, alpha: 1)
     static let translucent = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5) // 半透明
-    
     static let redColorButton = colorWithHexString(hex: "FF397F")
-    
     static let chatLine = colorWithHexString(hex: "F0F0F0")
-    
     static let testLine = colorWithHexString(hex: "DEDEDE")
     
     static let tableViewBg = colorWithHexString(hex: "#F0F0F0")

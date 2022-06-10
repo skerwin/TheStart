@@ -70,10 +70,10 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
         self.title = "个人信息"
         loadCityJson()
         
-        let attributedName = NSAttributedString.init(string: "请输入昵称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedName = NSAttributedString.init(string: "请输入昵称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         nickNameText.attributedPlaceholder = attributedName
         
-        let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        let attributedPwd = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         mobileText.attributedPlaceholder = attributedPwd
         
         self.tableView.separatorStyle = .none
@@ -115,13 +115,13 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
                     addressList = getArrayFromJson(content:responseJson)
                     
                 } else {
-                    print("JSON is invalid")
+                    //print("JSON is invalid")
                 }
             } else {
-                print("no file")
+                //print("no file")
             }
         } catch {
-            print(error.localizedDescription)
+            //print(error.localizedDescription)
         }
         
         
@@ -257,7 +257,7 @@ class PersonsInfoController: BaseTableController,Requestable,UIImagePickerContro
             pickerController.allowsEditing = true
             present(pickerController, animated: true, completion: nil)
         } else {
-            print("模拟器没有摄像头，请使用真机调试")
+            //print("模拟器没有摄像头，请使用真机调试")
         }
     }
     

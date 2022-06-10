@@ -40,7 +40,7 @@ public class PaySDK: NSObject {
     
     func alipayPayRequest(sign: String) {
         
-        print(PaySDK.alipayAppid!)
+        //print(PaySDK.alipayAppid!)
         
         AlipaySDK.defaultService().payOrder(sign, fromScheme: PaySDK.alipayAppid!) { (result) in
           
@@ -55,10 +55,10 @@ public class PaySDK: NSObject {
                 
                 let resDict:Dictionary<String, AnyObject> = resultDict as! Dictionary<String, AnyObject>
                 
-                print(resDict)
+                //print(resDict)
 //                for model in resDict {
-//                    print(model.key)
-//                    print(model.value)
+//                    //print(model.key)
+//                    //print(model.value)
 //                }
 //
 //                let total = resDict["result"]!["total_amount"]

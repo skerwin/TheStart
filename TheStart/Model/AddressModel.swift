@@ -27,6 +27,7 @@ struct AddressModel : Mappable {
     
     
     
+    
     var label = ""
     var level = ""
     var code = ""
@@ -44,6 +45,8 @@ struct AddressModel : Mappable {
     }
     
     mutating func mapping(map: Map) {
+        
+        
         id <- map["id"]
         real_name <- map["real_name"]
         phone <- map["phone"]

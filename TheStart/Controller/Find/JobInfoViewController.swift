@@ -32,6 +32,11 @@ class JobInfoViewController: BaseViewController,Requestable{
     
     var isCollect = 0
     
+    var bgview:UIView!
+    
+    var isFromMine = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "职位详情"
@@ -50,15 +55,14 @@ class JobInfoViewController: BaseViewController,Requestable{
     func createRightNavItem() {
         
         rightBarButton = UIButton.init()
-        let bgview = UIView.init()
+        bgview = UIView.init()
  
         rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
         
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
-        
+ 
         rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
-     
         bgview.addSubview(rightBarButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
@@ -66,23 +70,76 @@ class JobInfoViewController: BaseViewController,Requestable{
 
     @objc func rightNavBtnClic(_ btn: UIButton){
         
-        if isCollect == 1{
-            let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
-            postRequest(pathAndParams: requestParams,showHUD:false)
+        if dataModel?.uid == getUserId() && isFromMine{
+            let noticeView = UIAlertController.init(title: "", message: "你确定要删除本条信息么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let requestParams = HomeAPI.workDelPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
         }else{
-            let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
-            postRequest(pathAndParams: requestParams,showHUD:false)
+            if isCollect == 1{
+                let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }else{
+                let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }
         }
+        
      }
+    
     func changeCollectBtn(){
-        if isCollect == 1{
-            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+        
+        if dataModel?.uid == getUserId() && isFromMine{
+            rightBarButton.setBackgroundImage(UIImage.init(named: ""), for: .normal)
+            rightBarButton.setTitle("删除", for: .normal)
+            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            rightBarButton.setTitleColor(colorWithHexString(hex: "#228CFC"), for: .normal)
+            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
         }else{
-            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            if isCollect == 1{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+            }else{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            }
         }
+        
     }
     
+    
+    
+    
+    
     override func onFailure(responseCode: String, description: String, requestPath: String) {
+        super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
+       
+        
+        if requestPath == HomeAPI.userCallPath || requestPath == HomeAPI.userImPathPath{
+            
+            var message = ""
+            if requestPath == HomeAPI.userCallPath{
+                message = "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打"
+            }else{
+                message = "非会员每天限发起3次聊天，请¥98元充值会员,无限次聊天"
+            }
+            
+            let noticeView = UIAlertController.init(title: "", message: message, preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                let controller = UIStoryboard.getCashierDeskController()
+                controller.paytype = .chargeVip
+                controller.priceStr = "98.00"
+                self.present(controller, animated: true)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }
      }
 
 
@@ -99,7 +156,23 @@ class JobInfoViewController: BaseViewController,Requestable{
             isCollect = responseResult["if_collect"].intValue
             changeCollectBtn()
             showOnlyTextHUD(text: "取消收藏成功")
-        }else{
+        }
+        else if requestPath == HomeAPI.userCallPath{
+            callPhone()
+        }else if requestPath == HomeAPI.userImPathPath{
+            gotoMessage()
+        }else if requestPath == HomeAPI.workDelPath{
+            DialogueUtils.showSuccess(withStatus: "删除成功")
+            delay(second: 0.1) { [self] in
+    //            if (self.reloadBlock != nil) {
+    //                self.reloadBlock!()
+    //            }
+                DialogueUtils.dismiss()
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        }
+        else{
             dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
             headView.configModel(model: dataModel!)
             isCollect = dataModel!.is_collect
@@ -108,6 +181,23 @@ class JobInfoViewController: BaseViewController,Requestable{
         
         // bottoomView.configModel(model: dataModel!)
          self.tableView.reloadData()
+    }
+    func gotoMessage(){
+        let controller = UIStoryboard.getMessageController()
+        controller.toID = dataModel!.uid
+        controller.nameTitle = dataModel!.nickname
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func callPhone(){
+        let urlstr = "telprompt://" + self.dataModel!.mobile
+         if let url = URL.init(string: urlstr){
+              if #available(iOS 10, *) {
+                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+             } else {
+                 UIApplication.shared.openURL(url)
+              }
+           }
     }
     
     func initHeadView(){
@@ -165,29 +255,26 @@ extension JobInfoViewController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "不能跟自己发起聊天哦")
             return
         }
-            let controller = UIStoryboard.getMessageController()
-     
-            controller.toID = dataModel!.uid
-            controller.nameTitle = dataModel!.nickname
-            self.navigationController?.pushViewController(controller, animated: true)
+        let pathAndParams = HomeAPI.userImPathPathAndParams(type: 2,to_uid: dataModel!.uid)
+        postRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+        
+       
     }
  
 }
 extension JobInfoViewController:JobBaseInfoDelegate {
     func JobCommunicateAction(){
+        if dataModel!.uid == getUserId(){
+            showOnlyTextHUD(text: "不能给自己拨打电话")
+            return
+        }
+      
         let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
         
         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-             
-             
-            let urlstr = "telprompt://" + self.dataModel!.mobile
-             if let url = URL.init(string: urlstr){
-                  if #available(iOS 10, *) {
-                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                 } else {
-                     UIApplication.shared.openURL(url)
-                  }
-               }
+             let pathAndParams = HomeAPI.userCallPathAndParams(type: 2)
+            postRequest(pathAndParams: pathAndParams,showHUD: false)
  
         }))
         

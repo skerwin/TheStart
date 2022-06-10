@@ -113,6 +113,7 @@ class TipOffViewController: BaseViewController,Requestable {
         self.tableView.estimatedRowHeight = 294;
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        
         tableView.registerNibWithTableViewCellName(name: TipOffListCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListCell2.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListCell1.nameOfClass)
@@ -170,6 +171,7 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = TipOffDetailViewController()
          controller.dateID = dataList[indexPath.row].id
+         controller.isFromMine = self.isMypub
          self.navigationController?.pushViewController(controller, animated: true)
     }
 }

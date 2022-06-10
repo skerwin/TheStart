@@ -11,7 +11,7 @@ import ObjectMapper
 
 struct AudioModel : Mappable {
     
- 
+    var uid = 0
     var id = 0
     var price = ""
     var audio_path = ""
@@ -42,6 +42,7 @@ struct AudioModel : Mappable {
     mutating func mapping(map: Map) {
         
         if_order <- map["if_order"]
+        uid <- map["uid"]
         userCollect <- map["userCollect"]
         browse <- map["browse"]
         order_count <- map["order_count"]

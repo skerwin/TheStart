@@ -55,7 +55,7 @@ public class PMKPageMenuItemPlain: PMKPageMenuItem {
   }
 
   override func render(active: Bool) {
-    self.label.textColor = active ? self.design.titleColor : .white
+    self.label.textColor = active ? self.design.titleColor : .darkGray
     self.label.backgroundColor = .clear
   }
 }

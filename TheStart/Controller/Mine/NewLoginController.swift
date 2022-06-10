@@ -139,6 +139,9 @@ class NewLoginController: BaseViewController,Requestable {
     
     func loadPrivateAndAbouutUs() {
         
+        let requestParamsP3 = HomeAPI.openMarketPathAndParam()
+        postRequest(pathAndParams: requestParamsP3,showHUD: false)
+ 
         let requestParamsP0 = HomeAPI.privacyUserAgreementPathAndParam(id:2)
         getRequest(pathAndParams: requestParamsP0,showHUD: false)
 
@@ -287,6 +290,14 @@ class NewLoginController: BaseViewController,Requestable {
         }else if requestPath.containsStr(find: "/api/danye/4"){
             privasyHtml = responseResult["content"].stringValue
         }
+        else if requestPath == HomeAPI.openMarketPath{
+            let isgoods = responseResult["if_goods"].intValue
+            if isgoods == 1{
+                setStringValueForKey(value: "1", key: Constants.isMarketVer)
+            }else{
+                setStringValueForKey(value: "0", key: Constants.isMarketVer)
+            }
+        }
         else if requestPath.containsStr(find: "/api/danye/3"){
             userAgreementHtml = responseResult["content"].stringValue
         }else if requestPath.containsStr(find: HomeAPI.userinfoPath) {
@@ -318,9 +329,14 @@ class NewLoginController: BaseViewController,Requestable {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+    
         super.viewWillAppear(animated)
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().isEnableAutoToolbar = true
+        
+        let requestParamsP3 = HomeAPI.openMarketPathAndParam()
+        postRequest(pathAndParams: requestParamsP3,showHUD: false)
         
     }
     

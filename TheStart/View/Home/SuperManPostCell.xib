@@ -21,7 +21,7 @@
                         <rect key="frame" x="13" y="5" width="294" height="140"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="pd3-Wc-Flb" secondAttribute="bottom" constant="10" id="SWj-bs-f2p"/>
                     <constraint firstItem="pd3-Wc-Flb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="bap-BB-zZx"/>

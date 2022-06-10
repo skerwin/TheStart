@@ -11,13 +11,14 @@ import ObjectMapper
 
 struct UserModel: Mappable {
     
+    var uid = 0
     var phone = ""
     var captcha = ""
     var password = ""
     var confirm_pwd = ""
     var nickname = ""
     
-    var uid = 0
+    
     var gender = ""
     var birthday = ""
     
@@ -27,7 +28,7 @@ struct UserModel: Mappable {
     var brokerage_pric = ""
     var addres = ""
     var expire_time = 0
-    var coins = 0
+    var coins = ""
     var times = 0
     var is_shiming = 0
     var real_name = ""

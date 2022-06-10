@@ -49,7 +49,7 @@ class MyTextView: UITextView {
     
     @objc func willShowMenu(noti: Notification)  {
         if self.isFirstResponder {
-            print(noti.object)
+            //print(noti.object)
 //            self.selectAll(self)
         }
     }
@@ -63,8 +63,8 @@ class MyTextView: UITextView {
     @objc func copyItemClicked(menu: UIMenuItem) {
         UIMenuController.shared.setMenuVisible(false, animated: false)
         self.resignFirstResponder()
-        print(self.realStr)
-        print("复制")
+        //print(self.realStr)
+        //print("复制")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,7 +72,7 @@ class MyTextView: UITextView {
     }
     
     override var canBecomeFirstResponder: Bool {
-        print("canBecomeFirstResponder")
+        //print("canBecomeFirstResponder")
         return true
     }
     
@@ -82,15 +82,15 @@ class MyTextView: UITextView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesEnded")
+        //print("touchesEnded")
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesCancelled")
+        //print("touchesCancelled")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesBegan")
+        //print("touchesBegan")
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

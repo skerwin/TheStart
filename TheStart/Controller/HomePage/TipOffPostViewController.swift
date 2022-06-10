@@ -70,7 +70,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     override func viewDidLoad() {
         super.viewDidLoad()
         if articleType == 1{
-            self.title = "报黑信息"
+            self.title = "吐槽信息"
         }else{
             self.title = "澄清信息"
         }
@@ -93,13 +93,13 @@ class TipOffPostViewController: BaseViewController,Requestable {
                       let responseJson = JSON(object)
                       addressList = getArrayFromJson(content:responseJson)
                   } else {
-                      print("JSON is invalid")
+                      //print("JSON is invalid")
                   }
               } else {
-                  print("no file")
+                  //print("no file")
               }
           } catch {
-              print(error.localizedDescription)
+              //print(error.localizedDescription)
           }
     }
     func createRightNavItem() {
@@ -391,7 +391,7 @@ extension TipOffPostViewController:ActionSheetCustomPickerDelegate,UIPickerViewD
     
     
     func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
-        print("123")
+        //print("123")
         addressView.addrerssLabel.text = province + city
         
     }
@@ -452,7 +452,7 @@ extension TipOffPostViewController: TipOffPostIImgCellDelegate {
             // 转场动画初始的 UIImage
             transitionalImage: cell?.photoView.image
         ) { index in
-            print(index)
+            //print(index)
             // 转场过渡时起始/结束时 对应的 UIView
             //            self.collectionView.cellForItem(
             //                at: IndexPath(
@@ -622,17 +622,17 @@ extension TipOffPostViewController: PhotoPickerControllerDelegate {
        
 //        result.getImage { (image, photoAsset, index) in
 //
-//            print(photoAsset)
+//            //print(photoAsset)
 //            if let image = image {
 //                self.imageDataArr.append(image.pngData()!)
-//                print("success", image)
+//                //print("success", image)
 //            }else {
-//                print("failed")
+//                //print("failed")
 //            }
 //        } completionHandler: { (images) in
-//            print(images)
+//            //print(images)
 //        }
-//        print(imageDataArr)
+//        //print(imageDataArr)
         
     }
     /// Asset 编辑完后调用

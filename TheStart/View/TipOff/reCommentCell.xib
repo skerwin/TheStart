@@ -36,7 +36,7 @@
                                             <constraint firstAttribute="width" constant="108" id="ZKz-lT-fvI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeB-PL-UNW">
@@ -46,12 +46,15 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="举报" image="jubao"/>
+                                        <state key="normal" title="举报" image="jubao">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="complainActiion:" destination="Afd-jA-tUR" eventType="touchUpInside" id="qFm-CE-YCA"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="fcc-ds-jYW" firstAttribute="centerY" secondItem="Aa5-TY-Kyx" secondAttribute="centerY" id="25F-xN-vIW"/>
                                     <constraint firstAttribute="height" constant="22" id="3C6-kH-LwL"/>
@@ -72,11 +75,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="这是恢复的哈哈哈哈哈哈哈哈哈" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thK-ei-1Le">
                                 <rect key="frame" x="39" y="27" width="212" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Aa5-TY-Kyx" secondAttribute="bottom" id="1DS-ws-vH7"/>
                             <constraint firstAttribute="trailing" secondItem="Aa5-TY-Kyx" secondAttribute="trailing" constant="8" id="2To-el-fkW"/>
@@ -101,7 +104,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="arN-ju-CRb"/>
-            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="complainBtn" destination="XeB-PL-UNW" id="LAT-SL-Z3c"/>
                 <outlet property="contentlabel" destination="thK-ei-1Le" id="00d-lb-dbg"/>
@@ -113,7 +116,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="headNotify" width="45" height="45"/>
+        <image name="headNotify" width="24" height="24"/>
         <image name="jubao" width="16" height="16"/>
     </resources>
 </document>

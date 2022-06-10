@@ -130,13 +130,13 @@ class WorkerPubViewController: BaseViewController,Requestable {
                     addressList = getArrayFromJson(content:responseJson)
                     
                 } else {
-                    print("JSON is invalid")
+                    //print("JSON is invalid")
                 }
             } else {
-                print("no file")
+                //print("no file")
             }
         } catch {
-            print(error.localizedDescription)
+            //print(error.localizedDescription)
         }
         
         let workcateResult = XHNetworkCache.check(withURL: HomeAPI.workCategoryPath)
@@ -491,10 +491,7 @@ extension WorkerPubViewController:UITableViewDataSource,UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = TipOffDetailViewController()
-        
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
+      }
 }
 
 extension WorkerPubViewController: PubMediaCellDelegate {
@@ -609,16 +606,16 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
         pickerController.dismiss(animated: true, completion: nil)
         result.getURLs { [self] urls in
             if self.isImgFile {
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.imageURLArr = urls
                 uploadPhoto(filePath: self.imageURLArr)
             }else{
-                print(self.isImgFile)
+                //print(self.isImgFile)
                 self.vodURLArr = urls
                 uploadPhoto(filePath: self.vodURLArr)
             }
             
-            print(urls)
+            //print(urls)
         }
         
        
@@ -884,7 +881,7 @@ extension WorkerPubViewController:ActionSheetCustomPickerDelegate,UIPickerViewDe
     
     
     func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
-        print("123")
+        //print("123")
 //        if isWorkType == true{
 //            headView.jobTypeText.text = workTypeSub
 //        }else{

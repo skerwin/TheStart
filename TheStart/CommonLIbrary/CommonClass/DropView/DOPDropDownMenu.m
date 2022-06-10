@@ -111,23 +111,19 @@
 #define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 
 #define kTableViewCellHeight 43
-#define kTableViewCellWidth 15
+#define kTableViewCellWidth 17
 #define kTableViewHeight 500
 #define kButtomImageViewHeight 21
 
 
-#define kTextColor [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]
-#define kDetailTextColor [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]
+#define kTextColor [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
+#define kDetailTextColor [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1]
 #define kSeparatorColor [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1]
-#define kCellBgColor  [UIColor grayColor]
-#define kTextSelectColor [UIColor colorWithRed:0/255.0 green:117/255.0 blue:227/255.0 alpha:1]
-
-#define kDropBgColor  [UIColor grayColor]
-//[UIColor colorWithRed:106/255 green:144.0/255  blue:202.0/255 alpha: 1]
+#define kCellBgColor [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]
+#define kTextSelectColor [UIColor colorWithRed:54/255.0 green:126/255.0 blue:228/255.0 alpha:1]
 
 @implementation DOPDropDownMenu {
     CGFloat _tableViewHeight;
-   
     //
 }
 
@@ -261,13 +257,13 @@
     NSMutableArray *tempTitles = [[NSMutableArray alloc] initWithCapacity:_numOfMenu];
     NSMutableArray *tempIndicators = [[NSMutableArray alloc] initWithCapacity:_numOfMenu];
     NSMutableArray *tempBgLayers = [[NSMutableArray alloc] initWithCapacity:_numOfMenu];
-    self.layer.backgroundColor = kDropBgColor.CGColor;
-    self.backgroundColor = kDropBgColor;
+    self.layer.backgroundColor = [UIColor colorWithRed:251/255 green:253.0/255  blue:255.0/255 alpha: 1].CGColor;
+    self.backgroundColor = [UIColor colorWithRed:250.0/255 green:253.0/255  blue:240.0/255 alpha: 1];
     
     for (int i = 0; i < _numOfMenu; i++) {
         //bgLayer colorWithRed:246 green:250 blue:249 alpha: 1
         CGPoint bgLayerPosition = CGPointMake((i+0.5)*bgLayerInterval, self.frame.size.height/2);
-        CALayer *bgLayer = [self createBgLayerWithColor:kDropBgColor andPosition:bgLayerPosition];
+        CALayer *bgLayer = [self createBgLayerWithColor:[UIColor colorWithRed:250.0/255 green:253.0/255  blue:255.0/255 alpha: 1] andPosition:bgLayerPosition];
         [self.layer addSublayer:bgLayer];
         [tempBgLayers addObject:bgLayer];
         
@@ -282,7 +278,7 @@
             titleString =[_dataSource menu:self titleForRowAtIndexPath:[DOPIndexPath indexPathWithCol:i row:0]];
         }
         
-        CATextLayer *title = [self createTextLayerWithNSString:titleString withColor:self.textColor andPosition:titlePosition];
+        CATextLayer *title = [self createTextLayerWithNSString:titleString withColor:self.textSelectedColor andPosition:titlePosition];
         [self.layer addSublayer:title];
         [tempTitles addObject:title];
         
@@ -346,10 +342,9 @@
         _leftTableView.separatorColor = kSeparatorColor;
         //_leftTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _leftTableView.separatorInset = UIEdgeInsetsZero;
-        _leftTableView.backgroundColor = UIColor.grayColor;
         _leftTableView.tableFooterView = [[UIView alloc]init];
-        _leftTableView.layer.borderWidth = 0.5;
-        _leftTableView.layer.borderColor = kSeparatorColor.CGColor;
+        _leftTableView.layer.borderWidth = 1;
+        _leftTableView.layer.borderColor = UIColor.groupTableViewBackgroundColor.CGColor;
 
         
         //righttableView init
@@ -357,26 +352,24 @@
         _rightTableView.rowHeight = kTableViewCellHeight;
         _rightTableView.dataSource = self;
         _rightTableView.delegate = self;
-        _rightTableView.backgroundColor = UIColor.grayColor;
         _rightTableView.separatorColor = kSeparatorColor;
         //_rightTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _rightTableView.separatorInset = UIEdgeInsetsZero;
         _rightTableView.tableFooterView = [[UIView alloc]init];
-        _rightTableView.layer.borderWidth = 0.5;
-        _rightTableView.layer.borderColor = kSeparatorColor.CGColor;
+     
         
         _buttomImageView = [[UIImageView alloc]initWithFrame:CGRectMake(origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, kButtomImageViewHeight)];
         _buttomImageView.image = [UIImage imageNamed:@"icon_chose_bottom"];
         
         //self tapped
-        self.backgroundColor =[UIColor colorWithRed:97/255.0 green:97/255.0 blue:97/255.0 alpha:0.5];
+        self.backgroundColor = [UIColor colorWithRed:250.0/255 green:253.0/255  blue:255.0/255 alpha: 1];
         
         UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(menuTapped:)];
         [self addGestureRecognizer:tapGesture];
         
         //background init and tapped
         _backGroundView = [[UIView alloc] initWithFrame:CGRectMake(origin.x, origin.y, screenSize.width, screenSize.height)];
-        _backGroundView.backgroundColor = UIColor.clearColor;
+        _backGroundView.backgroundColor = [UIColor clearColor];
         _backGroundView.opaque = NO;
         UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapped:)];
         [_backGroundView addGestureRecognizer:gesture];
@@ -397,7 +390,7 @@
     
     layer.position = position;
     layer.bounds = CGRectMake(0, 0, self.frame.size.width/self.numOfMenu, self.frame.size.height-1);
-    layer.backgroundColor = kDropBgColor.CGColor;
+    layer.backgroundColor = [UIColor colorWithRed:250.0/255 green:253.0/255  blue:255.0/255 alpha: 1].CGColor;
     
     return layer;
 }
@@ -413,7 +406,7 @@
     
     layer.path = path.CGPath;
     layer.lineWidth = 0.8;
-    layer.fillColor = kTextColor.CGColor;
+    layer.fillColor = UIColor.grayColor.CGColor;
     
     CGPathRef bound = CGPathCreateCopyByStrokingPath(layer.path, nil, layer.lineWidth, kCGLineCapButt, kCGLineJoinMiter, layer.miterLimit);
     layer.bounds = CGPathGetBoundingBox(bound);
@@ -533,7 +526,7 @@
     
     if (forward) {
         // 展开
-        indicator.fillColor = _textColor.CGColor;
+        indicator.fillColor = _textSelectedColor.CGColor;
     } else {
         // 收缩
         indicator.fillColor = _textColor.CGColor;
@@ -547,11 +540,11 @@
         [self.superview addSubview:view];
         [view.superview addSubview:self];
         [UIView animateWithDuration:0.2 animations:^{
-            view.backgroundColor = [UIColor colorWithRed:97/255.0 green:97/255.0 blue:97/255.0 alpha:0.5];
+            view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
         }];
     } else {
         [UIView animateWithDuration:0.2 animations:^{
-            view.backgroundColor = [UIColor colorWithRed:97/255.0 green:97/255.0 blue:97/255.0 alpha:0.5];
+            view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
         } completion:^(BOOL finished) {
             [view removeFromSuperview];
         }];
@@ -600,10 +593,6 @@
         [self.superview addSubview:_buttomImageView];
         
         NSInteger num = [_leftTableView numberOfRowsInSection:0];
-        
-        if (num > 8){
-            num = 8;
-        }
         CGFloat tableViewHeight = num * kTableViewCellHeight > _tableViewHeight+1 ? _tableViewHeight:num*kTableViewCellHeight+1;
         
         [UIView animateWithDuration:0.2 animations:^{
@@ -646,9 +635,9 @@
     CGFloat sizeWidth = (size.width < (self.frame.size.width / _numOfMenu) - 25) ? size.width : self.frame.size.width / _numOfMenu - 25;
     title.bounds = CGRectMake(0, 0, sizeWidth, size.height);
     if (!show) {
-        title.foregroundColor = _textColor.CGColor;
+        title.foregroundColor = _textSelectedColor.CGColor;
     } else {
-        title.foregroundColor = _textColor.CGColor;
+        title.foregroundColor = _textSelectedColor.CGColor;
     }
     complete();
 }
@@ -698,7 +687,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:_cellStyle reuseIdentifier:identifier];
         //cell.separatorInset = UIEdgeInsetsZero;
         DOPBackgroundCellView *bg = [[DOPBackgroundCellView alloc]init];
-        bg.backgroundColor = kCellBgColor;
+        bg.backgroundColor = [UIColor whiteColor];
         cell.selectedBackgroundView = bg;
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.highlightedTextColor = _textSelectedColor;
@@ -793,7 +782,7 @@
             cell.textLabel.text = @"不限";
         }
         
-        cell.backgroundColor = kCellBgColor;
+        cell.backgroundColor = [UIColor whiteColor];
         cell.accessoryView = nil;
     }
     

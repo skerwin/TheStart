@@ -110,7 +110,7 @@ class BaseTableViewCell: UITableViewCell {
 extension BaseTableViewCell {
 
     @objc func resend() {
-        print("重新发送操作")
+        //print("重新发送操作")
 //        guard let message = model?.message else {
 //            return
 //        }

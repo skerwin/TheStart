@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        setStringValueForKey(value: "0", key: Constants.isMarketVer)
+        
  
         PaySDK.alipayAppid = aliPayAPPID
         WXApi.registerApp(weixinAPPID, universalLink: weixinUniversalLink)

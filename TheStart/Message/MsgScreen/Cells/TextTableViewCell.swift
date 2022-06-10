@@ -38,7 +38,7 @@ class TextTableViewCell: BaseTableViewCell {
     @objc func longPressAction(sender: UILongPressGestureRecognizer) {
         
         if sender.state == .began {
-            print("长按")
+            //print("长按")
             self.becomeFirstResponder()
 //            delegate?.longPress(row: 1)
             let menu = UIMenuController.shared
@@ -61,7 +61,7 @@ class TextTableViewCell: BaseTableViewCell {
     }
     
     @objc func copyItemClicked(menu: UIMenuItem) {
-        print("复制")
+        //print("复制")
     }
 
     required init?(coder aDecoder: NSCoder) {

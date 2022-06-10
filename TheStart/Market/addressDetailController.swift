@@ -130,19 +130,18 @@ class addressDetailController: BaseViewController,Requestable {
                       let responseJson = JSON(object)
                       addressList = getArrayFromJson(content:responseJson)
                   } else {
-                      print("JSON is invalid")
+                      //print("JSON is invalid")
                   }
               } else {
-                  print("no file")
+                  //print("no file")
               }
           } catch {
-              print(error.localizedDescription)
+              //print(error.localizedDescription)
           }
     }
     
     
     @objc func cityTFAction(){
-       print("1345")
         isNextDepartment = false
         isNextDepartment1 = false
         nextDepartmentsList = addressList.first!.children

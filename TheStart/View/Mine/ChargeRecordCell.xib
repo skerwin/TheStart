@@ -93,6 +93,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="AsN-pI-8mr" id="UzE-jF-NKu"/>
+                <outlet property="orderLabel" destination="rpF-c4-YFI" id="AEg-rv-3ol"/>
+                <outlet property="orderType" destination="ax6-aP-2da" id="rfv-62-a8d"/>
+                <outlet property="tiemLabel" destination="bf4-Pq-Ady" id="5iq-4d-bYn"/>
+                <outlet property="zhifuLabel" destination="lJK-mq-zoo" id="jHc-kR-uK4"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="126.89732142857142"/>
         </tableViewCell>
     </objects>

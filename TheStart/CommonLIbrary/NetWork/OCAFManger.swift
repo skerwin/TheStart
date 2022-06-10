@@ -46,8 +46,8 @@ class OCAFManger: NSObject {
                 }
                 let responseJson = JSON(dict)
                 let responseData = responseJson[BerResponseConstants.responseData]
-                print(upUrlstr)
-                print(responseJson)
+                //print(upUrlstr)
+                //print(responseJson)
                 if responseJson["code"].intValue == 1 {
                     
                   
@@ -68,11 +68,11 @@ class OCAFManger: NSObject {
                 }else{
                     let msg = responseJson["msg"].stringValue
                     failure(msg)
-                   // print(content + msg)
+                   // //print(content + msg)
                 }
             case .failure:
                 failure("图片服务器出错")
-                print("图片上传出错")
+                //print("图片上传出错")
             }
         }
     }

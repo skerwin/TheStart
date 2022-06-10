@@ -221,7 +221,7 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
             transitionalImage: cell?.photoView.image
         ) { index in
             // 转场过渡时起始/结束时 对应的 UIView
-            print(index)
+            //print(index)
             return self.collectionView.cellForItem(
                 at: IndexPath(
                     item: index,

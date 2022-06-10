@@ -203,7 +203,6 @@
 		B86AEFF0283A1C150065B96E /* AuthenSuuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */; };
 		B86AEFF2283A1FCD0065B96E /* InfoAuthenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */; };
 		B86AEFF4283A26240065B96E /* AuthenSuuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */; };
-		B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */; };
 		B8AB69CC28081C800064861C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CB28081C800064861C /* Home.storyboard */; };
 		B8AB69D2280901490064861C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB69CE280901480064861C /* CommentCell.swift */; };
 		B8AB69D3280901490064861C /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AB69CF280901480064861C /* CommentCell.xib */; };
@@ -337,6 +336,7 @@
 		B8B80513283E0B1300EB9109 /* addressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80511283E0B1300EB9109 /* addressListCell.swift */; };
 		B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80512283E0B1300EB9109 /* addressListCell.xib */; };
 		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
+		B8BFA6B9285327B400F5F41B /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BFA6B8285327B400F5F41B /* DatePickerDialog.swift */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -563,7 +563,6 @@
 		B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenSuuccessView.swift; sourceTree = "<group>"; };
 		B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAuthenController.swift; sourceTree = "<group>"; };
 		B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenSuuccessController.swift; sourceTree = "<group>"; };
-		B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerDialog.swift; path = "../../../../医路护卫/YiLuHuWei/YiLuHuWei/CommonLIbrary/Utils/DatePickerDialog.swift"; sourceTree = "<group>"; };
 		B89B78C6282E34EC007D7D54 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStartRelease.entitlements; sourceTree = "<group>"; };
 		B8AB69CB28081C800064861C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -702,6 +701,7 @@
 		B8B80511283E0B1300EB9109 /* addressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressListCell.swift; sourceTree = "<group>"; };
 		B8B80512283E0B1300EB9109 /* addressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressListCell.xib; sourceTree = "<group>"; };
 		B8B80515283E0B8500EB9109 /* addressDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressDetailController.swift; sourceTree = "<group>"; };
+		B8BFA6B8285327B400F5F41B /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheStart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F88421BB679DB879E0690 /* Pods-TheStart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart.release.xcconfig"; path = "Target Support Files/Pods-TheStart/Pods-TheStart.release.xcconfig"; sourceTree = "<group>"; };
@@ -1287,7 +1287,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B804F8283CFF1E00EB9109 /* CheckTool.swift */,
-				B86BDCA4282E70BC00868444 /* DatePickerDialog.swift */,
+				B8BFA6B8285327B400F5F41B /* DatePickerDialog.swift */,
 				B8AC50272807C60E00C2CF26 /* JSONUtils.swift */,
 				B8AC50282807C60E00C2CF26 /* CacheTool.swift */,
 				B8AC50292807C60E00C2CF26 /* DateUtils.swift */,
@@ -1810,6 +1810,7 @@
 				B85FDA5F2823BB3800EDA845 /* PMKPageMenuItemTab.swift in Sources */,
 				B85FAFA6280F065E00D25B66 /* WorkerViewCell.swift in Sources */,
 				B85FDA6C2824B9B500EDA845 /* MineStarCoinHeder.swift in Sources */,
+				B8BFA6B9285327B400F5F41B /* DatePickerDialog.swift in Sources */,
 				B8AC510D280800C700C2CF26 /* Requestable.swift in Sources */,
 				B85FDA6F2824BC4800EDA845 /* MyStarCoinController.swift in Sources */,
 				B8AD4043281E293F0001D7F4 /* TipOffModel.swift in Sources */,
@@ -1882,7 +1883,6 @@
 				B85FB01A28116A8300D25B66 /* ChatEmotion.swift in Sources */,
 				B8AC51062807FF9800C2CF26 /* Result.swift in Sources */,
 				B8AD4011281A7D920001D7F4 /* SuperManCell.swift in Sources */,
-				B86BDCA5282E70BC00868444 /* DatePickerDialog.swift in Sources */,
 				B8AC50202807C5F400C2CF26 /* AccountAndPasswordPresenter.swift in Sources */,
 				B83C6398280D4D6800A3282D /* WokerPubHeaderView.swift in Sources */,
 				B8AC50352807C60E00C2CF26 /* JSONUtils.swift in Sources */,

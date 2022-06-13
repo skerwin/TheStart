@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		88E61900AA56B5025C0B6628 /* Pods_TheStart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9B32900CB1F44F2A3E4CD3D3 /* Pods_TheStartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A5D45D6EC2524E3815D95F /* Pods_TheStartTests.framework */; };
-		B802E227282A389200B5057A /* CashOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E226282A389200B5057A /* CashOutViewController.swift */; };
-		B802E22B282A458400B5057A /* CashOutStutateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E22A282A458400B5057A /* CashOutStutateController.swift */; };
-		B802E22E282A45C200B5057A /* CashOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E22C282A45C200B5057A /* CashOutCell.swift */; };
-		B802E22F282A45C200B5057A /* CashOutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E22D282A45C200B5057A /* CashOutCell.xib */; };
-		B802E231282A47DC00B5057A /* CashOutHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E230282A47DC00B5057A /* CashOutHeader.swift */; };
-		B802E233282A47F200B5057A /* CashOutHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E232282A47F200B5057A /* CashOutHeader.xib */; };
 		B802E236282B44FB00B5057A /* VipCenterHeader1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E234282B44FB00B5057A /* VipCenterHeader1.swift */; };
 		B802E237282B44FB00B5057A /* VipCenterHeader1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B802E235282B44FB00B5057A /* VipCenterHeader1.xib */; };
 		B802E23C282B456100B5057A /* VipCenterHeader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E23A282B456100B5057A /* VipCenterHeader2.swift */; };
@@ -25,8 +19,6 @@
 		B802E247282BF76800B5057A /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E246282BF76800B5057A /* MyOrderViewController.swift */; };
 		B802E249282BF7B700B5057A /* SellOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E248282BF7B700B5057A /* SellOrderViewController.swift */; };
 		B802E24B282BF7CA00B5057A /* BuyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */; };
-		B802E252282DF12900B5057A /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E251282DF12800B5057A /* PayModel.swift */; };
-		B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E253282DF1EE00B5057A /* PaySDK.swift */; };
 		B802E256282E09DB00B5057A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E255282E09DB00B5057A /* libc++.tbd */; };
 		B802E258282E0A1100B5057A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E257282E0A1100B5057A /* libz.tbd */; };
 		B802E25A282E0A2200B5057A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E259282E0A2200B5057A /* SystemConfiguration.framework */; };
@@ -38,7 +30,6 @@
 		B802E265282E0A6500B5057A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B85FAFC9280FD61600D25B66 /* Foundation.framework */; };
 		B802E267282E0A6C00B5057A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E266282E0A6C00B5057A /* CFNetwork.framework */; };
 		B802E269282E0A7300B5057A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802E268282E0A7300B5057A /* CoreMotion.framework */; };
-		B802E26B282E279500B5057A /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802E26A282E279500B5057A /* PayViewController.swift */; };
 		B81420C82828B09400B4F6B5 /* MusicDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */; };
 		B81420CA2828B0A800B4F6B5 /* MusicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */; };
 		B81420CE2828E71000B4F6B5 /* AuthorDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */; };
@@ -51,13 +42,6 @@
 		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
 		B831E175283511EB0008670C /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E174283511EB0008670C /* ContactModel.swift */; };
 		B839AF58283E13E400C9B25C /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF57283E13E400C9B25C /* AddressModel.swift */; };
-		B839AF5B283E71A300C9B25C /* GoodDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF59283E71A200C9B25C /* GoodDetailCell.swift */; };
-		B839AF5C283E71A300C9B25C /* GoodDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */; };
-		B839AF5E283F245D00C9B25C /* GoodsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF5D283F245D00C9B25C /* GoodsMenuController.swift */; };
-		B839AF60283F246B00C9B25C /* GoodsOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF5F283F246B00C9B25C /* GoodsOrderController.swift */; };
-		B839AF63283F2EEA00C9B25C /* GoodsOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF61283F2EEA00C9B25C /* GoodsOrderCell.swift */; };
-		B839AF64283F2EEA00C9B25C /* GoodsOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B839AF62283F2EEA00C9B25C /* GoodsOrderCell.xib */; };
-		B839AF66283F7E4C00C9B25C /* CashOutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AF65283F7E4C00C9B25C /* CashOutModel.swift */; };
 		B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */; };
 		B83C633F280AAD7D00A3282D /* TextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83C633B280AAD7D00A3282D /* TextViewCell.m */; };
 		B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C6345280ABE9700A3282D /* TipOffpootContentCell.swift */; };
@@ -101,7 +85,6 @@
 		B83C639D280D56F100A3282D /* WokerPubIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C639B280D56F100A3282D /* WokerPubIntroCell.swift */; };
 		B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B83C639C280D56F100A3282D /* WokerPubIntroCell.xib */; };
 		B83C63A3280D6DE000A3282D /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C63A2280D6DDF00A3282D /* MineViewController.swift */; };
-		B85093272837A05C001E5A8B /* CashierDeskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85093262837A05C001E5A8B /* CashierDeskController.swift */; };
 		B85093292837A169001E5A8B /* StarCoinChargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85093282837A169001E5A8B /* StarCoinChargeController.swift */; };
 		B855361C2835F20900E3C287 /* MyStarCoinFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */; };
 		B855361D2835F20900E3C287 /* MyStarCoinFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855361B2835F20900E3C287 /* MyStarCoinFootView.xib */; };
@@ -328,19 +311,7 @@
 		B8B804F5283BC64500EB9109 /* ChargeOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */; };
 		B8B804F7283CF97E00EB9109 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F6283CF97E00EB9109 /* OrderModel.swift */; };
 		B8B804F9283CFF1E00EB9109 /* CheckTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804F8283CFF1E00EB9109 /* CheckTool.swift */; };
-		B8B804FC283DC8F500EB9109 /* goodsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FB283DC8F500EB9109 /* goodsListController.swift */; };
-		B8B804FE283DCD3700EB9109 /* GoodsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */; };
-		B8B80500283DD17A00EB9109 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B804FF283DD17A00EB9109 /* GoodsModel.swift */; };
-		B8B80502283DD42300EB9109 /* GoodDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */; };
-		B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */; };
 		B8B80508283DDC4800EB9109 /* part-00167-3579.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */; };
-		B8B8050B283DE59200EB9109 /* GoodeDetailLineewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */; };
-		B8B8050C283DE59200EB9109 /* GoodeDetailLineewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */; };
-		B8B8050E283E042200EB9109 /* GoodsCashDeskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */; };
-		B8B80510283E0AED00EB9109 /* addressListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8050F283E0AED00EB9109 /* addressListController.swift */; };
-		B8B80513283E0B1300EB9109 /* addressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80511283E0B1300EB9109 /* addressListCell.swift */; };
-		B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80512283E0B1300EB9109 /* addressListCell.xib */; };
-		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
 		B8BFA6B72850A70000F5F41B /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
 /* End PBXBuildFile section */
@@ -368,12 +339,6 @@
 		51EF34F117550ECFF9E85524 /* Pods-TheStartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStartTests.release.xcconfig"; path = "Target Support Files/Pods-TheStartTests/Pods-TheStartTests.release.xcconfig"; sourceTree = "<group>"; };
 		8F3EB2FCF536E1EAF138313D /* Pods-TheStart-TheStartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.debug.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0A5D45D6EC2524E3815D95F /* Pods_TheStartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheStartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B802E226282A389200B5057A /* CashOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutViewController.swift; sourceTree = "<group>"; };
-		B802E22A282A458400B5057A /* CashOutStutateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutStutateController.swift; sourceTree = "<group>"; };
-		B802E22C282A45C200B5057A /* CashOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutCell.swift; sourceTree = "<group>"; };
-		B802E22D282A45C200B5057A /* CashOutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashOutCell.xib; sourceTree = "<group>"; };
-		B802E230282A47DC00B5057A /* CashOutHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutHeader.swift; sourceTree = "<group>"; };
-		B802E232282A47F200B5057A /* CashOutHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashOutHeader.xib; sourceTree = "<group>"; };
 		B802E234282B44FB00B5057A /* VipCenterHeader1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipCenterHeader1.swift; sourceTree = "<group>"; };
 		B802E235282B44FB00B5057A /* VipCenterHeader1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VipCenterHeader1.xib; sourceTree = "<group>"; };
 		B802E23A282B456100B5057A /* VipCenterHeader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipCenterHeader2.swift; sourceTree = "<group>"; };
@@ -385,8 +350,6 @@
 		B802E248282BF7B700B5057A /* SellOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellOrderViewController.swift; sourceTree = "<group>"; };
 		B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrderViewController.swift; sourceTree = "<group>"; };
 		B802E250282CE85400B5057A /* TheStart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheStart.entitlements; sourceTree = "<group>"; };
-		B802E251282DF12800B5057A /* PayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
-		B802E253282DF1EE00B5057A /* PaySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaySDK.swift; sourceTree = "<group>"; };
 		B802E255282E09DB00B5057A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		B802E257282E0A1100B5057A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B802E259282E0A2200B5057A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -397,7 +360,6 @@
 		B802E263282E0A5F00B5057A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B802E266282E0A6C00B5057A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B802E268282E0A7300B5057A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		B802E26A282E279500B5057A /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		B81420C72828B09400B4F6B5 /* MusicDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailHeader.swift; sourceTree = "<group>"; };
 		B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicDetailHeader.xib; sourceTree = "<group>"; };
 		B81420CD2828E71000B4F6B5 /* AuthorDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetailController.swift; sourceTree = "<group>"; };
@@ -410,13 +372,6 @@
 		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B831E174283511EB0008670C /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		B839AF57283E13E400C9B25C /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
-		B839AF59283E71A200C9B25C /* GoodDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailCell.swift; sourceTree = "<group>"; };
-		B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailCell.xib; sourceTree = "<group>"; };
-		B839AF5D283F245D00C9B25C /* GoodsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsMenuController.swift; sourceTree = "<group>"; };
-		B839AF5F283F246B00C9B25C /* GoodsOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsOrderController.swift; sourceTree = "<group>"; };
-		B839AF61283F2EEA00C9B25C /* GoodsOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsOrderCell.swift; sourceTree = "<group>"; };
-		B839AF62283F2EEA00C9B25C /* GoodsOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodsOrderCell.xib; sourceTree = "<group>"; };
-		B839AF65283F7E4C00C9B25C /* CashOutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashOutModel.swift; sourceTree = "<group>"; };
 		B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheStart-Bridging-Header.h"; sourceTree = "<group>"; };
 		B83C633A280AAD7D00A3282D /* UITextView+PlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+PlaceHolder.m"; sourceTree = "<group>"; };
 		B83C633B280AAD7D00A3282D /* TextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewCell.m; sourceTree = "<group>"; };
@@ -463,7 +418,6 @@
 		B83C639B280D56F100A3282D /* WokerPubIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WokerPubIntroCell.swift; sourceTree = "<group>"; };
 		B83C639C280D56F100A3282D /* WokerPubIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WokerPubIntroCell.xib; sourceTree = "<group>"; };
 		B83C63A2280D6DDF00A3282D /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
-		B85093262837A05C001E5A8B /* CashierDeskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashierDeskController.swift; sourceTree = "<group>"; };
 		B85093282837A169001E5A8B /* StarCoinChargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCoinChargeController.swift; sourceTree = "<group>"; };
 		B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStarCoinFootView.swift; sourceTree = "<group>"; };
 		B855361B2835F20900E3C287 /* MyStarCoinFootView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStarCoinFootView.xib; sourceTree = "<group>"; };
@@ -697,19 +651,7 @@
 		B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeOrderController.swift; sourceTree = "<group>"; };
 		B8B804F6283CF97E00EB9109 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		B8B804F8283CFF1E00EB9109 /* CheckTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTool.swift; sourceTree = "<group>"; };
-		B8B804FB283DC8F500EB9109 /* goodsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodsListController.swift; sourceTree = "<group>"; };
-		B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDetailController.swift; sourceTree = "<group>"; };
-		B8B804FF283DD17A00EB9109 /* GoodsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = "<group>"; };
-		B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodDetailHeader.swift; sourceTree = "<group>"; };
-		B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodDetailHeader.xib; sourceTree = "<group>"; };
 		B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "part-00167-3579.jpg"; sourceTree = "<group>"; };
-		B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodeDetailLineewCell.swift; sourceTree = "<group>"; };
-		B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoodeDetailLineewCell.xib; sourceTree = "<group>"; };
-		B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsCashDeskController.swift; sourceTree = "<group>"; };
-		B8B8050F283E0AED00EB9109 /* addressListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressListController.swift; sourceTree = "<group>"; };
-		B8B80511283E0B1300EB9109 /* addressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressListCell.swift; sourceTree = "<group>"; };
-		B8B80512283E0B1300EB9109 /* addressListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressListCell.xib; sourceTree = "<group>"; };
-		B8B80515283E0B8500EB9109 /* addressDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressDetailController.swift; sourceTree = "<group>"; };
 		B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
 		B8BFA6B52850A70000F5F41B /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -859,10 +801,6 @@
 				B8AE031B282A05A800FBE3B7 /* MusicAuthorVideoHeader.xib */,
 				B8AE0323282A113C00FBE3B7 /* SelfIntroCell.swift */,
 				B8AE0324282A113C00FBE3B7 /* SelfIntroCell.xib */,
-				B802E22C282A45C200B5057A /* CashOutCell.swift */,
-				B802E22D282A45C200B5057A /* CashOutCell.xib */,
-				B802E230282A47DC00B5057A /* CashOutHeader.swift */,
-				B802E232282A47F200B5057A /* CashOutHeader.xib */,
 				B86AEFEF283A1C150065B96E /* AuthenSuuccessView.swift */,
 				B86AEFED283A1C040065B96E /* AuthenSuuccessView.xib */,
 				B822E7CC283BB0FF002558D9 /* OrderCell.swift */,
@@ -1105,7 +1043,6 @@
 		B8AB69EC280971F80064861C /* CommonClass */ = {
 			isa = PBXGroup;
 			children = (
-				B802E253282DF1EE00B5057A /* PaySDK.swift */,
 				B8AD404B281EE1550001D7F4 /* ActionSheetViewController.swift */,
 				B8AD404A281EE1550001D7F4 /* TitleCell.swift */,
 				B83C6336280AAC7D00A3282D /* TheStart-Bridging-Header.h */,
@@ -1152,7 +1089,6 @@
 		B8AC4FDA2807BE4200C2CF26 /* TheStart */ = {
 			isa = PBXGroup;
 			children = (
-				B8B804FA283DC89900EB9109 /* Market */,
 				B89B78CA282E3B37007D7D54 /* TheStartRelease.entitlements */,
 				B802E250282CE85400B5057A /* TheStart.entitlements */,
 				B8AB69FB280A9FBF0064861C /* testCell.swift */,
@@ -1228,8 +1164,6 @@
 				B8AD40642822951C0001D7F4 /* JobModel.swift */,
 				B85FDA622823CB2D00EDA845 /* AudioModel.swift */,
 				B85FDA662823E36200EDA845 /* AuthorModel.swift */,
-				B802E251282DF12800B5057A /* PayModel.swift */,
-				B839AF65283F7E4C00C9B25C /* CashOutModel.swift */,
 				B8B804F6283CF97E00EB9109 /* OrderModel.swift */,
 				B839AF57283E13E400C9B25C /* AddressModel.swift */,
 			);
@@ -1326,7 +1260,6 @@
 				B8AB69F9280A9F3A0064861C /* TipOffPostViewController.swift */,
 				B8AD402C281B8E940001D7F4 /* SuperManListController.swift */,
 				B8AD406628239A450001D7F4 /* NotifyWebDetailController.swift */,
-				B802E26A282E279500B5057A /* PayViewController.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1370,14 +1303,11 @@
 				B85FDA702824BC6800EDA845 /* VipCenterViewController.swift */,
 				B85FDA722824BC7A00EDA845 /* MyPubViewController.swift */,
 				B85FDA742824BCB500EDA845 /* MyCollectViewController.swift */,
-				B802E226282A389200B5057A /* CashOutViewController.swift */,
-				B802E22A282A458400B5057A /* CashOutStutateController.swift */,
 				B802E244282BF1EC00B5057A /* MyToPubController.swift */,
 				B802E246282BF76800B5057A /* MyOrderViewController.swift */,
 				B802E248282BF7B700B5057A /* SellOrderViewController.swift */,
 				B802E24A282BF7CA00B5057A /* BuyOrderViewController.swift */,
 				B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */,
-				B85093262837A05C001E5A8B /* CashierDeskController.swift */,
 				B85093282837A169001E5A8B /* StarCoinChargeController.swift */,
 				B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */,
 				B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */,
@@ -1428,31 +1358,6 @@
 			path = NetWork;
 			sourceTree = "<group>";
 		};
-		B8B804FA283DC89900EB9109 /* Market */ = {
-			isa = PBXGroup;
-			children = (
-				B8B804FB283DC8F500EB9109 /* goodsListController.swift */,
-				B8B804FD283DCD3600EB9109 /* GoodsDetailController.swift */,
-				B8B8050D283E042200EB9109 /* GoodsCashDeskController.swift */,
-				B8B8050F283E0AED00EB9109 /* addressListController.swift */,
-				B8B80515283E0B8500EB9109 /* addressDetailController.swift */,
-				B839AF5D283F245D00C9B25C /* GoodsMenuController.swift */,
-				B839AF5F283F246B00C9B25C /* GoodsOrderController.swift */,
-				B8B804FF283DD17A00EB9109 /* GoodsModel.swift */,
-				B8B80509283DE59200EB9109 /* GoodeDetailLineewCell.swift */,
-				B8B8050A283DE59200EB9109 /* GoodeDetailLineewCell.xib */,
-				B8B80501283DD42300EB9109 /* GoodDetailHeader.swift */,
-				B8B80503283DD42F00EB9109 /* GoodDetailHeader.xib */,
-				B8B80511283E0B1300EB9109 /* addressListCell.swift */,
-				B8B80512283E0B1300EB9109 /* addressListCell.xib */,
-				B839AF59283E71A200C9B25C /* GoodDetailCell.swift */,
-				B839AF5A283E71A300C9B25C /* GoodDetailCell.xib */,
-				B839AF61283F2EEA00C9B25C /* GoodsOrderCell.swift */,
-				B839AF62283F2EEA00C9B25C /* GoodsOrderCell.xib */,
-			);
-			path = Market;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1465,7 +1370,6 @@
 				B8AC4FD52807BE4200C2CF26 /* Frameworks */,
 				B8AC4FD62807BE4200C2CF26 /* Resources */,
 				E3E057DF9328DA4B64D6230C /* [CP] Embed Pods Frameworks */,
-				B2CF387602E153C83C882A2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1504,7 +1408,6 @@
 				B8AC4FF52807BE4400C2CF26 /* Frameworks */,
 				B8AC4FF62807BE4400C2CF26 /* Resources */,
 				CB47D9E99673F51FF0DA243D /* [CP] Embed Pods Frameworks */,
-				2FC51328B41A7492DC11C22E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1569,7 +1472,6 @@
 				B8AB69F82809A12B0064861C /* TipOffContentView.xib in Resources */,
 				B85FB01F28116A8300D25B66 /* Expression.plist in Resources */,
 				B8AD403F281CD6990001D7F4 /* cityjson.json in Resources */,
-				B802E22F282A45C200B5057A /* CashOutCell.xib in Resources */,
 				B8AD4047281E5B8D0001D7F4 /* EmptyDataView.xib in Resources */,
 				B81420CA2828B0A800B4F6B5 /* MusicDetailHeader.xib in Resources */,
 				B85FAF92280E9F9D00D25B66 /* MusicViewCell.xib in Resources */,
@@ -1579,16 +1481,13 @@
 				B85FDA7F28250B1500EDA845 /* launch.png in Resources */,
 				B8AB69D3280901490064861C /* CommentCell.xib in Resources */,
 				B85FAFBD280FAFFD00D25B66 /* Loading_4@2x.tiff in Resources */,
-				B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */,
 				B8AD4051281FD6D30001D7F4 /* TipOffListCell2.xib in Resources */,
 				B8AE031A282A051700FBE3B7 /* MusicAuthorVideoFooter.xib in Resources */,
 				B83C6394280D166600A3282D /* PubMediaCell.xib in Resources */,
 				B85FDA692824B76800EDA845 /* test.png in Resources */,
-				B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */,
 				B83C639A280D4D7600A3282D /* WokerPubHeaderView.xib in Resources */,
 				B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */,
 				B8AE031C282A05A800FBE3B7 /* MusicAuthorVideoHeader.xib in Resources */,
-				B839AF5C283E71A300C9B25C /* GoodDetailCell.xib in Resources */,
 				B83C637C280CFC3000A3282D /* WorkerInfoCell.xib in Resources */,
 				B8AB69FE280A9FBF0064861C /* testCell.xib in Resources */,
 				B8AD4026281B875F0001D7F4 /* 111222.jpg in Resources */,
@@ -1600,7 +1499,6 @@
 				B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */,
 				B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */,
 				B83C6388280D0B0300A3282D /* BaseImageBrowserCell.xib in Resources */,
-				B8B8050C283DE59200EB9109 /* GoodeDetailLineewCell.xib in Resources */,
 				B85FAFA7280F065E00D25B66 /* WorkerViewCell.xib in Resources */,
 				B8AD4013281A7D920001D7F4 /* HomeSubscribeCell.xib in Resources */,
 				B83C6348280ABE9700A3282D /* TipOffpootContentCell.xib in Resources */,
@@ -1622,7 +1520,6 @@
 				B85FAFC2280FAFFD00D25B66 /* Loading_2@2x.tiff in Resources */,
 				B85FB00128116A8300D25B66 /* ZhuanFaViewController.storyboard in Resources */,
 				B8AB69D5280901490064861C /* reCommentCell.xib in Resources */,
-				B802E233282A47F200B5057A /* CashOutHeader.xib in Resources */,
 				B85FAFA3280F05D400D25B66 /* JobViewCell.xib in Resources */,
 				B8AB69F42809985A0064861C /* TipOffHeaderView.xib in Resources */,
 				B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */,
@@ -1647,7 +1544,6 @@
 				B8AB69CC28081C800064861C /* Home.storyboard in Resources */,
 				B83C639E280D56F100A3282D /* WokerPubIntroCell.xib in Resources */,
 				B85FAFBE280FAFFD00D25B66 /* Loading_5@2x.tiff in Resources */,
-				B839AF64283F2EEA00C9B25C /* GoodsOrderCell.xib in Resources */,
 				B822E7CF283BB0FF002558D9 /* OrderCell.xib in Resources */,
 				B802E23F282B638000B5057A /* 120icon.png in Resources */,
 				B8B80508283DDC4800EB9109 /* part-00167-3579.jpg in Resources */,
@@ -1674,23 +1570,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2FC51328B41A7492DC11C22E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		90373418B4AC9A8A44A928EC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1711,23 +1590,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2CF387602E153C83C882A2F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B4C11E66516ACB74FA7A41F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -1816,9 +1678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B831E175283511EB0008670C /* ContactModel.swift in Sources */,
-				B8B80513283E0B1300EB9109 /* addressListCell.swift in Sources */,
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
-				B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */,
 				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,
 				B85FAFC6280FD44600D25B66 /* FeedBackController.swift in Sources */,
 				B85FDA752824BCB500EDA845 /* MyCollectViewController.swift in Sources */,
@@ -1836,9 +1696,7 @@
 				B8AB69DB280905250064861C /* TipOffDetailViewController.swift in Sources */,
 				B8AD405D2820254B0001D7F4 /* GetBackPasswordController.swift in Sources */,
 				B85FB00A28116A8300D25B66 /* BaseTableViewCell.swift in Sources */,
-				B85093272837A05C001E5A8B /* CashierDeskController.swift in Sources */,
 				B85FB02128116A8300D25B66 /* UIView+Extension.swift in Sources */,
-				B802E22E282A45C200B5057A /* CashOutCell.swift in Sources */,
 				B8AE0316282A000D00FBE3B7 /* AuthenController.swift in Sources */,
 				B85FDA782824BFCD00EDA845 /* MyStarCollectionViewCell.swift in Sources */,
 				B8AD405F282101540001D7F4 /* DictModel.swift in Sources */,
@@ -1862,20 +1720,17 @@
 				B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */,
 				B86AEFF4283A26240065B96E /* AuthenSuuccessController.swift in Sources */,
 				B8AB69FA280A9F3A0064861C /* TipOffPostViewController.swift in Sources */,
-				B839AF5E283F245D00C9B25C /* GoodsMenuController.swift in Sources */,
 				B85FB02028116A8300D25B66 /* EmotionViewModel.swift in Sources */,
 				B8AB69D7280904140064861C /* CommentModel.swift in Sources */,
 				B83C6357280AF4FD00A3282D /* UIFont+Extension.swift in Sources */,
 				B85FB00E28116A8300D25B66 /* ChatTimeCell.swift in Sources */,
 				B85FAF87280E93D500D25B66 /* JobInfoViewController.swift in Sources */,
 				B8AE0325282A113C00FBE3B7 /* SelfIntroCell.swift in Sources */,
-				B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */,
 				B8AB69F72809A12B0064861C /* TipOffContentView.swift in Sources */,
 				B85FB01928116A8300D25B66 /* ChatMsgModel.swift in Sources */,
 				B85FDA552823BB3800EDA845 /* PMKPageMenuItemPlain.swift in Sources */,
 				B8AC503F2807C60E00C2CF26 /* UserDefaultsUtils.swift in Sources */,
 				B8AD4014281A7D920001D7F4 /* HomeSubscribeCell.swift in Sources */,
-				B802E26B282E279500B5057A /* PayViewController.swift in Sources */,
 				B83C6347280ABE9700A3282D /* TipOffpootContentCell.swift in Sources */,
 				B85FB00528116A8300D25B66 /* ChatFindEmotion.swift in Sources */,
 				B8AC50162807C5CF00C2CF26 /* BaseTableController.swift in Sources */,
@@ -1891,7 +1746,6 @@
 				B85FB01B28116A8300D25B66 /* ChatSelectorModel.swift in Sources */,
 				B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */,
 				B85FAF9A280EBBB300D25B66 /* PubMusicHeader.swift in Sources */,
-				B839AF66283F7E4C00C9B25C /* CashOutModel.swift in Sources */,
 				B85FDA5D2823BB3800EDA845 /* PMKPageMenuItemWeb.swift in Sources */,
 				B8AC50912807CF6B00C2CF26 /* UIImage+Extension.swift in Sources */,
 				B8AC50152807C5CF00C2CF26 /* BaseViewController.swift in Sources */,
@@ -1913,17 +1767,14 @@
 				B85FB00B28116A8300D25B66 /* ChatFileCell.swift in Sources */,
 				B8AD402E281B8E940001D7F4 /* SuperManListController.swift in Sources */,
 				B8AD4035281C00420001D7F4 /* TipOffAddressView.swift in Sources */,
-				B839AF5B283E71A300C9B25C /* GoodDetailCell.swift in Sources */,
 				B83C636B280C357A00A3282D /* TipOffDetailImgCell.swift in Sources */,
 				B8AB69EE2809720E0064861C /* CommentBarController.swift in Sources */,
 				B8AB69E52809277E0064861C /* CommemtFooerLineView.swift in Sources */,
 				B85FAF89280E9C4F00D25B66 /* MuiscListController.swift in Sources */,
 				B8AC50922807CF6B00C2CF26 /* NSObject.swift in Sources */,
 				B83C6383280CFC6100A3282D /* WorkerVideoCell.swift in Sources */,
-				B802E252282DF12900B5057A /* PayModel.swift in Sources */,
 				B85FB01128116A8300D25B66 /* ChatImageCell.swift in Sources */,
 				B8BFA6B72850A70000F5F41B /* DOPDropDownMenu.m in Sources */,
-				B8B8050B283DE59200EB9109 /* GoodeDetailLineewCell.swift in Sources */,
 				B8AC503B2807C60E00C2CF26 /* UIViewUtils.swift in Sources */,
 				B85FAF9E280EE7BE00D25B66 /* PubMusicController.swift in Sources */,
 				B83C636E280C440D00A3282D /* TipOffCommentHeaderView.swift in Sources */,
@@ -1935,14 +1786,12 @@
 				B8AD4050281FD6D30001D7F4 /* TipOffListCell2.swift in Sources */,
 				B85FB01028116A8300D25B66 /* TextTableViewCell.swift in Sources */,
 				B83C637B280CFC3000A3282D /* WorkerInfoCell.swift in Sources */,
-				B8B80502283DD42300EB9109 /* GoodDetailHeader.swift in Sources */,
 				B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */,
 				B8AC51082807FF9800C2CF26 /* BerResponseConstants.swift in Sources */,
 				B85FDA652823CE5700EDA845 /* MusicDetailController.swift in Sources */,
 				B81420D62828F0CB00B4F6B5 /* MusicianAuthorController.swift in Sources */,
 				B83C634E280AD65E00A3282D /* ResultViewCell.swift in Sources */,
 				B85FAFA2280F05D400D25B66 /* JobViewCell.swift in Sources */,
-				B8B804FC283DC8F500EB9109 /* goodsListController.swift in Sources */,
 				B85FDA5B2823BB3800EDA845 /* PMKPageMenuItemHacka.swift in Sources */,
 				B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */,
 				B85FAFD42810076000D25B66 /* WKWebSocket.swift in Sources */,
@@ -1950,10 +1799,8 @@
 				B83C6356280AF4FD00A3282D /* RowTypeRule.swift in Sources */,
 				B85FB01C28116A8300D25B66 /* EmotionCell.swift in Sources */,
 				B85FDA712824BC6800EDA845 /* VipCenterViewController.swift in Sources */,
-				B8B80500283DD17A00EB9109 /* GoodsModel.swift in Sources */,
 				B85FB01328116A8300D25B66 /* CustomResponderTextView.swift in Sources */,
 				B8AC51092807FF9800C2CF26 /* URL.swift in Sources */,
-				B839AF60283F246B00C9B25C /* GoodsOrderController.swift in Sources */,
 				B8AB69F2280997100064861C /* TipOffHeaderView.swift in Sources */,
 				B83C6373280CEDE500A3282D /* WorkerInfoViewController.swift in Sources */,
 				B85FB00328116A8300D25B66 /* WeChatTools.swift in Sources */,
@@ -1963,7 +1810,6 @@
 				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
 				B8AC50952807CF6B00C2CF26 /* UITextField+Extension.swift in Sources */,
-				B8B804FE283DCD3700EB9109 /* GoodsDetailController.swift in Sources */,
 				B86AEFE02838F68F0065B96E /* BuyBtnView.swift in Sources */,
 				B8AC508F2807CF6B00C2CF26 /* UIColor-Extension.swift in Sources */,
 				B85FDA5C2823BB3800EDA845 /* PMKPageMenuItemEllipse.swift in Sources */,
@@ -2009,17 +1855,13 @@
 				B8AC50942807CF6B00C2CF26 /* UIStoryboard+Extension.swift in Sources */,
 				B85FDA602823BB3800EDA845 /* PMKPageMenuItemSuite.swift in Sources */,
 				B8AD404D281EE1550001D7F4 /* ActionSheetViewController.swift in Sources */,
-				B8B80510283E0AED00EB9109 /* addressListController.swift in Sources */,
 				B8B804F7283CF97E00EB9109 /* OrderModel.swift in Sources */,
 				B85FDA592823BB3800EDA845 /* PMKPageMenuItem.swift in Sources */,
 				B802E245282BF1EC00B5057A /* MyToPubController.swift in Sources */,
-				B802E227282A389200B5057A /* CashOutViewController.swift in Sources */,
 				B81420C82828B09400B4F6B5 /* MusicDetailHeader.swift in Sources */,
 				B802E249282BF7B700B5057A /* SellOrderViewController.swift in Sources */,
-				B802E231282A47DC00B5057A /* CashOutHeader.swift in Sources */,
 				B8AB69D4280901490064861C /* reCommentCell.swift in Sources */,
 				B85FDA562823BB3800EDA845 /* PMKPageMenuControllerDelegate.swift in Sources */,
-				B839AF63283F2EEA00C9B25C /* GoodsOrderCell.swift in Sources */,
 				B8AC50932807CF6B00C2CF26 /* String+Extension.swift in Sources */,
 				B85FAF91280E9F9D00D25B66 /* MusicViewCell.swift in Sources */,
 				B83C6387280D0B0300A3282D /* BaseImageBrowserCell.swift in Sources */,
@@ -2041,8 +1883,6 @@
 				B8AC50242807C60500C2CF26 /* Constants.swift in Sources */,
 				B802E23C282B456100B5057A /* VipCenterHeader2.swift in Sources */,
 				B8AC503D2807C60E00C2CF26 /* CheckoutUtils.swift in Sources */,
-				B8B8050E283E042200EB9109 /* GoodsCashDeskController.swift in Sources */,
-				B802E22B282A458400B5057A /* CashOutStutateController.swift in Sources */,
 				B83C6361280C050900A3282D /* TipOffListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

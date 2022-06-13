@@ -9,7 +9,6 @@
 import UIKit
 
 protocol MineStarCoinHederDelegate {
-    func cashOut()
     func cashDone()
 }
 
@@ -24,10 +23,7 @@ class MineStarCoinHeder: UICollectionReusableView {
     @IBAction func cashDoneAction(_ sender: Any) {
         delegate.cashDone()
     }
-    @IBAction func cashBtnAction(_ sender: Any) {
-        delegate.cashOut()
-        
-    }
+   
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -33,23 +33,13 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付：¥123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmD-Jl-2GX">
-                        <rect key="frame" x="162" y="84" width="142" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星币：¥123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmD-Jl-2GX">
+                        <rect key="frame" x="229" y="84" width="75" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Jcp-1b-p24"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.86702561379999998" green="0.60267524829999997" blue="0.1851539649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式:支付宝" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzV-ud-vr4">
-                        <rect key="frame" x="16" y="83" width="121" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="hOT-eF-jYN"/>
-                            <constraint firstAttribute="width" constant="121" id="v85-4k-zL3"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.86702561379999998" green="0.61156332810000003" blue="0.07165958167" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号:wx2022052121010610321" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQo-x8-5p8">
@@ -82,13 +72,10 @@
                     <constraint firstAttribute="bottom" secondItem="CGL-db-s2n" secondAttribute="bottom" id="2oa-oh-L25"/>
                     <constraint firstItem="ZZ9-WF-PyG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="3rU-f2-2l7"/>
                     <constraint firstAttribute="trailing" secondItem="wmD-Jl-2GX" secondAttribute="trailing" constant="16" id="6Y7-Lb-5gy"/>
-                    <constraint firstItem="jzV-ud-vr4" firstAttribute="top" secondItem="24Y-Bb-39e" secondAttribute="bottom" constant="12" id="8wk-2S-juf"/>
                     <constraint firstItem="24Y-Bb-39e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="FVm-BY-QpZ"/>
                     <constraint firstAttribute="trailing" secondItem="CGL-db-s2n" secondAttribute="trailing" id="LhO-PM-xTi"/>
-                    <constraint firstItem="jzV-ud-vr4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MrN-c1-FBu"/>
                     <constraint firstItem="wmD-Jl-2GX" firstAttribute="top" secondItem="eQo-x8-5p8" secondAttribute="bottom" constant="18" id="Ow2-VK-FWZ"/>
                     <constraint firstItem="eQo-x8-5p8" firstAttribute="top" secondItem="ZZ9-WF-PyG" secondAttribute="bottom" constant="12" id="Vhx-VK-4Bu"/>
-                    <constraint firstItem="wmD-Jl-2GX" firstAttribute="leading" secondItem="jzV-ud-vr4" secondAttribute="trailing" constant="25" id="bbR-iC-NMt"/>
                     <constraint firstItem="24Y-Bb-39e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="hO7-x7-RPq"/>
                     <constraint firstItem="VBD-1n-bVY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="hcp-K2-Efh"/>
                     <constraint firstAttribute="trailing" secondItem="eQo-x8-5p8" secondAttribute="trailing" constant="5" id="o9O-et-mwv"/>
@@ -103,7 +90,6 @@
                 <outlet property="leftImage" destination="24Y-Bb-39e" id="aSU-F6-pL5"/>
                 <outlet property="nameLabel" destination="ZZ9-WF-PyG" id="vou-gV-1sS"/>
                 <outlet property="orderLabel" destination="eQo-x8-5p8" id="qF6-mF-WNG"/>
-                <outlet property="orderType" destination="jzV-ud-vr4" id="0LR-k0-xry"/>
                 <outlet property="tiemLabel" destination="VBD-1n-bVY" id="Pae-03-Kcy"/>
                 <outlet property="zhifuLabel" destination="wmD-Jl-2GX" id="tkv-br-UzU"/>
             </connections>

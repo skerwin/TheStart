@@ -46,7 +46,7 @@ DialogDarkColorKey const DialogDarkC4 = @"WMZDialogDarkC4";
     param.wShadowAlpha = 0.4f;
     param.wKeyBoardMarginY = DialogRealW(40);
     param.wPayNum = 5;
-    param.wDefaultSelectPayStr = @"农业银行";
+    param.wDefaultSelectPayStr = @"农业";
     param.wShadowCanTap = YES;
     param.wShadowShow = YES;
     param.wWirteTextMaxNum  = -1;
@@ -124,7 +124,7 @@ DialogDarkColorKey const DialogDarkC4 = @"WMZDialogDarkC4";
         }
             break;
         case DialogTypePay:{
-            if (!self.wTitle) self.wTitle = @"请输入支付密码";
+            if (!self.wTitle) self.wTitle = @"请输入密码";
             if (!self.wMessage) self.wMessage = @"￥100.00";
         }
         break;

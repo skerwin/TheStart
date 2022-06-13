@@ -61,41 +61,18 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "AuthenController") as! AuthenController
     }
     
-    class func getCashOutViewController() -> CashOutViewController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
-    }
+  
     
     class func getMyToPubController() -> MyToPubController
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "MyToPubController") as! MyToPubController
     }
-    
-    class func getPayViewController() -> PayViewController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "PayViewController") as! PayViewController
-    }
-    
-    class func getCashierDeskController() -> CashierDeskController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashierDeskController") as! CashierDeskController
-    }
-    class func getGoodsCashDeskController() -> GoodsCashDeskController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "GoodsCashDeskController") as! GoodsCashDeskController
-    }
-    
+ 
     
     class func getAuthenSuuccessController() -> AuthenSuuccessController
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "AuthenSuuccessController") as! AuthenSuuccessController
     }
-    
-    class func getaddressDetailController() -> addressDetailController
-    {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "addressDetailController") as! addressDetailController
-    }
-    
-    
+ 
 }
 

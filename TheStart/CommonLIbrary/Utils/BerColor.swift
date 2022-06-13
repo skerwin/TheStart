@@ -79,7 +79,7 @@ struct ZYJColor {
         static let grey_deep = RGBA(r:68, g:68, b:68, a:1)
         ///用于提示性文字，不可编辑性文字，未激活状态/查看性文字
         static let grey_light = RGBA(r:101, g:101, b:101, a:1)
-        ///用于数字金额性文字
+        ///用于数字星币性文字
         static let red = RGBA(r:255, g:81, b:81, a:1)
         
         static let orange = colorWithHexString(hex: "cf534b")

@@ -38,12 +38,7 @@ class ChargeRecordCell: UITableViewCell {
             tiemLabel.text = model?.add_time
             orderLabel.text = "订单号:" + model!.order_id
             
-            if model?.pay_type == 1 {
-                orderType.text = "支付方式:微信支付"
-               
-            }else{
-                orderType.text = "支付方式:支付宝"
-            }
+           
             zhifuLabel.text = "实付:" + model!.price
             
           

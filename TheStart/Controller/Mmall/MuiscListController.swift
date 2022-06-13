@@ -27,33 +27,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     var rightBarButton:UIButton!
     
     var isFreeZone = false
-
-    func createRightNavItem() {
-        
-        rightBarButton = UIButton.init()
-        let bgview = UIView.init()
  
-            
-        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 63, height: 28)
-        rightBarButton.setTitle("提现记录", for: .normal)
-        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
-        
-        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
-      
-        rightBarButton.setTitleColor(.white, for: .normal)
-        rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
-        rightBarButton.layer.masksToBounds = true
-        rightBarButton.layer.cornerRadius = 5;
-        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-     
-        bgview.addSubview(rightBarButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
-     }
-
-    @objc func rightNavBtnClic(_ btn: UIButton){
-        let controller = CashOutStutateController()
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

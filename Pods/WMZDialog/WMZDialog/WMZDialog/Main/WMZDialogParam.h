@@ -148,9 +148,9 @@ FOUNDATION_EXPORT DialogDarkColorKey const DialogDarkC3;
 @property (nonatomic,   copy) NSArray *wSonData;
 /// 密码框数量
 @property (nonatomic, assign) NSInteger wPayNum;
-/// 支付方式默认文本
+/// 支方式默认文本
 @property (nonatomic,   copy) NSString *wDefaultSelectPayStr;
-/// 关闭支付方式点击 default YES
+/// 关闭方式点击 default YES
 @property (nonatomic, assign) BOOL wCanSelectPay;
 
 #pragma -mark writeType

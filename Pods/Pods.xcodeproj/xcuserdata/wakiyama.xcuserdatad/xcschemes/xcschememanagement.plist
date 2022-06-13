@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AlipaySDK-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DatePickerDialog.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -115,11 +110,6 @@
 			<false/>
 		</dict>
 		<key>WMZDialog.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>WechatOpenSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

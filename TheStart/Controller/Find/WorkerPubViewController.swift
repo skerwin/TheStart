@@ -280,17 +280,17 @@ class WorkerPubViewController: BaseViewController,Requestable {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
-            let noticeView = UIAlertController.init(title: "", message: "非会员每天仅可以发布1条找人找场，请¥98元充值会员", preferredStyle: .alert)
-            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                let controller = UIStoryboard.getCashierDeskController()
-                controller.paytype = .chargeVip
-                controller.priceStr = "98.00"
-                self.present(controller, animated: true)
-            }))
-            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
-            }))
-            self.present(noticeView, animated: true, completion: nil)
+//            let noticeView = UIAlertController.init(title: "", message: "非会员每天仅可以发布1条找人找场，请¥98元充值会员", preferredStyle: .alert)
+//            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                let controller = UIStoryboard.getCashierDeskController()
+//                controller.paytype = .chargeVip
+//                controller.priceStr = "98.00"
+//                self.present(controller, animated: true)
+//            }))
+//            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//                
+//            }))
+//            self.present(noticeView, animated: true, completion: nil)
         }
         return
 
@@ -509,17 +509,17 @@ extension WorkerPubViewController: PubMediaCellDelegate {
         if indexPath.item == configImg.maximumSelectedCount{
 
             if !checkVip(){
-                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
-                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                    let controller = UIStoryboard.getCashierDeskController()
-                    controller.paytype = .chargeVip
-                    controller.priceStr = "98.00"
-                    self.present(controller, animated: true)
-                }))
-                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                    
-                }))
-                self.present(noticeView, animated: true, completion: nil)
+//                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+//                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                    let controller = UIStoryboard.getCashierDeskController()
+//                    controller.paytype = .chargeVip
+//                    controller.priceStr = "98.00"
+//                    self.present(controller, animated: true)
+//                }))
+//                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//
+//                }))
+//                self.present(noticeView, animated: true, completion: nil)
             }
             return
         }
@@ -548,17 +548,17 @@ extension WorkerPubViewController: PubMediaCellVodDelegate {
         if indexPath.item == configVod.maximumSelectedCount{
 
             if !checkVip(){
-                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
-                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                    let controller = UIStoryboard.getCashierDeskController()
-                    controller.paytype = .chargeVip
-                    controller.priceStr = "98.00"
-                    self.present(controller, animated: true)
-                }))
-                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                    
-                }))
-                self.present(noticeView, animated: true, completion: nil)
+//                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+//                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                    let controller = UIStoryboard.getCashierDeskController()
+//                    controller.paytype = .chargeVip
+//                    controller.priceStr = "98.00"
+//                    self.present(controller, animated: true)
+//                }))
+//                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//                    
+//                }))
+//                self.present(noticeView, animated: true, completion: nil)
             }
             return
         }

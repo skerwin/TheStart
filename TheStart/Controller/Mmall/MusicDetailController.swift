@@ -175,17 +175,17 @@ class MusicDetailController: BaseViewController,Requestable{
             if is_vip{
                 buySuccess()
             }else{
-                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
-                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                    let controller = UIStoryboard.getCashierDeskController()
-                    controller.paytype = .chargeVip
-                    controller.priceStr = "98.00"
-                    self.present(controller, animated: true)
-                }))
-                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                    
-                }))
-                self.present(noticeView, animated: true, completion: nil)
+//                let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+//                noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                    let controller = UIStoryboard.getCashierDeskController()
+//                    controller.paytype = .chargeVip
+//                    controller.priceStr = "98.00"
+//                    self.present(controller, animated: true)
+//                }))
+//                noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//
+//                }))
+//                self.present(noticeView, animated: true, completion: nil)
             }
         }else if requestPath == HomeAPI.audioDelPath{
             DialogueUtils.showSuccess(withStatus: "删除成功")
@@ -355,14 +355,14 @@ class MusicDetailController: BaseViewController,Requestable{
             .wEventOKFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
                      //let arr1 = anyID as! Array<String>
-                     if otherData != nil{
-                        let arr = otherData as! Array<IndexPath>
-                        let priceStr = self.dataCoinList[arr.first!.row].price
-                        let controller = UIStoryboard.getCashierDeskController()
-                        controller.paytype = .ChargeStarCoin
-                        controller.priceStr = priceStr
-                        self.present(controller, animated: true)
-                    }
+//                     if otherData != nil{
+//                        let arr = otherData as! Array<IndexPath>
+//                        let priceStr = self.dataCoinList[arr.first!.row].price
+//                        let controller = UIStoryboard.getCashierDeskController()
+//                        controller.paytype = .ChargeStarCoin
+//                        controller.priceStr = priceStr
+//                        self.present(controller, animated: true)
+//                    }
                       
                 
  
@@ -443,17 +443,17 @@ extension MusicDetailController:BuyBtnViewDelegate {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
-            let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
-            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                let controller = UIStoryboard.getCashierDeskController()
-                controller.paytype = .chargeVip
-                controller.priceStr = "98.00"
-                self.present(controller, animated: true)
-            }))
-            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
-            }))
-            self.present(noticeView, animated: true, completion: nil)
+//            let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
+//            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                let controller = UIStoryboard.getCashierDeskController()
+//                controller.paytype = .chargeVip
+//                controller.priceStr = "98.00"
+//                self.present(controller, animated: true)
+//            }))
+//            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//                
+//            }))
+//            self.present(noticeView, animated: true, completion: nil)
         }
         
       

@@ -167,7 +167,7 @@ typedef enum : NSUInteger{
     DialogTypeSheet,
     /// 默认弹窗自动消失
     DialogTypeAuto,
-    /// 支付密码框
+    /// 密码框
     DialogTypePay,
     /// 带分享的弹窗
     DialogTypeShare,

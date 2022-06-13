@@ -27,29 +27,7 @@ class WorkerInfoCell: UITableViewCell {
         
     }
     
-    func configGoodsCell(model:GoodsModel,num:Int,address:AddressModel){
-        introLabel.font = UIFont.systemFont(ofSize: 15)
-        if num == 0{
-            introLabel.font = UIFont.systemFont(ofSize: 16)
-            introLabel.text = "商品详情"
-            contentLabel.text = model.content.html2String
-        
-        }else if num == 1{
-            introLabel.text = "上架时间"
-            contentLabel.text = model.add_time
-        }else{
-            introLabel.text = "配送地址"
-            
-            if address.id == 0{
-                contentLabel.text = "请选择配送地址"
-            }else{
-                contentLabel.text =  "联系电话:" + address.phone + "\n" + "\n" + "地址:" + address.province + address.city + address.district + address.detail
-            }
-           
-        }
-       
-        
-    }
+ 
     
     func configCell(model:JobModel,isjob:Bool){
         if isjob {

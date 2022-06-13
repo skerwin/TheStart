@@ -140,14 +140,10 @@ class MineViewController: BaseTableController,Requestable{
       }
     
     @objc private func myorderViewAction() {
-        if checkMarketVer(){
-            let controller = GoodsMenuController()
-            self.navigationController?.pushViewController(controller, animated: true)
-        }else{
-            let controller = MyOrderViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
-      
+     
+        let controller = MyOrderViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
+ 
       }
  
     @IBAction func editPersons(_ sender: Any) {
@@ -198,15 +194,10 @@ class MineViewController: BaseTableController,Requestable{
         
         if indexPath.row == 0{
             
-            if checkMarketVer(){
-                let controller = addressListController()
-                //controller.usermodel = self.usermodel
-                self.navigationController?.pushViewController(controller, animated: true)
-            }else{
-                let controller = MyStarCoinController()
-                controller.usermodel = self.usermodel
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
+           
+            let controller = MyStarCoinController()
+            controller.usermodel = self.usermodel
+            self.navigationController?.pushViewController(controller, animated: true)
  
         }
         

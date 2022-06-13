@@ -584,40 +584,7 @@ struct HomeAPI {
         return (userEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
-    
-    //银行信息提交
-    static let bankInfoPath = "/api/user/extract"
-    static func bankInfoPathAndParams(model:UserModel) -> PathAndParams {
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["bank_name"] = model.bank_name as AnyObject
-        paramsDictionary["bank_realname"] = model.bank_realname as AnyObject
-        paramsDictionary["bank_code"] = model.bank_code as AnyObject
  
-        return (bankInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    //申请提现
-    static let bankOutCashPath = "/api/user/cash"
-    static func bankOutCashPathAndParams(extract_price:Float) -> PathAndParams {
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["extract_price"] = extract_price as AnyObject
-   
- 
-        return (bankOutCashPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    //提现记录
-    static let bankOutListPath = "/api/user/cash_list"
-    static func bankOutListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["page"] = page as AnyObject
-        paramsDictionary["limit"] = limit as AnyObject
- 
-        return (bankOutListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
     
     //提交实名认证
     static let shimingSumbitPath = "/api/user/shiming"
@@ -661,29 +628,7 @@ struct HomeAPI {
         paramsDictionary["level_id"] = level_id as AnyObject
         return (openVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
-    
-    //下单微信
-    static let wechatPayPath = "/api/recharge/wechat"
-    static func wechatPayPathAndParams(price:String,leixing:Int) -> PathAndParams {
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["price"] = price as AnyObject
-        paramsDictionary["leixing"] = leixing as AnyObject
  
-        return (wechatPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    //下单支付宝
-    static let aliPayPath = "/api/recharge/alipay"
-    static func aliPayPathPathAndParams(price:String,leixing:Int) -> PathAndParams {
-
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["price"] = price as AnyObject
-        paramsDictionary["leixing"] = leixing as AnyObject
- 
-        return (aliPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
     //开通会员
     static let buyVipPath = "/api/user/vip"
     static func buyVipPathAndParams(level_id:Int,pay_type:String,price:String) -> PathAndParams {
@@ -753,131 +698,7 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
-    //商品列表
-    static let goodsListPath = "/api/goods/goods_list"
-    static func goodsListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
-        
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["page"] = page as AnyObject
-        paramsDictionary["limit"] = limit as AnyObject
-   
-         return (goodsListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    //商品详情
-    static let goodsInfoPath = "/api/goods/goods_info"
-    static func goodsInfoPathAndParams(id:Int) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["id"] = id as AnyObject
-   
-          return (goodsInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
     
-    //商品下单
-    static let orderAddPath = "/api/goods/order_add"
-    static func orderAddPathAndParams(goods_id:Int,address_id:Int,pay_type:Int) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["goods_id"] = goods_id as AnyObject
-          paramsDictionary["address_id"] = address_id as AnyObject
-          paramsDictionary["pay_type"] = pay_type as AnyObject
-   
-          return (orderAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    
-    
-    
-    //商品订单列表
-    static let goodsOrderListPath = "/api/goods/order_list"
-    static func goodsOrderListPathAndParams(order_status:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["order_status"] = order_status as AnyObject
-          paramsDictionary["page"] = page as AnyObject
-          paramsDictionary["limit"] = limit as AnyObject
-   
-          return (goodsOrderListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
- 
-    //商品订单详情
-    static let goodsOrderDetailPath = "/api/goods/order_info"
-    static func goodsOrderDetailPathAndParams(id:Int) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["id"] = id as AnyObject
-          return (goodsOrderDetailPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    //商品订单取消
-    static let goodsOrderCanclePath = "/api/goods/order_cancel"
-    static func goodsOrderCanclePathAndParams(id:Int) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["id"] = id as AnyObject
-          return (goodsOrderCanclePath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    //商品订单继续支付
-    static let goodsOrderNextPayPath = "/api/goods/order_pay"
-    static func goodsOrderNextPayPathAndParams(id:Int) -> PathAndParams {
-        
-          var paramsDictionary = Dictionary<String, AnyObject>()
-          paramsDictionary["id"] = id as AnyObject
-          return (goodsOrderNextPayPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-    
-    
-    
-    //收获地址列表
-    static let addressListPath = "/api/goods/address_list"
-    static func addressListPathAndParams() -> PathAndParams {
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        return (addressListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-
-    //收获地址详情
-    static let addressInfoPath = "/api/goods/address_info"
-    static func addressInfoPathAndParams(id:Int) -> PathAndParams {
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["id"] = id as AnyObject
-        return (addressInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
- 
-    //收获地址添加
-    static let addressAddPath = "/api/goods/address_add"
-    static func addressAddPathAndParams(model:AddressModel) -> PathAndParams {
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["real_name"] = model.real_name as AnyObject
-        paramsDictionary["phone"] = model.phone as AnyObject
-        paramsDictionary["province"] = model.province as AnyObject
-        paramsDictionary["city"] = model.city as AnyObject
-        paramsDictionary["district"] = model.district as AnyObject
-        
-        paramsDictionary["detail"] = model.detail as AnyObject
-        paramsDictionary["post_code"] = model.post_code as AnyObject
-        paramsDictionary["is_default"] = model.is_default as AnyObject
-        //print(paramsDictionary)
-         return (addressAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
-
-    //收获地址编辑
-    static let addressEditPath = "/api/goods/address_edit"
-    static func addressEditPathAndParams(model:AddressModel) -> PathAndParams {
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["real_name"] = model.real_name as AnyObject
-        paramsDictionary["phone"] = model.phone as AnyObject
-        paramsDictionary["province"] = model.province as AnyObject
-        paramsDictionary["city"] = model.city as AnyObject
-        paramsDictionary["district"] = model.district as AnyObject
-        
-        paramsDictionary["detail"] = model.detail as AnyObject
-        paramsDictionary["post_code"] = model.post_code as AnyObject
-        paramsDictionary["is_default"] = model.is_default as AnyObject
-        
-        
-        paramsDictionary["id"] = model.id as AnyObject
-        return (addressEditPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
     
     
     //删除文章

@@ -31,7 +31,7 @@
                         <constraint firstAttribute="width" constant="63" id="oMK-VA-20u"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星币购买" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIb-z6-Lcf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星币充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIb-z6-Lcf">
                     <rect key="frame" x="15" y="225" width="369" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="wgj-Ss-kaw"/>
@@ -40,19 +40,6 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jja-r1-cyI">
-                    <rect key="frame" x="257" y="28" width="137" height="31"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="31" id="bg9-j8-EF6"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="提现">
-                        <color key="titleColor" red="0.86702561379999998" green="0.63353850499999997" blue="0.1208113557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </state>
-                    <connections>
-                        <action selector="cashBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="BXm-R7-7dj"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPA-W5-WK6">
                     <rect key="frame" x="15" y="28" width="150.5" height="31"/>
                     <constraints>
@@ -89,7 +76,6 @@
                 <constraint firstItem="aPA-W5-WK6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="0sy-My-8Ez"/>
                 <constraint firstItem="VIb-z6-Lcf" firstAttribute="top" secondItem="DJk-kY-vQz" secondAttribute="bottom" constant="11" id="5HT-fC-scn"/>
                 <constraint firstItem="DJk-kY-vQz" firstAttribute="top" secondItem="lgA-F6-aJ7" secondAttribute="bottom" constant="26" id="ATt-MZ-o9U"/>
-                <constraint firstItem="Jja-r1-cyI" firstAttribute="leading" secondItem="pl7-Tc-xJ6" secondAttribute="trailing" constant="18.5" id="CR4-ut-Xqu"/>
                 <constraint firstAttribute="trailing" secondItem="DJk-kY-vQz" secondAttribute="trailing" constant="15" id="DuL-1H-RF4"/>
                 <constraint firstItem="aPA-W5-WK6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="EiL-xv-laL"/>
                 <constraint firstItem="UUL-BR-gX7" firstAttribute="top" secondItem="lgA-F6-aJ7" secondAttribute="bottom" constant="18" id="MJD-NM-uqB"/>
@@ -97,8 +83,6 @@
                 <constraint firstItem="pl7-Tc-xJ6" firstAttribute="leading" secondItem="aPA-W5-WK6" secondAttribute="trailing" constant="10" id="Qxu-wn-97i"/>
                 <constraint firstItem="lgA-F6-aJ7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="U6M-3o-BUz"/>
                 <constraint firstItem="UUL-BR-gX7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Urc-RJ-Soq"/>
-                <constraint firstItem="Jja-r1-cyI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="ZOJ-HZ-poc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jja-r1-cyI" secondAttribute="trailing" constant="20" id="eV5-ju-gF7"/>
                 <constraint firstItem="DJk-kY-vQz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="kDm-vS-mZe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UUL-BR-gX7" secondAttribute="trailing" constant="15" id="kGR-te-Nh4"/>
                 <constraint firstItem="pl7-Tc-xJ6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="osw-Qx-Ugh"/>
@@ -110,7 +94,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="cashDoneBtn" destination="aPA-W5-WK6" id="vuU-Ef-f0V"/>
-                <outlet property="cashOutBtn" destination="Jja-r1-cyI" id="YYf-P6-1tc"/>
                 <outlet property="titleLabel" destination="lgA-F6-aJ7" id="aOk-3e-sqv"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="461.38392857142856"/>

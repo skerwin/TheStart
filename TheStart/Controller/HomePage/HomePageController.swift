@@ -174,17 +174,17 @@ class HomePageController: BaseViewController,Requestable {
             tableView.mj_footer?.endRefreshing()
             self.tableView.mj_footer?.endRefreshingWithNoMoreData()
         if requestPath == HomeAPI.userCallPath{
-            let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
-            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                let controller = UIStoryboard.getCashierDeskController()
-                controller.paytype = .chargeVip
-                controller.priceStr = "98.00"
-                self.present(controller, animated: true)
-            }))
-            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
-            }))
-            self.present(noticeView, animated: true, completion: nil)
+//            let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
+//            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                let controller = UIStoryboard.getCashierDeskController()
+//                controller.paytype = .chargeVip
+//                controller.priceStr = "98.00"
+//                self.present(controller, animated: true)
+//            }))
+//            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//                
+//            }))
+//            self.present(noticeView, animated: true, completion: nil)
         }
     }
 

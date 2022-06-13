@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UITextView *writeView;
 /// 密码视图
 @property (nonatomic, strong) UIView *passView;
-/// 选择支付方式视图
+/// 选择方式视图
 @property (nonatomic, strong) UIView *selectPayView;
 /// 输入密码
 @property (nonatomic, strong) UITextField *textField;
@@ -150,7 +150,7 @@
     la.tag = 111;
     la.font = [UIFont systemFontOfSize:self.param.wTitleFont - 2];
     la.frame = CGRectMake(0, 0, maxWidth/2, height);
-    la.text = @"支付方式";
+    la.text = @"方式";
     [self.selectPayView addSubview:la];
     
     UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];

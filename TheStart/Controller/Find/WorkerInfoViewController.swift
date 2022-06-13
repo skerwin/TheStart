@@ -119,18 +119,18 @@ class WorkerInfoViewController: BaseViewController,Requestable {
             }else{
                 message = "非会员每天限发起3次聊天，请¥98元充值会员,无限次聊天"
             }
-            
-            let noticeView = UIAlertController.init(title: "", message: message, preferredStyle: .alert)
-            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-                let controller = UIStoryboard.getCashierDeskController()
-                controller.paytype = .chargeVip
-                controller.priceStr = "98.00"
-                self.present(controller, animated: true)
-            }))
-            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
-            }))
-            self.present(noticeView, animated: true, completion: nil)
+//            
+//            let noticeView = UIAlertController.init(title: "", message: message, preferredStyle: .alert)
+//            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+//                let controller = UIStoryboard.getCashierDeskController()
+//                controller.paytype = .chargeVip
+//                controller.priceStr = "98.00"
+//                self.present(controller, animated: true)
+//            }))
+//            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+//                
+//            }))
+//            self.present(noticeView, animated: true, completion: nil)
         }
     }
 

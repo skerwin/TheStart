@@ -184,25 +184,13 @@ extension VipCenterViewController:UICollectionViewDelegateFlowLayout{
         return UIEdgeInsets(top: 12, left: 12, bottom: 15, right: 12)
     }
 }
-//extension MyStarCoinController:MineStarCoinHederDelegate {
-//    func cashDone() {
-//        let controller = CashOutStutateController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-//
-//    func cashOut() {
-//        let controller = UIStoryboard.getCashOutViewController()
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-//
-//
-//}
+ 
 extension VipCenterViewController:VipCenterHeader1Delegate {
     func sureOpenAction() {
-        let controller = UIStoryboard.getCashierDeskController()
-        controller.paytype = .chargeVip
-        controller.priceStr = "98.00"
-        self.present(controller, animated: true)
+//        let controller = UIStoryboard.getCashierDeskController()
+//        controller.paytype = .chargeVip
+//        controller.priceStr = "98.00"
+//        self.present(controller, animated: true)
         //self.navigationController?.pushViewController(controller, animated: true)
     }
  }

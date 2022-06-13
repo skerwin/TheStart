@@ -45,16 +45,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式:支付宝" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax6-aP-2da">
-                        <rect key="frame" x="20" y="74" width="121" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="121" id="9gH-Q9-dr0"/>
-                            <constraint firstAttribute="height" constant="18" id="oSc-YX-NgF"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.94509803920000002" green="0.75826561449999996" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="186-i6-FWG">
                         <rect key="frame" x="20" y="100.5" width="300" height="0.5"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,7 +53,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付：¥123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJK-mq-zoo">
-                        <rect key="frame" x="161" y="74" width="150" height="18"/>
+                        <rect key="frame" x="236" y="74" width="75" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="ozh-ch-i4s"/>
                         </constraints>
@@ -74,7 +64,6 @@
                 </subviews>
                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="ax6-aP-2da" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1ki-ml-rsI"/>
                     <constraint firstItem="AsN-pI-8mr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="6cD-av-0Jt"/>
                     <constraint firstAttribute="trailing" secondItem="bf4-Pq-Ady" secondAttribute="trailing" constant="9" id="7gf-Kw-Ltm"/>
                     <constraint firstAttribute="trailing" secondItem="lJK-mq-zoo" secondAttribute="trailing" constant="9" id="7kz-FO-Dh3"/>
@@ -86,17 +75,14 @@
                     <constraint firstAttribute="bottom" secondItem="186-i6-FWG" secondAttribute="bottom" id="XcF-eB-2ZM"/>
                     <constraint firstAttribute="trailing" secondItem="rpF-c4-YFI" secondAttribute="trailing" constant="50" id="Zd5-hF-vS1"/>
                     <constraint firstItem="bf4-Pq-Ady" firstAttribute="leading" secondItem="AsN-pI-8mr" secondAttribute="trailing" constant="20" id="awF-HM-pd8"/>
-                    <constraint firstItem="ax6-aP-2da" firstAttribute="top" secondItem="rpF-c4-YFI" secondAttribute="bottom" constant="10" id="eKf-V8-73r"/>
                     <constraint firstItem="186-i6-FWG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hAn-JA-kkp"/>
                     <constraint firstItem="rpF-c4-YFI" firstAttribute="top" secondItem="bf4-Pq-Ady" secondAttribute="bottom" constant="8" id="hEd-Kb-iop"/>
-                    <constraint firstItem="lJK-mq-zoo" firstAttribute="leading" secondItem="ax6-aP-2da" secondAttribute="trailing" constant="20" id="hId-GR-47C"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="AsN-pI-8mr" id="UzE-jF-NKu"/>
                 <outlet property="orderLabel" destination="rpF-c4-YFI" id="AEg-rv-3ol"/>
-                <outlet property="orderType" destination="ax6-aP-2da" id="rfv-62-a8d"/>
                 <outlet property="tiemLabel" destination="bf4-Pq-Ady" id="5iq-4d-bYn"/>
                 <outlet property="zhifuLabel" destination="lJK-mq-zoo" id="jHc-kR-uK4"/>
             </connections>

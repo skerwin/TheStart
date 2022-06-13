@@ -1,7 +1,6 @@
 PODS:
   - ActionSheetPicker-3.0 (2.7.1)
   - Alamofire (5.6.0)
-  - AlipaySDK-iOS (15.8.8)
   - DatePickerDialog (4.0)
   - FLAnimatedImage (1.0.16)
   - HXPHPicker (1.4.0):
@@ -45,7 +44,6 @@ PODS:
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (5.0.1)
   - SwiftyUserDefaults (5.3.0)
-  - WechatOpenSDK (1.8.7.1)
   - WMZDialog (1.4.6)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
@@ -54,7 +52,6 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 5.2)
-  - AlipaySDK-iOS
   - DatePickerDialog
   - HXPHPicker
   - IQKeyboardManager
@@ -69,7 +66,6 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyJSON
   - SwiftyUserDefaults
-  - WechatOpenSDK
   - WMZDialog
   - XHLaunchAd
   - XHNetworkCache
@@ -78,7 +74,6 @@ SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - ActionSheetPicker-3.0
     - Alamofire
-    - AlipaySDK-iOS
     - DatePickerDialog
     - FLAnimatedImage
     - HXPHPicker
@@ -95,7 +90,6 @@ SPEC REPOS:
     - SVProgressHUD
     - SwiftyJSON
     - SwiftyUserDefaults
-    - WechatOpenSDK
     - WMZDialog
     - XHLaunchAd
     - XHNetworkCache
@@ -103,7 +97,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   Alamofire: 0c07058209f211e3d32824f8e0766d7c44ac83b3
-  AlipaySDK-iOS: 9289d94792535cd14c5c241c720a7e981edd7035
   DatePickerDialog: ccff2f91ff7a018057a4d72fa5ad6de49c8cb0cd
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
   HXPHPicker: 6f920091e253f1146d3b9299837d5955db0f7162
@@ -120,11 +113,10 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
-  WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
   WMZDialog: 629b5ceaab043291394952143a6cb08b2c1c500d
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   XHNetworkCache: a5a22941471edf6ed08b2e7cf2ec0d800959ca37
 
-PODFILE CHECKSUM: 36ba55d4ce46d6a319ee3a9e15dd923baf5a5fb8
+PODFILE CHECKSUM: a9ecfbf4a299b5cbbc55e86dab85c2813d3d6325
 
 COCOAPODS: 1.11.3

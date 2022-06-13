@@ -160,12 +160,7 @@ extension MyStarCoinController:MineStarCoinHederDelegate {
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    func cashOut() {
-        let controller = UIStoryboard.getCashOutViewController()
-        controller.userModel = self.usermodel
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
+  
     
     
 }
@@ -175,14 +170,14 @@ extension MyStarCoinController:MyStarCoinFootViewDelegate{
     
     func buyAction() {
         if rowNum == -1{
-            showOnlyTextHUD(text: "请选择要充值的金额")
+            showOnlyTextHUD(text: "请选择要充值的星币")
             return
         }
-        let priceStr = self.dataList[rowNum].price
-        let controller = UIStoryboard.getCashierDeskController()
-        controller.paytype = .ChargeStarCoin
-        controller.priceStr = priceStr
-        self.present(controller, animated: true)
+//        let priceStr = self.dataList[rowNum].price
+//        let controller = UIStoryboard.getCashierDeskController()
+//        controller.paytype = .ChargeStarCoin
+//        controller.priceStr = priceStr
+//        self.present(controller, animated: true)
     }
     
     

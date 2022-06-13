@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "进入箭头.png",
+      "filename" : "RightArrow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "进入箭头@2x.png",
+      "filename" : "RightArrow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "进入箭头@3x.png",
+      "filename" : "RightArrow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

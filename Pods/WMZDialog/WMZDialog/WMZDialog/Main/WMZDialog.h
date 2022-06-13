@@ -166,9 +166,9 @@ WMZDialogStatementAndPropSetFuncStatement(assign, WMZDialog, CGFloat,           
 WMZDialogStatementAndPropSetFuncStatement(copy,   WMZDialog, NSArray*,                 wSonData)
 /// 密码框数量
 WMZDialogStatementAndPropSetFuncStatement(assign, WMZDialog, NSInteger,                wPayNum)
-/// 支付方式默认文本
+/// 方式默认文本
 WMZDialogStatementAndPropSetFuncStatement(copy,   WMZDialog, NSString*,                wDefaultSelectPayStr)
-/// 关闭支付方式点击 default YES
+/// 关闭方式点击 default YES
 WMZDialogStatementAndPropSetFuncStatement(assign, WMZDialog, BOOL,                     wCanSelectPay)
 
 /*=========================================write=======================================================================*/

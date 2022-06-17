@@ -137,6 +137,8 @@ class NewLoginController: BaseViewController,Requestable {
     }
  
     
+    
+    
     func loadPrivateAndAbouutUs() {
         
         let requestParamsP3 = HomeAPI.openMarketPathAndParam()

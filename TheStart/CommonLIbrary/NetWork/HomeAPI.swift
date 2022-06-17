@@ -58,7 +58,7 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
-    //金币列表
+    //列表
     static let MyCoinListPath = "/api/recharge/index"
     static func MyCoinListPathAndParams() -> PathAndParams {
         
@@ -597,7 +597,7 @@ struct HomeAPI {
         return (bankInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
-    //申请提现
+    //申请
     static let bankOutCashPath = "/api/user/cash"
     static func bankOutCashPathAndParams(extract_price:Float) -> PathAndParams {
 
@@ -608,7 +608,7 @@ struct HomeAPI {
         return (bankOutCashPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
-    //提现记录
+    //记录
     static let bankOutListPath = "/api/user/cash_list"
     static func bankOutListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
 

@@ -75,6 +75,7 @@ class AuthorDetailController: BaseViewController,Requestable {
         }
         collectionView.register(UINib(nibName:"AuthorDetailHeader", bundle:nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AuthorDetailHeader.nameOfClass)
         
+        
         collectionView.register(UINib(nibName:"MusicViewCell", bundle:nil),
                                       forCellWithReuseIdentifier: "MusicViewCell")
         

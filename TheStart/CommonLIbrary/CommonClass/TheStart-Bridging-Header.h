@@ -11,4 +11,5 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 # import <AlipaySDK/AlipaySDK.h>
+#import "YBPopupMenu.h"
 

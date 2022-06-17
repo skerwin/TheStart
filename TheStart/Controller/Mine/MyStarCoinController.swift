@@ -161,11 +161,7 @@ extension MyStarCoinController:MineStarCoinHederDelegate {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func cashOut() {
-        let controller = UIStoryboard.getCashOutViewController()
-        controller.userModel = self.usermodel
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
+    
     
     
 }

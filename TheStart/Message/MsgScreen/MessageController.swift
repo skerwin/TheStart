@@ -713,7 +713,6 @@ extension MessageController: MoreSelectorDelegate {
                            "com.apple.iwork.numbers.numbers",
                            "com.apple.iwork.keynote.key"
                            ]
-        
         let documentPickerVC = UIDocumentPickerViewController(documentTypes: allowedUTIs, in: .open)
         documentPickerVC.delegate = self
         documentPickerVC.modalPresentationStyle = .formSheet

@@ -61,10 +61,12 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "AuthenController") as! AuthenController
     }
     
-    class func getCashOutViewController() -> CashOutViewController
+    class func getSettiingControllerTable() -> SettiingControllerTable
     {
-        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CashOutViewController") as! CashOutViewController
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "SettiingControllerTable") as! SettiingControllerTable
     }
+    
+    
     
     class func getMyToPubController() -> MyToPubController
     {

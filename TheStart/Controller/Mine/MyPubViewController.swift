@@ -40,13 +40,13 @@ class MyPubViewController: BaseViewController {
         controller2 = WorkListViewController()
         controller2.isFromMine = true
         controller2.isMypub = true
-        controller2.title = "我的找场"
+        controller2.title = "我的求职"
         controller2.parentNavigationController = self.navigationController
         
         controller3 = TipOffViewController()
         controller3.isFromMine = true
         controller3.isMypub = true
-        controller3.title = "我的黑文"
+        controller3.title = "我的吐槽"
         controller3.parentNavigationController = self.navigationController
         
         controller4 = MuiscListController()
@@ -61,6 +61,7 @@ class MyPubViewController: BaseViewController {
         controllerArray.append(controller2)
         controllerArray.append(controller3)
         controllerArray.append(controller4)
+ 
         
         pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
        pageMenuController?.delegate = self

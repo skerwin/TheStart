@@ -44,7 +44,7 @@ class TipOffViewController: BaseViewController,Requestable {
         pubBtn.setImage(UIImage.init(named: "tipOffPost"), for: .normal)
         
         let bgview = UIView.init()
-        bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - 120, width: 60, height: 60)
+        bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - 120 - 44, width: 60, height: 60)
         bgview.addSubview(pubBtn)
         
         self.view.addSubview(bgview)

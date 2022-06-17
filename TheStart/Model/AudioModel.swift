@@ -32,7 +32,6 @@ struct AudioModel : Mappable {
     var if_order = 0
     
     
-    
     init?(map: Map) {
         
     }
@@ -40,6 +39,8 @@ struct AudioModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
+        
+        browse <- map["browse"]
         
         if_order <- map["if_order"]
         uid <- map["uid"]

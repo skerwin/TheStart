@@ -16,13 +16,14 @@ enum TabbarContentType: Int {
 class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
     
     
-    let homePageController = HomePageController()
-    
-  
-    
+    let homePageController = HomePageMenuController()
+ 
     let mmallController = MmallController()
     
-    let messageController = ContactListController()
+    let messageController = TipOffMenuPageController()
+    
+    //let controller = TipOffMenuPageController()
+   // self.navigationController?.pushViewController(controller, animated: true)
     
     let mineController = UIStoryboard.getMineViewController()
  
@@ -71,22 +72,27 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
                                   selectedImage: UIImage(named: "iconHomeSelceted")!,
                                   tag: TabbarContentType.HomePage.rawValue)
         
-        if checkMarketVer(){
-            addNavChildViewController(controller: goodsController, title: "商城",
-                                      image: UIImage(named: "shangcheng")!,
-                                      selectedImage: UIImage(named: "shangchengxuanzhong")!,
-                                      tag: TabbarContentType.Articl.rawValue)
-        }else{
-            addNavChildViewController(controller: mmallController, title: "音乐馆",
+        addNavChildViewController(controller: mmallController, title: "音乐馆",
                                       image: UIImage(named: "iconMusic")!,
                                       selectedImage: UIImage(named: "iconMusicSelceted")!,
                                       tag: TabbarContentType.Articl.rawValue)
-        }
-     
-        addNavChildViewController(controller: messageController, title: "消息",
+        
+        
+        addNavChildViewController(controller: messageController, title: "部落",
                                   image: UIImage(named: "iconMsg")!,
                                   selectedImage: UIImage(named: "iconMsgSelceted")!,
                                   tag: TabbarContentType.Cases.rawValue)
+        
+        addNavChildViewController(controller: goodsController, title: "商店",
+                                      image: UIImage(named: "shangcheng")!,
+                                      selectedImage: UIImage(named: "shangchengxuanzhong")!,
+                                      tag: TabbarContentType.Articl.rawValue)
+            
+ 
+ 
+     
+        
+        
         addNavChildViewController(controller: mineController, title: "我的",
                                   image: UIImage(named: "iconMine")!,
                                   selectedImage: UIImage(named: "iconMineSelected")!,
@@ -97,6 +103,9 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
     
     private func addNavChildViewController(controller: UIViewController, title: String, image: UIImage, selectedImage: UIImage, tag:Int) {
         controller.title = title
+        if controller == homePageController || controller == messageController{
+            controller.navigationItem.title = ""
+        }
         controller.tabBarItem.image = image
         controller.tabBarItem.tag = tag
         controller.tabBarItem.selectedImage = selectedImage.withRenderingMode(.alwaysOriginal)
@@ -119,7 +128,12 @@ extension MainTabBarController: UITabBarControllerDelegate {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.selectedItemTag = item.tag
- 
+        if selectedItemTag == TabbarContentType.HomePage.rawValue {
+            homePageController.viewWillAppear(true)
+        }
+        if selectedItemTag == TabbarContentType.Cases.rawValue {
+            messageController.viewWillAppear(true)
+        }
     }
 }
 

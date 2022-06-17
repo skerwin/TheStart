@@ -57,9 +57,9 @@ class GoodsDetailController: BaseViewController,Requestable {
     
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("GoodDetailHeader", owner: nil, options: nil)!.first as? GoodDetailHeader
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 340)
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 380)
         //headView.delegate = self
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 340))
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 380))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         

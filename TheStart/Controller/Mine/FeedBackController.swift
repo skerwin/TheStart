@@ -33,7 +33,7 @@ class FeedBackController: BaseViewController ,Requestable,UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.title = "意见反馈"
+        self.title = "联系客服"
         view1.layer.cornerRadius = 10
         view1.layer.masksToBounds = true
         
@@ -98,9 +98,11 @@ class FeedBackController: BaseViewController ,Requestable,UIImagePickerControlle
             imagestr = imagestr + String.init(self.imgModel4!.id)
         }
         
-        
-//        let authenPersonalParams = HomeAPI.feedbackPathAndParams(content: content, images: imagestr, phone: phone)
-//        postRequest(pathAndParams: authenPersonalParams,showHUD: false)
+        DialogueUtils.showSuccess(withStatus: "提交成功")
+        delay(second: 1) { [self] in
+             DialogueUtils.dismiss()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     

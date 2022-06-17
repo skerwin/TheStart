@@ -17,8 +17,22 @@ class MusicViewCell: UICollectionViewCell {
     
     var model:AudioModel? {
         didSet {
-            moneyLabel.titleLabel?.text = model?.price
-            moneyLabel.setTitle(model?.price, for: .normal)
+            if checkMarketVer(){
+                moneyLabel.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+                moneyLabel.setTitle("浏览量:" + intToString(number: model!.browse), for: .normal)
+                moneyLabel.titleLabel?.text = "浏览量:" + intToString(number: model!.browse)
+                moneyLabel.setTitleColor(UIColor.darkGray, for: .normal)
+                moneyLabel.setImage(UIImage.init(named: "yuedu"), for: .normal)
+            }else{
+                moneyLabel.titleLabel?.text = model?.price
+                moneyLabel.setTitle(model?.price, for: .normal)
+                moneyLabel.setImage(UIImage.init(named: "jifen"), for: .normal)
+                
+            }
+            
+          
+            
+           
             nameLabel.text = model!.name
             imageV.displayImageWithURL(url: model?.image)
             

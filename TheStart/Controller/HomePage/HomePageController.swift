@@ -56,6 +56,9 @@ class HomePageController: BaseViewController,Requestable {
         let salaryParams = HomeAPI.salaryPathAndParams()
         getRequest(pathAndParams: salaryParams,showHUD: false)
         
+        let requestParamsP3 = HomeAPI.openMarketPathAndParam()
+        postRequest(pathAndParams: requestParamsP3,showHUD: false)
+        
     }
     
     func UpdateAdvertisementView(imageArr:[ImageModel]) {
@@ -200,6 +203,13 @@ class HomePageController: BaseViewController,Requestable {
             self.tableView.reloadData()
         }else if requestPath == HomeAPI.userCallPath{
             callPhone()
+        }else if requestPath == HomeAPI.openMarketPath{
+            let isgoods = responseResult["if_goods"].intValue
+            if isgoods == 1{
+                setStringValueForKey(value: "1", key: Constants.isMarketVer)
+            }else{
+                setStringValueForKey(value: "0", key: Constants.isMarketVer)
+            }
         }
 
 
@@ -224,6 +234,9 @@ extension HomePageController:SDCycleScrollViewDelegate{
             return
         }
         let controller = NotifyWebDetailController()
+        if bannerList[index].link.containsStr(find: "baidu"){
+            return
+        }
         controller.urlString = bannerList[index].link
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -285,41 +298,40 @@ extension HomePageController:JobHomeCellDelegate{
 extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
 
-        if section == 2{
+        if section == 1{
             return dataLJobList.count
         }
         return 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0{
-            return UIView()
-        }else{
+      
             let sectionView = Bundle.main.loadNibNamed("HomeRankHeaderView", owner: nil, options: nil)!.first as! HomeRankHeaderView
             sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 44)
             
-            if section == 1{
+            if section == 0{
                 sectionView.name.text = "达人区"
             }else{
                 sectionView.name.text = "最新职位"
             }
             return sectionView
             
-        }
       
         
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 0
-        }else{
-            return 44
-        }
+        
+        return 44
+//        if section == 0{
+//            return 0
+//        }else{
+//            return 44
+//        }
     }
     
     
@@ -327,8 +339,6 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
 
         let section = indexPath.section
         if section == 0{
-            return 110
-        }else if section == 1{
             return 102
         }else{
             return 109
@@ -339,7 +349,7 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
  
-        if indexPath.section == 2{
+        if indexPath.section == 1{
             let controller = JobInfoViewController()
             controller.dateID = dataLJobList[indexPath.row].id
             self.navigationController?.pushViewController(controller, animated: true)
@@ -350,12 +360,13 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let section = indexPath.section
+//        if section == 0{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "GuideCell", for: indexPath) as! GuideCell
+//            cell.delegate = self
+//            cell.selectionStyle = .none
+//            return cell
+//        }else
         if section == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GuideCell", for: indexPath) as! GuideCell
-            cell.delegate = self
-            cell.selectionStyle = .none
-            return cell
-        }else if section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeSubscribeCell", for: indexPath) as! HomeSubscribeCell
             cell.selectionStyle = .none
             cell.parentNavigationController = self.navigationController

@@ -29,7 +29,7 @@ class goodsListController: BaseViewController, UICollectionViewDataSource, UICol
        
         self.limit = 20
         loadData()
-        self.title = "商城"
+        self.title = "商店"
         view.backgroundColor = ZYJColor.main
         view.addSubview(collectionView)
         let itemWidth = Int((view.hx.width - 24 - CGFloat(row_Count - 1) * 8)) / row_Count

@@ -33,14 +33,16 @@ class MyCollectViewController: BaseViewController {
        controller1 = JobListViewController()
        controller1.isFromMine = true
        controller1.isMyCollect = true
-       controller1.title = "找人"
+       controller1.title = "招人"
        controller1.parentNavigationController = self.navigationController
     
        controller2 = WorkListViewController()
        controller2.isFromMine = true
        controller2.isMyCollect = true
-       controller2.title = "找场"
+       controller2.title = "求职"
        controller2.parentNavigationController = self.navigationController
+       
+       
        
        controller3 = MuiscListController()
        controller3.isFromMine = true
@@ -58,8 +60,12 @@ class MyCollectViewController: BaseViewController {
        
        controllerArray.append(controller1)
        controllerArray.append(controller2)
+       
+       
        controllerArray.append(controller3)
-       controllerArray.append(controller4)
+        controllerArray.append(controller4)
+ 
+     
        
        pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
       pageMenuController?.delegate = self

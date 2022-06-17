@@ -31,18 +31,18 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-VB-RhU">
-                    <rect key="frame" x="205" y="59" width="199" height="30"/>
+                    <rect key="frame" x="205" y="59" width="199" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="vjF-ME-8GX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="1000.00" image="jifen">
+                    <state key="normal">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介:这首音乐很好很好这首音乐很好很好这首音乐很好很好这首音乐很好很好" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9K-AJ-Frt">
-                    <rect key="frame" x="201" y="100" width="212" height="36"/>
+                    <rect key="frame" x="201" y="104" width="212" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="CNb-IG-jjp"/>
                     </constraints>
@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浏览:1333  下载:150  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-zi-g2k">
-                    <rect key="frame" x="201" y="147" width="203" height="18"/>
+                    <rect key="frame" x="201" y="151" width="203" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="S2a-rV-gRj"/>
                     </constraints>
@@ -90,7 +90,6 @@
         </view>
     </objects>
     <resources>
-        <image name="jifen" width="16" height="16"/>
         <image name="zhanweitu" width="107" height="75"/>
     </resources>
 </document>

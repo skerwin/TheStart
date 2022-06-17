@@ -37,7 +37,7 @@ class WorkListViewController: BaseViewController,Requestable  {
     var isMyCollect = false
     
     var callMobile = ""
-
+    var isFromHome = false
     
     override func loadView() {
         super.loadView()
@@ -161,7 +161,12 @@ class WorkListViewController: BaseViewController,Requestable  {
     
     func initDropView(){
         
-        dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
+        if isFromHome{
+            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:navigationHeaderAndStatusbarHeight ), andHeight: 48)
+        }else{
+            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
+        }
+       
         dropView.indicatorColor = UIColor.darkGray
         dropView.fontSize = 16
         dropView.textColor = UIColor.darkGray
@@ -175,7 +180,11 @@ class WorkListViewController: BaseViewController,Requestable  {
         if isFromMine{
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
-            tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48), style: .plain)
+            if isFromHome{
+                tableView = UITableView(frame: CGRect(x: 0, y: 48 + navigationHeaderAndStatusbarHeight, width: screenWidth, height: screenHeight - 48 - navigationHeaderAndStatusbarHeight), style: .plain)
+            }else{
+                tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48 - navigationHeight), style: .plain)
+            }
         }
         tableView.delegate = self
         tableView.dataSource = self

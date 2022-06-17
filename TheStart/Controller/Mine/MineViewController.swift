@@ -28,14 +28,69 @@ class MineViewController: BaseTableController,Requestable{
     @IBOutlet weak var myorderView: UIView!
     
     var usermodel = UserModel()
+    @IBOutlet weak var authLabel: UILabel!
     
     
     @IBOutlet weak var huiyuanLabel: UILabel!
     @IBOutlet weak var xingbiLabel: UILabel!
+    var rightBarButton:UIButton!
     
+    var lefttBarButton:UIButton!
+    
+    func createRightNavItem() {
+        
+        rightBarButton = UIButton.init()
+        let bgview = UIView.init()
+ 
+        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
+        rightBarButton.setTitle("设置", for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        
+        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+      
+        rightBarButton.setTitleColor(.black, for: .normal)
+        //rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        rightBarButton.layer.masksToBounds = true
+        rightBarButton.layer.cornerRadius = 5;
+        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+     
+        bgview.addSubview(rightBarButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+        
+        lefttBarButton = UIButton.init()
+        let bgview2 = UIView.init()
+ 
+        lefttBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
+        lefttBarButton.setTitle("消息", for: .normal)
+        bgview2.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        
+        lefttBarButton.addTarget(self, action: #selector(leftNavBtnClic(_:)), for: .touchUpInside)
+      
+        lefttBarButton.setTitleColor(.black, for: .normal)
+        //rightBarButton.backgroundColor = colorWithHexString(hex: "#228CFC")
+        lefttBarButton.layer.masksToBounds = true
+        lefttBarButton.layer.cornerRadius = 5;
+        lefttBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+     
+        bgview2.addSubview(lefttBarButton)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: bgview2)
+        
+     }
+
+    @objc func leftNavBtnClic(_ btn: UIButton){
+        let messageController = ContactListController()
+
+        self.navigationController?.pushViewController(messageController, animated: true)
+    }
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        let controller = UIStoryboard.getSettiingControllerTable()
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createRightNavItem()
         loadData()
         if checkMarketVer(){
             huiyuanLabel.text = "信息发布"
@@ -100,9 +155,11 @@ class MineViewController: BaseTableController,Requestable{
            
             nameLabel.text = usermodel?.nickname
             if usermodel?.is_shiming == 2{
-               isAuthon.image = UIImage.init(named: "yirenzheng")
+                authLabel.text = "已认证"
+              // isAuthon.image = UIImage.init(named: "yirenzheng")
             }else{
-               isAuthon.image = UIImage.init(named: "weirenzheng")
+                authLabel.text = "未认证"
+              // isAuthon.image = UIImage.init(named: "weirenzheng")
             }
             headImg.displayImageWithURL(url: usermodel?.avatar_check)
            
@@ -225,25 +282,29 @@ class MineViewController: BaseTableController,Requestable{
             self.navigationController?.pushViewController(controller, animated: true)
         }
         else if indexPath.row == 2{
-            let noticeView = UIAlertController.init(title: "", message: "您确定拨打客服联系电话吗？", preferredStyle: .alert)
+            if checkMarketVer(){
+                let controller = UIStoryboard.getFeedBackController()
+                self.navigationController?.pushViewController(controller, animated: true)
+            }else{
+                let noticeView = UIAlertController.init(title: "", message: "您确定拨打客服联系电话吗？", preferredStyle: .alert)
+                  noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+                      let urlstr = "telprompt://" + "15002500877"
+                     if let url = URL.init(string: urlstr){
+                          if #available(iOS 10, *) {
+                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                         } else {
+                             UIApplication.shared.openURL(url)
+                          }
+                       }
+                 }))
+                 noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                    
+                }))
+                self.present(noticeView, animated: true, completion: nil)
+            }
+           
             
-             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
-                 
-                 
-                 let urlstr = "telprompt://" + "15002500877"
-                 if let url = URL.init(string: urlstr){
-                      if #available(iOS 10, *) {
-                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                     } else {
-                         UIApplication.shared.openURL(url)
-                      }
-                   }
-     
-            }))
-             noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
-            }))
-            self.present(noticeView, animated: true, completion: nil)
+          
         }
         
         else if indexPath.row == 3{

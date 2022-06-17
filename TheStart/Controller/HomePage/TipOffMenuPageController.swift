@@ -13,58 +13,81 @@ class TipOffMenuPageController: BaseViewController {
     var  tipOffVC:TipOffViewController!
     var  clarifyVC:ClarifyViewController!
     
+    var  supermanVC:SuperManListController!
+    
     var tipOffVCButton:UIButton!
     
     var clarifyButton:UIButton!
+    
+    var supermanButton:UIButton!
     
     var navView:UIView!
     
     var pubBtn:UIButton!
     
-    var lineView1:UIView!
-    var lineView2:UIView!
+//    var lineView1:UIView!
+//    var lineView2:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tipOffVC = TipOffViewController()
         clarifyVC = ClarifyViewController()
+        supermanVC = SuperManListController()
         
-        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 200)/2, y: 2, width:200, height: 38))
-        
-        tipOffVCButton = UIButton.init()
-        tipOffVCButton.frame = CGRect.init(x: 0, y: 0, width: 100, height: 44)
-        tipOffVCButton.addTarget(self, action: #selector(tipOffButtonACtion(_:)), for: .touchUpInside)
-        tipOffVCButton.setTitle("吐槽馆", for: .normal)
-        tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
-        tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        
-        lineView1 = UIView.init(frame: CGRect.init(x: (100 - 30)/2, y: 40, width:23, height: 2))
-        lineView1.backgroundColor = UIColor.white
-        
-        clarifyButton = UIButton.init()
-        clarifyButton.frame = CGRect.init(x: 100, y: 2, width: 100, height: 38)
-        clarifyButton.addTarget(self, action: #selector(clarifyButtonACtion(_:)), for: .touchUpInside)
-        clarifyButton.setTitle("澄清馆", for: .normal)
-        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
-        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        
-        lineView2 = UIView.init(frame: CGRect.init(x: 100 + (100 - 30)/2, y: 40, width:23, height: 2))
-        lineView2.backgroundColor = UIColor.white
-        
-        navView.addSubview(tipOffVCButton)
-        navView.addSubview(clarifyButton)
-        navView.addSubview(lineView1)
-        navView.addSubview(lineView2)
-        lineView1.isHidden = false
-        lineView2.isHidden = true
+        if navView == nil{
+            createNavView()
+        }
+      
         //self.navigationController?.navigationBar.addSubview(navView)
         
         self.addChild(tipOffVC)
         self.view.addSubview(tipOffVC.view)
+        
+        self.navigationController?.navigationBar.addSubview(navView)
         //createPubBtn()
+    }
+    
+    func createNavView() {
+        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 210)/2, y: 2, width:210, height: 38))
+        
+        tipOffVCButton = UIButton.init()
+        tipOffVCButton.frame = CGRect.init(x: 0, y: 0, width: 70, height: 44)
+        tipOffVCButton.addTarget(self, action: #selector(tipOffButtonACtion(_:)), for: .touchUpInside)
+        tipOffVCButton.setTitle("吐槽馆", for: .normal)
+        tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
+        tipOffVCButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+      
+        
+        clarifyButton = UIButton.init()
+        clarifyButton.frame = CGRect.init(x: 70, y: 2, width: 70, height: 38)
+        clarifyButton.addTarget(self, action: #selector(clarifyButtonACtion(_:)), for: .touchUpInside)
+        clarifyButton.setTitle("澄清馆", for: .normal)
+        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
+        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        supermanButton = UIButton.init()
+        supermanButton.frame = CGRect.init(x: 140, y: 2, width: 70, height: 38)
+        supermanButton.addTarget(self, action: #selector(supermanButtonACtion(_:)), for: .touchUpInside)
+        supermanButton.setTitle("大咖秀", for: .normal)
+        supermanButton.setTitleColor(UIColor.darkGray, for: .normal)
+        supermanButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
         
+        
+//        lineView2 = UIView.init(frame: CGRect.init(x: 100 + (100 - 30)/2, y: 40, width:23, height: 2))
+//        lineView2.backgroundColor = UIColor.white
+//        lineView1 = UIView.init(frame: CGRect.init(x: (100 - 30)/2, y: 40, width:23, height: 2))
+//        lineView1.backgroundColor = UIColor.white
+        
+        navView.addSubview(tipOffVCButton)
+        navView.addSubview(clarifyButton)
+        navView.addSubview(supermanButton)
+       // navView.addSubview(lineView1)
+       // navView.addSubview(lineView2)
+       // lineView1.isHidden = false
+       // lineView2.isHidden = true
     }
     func createPubBtn() {
         
@@ -88,6 +111,33 @@ class TipOffMenuPageController: BaseViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    @objc func supermanButtonACtion(_ btn: UIButton){
+        
+        if self.children.contains(tipOffVC){
+            tipOffVC.removeFromParent()
+            tipOffVC.view.removeFromSuperview()
+        }
+        
+        if self.children.contains(clarifyVC){
+            clarifyVC.removeFromParent()
+            clarifyVC.view.removeFromSuperview()
+        }
+        
+        tipOffVCButton.setTitleColor(UIColor.darkGray, for: .normal)
+        tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        supermanButton.setTitleColor(ZYJColor.barText ,for: .normal)
+        supermanButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        
+        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
+        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        self.addChild(supermanVC)
+        self.view.addSubview(supermanVC.view)
+        
+    }
+    
     @objc func tipOffButtonACtion(_ btn: UIButton){
         
         if self.children.contains(clarifyVC){
@@ -95,14 +145,25 @@ class TipOffMenuPageController: BaseViewController {
             clarifyVC.view.removeFromSuperview()
         }
         
-        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
-        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        if self.children.contains(supermanVC){
+            supermanVC.removeFromParent()
+            supermanVC.view.removeFromSuperview()
+        }
+        
         
         tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
-        tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        tipOffVCButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        clarifyButton.setTitleColor(UIColor.darkGray, for: .normal)
+        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        supermanButton.setTitleColor(UIColor.darkGray, for: .normal)
+        supermanButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+   
  
-        lineView1.isHidden = false
-        lineView2.isHidden = true
+//        lineView1.isHidden = false
+//        lineView2.isHidden = true
         self.addChild(tipOffVC)
         self.view.addSubview(tipOffVC.view)
  
@@ -115,14 +176,24 @@ class TipOffMenuPageController: BaseViewController {
             tipOffVC.view.removeFromSuperview()
         }
         
+        if self.children.contains(supermanVC){
+            supermanVC.removeFromParent()
+            supermanVC.view.removeFromSuperview()
+        }
+        
         
         tipOffVCButton.setTitleColor(UIColor.darkGray, for: .normal)
-        tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        tipOffVCButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
         clarifyButton.setTitleColor(ZYJColor.barText ,for: .normal)
-        clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        lineView1.isHidden = true
-        lineView2.isHidden = false
+        clarifyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        
+        supermanButton.setTitleColor(UIColor.darkGray, for: .normal)
+        supermanButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+//        lineView1.isHidden = true
+//        lineView2.isHidden = false
  
         self.addChild(clarifyVC)
         self.view.addSubview(clarifyVC.view)
@@ -136,6 +207,9 @@ class TipOffMenuPageController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if navView == nil{
+            createNavView()
+        }
         self.navigationController?.navigationBar.addSubview(navView)
     }
       

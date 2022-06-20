@@ -29,10 +29,6 @@ class MusicViewCell: UICollectionViewCell {
                 moneyLabel.setImage(UIImage.init(named: "jifen"), for: .normal)
                 
             }
-            
-          
-            
-           
             nameLabel.text = model!.name
             imageV.displayImageWithURL(url: model?.image)
             
@@ -42,6 +38,7 @@ class MusicViewCell: UICollectionViewCell {
     func configModel(model:GoodsModel){
         moneyLabel.titleLabel?.text = model.price
         moneyLabel.setTitle( "¥" + model.price, for: .normal)
+        moneyLabel.setTitleColor(ZYJColor.coinColor, for: .normal)
         nameLabel.text = model.goods_name
         imageV.displayImageWithURL(url: model.image)
     }

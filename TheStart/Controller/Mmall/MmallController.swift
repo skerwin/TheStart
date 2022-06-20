@@ -57,7 +57,8 @@ class MmallController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createRightNavItem()
+        
+       
         self.title = "音乐馆"
         // self.navigationController?.navigationBar.topItem?.title = ""
         
@@ -83,7 +84,12 @@ class MmallController: BaseViewController {
        self.view.addSubview(pageMenuController!.view)
        pageMenuController?.didMove(toParent: self)
         
-       createRightNavItem()
+        if checkMarketVer(){
+           
+        }else{
+            createRightNavItem()
+        }
+       
  
         // Do any additional setup after loading the view.
     }

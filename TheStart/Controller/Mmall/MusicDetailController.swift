@@ -217,11 +217,17 @@ class MusicDetailController: BaseViewController,Requestable{
             }
            
             initFooterView(bought: isBought)
-            if dataModel!.uid == getUserId(){
-                tableView.tableFooterView = UIView()
-            }else{
+ 
+            if checkMarketVer(){
                 tableView.tableFooterView = footerBgView
+            }else{
+                if dataModel!.uid == getUserId(){
+                    tableView.tableFooterView = UIView()
+                }else{
+                    tableView.tableFooterView = footerBgView
+                }
             }
+            
             
         }
         
@@ -254,7 +260,7 @@ class MusicDetailController: BaseViewController,Requestable{
     
     func initFooterView(bought:Bool){
         
-        if isBought{
+        if checkMarketVer(){
             footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
             footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
             footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
@@ -265,26 +271,38 @@ class MusicDetailController: BaseViewController,Requestable{
             footerBgView.backgroundColor = UIColor.clear
             
         }else{
-            if isVipAuudio{
-                
-                footerViewVip = Bundle.main.loadNibNamed("BuyBtnView", owner: nil, options: nil)!.first as? BuyBtnView
-                footerViewVip.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-                footerViewVip.delegate = self
-                footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-                footerBgView.backgroundColor = UIColor.clear
-                footerBgView.addSubview(footerViewVip)
- 
-            }else{
+            if isBought{
                 footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
-                footerView.chatBtn.setTitle("立即购买", for: .normal)
+                footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
                 footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
                 footerView.delegate = self
+               
                 footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-                footerBgView.backgroundColor = UIColor.clear
                 footerBgView.addSubview(footerView)
+                footerBgView.backgroundColor = UIColor.clear
+                
+            }else{
+                if isVipAuudio{
+                    
+                    footerViewVip = Bundle.main.loadNibNamed("BuyBtnView", owner: nil, options: nil)!.first as? BuyBtnView
+                    footerViewVip.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                    footerViewVip.delegate = self
+                    footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                    footerBgView.backgroundColor = UIColor.clear
+                    footerBgView.addSubview(footerViewVip)
+     
+                }else{
+                    footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
+                    footerView.chatBtn.setTitle("立即购买", for: .normal)
+                    footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                    footerView.delegate = self
+                    footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                    footerBgView.backgroundColor = UIColor.clear
+                    footerBgView.addSubview(footerView)
+                }
             }
         }
-    }
+     }
     
     func initTableView(){
         
@@ -462,9 +480,15 @@ extension MusicDetailController:BuyBtnViewDelegate {
 }
 extension MusicDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
-        commonBuy()
+        
+        if checkMarketVer(){
+            lookInfo()
+        }else{
+            commonBuy()
+        }
+     
        
-    }
+     }
 }
 
 extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {

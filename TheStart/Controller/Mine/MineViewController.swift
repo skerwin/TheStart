@@ -42,9 +42,10 @@ class MineViewController: BaseTableController,Requestable{
         rightBarButton = UIButton.init()
         let bgview = UIView.init()
  
-        rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
-        rightBarButton.setTitle("设置", for: .normal)
-        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 26, height: 26)
+        //rightBarButton.setTitle("设置", for: .normal)
+        rightBarButton.setBackgroundImage(UIImage.init(named: "shezhi"), for: .normal)
+        bgview.frame = CGRect.init(x: 0, y: 0, width: 26, height: 26)
         
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
       
@@ -57,13 +58,13 @@ class MineViewController: BaseTableController,Requestable{
         bgview.addSubview(rightBarButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
-        
         lefttBarButton = UIButton.init()
         let bgview2 = UIView.init()
  
-        lefttBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
-        lefttBarButton.setTitle("消息", for: .normal)
-        bgview2.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+        lefttBarButton.frame = CGRect.init(x: 0, y: 0, width: 26, height: 26)
+        //lefttBarButton.setTitle("消息", for: .normal)
+        lefttBarButton.setBackgroundImage(UIImage.init(named: "xiaoxi"), for: .normal)
+        bgview2.frame = CGRect.init(x: 0, y: 0, width: 26, height: 26)
         
         lefttBarButton.addTarget(self, action: #selector(leftNavBtnClic(_:)), for: .touchUpInside)
       

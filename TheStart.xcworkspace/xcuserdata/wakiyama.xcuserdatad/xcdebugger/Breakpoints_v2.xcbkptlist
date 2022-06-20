@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "BEA35826-4549-4E94-A3FB-75563223B598"
+            uuid = "4A1ABD09-2AA7-4581-92BB-C638854C6FC1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -19,128 +19,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "139B4D6F-9511-4A32-9F98-541263594D9A"
+            uuid = "0E5CDEFC-CB4A-425E-A3B4-1C93BA0284EC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/Controller/HomePage/TipOffMenuPageController.swift"
+            filePath = "TheStart/Controller/Find/WorkerPubViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "supermanButtonACtion(_:)"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
+            landmarkName = "didSelected(collectionView:didSelectItemAt:row:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9DC0CDB7-812A-4710-88F3-98844E09F575"
+            uuid = "792B5334-FF9C-46EE-B29E-89C3E8DA6548"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/Controller/HomePage/TipOffMenuPageController.swift"
+            filePath = "TheStart/Controller/Find/WorkerPubViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "tipOffButtonACtion(_:)"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
+            landmarkName = "deleteItem(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "623BB492-63E1-4888-A5E1-1F1554FA1376"
+            uuid = "19119D2A-C1B5-4A4E-B0E7-6E9C5FE93E65"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/Controller/HomePage/TipOffMenuPageController.swift"
+            filePath = "TheStart/View/Find/PubMediaCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "clarifyButtonACtion(_:)"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "75A10D55-AAB7-4681-84E9-4FB298904254"
+            uuid = "C266FB3B-CC68-44DF-BF33-57FCAA76DAFB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/Controller/Mine/NewLoginController.swift"
+            filePath = "TheStart/Controller/Find/WorkerPubViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
+            landmarkName = "didSelectedVod(collectionView:didSelectItemAt:row:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4941DFCB-761D-48F0-BE4D-A6A172360635"
+            uuid = "00A285A1-DF51-42D7-8221-1D4D5A35D551"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/CommonLIbrary/Utils/CacheTool.swift"
+            filePath = "TheStart/Controller/Mine/MyStarCoinController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "checkMarketVer()"
-            landmarkType = "9">
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1941F0EE-F22C-43B5-9AF3-00203787382D"
+            uuid = "D82C6028-5EFC-4A9C-BB06-42966F3F2740"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/CommonLIbrary/Utils/CacheTool.swift"
+            filePath = "TheStart/Controller/Mmall/MusicDetailController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "checkMarketVer()"
-            landmarkType = "9">
+            startingLineNumber = "454"
+            endingLineNumber = "454"
+            landmarkName = "vipBtnAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5E51E0E2-2904-4862-A7E1-404B57699A9D"
+            uuid = "3BF59EDC-83AB-43DE-B224-9F84519116E0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/CommonLIbrary/Utils/CacheTool.swift"
+            filePath = "TheStart/Controller/Mmall/MusicDetailController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "checkMarketVer()"
-            landmarkType = "9">
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "vipBtnAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A87DFF4F-FCA8-4277-905F-2D99B21D02E3"
+            uuid = "FEE14271-976B-496C-B6BA-F8B7A9F0CC8A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheStart/View/Mmall/MusicDetailHeader.swift"
+            filePath = "TheStart/Controller/Mine/MyStarCoinController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "configModel(model:)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "931DE77F-B8AA-4217-8A33-95DE0F2700A5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheStart/Controller/Mine/CashOutViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "saveAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

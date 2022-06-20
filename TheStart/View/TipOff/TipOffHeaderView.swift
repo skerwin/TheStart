@@ -44,7 +44,7 @@ class TipOffHeaderView: UIView {
         nameLabel.text = model.nickname
       
         if model.type == 1{
-            tipLabel.text = "黑料"
+            tipLabel.text = "吐槽"
             tipLabel.backgroundColor = colorWithHexString(hex: "903207")
         }else{
             tipLabel.text = "澄清"

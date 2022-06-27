@@ -136,7 +136,8 @@ class TipOffPostViewController: BaseViewController,Requestable {
     
     func presentPickerController() {
         config.modalPresentationStyle = .fullScreen
-        
+        config.selectOptions = PickerAssetOptions.photo
+
         if #available(iOS 13.0, *) {
             config.modalPresentationStyle = .automatic
         }
@@ -198,7 +199,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
        
         DialogueUtils.showWithStatus("正在上传")
         HttpRequest.uploadImage(url: HomeAPI.imageUpLoadUrl, filePath: filePath,success: { [self] (content) -> Void in
-            
+            DialogueUtils.dismiss()
             self.uploadImgArr = getArrayFromJson(content: content)
             postAtricle()
            

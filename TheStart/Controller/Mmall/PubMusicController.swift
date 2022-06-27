@@ -149,7 +149,7 @@ class PubMusicController: BaseViewController,Requestable {
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         DialogueUtils.dismiss()
         DialogueUtils.showSuccess(withStatus: "发布成功")
-        delay(second: 1) { [self] in
+        delay(second: 0.5) { [self] in
 //            if (self.reloadBlock != nil) {
 //                self.reloadBlock!()
 //            }
@@ -222,10 +222,20 @@ extension PubMusicController:ChatBtnViewDelegate {
         }
         
         audioModel?.price = headView.MoneyTF.text!
-        if audioModel!.price.isEmptyStr(){
-            showOnlyTextHUD(text: "请输入价格")
-            return
+        
+        if checkMarketVer(){
+            if audioModel!.price.isEmptyStr(){
+                showOnlyTextHUD(text: "请输入类型")
+                return
+            }
+        }else{
+            if audioModel!.price.isEmptyStr(){
+                showOnlyTextHUD(text: "请输入价格")
+                return
+            }
         }
+       
+        
 //        if !(CheckoutUtils.isValidNumber(number: audioModel!.price)){
 //            showOnlyTextHUD(text: "价格只能为数字")
 //            return
@@ -291,10 +301,8 @@ extension PubMusicController:ChatBtnViewDelegate {
         audioModel?.audio_path = vodstr
  //
         let pathAndParams = HomeAPI.audioPubPathAndParams(model: audioModel!)
-        postRequest(pathAndParams: pathAndParams,showHUD: false)
-//
-
-        
+        postRequest(pathAndParams: pathAndParams,showHUD: true)
+ 
     }
     
     

@@ -39,7 +39,7 @@ struct HttpRequest {
       
  
          var request: DataRequest?
-         //print("请求数据：")
+         print("请求数据：")
          print(Url!.absoluteString)
          let parametersJson = JSON(parameters!)
          print(parametersJson)
@@ -150,14 +150,14 @@ struct HttpRequest {
                 }
                 let responseJson = JSON(dict)
                 let responseData = responseJson[BerResponseConstants.responseData]
-//                print(upUrlstr)
-//                print(responseJson)
+                print(upUrlstr)
+                print(responseJson)
                 if responseJson["status"].intValue == 200 {
                     success(responseData)
                 }else{
                     let msg = responseJson["msg"].stringValue
                     failure(msg)
-                   // //print(content + msg)
+                    //print(content + msg)
                 }
             case .failure:
                 failure("图片服务器出错")
@@ -198,8 +198,8 @@ struct HttpRequest {
             let dict = response.value
              let responseJson = JSON(dict)
              let responseData = responseJson[BerResponseConstants.responseData]
-//             print(upUrlstr)
-//             print(responseJson)
+             print(upUrlstr)
+             print(responseJson)
              
             switch response.result {
             case .success:
@@ -208,7 +208,7 @@ struct HttpRequest {
                     return
                 }
                 let responseJson = JSON(dict)
-              //  print(responseJson)
+                print(responseJson)
                 let responseData = responseJson[BerResponseConstants.responseData]
               
                 if responseJson["status"].intValue == 200 {

@@ -26,12 +26,14 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     
     var rightBarButton:UIButton!
     var isFreeZone = false
+    
+    
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //createRightNavItem()
-        self.limit = 20
+        self.limit = 15
         loadData()
         if isFreeZone{
             self.title = "会员免费专区"
@@ -58,9 +60,9 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         }else{
             if isFreeZone{
                y = navigationHeaderAndStatusbarHeight
-               collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
+               collectionViewY = UIDevice.navigationBarHeight
             }else{
-                collectionViewY = UIDevice.navigationBarHeight
+                collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
                 y = 10
             }
         }
@@ -141,9 +143,8 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         collectionView.mj_footer?.endRefreshing()
 
         let list:[AudioModel]  = getArrayFromJson(content: responseResult)
-
         dataList.append(contentsOf: list)
-        if list.count < 10 {
+        if list.count < 15 {
             self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
         }
         self.collectionView.reloadData()

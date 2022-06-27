@@ -237,6 +237,10 @@ class JobInfoViewController: BaseViewController,Requestable{
         tableView.registerNibWithTableViewCellName(name: WorkerInfoCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: WorkerVideoCell.nameOfClass)
         
+        
+        
+        tableView.registerNibWithTableViewCellName(name: VideoBalankCell.nameOfClass)
+        
         self.tableView.tableHeaderView = headerBgView
         tableView.tableFooterView = footerBgView
 //        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
@@ -255,8 +259,20 @@ extension JobInfoViewController:ChatBtnViewDelegate {
             showOnlyTextHUD(text: "不能跟自己发起聊天哦")
             return
         }
-        let pathAndParams = HomeAPI.userImPathPathAndParams(type: 2,to_uid: dataModel!.uid)
-        postRequest(pathAndParams: pathAndParams,showHUD: false)
+        
+        if checkMarketVer(){
+            let controller = UIStoryboard.getMessageController()
+            controller.toID = dataModel!.uid
+            controller.nameTitle = dataModel!.nickname
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            
+            let pathAndParams = HomeAPI.userImPathPathAndParams(type: 2,to_uid: dataModel!.uid)
+            postRequest(pathAndParams: pathAndParams,showHUD: false)
+            
+        }
+      
+       
         
         
        
@@ -265,10 +281,19 @@ extension JobInfoViewController:ChatBtnViewDelegate {
 }
 extension JobInfoViewController:JobBaseInfoDelegate {
     func JobCommunicateAction(){
-        if dataModel!.uid == getUserId(){
-            showOnlyTextHUD(text: "不能给自己拨打电话")
-            return
+        
+        if checkMarketVer(){
+            
+        }else{
+            if dataModel!.uid == getUserId(){
+                showOnlyTextHUD(text: "不能给自己拨打电话")
+                return
+            }
         }
+        
+        
+        
+      
       
         let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
         
@@ -306,16 +331,37 @@ extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
             cell.configCell(model: self.dataModel!, isjob: true)
             return cell
         }else if indexPath.row == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
-            cell.selectionStyle = .none
-            cell.model = dataModel
-            return cell
+            
+            if dataModel!.images.count == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoBalankCell", for: indexPath) as! VideoBalankCell
+                cell.zanwu.text = "暂无图片资料"
+                cell.selectionStyle = .none
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
+                cell.selectionStyle = .none
+                cell.model = dataModel
+                return cell
+            }
+            
+          
            
         }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
-            cell.selectionStyle = .none
-            cell.model = dataModel
-            return cell
+            
+            if dataModel!.video.count == 0{
+               
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoBalankCell", for: indexPath) as! VideoBalankCell
+                cell.selectionStyle = .none
+                cell.zanwu.text = "暂无视频资料"
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
+                cell.selectionStyle = .none
+                cell.model = dataModel
+                return cell
+            }
+            
+          
         }
       
         

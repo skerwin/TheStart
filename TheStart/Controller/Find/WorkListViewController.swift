@@ -328,9 +328,13 @@ extension WorkListViewController:WorkerViewCellDelegate {
         
         callMobile = mobile
  
-        if mobile == getAcctount(){
-            showOnlyTextHUD(text: "不能给自己拨打电话")
-            return
+        if checkMarketVer(){
+            
+        }else{
+            if mobile == getAcctount(){
+                showOnlyTextHUD(text: "不能给自己拨打电话")
+                return
+            }
         }
          let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in

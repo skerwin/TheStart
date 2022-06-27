@@ -78,7 +78,7 @@
                                         <constraint firstAttribute="height" constant="0.5" id="inc-sb-ADG"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音乐价格" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YF-K1-hdX">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YF-K1-hdX">
                                     <rect key="frame" x="147" y="0.0" width="212" height="48.5"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -277,6 +277,8 @@
                 <outlet property="MoneyTF" destination="5YF-K1-hdX" id="tjn-bj-xda"/>
                 <outlet property="nameTV" destination="ZCA-iG-e8E" id="Drx-dj-x4b"/>
                 <outlet property="nobtn" destination="Osx-8b-4fX" id="1Yu-lR-M62"/>
+                <outlet property="privateLabel1" destination="2dG-tJ-dfd" id="gVQ-uq-djD"/>
+                <outlet property="privateLabel2" destination="Ff1-cO-X2w" id="BQF-jp-Xc6"/>
                 <outlet property="wangpanCode" destination="fgO-0h-8D0" id="pRi-vb-Jvc"/>
                 <outlet property="wanpanTV" destination="DpY-yj-oFN" id="vX2-UU-dni"/>
                 <outlet property="yesBtn" destination="N0c-jI-qEJ" id="g3n-cl-Vj1"/>

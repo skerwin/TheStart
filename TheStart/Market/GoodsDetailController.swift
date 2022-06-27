@@ -42,7 +42,11 @@ class GoodsDetailController: BaseViewController,Requestable {
     override func viewDidLoad() {
         super.viewDidLoad()
         initHeadView()
-        initFooterView()
+        
+        if checkMarketVer(){
+            initFooterView()
+        }
+        
         loadData()
         loadAddressData()
         initTableView()

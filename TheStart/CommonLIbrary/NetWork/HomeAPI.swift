@@ -377,6 +377,11 @@ struct HomeAPI {
 
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["type"] = type as AnyObject
+        
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+        
+        
         if cate_id != 0{
             paramsDictionary["cate_id"] = cate_id as AnyObject
         }
@@ -540,7 +545,7 @@ struct HomeAPI {
     }
     //我的音乐发布
     static let myaudioListPath = "/api/audio/index"
-    static func myaudioListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+    static func myaudioListPathAndParams(page:Int = 1,limit:Int = 15) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["page"] = page as AnyObject

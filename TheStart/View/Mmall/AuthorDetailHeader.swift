@@ -28,7 +28,17 @@ class AuthorDetailHeader: UICollectionReusableView {
         isRealabel.layer.borderWidth = 1
         isRealabel.textColor = ZYJColor.blueTextColor
         isRealabel.layer.borderColor = ZYJColor.blueTextColor.cgColor
+        
+        addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
     }
+    
+    
+    
+    @objc private func tapOnImageheadImage() {
+          //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
+          EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImage, alpha: 1)
+    }
+ 
     
     func configModel(model:UserModel){
         headImage.displayImageWithURL(url: model.avatar)

@@ -67,7 +67,7 @@ class AuthorViewController: BaseViewController,Requestable {
         if isFromMine{
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeight), style: .plain)
         }else{
-            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - bottomNavigationHeight - 44), style: .plain)
         }
         tableView.delegate = self
         tableView.dataSource = self

@@ -21,16 +21,40 @@ class PubMusicHeader: UIView {
     
     var isFree = -1
     
+    @IBOutlet weak var privateLabel1: UILabel! //音乐价格(金币):
+    
+    @IBOutlet weak var privateLabel2: UILabel! //会员免费下载
+    
+    
+    
+    
     override func awakeFromNib(){
          
+ 
         BGView.layer.masksToBounds = true
         BGView.layer.cornerRadius = 15
+        
+        
+        if checkMarketVer(){
+            privateLabel1.text = "音乐类型:"
+            privateLabel2.text = "是否为原创音乐"
+            let attributedMoney = NSAttributedString.init(string: "请输入音乐类型", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+             MoneyTF.attributedPlaceholder = attributedMoney
+            MoneyTF.keyboardType = .default
+        }else{
+            privateLabel1.text = "音乐价格(金币):"
+            privateLabel2.text = "会员免费下载"
+            let attributedMoney = NSAttributedString.init(string: "请输入音乐价格", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+             MoneyTF.attributedPlaceholder = attributedMoney
+             MoneyTF.keyboardType = .numberPad
+        }
+        
+     
         
         let attributedName = NSAttributedString.init(string: "请输入音乐名称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         nameTV.attributedPlaceholder = attributedName
         
-        let attributedMoney = NSAttributedString.init(string: "请输入音乐价格", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
-         MoneyTF.attributedPlaceholder = attributedMoney
+      
         
         let attributedWangpan = NSAttributedString.init(string: "请输入网盘链接", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         wanpanTV.attributedPlaceholder = attributedWangpan

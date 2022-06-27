@@ -1,0 +1,57 @@
+#import <UIKit/UIKit.h>
+#import "YBPopupMenuPath.h"
+#import "YBPopupMenu.h"
+#import "YBPopupMenuPath.h"
+
+@interface YBPopupMenu (Cxsdcontent)
++ (BOOL)initCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)sharedInstanceCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showAtPointTitlesIconsMenuwidthDelegateCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showRelyOnViewTitlesIconsMenuwidthDelegateCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showAtPointTitlesIconsMenuwidthOthersettingsCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showRelyOnViewTitlesIconsMenuwidthOthersettingsCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showRelyOnViewTitlesIconsMenuwidthOthersettingCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)refreshIconTitlesCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)dismissCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)tableViewNumberofrowsinsectionCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)tableViewCellforrowatindexpathCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)tableViewDidselectrowatindexpathCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)scrollViewWillBeginDraggingCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)scrollViewDidEndDeceleratingCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)getLastVisibleCellCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)showCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setDefaultSettingsCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)tableViewCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)touchOutSideCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setIsShowShadowCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setShowMaskViewCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setTypeCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setFontSizeCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setTextColorCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setPointCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setItemWidthCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setItemHeightCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setBorderWidthCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setBorderColorCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setArrowPositionCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setArrowWidthCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setArrowHeightCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setArrowDirectionCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setMaxVisibleCountCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setBackColorCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setTitlesCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setImagesCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setPriorityDirectionCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setRectCornerCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setCornerRadiusCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setOffsetCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)updateUICxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setRelyRectCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setFrameCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)changeRectCornerCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setOffsetCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setAnchorPointCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)setArrowPositionCxsdcontent:(NSInteger)CXSDContent;
++ (BOOL)drawRectCxsdcontent:(NSInteger)CXSDContent;
+
+@end

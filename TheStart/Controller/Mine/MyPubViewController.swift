@@ -40,13 +40,13 @@ class MyPubViewController: BaseViewController {
         controller2 = WorkListViewController()
         controller2.isFromMine = true
         controller2.isMypub = true
-        controller2.title = "我的求职"
+        controller2.title = "我的找场"
         controller2.parentNavigationController = self.navigationController
         
         controller3 = TipOffViewController()
         controller3.isFromMine = true
         controller3.isMypub = true
-        controller3.title = "我的吐槽"
+        controller3.title = "我的嘿人"
         controller3.parentNavigationController = self.navigationController
         
         controller4 = MuiscListController()

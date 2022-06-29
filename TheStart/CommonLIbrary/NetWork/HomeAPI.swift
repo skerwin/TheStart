@@ -701,6 +701,17 @@ struct HomeAPI {
         return (buyVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
+    //开通免费会员
+    static let buyFreeVipPath = "/api/user/vip1"
+    static func buyFreeVipPathAndParams(level_id:Int,pay_type:String,price:String) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["level_id"] = level_id as AnyObject
+        paramsDictionary["pay_type"] = pay_type as AnyObject
+        paramsDictionary["price"] = price as AnyObject
+   
+        return (buyFreeVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
     //订单列表
    static let orderListPath = "/api/order/order_list"
    static func orderListPathAndParams(type:Int,order_type:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {

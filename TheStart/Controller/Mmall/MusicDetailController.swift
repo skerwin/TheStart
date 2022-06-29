@@ -87,8 +87,7 @@ class MusicDetailController: BaseViewController,Requestable{
     }
     
     @objc func rightNavBtnClic(_ btn: UIButton){
-        
-        
+ 
         if dataModel?.uid == getUserId() && isFromMine{
             let noticeView = UIAlertController.init(title: "", message: "你确定要删除本条信息么", preferredStyle: .alert)
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
@@ -259,19 +258,18 @@ class MusicDetailController: BaseViewController,Requestable{
     
     
     func initFooterView(bought:Bool){
-        
-        if checkMarketVer(){
-            footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
-            footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
-            footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-            footerView.delegate = self
-           
-            footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-            footerBgView.addSubview(footerView)
-            footerBgView.backgroundColor = UIColor.clear
-            
-        }else{
-            if isBought{
+         
+//        if getAcctount() == "18153684982"{
+//            footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
+//            footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
+//            footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+//            footerView.delegate = self
+//
+//            footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+//            footerBgView.addSubview(footerView)
+//            footerBgView.backgroundColor = UIColor.clear
+//        }else{
+            if checkMarketVer(){
                 footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
                 footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
                 footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
@@ -282,26 +280,39 @@ class MusicDetailController: BaseViewController,Requestable{
                 footerBgView.backgroundColor = UIColor.clear
                 
             }else{
-                if isVipAuudio{
-                    
-                    footerViewVip = Bundle.main.loadNibNamed("BuyBtnView", owner: nil, options: nil)!.first as? BuyBtnView
-                    footerViewVip.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
-                    footerViewVip.delegate = self
-                    footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-                    footerBgView.backgroundColor = UIColor.clear
-                    footerBgView.addSubview(footerViewVip)
-     
-                }else{
+                if isBought{
                     footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
-                    footerView.chatBtn.setTitle("立即购买", for: .normal)
+                    footerView.chatBtn.setTitle("查看网盘链接", for: .normal)
                     footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
                     footerView.delegate = self
+                   
                     footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
-                    footerBgView.backgroundColor = UIColor.clear
                     footerBgView.addSubview(footerView)
+                    footerBgView.backgroundColor = UIColor.clear
+                    
+                }else{
+                    if isVipAuudio{
+                        
+                        footerViewVip = Bundle.main.loadNibNamed("BuyBtnView", owner: nil, options: nil)!.first as? BuyBtnView
+                        footerViewVip.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                        footerViewVip.delegate = self
+                        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                        footerBgView.backgroundColor = UIColor.clear
+                        footerBgView.addSubview(footerViewVip)
+         
+                    }else{
+                        footerView = Bundle.main.loadNibNamed("ChatBtnView", owner: nil, options: nil)!.first as? ChatBtnView
+                        footerView.chatBtn.setTitle("立即购买", for: .normal)
+                        footerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 85)
+                        footerView.delegate = self
+                        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
+                        footerBgView.backgroundColor = UIColor.clear
+                        footerBgView.addSubview(footerView)
+                    }
                 }
             }
-        }
+       // }
+       
      }
     
     func initTableView(){
@@ -473,18 +484,22 @@ extension MusicDetailController:BuyBtnViewDelegate {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }
-        
-      
-    }
+     }
     
 }
 extension MusicDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
         
+        
         if checkMarketVer(){
             lookInfo()
         }else{
-            commonBuy()
+//            if getAcctount() == "18153684982"{
+//                lookInfo()
+//            }else{
+                commonBuy()
+//            }
+           
         }
      
        
@@ -517,12 +532,13 @@ extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
     {
         
         if indexPath.row == 0{
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
             cell.selectionStyle = .none
             cell.configAudioCell(model: dataModel!)
             return cell
-        }else if indexPath.row == 1{
             
+        }else if indexPath.row == 1{
             if dataModel?.images.count == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
                 cell.selectionStyle = .none
@@ -534,16 +550,12 @@ extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
                 cell.configAudioCell(model: dataModel!)
                 return cell
             }
-            
-            
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
             cell.selectionStyle = .none
             cell.configAudioCell(model: dataModel!)
             return cell
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -96,13 +96,22 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VIP" translatesAutoresizingMaskIntoConstraints="NO" id="rFN-UV-VfG">
+                        <rect key="frame" x="37" y="11" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="LOS-Ss-Fgr"/>
+                            <constraint firstAttribute="width" constant="18" id="TGH-s3-KDJ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="rFN-UV-VfG" firstAttribute="leading" secondItem="Z2i-6R-LVy" secondAttribute="leading" constant="37" id="1f0-Ei-YvK"/>
                     <constraint firstItem="axT-yz-3Wu" firstAttribute="leading" secondItem="dcH-rA-N2X" secondAttribute="trailing" constant="8" id="8Mm-ec-eau"/>
                     <constraint firstItem="dES-3G-IPs" firstAttribute="top" secondItem="Z2i-6R-LVy" secondAttribute="top" constant="16" id="9V5-Tt-ycO"/>
                     <constraint firstItem="dcH-rA-N2X" firstAttribute="leading" secondItem="Z2i-6R-LVy" secondAttribute="leading" constant="16" id="9x1-h3-Zap"/>
                     <constraint firstItem="dES-3G-IPs" firstAttribute="leading" secondItem="AIq-VJ-HFT" secondAttribute="trailing" constant="40" id="DIh-2h-gob"/>
                     <constraint firstAttribute="trailing" secondItem="dES-3G-IPs" secondAttribute="trailing" constant="10" id="Jmg-ue-S1Q"/>
+                    <constraint firstItem="rFN-UV-VfG" firstAttribute="top" secondItem="Z2i-6R-LVy" secondAttribute="top" constant="11" id="K3b-ft-lfg"/>
                     <constraint firstAttribute="trailing" secondItem="uFD-Xi-WDX" secondAttribute="trailing" constant="15" id="LqR-TY-Z1k"/>
                     <constraint firstAttribute="bottom" secondItem="uFD-Xi-WDX" secondAttribute="bottom" id="NYO-03-wDl"/>
                     <constraint firstAttribute="trailing" secondItem="NTm-4G-ziE" secondAttribute="trailing" constant="10" id="UUs-eJ-BgL"/>
@@ -128,11 +137,13 @@
                 <outlet property="nickname" destination="AIq-VJ-HFT" id="7U6-ws-HO3"/>
                 <outlet property="pubtimeLabel" destination="NTm-4G-ziE" id="AUx-Rx-w7c"/>
                 <outlet property="titleLabel" destination="Ffr-Yt-KSE" id="gEk-Rd-uAg"/>
+                <outlet property="vipImage" destination="rFN-UV-VfG" id="IRw-qb-hea"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="142.96875"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="VIP" width="16" height="16"/>
         <image name="dianhua" width="16" height="16"/>
         <image name="ziran" width="24" height="24"/>
         <systemColor name="systemGray2Color">

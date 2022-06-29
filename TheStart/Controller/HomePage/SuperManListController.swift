@@ -112,7 +112,7 @@ extension SuperManListController:UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 155
+        return 172
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

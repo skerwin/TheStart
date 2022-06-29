@@ -548,6 +548,7 @@
 		B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80512283E0B1300EB9109 /* addressListCell.xib */; };
 		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
 		B8BFA6B72850A70000F5F41B /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */; };
+		B8EA4B11286A98ED005E2111 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */; };
 		B8F2EC142869C24B008F32C0 /* VideoBalankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */; };
 		B8F2EC152869C24B008F32C0 /* VideoBalankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
@@ -1151,6 +1152,7 @@
 		B8B80515283E0B8500EB9109 /* addressDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressDetailController.swift; sourceTree = "<group>"; };
 		B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
 		B8BFA6B52850A70000F5F41B /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
+		B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBalankCell.swift; sourceTree = "<group>"; };
 		B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoBalankCell.xib; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -2091,6 +2093,7 @@
 				B8AC508A2807CF6B00C2CF26 /* UIStoryboard+Extension.swift */,
 				B8AC508B2807CF6B00C2CF26 /* UITextField+Extension.swift */,
 				B8AC508C2807CF6B00C2CF26 /* UITableView+Extension.swift */,
+				B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2759,6 +2762,7 @@
 				B81C4D5A28601D6B0005AFF2 /* HomeJobCellCxsdcontentExt.swift in Sources */,
 				B81C4E0428601D6C0005AFF2 /* IQTextView+Cxsdcontent.m in Sources */,
 				B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */,
+				B8EA4B11286A98ED005E2111 /* UICollectionView+Extension.swift in Sources */,
 				B81C4D9428601D6B0005AFF2 /* reCommentCellCxsdcontentExt.swift in Sources */,
 				B8AC51082807FF9800C2CF26 /* BerResponseConstants.swift in Sources */,
 				B81C4DBC28601D6B0005AFF2 /* WKWebSocketCxsdcontentExt.swift in Sources */,
@@ -3132,7 +3136,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
@@ -3151,7 +3155,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
@@ -3174,7 +3178,7 @@
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
@@ -3193,7 +3197,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;

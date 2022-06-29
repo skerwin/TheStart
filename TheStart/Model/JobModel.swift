@@ -45,6 +45,9 @@ struct JobModel : Mappable {
     var uid = 0
     var is_collect = 0
     
+    var is_vip = 0
+    
+    
     init?(map: Map) {
         
     }
@@ -53,6 +56,7 @@ struct JobModel : Mappable {
     }
     mutating func mapping(map: Map) {
         
+        is_vip <- map["is_vip"]
         work_name <- map["work_name"]
         videoURL <- map["videoURL"]
         cate <- map["cate"]

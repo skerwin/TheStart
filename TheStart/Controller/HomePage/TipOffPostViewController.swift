@@ -70,7 +70,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     override func viewDidLoad() {
         super.viewDidLoad()
         if articleType == 1{
-            self.title = "吐槽信息"
+            self.title = "嘿人信息"
         }else{
             self.title = "澄清信息"
         }

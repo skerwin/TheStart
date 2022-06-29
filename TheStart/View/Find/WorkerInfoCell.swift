@@ -22,10 +22,12 @@ class WorkerInfoCell: UITableViewCell {
   
     
     func configAudioCell(model:AudioModel){
-        introLabel.text = "音乐详情"
-        contentLabel.text = model.info
         
-    }
+        
+        introLabel.text = "音乐详情"
+        contentLabel.text = "标题:" + model.name + "\n" + "\n" + model.info
+
+     }
     
     func configGoodsCell(model:GoodsModel,num:Int,address:AddressModel){
         introLabel.font = UIFont.systemFont(ofSize: 15)

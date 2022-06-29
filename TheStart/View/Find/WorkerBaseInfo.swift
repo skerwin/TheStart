@@ -25,6 +25,7 @@ class WorkerBaseInfo: UIView {
     @IBOutlet weak var salaryLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var vipImage: UIImageView!
     var delegate: WorkerBaseInfoDelegate!
     
     @IBOutlet weak var infoLabel: UILabel!
@@ -37,6 +38,12 @@ class WorkerBaseInfo: UIView {
     
     
     func configModel(model:JobModel){
+        
+        if model.is_vip == 1 && !checkMarketVer(){
+            vipImage.isHidden = false
+        }else{
+            vipImage.isHidden = true
+        }
         headImg.displayImageWithURL(url: model.avatar)
         nameLabel.text = model.nickname
         if model.is_shiming == 2{
@@ -50,13 +57,17 @@ class WorkerBaseInfo: UIView {
         timeLabel.text = model.add_time + "发布"
         titleLabel.text = model.title
     }
+    
+    @objc private func tapOnImageheadImage() {
+         
+          EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
+    }
     override func awakeFromNib(){
  
-        
+        addGestureRecognizerToView(view: headImg, target: self, actionName: "tapOnImageheadImage")
         phoneBtn.layer.masksToBounds = true
         phoneBtn.layer.cornerRadius = 15
-        
-        
+        vipImage.isHidden = true
         isAuthLabel.layer.masksToBounds = true
         isAuthLabel.layer.cornerRadius = 8
         isAuthLabel.layer.borderWidth = 1

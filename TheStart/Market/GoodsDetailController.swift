@@ -37,7 +37,7 @@ class GoodsDetailController: BaseViewController,Requestable {
     var type = 2
     
     var addressmodel = AddressModel()
-
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class GoodsDetailController: BaseViewController,Requestable {
         headView = Bundle.main.loadNibNamed("GoodDetailHeader", owner: nil, options: nil)!.first as? GoodDetailHeader
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 380)
         //headView.delegate = self
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 380))
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 397))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         

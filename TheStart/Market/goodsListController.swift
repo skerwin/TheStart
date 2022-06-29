@@ -145,6 +145,7 @@ class goodsListController: BaseViewController, UICollectionViewDataSource, UICol
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
         return dataList.count
     }
     

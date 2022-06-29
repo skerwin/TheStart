@@ -15,6 +15,8 @@ struct AuthorModel : Mappable {
  
     var id = 0
     var uid = 0
+    var is_vip = 0
+    
     
     var nickname = ""
     var real_name = ""
@@ -36,6 +38,7 @@ struct AuthorModel : Mappable {
     mutating func mapping(map: Map) {
         id <- map["id"]
         uid <- map["uid"]
+        is_vip <- map["is_vip"]
         nickname <- map["nickname"]
         real_name <- map["real_name"]
         

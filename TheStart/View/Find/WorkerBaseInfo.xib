@@ -143,12 +143,20 @@
                                 <action selector="phoneBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Wzv-uI-1rl"/>
                             </connections>
                         </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VIP" translatesAutoresizingMaskIntoConstraints="NO" id="3eK-UU-rPf">
+                            <rect key="frame" x="62" y="78.5" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="GBC-nq-eq5"/>
+                                <constraint firstAttribute="height" constant="24" id="vnO-sM-mKd"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="U90-q9-78V" firstAttribute="top" secondItem="TUI-0x-PPv" secondAttribute="bottom" constant="7" id="1MO-ur-Rdk"/>
                         <constraint firstItem="C7K-JH-8Jb" firstAttribute="leading" secondItem="YG5-U9-ZyS" secondAttribute="trailing" constant="15" id="6Uq-8q-LXo"/>
                         <constraint firstItem="kC0-q2-zV7" firstAttribute="leading" secondItem="9pc-VK-5dN" secondAttribute="leading" constant="93" id="AvF-wJ-KW3"/>
+                        <constraint firstItem="3eK-UU-rPf" firstAttribute="leading" secondItem="9pc-VK-5dN" secondAttribute="leading" constant="62" id="BtH-2f-Dkb"/>
                         <constraint firstItem="TUI-0x-PPv" firstAttribute="top" secondItem="bLr-1N-cA5" secondAttribute="bottom" constant="5" id="Cnt-9r-dGd"/>
                         <constraint firstItem="YG5-U9-ZyS" firstAttribute="leading" secondItem="9pc-VK-5dN" secondAttribute="leading" constant="93" id="EnE-Fw-WJ4"/>
                         <constraint firstItem="YG5-U9-ZyS" firstAttribute="top" secondItem="kC0-q2-zV7" secondAttribute="bottom" constant="16" id="GlE-Gg-e4I"/>
@@ -175,6 +183,7 @@
                         <constraint firstItem="uFW-0c-cS6" firstAttribute="leading" secondItem="vSY-Hj-w13" secondAttribute="trailing" constant="8" id="wrE-N3-rVo"/>
                         <constraint firstItem="Uap-ar-Fwa" firstAttribute="top" secondItem="U90-q9-78V" secondAttribute="bottom" constant="15" id="xSp-tw-r5g"/>
                         <constraint firstItem="Zrb-A8-94b" firstAttribute="leading" secondItem="kbA-80-1Ad" secondAttribute="trailing" constant="17" id="y1q-ro-RAG"/>
+                        <constraint firstItem="3eK-UU-rPf" firstAttribute="top" secondItem="U90-q9-78V" secondAttribute="bottom" constant="9" id="ycY-7T-SSs"/>
                     </constraints>
                 </view>
             </subviews>
@@ -198,11 +207,13 @@
                 <outlet property="salaryLabel" destination="C7K-JH-8Jb" id="bid-h7-4K3"/>
                 <outlet property="timeLabel" destination="TUI-0x-PPv" id="u3b-n8-oKL"/>
                 <outlet property="titleLabel" destination="bLr-1N-cA5" id="B6i-fN-BFq"/>
+                <outlet property="vipImage" destination="3eK-UU-rPf" id="ng4-7y-IBv"/>
             </connections>
             <point key="canvasLocation" x="-39.130434782608695" y="234.375"/>
         </view>
     </objects>
     <resources>
+        <image name="VIP" width="16" height="16"/>
         <image name="dianhua" width="16" height="16"/>
         <image name="headNotify" width="24" height="24"/>
         <systemColor name="systemGray3Color">

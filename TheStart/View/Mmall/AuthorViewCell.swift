@@ -15,9 +15,15 @@ class AuthorViewCell: UITableViewCell {
     
     @IBOutlet weak var audioNunLabel: UILabel!
     
+    @IBOutlet weak var vipImage: UIImageView!
     
     var model:AuthorModel? {
         didSet {
+            if model?.is_vip == 1 && !checkMarketVer(){
+                vipImage.isHidden = false
+            }else{
+                vipImage.isHidden = true
+            }
             
             if model?.real_name == ""{
                 namelabel.text = model?.nickname
@@ -34,6 +40,7 @@ class AuthorViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        vipImage.isHidden = true
         headImage.layer.masksToBounds = true
         headImage.layer.cornerRadius = 29
         // Initialization code

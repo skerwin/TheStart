@@ -30,7 +30,12 @@ class TipOffViewController: BaseViewController,Requestable {
         super.viewDidLoad()
         initTableView()
         loadData()
-        createPubBtn()
+        if isFromMine{
+            
+        }else{
+             createPubBtn()
+        }
+      
         self.title = "黑人馆"
         
         // Do any additional setup after loading the view.

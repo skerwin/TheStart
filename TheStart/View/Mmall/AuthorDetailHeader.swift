@@ -18,8 +18,11 @@ class AuthorDetailHeader: UICollectionReusableView {
     @IBOutlet weak var isRealabel: UILabel!
     @IBOutlet weak var musicNumLabel: UILabel!
     
+    @IBOutlet weak var vipImage: UIImageView!
+    
     override func awakeFromNib(){
         
+        vipImage.isHidden = true
         headImage.layer.masksToBounds = true
         headImage.layer.cornerRadius = 29
         
@@ -41,7 +44,16 @@ class AuthorDetailHeader: UICollectionReusableView {
  
     
     func configModel(model:UserModel){
+        
+        
         headImage.displayImageWithURL(url: model.avatar)
+        
+        if model.is_vip == 1 && !checkMarketVer(){
+            vipImage.isHidden = false
+        }else{
+            vipImage.isHidden = true
+        }
+        
         if model.real_name == ""{
             nameLabel.text = model.nickname
         }else{

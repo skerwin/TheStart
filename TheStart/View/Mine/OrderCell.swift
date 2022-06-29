@@ -59,7 +59,7 @@ class OrderCell: UITableViewCell {
             }else{
                 orderType.text = "支付方式:微信支付"
             }
-        zhifuLabel.text = "实付:" + model.price
+        zhifuLabel.text = "金额:" + model.price
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

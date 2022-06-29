@@ -48,10 +48,18 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
         didSet {
             previewAssets.removeAll()
             for imageV in model!.image_input {
-                let networkImageURL = URL.init(string: imageV)!
-                let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
-                previewAssets.append(networkImageAsset)
-            }
+                
+                if imageV.containsStr(find: ".mp4"){
+                    let networkVideoURL = URL.init(string: imageV)!
+                    let networkVideoAsset = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL))
+                    previewAssets.append(networkVideoAsset)
+                }else{
+                    let networkImageURL = URL.init(string: imageV)!
+                    let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                    previewAssets.append(networkImageAsset)
+                }
+              }
+ 
             collectionView.reloadData()
            
             configCollectionViewHeight()

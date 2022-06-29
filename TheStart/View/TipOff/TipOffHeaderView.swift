@@ -27,6 +27,8 @@ class TipOffHeaderView: UIView {
     }
     override func awakeFromNib(){
  
+        
+        addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
         headImage.layer.cornerRadius = 27
         headImage.layer.masksToBounds = true
  
@@ -39,12 +41,17 @@ class TipOffHeaderView: UIView {
         msgBtn.isHidden = true
     }
     
+    @objc private func tapOnImageheadImage() {
+          //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
+          EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImage, alpha: 1)
+    }
+    
     func configModel(model:TipOffModel){
         headImage.displayHeadImageWithURL(url: model.avatar)
         nameLabel.text = model.nickname
       
         if model.type == 1{
-            tipLabel.text = "吐槽"
+            tipLabel.text = "嘿人"
             tipLabel.backgroundColor = colorWithHexString(hex: "903207")
         }else{
             tipLabel.text = "澄清"

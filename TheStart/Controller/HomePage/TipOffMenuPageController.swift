@@ -54,7 +54,7 @@ class TipOffMenuPageController: BaseViewController {
         tipOffVCButton = UIButton.init()
         tipOffVCButton.frame = CGRect.init(x: 0, y: 0, width: 70, height: 44)
         tipOffVCButton.addTarget(self, action: #selector(tipOffButtonACtion(_:)), for: .touchUpInside)
-        tipOffVCButton.setTitle("吐槽馆", for: .normal)
+        tipOffVCButton.setTitle("嘿人馆", for: .normal)
         tipOffVCButton.setTitleColor(ZYJColor.barText, for: .normal)
         tipOffVCButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         

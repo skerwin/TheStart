@@ -43,8 +43,7 @@ class GoodsOrderCell: UITableViewCell {
         leftImage.displayImageWithURL(url: model.image)
         nameLabel.text = model.goods_name
         orderLabel.text = "订单时间:" + model.add_time
-    
-        zhifuLabel.text = "实付:" + model.price
+        zhifuLabel.text = "金额:" + model.price
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -25,6 +25,7 @@ class JobViewCell: UITableViewCell {
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var pubtimeLabel: UILabel!
     
+    @IBOutlet weak var vipImage: UIImageView!
     @IBAction func communiteBtnAction(_ sender: Any) {
         
         delegate.JobCellCommunicateAction(mobile: model!.mobile)
@@ -32,6 +33,12 @@ class JobViewCell: UITableViewCell {
     
     var model:JobModel? {
         didSet {
+            
+            if model!.is_vip == 1 && !checkMarketVer(){
+                vipImage.isHidden = false
+            }else{
+                vipImage.isHidden = true
+            }
             titleLabel.text = model?.title
             var cateName = model!.cate
             if cateName == ""{
@@ -55,7 +62,7 @@ class JobViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        vipImage.isHidden = true
         headImg.layer.masksToBounds = true
         headImg.layer.cornerRadius = 5
         communiteBtn.layer.masksToBounds = true

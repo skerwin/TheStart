@@ -184,6 +184,13 @@
                                 <constraint firstAttribute="height" constant="0.5" id="2dh-Rh-uoh"/>
                             </constraints>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VIP" translatesAutoresizingMaskIntoConstraints="NO" id="XzK-tJ-rvU">
+                            <rect key="frame" x="51" y="129.5" width="21" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="21" id="71Q-BZ-ZaA"/>
+                                <constraint firstAttribute="height" constant="21" id="nfj-d1-ytL"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -194,12 +201,14 @@
                         <constraint firstItem="OPH-f0-M5I" firstAttribute="top" secondItem="pr1-cs-eZs" secondAttribute="bottom" constant="15" id="Ikm-pk-AWz"/>
                         <constraint firstAttribute="trailing" secondItem="brE-oK-3Xf" secondAttribute="trailing" constant="48" id="JGf-6O-WQq"/>
                         <constraint firstAttribute="bottom" secondItem="y70-xh-I3B" secondAttribute="bottom" id="M6a-oc-vVR"/>
+                        <constraint firstItem="XzK-tJ-rvU" firstAttribute="leading" secondItem="YM8-tM-CZJ" secondAttribute="leading" constant="51" id="MVw-9B-8cQ"/>
                         <constraint firstAttribute="trailing" secondItem="y70-xh-I3B" secondAttribute="trailing" constant="25" id="Muj-pW-MRf"/>
                         <constraint firstItem="wCl-oC-11k" firstAttribute="top" secondItem="pr1-cs-eZs" secondAttribute="bottom" constant="20.5" id="NE7-rU-Cmo"/>
                         <constraint firstAttribute="trailing" secondItem="EqH-vT-Gq8" secondAttribute="trailing" id="Oi5-be-URW"/>
                         <constraint firstItem="6ZL-CE-IRc" firstAttribute="leading" secondItem="YM8-tM-CZJ" secondAttribute="leading" constant="25" id="Qsq-sK-KTm"/>
                         <constraint firstAttribute="trailing" secondItem="wCl-oC-11k" secondAttribute="trailing" constant="20" id="RBf-aJ-2rh"/>
                         <constraint firstItem="OPH-f0-M5I" firstAttribute="leading" secondItem="lHX-d7-gdV" secondAttribute="trailing" constant="10" id="RPe-9G-1ch"/>
+                        <constraint firstItem="XzK-tJ-rvU" firstAttribute="top" secondItem="pr1-cs-eZs" secondAttribute="bottom" constant="13" id="T9u-PL-360"/>
                         <constraint firstItem="wCl-oC-11k" firstAttribute="leading" secondItem="OPH-f0-M5I" secondAttribute="trailing" constant="50" id="Wgd-az-auW"/>
                         <constraint firstItem="6ZL-CE-IRc" firstAttribute="top" secondItem="YM8-tM-CZJ" secondAttribute="top" constant="12" id="Xez-w6-0oy"/>
                         <constraint firstAttribute="trailing" secondItem="6ZL-CE-IRc" secondAttribute="trailing" constant="10" id="dPD-5D-xXr"/>
@@ -233,16 +242,18 @@
                 <outlet property="salaryLabel" destination="Dte-uC-Xoq" id="lLL-3n-Hlz"/>
                 <outlet property="timeLabel" destination="brE-oK-3Xf" id="mjR-cc-5DF"/>
                 <outlet property="titleLabel" destination="6ZL-CE-IRc" id="tmd-J1-zzO"/>
+                <outlet property="vipImage" destination="XzK-tJ-rvU" id="6Jp-cN-DtB"/>
             </connections>
             <point key="canvasLocation" x="-39.130434782608695" y="227.00892857142856"/>
         </view>
     </objects>
     <resources>
+        <image name="VIP" width="16" height="16"/>
         <image name="dianhua" width="16" height="16"/>
-        <image name="dizhi" width="16" height="16"/>
+        <image name="dizhi" width="12" height="14"/>
         <image name="headNotify" width="24" height="24"/>
-        <image name="xinzi" width="16" height="16"/>
-        <image name="zhiwei" width="16" height="16"/>
+        <image name="xinzi" width="14" height="14"/>
+        <image name="zhiwei" width="9" height="14"/>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

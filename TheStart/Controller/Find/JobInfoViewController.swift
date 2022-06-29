@@ -39,7 +39,7 @@ class JobInfoViewController: BaseViewController,Requestable{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "职位详情"
+        self.title = "找人详情"
         createRightNavItem()
         loadData()
         initHeadView()

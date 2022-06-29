@@ -31,7 +31,7 @@ class VipCenterViewController: BaseViewController,Requestable {
     
     var usermodel = UserModel()
     
-    var strsVip = ["免费下载会员音乐","无限次查看联系方式","无限次发起聊天","每天发布3条找人求职信息","发布信息可添加9张图片","发布信息可添加3条视频"]
+    var strsVip = ["免费下载会员音乐","无限次查看联系方式","无限次发起聊天","每天发布3条找人找场信息","发布信息可添加9张图片","发布信息可添加3条视频"]
     var imagesVip = ["huiyuan","vipnoti","vipmsg","vipsou","vipvod","vipvod"]
     
     

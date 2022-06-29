@@ -25,7 +25,7 @@
                             <constraint firstAttribute="width" constant="36" id="zG9-jB-rgr"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天仅可拨打3次求职电话" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwv-aW-acR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天仅可拨打3次找场电话" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwv-aW-acR">
                         <rect key="frame" x="3" y="68.5" width="140" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="KaK-07-UJt"/>

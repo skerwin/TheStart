@@ -16,6 +16,7 @@ class GoodDetailHeader: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     
+    @IBOutlet weak var saleCountLabel: UILabel!
     
     
     func configModel(model:GoodsModel){
@@ -24,6 +25,7 @@ class GoodDetailHeader: UIView {
         priceLabel.text = "价格:" + model.price
         nameLabel.text = "商品名称:" + model.goods_name
         descLabel.text = "商品简介:" + model.description
+        saleCountLabel.text = "销量: " + intToString(number: model.sales_num)
  
     }
     /*

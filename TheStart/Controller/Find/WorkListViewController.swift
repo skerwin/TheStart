@@ -53,7 +53,7 @@ class WorkListViewController: BaseViewController,Requestable  {
             initDropView()
         }
         initTableView()
-        self.title = "求职列表"
+        self.title = "找场列表"
         // Do any additional setup after loading the view.
     }
     
@@ -77,7 +77,7 @@ class WorkListViewController: BaseViewController,Requestable  {
         rightBarButton = UIButton.init()
         let bgview = UIView.init()
         rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
-        rightBarButton.setTitle("职位发布", for: .normal)
+        rightBarButton.setTitle("找人发布", for: .normal)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
         rightBarButton.setTitleColor(.white, for: .normal)

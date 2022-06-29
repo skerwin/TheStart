@@ -44,6 +44,11 @@ class HomePageController: BaseViewController,Requestable {
     }
     func loadData(){
        
+        
+        let requestParamsP3 = HomeAPI.openMarketPathAndParam()
+        postRequest(pathAndParams: requestParamsP3,showHUD: false)
+        
+        
         let workParams = HomeAPI.homePathAndParams()
         getRequest(pathAndParams: workParams,showHUD: false)
     }
@@ -210,10 +215,43 @@ class HomePageController: BaseViewController,Requestable {
             }else{
                 setStringValueForKey(value: "0", key: Constants.isMarketVer)
             }
+ 
+            let ifExamine = responseResult["if_examine"].intValue
+            if ifExamine == 1{
+                setStringValueForKey(value: "1", key: Constants.ifExamine)
+            }else{
+                setStringValueForKey(value: "0", key: Constants.ifExamine)
+            }
+            
+            let IOS_code = responseResult["ios_code"].stringValue
+            let IOS_force = responseResult["ios_force"].intValue
+            if SysMajorVersion != IOS_code{
+                if IOS_force == 1{
+                    let noticeView = UIAlertController.init(title: "版本有更新", message: "为了您得到更好用的户体验请您到应用商店下载最新版APP", preferredStyle: .alert)
+                    noticeView.addAction(UIAlertAction.init(title: "去更新", style: .default, handler: { (action) in
+                        let url:URL?=URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id16264558052")
+                        
+                        UIApplication.shared.open(url ?? (URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id1626455805"))!, options: [:], completionHandler: nil)
+                    }))
+                    self.present(noticeView, animated: true, completion: nil)
+                }else{
+                    let agreement = stringForKey(key: Constants.UpdateVerion)
+                    if agreement == nil || (agreement?.isLengthEmpty())!{
+                        self.showAlertDialog(message: "为了您得到更好用的户体验请您到应用商店下载最新版APP", title: "版本更新了") { (type) in
+                            if type == .Sure{
+                                let url:URL?=URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id1626455805")
+                                
+                                UIApplication.shared.open(url ?? (URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id1626455805"))!, options: [:], completionHandler: nil)
+                            }else{
+                                setIntValueForKey(value: IOS_force, key: Constants.isForceUpdateVerion)
+                                setStringValueForKey(value: "UpdateVerion" as String, key: Constants.UpdateVerion)
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-
-    }
+     }
     
     func callPhone(){
         let urlstr = "telprompt://" + callMobile
@@ -323,7 +361,7 @@ extension HomePageController:UITableViewDataSource,UITableViewDelegate {
             if section == 0{
                 sectionView.name.text = "达人区"
             }else{
-                sectionView.name.text = "最新职位"
+                sectionView.name.text = "最新场"
             }
             return sectionView
             

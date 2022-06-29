@@ -117,9 +117,9 @@ func checkVip() -> Bool {
 }
 
 func checkMarketVer() -> Bool {
-    
-    if stringForKey(key: Constants.isMarketVer) != nil{
-        if stringForKey(key: Constants.isMarketVer) == "1" {
+    //|| getAcctount() == "18153684982"
+    if stringForKey(key: Constants.isMarketVer) != nil && stringForKey(key: Constants.ifExamine) != nil{
+        if stringForKey(key: Constants.isMarketVer) == "1" || stringForKey(key: Constants.ifExamine) == "1"{
             return true
         }else{
             return false
@@ -128,8 +128,7 @@ func checkMarketVer() -> Bool {
         return false
     }
 }
-
-
+ 
 func dicValueString(_ dic:[String : Any]) -> String?{
        let data = try? JSONSerialization.data(withJSONObject: dic, options: [])
        let str = String(data: data!, encoding: String.Encoding.utf8)

@@ -36,7 +36,7 @@ class TipOffListCell2: UITableViewCell {
         didSet {
             
             if model?.type == 1{
-                tipsLabel.text = "吐槽曝光"
+                tipsLabel.text = "嘿人曝光"
                 tipsLabel.backgroundColor = colorWithHexString(hex: "903207")
             }else{
                 tipsLabel.backgroundColor = colorWithHexString(hex: "E19522")

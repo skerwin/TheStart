@@ -94,9 +94,14 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
                 payStr = "alipay"
             }
             PaySDK.instance.payDelegate = self
-            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
+//            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
+//            postRequest(pathAndParams: requestParams,showHUD:false)
+            
+            let requestParams = HomeAPI.buyFreeVipPathAndParams(level_id: 3, pay_type: payStr, price: "0.01")
             postRequest(pathAndParams: requestParams,showHUD:false)
-        }
+            
+            
+         }
       
     }
     
@@ -122,6 +127,24 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
                 showOnlyTextHUD(text: "下单失败")
             }
         }else if requestPath == HomeAPI.buyVipPath{
+            
+            if payMode == 0 {
+                paymodel = Mapper<PayModel>().map(JSONObject: responseResult["data"].rawValue)
+                if paymodel?.prepayid != ""{
+                    PaySDK.instance.wechatPayRequest(signData: paymodel!)
+                }else{
+                    showOnlyTextHUD(text: "下单失败")
+                }
+            }else{
+                aliPaySignStr = responseResult["data"].stringValue
+                if aliPaySignStr != ""{
+                    PaySDK.instance.alipayPayRequest(sign: aliPaySignStr)
+                }else{
+                    showOnlyTextHUD(text: "下单失败")
+                }
+            }
+
+        }else if requestPath == HomeAPI.buyFreeVipPath{
             
             if payMode == 0 {
                 paymodel = Mapper<PayModel>().map(JSONObject: responseResult["data"].rawValue)

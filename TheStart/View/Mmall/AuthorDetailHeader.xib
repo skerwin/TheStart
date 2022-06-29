@@ -69,6 +69,13 @@
                     <color key="textColor" red="0.94509803920000002" green="0.75686274509999996" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VIP" translatesAutoresizingMaskIntoConstraints="NO" id="0de-gD-phv">
+                    <rect key="frame" x="48" y="5" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="ddz-YB-0WK"/>
+                        <constraint firstAttribute="width" constant="26" id="uwd-82-vEo"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="oif-wO-Kwb"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,9 +84,11 @@
                 <constraint firstItem="vzt-E8-LXn" firstAttribute="top" secondItem="93b-Nv-mjK" secondAttribute="top" constant="17" id="CcJ-zn-vFR"/>
                 <constraint firstItem="B6E-1u-Qe7" firstAttribute="top" secondItem="h7j-fj-dcz" secondAttribute="bottom" constant="12" id="DQs-MF-NUp"/>
                 <constraint firstItem="h7j-fj-dcz" firstAttribute="leading" secondItem="oif-wO-Kwb" secondAttribute="leading" constant="15" id="FPp-aH-0AC"/>
+                <constraint firstItem="0de-gD-phv" firstAttribute="leading" secondItem="93b-Nv-mjK" secondAttribute="leading" constant="48" id="IUP-M4-8oe"/>
                 <constraint firstItem="fIr-lN-p21" firstAttribute="leading" secondItem="oif-wO-Kwb" secondAttribute="leading" constant="17" id="JFk-jz-ZgR"/>
                 <constraint firstAttribute="trailing" secondItem="b2P-LO-Ycs" secondAttribute="trailing" constant="10" id="Lxd-S2-xaq"/>
                 <constraint firstItem="h7j-fj-dcz" firstAttribute="top" secondItem="93b-Nv-mjK" secondAttribute="top" constant="10" id="U6Z-f3-gQw"/>
+                <constraint firstItem="0de-gD-phv" firstAttribute="top" secondItem="93b-Nv-mjK" secondAttribute="top" constant="5" id="WuR-Yv-Myv"/>
                 <constraint firstItem="fIr-lN-p21" firstAttribute="top" secondItem="B6E-1u-Qe7" secondAttribute="bottom" constant="13.5" id="dUs-7a-RTQ"/>
                 <constraint firstItem="B6E-1u-Qe7" firstAttribute="leading" secondItem="oif-wO-Kwb" secondAttribute="leading" constant="10" id="ivi-I2-yVx"/>
                 <constraint firstItem="oif-wO-Kwb" firstAttribute="trailing" secondItem="B6E-1u-Qe7" secondAttribute="trailing" constant="10" id="pKG-RL-a89"/>
@@ -94,11 +103,13 @@
                 <outlet property="isRealabel" destination="4hy-g4-drJ" id="yru-P1-pI3"/>
                 <outlet property="musicNumLabel" destination="fIr-lN-p21" id="FvM-uF-bd5"/>
                 <outlet property="nameLabel" destination="vzt-E8-LXn" id="oV1-02-TCg"/>
+                <outlet property="vipImage" destination="0de-gD-phv" id="8IK-D3-JaC"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="400.78125"/>
         </view>
     </objects>
     <resources>
+        <image name="VIP" width="16" height="16"/>
         <image name="ziran" width="24" height="24"/>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

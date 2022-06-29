@@ -53,7 +53,7 @@ class JobListViewController: BaseViewController,Requestable {
         }
        
         initTableView()
-        self.title = "职位列表"
+        self.title = "找人列表"
         // Do any additional setup after loading the view.
     }
     
@@ -78,7 +78,7 @@ class JobListViewController: BaseViewController,Requestable {
         let bgview = UIView.init()
  
         rightBarButton.frame = CGRect.init(x: 0, y: 6, width: 70, height: 28)
-        rightBarButton.setTitle("我要求职", for: .normal)
+        rightBarButton.setTitle("我要找场", for: .normal)
         bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
         
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
@@ -171,13 +171,14 @@ class JobListViewController: BaseViewController,Requestable {
             dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
         }
        
-        dropView.indicatorColor = UIColor.white
+        dropView.indicatorColor = UIColor.darkGray
         dropView.fontSize = 16
-        dropView.textColor = UIColor.white
+        dropView.textColor = UIColor.darkGray
         dropView.delegate = self
         dropView.dataSource = self
         self.view.addSubview(dropView)
     }
+ 
     func initTableView(){
         
         if isFromMine{

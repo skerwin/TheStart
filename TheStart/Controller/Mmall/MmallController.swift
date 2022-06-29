@@ -114,11 +114,16 @@ extension MmallController: PMKPageMenuControllerDelegate
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int) {
-        //print(menuIndex)
+        print(menuIndex)
         if menuIndex == 0{
             self.navigationItem.rightBarButtonItem = nil
         }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+            if checkMarketVer(){
+              
+            }else{
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+            }
+            
         }
     }
     

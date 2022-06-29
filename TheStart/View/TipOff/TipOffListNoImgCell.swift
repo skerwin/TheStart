@@ -10,6 +10,7 @@ import UIKit
 class TipOffListNoImgCell: UITableViewCell {
 
     
+    @IBOutlet weak var vipImage: UIImageView!
     @IBOutlet weak var headImage: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,8 +30,13 @@ class TipOffListNoImgCell: UITableViewCell {
     var model:TipOffModel? {
         didSet {
             
+            if model?.is_vip == 1 && !checkMarketVer(){
+                vipImage.isHidden = false
+            }else{
+                vipImage.isHidden = true
+            }
             if model?.type == 1{
-                tipsLabel.text = "吐槽曝光"
+                tipsLabel.text = "嘿人曝光"
                 tipsLabel.backgroundColor = colorWithHexString(hex: "903207")
             }else{
                 tipsLabel.backgroundColor = colorWithHexString(hex: "E19522")
@@ -70,6 +76,7 @@ class TipOffListNoImgCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        vipImage.isHidden = true
         tipsLabel.layer.masksToBounds = true
         tipsLabel.layer.cornerRadius = 2
         tip2Label.layer.masksToBounds = true
@@ -77,7 +84,7 @@ class TipOffListNoImgCell: UITableViewCell {
         
         
         headImage.layer.masksToBounds = true
-        headImage.layer.cornerRadius = 2
+        headImage.layer.cornerRadius = 19
         // Initialization code
     }
 

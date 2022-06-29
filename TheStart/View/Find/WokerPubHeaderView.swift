@@ -77,12 +77,12 @@ class WokerPubHeaderView: UIView {
             jobTypeLabel.text = "所需工种"
             salaryTypeLabel.text = "薪资范围"
             addressTypeLabel.text = "工作地点"
-            titleTypeLabel.text = "招聘标题"
+            titleTypeLabel.text = "找人标题"
         }else{
             jobTypeLabel.text = "所属工种"
             salaryTypeLabel.text = "期望薪资"
             addressTypeLabel.text = "期望工作地"
-            titleTypeLabel.text = "求职标题"
+            titleTypeLabel.text = "找场标题"
         }
         
     }

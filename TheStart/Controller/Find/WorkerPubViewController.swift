@@ -111,9 +111,9 @@ class WorkerPubViewController: BaseViewController,Requestable {
         initFooterView()
         initTableView()
         if pubType == 1{
-            self.title = "发布职位"
+            self.title = "发布找人"
         }else{
-            self.title = "发布求职"
+            self.title = "发布找场"
         }
         
         // Do any additional setup after loading the view.

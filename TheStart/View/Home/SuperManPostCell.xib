@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="SuperManPostCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuperManPostCell" rowHeight="155" id="KGk-i7-Jjw" customClass="SuperManPostCell" customModule="TheStart" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="SuperManPostCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuperManPostCell" rowHeight="172" id="KGk-i7-Jjw" customClass="SuperManPostCell" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="172"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pd3-Wc-Flb">
-                        <rect key="frame" x="13" y="5" width="294" height="140"/>
+                        <rect key="frame" x="13" y="5" width="294" height="157"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,7 +33,7 @@
             <connections>
                 <outlet property="postImage" destination="pd3-Wc-Flb" id="ybT-dt-NB2"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="139.95535714285714"/>
+            <point key="canvasLocation" x="137.68115942028987" y="145.3125"/>
         </tableViewCell>
     </objects>
 </document>

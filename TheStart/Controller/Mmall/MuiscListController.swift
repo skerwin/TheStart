@@ -76,7 +76,13 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         if isFreeZone{
             
         }else{
-            createPubBtn()
+            if isMypub || isMyCollect{
+                
+            }else{
+                createPubBtn()
+            }
+            
+           
         }
         
         // Do any additional setup after loading the view.
@@ -194,6 +200,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        collectionView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
         return dataList.count
     }
     

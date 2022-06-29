@@ -27,12 +27,20 @@ class WorkerViewCell: UITableViewCell {
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var pubtimeLabel: UILabel!
     
+    @IBOutlet weak var vipImage: UIImageView!
     @IBAction func communiteBtnAction(_ sender: Any) {
         delegate.WorkerCellCommunicateAction(mobile: model!.mobile)
     }
     
     var model:JobModel? {
         didSet {
+            
+            if model!.is_vip == 1 && !checkMarketVer(){
+                vipImage.isHidden = false
+            }else{
+                vipImage.isHidden = true
+            }
+            
             titleLabel.text = model!.title
             var cateName = model!.cate
             if cateName == ""{
@@ -54,7 +62,7 @@ class WorkerViewCell: UITableViewCell {
         super.awakeFromNib()
         communiteBtn.layer.masksToBounds = true
         communiteBtn.layer.cornerRadius = 3
-        
+        vipImage.isHidden = true
         headImg.layer.masksToBounds = true
         headImg.layer.cornerRadius = 5
         // Initialization code

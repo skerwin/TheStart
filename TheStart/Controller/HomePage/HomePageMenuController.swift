@@ -45,23 +45,23 @@ class HomePageMenuController: BaseViewController,Requestable {
         homeVcButton = UIButton.init()
         homeVcButton.frame = CGRect.init(x: 0, y: 0, width: 60, height: 44)
         homeVcButton.addTarget(self, action: #selector(homeVcButtonACtion(_:)), for: .touchUpInside)
-        homeVcButton.setTitle("推荐", for: .normal)
+        homeVcButton.setTitle("首页", for: .normal)
         homeVcButton.setTitleColor(ZYJColor.barText, for: .normal)
-        homeVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        homeVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
       
         jobVcButton = UIButton.init()
         jobVcButton.frame = CGRect.init(x: 60, y: 0, width: 60, height: 44)
         jobVcButton.addTarget(self, action: #selector(jobVcButtonACtion(_:)), for: .touchUpInside)
-        jobVcButton.setTitle("求职", for: .normal)
+        jobVcButton.setTitle("找场", for: .normal)
         jobVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
         workVcButton = UIButton.init()
         workVcButton.frame = CGRect.init(x: 120, y: 0, width: 60, height: 44)
         workVcButton.addTarget(self, action: #selector(workVcuttonACtion(_:)), for: .touchUpInside)
-        workVcButton.setTitle("招聘", for: .normal)
+        workVcButton.setTitle("找人", for: .normal)
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
         navView.addSubview(homeVcButton)
         navView.addSubview(jobVcButton)
@@ -86,7 +86,7 @@ class HomePageMenuController: BaseViewController,Requestable {
     }
     @objc func rightNavBtnClic(_ btn: UIButton){
  
-        YBPopupMenu.showRely(on: btn, titles: ["发布职位","发布求职",], icons: [], menuWidth: 125, delegate: self)
+        YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
           
     }
     
@@ -103,13 +103,13 @@ class HomePageMenuController: BaseViewController,Requestable {
  
 
         homeVcButton.setTitleColor(ZYJColor.barText, for: .normal)
-        homeVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        homeVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
 
         jobVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         self.addChild(homeVc)
         self.view.addSubview(homeVc.view)
@@ -129,13 +129,13 @@ class HomePageMenuController: BaseViewController,Requestable {
  
 
         homeVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        homeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        homeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         jobVcButton.setTitleColor(ZYJColor.barText, for: .normal)
-        jobVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        jobVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         self.addChild(jobVc)
         self.view.addSubview(jobVc.view)
@@ -152,13 +152,13 @@ class HomePageMenuController: BaseViewController,Requestable {
         }
  
         homeVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        homeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        homeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         jobVcButton.setTitleColor(UIColor.darkGray, for: .normal)
-        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
         workVcButton.setTitleColor(ZYJColor.barText, for: .normal)
-        workVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        workVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
 
         self.addChild(workVc)
         self.view.addSubview(workVc.view)
@@ -188,12 +188,14 @@ extension HomePageMenuController:YBPopupMenuDelegate{
         
         if index == 0{
             let controller = WorkerPubViewController()
-            controller.pubType = 1
+            controller.pubType = 2
             self.navigationController?.pushViewController(controller, animated: true)
         }else{
             let controller = WorkerPubViewController()
-            controller.pubType = 2
+            controller.pubType = 1
             self.navigationController?.pushViewController(controller, animated: true)
+            
+           
         }
       
         

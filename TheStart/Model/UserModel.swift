@@ -18,6 +18,8 @@ struct UserModel: Mappable {
     var confirm_pwd = ""
     var nickname = ""
     
+    var is_vip = 0
+    
     
     var gender = ""
     var birthday = ""
@@ -72,6 +74,8 @@ struct UserModel: Mappable {
     
     
     mutating func mapping(map: Map) {
+        
+        is_vip <- map["is_vip"]
         
         music_num <- map["music_num"]
         work_name <- map["work_name"]

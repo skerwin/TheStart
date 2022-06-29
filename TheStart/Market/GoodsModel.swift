@@ -12,6 +12,7 @@ import ObjectMapper
 struct GoodsModel : Mappable {
     
     var id = 0
+    var sales_num = 0
     var goods_name = ""
     var price = ""
     var description = ""
@@ -20,6 +21,8 @@ struct GoodsModel : Mappable {
     
     var add_time = ""
     var h5_url = ""
+    
+    
     
     init?(map: Map) {
         
@@ -36,6 +39,7 @@ struct GoodsModel : Mappable {
         content <- map["content"]
         add_time <- map["add_time"]
         h5_url <- map["h5_url"]
+        sales_num <- map["sales_num"]
      }
 }
 //marketTest

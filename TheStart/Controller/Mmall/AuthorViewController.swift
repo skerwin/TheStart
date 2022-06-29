@@ -33,10 +33,10 @@ class AuthorViewController: BaseViewController,Requestable {
     
     func loadData(){
         if isMyCollect{
-            let requestParams = HomeAPI.UserAuthorDetailPathAndParams()
+            let requestParams = HomeAPI.UserAuthorDetailPathAndParams(page: page, limit: limit)
             postRequest(pathAndParams: requestParams,showHUD:false)
         }else{
-            let requestParams = HomeAPI.authorListPathAndParams()
+            let requestParams = HomeAPI.authorListPathAndParams(page: page, limit: limit)
             postRequest(pathAndParams: requestParams,showHUD:false)
         }
         

@@ -39,7 +39,7 @@ class JobInfoViewController: BaseViewController,Requestable{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "找人详情"
+        self.title = "找场详情"
         createRightNavItem()
         loadData()
         initHeadView()
@@ -338,9 +338,9 @@ extension JobInfoViewController:UITableViewDataSource,UITableViewDelegate {
                 cell.selectionStyle = .none
                 return cell
             }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
-                cell.selectionStyle = .none
+                let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
                 cell.model = dataModel
+                 cell.selectionStyle = .none
                 return cell
             }
             

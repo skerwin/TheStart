@@ -397,7 +397,7 @@ struct HomeAPI {
         if gender != ""{
             paramsDictionary["gender"] = gender as AnyObject
         }
-        
+        print(paramsDictionary)
         
         let urlPath = generateUrlWithParams(paramsDictionary,path: jobAndWorkerPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))

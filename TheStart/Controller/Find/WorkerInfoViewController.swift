@@ -36,7 +36,7 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "找场详情"
+        self.title = "找人详情"
         createRightNavItem() 
         loadData()
         initHeadView()

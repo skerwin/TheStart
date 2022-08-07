@@ -19,6 +19,8 @@ struct Constants {
     static let lastTimeLoginAccount = "lastTimeLoginAccount" // 上一次登录的账号
     static let userid = "userid" // 用户Id
     static let password = "password" // 用户Id
+    
+    static let ifOpen = "ifOpen" // 用户Id
  
     static let loginId = "loginId" // 登陆帐号
     static let ishadHRInfo = "ishadHRInfo" // 是否添加过登陆信息

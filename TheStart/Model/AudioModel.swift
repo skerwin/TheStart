@@ -30,7 +30,10 @@ struct AudioModel : Mappable {
     
     var vip_free = -1
     var if_order = 0
+    var type = 0
     
+    
+    var author = UserModel()
     
     init?(map: Map) {
         
@@ -39,9 +42,8 @@ struct AudioModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
-        
-        browse <- map["browse"]
-        
+        type <- map["type"]
+        author <- map["author"]
         if_order <- map["if_order"]
         uid <- map["uid"]
         userCollect <- map["userCollect"]

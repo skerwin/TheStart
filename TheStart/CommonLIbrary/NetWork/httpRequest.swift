@@ -42,11 +42,13 @@ struct HttpRequest {
         print(Url!.absoluteString)
         let parametersJson = JSON(parameters!)
         print(parametersJson)
-         let token = getToken()
         
-//         if token == ""{
-//            return
-//         }
+       
+         let token = getToken()
+ 
+         if token == ""{//除登录外的
+          // NotificationCenter.default.post(name:  NSNotification.Name(rawValue: Constants.TokenChangeRefreshNotification), object: nil)
+         }
         
         let headers: HTTPHeaders = [
             "Authori-zation": token

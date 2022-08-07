@@ -275,6 +275,7 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("WorkerBaseInfo", owner: nil, options: nil)!.first as? WorkerBaseInfo
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 210)
+        headView.parentNavigationController = self.navigationController
         headView.delegate = self
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 210))
         headerBgView.backgroundColor = UIColor.clear

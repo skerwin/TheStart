@@ -49,6 +49,7 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
             imgLabel.text = "上传视频资料(选填)"
         }
     }
+    
     func configSelfIntro(){
         imgLabel.font = UIFont.systemFont(ofSize: 16)
         imgLabel.text = "上传图片资料"

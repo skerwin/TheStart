@@ -11,7 +11,7 @@ import IQKeyboardManager
 import HXPHPicker
 import SwiftyJSON
 import ObjectMapper
-
+import ActionSheetPicker_3_0
 class PubMusicController: BaseViewController,Requestable {
 
     var tableView:UITableView!
@@ -45,7 +45,7 @@ class PubMusicController: BaseViewController,Requestable {
     /// 相机拍摄的本地资源
     var localCameraAssetArrayVod: [PhotoAsset] = []
     var canSetAddCellVod: Bool {
-        if selectedAssetsVod.count == configVod.maximumSelectedCount && configVod.maximumSelectedCount > 0 {
+        if selectedAssetsVod.count == configVod.maximumSelectedVideoCount && configVod.maximumSelectedVideoCount > 0 {
             return false
         }
         return true
@@ -61,6 +61,8 @@ class PubMusicController: BaseViewController,Requestable {
     var headerBgView:UIView!
     var footerView:ChatBtnView!
     var footerBgView:UIView!
+    
+    
     
     var audioModel = AudioModel()
     
@@ -120,9 +122,9 @@ class PubMusicController: BaseViewController,Requestable {
     
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("PubMusicHeader", owner: nil, options: nil)!.first as? PubMusicHeader
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 290)
-        
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 290))
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 328)
+        headView.delegate = self
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 328))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
         
@@ -209,9 +211,24 @@ class PubMusicController: BaseViewController,Requestable {
            
         }
     }
+    var typePicker:ActionSheetStringPicker? = nil //性别选择器
+
+    let typeList = ["开场","颗粒or爆点","set套曲","其他"]
  
 }
- 
+extension PubMusicController:PubMusicHeaderDelegate {
+    func chooseType(){
+        self.typePicker = ActionSheetStringPicker(title: "类型选择", rows: typeList, initialSelection: 0, doneBlock: { [self] (picker, index, value) in
+            self.headView.musicTypelabel.text = self.typeList[index]
+            audioModel?.type = index + 1
+        }, cancel: { (picker) in
+            
+        }, origin: self.view)
+        self.typePicker!.tapDismissAction = .success
+        self.typePicker!.show()
+    }
+}
+
 extension PubMusicController:ChatBtnViewDelegate {
     func sumbitAction() {
 
@@ -245,6 +262,11 @@ extension PubMusicController:ChatBtnViewDelegate {
         audioModel?.link = headView.wanpanTV.text!
         if audioModel!.link.isEmptyStr(){
             showOnlyTextHUD(text: "请输入网盘链接")
+            return
+        }
+        
+         if audioModel!.type == 0{
+            showOnlyTextHUD(text: "请选择音乐类型")
             return
         }
         
@@ -346,7 +368,7 @@ extension PubMusicController:UITableViewDataSource,UITableViewDelegate {
             cell.selectionStyle = .none
             cell.selectedAssets = self.selectedAssetsVod
             cell.canSetAddCell = self.canSetAddCellVod
-            cell.maximumSelectedCount = configVod.maximumSelectedCount
+            cell.maximumSelectedCount = configVod.maximumSelectedVideoCount
             cell.tableview = tableView;
             self.collectionViewVod = cell.collectionView
             return cell;
@@ -387,7 +409,7 @@ extension PubMusicController: PubMediaCellVodDelegate {
     
     func didSelectedVod(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
         isImgFile = false
-        configVod.maximumSelectedCount = 1
+        configVod.maximumSelectedVideoCount = 1
         configVod.selectOptions = PickerAssetOptions.video
         presentPickerController()
     }
@@ -419,7 +441,10 @@ extension PubMusicController: PhotoPickerControllerDelegate {
  
         
         pickerController.dismiss(animated: true, completion: nil)
-        result.getURLs { [self] urls in
+        
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+ 
+        result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {
                 //print(self.isImgFile)
                 self.imageURLArr = urls
@@ -515,7 +540,7 @@ extension PubMusicController: PhotoPickerControllerDelegate {
              }
         }else{
             
-            let isFull = selectedAssetsVod.count == configVod.maximumSelectedCount
+            let isFull = selectedAssetsVod.count == configVod.maximumSelectedVideoCount
             selectedAssetsVod.remove(at: index)
             mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
             mediaVodCell.selectedAssets = self.selectedAssetsVod

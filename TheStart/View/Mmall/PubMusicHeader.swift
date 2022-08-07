@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol PubMusicHeaderDelegate {
+    
+    func chooseType()
+ }
+ 
+
 class PubMusicHeader: UIView {
 
     @IBOutlet weak var nameTV: UITextField!
@@ -21,24 +27,29 @@ class PubMusicHeader: UIView {
     
     var isFree = -1
     
+    @IBOutlet weak var musicTypelabel: UILabel!
+    
     @IBOutlet weak var privateLabel1: UILabel! //音乐价格(金币):
     
     @IBOutlet weak var privateLabel2: UILabel! //会员免费下载
     
+    var delegate:PubMusicHeaderDelegate!
     
-    
-    
-    override func awakeFromNib(){
-         
+    @objc func tapOnmusicTypelabel() {
+        delegate.chooseType()
+    }
  
+    override func awakeFromNib(){
+        
+        
+        addGestureRecognizerToView(view: musicTypelabel, target: self, actionName: "tapOnmusicTypelabel")
         BGView.layer.masksToBounds = true
         BGView.layer.cornerRadius = 15
         
-        
         if checkMarketVer(){
-            privateLabel1.text = "音乐类型:"
+            privateLabel1.text = "音乐简介:"
             privateLabel2.text = "是否为原创音乐"
-            let attributedMoney = NSAttributedString.init(string: "请输入音乐类型", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+            let attributedMoney = NSAttributedString.init(string: "请输入音乐简介", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
              MoneyTF.attributedPlaceholder = attributedMoney
             MoneyTF.keyboardType = .default
         }else{
@@ -48,8 +59,7 @@ class PubMusicHeader: UIView {
              MoneyTF.attributedPlaceholder = attributedMoney
              MoneyTF.keyboardType = .numberPad
         }
-        
-     
+ 
         
         let attributedName = NSAttributedString.init(string: "请输入音乐名称", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         nameTV.attributedPlaceholder = attributedName

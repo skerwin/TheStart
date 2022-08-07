@@ -146,7 +146,12 @@ extension MyTalentedController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2{
-            return 148
+            if userModel!.logo == ""{
+                return UITableView.automaticDimension
+            }else{
+                return 148
+            }
+           
             
         }else{
             return UITableView.automaticDimension

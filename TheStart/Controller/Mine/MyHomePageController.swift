@@ -45,15 +45,14 @@ class MyHomePageController: BaseViewController,Requestable {
         //headView.delegate = self
         
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: navigationHeaderAndStatusbarHeight, width: screenWidth, height: 188))
-        headerBgView.backgroundColor = UIColor.red
         headerBgView.addSubview(headView)
  
-        self.view.addSubview(headerBgView)
+        
         
     }
     func initPageView(){
         controller1 = MyIntroController()
-        controller1.title = "介绍"
+        controller1.title = "名片"
         controller1.userModel = self.userModel
         controller1.parentNavigationController = self.navigationController
      
@@ -77,6 +76,7 @@ class MyHomePageController: BaseViewController,Requestable {
         self.addChild(pageMenuController!)
         self.view.addSubview(pageMenuController!.view)
         pageMenuController?.didMove(toParent: self)
+        self.view.addSubview(headerBgView)
     }
     
     func createRightNavItem() {
@@ -105,9 +105,10 @@ class MyHomePageController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initHeadView()
         createRightNavItem()
         loadData()
-        initHeadView()
+        //self.edgesForExtendedLayout = []
         if isFromMine {
             self.title = "我的主页"
         }else{
@@ -162,8 +163,13 @@ class MyHomePageController: BaseViewController,Requestable {
             if userModel?.music_num == 0{
                 userModel?.music_num = dataList.count
             }
+            if userModel?.if_collection == 1{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+            }else{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            }
+             initPageView()
             headView.configModel(model: userModel!)
-            initPageView()
         }
   }
  
@@ -176,21 +182,14 @@ extension MyHomePageController: PMKPageMenuControllerDelegate
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didMoveTo viewController: UIViewController, at menuIndex: Int) {
-        print(menuIndex)
-        
+ 
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didPrepare menuItems: [PMKPageMenuItem]) {
-        // XXX: For .hacka style
-        var i: Int = 1
-        for item: PMKPageMenuItem in menuItems {
-            item.badgeValue = String(format: "%zd", i)
-            i += 1
-        }
+        
     }
     
     func pageMenuController(_ pageMenuController: PMKPageMenuController, didSelect menuItem: PMKPageMenuItem, at menuIndex: Int) {
-        menuItem.badgeValue = nil // XXX: For .hacka style
     }
 }
 

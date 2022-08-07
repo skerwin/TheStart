@@ -46,6 +46,8 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
     }
     var model:TipOffModel? {
         didSet {
+            
+            let itemWidth = 250
             previewAssets.removeAll()
             for imageV in model!.image_input {
                 
@@ -55,7 +57,10 @@ class TipOffDetailImgCell:UITableViewCell,UICollectionViewDataSource, UICollecti
                     previewAssets.append(networkVideoAsset)
                 }else{
                     let networkImageURL = URL.init(string: imageV)!
-                    let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                    
+                    let netImg = NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL, thumbnailSize: CGSize.init(width: itemWidth, height: itemWidth), placeholder: nil, imageSize: CGSize.init(width: itemWidth, height: itemWidth), fileSize: 0)
+                    let networkImageAsset = PhotoAsset.init(networkImageAsset: netImg) // swiftlint:disable:this line_length
+                    
                     previewAssets.append(networkImageAsset)
                 }
               }

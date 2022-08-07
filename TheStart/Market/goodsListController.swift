@@ -43,8 +43,8 @@ class goodsListController: BaseViewController, UICollectionViewDataSource, UICol
         collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight
  
         collectionView.frame = CGRect(
-            x: 0,
-            y: 10,
+            x:0,
+            y: navigationHeaderAndStatusbarHeight,
             width: view.hx.width,
             height: view.hx.height - collectionViewY
         )

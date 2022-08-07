@@ -324,11 +324,11 @@ class HomePageController: BaseViewController,Requestable {
             
             let IOS_code = responseResult["ios_code"].stringValue
             let IOS_force = responseResult["ios_force"].intValue
-            if SysMajorVersion != IOS_code{
+            if SysMajorVersion != IOS_code{  //这里判断一下大小给审核官
                 if IOS_force == 1{
                     let noticeView = UIAlertController.init(title: "版本有更新", message: "为了您得到更好用的户体验请您到应用商店下载最新版APP", preferredStyle: .alert)
                     noticeView.addAction(UIAlertAction.init(title: "去更新", style: .default, handler: { (action) in
-                        let url:URL?=URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id16264558052")
+                        let url:URL?=URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id1626455805")
                         
                         UIApplication.shared.open(url ?? (URL.init(string: "https://apps.apple.com/cn/app/%E6%A9%99%E5%BF%83%E6%97%B6%E4%BB%A3/id1626455805"))!, options: [:], completionHandler: nil)
                     }))

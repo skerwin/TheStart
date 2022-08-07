@@ -8,12 +8,22 @@
 
 import UIKit
 
+protocol CellMenuItemActionDelegate {
+    func willShowMenu(view: MyTextView, row: Int)
+    func hideKeyboardView()
+}
+
 class ChatTextViewCell: BaseTableViewCell {
     
     // MARK:- 模型
     override var model: ChatMsgModel? { didSet { setModel() } }
-    weak var delegate: CellMenuItemActionDelegate?
+    
+    var delegate: CellMenuItemActionDelegate!
+    
     var longPress: UILongPressGestureRecognizer?
+    
+    var parentNavigationController: UINavigationController?
+    
 //    var menuController = UIMenuController.init()
     // MARK:- 懒加载
     lazy var contentTextView: MyTextView = {
@@ -30,16 +40,21 @@ class ChatTextViewCell: BaseTableViewCell {
         bubbleView.isUserInteractionEnabled = true
         longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction(sender:)))
         longPress?.delegate = self
-        //bubbleView.addGestureRecognizer(longPress!)
+         //bubbleView.addGestureRecognizer(longPress!)
         self.contentView.addGestureRecognizer(longPress!)
-         
+ 
         
         bubbleView.snp.makeConstraints { (maker) in
             maker.edges.equalToSuperview()
         }
 
     }
-    
+    @objc func avaterAction() {
+        let controller = MyHomePageController()
+        controller.authorId = model!.uid
+        self.parentNavigationController?.pushViewController(controller, animated: true)
+    }
+   
     
     @objc func longPressAction(sender: UILongPressGestureRecognizer) {
         
@@ -167,6 +182,8 @@ extension ChatTextViewCell {
         bubbleView.image = normalImg
         
         contentTextView.contentSize = contentSize
+        
+      
 
         if model?.showName == true {
             userNameLabel.isHidden = false
@@ -196,6 +213,10 @@ extension ChatTextViewCell {
         }
 
         if model?.userType == .me {
+            let vie1w = UIView.init(frame:  CGRect.init(x: screenWidth - 60, y: 0, width: 50, height: 50))
+            self.contentView.addSubview(vie1w)
+            addGestureRecognizerToView(view: vie1w, target: self, actionName: "avaterAction")
+            
             avatar.snp.makeConstraints { (make) in
                 make.right.equalTo(self.snp.right).offset(-10)
             }
@@ -212,7 +233,10 @@ extension ChatTextViewCell {
             }
 
         } else {
-
+            let vie1w = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: 50, height: 50))
+            self.contentView.addSubview(vie1w)
+            addGestureRecognizerToView(view: vie1w, target: self, actionName: "avaterAction")
+            
             if model?.showName == true {
                 userNameLabel.text = model?.fromUserId ?? "阿本"
                 userNameLabel.sizeToFit()

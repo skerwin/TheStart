@@ -26,8 +26,7 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
     
     @IBOutlet weak var buyBtn: UIButton!
     
-    @IBOutlet weak var phoneTextv: UITextField!
-    
+ 
     var priceStr = ""
     var payMode = 0 //0微信 1支付宝
     
@@ -95,20 +94,12 @@ class CashierDeskController:BaseTableController,PayRequestDelegate,Requestable {
                 payStr = "alipay"
             }
             PaySDK.instance.payDelegate = self
-//            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
-//            postRequest(pathAndParams: requestParams,showHUD:false)
-            
-            
-            
- 
-//            if phoneTextv.text!.isEmptyStr(){
-//                showOnlyTextHUD(text: "请填写手机号")
-//                return
-//            }
-            
-            let phone = "15825811694";
-            let requestParams = HomeAPI.buyFreeVipPathAndParams(level_id: 3, pay_type: payStr, price: "0.01",phone:phone)
+            let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
             postRequest(pathAndParams: requestParams,showHUD:false)
+ 
+//            let phone = "15825811694";
+//            let requestParams = HomeAPI.buyFreeVipPathAndParams(level_id: 3, pay_type: payStr, price: "0.01",phone:phone)
+//            postRequest(pathAndParams: requestParams,showHUD:false)
             
             
          }

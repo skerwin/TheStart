@@ -122,10 +122,10 @@ func checkMarketVer() -> Bool {
         if stringForKey(key: Constants.isMarketVer) == "1" || stringForKey(key: Constants.ifExamine) == "1"{
             return true
         }else{
-            return false
+            return true
         }
     }else{
-        return false
+        return true
     }
 }
  

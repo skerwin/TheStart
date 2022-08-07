@@ -133,7 +133,7 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
             mobileText.text = usermodel?.phone
             shenfenIDText.text = "********"
             ageLabel.text = usermodel?.birthday
-            workTypeLabel.text = usermodel?.work_name
+            workTypeLabel.text = usermodel?.shiming_work_name
             addresslabel.text = usermodel?.address
             companyName.text = usermodel?.shiming_company
             tipsLabel.isHidden = false

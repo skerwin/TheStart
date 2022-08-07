@@ -39,14 +39,23 @@ class BaseTableController:  UITableViewController,AlertPresenter,LoadingPresente
         super.viewDidLoad()
         self.view.backgroundColor = ZYJColor.main
         self.navigationItem.backBarButtonItem = item;
+        NotificationCenter.default.addObserver(self, selector: #selector(self.tokenChange(note:)), name: NSNotification.Name(rawValue: Constants.TokenChangeRefreshNotification), object: nil)
         
      
     }
  
+    @objc func tokenChange(note: NSNotification){
+        self.logoutAccount(account: "")
+        self.showSingleButtonAlertDialog(message: "您的账号登录时间已过期，请重新登录") { [self] (type) in
+            //let requestParams = HomeAPI.logoutPathAndParam()
+            //self.getRequest(pathAndParams: requestParams,showHUD:false)
+            UIApplication.shared.keyWindow?.rootViewController = UIStoryboard.getNewLoginController()
+        }
+    }
 
     func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         isDisplayEmptyView = true
-        DialogueUtils.dismiss()
+         DialogueUtils.dismiss()
     }
     func onFailure(responseCode: String, description: String, requestPath: String) {
         DialogueUtils.dismiss()

@@ -277,6 +277,7 @@ class JobInfoViewController: BaseViewController,Requestable{
         headView = Bundle.main.loadNibNamed("JobBaseInfo", owner: nil, options: nil)!.first as? JobBaseInfo
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 188)
         headView.delegate = self
+        headView.parentNavigationController = self.navigationController
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 188))
         headerBgView.backgroundColor = UIColor.clear
         headerBgView.addSubview(headView)
@@ -344,12 +345,7 @@ extension JobInfoViewController:ChatBtnViewDelegate {
             postRequest(pathAndParams: pathAndParams,showHUD: false)
             
         }
-      
-       
-        
-        
-       
-    }
+   }
  
 }
 extension JobInfoViewController:JobBaseInfoDelegate {

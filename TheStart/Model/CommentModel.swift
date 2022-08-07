@@ -51,6 +51,7 @@ struct CommentModel: Mappable {
         is_dianzan <- map["is_dianzan"]
         children_count <- map["children_count"]
         children <- map["children"]
+        ruid <- map["ruid"]
      }
  
 

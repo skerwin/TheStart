@@ -22,12 +22,19 @@ class TipOffHeaderView: UIView {
     @IBOutlet weak var msgBtn: UIButton!
     
     var delegate: TipOffHeaderViewDelegate!
+    
+    
+    var model = TipOffModel()
+    
+    var parentNavigationController: UINavigationController?
+    
     @IBAction func msgBtnAction(_ sender: Any) {
         delegate.msgBtnAction()
     }
     override func awakeFromNib(){
  
-        
+        addGestureRecognizerToView(view: nameLabel, target: self, actionName: "tapONameLabel")
+
         addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
         headImage.layer.cornerRadius = 27
         headImage.layer.masksToBounds = true
@@ -42,11 +49,23 @@ class TipOffHeaderView: UIView {
     }
     
     @objc private func tapOnImageheadImage() {
-          //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
+        
           EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImage, alpha: 1)
     }
+ 
+    @objc private func tapONameLabel() {
+        if  model!.uid != 0{
+            let controller = MyHomePageController()
+            controller.authorId = model!.uid
+            self.parentNavigationController?.pushViewController(controller, animated: true)
+        }
+      
+     }
     
     func configModel(model:TipOffModel){
+        
+        self.model = model
+        
         headImage.displayHeadImageWithURL(url: model.avatar)
         nameLabel.text = model.nickname
       

@@ -216,8 +216,7 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         controller.dateID = dataList[indexPath.item].id
         controller.isFromMine = self.isMypub
         self.navigationController?.pushViewController(controller, animated: true)
-        
-    }
+     }
 
     
 }

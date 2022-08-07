@@ -45,7 +45,7 @@ class MusicianAuthorController: BaseViewController,Requestable,UIImagePickerCont
     /// 相机拍摄的本地资源
     var localCameraAssetArrayVod: [PhotoAsset] = []
     var canSetAddCellVod: Bool {
-        if selectedAssetsVod.count == configVod.maximumSelectedCount && configVod.maximumSelectedCount > 0 {
+        if selectedAssetsVod.count == configVod.maximumSelectedVideoCount && configVod.maximumSelectedVideoCount > 0 {
             return false
         }
         return true
@@ -456,7 +456,7 @@ extension MusicianAuthorController:UITableViewDataSource,UITableViewDelegate {
             cell.selectionStyle = .none
             cell.selectedAssets = self.selectedAssetsVod
             cell.canSetAddCell = self.canSetAddCellVod
-            cell.maximumSelectedCount = configVod.maximumSelectedCount
+            cell.maximumSelectedCount = configVod.maximumSelectedVideoCount
             cell.tableview = tableView;
             self.collectionViewVod = cell.collectionView
             return cell;
@@ -522,7 +522,7 @@ extension MusicianAuthorController: PubMediaCellVodDelegate {
     
     func didSelectedVod(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
         isImgFile = false
-        configVod.maximumSelectedCount = 1
+        configVod.maximumSelectedVideoCount = 1
         configVod.selectOptions = PickerAssetOptions.video
         presentPickerController()
     }
@@ -554,7 +554,11 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
  
         
         pickerController.dismiss(animated: true, completion: nil)
-        result.getURLs { [self] urls in
+        
+        
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+ 
+        result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {
                 //print(self.isImgFile)
                 self.imageURLArr = urls
@@ -650,7 +654,7 @@ extension MusicianAuthorController: PhotoPickerControllerDelegate {
              }
         }else{
             
-            let isFull = selectedAssetsVod.count == configVod.maximumSelectedCount
+            let isFull = selectedAssetsVod.count == configVod.maximumSelectedVideoCount
             selectedAssetsVod.remove(at: index)
             mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! PubMediaCellVod
             mediaVodCell.selectedAssets = self.selectedAssetsVod

@@ -13,6 +13,8 @@ struct TipOffModel : Mappable {
  
     
     var id = 0
+    var uid = 0
+    
     var is_vip = 0
     
     var type = 1
@@ -43,7 +45,7 @@ struct TipOffModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
-        
+        uid <- map["is_vip"]
         is_vip <- map["is_vip"]
         clarify_count <- map["clarify_count"]
         id <- map["id"]

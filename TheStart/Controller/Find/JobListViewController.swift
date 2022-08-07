@@ -112,11 +112,14 @@ class JobListViewController: BaseViewController,Requestable {
    }
     
     func addjustPubBtn(){
-        
-        pubWorkerBtn.isHidden = pubSubHidden
-        pubJobBtn.isHidden = pubSubHidden
-        pubWorkerLabel.isHidden = pubSubHidden
-        pubJobLabel.isHidden = pubSubHidden
+        if isFromMine {
+        }else{
+            pubWorkerBtn.isHidden = pubSubHidden
+            pubJobBtn.isHidden = pubSubHidden
+            pubWorkerLabel.isHidden = pubSubHidden
+            pubJobLabel.isHidden = pubSubHidden
+        }
+       
     }
     
     @objc func pubWorkerClick(_ btn: UIButton){

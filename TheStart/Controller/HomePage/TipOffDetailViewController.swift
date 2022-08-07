@@ -335,6 +335,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         headerView = Bundle.main.loadNibNamed("TipOffHeaderView", owner: nil, options: nil)!.first as? TipOffHeaderView
         headerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 69)
         headerView.delegate = self
+        headerView.parentNavigationController = self.navigationController
  
         headerViewbgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 69))
         headerViewbgView.backgroundColor = ZYJColor.barColor
@@ -583,6 +584,7 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
                 let section = indexPath.section
                 let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.nameOfClass) as! CommentCell
                 cell.selectionStyle = .none
+                cell.parentNavigationController = self.navigationController
                 cell.sectoin = section
                 cell.delegeta = self
                 cell.model = modelList[indexPath.row]
@@ -596,6 +598,7 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reCommentCell", for: indexPath) as! reCommentCell
                 cell.selectionStyle = .none
+                cell.parentNavigationController = self.navigationController
                 cell.delegeta = self
                 cell.indexpath = indexPath
                 cell.model = modelList[indexPath.row]
@@ -689,6 +692,7 @@ extension TipOffDetailViewController:ReCommentCellDelegate{
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
+            commentSection = index.section
             reportType = 2
             let modelList = dataCommentList[commentSection - 1]
             let tempm = modelList[index.row]

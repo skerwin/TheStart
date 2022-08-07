@@ -37,7 +37,8 @@ class MyIntroController: BaseViewController,Requestable {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.registerNibWithTableViewCellName(name: MyIntroCell.nameOfClass)
-  
+        tableView.registerNibWithTableViewCellName(name: VideoBalankCell.nameOfClass)
+
          view.addSubview(tableView)
         tableView.tableFooterView = UIView()
       
@@ -59,13 +60,32 @@ extension MyIntroController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyIntroCell", for: indexPath) as! MyIntroCell
-        cell.selectionStyle = .none
-        cell.configModel(model: self.userModel!)
-        return cell
+        
+        if userModel!.if_open == 0 && userModel?.uid != getUserId(){
+
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VideoBalankCell", for: indexPath) as! VideoBalankCell
+            cell.selectionStyle = .none
+            cell.zanwu.text = "此作者暂未公开展示个人信息，看看其他人吧"
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyIntroCell", for: indexPath) as! MyIntroCell
+            cell.selectionStyle = .none
+            cell.configModel(model: self.userModel!)
+            return cell
+        }
+        
+        
+      
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 338
+        if userModel!.if_open == 0 && userModel?.uid != getUserId(){
+            return 150
+        }else{
+            return 338
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

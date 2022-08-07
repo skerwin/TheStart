@@ -16,6 +16,8 @@ protocol  CommentCellDelegate {
 
 class CommentCell: UITableViewCell {
 
+    var parentNavigationController: UINavigationController?
+
     @IBOutlet weak var headImage: UIImageView!
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var contentlabel: UILabel!
@@ -26,9 +28,16 @@ class CommentCell: UITableViewCell {
     var delegeta:CommentCellDelegate?
     @IBOutlet weak var lineView: UIView!
     
- 
+    
+    
+
     var sectoin = 0
     
+    @objc private func tapOnheadImage() {
+        let controller = MyHomePageController()
+        controller.authorId = model!.uid
+        self.parentNavigationController?.pushViewController(controller, animated: true)
+    }
     @IBAction func complainActiion(_ sender: Any) {
         delegeta?.complainActiion(cmodel: model!,section: sectoin)
     }
@@ -55,7 +64,7 @@ class CommentCell: UITableViewCell {
         super.awakeFromNib()
         headImage.layer.cornerRadius = 18;
         headImage.layer.masksToBounds = true
-        
+        addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnheadImage")
      }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

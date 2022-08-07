@@ -38,7 +38,17 @@ class BaseViewController: UIViewController,AlertPresenter,LoadingPresenter,Accou
         //去掉导航栏箭头旁边的字
         self.view.backgroundColor = ZYJColor.main
         self.navigationItem.backBarButtonItem = item;
+        NotificationCenter.default.addObserver(self, selector: #selector(self.tokenChange(note:)), name: NSNotification.Name(rawValue: Constants.TokenChangeRefreshNotification), object: nil)
      }
+    
+    @objc func tokenChange(note: NSNotification){
+        self.logoutAccount(account: "")
+        self.showSingleButtonAlertDialog(message: "您的账号登录时间已过期，请重新登录") { [self] (type) in 
+            //let requestParams = HomeAPI.logoutPathAndParam()
+            //self.getRequest(pathAndParams: requestParams,showHUD:false)
+            UIApplication.shared.keyWindow?.rootViewController = UIStoryboard.getNewLoginController()
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

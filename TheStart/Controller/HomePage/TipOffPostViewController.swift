@@ -69,6 +69,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = []
         if articleType == 1{
             self.title = "嘿人信息"
         }else{
@@ -161,7 +162,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     }
  
     func initTableView(){
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - bottomBlankHeight - navigationHeaderAndStatusbarHeight), style: .plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight), style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main
@@ -614,13 +615,13 @@ extension TipOffPostViewController: PhotoPickerControllerDelegate {
         imageCell.updateCollectionViewHeight()
         collectionView.reloadData()
         
-        
         pickerController.dismiss(animated: true, completion: nil)
         
-        result.getURLs { urls in
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+        result.getURLs(options: .any, compression: commpres) { urls in
             self.imageURLArr = urls
         }
-       
+ 
 //        result.getImage { (image, photoAsset, index) in
 //
 //            //print(photoAsset)

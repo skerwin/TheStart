@@ -24,6 +24,11 @@ class TipOffpootContentCell: UITableViewCell,UITextViewDelegate {
         self.contentTV.placeHolder = "使用合适的话题，让更多人看到～～";
         contentTV.delegate = self
     }
+    
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return true
+    }
     func textViewDidChange(_ textView: UITextView) {
         let toBeString:String = textView.text!
         // 获取键盘输入模式

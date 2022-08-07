@@ -249,9 +249,10 @@ class MusicDetailController: BaseViewController,Requestable{
     
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("MusicDetailHeader", owner: nil, options: nil)!.first as? MusicDetailHeader
-        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 200)
-        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 200))
+        headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 267)
+        headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 267))
         headerBgView.backgroundColor = UIColor.clear
+        headView.parentNavigationController = self.navigationController
         headerBgView.addSubview(headView)
         
     }

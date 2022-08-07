@@ -16,11 +16,45 @@ class SettiingControllerTable: BaseTableController,Requestable {
     var userAgreementHtml = ""
     var privasyHtml = ""
     
+    var isopen = 1
+    
+    
+    @IBOutlet weak var isOpenSwitch: UISwitch!
+    
+    @IBAction func isOpenAction(_ sender: Any) {
+        
+        
+        if isOpenSwitch.isOn == true{
+            isopen = 1
+          }else{
+            isopen = 0
+         }
+        
+        let requestParams = HomeAPI.userinfo_openPathAndParam(ifopen: isopen)
+        postRequest(pathAndParams: requestParams,showHUD: false)
+        
+        //static let userinfo_openPath = "/api/user/userinfo_open"
+        //static func userinfo_openPathAndParam(ifopen:Bool = true) -> PathAndParams {
+
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设置"
         loadPrivateAndAbouutUs()
+        if intForKey(key: Constants.ifOpen) != nil {
+            isopen = intForKey(key: Constants.ifOpen)!
+        }
+        
+        if isopen == 0{
+            isOpenSwitch.isOn = false
+        }else{
+            isOpenSwitch.isOn = true
+        }
+        
+      
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -70,11 +104,11 @@ class SettiingControllerTable: BaseTableController,Requestable {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+        if indexPath.row == 2{
             let noticeView = UIAlertController.init(title: "", message: "您确定拨打客服联系电话吗？", preferredStyle: .alert)
             
              noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
@@ -94,15 +128,15 @@ class SettiingControllerTable: BaseTableController,Requestable {
                 
             }))
             self.present(noticeView, animated: true, completion: nil)
-        }else if indexPath.row == 1{
+        }else if indexPath.row == 3{
             let conroller = PrivateStatusViewController()
             conroller.htmlString = userAgreementHtml
             self.present(conroller, animated: true, completion: nil)
-        }else if indexPath.row == 2{
+        }else if indexPath.row == 4{
             let conroller = PrivateStatusViewController()
             conroller.htmlString = privasyHtml
             self.present(conroller, animated: true, completion: nil)
-        }else if indexPath.row == 3{
+        }else if indexPath.row == 5{
             let noticeView = UIAlertController.init(title: "提示", message: "您确定注销账号么，注销后您的所有信息将被清除", preferredStyle: .alert)
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
  
@@ -114,7 +148,12 @@ class SettiingControllerTable: BaseTableController,Requestable {
                 
             }))
             self.present(noticeView, animated: true, completion: nil)
+        }else if indexPath.row == 1{
+            let conroller = UIStoryboard.getCodeShareController()
+            self.navigationController?.pushViewController(conroller, animated: true)
         }
+        
+        
     }
  
     /*

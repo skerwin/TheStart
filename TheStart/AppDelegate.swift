@@ -57,7 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JSHAREService.setDebug(true)
     }
     
-    
+    func applicationWillTerminate(_ application: UIApplication) {
+        //这个方法 应用前台在前台直接被杀死会执行 先退出后台在杀死不会执行，而且这个方法极短不要做计算处理
+        setStringValueForKey(value: "" as String, key: Constants.UpdateVerion)
+    }
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         

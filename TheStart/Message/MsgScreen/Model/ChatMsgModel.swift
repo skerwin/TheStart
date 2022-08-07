@@ -33,6 +33,8 @@ class ChatMsgModel: NSObject {
     
     // 头像
     var headImg: String?
+    // 头像
+    var uid:Int = 0
     
     // 信息来源id
     var fromUserId: String?

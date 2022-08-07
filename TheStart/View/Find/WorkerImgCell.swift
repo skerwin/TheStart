@@ -22,10 +22,12 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     func configAudioCell(model:AudioModel){
         imgLabel.text = "更多图片"
         previewAssets.removeAll()
+        let itemWidth = 250
         for imageV in model.images {
             if imageV != ""{
                let networkImageURL = URL.init(string: imageV)!
-               let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                let netImg = NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL, thumbnailSize: CGSize.init(width: itemWidth, height: itemWidth), placeholder: nil, imageSize: CGSize.init(width: itemWidth, height: itemWidth), fileSize: 0)
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: netImg) // swiftlint:disable:this line_length
                previewAssets.append(networkImageAsset)
             }
         }
@@ -37,10 +39,12 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     func configUserCell(model:UserModel){
         imgLabel.text = "才艺图片"
         previewAssets.removeAll()
+        let itemWidth = 250
         for imageV in model.images {
             if imageV != ""{
                let networkImageURL = URL.init(string: imageV)!
-               let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                let netImg = NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL, thumbnailSize: CGSize.init(width: itemWidth, height: itemWidth), placeholder: nil, imageSize: CGSize.init(width: itemWidth, height: itemWidth), fileSize: 0)
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: netImg) // swiftlint:disable:this line_length
                previewAssets.append(networkImageAsset)
             }
         }
@@ -52,9 +56,11 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
     var model:JobModel? {
         didSet {
             previewAssets.removeAll()
+            let itemWidth = 250
             for imageV in model!.images {
                 let networkImageURL = URL.init(string: imageV)!
-                let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+                let netImg = NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL, thumbnailSize: CGSize.init(width: itemWidth, height: itemWidth), placeholder: nil, imageSize: CGSize.init(width: itemWidth, height: itemWidth), fileSize: 0)
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: netImg) // swiftlint:disable:this line_length
                 previewAssets.append(networkImageAsset)
             }
             collectionView.reloadData()

@@ -51,7 +51,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     /// 相机拍摄的本地资源
     var localCameraAssetArrayVod: [PhotoAsset] = []
     var canSetAddCellVod: Bool {
-        if selectedAssetsVod.count == configVod.maximumSelectedCount && configVod.maximumSelectedCount > 0 {
+        if selectedAssetsVod.count == configVod.maximumSelectedVideoCount && configVod.maximumSelectedVideoCount > 0 {
             return false
         }
         return true
@@ -67,7 +67,6 @@ class WorkerPubViewController: BaseViewController,Requestable {
     var footerView:ChatBtnView!
     var footerBgView:UIView!
  
-    
     
     
     var pubType = 1   //1发布职位 2发布求职
@@ -107,6 +106,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCityJson()
+        self.edgesForExtendedLayout = []
         initHeadView()
         initFooterView()
         initTableView()
@@ -224,7 +224,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
     
     func initTableView(){
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight), style: .plain)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -495,7 +495,7 @@ extension WorkerPubViewController:UITableViewDataSource,UITableViewDelegate {
             cell.selectionStyle = .none
             cell.selectedAssets = self.selectedAssetsVod
             cell.canSetAddCell = self.canSetAddCellVod
-            cell.maximumSelectedCount = configVod.maximumSelectedCount
+            cell.maximumSelectedCount = configVod.maximumSelectedVideoCount
             cell.tableview = tableView;
             self.collectionViewVod = cell.collectionView
             return cell;
@@ -560,7 +560,7 @@ extension WorkerPubViewController: PubMediaCellVodDelegate {
     
     func didSelectedVod(collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath,row:Int) {
         
-        if indexPath.item == configVod.maximumSelectedCount{
+        if indexPath.item == configVod.maximumSelectedVideoCount{
 
             if !checkVip(){
                 let noticeView = UIAlertController.init(title: "", message: "您不是会员，请¥98元充值会员", preferredStyle: .alert)
@@ -580,9 +580,9 @@ extension WorkerPubViewController: PubMediaCellVodDelegate {
         
         isImgFile = false
         if checkVip(){
-            configVod.maximumSelectedCount = 3
+            configVod.maximumSelectedVideoCount = 3
         }else{
-            configVod.maximumSelectedCount = 1
+            configVod.maximumSelectedVideoCount = 1
         }
        
         configVod.maximumSelectedVideoDuration = 30
@@ -619,7 +619,9 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
  
         
         pickerController.dismiss(animated: true, completion: nil)
-        result.getURLs { [self] urls in
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+ 
+        result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {
                 //print(self.isImgFile)
                 self.imageURLArr = urls
@@ -716,7 +718,7 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
              }
         }else{
             
-            let isFull = selectedAssetsVod.count == configVod.maximumSelectedCount
+            let isFull = selectedAssetsVod.count == configVod.maximumSelectedVideoCount
             selectedAssetsVod.remove(at: index)
             mediaVodCell = tableView.cellForRow(at: IndexPath.init(row: 2, section: 0)) as! PubMediaCellVod
             mediaVodCell.selectedAssets = self.selectedAssetsVod

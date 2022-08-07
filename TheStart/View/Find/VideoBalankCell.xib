@@ -17,11 +17,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxt-Ks-BZa">
-                        <rect key="frame" x="20" y="37" width="260" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxt-Ks-BZa">
+                        <rect key="frame" x="20" y="26" width="260" height="43"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="260" id="CdT-zg-wFI"/>
-                            <constraint firstAttribute="height" constant="21" id="bwR-Q0-lQx"/>
+                            <constraint firstAttribute="height" constant="43" id="bwR-Q0-lQx"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,6 +30,7 @@
                 <constraints>
                     <constraint firstItem="Fxt-Ks-BZa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="076-sh-s0c"/>
                     <constraint firstItem="Fxt-Ks-BZa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="M2i-Xz-BdS"/>
+                    <constraint firstAttribute="trailing" secondItem="Fxt-Ks-BZa" secondAttribute="trailing" constant="40" id="OX8-7s-hCV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

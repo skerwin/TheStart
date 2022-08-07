@@ -50,10 +50,6 @@ enum WeChatKeyboardType: Int {
     case more
 }
 
-@objc protocol CellMenuItemActionDelegate {
-    func willShowMenu(view: MyTextView, row: Int)
-    func hideKeyboardView()
-}
 
 let kChatBarOriginHeight: CGFloat = 54.0
 let kChatBarTextViewMaxHeight: CGFloat = 100
@@ -96,8 +92,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
     
     var dataCloneArr: [ChatMsgModel] = []
     
-    weak var delegate: CellMenuItemActionDelegate?
-    
+ 
     var toID = 0
     var nameTitle = ""
     //weak var tableView: UITableView?
@@ -136,6 +131,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         
         let chatMode = ChatMsgModel()
         chatMode.modelType = .text
+        chatMode.uid = data["uid"] as! Int
         chatMode.text = data["msn"] as? String
         let touid = data["to_uid"] as! Int
         if touid == getUserId() {
@@ -171,6 +167,7 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         for model in list {
             let chatMode = ChatMsgModel()
             chatMode.modelType = .text
+            chatMode.uid = model.uid
             chatMode.text = model.msn
             if model.to_uid == getUserId() {
                 chatMode.userType = .friend
@@ -256,7 +253,6 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         tableView.dataSource = self
  
         
-        tableView?.register(TextTableViewCell.classForCoder(), forCellReuseIdentifier: ChatTextCellID)
         tableView?.register(ChatImageCell.classForCoder(), forCellReuseIdentifier: ChatImageCellID)
         tableView?.register(ChatTimeCell.classForCoder(), forCellReuseIdentifier: ChatTimeCellID)
         tableView?.register(ChatTextViewCell.classForCoder(), forCellReuseIdentifier: ChatTextViewCellID)
@@ -375,10 +371,12 @@ class MessageController: BaseViewController,Requestable,UITableViewDelegate, UIT
         let model = dataArr[indexPath.row];
         if model.modelType == .text {
             let cell: ChatTextViewCell = tableView.dequeueReusableCell(withIdentifier: ChatTextViewCellID, for: indexPath) as! ChatTextViewCell
+            cell.delegate = self
+            cell.parentNavigationController = self.navigationController
             cell.model = dataArr[indexPath.row];
             cell.row = indexPath.row
-            //cell.delegate = self.delegate
-            cell.backgroundColor = ZYJColor.main
+          
+            //cell.backgroundColor = ZYJColor.main
             return cell
         } else if model.modelType == .image {
             let cell: ChatImageCell = tableView.dequeueReusableCell(withIdentifier: ChatImageCellID, for: indexPath) as! ChatImageCell

@@ -119,8 +119,15 @@ extension BuyOrderViewController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = MusicDetailController()
-        controller.dateID = dataList[indexPath.row].audio_id
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        if dataList[indexPath.row].is_del == 1{
+            showOnlyTextHUD(text: "此音乐已被删除，无法查看详情")
+            return
+        }else{
+            let controller = MusicDetailController()
+            controller.dateID = dataList[indexPath.row].audio_id
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+      
     }
 }

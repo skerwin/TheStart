@@ -17,6 +17,7 @@ struct UserModel: Mappable {
     var password = ""
     var confirm_pwd = ""
     var nickname = ""
+    var vip_time = ""
     
     var is_vip = 0
     
@@ -71,15 +72,27 @@ struct UserModel: Mappable {
     
     //音乐人信息
      var work_name = ""
+    var shiming_work_name = ""
+    
+    var collection_count = 0
+    var if_collection = 0
+    
+    
+    var if_open = 0
+    
     
     
     mutating func mapping(map: Map) {
         
+        vip_time <- map["vip_time"]
+        if_open <- map["if_open"]
+        if_collection <- map["if_collection"]
         is_vip <- map["is_vip"]
+        collection_count <- map["collection_count"]
         
         music_num <- map["music_num"]
         work_name <- map["work_name"]
-        
+        shiming_work_name <- map["shiming_work_name"]
         address <- map["address"]
         
         shiming_work <- map["shiming_work"]

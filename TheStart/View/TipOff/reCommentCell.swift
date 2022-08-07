@@ -16,6 +16,8 @@ protocol ReCommentCellDelegate: AnyObject {
 
 class reCommentCell: UITableViewCell {
     
+    var parentNavigationController: UINavigationController?
+
     @IBOutlet weak var headImage: UIImageView!
     @IBOutlet weak var contentlabel: UILabel!
     @IBOutlet weak var publishlabel: UILabel!
@@ -45,34 +47,43 @@ class reCommentCell: UITableViewCell {
             nameLableTV.isEditable = false
             nameLableTV.isScrollEnabled = false
             
+            
             if (model?.uid == getUserId()){
                 delBtn.setTitle("删除", for: .normal)
+ 
             }else{
                 delBtn.setTitle("举报", for: .normal)
-            }
+             }
             nameLableTV
                 .removeAllAttribute()
-                .appendAttributedText(model!.nickname
+                .appendAttributedText((" " + model!.nickname + " ")
                     .attribute()
-                    .color(UIColor.init(hexString: "5776A7"))
-                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
-                    .toEz())
-             
-                .appendAttributedText(" @ "
-                    .attribute()
-                    .color(UIColor.init(hexString: "5776A7"))
-                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
-                    .toEz())
-               .appendAttributedText(model!.r_nickname
-                    .attribute()
-                    .color(UIColor.init(hexString: "5776A7"))
+                    .color(UIColor.gray)
                     .ez_font(UIFont.boldSystemFont(ofSize: 13))
                     .toEz()
                     .addAction{ [self] in
-                        //self.showOnlyTextHUD(text: "点击隐私协议")
+                        let controller = MyHomePageController()
+                        controller.authorId = model!.uid
+                        self.parentNavigationController?.pushViewController(controller, animated: true)
+                    
+                   })
+                .appendAttributedText("@"
+                    .attribute()
+                    .color(UIColor.init(hexString: "5776A7"))
+                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
+                    .toEz())
+                .appendAttributedText((" " + model!.r_nickname + " ")
+                    .attribute()
+                    .color(UIColor.gray)
+                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
+                    .toEz()
+                    .addAction{ [self] in
+                        let controller = MyHomePageController()
+                        controller.authorId = model!.ruid
+                        self.parentNavigationController?.pushViewController(controller, animated: true)
+                        
                     })
-            
-         }
+          }
     }
     
     func configModel(){

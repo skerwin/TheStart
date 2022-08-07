@@ -115,11 +115,14 @@ class WorkListViewController: BaseViewController,Requestable  {
     }
     
     func addjustPubBtn(){
+        if isFromMine {
+        }else{
+            pubWorkerBtn.isHidden = pubSubHidden
+            pubJobBtn.isHidden = pubSubHidden
+            pubWorkerLabel.isHidden = pubSubHidden
+            pubJobLabel.isHidden = pubSubHidden
+        }
         
-        pubWorkerBtn.isHidden = pubSubHidden
-        pubJobBtn.isHidden = pubSubHidden
-        pubWorkerLabel.isHidden = pubSubHidden
-        pubJobLabel.isHidden = pubSubHidden
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -46,6 +46,8 @@ class PubMediaCellVod: UITableViewCell,UICollectionViewDataSource,
         imgLabel.font = UIFont.systemFont(ofSize: 16)
         imgLabel.text = "上传视频资料"
     }
+   
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -81,22 +81,16 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         
         
         addNavChildViewController(controller: tipOffController, title: "部落",
-                                  image: UIImage(named: "iconMsg")!,
-                                  selectedImage: UIImage(named: "iconMsgSelceted")!,
+                                  image: UIImage(named: "iconbuluo")!,
+                                  selectedImage: UIImage(named: "iconbuluoSelceted")!,
                                   tag: TabbarContentType.Cases.rawValue)
         
-        if checkMarketVer(){
-            addNavChildViewController(controller: goodsController, title: "商店",
-                                          image: UIImage(named: "shangcheng")!,
-                                          selectedImage: UIImage(named: "shangchengxuanzhong")!,
-                                          tag: TabbarContentType.Articl.rawValue)
-        }else{
-            addNavChildViewController(controller: messageController, title: "消息",
-                                          image: UIImage(named: "iconMusic")!,
-                                          selectedImage: UIImage(named: "iconMusicSelceted")!,
-                                          tag: TabbarContentType.Articl.rawValue)
-        }
      
+        addNavChildViewController(controller: messageController, title: "消息",
+                                          image: UIImage(named: "iconMsg")!,
+                                          selectedImage: UIImage(named: "iconMsgSelceted")!,
+                                          tag: TabbarContentType.Articl.rawValue)
+ 
         
         
       

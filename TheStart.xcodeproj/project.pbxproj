@@ -588,6 +588,8 @@
 		B8EC0CF128B353070066A740 /* MyintroLogoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EC0CEF28B353070066A740 /* MyintroLogoCell.xib */; };
 		B8F2EC142869C24B008F32C0 /* VideoBalankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */; };
 		B8F2EC152869C24B008F32C0 /* VideoBalankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */; };
+		B8FAFED3289F8D75003D15D8 /* codeShare.png in Resources */ = {isa = PBXBuildFile; fileRef = B8FAFED2289F8D75003D15D8 /* codeShare.png */; };
+		B8FAFED5289F8E2C003D15D8 /* CodeShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FAFED4289F8E2C003D15D8 /* CodeShareController.swift */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -1230,6 +1232,8 @@
 		B8EC0CEF28B353070066A740 /* MyintroLogoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyintroLogoCell.xib; sourceTree = "<group>"; };
 		B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBalankCell.swift; sourceTree = "<group>"; };
 		B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoBalankCell.xib; sourceTree = "<group>"; };
+		B8FAFED2289F8D75003D15D8 /* codeShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = codeShare.png; sourceTree = "<group>"; };
+		B8FAFED4289F8E2C003D15D8 /* CodeShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeShareController.swift; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F1CAD3ADADF5918B60F78BAE /* Pods_TheStart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheStart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F88421BB679DB879E0690 /* Pods-TheStart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart.release.xcconfig"; path = "Target Support Files/Pods-TheStart/Pods-TheStart.release.xcconfig"; sourceTree = "<group>"; };
@@ -2059,6 +2063,7 @@
 		B8AC500F2807C5A200C2CF26 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B8FAFED2289F8D75003D15D8 /* codeShare.png */,
 				B87352B128964FFA0055437E /* jiguang */,
 				B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */,
 				B802E23E282B638000B5057A /* 120icon.png */,
@@ -2166,6 +2171,7 @@
 		B8AC50462807C87800C2CF26 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B8FAFED4289F8E2C003D15D8 /* CodeShareController.swift */,
 				B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */,
 				B8EC0CE628B339B50066A740 /* MyIntroController.swift */,
 				B8EC0CEC28B343060066A740 /* MyTalentedController.swift */,
@@ -2449,6 +2455,7 @@
 				B87352D12896500B0055437E /* report.png in Resources */,
 				B8EC0CE128B266390066A740 /* PersonHomePageHeader.xib in Resources */,
 				B8AB69EB280960FA0064861C /* CommemtFooerLineView.xib in Resources */,
+				B8FAFED3289F8D75003D15D8 /* codeShare.png in Resources */,
 				B87352D42896500B0055437E /* jchatpro@3x.png in Resources */,
 				B8AC4FE82807BE4400C2CF26 /* LaunchScreen.storyboard in Resources */,
 				B855361D2835F20900E3C287 /* MyStarCoinFootView.xib in Resources */,
@@ -2727,6 +2734,7 @@
 				B81C4DD728601D6C0005AFF2 /* PrivateStatusViewControllerCxsdcontentExt.swift in Sources */,
 				B8AC508D2807CF6B00C2CF26 /* UIImageView+Extension.swift in Sources */,
 				B85FAFB3280FAE7C00D25B66 /* DepartmentModel.swift in Sources */,
+				B8FAFED5289F8E2C003D15D8 /* CodeShareController.swift in Sources */,
 				B83C6376280CF44E00A3282D /* WorkerBaseInfo.swift in Sources */,
 				B81C4D9928601D6B0005AFF2 /* PubMusicHeaderCxsdcontentExt.swift in Sources */,
 				B8AB69D9280904FA0064861C /* TipOffViewController.swift in Sources */,

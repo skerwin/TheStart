@@ -11,6 +11,7 @@ class PersonHomePageHeader: UIView {
 
     
     
+    @IBOutlet weak var bigbtn: UIButton!
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -25,7 +26,15 @@ class PersonHomePageHeader: UIView {
     
     @IBOutlet weak var introLabel: UILabel!
     
+  
+    @IBAction func bigBtnAction(_ sender: Any) {
+        EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
+
+        
+    }
     override func awakeFromNib(){
+
+        
         
         vipImage.isHidden = true
         headImg.layer.masksToBounds = true
@@ -50,10 +59,10 @@ class PersonHomePageHeader: UIView {
         workTypelabel.textColor = UIColor.darkGray
         workTypelabel.layer.borderColor = UIColor.lightGray.cgColor
         workTypelabel.textAlignment = .center
-        addGestureRecognizerToView(view: headImg, target: self, actionName: "tapOnImageheadImage1")
     }
- 
-    @objc private func tapOnImageheadImage1() {
+    
+  
+    @objc func tapOnImage() {
           //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
           EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
     }
@@ -63,7 +72,7 @@ class PersonHomePageHeader: UIView {
         nameLabel.text = model.nickname
         headImg.displayImageWithURL(url: model.avatar)
         
-        if model.is_vip == 1 && !checkMarketVer(){
+        if ((model.is_vip == 1 || model.vip == 1) && !checkMarketVer()){
             vipImage.isHidden = false
         }else{
             vipImage.isHidden = true //
@@ -85,11 +94,26 @@ class PersonHomePageHeader: UIView {
             isrealNameLabel.text = "未实名"
         }
         if model.work_name == ""{
-            workTypelabel.text = "工种：" + "未填写"
+            if model.shiming_work_name == ""{
+                workTypelabel.text = "工种：" + "未填写"
+            }else{
+                workTypelabel.text = "工种：" + model.shiming_work_name
+            }
+            
         }else{
             workTypelabel.text = "工种：" + model.work_name
         }
        
+        if model.collection_count == 0{
+            careNumLabel.isHidden = true
+        }else{
+            careNumLabel.isHidden = false
+            careNumLabel.text = int2str(num: model.collection_count) + "人已关注"
+            
+        }
+        addGestureRecognizerToView(view: headImg, target: self, actionName: "tapOnImage")
+
+        
         introLabel.text = model.introduce
         
     }

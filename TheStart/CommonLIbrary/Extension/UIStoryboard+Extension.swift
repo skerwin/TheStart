@@ -102,7 +102,10 @@ extension UIStoryboard {
     {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "FreeOpenVipController") as! FreeOpenVipController
     }
-    
+    class func getCodeShareController() -> CodeShareController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "CodeShare") as! CodeShareController
+    }
     
     
     

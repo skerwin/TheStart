@@ -41,6 +41,9 @@ struct OrderModel : Mappable {
     var order_sn = ""
     var post_code = ""
     
+    
+    var is_del = 0
+    
     init?(map: Map) {
         
     }
@@ -49,6 +52,7 @@ struct OrderModel : Mappable {
     }
     mutating func mapping(map: Map) {
         
+        is_del <- map["is_del"]
         vip_free <- map["vip_free"]
         
         uid <- map["uid"]

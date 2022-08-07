@@ -30,15 +30,18 @@ class WorkerBaseInfo: UIView {
     
     @IBOutlet weak var infoLabel: UILabel!
     
-   
+    var model = JobModel()
+    
+    var parentNavigationController: UINavigationController?
+
+    
     @IBAction func phoneBtnAction(_ sender: Any) {
         delegate.WorkerCommunicateAction()
     }
     @IBOutlet weak var phoneBtn: UIButton!
     
-    
     func configModel(model:JobModel){
-        
+        self.model = model
         if model.is_vip == 1 && !checkMarketVer(){
             vipImage.isHidden = false
         }else{
@@ -62,9 +65,16 @@ class WorkerBaseInfo: UIView {
          
           EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
     }
+    
+    @objc private func tapONameLabel() {
+        let controller = MyHomePageController()
+        controller.authorId = model!.uid
+        self.parentNavigationController?.pushViewController(controller, animated: true)
+     }
     override func awakeFromNib(){
  
         addGestureRecognizerToView(view: headImg, target: self, actionName: "tapOnImageheadImage")
+        addGestureRecognizerToView(view: nameLabel, target: self, actionName: "tapONameLabel")
         phoneBtn.layer.masksToBounds = true
         phoneBtn.layer.cornerRadius = 15
         vipImage.isHidden = true

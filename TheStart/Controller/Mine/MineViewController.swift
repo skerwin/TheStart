@@ -37,6 +37,16 @@ class MineViewController: BaseTableController,Requestable{
     
     var lefttBarButton:UIButton!
     
+    @IBOutlet weak var introBtn: UIButton!
+    
+    @IBAction func introAction(_ sender: Any) {
+        
+        let controller = MyHomePageController()
+        controller.isFromMine = true
+        controller.authorId = self.usermodel!.uid
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     func createRightNavItem() {
         
         rightBarButton = UIButton.init()
@@ -75,7 +85,7 @@ class MineViewController: BaseTableController,Requestable{
         lefttBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
      
         bgview2.addSubview(lefttBarButton)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: bgview2)
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: bgview2)
         
      }
 
@@ -119,15 +129,11 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     @IBAction func editHeaderAction(_ sender: Any) {
+ 
         
-        let controller = MyHomePageController()
-        controller.isFromMine = true
-        controller.authorId = self.usermodel!.uid
+        let controller = UIStoryboard.getPersonsInfoController()
+        controller.userModel = self.usermodel
         self.navigationController?.pushViewController(controller, animated: true)
-        
-//        let controller = UIStoryboard.getPersonsInfoController()
-//        controller.userModel = self.usermodel
-//        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func refreshList() {
@@ -149,6 +155,7 @@ class MineViewController: BaseTableController,Requestable{
             usermodel = Mapper<UserModel>().map(JSONObject: responseResult.rawValue)
             
             setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+            setIntValueForKey(value: usermodel?.if_open, key: Constants.ifOpen)
                       
            if usermodel!.vip == 1{
                setIntValueForKey(value: 1, key: Constants.isVip)
@@ -236,7 +243,7 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -322,7 +329,7 @@ class MineViewController: BaseTableController,Requestable{
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
 
                   let requestParams = HomeAPI.logoutPathAndParam()
-                 self.getRequest(pathAndParams: requestParams,showHUD:false)
+                  self.getRequest(pathAndParams: requestParams,showHUD:false)
 
             }))
              noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in

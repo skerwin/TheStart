@@ -32,8 +32,14 @@ struct HomeAPI {
          return (openMarketPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
  
+    static let userinfo_openPath = "/api/user/userinfo_open"
+    static func userinfo_openPathAndParam(ifopen:Int = 1) -> PathAndParams {
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["if_open"] = ifopen as AnyObject
+        return (userinfo_openPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
  
-   
     static let userinfoPath = "/api/userinfo"
     static func userinfoPathAndParam() -> PathAndParams {
  
@@ -131,6 +137,7 @@ struct HomeAPI {
         paramsDictionary["images"] = model.imagesUrl as AnyObject
         paramsDictionary["image"] = model.image as AnyObject
         paramsDictionary["vip_free"] = model.vip_free as AnyObject
+        paramsDictionary["type"] = model.type as AnyObject
         return (audioPubPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     

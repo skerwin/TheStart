@@ -46,6 +46,9 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     var delindex = IndexPath.init(row: 0, section: 0)
     
+    
+    var operType = "dianzan"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "详情内容"
@@ -268,17 +271,32 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             
          }
         else if requestPath == HomeAPI.collectAddPath{
-            showOnlyTextHUD(text: "点赞成功")
+           
             let num = responseResult["number"].intValue
-            dataModel?.dianzan = num
-            dataModel?.is_dianzan = 1
+            if self.operType == "dianzan"{
+                showOnlyTextHUD(text: "点赞成功")
+                dataModel?.dianzan = num
+                dataModel?.is_dianzan = 1
+            }else{
+                showOnlyTextHUD(text: "踩了一下")
+                dataModel?.cai = num
+                dataModel?.is_cai = 1
+            }
+           
             bottoomView.configModel(model: dataModel!)
          }
         else if requestPath == HomeAPI.collectDelPath{
-            showOnlyTextHUD(text: "取消点赞成功")
+            
             let num = responseResult["number"].intValue
-            dataModel?.dianzan = num
-            dataModel?.is_dianzan = 0
+            if self.operType == "dianzan"{
+                showOnlyTextHUD(text: "取消点赞成功")
+                dataModel?.dianzan = num
+                dataModel?.is_dianzan = 0
+            }else{
+                showOnlyTextHUD(text: "取消踩")
+                dataModel?.cai = num
+                dataModel?.is_cai = 0
+            }
             bottoomView.configModel(model: dataModel!)
         }
         else if requestPath == HomeAPI.articleDelPath{
@@ -294,6 +312,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         
         else{
             dataModel = Mapper<TipOffModel>().map(JSONObject: responseResult.rawValue)
+            dataModel?.operType = self.operType
             headerView.configModel(model: dataModel!)
             bottoomView.configModel(model: dataModel!)
             
@@ -453,11 +472,11 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     }
     
     func likeActiion(){
-        let requestParams = HomeAPI.collectAddPathAndParams(articleId: dateID)
+        let requestParams = HomeAPI.collectAddPathAndParams(articleId: dateID,type: operType)
         postRequest(pathAndParams: requestParams,showHUD:false)
     }
     func unlikeActiion(){
-        let requestParams = HomeAPI.collectDelPathAndParams(articleId: dateID)
+        let requestParams = HomeAPI.collectDelPathAndParams(articleId: dateID,type: operType)
         postRequest(pathAndParams: requestParams,showHUD:false)
     }
     // MARK: 重置barView的位置
@@ -778,7 +797,7 @@ extension TipOffDetailViewController:TipOffBottomViewDelegate{
     }
     
     func goodViewAction() {
-        
+        operType = "dianzan"
         if dataModel?.is_dianzan == 1{
             unlikeActiion()
         }else{
@@ -786,7 +805,18 @@ extension TipOffDetailViewController:TipOffBottomViewDelegate{
         }
        
         self.adjustFrame = true
+ 
         //commentBarVC.barView.inputTextView.becomeFirstResponder()
+    }
+    
+    func caiViewAction() {
+        operType = "cai"
+        if dataModel?.is_cai == 1{
+            unlikeActiion()
+        }else{
+            likeActiion()
+        }
+        self.adjustFrame = true
     }
     
     

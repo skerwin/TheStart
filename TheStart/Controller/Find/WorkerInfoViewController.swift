@@ -11,6 +11,7 @@ import SwiftyJSON
 import MJRefresh
 import Reachability
 import SnapKit
+import WMZDialog
 class WorkerInfoViewController: BaseViewController,Requestable {
 
     var tableView:UITableView!
@@ -262,14 +263,40 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     }
     
     func callPhone(){
-        let urlstr = "telprompt://" + self.dataModel!.mobile
-         if let url = URL.init(string: urlstr){
-              if #available(iOS 10, *) {
-                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
-             } else {
-                 UIApplication.shared.openURL(url)
-              }
-           }
+        let dialog = Dialog()
+        dialog
+            .wShowAnimationSet()(AninatonZoomIn)
+            .wHideAnimationSet()(AninatonZoomOut)
+            .wEventCancelFinishSet()(
+                {(anyID:Any?,otherData:Any?) in
+                    UIPasteboard.general.string = self.dataModel!.mobile
+                 }
+            )
+            .wEventOKFinishSet()(
+                { [self](anyID:Any?,otherData:Any?) in
+                    let urlstr = "telprompt://" + self.dataModel!.mobile
+                     if let url = URL.init(string: urlstr){
+                          if #available(iOS 10, *) {
+                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                         } else {
+                             UIApplication.shared.openURL(url)
+                          }
+                       }
+                }
+            )
+            .wTitleSet()("获取成功")
+            .wMessageSet()("对方的联系方式为(微信同号):" + self.dataModel!.mobile )
+            .wOKTitleSet()("拨打电话")
+            .wCancelTitleSet()("复制号码")
+            .wMessageColorSet()(UIColor.black)
+            .wTitleColorSet()(UIColor.black)
+            .wOKColorSet()(UIColor.systemBlue)
+            .wCancelColorSet()(UIColor.darkGray)
+            .wTitleFontSet()(17)
+            .wMessageFontSet()(16)
+            .wTypeSet()(DialogTypeNornal)
+          
+        _ = dialog.wStart()
     }
     
     func initHeadView(){

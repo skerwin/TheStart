@@ -360,20 +360,21 @@ struct HomeAPI {
     //dianzan
     
     static let collectAddPath = "/api/article/collect/add"
-    static func collectAddPathAndParams(articleId:Int) -> PathAndParams {
+    static func collectAddPathAndParams(articleId:Int,type:String = "dianzan") -> PathAndParams {
 
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["id"] = articleId as AnyObject
-    
+        paramsDictionary["type"] = type as AnyObject
         return (collectAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
     //取消点赞
     static let collectDelPath = "/api/article/collect/del"
-    static func collectDelPathAndParams(articleId:Int) -> PathAndParams {
+    static func collectDelPathAndParams(articleId:Int,type:String = "dianzan") -> PathAndParams {
 
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["id"] = articleId as AnyObject
+        paramsDictionary["type"] = type as AnyObject
         return (collectDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     

@@ -24,7 +24,6 @@ class NotifyWebDetailController: BaseViewController ,Requestable, UIWebViewDeleg
         super.viewDidLoad()
         self.view.backgroundColor = ZYJColor.main
         self.title = "详情"
-        //urlString = "http://gskl.gswjceo.com/file/20220328/16484378995102.doc?doc-convert/preview"
         loadWebView()
          
     }

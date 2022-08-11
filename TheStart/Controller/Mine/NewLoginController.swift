@@ -310,7 +310,12 @@ class NewLoginController: BaseViewController,Requestable {
             
             let IOS_code = responseResult["ios_code"].stringValue
             let IOS_force = responseResult["ios_force"].intValue
-            if SysMajorVersion != IOS_code{
+            
+            
+            let floatCode = stringToFloat(test: IOS_code)
+            let floatsysCode = stringToFloat(test: SysMajorVersion)
+            
+            if floatCode > floatsysCode{  //这里判断一下大小给审核官
                 if IOS_force == 1{
                     let noticeView = UIAlertController.init(title: "版本有更新", message: "为了您得到更好用的户体验请您到应用商店下载最新版APP", preferredStyle: .alert)
                     noticeView.addAction(UIAlertAction.init(title: "去更新", style: .default, handler: { (action) in

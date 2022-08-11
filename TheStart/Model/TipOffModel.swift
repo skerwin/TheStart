@@ -38,6 +38,10 @@ struct TipOffModel : Mappable {
     var clarify_count = 1
  
     
+    var is_cai = 0
+    var cai = 0
+    var operType = ""
+    
     init?(map: Map) {
         
     }
@@ -45,6 +49,10 @@ struct TipOffModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
+        
+        cai <- map["cai"]
+        is_cai <- map["is_cai"]
+        
         uid <- map["is_vip"]
         is_vip <- map["is_vip"]
         clarify_count <- map["clarify_count"]

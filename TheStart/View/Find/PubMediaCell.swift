@@ -44,9 +44,9 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
     
     func initUI(type:Int){
         if row == 1{
-            imgLabel.text = "上传图片资料(选填)"
+            imgLabel.text = "上传图片资料"
         } else if row == 2{
-            imgLabel.text = "上传视频资料(选填)"
+            imgLabel.text = "上传视频资料"
         }
     }
     

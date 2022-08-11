@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         shareConfig.weChatAppSecret = "b7c45a7cca0da236cb0e9be5254d73c8"
         shareConfig.universalLink = weixinUniversalLink
         JSHAREService.setup(with: shareConfig)
-        JSHAREService.setDebug(true)
+        JSHAREService.setDebug(false)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

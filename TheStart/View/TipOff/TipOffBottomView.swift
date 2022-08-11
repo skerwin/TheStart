@@ -11,9 +11,11 @@ protocol TipOffBottomViewDelegate {
     func defecateViewAction()
     func commentViewAction()
     func goodViewAction()
+    func caiViewAction()
 }
 class TipOffBottomView: UIView {
 
+ 
     @IBOutlet weak var commentImg: UIImageView!
     @IBOutlet weak var defecateImg: UIImageView!
     @IBOutlet weak var goodImg: UIImageView!
@@ -26,7 +28,8 @@ class TipOffBottomView: UIView {
     @IBOutlet weak var goodView: UIView!
     
     @IBOutlet weak var commentView: UIView!
-    
+    @IBOutlet weak var caiView: UIView!
+    @IBOutlet weak var caiLabel: UILabel!
     var delegate: TipOffBottomViewDelegate!
     
     override func awakeFromNib(){
@@ -36,6 +39,8 @@ class TipOffBottomView: UIView {
         addGestureRecognizerToView(view: defecateView, target: self, actionName: "defecateViewAction")
         addGestureRecognizerToView(view: commentView, target: self, actionName: "commentViewAction")
         addGestureRecognizerToView(view: goodView, target: self, actionName: "goodViewAction")
+        addGestureRecognizerToView(view: caiView, target: self, actionName: "caiViewAction")
+
         
      }
     
@@ -50,9 +55,10 @@ class TipOffBottomView: UIView {
         if model.is_dianzan == 1{
             goodImg.image = UIImage.init(named: "dianzanzhong")
         }else{
-           goodImg.image = UIImage.init(named: "dianzan")
+            goodImg.image = UIImage.init(named: "dianzan")
         }
         goodLabel.text = "\(String(describing: model.dianzan))"
+        caiLabel.text = "\(String(describing: model.cai))"
  
     }
     @objc func defecateViewAction(){
@@ -67,6 +73,10 @@ class TipOffBottomView: UIView {
     @objc func goodViewAction(){
       
         delegate.goodViewAction()
+    }
+    @objc func caiViewAction(){
+      
+        delegate.caiViewAction()
     }
     /*
     // Only override draw() if you perform custom drawing.

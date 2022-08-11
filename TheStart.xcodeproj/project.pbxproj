@@ -3303,11 +3303,11 @@
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "橙心时代";
+				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
 				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
@@ -3317,12 +3317,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
@@ -3346,11 +3347,11 @@
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 64Z8QMKT5M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "橙心时代";
+				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
 				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
@@ -3360,12 +3361,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;

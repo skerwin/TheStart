@@ -38,17 +38,15 @@ struct HttpRequest {
         }
  
         var request: DataRequest?
-        print("请求数据：")
-        print(Url!.absoluteString)
+        //print("请求数据：")
+        //print(Url!.absoluteString)
         let parametersJson = JSON(parameters!)
-        print(parametersJson)
+       // print(parametersJson)
         
-       
-         let token = getToken()
- 
-         if token == ""{//除登录外的
-          // NotificationCenter.default.post(name:  NSNotification.Name(rawValue: Constants.TokenChangeRefreshNotification), object: nil)
-         }
+        let token = getToken()
+        if token == "" && HomeAPI.userinfoPath == requestPath{//除登录外的
+           NotificationCenter.default.post(name:  NSNotification.Name(rawValue: Constants.TokenChangeRefreshNotification), object: nil)
+        }
         
         let headers: HTTPHeaders = [
             "Authori-zation": token
@@ -66,15 +64,15 @@ struct HttpRequest {
             let result = response.result
             switch result {
             case .success:
-                print("响应数据：")
+                //print("响应数据：")
                 guard let dict = response.value else {
                     DialogueUtils.dismiss()
                     completionHandler(.Failure(JSON(["code":"100888"])))
                     return
                 }
                 let responseJson = JSON(dict)
-                print(Url!.absoluteString)
-                print(responseJson)
+                //print(Url!.absoluteString)
+                //print(responseJson)
                 if requestPath.containsStr(find: HomeAPI.salaryPath){
                     XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: HomeAPI.salaryPath) { (result) in
                      }
@@ -133,7 +131,7 @@ struct HttpRequest {
 //             multipartFormData.append(data, withName: "count")
              var count = 0
              for fileUrl in filePath {
-                 print(fileUrl)
+              //   print(fileUrl)
                  if fileUrl.absoluteString.containsStr(find: "mp4"){
                      multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).mp4", mimeType: "image/png")
                   }else{

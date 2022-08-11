@@ -119,7 +119,7 @@ extension SellOrderViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if dataList[indexPath.row].is_del == 1{
-            showOnlyTextHUD(text: "此音乐已被删除，无法查看详情")
+            showOnlyTextHUD(text: "此音乐已被作者删除，无法查看详情")
             return
         }else{
             let controller = MusicDetailController()

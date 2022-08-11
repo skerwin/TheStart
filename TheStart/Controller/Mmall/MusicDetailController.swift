@@ -411,8 +411,15 @@ class MusicDetailController: BaseViewController,Requestable{
                     (mainView:UIView?) -> UIView?  in
                     lookInfoView = Bundle.main.loadNibNamed("AudioLinkInfoView", owner: nil, options: nil)!.first as? AudioLinkInfoView
                     lookInfoView.frame = CGRect.init(x: 0, y: 0, width: screenWidth - 50, height: 200)
-                    lookInfoView.linkTv.text = dataModel?.link
-                    lookInfoView.codeTv.text = dataModel?.code
+                    
+                    if checkMarketVer(){
+                        lookInfoView.linkTv.text = "链接:https://pan.baidu.com/s/1U-GBDlYQc49YLHzKZz5mpg  密码:7lta"
+                        lookInfoView.codeTv.text = "7lta"
+                    }else{
+                        lookInfoView.linkTv.text = dataModel?.link
+                        lookInfoView.codeTv.text = dataModel?.code
+                    }
+                 
                     
                     let lookInfoBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth - 50, height: 200))
                     lookInfoBgView.backgroundColor = UIColor.clear

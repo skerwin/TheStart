@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import WMZDialog
 
 class WorkListViewController: BaseViewController,Requestable  {
 
@@ -356,14 +357,48 @@ class WorkListViewController: BaseViewController,Requestable  {
     }
     
     func callPhone(){
-        let urlstr = "telprompt://" + callMobile
-        if let url = URL.init(string: urlstr){
-             if #available(iOS 10, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-             }
-        }
+        
+        let dialog = Dialog()
+        dialog
+            .wShowAnimationSet()(AninatonZoomIn)
+            .wHideAnimationSet()(AninatonZoomOut)
+            .wEventCancelFinishSet()(
+                {(anyID:Any?,otherData:Any?) in
+                    UIPasteboard.general.string = self.callMobile
+
+                }
+            )
+            .wEventOKFinishSet()(
+                { [self](anyID:Any?,otherData:Any?) in
+                    let urlstr = "telprompt://" + callMobile
+                    if let url = URL.init(string: urlstr){
+                         if #available(iOS 10, *) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                         }
+                    }
+                }
+            )
+            .wTitleSet()("获取成功")
+            .wMessageSet()("对方的联系方式为(微信同号):" + callMobile )
+            .wOKTitleSet()("拨打电话")
+            .wCancelTitleSet()("复制号码")
+            .wMessageColorSet()(UIColor.black)
+            .wTitleColorSet()(UIColor.black)
+            .wOKColorSet()(UIColor.systemBlue)
+            .wCancelColorSet()(UIColor.darkGray)
+            .wTitleFontSet()(17)
+            .wMessageFontSet()(16)
+            .wTypeSet()(DialogTypeNornal)
+          
+        _ = dialog.wStart()
+        
+        
+      
+        
+        
+        
     }
     @objc func pullRefreshList() {
         page = page + 1

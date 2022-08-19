@@ -37,7 +37,6 @@ class JobBaseInfo: UIView {
     
     func configModel(model:JobModel){
         
-        
         if model.is_vip == 1 && !checkMarketVer(){
             vipImage.isHidden = false
         }else{

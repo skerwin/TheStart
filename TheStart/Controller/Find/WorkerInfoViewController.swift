@@ -34,6 +34,8 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     
     var bgview:UIView!
     
+    var linkUrl = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "找人详情"
@@ -81,16 +83,64 @@ class WorkerInfoViewController: BaseViewController,Requestable {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
-            if isCollect == 1{
-                let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
-                postRequest(pathAndParams: requestParams,showHUD:false)
-            }else{
-                let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
-                postRequest(pathAndParams: requestParams,showHUD:false)
-            }
+            
+            self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
+//            if isCollect == 1{
+//                let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
+//                postRequest(pathAndParams: requestParams,showHUD:false)
+//            }else{
+//                let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
+//                postRequest(pathAndParams: requestParams,showHUD:false)
+//            }
         }
        
      }
+ 
+    lazy var shareView: ShareView = {
+        let sv = ShareView.getFactoryShareView { (platform, type) in
+            self.shareInfoWithPlatform(platform: platform)
+            
+        }
+        self.view.addSubview(sv!)
+        return sv!
+    }()
+
+    func shareInfoWithPlatform(platform:JSHAREPlatform){
+        let message = JSHAREMessage.init()
+       // let dateString = DateUtils.dateToDateString(Date.init(), dateFormat: "yyy-MM-dd HH:mm:ss")
+        message.title = "测试分享"
+        message.text = "这是分享内容"
+        message.platform = platform
+        message.mediaType = .link;
+        message.url = dataModel?.link_url
+        let imageLogo = UIImage.init(named: "logo")
+       
+        message.image = imageLogo?.pngData()
+        var tipString = ""
+        JSHAREService.share(message) { (state, error) in
+            if state == JSHAREState.success{
+                tipString = "分享成功";
+            }else if state == JSHAREState.fail{
+                tipString = "分享失败";
+            }else if state == JSHAREState.cancel{
+                tipString = "分享取消";
+            } else if state == JSHAREState.unknown{
+                tipString = "Unknown";
+            }else{
+                tipString = "Unknown";
+            }
+             DispatchQueue.main.async(execute: {
+                let tipView = UIAlertController.init(title: "", message: tipString, preferredStyle: .alert)
+                tipView.addAction(UIAlertAction.init(title: "OK", style: .cancel, handler: { (action) in
+     
+                }))
+                self.present(tipView, animated: true, completion: nil)
+
+            })
+        }
+     }
+    
+    
     func changeCollectBtn(){
         
         if isFromMine{
@@ -167,6 +217,9 @@ class WorkerInfoViewController: BaseViewController,Requestable {
         }
         else{
             dataModel = Mapper<JobModel>().map(JSONObject: responseResult.rawValue)
+            if (dataModel?.link_url == ""){
+                dataModel?.link_url = self.linkUrl
+            }
             headView.configModel(model: dataModel!)
             isCollect = dataModel!.is_collect
             changeCollectBtn()
@@ -258,7 +311,7 @@ extension WorkerInfoViewController:WorkerBaseInfoDelegate {
         
         
       
-        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
  
              let pathAndParams = HomeAPI.userCallPathAndParams(type: 1)

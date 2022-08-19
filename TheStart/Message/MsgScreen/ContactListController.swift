@@ -21,7 +21,7 @@ class ContactListController: BaseViewController,Requestable {
         super.viewDidLoad()
         loadData()
         initTableView()
-        self.title = "消息列表"
+        self.title = "消息"
         // Do any additional setup after loading the view.
     }
     

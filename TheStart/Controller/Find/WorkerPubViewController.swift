@@ -276,7 +276,7 @@ class WorkerPubViewController: BaseViewController,Requestable {
         //DialogueUtils.showError(withStatus: description)
         
         if checkVip(){
-            let noticeView = UIAlertController.init(title: "", message: "每天仅可发布3条招人找场哦，请看看其他的吧", preferredStyle: .alert)
+            let noticeView = UIAlertController.init(title: "", message: "每天仅可发布3条找人找场哦，请看看其他的吧", preferredStyle: .alert)
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: {(action) in
             }))
             self.present(noticeView, animated: true, completion: nil)
@@ -377,9 +377,23 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
  
         jobModel?.videoURL = vodstr
         jobModel?.name = ""
-        
-        let pathAndParams = HomeAPI.workAddPathAndParams(model: jobModel!)
-        postRequest(pathAndParams: pathAndParams,showHUD: false)
+ 
+        var message = ""
+        if pubType == 1{
+            message = "您即将发布找人信息，确定发布吗？"
+        }else{
+            message = "您即将发布找场信息，确定发布吗？"
+        }
+        let noticeView = UIAlertController.init(title: "温馨提示", message: message, preferredStyle: .alert)
+         
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+              let pathAndParams = HomeAPI.workAddPathAndParams(model: jobModel!)
+              self.postRequest(pathAndParams: pathAndParams,showHUD: false)
+         }))
+         noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+             
+         }))
+         self.present(noticeView, animated: true, completion: nil)
  
     }
     
@@ -612,6 +626,7 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
                 uploadPhoto(filePath: self.imageURLArr)
             }else{
                 //print(self.isImgFile)
+                print(urls);
                 self.vodURLArr = urls
                 uploadPhoto(filePath: self.vodURLArr)
             }
@@ -833,8 +848,6 @@ extension WorkerPubViewController:ActionSheetCustomPickerDelegate,UIPickerViewDe
                 city = nexCityList[row].label
             }
         }
-        
-        
     }
     func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
         

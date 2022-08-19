@@ -26,6 +26,9 @@ class TipOffViewController: BaseViewController,Requestable {
     var isMypub = false
     var isMyCollect = false
     
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
@@ -53,11 +56,11 @@ class TipOffViewController: BaseViewController,Requestable {
         bgview.addSubview(pubBtn)
         
         self.view.addSubview(bgview)
-        
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
-    }
+ 
+ 
+     }
     @objc func pubBtnClick(_ btn: UIButton){
-    
+ 
         let controller = TipOffPostViewController()
         controller.articleType = 1
         controller.reloadBlock = {[weak self] () -> Void in

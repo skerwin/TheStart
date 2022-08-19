@@ -81,12 +81,17 @@ extension PaySDK: WXApiDelegate {
     }
     
     public func onResp(_ resp: BaseResp) {
-        let payResp = resp as! PayResp
-        if 0 == payResp.errCode {
-            payDelegate?.payRequestSuccess(data: payResp.returnKey)
-        } else {
-            payDelegate?.payRequestError(error: payResp.errStr)
+
+        let payResp = resp as? PayResp
+        
+        if (payResp != nil) {
+            if 0 == payResp!.errCode {
+                payDelegate?.payRequestSuccess(data: payResp!.returnKey)
+            } else {
+                payDelegate?.payRequestError(error: payResp!.errStr)
+            }
         }
+       
     }
     
 }

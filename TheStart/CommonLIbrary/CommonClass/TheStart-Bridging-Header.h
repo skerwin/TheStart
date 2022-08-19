@@ -13,3 +13,6 @@
 # import <AlipaySDK/AlipaySDK.h>
 #import "YBPopupMenu.h"
 
+/*极光分享*/
+#import "JSHAREService.h"
+#import "ShareView.h"

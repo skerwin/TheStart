@@ -433,8 +433,8 @@ struct HomeAPI {
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["phone"] = phone as AnyObject
         paramsDictionary["type"] = type as AnyObject
- 
         paramsDictionary["key"] = key as AnyObject
+        
         return (getVerifyCodePath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
@@ -703,12 +703,15 @@ struct HomeAPI {
     
     //开通免费会员
     static let buyFreeVipPath = "/api/user/vip1"
-    static func buyFreeVipPathAndParams(level_id:Int,pay_type:String,price:String) -> PathAndParams {
+    static func buyFreeVipPathAndParams(level_id:Int,pay_type:String,price:String,phone:String) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
+        
         paramsDictionary["level_id"] = level_id as AnyObject
         paramsDictionary["pay_type"] = pay_type as AnyObject
-        paramsDictionary["price"] = price as AnyObject
+        paramsDictionary["phone"] = phone as AnyObject
+        
+        //paramsDictionary["price"] = price as AnyObject
    
         return (buyFreeVipPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }

@@ -27,12 +27,45 @@
 			</array>
 		</dict>
 	</array>
+    <key>CFBundleVersion</key>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
 		<string>weixinULAPI</string>
 		<string>alipay</string>
+        <string>wechat</string>
+        <string>weixinULAPI</string>
+        <string>mqqapi</string>
+        <string>mqq</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqconnect</string>
+        <string>mqqopensdkdataline</string>
+        <string>mqqopensdkgrouptribeshare</string>
+        <string>mqqopensdkfriend</string>
+        <string>mqqopensdkapi</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>mqqopensdkapiV4</string>
+        <string>mqzoneopensdk</string>
+        <string>wtloginmqq</string>
+        <string>wtloginmqq2</string>
+        <string>mqqwpa</string>
+        <string>mqzone</string>
+        <string>mqzonev2</string>
+        <string>mqzoneshare</string>
+        <string>wtloginqzone</string>
+        <string>mqzonewx</string>
+        <string>mqzoneopensdkapiV2</string>
+        <string>mqzoneopensdkapi19</string>
+        <string>mqzoneopensdkapi</string>
+        <string>mqqbrowser</string>
+        <string>mttbrowser</string>
 	</array>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

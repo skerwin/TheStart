@@ -357,18 +357,13 @@ extension PersonsInfoController:ActionSheetCustomPickerDelegate,UIPickerViewDele
                 nexCityList = addressList[0].children
                 city = nexCityList[0].label
             }
-            
-        }
+         }
         addressLabel.text = province + city
-        
-        
     }
-    
-    
+ 
     func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!) {
         
-        
-    }
+     }
     
     //重置label
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

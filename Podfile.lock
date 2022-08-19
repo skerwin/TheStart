@@ -30,7 +30,10 @@ PODS:
   - HXPHPicker/Picker/Lite (1.4.0):
     - HXPHPicker/Core
   - IQKeyboardManager (6.5.9)
+  - JCore (2.1.4-noidfa)
   - JGProgressHUD (2.2)
+  - JShare (1.9.1):
+    - JCore (>= 2.0.0)
   - Kingfisher (7.2.1)
   - MJRefresh (3.7.5)
   - ObjectMapper (3.5.3)
@@ -58,7 +61,9 @@ DEPENDENCIES:
   - DatePickerDialog
   - HXPHPicker
   - IQKeyboardManager
+  - JCore (= 2.1.4-noidfa)
   - JGProgressHUD
+  - JShare (= 1.9.1)
   - Kingfisher
   - MJRefresh
   - ObjectMapper (~> 3.3)
@@ -83,7 +88,9 @@ SPEC REPOS:
     - FLAnimatedImage
     - HXPHPicker
     - IQKeyboardManager
+    - JCore
     - JGProgressHUD
+    - JShare
     - Kingfisher
     - MJRefresh
     - ObjectMapper
@@ -108,7 +115,9 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
   HXPHPicker: 6f920091e253f1146d3b9299837d5955db0f7162
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
+  JCore: 2f15311e6889ab43ed5d629802ef793cac566465
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  JShare: 384197bb8c98822b497c3fee0ced58ce5f58692e
   Kingfisher: 7c084bebf7d548c623ad41bcf765fb200efed369
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
@@ -125,6 +134,6 @@ SPEC CHECKSUMS:
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   XHNetworkCache: a5a22941471edf6ed08b2e7cf2ec0d800959ca37
 
-PODFILE CHECKSUM: 36ba55d4ce46d6a319ee3a9e15dd923baf5a5fb8
+PODFILE CHECKSUM: 166771297ffe27bca08479def624c0a5695a06ed
 
 COCOAPODS: 1.11.3

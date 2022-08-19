@@ -56,6 +56,9 @@ target 'TheStart' do
  # 支付宝支付
  pod 'AlipaySDK-iOS'
  
+ pod 'JCore', '2.1.4-noidfa'
+ pod 'JShare', '1.9.1'  
+ 
   # Pods for TheStart
   
   target 'TheStartTests' do
@@ -66,5 +69,7 @@ target 'TheStart' do
   target 'TheStartUITests' do
     # Pods for testing
   end
+  
+
   
 end

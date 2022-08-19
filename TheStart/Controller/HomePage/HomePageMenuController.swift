@@ -14,6 +14,7 @@ class HomePageMenuController: BaseViewController,Requestable {
     var  homeVc:HomePageController!
     var  jobVc:JobListViewController!
     var  workVc:WorkListViewController!
+    var  goodsVc:goodsListController!
     
     var homeVcButton:UIButton!
     
@@ -21,27 +22,28 @@ class HomePageMenuController: BaseViewController,Requestable {
  
     var workVcButton:UIButton!
     
+    var goodsVcButton:UIButton!
+    
     var navView:UIView!
     
     var rightBarButton:UIButton!
  
     override func viewDidLoad() {
         super.viewDidLoad()
-  //      self.title = "我的举报"
-        
-//        searchBtn.layer.masksToBounds = true
-//        searchBtn.layer.cornerRadius = 15;
+ 
         homeVc = HomePageController()
         
         jobVc = JobListViewController()
-    
         jobVc.isFromHome = true
+        
         workVc = WorkListViewController()
-        
         workVc.isFromHome = true
-        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 180)/2, y: 0, width:180, height: 44))
-        //navView.backgroundColor = UIColor.gray
         
+        goodsVc = goodsListController()
+        
+        
+        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 240)/2, y: 0, width:240, height: 44))
+ 
         homeVcButton = UIButton.init()
         homeVcButton.frame = CGRect.init(x: 0, y: 0, width: 60, height: 44)
         homeVcButton.addTarget(self, action: #selector(homeVcButtonACtion(_:)), for: .touchUpInside)
@@ -63,12 +65,20 @@ class HomePageMenuController: BaseViewController,Requestable {
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         
+        
+        goodsVcButton = UIButton.init()
+        goodsVcButton.frame = CGRect.init(x: 180, y: 0, width: 60, height: 44)
+        goodsVcButton.addTarget(self, action: #selector(goodsVcButtonACtion(_:)), for: .touchUpInside)
+        goodsVcButton.setTitle("商店", for: .normal)
+        goodsVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
         navView.addSubview(homeVcButton)
         navView.addSubview(jobVcButton)
         navView.addSubview(workVcButton)
+        navView.addSubview(goodsVcButton)
         
         self.navigationController?.navigationBar.addSubview(navView)
-        createRightNavItem()
         self.addChild(homeVc)
         self.view.addSubview(homeVc.view)
     }
@@ -85,9 +95,7 @@ class HomePageMenuController: BaseViewController,Requestable {
  
     }
     @objc func rightNavBtnClic(_ btn: UIButton){
- 
-        YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
-          
+         YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
     }
     
     @objc func homeVcButtonACtion(_ btn: UIButton){
@@ -110,6 +118,10 @@ class HomePageMenuController: BaseViewController,Requestable {
         
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
+        goodsVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
 
         self.addChild(homeVc)
         self.view.addSubview(homeVc.view)
@@ -136,6 +148,9 @@ class HomePageMenuController: BaseViewController,Requestable {
         
         workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
+        goodsVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         self.addChild(jobVc)
         self.view.addSubview(jobVc.view)
@@ -159,9 +174,40 @@ class HomePageMenuController: BaseViewController,Requestable {
         
         workVcButton.setTitleColor(ZYJColor.barText, for: .normal)
         workVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        goodsVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         self.addChild(workVc)
         self.view.addSubview(workVc.view)
+    }
+    
+    @objc func goodsVcButtonACtion(_ btn: UIButton){
+        let cons = self.children
+        
+        for con in cons {
+            if con != goodsVc{
+                con.removeFromParent()
+                con.view.removeFromSuperview()
+            }
+        }
+ 
+        homeVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        homeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+
+        jobVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
+        workVcButton.setTitleColor(UIColor.darkGray, for: .normal)
+        workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        
+        goodsVcButton.setTitleColor(ZYJColor.barText, for: .normal)
+        goodsVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+       
+
+        self.addChild(goodsVc)
+        self.view.addSubview(goodsVc.view)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -194,8 +240,7 @@ extension HomePageMenuController:YBPopupMenuDelegate{
             let controller = WorkerPubViewController()
             controller.pubType = 1
             self.navigationController?.pushViewController(controller, animated: true)
-            
-           
+ 
         }
       
         

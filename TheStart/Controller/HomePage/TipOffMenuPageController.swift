@@ -24,7 +24,8 @@ class TipOffMenuPageController: BaseViewController {
     var navView:UIView!
     
     var pubBtn:UIButton!
-    
+ 
+   
 //    var lineView1:UIView!
 //    var lineView2:UIView!
     
@@ -73,21 +74,11 @@ class TipOffMenuPageController: BaseViewController {
         supermanButton.setTitle("大咖秀", for: .normal)
         supermanButton.setTitleColor(UIColor.darkGray, for: .normal)
         supermanButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        
-        
-        
-//        lineView2 = UIView.init(frame: CGRect.init(x: 100 + (100 - 30)/2, y: 40, width:23, height: 2))
-//        lineView2.backgroundColor = UIColor.white
-//        lineView1 = UIView.init(frame: CGRect.init(x: (100 - 30)/2, y: 40, width:23, height: 2))
-//        lineView1.backgroundColor = UIColor.white
-        
+ 
         navView.addSubview(tipOffVCButton)
         navView.addSubview(clarifyButton)
         navView.addSubview(supermanButton)
-       // navView.addSubview(lineView1)
-       // navView.addSubview(lineView2)
-       // lineView1.isHidden = false
-       // lineView2.isHidden = true
+     
     }
     func createPubBtn() {
         
@@ -100,6 +91,7 @@ class TipOffMenuPageController: BaseViewController {
         bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - 120, width: 60, height: 60)
         bgview.addSubview(pubBtn)
         
+      
         self.view.addSubview(bgview)
         
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)

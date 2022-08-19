@@ -23,10 +23,13 @@ class AudioLinkInfoView: UIView {
 
     @IBAction func linkTvCopyAction(_ sender: Any) {
         UIPasteboard.general.string = self.linkTv.text
+        DialogueUtils.showSuccess(withStatus: "复制成功")
     }
 
     @IBAction func codeTvCopyAction(_ sender: Any) {
         UIPasteboard.general.string = self.codeTv.text
+        DialogueUtils.showSuccess(withStatus: "复制成功")
+
     }
     
     override func awakeFromNib(){

@@ -32,6 +32,8 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     var adjustFrame = false
     
     var rightBarButton:UIButton!
+    var rightBarButton2:UIButton!
+    
     var reportType = 1
     var reportID = 0
     var reportReason = ""
@@ -64,27 +66,58 @@ class TipOffDetailViewController: BaseViewController,Requestable {
  
     func createRightNavItem() {
         
-        rightBarButton = UIButton.init()
-        let bgview = UIView.init()
+       
+        var bgview:UIView
  
             
-        rightBarButton.frame = CGRect.init(x: 0, y: 8, width: 63, height: 28)
-        if isFromMine{
-            rightBarButton.setTitle("删除", for: .normal)
-        }else{
-            rightBarButton.setImage(UIImage.init(named: "jubao"), for: .normal)
-            rightBarButton.setTitle("投诉", for: .normal)
-        }
-      
-        bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
-       
-        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
-        rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
-        rightBarButton.setTitleColor(.darkGray, for: .normal)
-        rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
      
-        bgview.addSubview(rightBarButton)
+        if isFromMine{
+          
+            bgview = UIView.init()
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 0, y: 8, width: 63, height: 28)
+            rightBarButton.setTitle("删除", for: .normal)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
+            rightBarButton.setTitleColor(.darkGray, for: .normal)
+            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            bgview.addSubview(rightBarButton)
+        }else{
+            bgview = UIView.init()
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 40, y: 2, width: 40, height: 40)
+            rightBarButton.setImage(UIImage.init(named: "jubao"), for: .normal)
+            //rightBarButton.setTitle("投诉", for: .normal)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton.setTitleColor(.darkGray, for: .normal)
+            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            
+            
+            rightBarButton2 = UIButton.init()
+            rightBarButton2.frame = CGRect.init(x: 0, y: 2, width: 40, height:40)
+            rightBarButton2.setImage(UIImage.init(named: "share"), for: .normal)
+            //rightBarButton.setTitle("投诉", for: .normal)
+            rightBarButton2.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton2.setTitleColor(.darkGray, for: .normal)
+            rightBarButton2.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            
+            
+            
+            bgview.addSubview(rightBarButton)
+            bgview.addSubview(rightBarButton2)
+           
+        }
+ 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
+        
+        
+        
+        
         
     }
 
@@ -100,13 +133,65 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
-            reportType = 1
-            reportID = dateID
-            didRecommetnClick()
+            self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
+//            reportType = 1
+//            reportID = dateID
+//            didRecommetnClick()
         }
-        
-        
     }
+    
+    
+    lazy var shareView: ShareView = {
+        let sv = ShareView.getFactoryShareView { (platform, type) in
+            self.shareInfoWithPlatform(platform: platform)
+            
+        }
+        self.view.addSubview(sv!)
+        return sv!
+    }()
+
+    func shareInfoWithPlatform(platform:JSHAREPlatform){
+        let message = JSHAREMessage.init()
+       // let dateString = DateUtils.dateToDateString(Date.init(), dateFormat: "yyy-MM-dd HH:mm:ss")
+        message.title = "测试分享"
+        message.text = "这是分享内容"
+ 
+        message.platform = platform
+        message.mediaType = .link;
+        message.url = dataModel?.link_url
+        let imageLogo = UIImage.init(named: "logo")
+       
+        message.image = imageLogo?.pngData()
+        var tipString = ""
+        JSHAREService.share(message) { (state, error) in
+            if state == JSHAREState.success{
+                tipString = "分享成功";
+            }else if state == JSHAREState.fail{
+                tipString = "分享失败";
+            }else if state == JSHAREState.cancel{
+                tipString = "分享取消";
+            } else if state == JSHAREState.unknown{
+                tipString = "Unknown";
+            }else{
+                tipString = "Unknown";
+            }
+             DispatchQueue.main.async(execute: {
+                let tipView = UIAlertController.init(title: "", message: tipString, preferredStyle: .alert)
+                tipView.addAction(UIAlertAction.init(title: "OK", style: .cancel, handler: { (action) in
+     
+                }))
+                self.present(tipView, animated: true, completion: nil)
+
+            })
+        }
+ 
+    }
+    
+    
+    
+    
+    
+    
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
               tableView.mj_header?.endRefreshing()
@@ -507,7 +592,7 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
 
 extension TipOffDetailViewController:TipOffHeaderViewDelegate{
     func msgBtnAction() {
-        let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
         
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              

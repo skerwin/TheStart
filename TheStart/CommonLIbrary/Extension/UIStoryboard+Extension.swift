@@ -98,6 +98,13 @@ extension UIStoryboard {
         return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "addressDetailController") as! addressDetailController
     }
     
+    class func getFreeOpenVipController() -> FreeOpenVipController
+    {
+        return getStoryboardByType(type: .Home).instantiateViewController(withIdentifier: "FreeOpenVipController") as! FreeOpenVipController
+    }
+    
+    
+    
     
 }
 

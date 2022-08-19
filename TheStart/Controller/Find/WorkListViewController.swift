@@ -39,6 +39,15 @@ class WorkListViewController: BaseViewController,Requestable  {
     var callMobile = ""
     var isFromHome = false
     
+    
+    var pubJobBtn:UIButton!
+    var pubWorkerBtn:UIButton!
+   
+    var pubJobLabel:UILabel!
+    var pubWorkerLabel:UILabel!
+    var pubBtn:UIButton!
+    var pubSubHidden = true
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -47,16 +56,96 @@ class WorkListViewController: BaseViewController,Requestable  {
     override func viewDidLoad() {
         loadData()
         loadCityJson()
+        initTableView()
         if isFromMine {
         }else{
-            createRightNavItem()
+           // createRightNavItem()
             initDropView()
+            initPubBtn()
         }
-        initTableView()
-        self.title = "找场列表"
+         self.title = "找场列表"
         // Do any additional setup after loading the view.
     }
+ 
+     func initPubBtn(){
+        pubBtn = UIButton.init()
+        pubBtn.frame = CGRect.init(x: 5, y: 5, width: 56, height: 56)
+        pubBtn.addTarget(self, action: #selector(pubBtnClick(_:)), for: .touchUpInside)
+        pubBtn.setBackgroundImage(UIImage.init(named: "release"), for: .normal)
+        
+        let bgview = UIView.init()
+        bgview.frame = CGRect.init(x: (screenWidth - 66)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 66, width: 56, height: 56)
+        bgview.addSubview(pubBtn)
+        self.view.addSubview(bgview)
+ 
+        let bgAddview = UIView.init()
+        bgAddview.frame = CGRect.init(x: (screenWidth - 220)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 140 , width: 220, height: 80)
+        //bgAddview.backgroundColor = UIColor.yellow
+        self.view.addSubview(bgAddview)
+        
+        pubWorkerBtn = UIButton.init()
+        pubWorkerBtn.frame = CGRect.init(x: 25, y: 0, width: 60, height: 60)
+        pubWorkerBtn.addTarget(self, action: #selector(pubWorkerClick(_:)), for: .touchUpInside)
+        pubWorkerBtn.setImage(UIImage.init(named: "find_place"), for: .normal)
+         
+        pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 60, width: 110, height: 20))
+        pubWorkerLabel.text = "我要找场"
+        pubWorkerLabel.textColor = colorWithHexString(hex: "60BAF0")
+        pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        pubWorkerLabel.textAlignment = .center
+     
+        
+        pubJobBtn = UIButton.init()
+        pubJobBtn.frame = CGRect.init(x: 135, y: 0, width: 60, height: 60)
+        pubJobBtn.addTarget(self, action: #selector(pubJobBtnClick(_:)), for: .touchUpInside)
+        pubJobBtn.setImage(UIImage.init(named: "find_person"), for: .normal)
+ 
+        pubJobLabel = UILabel.init(frame: CGRect.init(x: 110, y: 60, width: 110, height: 20))
+        pubJobLabel.text = "我要找人"
+        pubJobLabel.textAlignment = .center
+        pubJobLabel.textColor = colorWithHexString(hex: "F19E44")
+        pubJobLabel.font = UIFont.boldSystemFont(ofSize: 15)
+   
+        addjustPubBtn()
+        bgAddview.addSubview(pubWorkerBtn)
+        bgAddview.addSubview(pubJobBtn)
+        bgAddview.addSubview(pubWorkerLabel)
+        bgAddview.addSubview(pubJobLabel)
+ 
+    }
     
+    func addjustPubBtn(){
+        
+        pubWorkerBtn.isHidden = pubSubHidden
+        pubJobBtn.isHidden = pubSubHidden
+        pubWorkerLabel.isHidden = pubSubHidden
+        pubJobLabel.isHidden = pubSubHidden
+    }
+    
+    @objc func pubWorkerClick(_ btn: UIButton){
+ 
+            let controller = WorkerPubViewController()
+            controller.pubType = 2
+            self.navigationController?.pushViewController(controller, animated: true)
+           
+   
+    }
+    @objc func pubJobBtnClick(_ btn: UIButton){
+        let controller = WorkerPubViewController()
+        controller.pubType = 1
+        self.navigationController?.pushViewController(controller, animated: true)
+     }
+    
+    @objc func pubBtnClick(_ btn: UIButton){
+    
+        if pubSubHidden {
+            pubSubHidden = false
+        }else{
+            pubSubHidden = true
+        }
+         addjustPubBtn()
+   
+    }
     func  loadData(){
         
         if isMypub {
@@ -316,6 +405,7 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = WorkerInfoViewController()
          controller.dateID = dataList[indexPath.row].id
+         controller.linkUrl = dataList[indexPath.row].link_url
          controller.isFromMine = self.isMypub
          self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -336,7 +426,7 @@ extension WorkListViewController:WorkerViewCellDelegate {
                 return
             }
         }
-         let noticeView = UIAlertController.init(title: "", message: "您确定拨打对方的联系电话吗？", preferredStyle: .alert)
+        let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              let pathAndParams = HomeAPI.userCallPathAndParams(type: 1)
              self.postRequest(pathAndParams: pathAndParams,showHUD: false)

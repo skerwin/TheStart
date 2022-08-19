@@ -81,8 +81,7 @@ class MineViewController: BaseTableController,Requestable{
 
     @objc func leftNavBtnClic(_ btn: UIButton){
         let messageController = ContactListController()
-
-        self.navigationController?.pushViewController(messageController, animated: true)
+         self.navigationController?.pushViewController(messageController, animated: true)
     }
     @objc func rightNavBtnClic(_ btn: UIButton){
         let controller = UIStoryboard.getSettiingControllerTable()
@@ -228,7 +227,7 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -255,7 +254,7 @@ class MineViewController: BaseTableController,Requestable{
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0{
-            
+ 
             if checkMarketVer(){
                 let controller = addressListController()
                 //controller.usermodel = self.usermodel
@@ -309,28 +308,35 @@ class MineViewController: BaseTableController,Requestable{
         }
         
         else if indexPath.row == 3{
+ 
             let noticeView = UIAlertController.init(title: "提示", message: "您确定退出账号，退出后需要重新登陆", preferredStyle: .alert)
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
- 
+
                   let requestParams = HomeAPI.logoutPathAndParam()
                  self.getRequest(pathAndParams: requestParams,showHUD:false)
-     
+
             }))
              noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-                
+
             }))
             self.present(noticeView, animated: true, completion: nil)
          
         }
         else if indexPath.row == 4{
-              let controller = MyOrderViewController()
-              self.navigationController?.pushViewController(controller, animated: true)
+            
+            let controller = UIStoryboard.getFreeOpenVipController()
+            controller.paytype = .chargeVip
+            controller.priceStr = "98.00"
+            self.present(controller, animated: true)
+ 
          }
         else if indexPath.row == 5{
             
+            let controller = UIStoryboard.getFreeOpenVipController()
+            controller.paytype = .chargeVip
+            controller.priceStr = "98.00"
+            self.present(controller, animated: true)
             
-//            let controller = UIStoryboard.getFeedBackController()
-//            self.navigationController?.pushViewController(controller, animated: true)
         }
         
         else if indexPath.row == 6{

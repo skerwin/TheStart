@@ -64,6 +64,7 @@ struct HttpRequest {
             let result = response.result
             switch result {
             case .success:
+                print("响应数据：")
                 guard let dict = response.value else {
                     DialogueUtils.dismiss()
                     completionHandler(.Failure(JSON(["code":"100888"])))
@@ -130,7 +131,7 @@ struct HttpRequest {
 //             multipartFormData.append(data, withName: "count")
              var count = 0
              for fileUrl in filePath {
-                 //print(fileUrl)
+                 print(fileUrl)
                  if fileUrl.absoluteString.containsStr(find: "mp4"){
                      multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).mp4", mimeType: "image/png")
                   }else{

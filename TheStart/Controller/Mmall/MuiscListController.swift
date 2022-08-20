@@ -44,9 +44,9 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         view.backgroundColor = ZYJColor.main
         view.addSubview(collectionView)
         let itemWidth = Int((view.hx.width - 24 - CGFloat(row_Count - 1) * 8)) / row_Count
-        flowLayout.itemSize = CGSize(width: itemWidth, height: 165)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: 160)
         flowLayout.minimumInteritemSpacing = 8
-        flowLayout.minimumLineSpacing = 3
+        flowLayout.minimumLineSpacing = 12
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
         
         var collectionViewY = UIDevice.navigationBarHeight
@@ -92,18 +92,18 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         
         if isMypub {
             let pathAndParams = HomeAPI.myaudioListPathAndParams(page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else if isMyCollect{
             let pathAndParams = HomeAPI.collectaudioListPathAndParams(page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else{
             if isFreeZone{
                 let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 1)
-                getRequest(pathAndParams: requestParams,showHUD:false)
+                getRequest(pathAndParams: requestParams,showHUD:true)
               
             }else{
                 let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 0)
-                getRequest(pathAndParams: requestParams,showHUD:false)
+                getRequest(pathAndParams: requestParams,showHUD:true)
             }
            
         }

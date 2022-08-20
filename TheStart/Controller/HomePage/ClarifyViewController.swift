@@ -30,10 +30,10 @@ class ClarifyViewController: BaseViewController,Requestable {
     func loadData(){
         if isFromTipOffPage{
             let requestParams = HomeAPI.clarifyListPathAndParams(clarify_id: clarifyId, page: page, limit: pagenum)
-            postRequest(pathAndParams: requestParams, showHUD: false)
+            postRequest(pathAndParams: requestParams, showHUD: true)
         }else{
             let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
-            getRequest(pathAndParams: requestParams,showHUD:false)
+            getRequest(pathAndParams: requestParams,showHUD:true)
         }
     }
     override func onFailure(responseCode: String, description: String, requestPath: String) {

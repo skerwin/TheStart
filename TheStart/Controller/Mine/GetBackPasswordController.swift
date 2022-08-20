@@ -60,7 +60,7 @@ class GetBackPasswordController: BaseViewController,Requestable,UITextFieldDeleg
         if (stringForKey(key: Constants.verCodeKey) != nil && stringForKey(key: Constants.verCodeKey) != ""){
             let key = stringForKey(key: Constants.verCodeKey)!
             let pathAndParams = HomeAPI.getVerifyCodePathAndParams(phone: account, type: codeType, key:key )
-            postRequest(pathAndParams: pathAndParams,showHUD: false)
+            postRequest(pathAndParams: pathAndParams,showHUD: true)
             
             vertifycodeBtn.isEnabled = false
             vertifycodeBtn.setTitleColor(ZYJColor.blueTextColor, for: .normal)

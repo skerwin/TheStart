@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PaySDK.alipayAppid = aliPayAPPID
         WXApi.registerApp(weixinAPPID, universalLink: weixinUniversalLink)
         
-        
+        UIApplication.shared.statusBarStyle = .lightContent
         window?.backgroundColor = ZYJColor.main
         if getAcctount() != "" && getToken() != ""{
             self.window?.rootViewController = MainTabBarController()

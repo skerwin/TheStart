@@ -33,6 +33,7 @@ class ChatTextViewCell: BaseTableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = ZYJColor.main
         bubbleView.addSubview(self.contentTextView)
         bubbleView.addSubview(self.userNameLabel)
         self.userNameLabel.isUserInteractionEnabled = true

@@ -32,8 +32,8 @@ class MainNavigationController: UINavigationController, UINavigationControllerDe
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
-            //appearance.backgroundImage = UIImage.imageWithColor(color: ZYJColor.main)
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+            appearance.backgroundImage = UIImage.imageWithColor(color: ZYJColor.main)
 //            if #available(iOS 15.0, *) {
 //                appearance.shadowColor = UIColor.white
 //            }else{

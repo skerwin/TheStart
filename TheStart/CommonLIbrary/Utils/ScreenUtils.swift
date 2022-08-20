@@ -21,6 +21,8 @@ let gridWidth: CGFloat = (screenSize.width / 2) - 4.0
 let iPhone5ScreenWidth: CGFloat = 320
 let iPhone6PScreenWidth: CGFloat = 414.0
 
+let topAdvertisementViewHeight = screenWidth * 0.40
+
 
 var iphoneXOrIphoneX11: Bool {
     get {

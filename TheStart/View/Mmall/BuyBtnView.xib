@@ -31,7 +31,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gq5-Ej-y0R">
                     <rect key="frame" x="241" y="22" width="148" height="40"/>
-                    <color key="backgroundColor" red="0.41568627450000001" green="0.56470588239999997" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.26666666666666666" green="0.53333333333333333" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Ubw-DM-85c"/>
                         <constraint firstAttribute="width" constant="148" id="gTS-0H-zm9"/>
@@ -46,7 +46,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="MNV-dQ-Ked"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Gq5-Ej-y0R" firstAttribute="centerY" secondItem="wWE-qt-e20" secondAttribute="centerY" id="7P4-NO-ysl"/>
                 <constraint firstItem="f6b-2a-4Fe" firstAttribute="centerY" secondItem="wWE-qt-e20" secondAttribute="centerY" id="PJi-H6-aWk"/>

@@ -14,6 +14,7 @@ protocol WorkerViewCellDelegate {
 
 class WorkerViewCell: UITableViewCell {
 
+    @IBOutlet weak var bgView: UIView!
     var delegate: WorkerViewCellDelegate!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -65,6 +66,12 @@ class WorkerViewCell: UITableViewCell {
         vipImage.isHidden = true
         headImg.layer.masksToBounds = true
         headImg.layer.cornerRadius = 5
+        
+        
+        bgView.layer.cornerRadius = 5;
+        bgView.layer.shadowColor = UIColor.black.cgColor
+        bgView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        bgView.layer.shadowRadius = 2
         // Initialization code
     }
 

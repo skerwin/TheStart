@@ -270,7 +270,7 @@ class JobInfoViewController: BaseViewController,Requestable{
             .wEventCancelFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
                     UIPasteboard.general.string = self.dataModel!.mobile
-
+                    DialogueUtils.showSuccess(withStatus: "复制成功")
                 }
             )
             .wEventOKFinishSet()(
@@ -390,7 +390,10 @@ extension JobInfoViewController:JobBaseInfoDelegate {
         }
         
         
-        
+        if checkVip(){
+            callPhone()
+            return
+        }
       
       
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)

@@ -26,7 +26,8 @@ class TipOffViewController: BaseViewController,Requestable {
     var isMypub = false
     var isMyCollect = false
     
-    
+    var headerView:TipOffListHeadView!
+    var headerViewbgView:UIView!
 
     
     override func viewDidLoad() {
@@ -36,13 +37,29 @@ class TipOffViewController: BaseViewController,Requestable {
         if isFromMine{
             
         }else{
-             createPubBtn()
+            createPubBtn()
+            initHeaderView()
         }
       
         self.title = "黑人馆"
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    func initHeaderView(){
+        headerView = Bundle.main.loadNibNamed("TipOffListHeadView", owner: nil, options: nil)!.first as? TipOffListHeadView
+        headerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 46)
+        //headerView.delegate = self
+        //headerView.parentNavigationController = self.navigationController
+ 
+        headerViewbgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 46))
+        headerViewbgView.backgroundColor = ZYJColor.barColor
+        headerViewbgView.addSubview(headerView)
+        self.view.addSubview(headerViewbgView)
+        
+      }
     
     func createPubBtn() {
         
@@ -72,12 +89,12 @@ class TipOffViewController: BaseViewController,Requestable {
     func loadData(){
         if isMypub {
             let pathAndParams = HomeAPI.myArticleListPathAndParams(page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else if isMyCollect{
         
         }else{
             let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
-            getRequest(pathAndParams: requestParams,showHUD:false)
+            getRequest(pathAndParams: requestParams,showHUD:true)
         }
        
      
@@ -108,7 +125,7 @@ class TipOffViewController: BaseViewController,Requestable {
         if isFromMine{
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
-            tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight), style: .plain)
+            tableView = UITableView(frame: CGRect(x: 0, y: 46, width: screenWidth, height: screenHeight - 46), style: .plain)
 
         }
         tableView.delegate = self

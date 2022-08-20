@@ -49,6 +49,8 @@ class WorkListViewController: BaseViewController,Requestable  {
     var pubBtn:UIButton!
     var pubSubHidden = true
     
+    var bgAddview = UIView.init()
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -74,38 +76,37 @@ class WorkListViewController: BaseViewController,Requestable  {
         pubBtn.addTarget(self, action: #selector(pubBtnClick(_:)), for: .touchUpInside)
         pubBtn.setBackgroundImage(UIImage.init(named: "release"), for: .normal)
         
-        let bgview = UIView.init()
-        bgview.frame = CGRect.init(x: (screenWidth - 66)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 66, width: 56, height: 56)
-        bgview.addSubview(pubBtn)
-        self.view.addSubview(bgview)
- 
-        let bgAddview = UIView.init()
-        bgAddview.frame = CGRect.init(x: (screenWidth - 220)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 140 , width: 220, height: 80)
-        //bgAddview.backgroundColor = UIColor.yellow
-        self.view.addSubview(bgAddview)
-        
-        pubWorkerBtn = UIButton.init()
-        pubWorkerBtn.frame = CGRect.init(x: 25, y: 0, width: 60, height: 60)
-        pubWorkerBtn.addTarget(self, action: #selector(pubWorkerClick(_:)), for: .touchUpInside)
-        pubWorkerBtn.setImage(UIImage.init(named: "find_place"), for: .normal)
+         let bgview = UIView.init()
+         bgview.frame = CGRect.init(x: (screenWidth - 66)/2, y: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 20 - 50 - bottomNavigationHeight, width: 50, height: 50)
+         bgview.addSubview(pubBtn)
+         self.view.addSubview(bgview)
+
+         bgAddview = UIView.init()
+          
+         bgAddview.frame = CGRect.init(x: (screenWidth - 220)/2, y: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 90 - 50 - bottomNavigationHeight, width: 200, height: 80)
+         self.view.addSubview(bgAddview)
          
-        pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 60, width: 110, height: 20))
-        pubWorkerLabel.text = "我要找场"
-        pubWorkerLabel.textColor = colorWithHexString(hex: "60BAF0")
-        pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        pubWorkerLabel.textAlignment = .center
-     
-        
-        pubJobBtn = UIButton.init()
-        pubJobBtn.frame = CGRect.init(x: 135, y: 0, width: 60, height: 60)
-        pubJobBtn.addTarget(self, action: #selector(pubJobBtnClick(_:)), for: .touchUpInside)
-        pubJobBtn.setImage(UIImage.init(named: "find_person"), for: .normal)
- 
-        pubJobLabel = UILabel.init(frame: CGRect.init(x: 110, y: 60, width: 110, height: 20))
-        pubJobLabel.text = "我要找人"
-        pubJobLabel.textAlignment = .center
-        pubJobLabel.textColor = colorWithHexString(hex: "F19E44")
-        pubJobLabel.font = UIFont.boldSystemFont(ofSize: 15)
+         pubWorkerBtn = UIButton.init()
+         pubWorkerBtn.frame = CGRect.init(x: 25, y: 0, width: 60, height: 60)
+         pubWorkerBtn.addTarget(self, action: #selector(pubWorkerClick(_:)), for: .touchUpInside)
+         pubWorkerBtn.setImage(UIImage.init(named: "find_place"), for: .normal)
+          
+         pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 55, width: 110, height: 20))
+         pubWorkerLabel.text = "我要找场"
+         pubWorkerLabel.textColor = colorWithHexString(hex: "60BAF0")
+         pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
+         pubWorkerLabel.textAlignment = .center
+   
+         pubJobBtn = UIButton.init()
+         pubJobBtn.frame = CGRect.init(x: 135, y: 0, width: 60, height: 60)
+         pubJobBtn.addTarget(self, action: #selector(pubJobBtnClick(_:)), for: .touchUpInside)
+         pubJobBtn.setImage(UIImage.init(named: "find_person"), for: .normal)
+
+         pubJobLabel = UILabel.init(frame: CGRect.init(x: 110, y: 55, width: 110, height: 20))
+         pubJobLabel.text = "我要找人"
+         pubJobLabel.textAlignment = .center
+         pubJobLabel.textColor = colorWithHexString(hex: "F19E44")
+         pubJobLabel.font = UIFont.boldSystemFont(ofSize: 15)
    
         addjustPubBtn()
         bgAddview.addSubview(pubWorkerBtn)
@@ -159,13 +160,13 @@ class WorkListViewController: BaseViewController,Requestable  {
         
         if isMypub {
             let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type: type, page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else if isMyCollect{
             let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type, page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else{
             let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }
        
     }
@@ -260,14 +261,14 @@ class WorkListViewController: BaseViewController,Requestable  {
     func initDropView(){
         
         if isFromHome{
-            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:navigationHeaderAndStatusbarHeight ), andHeight: 48)
+            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
         }else{
             dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
         }
        
-        dropView.indicatorColor = UIColor.darkGray
+        dropView.indicatorColor = ZYJColor.barText
         dropView.fontSize = 16
-        dropView.textColor = UIColor.darkGray
+        dropView.textColor = UIColor.systemGray6
         dropView.delegate = self
         dropView.dataSource = self
         self.view.addSubview(dropView)
@@ -279,7 +280,7 @@ class WorkListViewController: BaseViewController,Requestable  {
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
             if isFromHome{
-                tableView = UITableView(frame: CGRect(x: 0, y: 48 + navigationHeaderAndStatusbarHeight, width: screenWidth, height: screenHeight - 48 - navigationHeaderAndStatusbarHeight), style: .plain)
+                tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 10 - 48 - bottomNavigationHeight), style: .plain)
             }else{
                 tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48 - navigationHeight), style: .plain)
             }
@@ -365,7 +366,7 @@ class WorkListViewController: BaseViewController,Requestable  {
             .wEventCancelFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
                     UIPasteboard.general.string = self.callMobile
-
+                    DialogueUtils.showSuccess(withStatus: "复制成功")
                 }
             )
             .wEventOKFinishSet()(
@@ -393,13 +394,7 @@ class WorkListViewController: BaseViewController,Requestable  {
             .wTypeSet()(DialogTypeNornal)
           
         _ = dialog.wStart()
-        
-        
-      
-        
-        
-        
-    }
+     }
     @objc func pullRefreshList() {
         page = page + 1
         self.loadData()
@@ -415,6 +410,10 @@ class WorkListViewController: BaseViewController,Requestable  {
 }
 
 extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pubSubHidden = true
+        addjustPubBtn()
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -441,7 +440,7 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        return 121
+        return 115
 
     }
     
@@ -469,6 +468,12 @@ extension WorkListViewController:WorkerViewCellDelegate {
                 return
             }
         }
+        
+        if checkVip(){
+            callPhone()
+            return
+        }
+        
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              let pathAndParams = HomeAPI.userCallPathAndParams(type: 1)
@@ -485,6 +490,8 @@ extension WorkListViewController:WorkerViewCellDelegate {
     
 }
 extension WorkListViewController: DOPDropDownMenuDataSource,DOPDropDownMenuDelegate {
+    
+   
     
     func numberOfColumns(in menu: DOPDropDownMenu!) -> Int {
         return 4

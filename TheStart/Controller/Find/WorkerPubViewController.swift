@@ -317,10 +317,16 @@ extension WorkerPubViewController:ChatBtnViewDelegate {
     func sumbitAction() {
         
         jobModel?.mobile = headView.phoneTextF.text!
-        if !(CheckoutUtils.isMobile(mobile: jobModel!.mobile)){
-            showOnlyTextHUD(text: "请输入正确的电话号码")
+//        if !(CheckoutUtils.isMobile(mobile: jobModel!.mobile)){
+//            showOnlyTextHUD(text: "请输入正确的电话号码")
+//            return
+//        }
+        if jobModel!.mobile.isEmptyStr(){
+            showOnlyTextHUD(text: "请输入正确的号码")
             return
         }
+        
+        
         jobModel?.type = pubType
         jobModel?.title = headView.titleTextF.text!
         if jobModel!.title.isEmptyStr(){

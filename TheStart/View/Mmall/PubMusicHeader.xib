@@ -28,23 +28,24 @@
                                         <constraint firstAttribute="height" constant="18" id="q6r-fq-afv"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZH-Ev-kwc">
                                     <rect key="frame" x="8" y="44.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="soq-0O-7hY"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入音名称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCA-iG-e8E">
                                     <rect key="frame" x="147" y="0.0" width="212" height="50"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                             </subviews>
+                            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="ZCA-iG-e8E" secondAttribute="trailing" constant="25" id="02Z-8P-QJM"/>
                                 <constraint firstItem="7xY-nb-voo" firstAttribute="centerY" secondItem="86K-JF-5Gr" secondAttribute="centerY" id="Fdj-pk-4fU"/>
@@ -68,19 +69,19 @@
                                         <constraint firstAttribute="width" constant="112" id="IXc-os-yer"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ST2-eh-GLK">
                                     <rect key="frame" x="8" y="44.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="inc-sb-ADG"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YF-K1-hdX">
                                     <rect key="frame" x="147" y="0.0" width="212" height="44.5"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
@@ -108,12 +109,12 @@
                                         <constraint firstAttribute="width" constant="112" id="peR-cD-Mt7"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKh-MK-Jig">
                                     <rect key="frame" x="8" y="48.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="FiD-hR-miv"/>
                                     </constraints>
@@ -125,7 +126,7 @@
                                         <constraint firstAttribute="height" constant="21" id="w1e-Dg-Irm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -151,19 +152,19 @@
                                         <constraint firstAttribute="height" constant="18" id="k7f-2d-mUa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yby-RD-hDS">
                                     <rect key="frame" x="8" y="44.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="z4h-Mo-uwG"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入网盘链接" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DpY-yj-oFN">
                                     <rect key="frame" x="147" y="0.0" width="212" height="50"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -191,19 +192,19 @@
                                         <constraint firstAttribute="height" constant="18" id="x3G-xr-Q4Y"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELE-KO-Y2k">
                                     <rect key="frame" x="8" y="44.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="QmA-5K-i9t"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入提取码" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-0h-8D0">
                                     <rect key="frame" x="147" y="0.0" width="212" height="44.5"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -231,12 +232,12 @@
                                         <constraint firstAttribute="width" constant="112" id="RLz-wm-4VE"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zb-fv-diY">
                                     <rect key="frame" x="8" y="44.5" width="368" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="rG6-w4-ioB"/>
                                     </constraints>
@@ -250,7 +251,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="是" image="quanNO">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleColor" systemColor="systemGray6Color"/>
                                     </state>
                                     <connections>
                                         <action selector="yesBtnAction:" destination="0Gu-eD-yDh" eventType="touchUpInside" id="l7W-Re-fkT"/>
@@ -265,7 +266,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <inset key="imageEdgeInsets" minX="-12" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="否" image="quanYES">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleColor" systemColor="systemGray6Color"/>
                                     </state>
                                     <connections>
                                         <action selector="noBtnAction:" destination="0Gu-eD-yDh" eventType="touchUpInside" id="RAc-tC-lNF"/>
@@ -286,7 +287,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="nEf-KN-Ogb" firstAttribute="leading" secondItem="P4K-vh-6FR" secondAttribute="leading" id="2Ix-EU-URY"/>
                         <constraint firstItem="MoO-uy-QWx" firstAttribute="top" secondItem="Xjh-zp-Akp" secondAttribute="bottom" id="4YB-gS-RbU"/>
@@ -310,7 +311,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Chd-hB-p0t"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="P4K-vh-6FR" firstAttribute="leading" secondItem="Chd-hB-p0t" secondAttribute="leading" constant="15" id="GSc-By-YQG"/>
                 <constraint firstItem="Chd-hB-p0t" firstAttribute="bottom" secondItem="P4K-vh-6FR" secondAttribute="bottom" constant="10" id="Ms5-cn-Z7w"/>
@@ -336,8 +337,8 @@
     <resources>
         <image name="quanNO" width="15" height="15"/>
         <image name="quanYES" width="15" height="15"/>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

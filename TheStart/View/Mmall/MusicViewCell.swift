@@ -47,6 +47,9 @@ class MusicViewCell: UICollectionViewCell {
         super.awakeFromNib()
         imageV.layer.masksToBounds = true
         imageV.layer.cornerRadius = 5
+        
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 5
         // Initialization code
     }
 

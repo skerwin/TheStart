@@ -15,7 +15,7 @@ class MyVipCenterCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 5;
-        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowColor = ZYJColor.main.cgColor
         self.layer.shadowOffset = CGSize(width: 2, height: 3)
         self.layer.shadowRadius = 1
         self.layer.shadowOpacity = 0.2

@@ -554,6 +554,19 @@
 		B8AE0322282A08A500FBE3B7 /* MusicAuthorHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AE0321282A08A500FBE3B7 /* MusicAuthorHeader.xib */; };
 		B8AE0325282A113C00FBE3B7 /* SelfIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AE0323282A113C00FBE3B7 /* SelfIntroCell.swift */; };
 		B8AE0326282A113C00FBE3B7 /* SelfIntroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8AE0324282A113C00FBE3B7 /* SelfIntroCell.xib */; };
+		B8B3820728A8EE7E00AE282B /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B3820628A8EE7E00AE282B /* StoreViewController.swift */; };
+		B8B5BBBC28B12E2600B2D8AC /* StoreViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBBA28B12E2600B2D8AC /* StoreViewCell.swift */; };
+		B8B5BBBD28B12E2600B2D8AC /* StoreViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBBB28B12E2600B2D8AC /* StoreViewCell.xib */; };
+		B8B5BBBF28B132FF00B2D8AC /* StoreHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBBE28B132FF00B2D8AC /* StoreHeadView.swift */; };
+		B8B5BBC128B1330A00B2D8AC /* StoreHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBC028B1330A00B2D8AC /* StoreHeadView.xib */; };
+		B8B5BBC328B13CC900B2D8AC /* StoreDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBC228B13CC900B2D8AC /* StoreDetailController.swift */; };
+		B8B5BBC528B13DBF00B2D8AC /* StoreIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBC428B13DBF00B2D8AC /* StoreIntroController.swift */; };
+		B8B5BBC728B13E3600B2D8AC /* StoreCommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBC628B13E3600B2D8AC /* StoreCommentController.swift */; };
+		B8B5BBC928B14DF900B2D8AC /* PhotoBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBC828B14DF900B2D8AC /* PhotoBrowserViewController.swift */; };
+		B8B5BBCB28B1531F00B2D8AC /* StoreBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBCA28B1531F00B2D8AC /* StoreBottomView.swift */; };
+		B8B5BBCD28B1532A00B2D8AC /* StoreBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBCC28B1532A00B2D8AC /* StoreBottomView.xib */; };
+		B8B5BBCF28B1569F00B2D8AC /* TipOffListHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */; };
+		B8B5BBD128B156BC00B2D8AC /* TipOffListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */; };
 		B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C52F2811897F00B882FC /* ContactListController.swift */; };
 		B8B6C53328118A1800B882FC /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C53128118A1800B882FC /* ContactViewCell.swift */; };
 		B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B6C53228118A1800B882FC /* ContactViewCell.xib */; };
@@ -1197,6 +1210,19 @@
 		B8AE0321282A08A500FBE3B7 /* MusicAuthorHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicAuthorHeader.xib; sourceTree = "<group>"; };
 		B8AE0323282A113C00FBE3B7 /* SelfIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroCell.swift; sourceTree = "<group>"; };
 		B8AE0324282A113C00FBE3B7 /* SelfIntroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfIntroCell.xib; sourceTree = "<group>"; };
+		B8B3820628A8EE7E00AE282B /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		B8B5BBBA28B12E2600B2D8AC /* StoreViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewCell.swift; sourceTree = "<group>"; };
+		B8B5BBBB28B12E2600B2D8AC /* StoreViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreViewCell.xib; sourceTree = "<group>"; };
+		B8B5BBBE28B132FF00B2D8AC /* StoreHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreHeadView.swift; sourceTree = "<group>"; };
+		B8B5BBC028B1330A00B2D8AC /* StoreHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreHeadView.xib; sourceTree = "<group>"; };
+		B8B5BBC228B13CC900B2D8AC /* StoreDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailController.swift; sourceTree = "<group>"; };
+		B8B5BBC428B13DBF00B2D8AC /* StoreIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreIntroController.swift; sourceTree = "<group>"; };
+		B8B5BBC628B13E3600B2D8AC /* StoreCommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCommentController.swift; sourceTree = "<group>"; };
+		B8B5BBC828B14DF900B2D8AC /* PhotoBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserViewController.swift; sourceTree = "<group>"; };
+		B8B5BBCA28B1531F00B2D8AC /* StoreBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreBottomView.swift; sourceTree = "<group>"; };
+		B8B5BBCC28B1532A00B2D8AC /* StoreBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreBottomView.xib; sourceTree = "<group>"; };
+		B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffListHeadView.swift; sourceTree = "<group>"; };
+		B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffListHeadView.xib; sourceTree = "<group>"; };
 		B8B6C52F2811897F00B882FC /* ContactListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListController.swift; sourceTree = "<group>"; };
 		B8B6C53128118A1800B882FC /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		B8B6C53228118A1800B882FC /* ContactViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactViewCell.xib; sourceTree = "<group>"; };
@@ -1702,6 +1728,8 @@
 				B83C636F280C441C00A3282D /* TipOffCommentHeaderView.xib */,
 				B8AD4034281C00420001D7F4 /* TipOffAddressView.swift */,
 				B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */,
+				B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */,
+				B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */,
 			);
 			path = TipOff;
 			sourceTree = "<group>";
@@ -2005,6 +2033,7 @@
 		B8AC500B2807C56600C2CF26 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B8B5BBB728B12A1400B2D8AC /* store */,
 				B83C6374280CEE3000A3282D /* Find */,
 				B8AC50462807C87800C2CF26 /* Mine */,
 				B8AC50442807C81F00C2CF26 /* Mmall */,
@@ -2017,6 +2046,7 @@
 		B8AC500C2807C57100C2CF26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B8B5BBB428B1226600B2D8AC /* Store */,
 				B8AB69CB28081C800064861C /* Home.storyboard */,
 				B85FAF9F280F058B00D25B66 /* TipOff */,
 				B85FAF8E280E9F5500D25B66 /* Mmall */,
@@ -2248,6 +2278,31 @@
 			path = NetWork;
 			sourceTree = "<group>";
 		};
+		B8B5BBB428B1226600B2D8AC /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				B8B5BBBA28B12E2600B2D8AC /* StoreViewCell.swift */,
+				B8B5BBBB28B12E2600B2D8AC /* StoreViewCell.xib */,
+				B8B5BBBE28B132FF00B2D8AC /* StoreHeadView.swift */,
+				B8B5BBC028B1330A00B2D8AC /* StoreHeadView.xib */,
+				B8B5BBCA28B1531F00B2D8AC /* StoreBottomView.swift */,
+				B8B5BBCC28B1532A00B2D8AC /* StoreBottomView.xib */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		B8B5BBB728B12A1400B2D8AC /* store */ = {
+			isa = PBXGroup;
+			children = (
+				B8B3820628A8EE7E00AE282B /* StoreViewController.swift */,
+				B8B5BBC228B13CC900B2D8AC /* StoreDetailController.swift */,
+				B8B5BBC828B14DF900B2D8AC /* PhotoBrowserViewController.swift */,
+				B8B5BBC428B13DBF00B2D8AC /* StoreIntroController.swift */,
+				B8B5BBC628B13E3600B2D8AC /* StoreCommentController.swift */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
 		B8B804FA283DC89900EB9109 /* Market */ = {
 			isa = PBXGroup;
 			children = (
@@ -2429,6 +2484,7 @@
 				B87352DD2896500B0055437E /* loginBtn_Nor@3x.png in Resources */,
 				B85FB01428116A8300D25B66 /* Message.storyboard in Resources */,
 				B83C6378280CF48D00A3282D /* WorkerBaseInfo.xib in Resources */,
+				B8B5BBC128B1330A00B2D8AC /* StoreHeadView.xib in Resources */,
 				B87352D62896500B0055437E /* index.png in Resources */,
 				B8AD4055281FD6EF0001D7F4 /* TipOffListCell1.xib in Resources */,
 				B87352E02896500B0055437E /* wechat_moment@3x.png in Resources */,
@@ -2436,6 +2492,7 @@
 				B86AEFE22838F69E0065B96E /* BuyBtnView.xib in Resources */,
 				B83C6388280D0B0300A3282D /* BaseImageBrowserCell.xib in Resources */,
 				B8B8050C283DE59200EB9109 /* GoodeDetailLineewCell.xib in Resources */,
+				B8B5BBCD28B1532A00B2D8AC /* StoreBottomView.xib in Resources */,
 				B87352CF2896500B0055437E /* arrow@3x.png in Resources */,
 				B87352E22896500B0055437E /* close@3x.png in Resources */,
 				B85FAFA7280F065E00D25B66 /* WorkerViewCell.xib in Resources */,
@@ -2459,6 +2516,7 @@
 				B87352D42896500B0055437E /* jchatpro@3x.png in Resources */,
 				B8AC4FE82807BE4400C2CF26 /* LaunchScreen.storyboard in Resources */,
 				B855361D2835F20900E3C287 /* MyStarCoinFootView.xib in Resources */,
+				B8B5BBD128B156BC00B2D8AC /* TipOffListHeadView.xib in Resources */,
 				B85FAFC4280FAFFD00D25B66 /* Loading_8@2x.tiff in Resources */,
 				B83C638A280D0EB800A3282D /* ChatBtnView.xib in Resources */,
 				B87352DB2896500B0055437E /* pflogo@3x.png in Resources */,
@@ -2471,6 +2529,7 @@
 				B85FAFA3280F05D400D25B66 /* JobViewCell.xib in Resources */,
 				B8AB69F42809985A0064861C /* TipOffHeaderView.xib in Resources */,
 				B8AD4063282283790001D7F4 /* PubMediaCellVod.xib in Resources */,
+				B8B5BBBD28B12E2600B2D8AC /* StoreViewCell.xib in Resources */,
 				B802E237282B44FB00B5057A /* VipCenterHeader1.xib in Resources */,
 				B87352E42896500B0055437E /* jshare@3x.png in Resources */,
 				B86AEFEE283A1C040065B96E /* AuthenSuuccessView.xib in Resources */,
@@ -2678,6 +2737,7 @@
 				B83C635A280AF4FD00A3282D /* Core+UIColor.swift in Sources */,
 				B81C4D3228601D6B0005AFF2 /* HomeRankHeaderViewCxsdcontentExt.swift in Sources */,
 				B802E254282DF1EE00B5057A /* PaySDK.swift in Sources */,
+				B8B5BBC328B13CC900B2D8AC /* StoreDetailController.swift in Sources */,
 				B81C4DA528601D6B0005AFF2 /* ContactModelCxsdcontentExt.swift in Sources */,
 				B8AD4029281B8E0E0001D7F4 /* SuperManPostCell.swift in Sources */,
 				B81C4D9F28601D6B0005AFF2 /* TipOffListCell2CxsdcontentExt.swift in Sources */,
@@ -2690,6 +2750,7 @@
 				B85FDA752824BCB500EDA845 /* MyCollectViewController.swift in Sources */,
 				B85FDA632823CB2D00EDA845 /* AudioModel.swift in Sources */,
 				B85FDA5F2823BB3800EDA845 /* PMKPageMenuItemTab.swift in Sources */,
+				B8B5BBC528B13DBF00B2D8AC /* StoreIntroController.swift in Sources */,
 				B81C4DB528601D6B0005AFF2 /* IQToolbar+Cxsdcontent.m in Sources */,
 				B81C4D8628601D6B0005AFF2 /* CheckoutUtilsCxsdcontentExt.swift in Sources */,
 				B85FAFA6280F065E00D25B66 /* WorkerViewCell.swift in Sources */,
@@ -2733,6 +2794,7 @@
 				B85FAFCE280FF2E100D25B66 /* PersonsInfoController.swift in Sources */,
 				B81C4DD728601D6C0005AFF2 /* PrivateStatusViewControllerCxsdcontentExt.swift in Sources */,
 				B8AC508D2807CF6B00C2CF26 /* UIImageView+Extension.swift in Sources */,
+				B8B5BBCF28B1569F00B2D8AC /* TipOffListHeadView.swift in Sources */,
 				B85FAFB3280FAE7C00D25B66 /* DepartmentModel.swift in Sources */,
 				B8FAFED5289F8E2C003D15D8 /* CodeShareController.swift in Sources */,
 				B83C6376280CF44E00A3282D /* WorkerBaseInfo.swift in Sources */,
@@ -2831,6 +2893,7 @@
 				B85FB01B28116A8300D25B66 /* ChatSelectorModel.swift in Sources */,
 				B81C4DC428601D6B0005AFF2 /* UIView+IQ_UIView_HierarchyCxsdcontent.m in Sources */,
 				B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */,
+				B8B5BBC928B14DF900B2D8AC /* PhotoBrowserViewController.swift in Sources */,
 				B81C4D3528601D6B0005AFF2 /* TipOffPostViewControllerCxsdcontentExt.swift in Sources */,
 				B81C4DB328601D6B0005AFF2 /* UIViewController+AdditionsCxsdcontent.m in Sources */,
 				B85FAF9A280EBBB300D25B66 /* PubMusicHeader.swift in Sources */,
@@ -2950,6 +3013,7 @@
 				B85FB01328116A8300D25B66 /* CustomResponderTextView.swift in Sources */,
 				B8AC51092807FF9800C2CF26 /* URL.swift in Sources */,
 				B81C4DB028601D6B0005AFF2 /* ChatEmotionHelperCxsdcontentExt.swift in Sources */,
+				B8B3820728A8EE7E00AE282B /* StoreViewController.swift in Sources */,
 				B81C4D8128601D6B0005AFF2 /* UICollectionView+PreviousNextIndexPathCxsdcontent.m in Sources */,
 				B81C4D7A28601D6B0005AFF2 /* GoodsModelCxsdcontentExt.swift in Sources */,
 				B839AF60283F246B00C9B25C /* GoodsOrderController.swift in Sources */,
@@ -2969,11 +3033,13 @@
 				B81C4D3328601D6B0005AFF2 /* HomeSubscribeCellCxsdcontentExt.swift in Sources */,
 				B8AC50372807C60E00C2CF26 /* DateUtils.swift in Sources */,
 				B85FB00628116A8300D25B66 /* ChatEmotionHelper.swift in Sources */,
+				B8B5BBCB28B1531F00B2D8AC /* StoreBottomView.swift in Sources */,
 				B8AC503E2807C60E00C2CF26 /* Colors.swift in Sources */,
 				B81C4DC328601D6B0005AFF2 /* AuthenSuuccessControllerCxsdcontentExt.swift in Sources */,
 				B81C4DB928601D6B0005AFF2 /* AudioLinkInfoViewCxsdcontentExt.swift in Sources */,
 				B81C4DCF28601D6B0005AFF2 /* PaySDKCxsdcontentExt.swift in Sources */,
 				B8AD404C281EE1550001D7F4 /* TitleCell.swift in Sources */,
+				B8B5BBC728B13E3600B2D8AC /* StoreCommentController.swift in Sources */,
 				B81C4DA828601D6B0005AFF2 /* MoreActionViewModelCxsdcontentExt.swift in Sources */,
 				B81C4DE428601D6C0005AFF2 /* UIImage+IQKeyboardToolbarNextPreviousImageCxsdcontent.m in Sources */,
 				B8AC51072807FF9800C2CF26 /* httpRequest.swift in Sources */,
@@ -3039,6 +3105,7 @@
 				B81C4DDE28601D6C0005AFF2 /* ClarifyViewControllerCxsdcontentExt.swift in Sources */,
 				B8AE0320282A089700FBE3B7 /* MusicAuthorHeader.swift in Sources */,
 				B822E7CE283BB0FF002558D9 /* OrderCell.swift in Sources */,
+				B8B5BBBF28B132FF00B2D8AC /* StoreHeadView.swift in Sources */,
 				B8AC51052807FF9800C2CF26 /* OCAFManger.swift in Sources */,
 				B85FB00728116A8300D25B66 /* MoreActionHelper.swift in Sources */,
 				B81C4DAC28601D6B0005AFF2 /* TipOffPostIImgCellCxsdcontentExt.swift in Sources */,
@@ -3077,6 +3144,7 @@
 				B81C4DA028601D6B0005AFF2 /* BaseViewControllerCxsdcontentExt.swift in Sources */,
 				B8AC50932807CF6B00C2CF26 /* String+Extension.swift in Sources */,
 				B81C4DDF28601D6C0005AFF2 /* TipOffViewControllerCxsdcontentExt.swift in Sources */,
+				B8B5BBBC28B12E2600B2D8AC /* StoreViewCell.swift in Sources */,
 				B81C4DB728601D6B0005AFF2 /* MyTextViewCxsdcontentExt.swift in Sources */,
 				B85FAF91280E9F9D00D25B66 /* MusicViewCell.swift in Sources */,
 				B81C4D5728601D6B0005AFF2 /* CustomTextFieldCxsdcontentExt.swift in Sources */,

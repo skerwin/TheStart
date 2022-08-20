@@ -64,6 +64,7 @@ class PubMediaCellVod: UITableViewCell,UICollectionViewDataSource,
             collectionView.dragDelegate = self
             collectionView.dropDelegate = self
             collectionView.delegate = self
+            collectionView.backgroundColor = ZYJColor.main
             collectionView.dataSource = self
             collectionView.dragInteractionEnabled = true
         }

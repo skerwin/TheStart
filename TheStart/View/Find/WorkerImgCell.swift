@@ -85,6 +85,7 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
             collectionView.dataSource = self
             collectionView.dragInteractionEnabled = true
         }
+        self.collectionView?.backgroundColor = ZYJColor.main
         self.collectionView?.showsVerticalScrollIndicator = false
         self.collectionView?.bounces = false
         self.collectionView?.showsHorizontalScrollIndicator = false

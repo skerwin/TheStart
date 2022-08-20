@@ -10,6 +10,7 @@ import UIKit
 class MyIntroCell: UITableViewCell {
     
     
+    @IBOutlet weak var bgview: UIView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var realNamelabel: UILabel!
@@ -23,6 +24,8 @@ class MyIntroCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        bgview.layer.masksToBounds = true
+        bgview.layer.cornerRadius = 8
         // Initialization code
     }
 

@@ -47,8 +47,8 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
             self.tabBar.scrollEdgeAppearance = self.tabBar.standardAppearance
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.selectionIndicatorTintColor = UIColor.white
-            //appearance.backgroundColor = ZYJColor.barColor
+            appearance.selectionIndicatorTintColor = ZYJColor.barColor
+            appearance.backgroundColor = ZYJColor.barColor
             self.tabBar.standardAppearance = appearance;
             self.tabBar.scrollEdgeAppearance = self.tabBar.standardAppearance
  
@@ -57,9 +57,9 @@ class MainTabBarController: UITabBarController,AccountAndPasswordPresenter {
         } else {
             
                 UITabBar.appearance().isTranslucent = true
-                //UITabBar.appearance().backgroundColor = ZYJColor.barColor
+                UITabBar.appearance().backgroundColor = ZYJColor.barColor
                 UITabBar.appearance().backgroundImage = UIImage()
-                UITabBar.appearance().tintColor = UIColor.white
+                UITabBar.appearance().tintColor = ZYJColor.barColor
         }
         addChildViewControllers()
         IQKeyboardManager.shared().isEnabled = false

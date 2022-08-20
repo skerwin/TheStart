@@ -39,11 +39,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="3" maxY="0.0"/>
                                 <state key="normal" title="Button" image="jifen">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" systemColor="systemGray6Color"/>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" red="0.12549019607843137" green="0.13725490196078433" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="s2r-eG-f9H" firstAttribute="leading" secondItem="Oqf-Dm-3W5" secondAttribute="leading" id="O8B-Jb-Bou"/>
                             <constraint firstItem="s2r-eG-f9H" firstAttribute="centerY" secondItem="Oqf-Dm-3W5" secondAttribute="centerY" constant="-20" id="T5d-3p-4jQ"/>

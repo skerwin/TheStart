@@ -42,13 +42,10 @@ class MyHomePageController: BaseViewController,Requestable {
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("PersonHomePageHeader", owner: nil, options: nil)!.first as? PersonHomePageHeader
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height:188)
-        //headView.delegate = self
-        
+        headView.delegate = self
+        headView.parentNavigationController = self.navigationController
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: navigationHeaderAndStatusbarHeight, width: screenWidth, height: 188))
         headerBgView.addSubview(headView)
- 
-        
-        
     }
     func initPageView(){
         controller1 = MyIntroController()
@@ -100,6 +97,8 @@ class MyHomePageController: BaseViewController,Requestable {
         
         let requestParams = HomeAPI.authorCollectionPathAndParams(musician_id: authorId)
         postRequest(pathAndParams: requestParams,showHUD:false)
+        
+      
      }
  
     
@@ -172,9 +171,29 @@ class MyHomePageController: BaseViewController,Requestable {
             headView.configModel(model: userModel!)
         }
   }
- 
-
   
+}
+extension MyHomePageController: PersonHomePageHeaderDelegate {
+    func chatactionBtn() {
+        
+    }
+    
+//    if userModel!.uid == getUserId(){
+//        DialogueUtils.showWarning(withStatus: "不能跟自己发起聊天哦")
+//        return
+//    }
+//
+//    let controller = UIStoryboard.getMessageController()
+//    controller.toID = userModel!.uid
+//
+//    if userModel?.nickname == ""{
+//        controller.nameTitle = userModel!.real_name
+//    }else{
+//        controller.nameTitle = userModel!.nickname
+//    }
+//
+//    self.navigationController?.pushViewController(controller, animated: true)
+//}
 }
 extension MyHomePageController: PMKPageMenuControllerDelegate
 {

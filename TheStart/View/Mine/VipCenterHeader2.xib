@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +22,7 @@
                         <constraint firstAttribute="height" constant="21" id="lF0-7R-TF2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" systemColor="systemGray4Color"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wn-TX-Fmf">
@@ -42,7 +43,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="KX8-Nv-GFm"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="iEG-Rf-831" firstAttribute="centerX" secondItem="CPw-DJ-2ap" secondAttribute="centerX" id="JAT-zC-tUc"/>
                 <constraint firstItem="DEB-Jj-YqA" firstAttribute="centerY" secondItem="CPw-DJ-2ap" secondAttribute="centerY" id="UFv-pf-W59"/>
@@ -54,4 +55,9 @@
             <point key="canvasLocation" x="-30.434782608695656" y="-51.897321428571423"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

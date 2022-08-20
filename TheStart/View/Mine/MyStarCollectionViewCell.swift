@@ -26,7 +26,7 @@ class MyStarCollectionViewCell: UICollectionViewCell {
         priceLabel.layer.borderColor = UIColor.initcolorWithAlpha(value: 0xF1C14D).cgColor
         
         self.layer.cornerRadius = 5;
-        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowColor = ZYJColor.main.cgColor
         self.layer.shadowOffset = CGSize(width: 2, height: 3)
         self.layer.shadowRadius = 1
         self.layer.shadowOpacity = 0.2

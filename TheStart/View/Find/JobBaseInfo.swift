@@ -64,9 +64,9 @@ class JobBaseInfo: UIView {
           EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
     }
     @objc private func tapONameLabel() {
-        let controller = MyHomePageController()
-        controller.authorId = model!.uid
-        self.parentNavigationController?.pushViewController(controller, animated: true)
+       // let controller = MyHomePageController()
+       // controller.authorId = model!.uid
+       // self.parentNavigationController?.pushViewController(controller, animated: true)
      }
     override func awakeFromNib(){
  

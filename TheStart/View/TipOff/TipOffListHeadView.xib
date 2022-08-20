@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TipOffListHeadView" id="iN0-l3-epB" customClass="TipOffListHeadView" customModule="TheStart" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5e1-N5-ZtY">
+                    <rect key="frame" x="20" y="6" width="65" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="INj-tx-TEp"/>
+                        <constraint firstAttribute="width" constant="65" id="i3t-u8-5bJ"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="嘿人"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMQ-px-RNa">
+                    <rect key="frame" x="85" y="6" width="65" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="7UG-Ku-TPF"/>
+                        <constraint firstAttribute="height" constant="34" id="bML-BR-MaF"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="黑店"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcC-Z1-Q5X">
+                    <rect key="frame" x="150" y="6" width="65" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="VGH-ip-stM"/>
+                        <constraint firstAttribute="width" constant="65" id="pSn-aT-Lbs"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="记录"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QMQ-px-RNa" firstAttribute="leading" secondItem="5e1-N5-ZtY" secondAttribute="trailing" id="6Av-dD-K61"/>
+                <constraint firstItem="QMQ-px-RNa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7Er-5P-4zm"/>
+                <constraint firstItem="5e1-N5-ZtY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GdK-f4-N8z"/>
+                <constraint firstItem="RcC-Z1-Q5X" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KPH-to-6n9"/>
+                <constraint firstItem="RcC-Z1-Q5X" firstAttribute="leading" secondItem="QMQ-px-RNa" secondAttribute="trailing" id="mLZ-hB-8w3"/>
+                <constraint firstItem="5e1-N5-ZtY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qvT-8O-PoB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="387.38839285714283"/>
+        </view>
+    </objects>
+</document>

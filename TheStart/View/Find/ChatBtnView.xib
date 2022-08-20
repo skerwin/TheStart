@@ -16,7 +16,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3r-vW-iCY">
                     <rect key="frame" x="40" y="22" width="334" height="40"/>
-                    <color key="backgroundColor" red="0.41568627450980389" green="0.56470588235294117" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.26666666666666666" green="0.53333333333333333" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="xMB-mJ-jwZ"/>
                     </constraints>
@@ -30,7 +30,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="F3r-vW-iCY" secondAttribute="trailing" constant="40" id="36H-VW-BBa"/>
                 <constraint firstItem="F3r-vW-iCY" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xso-sy-D31"/>

@@ -38,8 +38,8 @@ struct HttpRequest {
         }
  
         var request: DataRequest?
-        //print("请求数据：")
-        //print(Url!.absoluteString)
+        print("请求数据：")
+        print(Url!.absoluteString)
         let parametersJson = JSON(parameters!)
        // print(parametersJson)
         
@@ -71,8 +71,8 @@ struct HttpRequest {
                     return
                 }
                 let responseJson = JSON(dict)
-                //print(Url!.absoluteString)
-                //print(responseJson)
+                print(Url!.absoluteString)
+                print(responseJson)
                 if requestPath.containsStr(find: HomeAPI.salaryPath){
                     XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: HomeAPI.salaryPath) { (result) in
                      }

@@ -51,6 +51,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.title = "详情内容"
         //self.edgesForExtendedLayout = []
         createRightNavItem()
@@ -343,7 +344,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         bottoomView.delegate = self
         
         let bottoombgView = UIView.init(frame:  CGRect.init(x: 0, y: screenHeight - 48 - bottomBlankHeight, width: screenWidth, height: 48 + bottomBlankHeight))
-        bottoombgView.backgroundColor = UIColor.systemGray6
+        bottoombgView.backgroundColor = ZYJColor.barColor
         bottoombgView.addSubview(bottoomView)
         self.view.addSubview(bottoombgView)
         
@@ -642,12 +643,10 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
 
 extension TipOffDetailViewController:TipOffHeaderViewDelegate{
     func msgBtnAction() {
+ 
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
-        
-         noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
-             
-             
-//             let urlstr = "telprompt://" + "18153684982"
+          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+ //             let urlstr = "telprompt://" + "18153684982"
 //             if let url = URL.init(string: urlstr){
 //                  if #available(iOS 10, *) {
 //                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -655,10 +654,8 @@ extension TipOffDetailViewController:TipOffHeaderViewDelegate{
 //                     UIApplication.shared.openURL(url)
 //                  }
 //               }
- 
-        }))
-        
-        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+         }))
+         noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
             
         }))
         self.present(noticeView, animated: true, completion: nil)

@@ -33,6 +33,9 @@ class BaseViewController: UIViewController,AlertPresenter,LoadingPresenter,Accou
         super.viewWillDisappear(animated)
         
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //去掉导航栏箭头旁边的字

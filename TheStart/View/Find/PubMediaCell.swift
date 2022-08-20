@@ -70,6 +70,7 @@ class PubMediaCell: UITableViewCell,UICollectionViewDataSource,
         if #available(iOS 11.0, *) {
             collectionView.dragDelegate = self
             collectionView.dropDelegate = self
+            collectionView.backgroundColor = ZYJColor.main
             collectionView.delegate = self
             collectionView.dataSource = self
             collectionView.dragInteractionEnabled = true

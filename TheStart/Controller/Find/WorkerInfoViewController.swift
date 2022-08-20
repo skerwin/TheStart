@@ -270,6 +270,7 @@ class WorkerInfoViewController: BaseViewController,Requestable {
             .wEventCancelFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
                     UIPasteboard.general.string = self.dataModel!.mobile
+                    DialogueUtils.showSuccess(withStatus: "复制成功")
                  }
             )
             .wEventOKFinishSet()(
@@ -361,7 +362,11 @@ extension WorkerInfoViewController:WorkerBaseInfoDelegate {
                 return
             }
         }
-        
+        if checkVip(){
+            callPhone()
+            return
+        }
+      
         
       
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
@@ -404,6 +409,7 @@ extension WorkerInfoViewController:ChatBtnViewDelegate {
  
 }
 extension WorkerInfoViewController:UITableViewDataSource,UITableViewDelegate {
+ 
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

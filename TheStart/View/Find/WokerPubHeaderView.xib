@@ -28,7 +28,7 @@
                                         <constraint firstAttribute="width" constant="68" id="8So-ce-i3w"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jinru" translatesAutoresizingMaskIntoConstraints="NO" id="GpC-bz-x3n">
@@ -40,7 +40,7 @@
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4of-lE-4FB">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="yFP-Mn-Yth"/>
                                     </constraints>
@@ -51,7 +51,7 @@
                                         <constraint firstAttribute="height" constant="18" id="Y1W-9j-e4U"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -79,7 +79,7 @@
                                         <constraint firstAttribute="width" constant="68" id="VsE-dr-rjl"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jinru" translatesAutoresizingMaskIntoConstraints="NO" id="qxO-tU-QqD">
@@ -91,7 +91,7 @@
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zo2-Ny-QOd">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="lKA-HY-zNx"/>
                                     </constraints>
@@ -102,7 +102,7 @@
                                         <constraint firstAttribute="height" constant="18" id="eiQ-UH-Jef"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -130,7 +130,7 @@
                                         <constraint firstAttribute="width" constant="90" id="uSm-YS-bTS"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jinru" translatesAutoresizingMaskIntoConstraints="NO" id="DMj-jY-ojs">
@@ -142,7 +142,7 @@
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDb-FO-PAa">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="Ynv-Tf-h4P"/>
                                     </constraints>
@@ -153,7 +153,7 @@
                                         <constraint firstAttribute="height" constant="18" id="Tq0-Ef-w6Q"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -181,19 +181,19 @@
                                         <constraint firstAttribute="width" constant="78" id="plu-zp-S49"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKC-7H-ipL">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="GaM-sJ-X7N"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6qV-BM-TMU">
                                     <rect key="frame" x="115" y="3" width="244" height="41.5"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -221,19 +221,19 @@
                                         <constraint firstAttribute="width" constant="142" id="kYl-WI-yoB"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-N1-jyY">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="gmF-Lk-ady"/>
                                     </constraints>
                                 </view>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwV-jh-gB6">
                                     <rect key="frame" x="177" y="3" width="182" height="41.5"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -261,7 +261,7 @@
                                         <constraint firstAttribute="width" constant="50" id="dk0-kW-xlV"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray5Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jinru" translatesAutoresizingMaskIntoConstraints="NO" id="LiZ-KH-OqS">
@@ -273,7 +273,7 @@
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ime-bZ-LKt">
                                     <rect key="frame" x="8" y="47.5" width="358" height="0.5"/>
-                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="5dx-BY-OIi"/>
                                     </constraints>
@@ -284,7 +284,7 @@
                                         <constraint firstAttribute="height" constant="18" id="AI8-33-DY2"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" systemColor="systemGray6Color"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -303,7 +303,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <color key="backgroundColor" red="0.12549019607843137" green="0.13725490196078433" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="IA4-QI-ehB" secondAttribute="trailing" id="0Sv-yp-aqF"/>
                         <constraint firstItem="zuO-HP-yl9" firstAttribute="top" secondItem="h75-st-CDY" secondAttribute="top" id="6rK-FR-QUm"/>
@@ -332,12 +332,12 @@
                         <constraint firstAttribute="height" constant="20" id="rmU-RB-Q7F"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" systemColor="systemGray5Color"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="h75-st-CDY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="9jg-jL-pn3"/>
                 <constraint firstItem="h75-st-CDY" firstAttribute="top" secondItem="iOr-Mk-6p2" secondAttribute="bottom" constant="12" id="JpW-f9-kkC"/>
@@ -368,8 +368,8 @@
     </objects>
     <resources>
         <image name="jinru" width="6" height="10"/>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

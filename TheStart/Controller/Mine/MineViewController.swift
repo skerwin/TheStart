@@ -120,7 +120,7 @@ class MineViewController: BaseTableController,Requestable{
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-        tableView.separatorColor = UIColor.gray
+        tableView.separatorColor = ZYJColor.barColor
         self.tableView.tableFooterView = UIView()
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh

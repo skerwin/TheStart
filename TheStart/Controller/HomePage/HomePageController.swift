@@ -60,7 +60,7 @@ class HomePageController: BaseViewController,Requestable {
         
         
         let workParams = HomeAPI.homePathAndParams()
-        getRequest(pathAndParams: workParams,showHUD: false)
+        getRequest(pathAndParams: workParams,showHUD: true)
     }
     
     func loadDictData(){
@@ -365,7 +365,7 @@ class HomePageController: BaseViewController,Requestable {
             .wEventCancelFinishSet()(
                 {(anyID:Any?,otherData:Any?) in
                     UIPasteboard.general.string = self.callMobile
-
+                    DialogueUtils.showSuccess(withStatus: "复制成功")
                 }
             )
             .wEventOKFinishSet()(
@@ -431,9 +431,7 @@ extension HomePageController:GuideCellDelegate{
     func superManViewAction() {
         let controller = SuperManListController()
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
-    
  
 }
 
@@ -453,7 +451,11 @@ extension HomePageController:JobHomeCellDelegate{
             
         }
         
- 
+        if checkVip(){
+            callPhone()
+            return
+        }
+      
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              

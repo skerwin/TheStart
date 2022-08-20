@@ -7,9 +7,15 @@
 
 import UIKit
 
-class PersonHomePageHeader: UIView {
-
+protocol PersonHomePageHeaderDelegate {
     
+    func chatactionBtn()
+ }
+
+class PersonHomePageHeader: UIView {
+    
+    var delegate:PersonHomePageHeaderDelegate!
+
     
     @IBOutlet weak var bigbtn: UIButton!
     @IBOutlet weak var headImg: UIImageView!
@@ -24,51 +30,45 @@ class PersonHomePageHeader: UIView {
     
     @IBOutlet weak var workTypelabel: UILabel!
     
-    @IBOutlet weak var introLabel: UILabel!
+    @IBOutlet weak var scorelabel: UILabel!
     
-  
+    @IBOutlet weak var orangeNumLabel: UILabel!
+    
+    @IBOutlet weak var chatBtn: UIButton!
+    
+    var parentNavigationController: UINavigationController?
+    var author = UserModel()
+    
+    @IBOutlet weak var bgView1: UIView!
+    
     @IBAction func bigBtnAction(_ sender: Any) {
         EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
+     }
+    
+    @IBAction func chatactionBtn(_ sender: Any) {
+        
+      //  delegate.chatactionBtn()
+        if author!.uid == getUserId(){
+            DialogueUtils.showWarning(withStatus: "不能跟自己发起聊天哦")
+            return
+        }
 
+        let controller = UIStoryboard.getMessageController()
+        controller.toID = author!.uid
         
-    }
-    override func awakeFromNib(){
+        if author?.nickname == ""{
+            controller.nameTitle = author!.real_name
+        }else{
+            controller.nameTitle = author!.nickname
+        }
 
-        
-        
-        vipImage.isHidden = true
-        headImg.layer.masksToBounds = true
-        headImg.layer.cornerRadius = 32.5
-        isrealNameLabel.layer.masksToBounds = true
-        isrealNameLabel.layer.cornerRadius = 8
-        isrealNameLabel.layer.borderWidth = 1
-        isrealNameLabel.textColor = ZYJColor.blueTextColor
-        isrealNameLabel.layer.borderColor = ZYJColor.blueTextColor.cgColor
-        
-        pingtairenzhengLabel.layer.masksToBounds = true
-        pingtairenzhengLabel.layer.cornerRadius = 8
-        pingtairenzhengLabel.layer.borderWidth = 1
-        pingtairenzhengLabel.textColor = UIColor.darkGray
-        pingtairenzhengLabel.layer.borderColor = UIColor.lightGray.cgColor
-        pingtairenzhengLabel.textAlignment = .center
-        
-        
-        workTypelabel.layer.masksToBounds = true
-        workTypelabel.layer.cornerRadius = 8
-        workTypelabel.layer.borderWidth = 1
-        workTypelabel.textColor = UIColor.darkGray
-        workTypelabel.layer.borderColor = UIColor.lightGray.cgColor
-        workTypelabel.textAlignment = .center
+        self.parentNavigationController?.pushViewController(controller, animated: true)
     }
     
-  
-    @objc func tapOnImage() {
-          //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
-          EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
-    }
     
+ 
     func configModel(model:UserModel){
-        
+        author = model
         nameLabel.text = model.nickname
         headImg.displayImageWithURL(url: model.avatar)
         
@@ -114,8 +114,46 @@ class PersonHomePageHeader: UIView {
         addGestureRecognizerToView(view: headImg, target: self, actionName: "tapOnImage")
 
         
-        introLabel.text = model.introduce
+        //introLabel.text = model.introduce
         
     }
+    
+    override func awakeFromNib(){
+        bgView1.layer.masksToBounds = true
+        bgView1.layer.cornerRadius = 8
+        
+        chatBtn.layer.masksToBounds = true
+        chatBtn.layer.cornerRadius = 8
+        
+        vipImage.isHidden = true
+        headImg.layer.masksToBounds = true
+        headImg.layer.cornerRadius = 32.5
+        isrealNameLabel.layer.masksToBounds = true
+        isrealNameLabel.layer.cornerRadius = 8
+        isrealNameLabel.layer.borderWidth = 1
+        isrealNameLabel.textColor = ZYJColor.blueTextColor
+        isrealNameLabel.layer.borderColor = ZYJColor.blueTextColor.cgColor
+        
+        pingtairenzhengLabel.layer.masksToBounds = true
+        pingtairenzhengLabel.layer.cornerRadius = 8
+        pingtairenzhengLabel.layer.borderWidth = 1
+        pingtairenzhengLabel.layer.borderColor = UIColor.lightGray.cgColor
+        pingtairenzhengLabel.textAlignment = .center
+        
+        
+        workTypelabel.layer.masksToBounds = true
+        workTypelabel.layer.cornerRadius = 8
+        workTypelabel.layer.borderWidth = 1
+        workTypelabel.layer.borderColor = UIColor.lightGray.cgColor
+        workTypelabel.textAlignment = .center
+    }
+    
+  
+    @objc func tapOnImage() {
+          //addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
+          EWImageAmplification.shared.scanBigImageWithImageView(currentImageView: headImg, alpha: 1)
+    }
+    
+  
 
 }

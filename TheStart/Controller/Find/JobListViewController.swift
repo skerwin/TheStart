@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import WMZDialog
  
 class JobListViewController: BaseViewController,Requestable {
 
@@ -44,6 +45,8 @@ class JobListViewController: BaseViewController,Requestable {
     var pubBtn:UIButton!
     var pubSubHidden = true
  
+    var bgAddview = UIView.init()
+    
     override func loadView() {
         super.loadView()
         self.edgesForExtendedLayout = []
@@ -72,13 +75,13 @@ class JobListViewController: BaseViewController,Requestable {
        pubBtn.setBackgroundImage(UIImage.init(named: "release"), for: .normal)
        
        let bgview = UIView.init()
-       bgview.frame = CGRect.init(x: (screenWidth - 66)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 66, width: 56, height: 56)
+       bgview.frame = CGRect.init(x: (screenWidth - 66)/2, y: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 20 - 50 - bottomNavigationHeight, width: 50, height: 50)
        bgview.addSubview(pubBtn)
        self.view.addSubview(bgview)
 
-       let bgAddview = UIView.init()
-       bgAddview.frame = CGRect.init(x: (screenWidth - 220)/2, y: screenHeight - navigationHeaderAndStatusbarHeight - 140 , width: 220, height: 80)
-       //bgAddview.backgroundColor = UIColor.yellow
+       bgAddview = UIView.init()
+        
+       bgAddview.frame = CGRect.init(x: (screenWidth - 220)/2, y: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 90 - 50 - bottomNavigationHeight, width: 200, height: 80)
        self.view.addSubview(bgAddview)
        
        pubWorkerBtn = UIButton.init()
@@ -86,7 +89,7 @@ class JobListViewController: BaseViewController,Requestable {
        pubWorkerBtn.addTarget(self, action: #selector(pubWorkerClick(_:)), for: .touchUpInside)
        pubWorkerBtn.setImage(UIImage.init(named: "find_place"), for: .normal)
         
-       pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 60, width: 110, height: 20))
+       pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 55, width: 110, height: 20))
        pubWorkerLabel.text = "我要找场"
        pubWorkerLabel.textColor = colorWithHexString(hex: "60BAF0")
        pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -97,7 +100,7 @@ class JobListViewController: BaseViewController,Requestable {
        pubJobBtn.addTarget(self, action: #selector(pubJobBtnClick(_:)), for: .touchUpInside)
        pubJobBtn.setImage(UIImage.init(named: "find_person"), for: .normal)
 
-       pubJobLabel = UILabel.init(frame: CGRect.init(x: 110, y: 60, width: 110, height: 20))
+       pubJobLabel = UILabel.init(frame: CGRect.init(x: 110, y: 55, width: 110, height: 20))
        pubJobLabel.text = "我要找人"
        pubJobLabel.textAlignment = .center
        pubJobLabel.textColor = colorWithHexString(hex: "F19E44")
@@ -114,6 +117,8 @@ class JobListViewController: BaseViewController,Requestable {
     func addjustPubBtn(){
         if isFromMine {
         }else{
+            
+            bgAddview.isHidden  = pubSubHidden
             pubWorkerBtn.isHidden = pubSubHidden
             pubJobBtn.isHidden = pubSubHidden
             pubWorkerLabel.isHidden = pubSubHidden
@@ -157,13 +162,13 @@ class JobListViewController: BaseViewController,Requestable {
         
         if isMypub {
             let pathAndParams = HomeAPI.myJobWorkerListPathAndParams(type:type, page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else if isMyCollect{
             let pathAndParams = HomeAPI.collectJobWorkerListPathAndParams(type: type, page: page, limit: limit)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else{
             let pathAndParams = HomeAPI.jobAndWorkerPathAndParams(type: type, cate_id: cate_id, salary: salary, page: page, limit: limit, city: city, keyword: keyword, gender: gender)
-            getRequest(pathAndParams: pathAndParams,showHUD: false)
+            getRequest(pathAndParams: pathAndParams,showHUD: true)
         }
       
     }
@@ -262,14 +267,14 @@ class JobListViewController: BaseViewController,Requestable {
     
     func initDropView(){
         if isFromHome{
-            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:navigationHeaderAndStatusbarHeight ), andHeight: 48)
+            dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
         }else{
             dropView = DOPDropDownMenu.init(origin: CGPoint.init(x: 0, y:0 ), andHeight: 48)
         }
        
-        dropView.indicatorColor = UIColor.darkGray
+        dropView.indicatorColor = ZYJColor.barText
         dropView.fontSize = 16
-        dropView.textColor = UIColor.darkGray
+        dropView.textColor = UIColor.systemGray6
         dropView.delegate = self
         dropView.dataSource = self
         self.view.addSubview(dropView)
@@ -279,7 +284,7 @@ class JobListViewController: BaseViewController,Requestable {
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
             if isFromHome{
-                tableView = UITableView(frame: CGRect(x: 0, y: 48 + navigationHeaderAndStatusbarHeight, width: screenWidth, height: screenHeight - 48 - navigationHeaderAndStatusbarHeight), style: .plain)
+                tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 10 - 48 - bottomNavigationHeight), style: .plain)
             }else{
                 tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48 - navigationHeight), style: .plain)
             }
@@ -338,15 +343,41 @@ class JobListViewController: BaseViewController,Requestable {
     
     func callPhone(){
         
+        let dialog = Dialog()
+        dialog
+            .wShowAnimationSet()(AninatonZoomIn)
+            .wHideAnimationSet()(AninatonZoomOut)
+            .wEventCancelFinishSet()(
+                {(anyID:Any?,otherData:Any?) in
+                    UIPasteboard.general.string = self.callMobile
+                    DialogueUtils.showSuccess(withStatus: "复制成功")
+                }
+            )
+            .wEventOKFinishSet()(
+                { [self](anyID:Any?,otherData:Any?) in
+                    let urlstr = "telprompt://" + callMobile
+                    if let url = URL.init(string: urlstr){
+                         if #available(iOS 10, *) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        } else {
+                            UIApplication.shared.openURL(url)
+                         }
+                    }
+                }
+            )
+            .wTitleSet()("获取成功")
+            .wMessageSet()("对方的联系方式为(微信同号):" + callMobile )
+            .wOKTitleSet()("拨打电话")
+            .wCancelTitleSet()("复制号码")
+            .wMessageColorSet()(UIColor.black)
+            .wTitleColorSet()(UIColor.black)
+            .wOKColorSet()(UIColor.systemBlue)
+            .wCancelColorSet()(UIColor.darkGray)
+            .wTitleFontSet()(17)
+            .wMessageFontSet()(16)
+            .wTypeSet()(DialogTypeNornal)
+        _ = dialog.wStart()
  
-        let urlstr = "telprompt://" + callMobile
-        if let url = URL.init(string: urlstr){
-             if #available(iOS 10, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-             }
-        }
     }
     
     override func onFailure(responseCode: String, description: String, requestPath: String) {
@@ -395,7 +426,11 @@ extension JobListViewController:JobViewCellDelegate {
             }
         }
         
-       
+        if checkVip(){
+            callPhone()
+            return
+        }
+        
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
         
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
@@ -413,7 +448,10 @@ extension JobListViewController:JobViewCellDelegate {
     
 }
 extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pubSubHidden = true
+        addjustPubBtn()
+    }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
         return false

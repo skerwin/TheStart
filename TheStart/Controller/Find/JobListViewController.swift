@@ -144,6 +144,12 @@ class JobListViewController: BaseViewController,Requestable {
    
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        pubSubHidden = true
+        addjustPubBtn()
+    }
+    
     func  loadData(){
         
         if isMypub {

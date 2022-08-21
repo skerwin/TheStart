@@ -162,7 +162,7 @@ class FreeOpenVipController:BaseTableController,PayRequestDelegate,Requestable {
             
             if payMode == 0 {
                 paymodel = Mapper<PayModel>().map(JSONObject: responseResult["data"].rawValue)
-                if paymodel?.prepayid != ""{
+                if paymodel != nil{
                     PaySDK.instance.wechatPayRequest(signData: paymodel!)
                 }else{
                     showOnlyTextHUD(text: "下单失败")

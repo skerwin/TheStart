@@ -13,6 +13,8 @@ struct CommentModel: Mappable {
     
     var id = 0
     var rid = 0
+    var ruid = 0
+    var r_nickname = ""
     var comment = ""
     var add_time = ""
     var nickname = ""
@@ -33,6 +35,7 @@ struct CommentModel: Mappable {
     }
     mutating func mapping(map: Map) {
                 
+        r_nickname <- map["r_nickname"]
         id <- map["id"]
         rid <- map["rid"]
         comment <- map["comment"]

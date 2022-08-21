@@ -14,6 +14,8 @@ import MJRefresh
 class InfoAuthenController: BaseViewController {
 
     
+    var usermodel = UserModel()
+    
     var controllerArray : [UIViewController] = []
     var controller1:AuthenController!
     var controller2:MusicianAuthorController!
@@ -35,6 +37,7 @@ class InfoAuthenController: BaseViewController {
         
         
         controller1 = UIStoryboard.getAuthenController()
+        controller1.usermodel = self.usermodel
         controller1.title = "实名认证"
  
         controller2 = MusicianAuthorController()
@@ -51,27 +54,25 @@ class InfoAuthenController: BaseViewController {
  
         toTopHeight = navigationHeaderAndStatusbarHeight
         
-        if isShimin{
-            if isAudio{
-                controllerArray.append(controller3)
-                controllerArray.append(controller4)
-            }else{
-                controllerArray.append(controller3)
-                controllerArray.append(controller2)
-            }
-          
-        }else{
-            if isAudio{
+//        if isShimin{
+//            if isAudio{
+//                controllerArray.append(controller3)
+//                controllerArray.append(controller4)
+//            }else{
+//                controllerArray.append(controller3)
+//                controllerArray.append(controller2)
+//            }
+//
+//        }else{
+//            if isAudio{
+//                controllerArray.append(controller1)
+//                controllerArray.append(controller4)
+//            }else{
                 controllerArray.append(controller1)
-                controllerArray.append(controller4)
-            }else{
-                controllerArray.append(controller1)
                 controllerArray.append(controller2)
-            }
+//            }
            
-        }
-        
-       
+//        }
        
         pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
        pageMenuController?.delegate = self

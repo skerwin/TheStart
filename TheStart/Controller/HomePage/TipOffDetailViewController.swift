@@ -27,6 +27,9 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     var dataCommentList = [Array<CommentModel>]()
     var dateID = 0
     var parentCommentID = -1
+    
+    var parentComment = CommentModel()
+    
     var commentSection = 0
     var addComment = false
     var adjustFrame = false
@@ -40,10 +43,12 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     var isFromMine = false
     
+    var delindex:IndexPath!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "详情内容"
-        self.edgesForExtendedLayout = []
+        //self.edgesForExtendedLayout = []
         createRightNavItem()
         loadDetail()
         loadComment()
@@ -63,34 +68,40 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         let requestCommentParams = HomeAPI.comentListPathAndParams(articleId: dateID,page: page,limit: limit)
         getRequest(pathAndParams: requestCommentParams,showHUD:false)
      }
+    //暂时不用
+    func loadSectionComment(){
+        //print(page,limit)
+        let requestCommentParams = HomeAPI.comentListPathAndParams(articleId: dateID,page: page,limit: limit)
+        getRequest(pathAndParams: requestCommentParams,showHUD:false)
+     }
  
+   
+    
     func createRightNavItem() {
         
        
         var bgview:UIView
- 
-            
-     
+        bgview = UIView.init()
+        
         if isFromMine{
           
-            bgview = UIView.init()
+            
             bgview.frame = CGRect.init(x: 0, y: 0, width: 65, height: 44)
             rightBarButton = UIButton.init()
             rightBarButton.frame = CGRect.init(x: 0, y: 8, width: 63, height: 28)
             rightBarButton.setTitle("删除", for: .normal)
-            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClick(_:)), for: .touchUpInside)
             rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 0)
             rightBarButton.setTitleColor(.darkGray, for: .normal)
             rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             bgview.addSubview(rightBarButton)
         }else{
-            bgview = UIView.init()
+           
             bgview.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
             rightBarButton = UIButton.init()
             rightBarButton.frame = CGRect.init(x: 40, y: 2, width: 40, height: 40)
             rightBarButton.setImage(UIImage.init(named: "jubao"), for: .normal)
-            //rightBarButton.setTitle("投诉", for: .normal)
-            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClick(_:)), for: .touchUpInside)
             rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             rightBarButton.setTitleColor(.darkGray, for: .normal)
             rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -100,28 +111,21 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             rightBarButton2.frame = CGRect.init(x: 0, y: 2, width: 40, height:40)
             rightBarButton2.setImage(UIImage.init(named: "share"), for: .normal)
             //rightBarButton.setTitle("投诉", for: .normal)
-            rightBarButton2.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton2.addTarget(self, action: #selector(rightNavBtnClick2(_:)), for: .touchUpInside)
             rightBarButton2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             rightBarButton2.setTitleColor(.darkGray, for: .normal)
             rightBarButton2.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            
-            
-            
             bgview.addSubview(rightBarButton)
             bgview.addSubview(rightBarButton2)
-           
         }
- 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
-        
-        
-        
-        
-        
-        
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+    }
+    
+    @objc func rightNavBtnClick2(_ btn: UIButton){
+        self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
     }
 
-    @objc func rightNavBtnClic(_ btn: UIButton){
+    @objc func rightNavBtnClick(_ btn: UIButton){
         if isFromMine{
             let noticeView = UIAlertController.init(title: "", message: "你确定要删除本条信息么", preferredStyle: .alert)
             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
@@ -133,10 +137,10 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             }))
             self.present(noticeView, animated: true, completion: nil)
         }else{
-            self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
-//            reportType = 1
-//            reportID = dateID
-//            didRecommetnClick()
+            reportType = 1
+            reportID = dateID
+            didRecommetnClick()
+           
         }
     }
     
@@ -153,8 +157,8 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     func shareInfoWithPlatform(platform:JSHAREPlatform){
         let message = JSHAREMessage.init()
        // let dateString = DateUtils.dateToDateString(Date.init(), dateFormat: "yyy-MM-dd HH:mm:ss")
-        message.title = "测试分享"
-        message.text = "这是分享内容"
+        message.title =  dataModel?.title
+        message.text = dataModel?.content
  
         message.platform = platform
         message.mediaType = .link;
@@ -184,32 +188,29 @@ class TipOffDetailViewController: BaseViewController,Requestable {
 
             })
         }
+     }
  
-    }
-    
-    
-    
-    
-    
-    
-    
     override func onFailure(responseCode: String, description: String, requestPath: String) {
               tableView.mj_header?.endRefreshing()
               tableView.mj_footer?.endRefreshing()
               self.tableView.mj_footer?.endRefreshingWithNoMoreData()
     }
-
-
-    
+ 
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-        
         if requestPath == HomeAPI.addComentPath{
             showOnlyTextHUD(text: "评论成功")
             addComment = true
             addRefresh()
-        }else if requestPath.containsStr(find: HomeAPI.comentListPath){
+        }
+        else if requestPath == HomeAPI.comentDelPath{
+            showOnlyTextHUD(text: "删除成功")
+            addComment = true
+            addRefresh()
+        }
+        
+        else if requestPath.containsStr(find: HomeAPI.comentListPath){
             tableView.mj_header?.endRefreshing()
             tableView.mj_footer?.endRefreshing()
             let list:[CommentModel]  = getArrayFromJson(content: responseResult)
@@ -239,7 +240,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             }else{
                 let row = dataCommentList[commentSection - 1].count - 1
                 let indexPath = IndexPath.init(row: row, section: commentSection)
-                tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
             }
          }else if requestPath == HomeAPI.reportPath{
              showOnlyTextHUD(text: "投诉成功，将尽快处理")
@@ -251,9 +252,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             dataModel?.dianzan = num
             dataModel?.is_dianzan = 1
             bottoomView.configModel(model: dataModel!)
-            
-           
-        }
+         }
         else if requestPath == HomeAPI.collectDelPath{
             showOnlyTextHUD(text: "取消点赞成功")
             let num = responseResult["number"].intValue
@@ -303,7 +302,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         bottoomView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 48)
         bottoomView.delegate = self
         
-        let bottoombgView = UIView.init(frame:  CGRect.init(x: 0, y: screenHeight - navigationHeaderAndStatusbarHeight - 48 - bottomBlankHeight, width: screenWidth, height: 48 + bottomBlankHeight))
+        let bottoombgView = UIView.init(frame:  CGRect.init(x: 0, y: screenHeight - 48 - bottomBlankHeight, width: screenWidth, height: 48 + bottomBlankHeight))
         bottoombgView.backgroundColor = UIColor.systemGray6
         bottoombgView.addSubview(bottoomView)
         self.view.addSubview(bottoombgView)
@@ -322,11 +321,10 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         
       }
     func initTableView(){
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - bottomBlankHeight - 48 - navigationHeaderAndStatusbarHeight), style: .grouped)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - bottomBlankHeight - 48), style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = ZYJColor.main
-        
         self.tableView.rowHeight = UITableView.automaticDimension;
         self.tableView.estimatedRowHeight = 110;
         tableView.separatorStyle = .none
@@ -357,6 +355,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         dataCommentList.removeAll()
         commentSection = 0
         parentCommentID = 0
+        parentComment = CommentModel()
     
         limit = 10
         page = 1
@@ -408,14 +407,23 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         cModel?.comment = text
         if parentCommentID != -1{
             cModel?.rid = parentCommentID
+            cModel?.uid = parentComment!.uid
         }else{
             cModel?.rid = 0
         }
         
         
-        let requestParams = HomeAPI.addComentPathAndParams(model: cModel!)
+        let requestParams = HomeAPI.addComentPathAndParams(model: cModel!, isTopComment: true)
         postRequest(pathAndParams: requestParams,showHUD:false)
     }
+    
+    
+    func commentDelete(delrid:Int){
+       let requestParams = HomeAPI.comentDelPathAndParams(rid: delrid)
+       postRequest(pathAndParams: requestParams,showHUD:false)
+       
+    }
+    
     
     func reportContent(){
         let requestParams = HomeAPI.reportPathAndParams(articleId: reportID, type: reportType, reason: reportReason, remark: "我要举报")
@@ -543,7 +551,6 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
         
         let section = indexPath.section
         let row = indexPath.row
-        
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffDetailImgCell", for: indexPath) as! TipOffDetailImgCell
             cell.model = dataModel
@@ -569,7 +576,7 @@ extension TipOffDetailViewController:UITableViewDataSource,UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reCommentCell", for: indexPath) as! reCommentCell
                 cell.selectionStyle = .none
                 cell.delegeta = self
-                cell.sectoin = indexPath.section
+                cell.indexpath = indexPath
                 cell.model = modelList[indexPath.row]
                 return cell
             }
@@ -624,26 +631,78 @@ extension TipOffDetailViewController:TipOffContentViewDelegate{
         self.navigationController?.pushViewController(controller, animated: true)
     }
  }
+
+
 extension TipOffDetailViewController:ReCommentCellDelegate{
-    func reComplainActiion(cmodel: CommentModel, onView: UIButton) {
-        didRecommetnClick()
-    }
+    //回复
+    func reComplainActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath){
+        
+        commentSection = index.section
+        let modelList = dataCommentList[commentSection - 1]
+        let tempm = modelList[index.row]
+        parentCommentID = tempm.rid
+        parentComment = tempm
+        self.adjustFrame = true
+        commentBarVC.barView.inputTextView.becomeFirstResponder()
+     }
+    //举报和删除
+    func redelActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath){
+        
+        commentSection = index.section
+        let modelList = dataCommentList[commentSection - 1]
+        let tempm = modelList[index.row]
+        parentCommentID = tempm.rid
+        parentComment = tempm
+         
+        delindex = index
+        self.adjustFrame = true
+        let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+            self.commentDelete(delrid: cmodel.id)
+        }))
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+        
+     }
+    
+    
  
 }
 extension TipOffDetailViewController:CommentCellDelegate{
+    
+    //举报和删除
     func complainActiion(cmodel: CommentModel, section: Int) {
         
-        reportType = 2
-        reportID = commentList[section - 1].id
-        //print(commentList[section - 1].comment)
+//        reportType = 2
+//        reportID = commentList[section - 1].id
+//        self.adjustFrame = true
+//        didRecommetnClick()
+        
+        
+        commentSection = section
+        parentCommentID = cmodel.id
+        parentComment = cmodel
         self.adjustFrame = true
-        didRecommetnClick()
+        
+        let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+            self.commentDelete(delrid: cmodel.id)
+        }))
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+        
+        
     }
     
-    
+    //回复
     func commentACtion(cmodel: CommentModel, section: Int) {
         commentSection = section
         parentCommentID = cmodel.id
+        parentComment = cmodel
         self.adjustFrame = true
         commentBarVC.barView.inputTextView.becomeFirstResponder()
     }
@@ -678,6 +737,7 @@ extension TipOffDetailViewController:TipOffBottomViewDelegate{
         self.adjustFrame = true
         commentSection = 0
         parentCommentID = 0
+        parentComment = CommentModel()
         commentBarVC.barView.inputTextView.becomeFirstResponder()
     }
     

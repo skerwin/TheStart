@@ -111,10 +111,8 @@ class AuthorDetailController: BaseViewController,Requestable {
         
         let requestParams = HomeAPI.authorCollectionPathAndParams(musician_id: authorId)
         postRequest(pathAndParams: requestParams,showHUD:false)
- 
      }
-  
-    
+ 
     
     func loadData(){
         let requestParams = HomeAPI.authorDetailPathAndParams(id: authorId)

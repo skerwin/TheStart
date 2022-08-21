@@ -122,6 +122,11 @@ class WorkListViewController: BaseViewController,Requestable  {
         pubJobLabel.isHidden = pubSubHidden
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        pubSubHidden = true
+        addjustPubBtn()
+    }
     @objc func pubWorkerClick(_ btn: UIButton){
  
             let controller = WorkerPubViewController()

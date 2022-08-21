@@ -577,6 +577,9 @@
 		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
 		B8BFA6B72850A70000F5F41B /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */; };
 		B8EA4B11286A98ED005E2111 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */; };
+		B8EC0CDD28B2653E0066A740 /* MyHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */; };
+		B8EC0CDF28B2660E0066A740 /* PersonHomePageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC0CDE28B2660E0066A740 /* PersonHomePageHeader.swift */; };
+		B8EC0CE128B266390066A740 /* PersonHomePageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8EC0CE028B266390066A740 /* PersonHomePageHeader.xib */; };
 		B8F2EC142869C24B008F32C0 /* VideoBalankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */; };
 		B8F2EC152869C24B008F32C0 /* VideoBalankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */; };
 		EC980A89C4E1CFED4B52B553 /* Pods_TheStart_TheStartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7C6AF6828AFEE4C0AB94D3 /* Pods_TheStart_TheStartUITests.framework */; };
@@ -1210,6 +1213,9 @@
 		B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
 		B8BFA6B52850A70000F5F41B /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
 		B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomePageController.swift; sourceTree = "<group>"; };
+		B8EC0CDE28B2660E0066A740 /* PersonHomePageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHomePageHeader.swift; sourceTree = "<group>"; };
+		B8EC0CE028B266390066A740 /* PersonHomePageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonHomePageHeader.xib; sourceTree = "<group>"; };
 		B8F2EC122869C24A008F32C0 /* VideoBalankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoBalankCell.swift; sourceTree = "<group>"; };
 		B8F2EC132869C24A008F32C0 /* VideoBalankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoBalankCell.xib; sourceTree = "<group>"; };
 		C10DF13C760FC3FE7E63C246 /* Pods-TheStart-TheStartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheStart-TheStartUITests.release.xcconfig"; path = "Target Support Files/Pods-TheStart-TheStartUITests/Pods-TheStart-TheStartUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1633,6 +1639,8 @@
 				B81420C92828B0A800B4F6B5 /* MusicDetailHeader.xib */,
 				B81420CF2828E9A600B4F6B5 /* AuthorDetailHeader.swift */,
 				B81420D12828E9B200B4F6B5 /* AuthorDetailHeader.xib */,
+				B8EC0CDE28B2660E0066A740 /* PersonHomePageHeader.swift */,
+				B8EC0CE028B266390066A740 /* PersonHomePageHeader.xib */,
 				B86AEFDF2838F68F0065B96E /* BuyBtnView.swift */,
 				B86AEFE12838F69E0065B96E /* BuyBtnView.xib */,
 				B86AEFE9283926C10065B96E /* AudioLinkInfoView.swift */,
@@ -2143,9 +2151,11 @@
 		B8AC50462807C87800C2CF26 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */,
 				B802E242282B67C800B5057A /* PrivateStatusViewController.swift */,
 				B85FAFCD280FF2E100D25B66 /* PersonsInfoController.swift */,
 				B83C63A2280D6DDF00A3282D /* MineViewController.swift */,
+				B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */,
 				B8AE0315282A000D00FBE3B7 /* AuthenController.swift */,
 				B81420D52828F0CB00B4F6B5 /* MusicianAuthorController.swift */,
 				B8AD405828201FA90001D7F4 /* NewLoginController.swift */,
@@ -2162,7 +2172,6 @@
 				B8B804F4283BC64500EB9109 /* ChargeOrderController.swift */,
 				B85093262837A05C001E5A8B /* CashierDeskController.swift */,
 				B85093282837A169001E5A8B /* StarCoinChargeController.swift */,
-				B86AEFF1283A1FCD0065B96E /* InfoAuthenController.swift */,
 				B86AEFF3283A26240065B96E /* AuthenSuuccessController.swift */,
 				B847B57A28571FF1004346DD /* SettiingControllerTable.swift */,
 				B8385412289174B300C298BA /* FreeOpenVipController.swift */,
@@ -2418,6 +2427,7 @@
 				B86AEFEC283926CD0065B96E /* AudioLinkInfoView.xib in Resources */,
 				B83C6384280CFC6100A3282D /* WorkerVideoCell.xib in Resources */,
 				B87352D12896500B0055437E /* report.png in Resources */,
+				B8EC0CE128B266390066A740 /* PersonHomePageHeader.xib in Resources */,
 				B8AB69EB280960FA0064861C /* CommemtFooerLineView.xib in Resources */,
 				B87352D42896500B0055437E /* jchatpro@3x.png in Resources */,
 				B8AC4FE82807BE4400C2CF26 /* LaunchScreen.storyboard in Resources */,
@@ -2682,6 +2692,7 @@
 				B85FB02128116A8300D25B66 /* UIView+Extension.swift in Sources */,
 				B81C4D4428601D6B0005AFF2 /* TipOffBottomViewCxsdcontentExt.swift in Sources */,
 				B8AE0316282A000D00FBE3B7 /* AuthenController.swift in Sources */,
+				B8EC0CDD28B2653E0066A740 /* MyHomePageController.swift in Sources */,
 				B81C4DFC28601D6C0005AFF2 /* TitleCellCxsdcontentExt.swift in Sources */,
 				B81C4D2A28601D6B0005AFF2 /* NSArray+IQ_NSArray_SortCxsdcontent.m in Sources */,
 				B85FDA782824BFCD00EDA845 /* MyStarCollectionViewCell.swift in Sources */,
@@ -2895,6 +2906,7 @@
 				B81C4DDA28601D6C0005AFF2 /* TipOffContentViewCxsdcontentExt.swift in Sources */,
 				B85FDA5B2823BB3800EDA845 /* PMKPageMenuItemHacka.swift in Sources */,
 				B83C633E280AAD7D00A3282D /* UITextView+PlaceHolder.m in Sources */,
+				B8EC0CDF28B2660E0066A740 /* PersonHomePageHeader.swift in Sources */,
 				B85FAFD42810076000D25B66 /* WKWebSocket.swift in Sources */,
 				B8AD4054281FD6EF0001D7F4 /* TipOffListCell1.swift in Sources */,
 				B83C6356280AF4FD00A3282D /* RowTypeRule.swift in Sources */,

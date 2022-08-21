@@ -48,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func jshareInit(){
         let shareConfig = JSHARELaunchConfig.init()
         shareConfig.appKey = jiGuangID;
-        shareConfig.qqAppId = "1111415077"
-        shareConfig.qqAppKey = "sjVMivqYmZz7NAQ3"
+       // shareConfig.qqAppId = "1111415077"
+      //  shareConfig.qqAppKey = "sjVMivqYmZz7NAQ3"
         shareConfig.weChatAppId = "wxce795feb2aac395a"
         shareConfig.weChatAppSecret = "b7c45a7cca0da236cb0e9be5254d73c8"
         shareConfig.universalLink = weixinUniversalLink

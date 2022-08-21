@@ -27,7 +27,6 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     @IBOutlet weak var workTypeLabel: UILabel!
     @IBOutlet weak var addresslabel: UILabel!
     @IBOutlet weak var companyName: UITextField!
-    
     @IBOutlet weak var summbitBtn: UIButton!
     
     
@@ -62,8 +61,7 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
         
         summbitBtn.layer.cornerRadius = 10
         summbitBtn.layer.masksToBounds = true
-        
-        
+ 
         let attributedName = NSAttributedString.init(string: "请输入真实姓名", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         nameText.attributedPlaceholder = attributedName
         
@@ -73,20 +71,15 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
         let attributedcard = NSAttributedString.init(string: "请输入身份证号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         shenfenIDText.attributedPlaceholder = attributedcard
         
-        
-        let attributedcoompanyy = NSAttributedString.init(string: "请输入您的公司", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+         let attributedcoompanyy = NSAttributedString.init(string: "请输入您的驻点", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
          companyName.attributedPlaceholder = attributedcoompanyy
         
      }
-    
  
     
     @IBAction func summbitAction(_ sender: Any) {
-        
-        
-        usermodel?.real_name = nameText.text!
-
-        if usermodel!.real_name.isLengthEmpty() {
+          usermodel?.real_name = nameText.text!
+         if usermodel!.real_name.isLengthEmpty() {
             showOnlyTextHUD(text: "请完善您的姓名")
             return
         }
@@ -96,45 +89,48 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
             showOnlyTextHUD(text: "请选择您的性别")
             return
         }
-
-        usermodel!.phone = mobileText.text ?? ""
-        
-        if usermodel!.phone.isLengthEmpty(){
+         usermodel!.phone = mobileText.text ?? ""
+         if usermodel!.phone.isLengthEmpty(){
             showOnlyTextHUD(text: "请输入您的手机号")
             return
         }
-
-
-        usermodel!.address = province + city
+         usermodel!.address = province + city
 
         if usermodel!.address == "" {
             showOnlyTextHUD(text: "请选择您的地址")
             return
         }
-
-        if usermodel!.shiming_work == 0 {
-            showOnlyTextHUD(text: "请选择您的职业")
+         if usermodel!.shiming_work == 0 {
+            showOnlyTextHUD(text: "请选择您的工种")
             return
         }
-        
-        usermodel?.card_id = shenfenIDText.text ?? ""
+         usermodel?.card_id = shenfenIDText.text ?? ""
         usermodel?.shiming_company = companyName.text ?? ""
-        
-
-       
-
+ 
      let authenPersonalParams = HomeAPI.shimingSumbitPathAndParams(model: usermodel!)
-      postRequest(pathAndParams: authenPersonalParams,showHUD: false)
-        
+        postRequest(pathAndParams: authenPersonalParams,showHUD: true)
     }
-    
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "实名认证"
         prepareData()
-        initView()
+        if usermodel?.uid == 0{
+            initView()
+        }else{
+            nameText.text = usermodel?.real_name
+            genderLabel.text = usermodel?.gender
+            mobileText.text = usermodel?.phone
+            shenfenIDText.text = "********"
+            ageLabel.text = usermodel?.birthday
+            workTypeLabel.text = "待定"
+            addresslabel.text = usermodel?.address
+            companyName.text = usermodel?.shiming_company
+        }
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     
         tableView.separatorColor = UIColor.darkGray
         if #available(iOS 15.0, *) {
@@ -260,7 +256,9 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
         return 0.5
     }
     
-  
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -292,7 +290,7 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
                 isNextWorkType = false
                 isNextWorkType1 = false
                 nextworkTypeList = workTypeList.first!.child
-                self.workTypeChoosePicker = ActionSheetCustomPicker.init(title: "选择职业", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
+                self.workTypeChoosePicker = ActionSheetCustomPicker.init(title: "选择工种", delegate: self, showCancelButton: true, origin: self.view, initialSelections: [0,0])
                 self.workTypeChoosePicker?.delegate = self
                 workTypeChoosePicker?.tapDismissAction  = .success;
                 workTypeChoosePicker?.show()

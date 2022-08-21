@@ -7,33 +7,66 @@
 //
 
 import UIKit
+import EasyAtrribute
 
-protocol ReCommentCellDelegate: class {
-    func reComplainActiion(cmodel:CommentModel,onView:UIButton)
+protocol ReCommentCellDelegate: AnyObject {
+    func reComplainActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath)
+    func redelActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath)
 }
 
 class reCommentCell: UITableViewCell {
     
     @IBOutlet weak var headImage: UIImageView!
-    @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var contentlabel: UILabel!
     @IBOutlet weak var publishlabel: UILabel!
     
+    @IBOutlet weak var delBtn: UIButton!
     @IBOutlet weak var complainBtn: UIButton!
     
+    @IBOutlet weak var nameLableTV: EZTextView!
+    
     var delegeta:ReCommentCellDelegate?
-    var sectoin = 0
+    var indexpath = IndexPath()
  
     @IBAction func complainActiion(_ sender: Any) {
-        delegeta?.reComplainActiion(cmodel: model!,onView:complainBtn)
+        delegeta?.reComplainActiion(cmodel: model!,onView:complainBtn,index:indexpath)
     }
-  
+    @IBAction func delbtnActioon(_ sender: Any) {
+        delegeta?.redelActiion(cmodel: model!,onView:complainBtn,index:indexpath)
+        
+    }
+    
     var model:CommentModel? {
         didSet {
             headImage.displayHeadImageWithURL(url: model?.avatar)
-            nameLable.text = model?.nickname
             contentlabel.text = model?.comment
             publishlabel.text = model?.add_time
+            
+            nameLableTV.isEditable = false
+            nameLableTV.isScrollEnabled = false
+           //
+            nameLableTV
+                .removeAllAttribute()
+                .appendAttributedText(model!.nickname
+                    .attribute()
+                    .color(UIColor.init(hexString: "5776A7"))
+                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
+                    .toEz())
+             
+                .appendAttributedText(" @ "
+                    .attribute()
+                    .color(UIColor.init(hexString: "5776A7"))
+                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
+                    .toEz())
+               .appendAttributedText(model!.r_nickname
+                    .attribute()
+                    .color(UIColor.init(hexString: "5776A7"))
+                    .ez_font(UIFont.boldSystemFont(ofSize: 13))
+                    .toEz()
+                    .addAction{ [self] in
+                        //self.showOnlyTextHUD(text: "点击隐私协议")
+                    })
+            
          }
     }
     

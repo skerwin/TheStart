@@ -51,6 +51,9 @@ target 'TheStart' do
  # websocket
  pod 'Starscream', '~> 4.0.0'
  
+ # 字符串富文本
+ pod 'EasyAtrribute'
+ 
  # 微信支付
  pod 'WechatOpenSDK'
  # 支付宝支付

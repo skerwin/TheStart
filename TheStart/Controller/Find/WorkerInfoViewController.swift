@@ -28,6 +28,8 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     var dataModel = JobModel()
     
     var rightBarButton:UIButton!
+    var rightBarButton2:UIButton!
+    
     var isCollect = 0
     
     var isFromMine = false
@@ -55,19 +57,60 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     
     func createRightNavItem() {
         
-        rightBarButton = UIButton.init()
+       
         bgview = UIView.init()
+        
+        if isFromMine{
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            bgview.addSubview(rightBarButton)
+        }else{
  
-        rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
-        bgview.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 46, y: 8, width: 28, height: 28)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton.setTitleColor(.darkGray, for: .normal)
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            
+            
+            rightBarButton2 = UIButton.init()
+            rightBarButton2.frame = CGRect.init(x: 0, y: 2, width: 40, height:40)
+            rightBarButton2.setImage(UIImage.init(named: "share"), for: .normal)
+            rightBarButton2.addTarget(self, action: #selector(rightNavBtnClick2(_:)), for: .touchUpInside)
+            rightBarButton2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton2.setTitleColor(.darkGray, for: .normal)
+            bgview.addSubview(rightBarButton)
+            bgview.addSubview(rightBarButton2)
+        }
         
-        rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
-        
-        rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
-     
-        bgview.addSubview(rightBarButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
+    }
+    
+    @objc func rightNavBtnClick2(_ btn: UIButton){
+        self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
+    }
+    
+    func changeCollectBtn(){
+        if isFromMine{
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+            rightBarButton.setBackgroundImage(UIImage.init(named: ""), for: .normal)
+            rightBarButton.setTitle("删除", for: .normal)
+            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            rightBarButton.setTitleColor(colorWithHexString(hex: "#228CFC"), for: .normal)
+            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+        }else{
+            if isCollect == 1{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
+            }else{
+                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            }
+        }
     }
 
     @objc func rightNavBtnClic(_ btn: UIButton){
@@ -84,14 +127,13 @@ class WorkerInfoViewController: BaseViewController,Requestable {
             self.present(noticeView, animated: true, completion: nil)
         }else{
             
-            self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
-//            if isCollect == 1{
-//                let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
-//                postRequest(pathAndParams: requestParams,showHUD:false)
-//            }else{
-//                let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
-//                postRequest(pathAndParams: requestParams,showHUD:false)
-//            }
+            if isCollect == 1{
+                let requestParams = HomeAPI.delWorkCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }else{
+                let requestParams = HomeAPI.workCollectPathAndParams(id: dateID)
+                postRequest(pathAndParams: requestParams,showHUD:false)
+            }
         }
        
      }
@@ -141,24 +183,7 @@ class WorkerInfoViewController: BaseViewController,Requestable {
      }
     
     
-    func changeCollectBtn(){
-        
-        if isFromMine{
-            rightBarButton.setBackgroundImage(UIImage.init(named: ""), for: .normal)
-            rightBarButton.setTitle("删除", for: .normal)
-            rightBarButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-            rightBarButton.setTitleColor(colorWithHexString(hex: "#228CFC"), for: .normal)
-            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
-            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
-        }else{
-            if isCollect == 1{
-                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangzhong"), for: .normal)
-            }else{
-                rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
-            }
-        }
-       
-    }
+ 
     override func onFailure(responseCode: String, description: String, requestPath: String) {
         super.onFailure(responseCode: responseCode, description: description, requestPath: requestPath)
         if requestPath == HomeAPI.userCallPath || requestPath == HomeAPI.userImPathPath{

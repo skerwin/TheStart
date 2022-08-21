@@ -269,6 +269,7 @@ class MineViewController: BaseTableController,Requestable{
         
         else if indexPath.row == 1{
             let controller = InfoAuthenController()
+            controller.usermodel = self.usermodel
             if usermodel?.is_shiming == 2 || usermodel?.shiming_status == 0{
                 controller.isShimin = true
             }else{
@@ -279,6 +280,8 @@ class MineViewController: BaseTableController,Requestable{
             }else{
                 controller.isAudio = false
             }
+            
+            
             self.navigationController?.pushViewController(controller, animated: true)
         }
         else if indexPath.row == 2{
@@ -302,10 +305,7 @@ class MineViewController: BaseTableController,Requestable{
                 }))
                 self.present(noticeView, animated: true, completion: nil)
             }
-           
-            
-          
-        }
+          }
         
         else if indexPath.row == 3{
  
@@ -324,18 +324,25 @@ class MineViewController: BaseTableController,Requestable{
         }
         else if indexPath.row == 4{
             
-            let controller = UIStoryboard.getFreeOpenVipController()
-            controller.paytype = .chargeVip
-            controller.priceStr = "98.00"
-            self.present(controller, animated: true)
+            let controller = MyHomePageController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+//            let controller = UIStoryboard.getFreeOpenVipController()
+//            controller.paytype = .chargeVip
+//            controller.priceStr = "98.00"
+//            self.present(controller, animated: true)
  
          }
         else if indexPath.row == 5{
             
-            let controller = UIStoryboard.getFreeOpenVipController()
-            controller.paytype = .chargeVip
-            controller.priceStr = "98.00"
-            self.present(controller, animated: true)
+//            let controller = UIStoryboard.getFreeOpenVipController()
+//            controller.paytype = .chargeVip
+//            controller.priceStr = "98.00"
+//            self.present(controller, animated: true)
+            
+            
+            
+          
             
         }
         

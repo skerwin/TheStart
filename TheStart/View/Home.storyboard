@@ -1290,17 +1290,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="Rg3-z4-Zgm">
-                            <rect key="frame" x="0.0" y="487.5" width="414" height="80"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ZId-4m-dQg">
+                            <rect key="frame" x="0.0" y="487.5" width="414" height="367"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-c8-4NY">
-                                    <rect key="frame" x="25" y="22" width="364" height="36"/>
+                                    <rect key="frame" x="25" y="45" width="364" height="36"/>
                                     <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="bln-5Y-0mo"/>
                                     </constraints>
-                                    <color key="tintColor" red="0.1764705882" green="0.74117647060000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="提交">
                                         <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -1309,11 +1309,11 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="sNd-c8-4NY" secondAttribute="trailing" constant="25" id="Nvi-bz-EAu"/>
-                                <constraint firstItem="sNd-c8-4NY" firstAttribute="leading" secondItem="Rg3-z4-Zgm" secondAttribute="leading" constant="25" id="Z8g-jq-U9q"/>
-                                <constraint firstItem="sNd-c8-4NY" firstAttribute="centerY" secondItem="Rg3-z4-Zgm" secondAttribute="centerY" id="vtD-4c-MyO"/>
+                                <constraint firstAttribute="trailing" secondItem="sNd-c8-4NY" secondAttribute="trailing" constant="25" id="CTI-7S-gV0"/>
+                                <constraint firstItem="sNd-c8-4NY" firstAttribute="leading" secondItem="ZId-4m-dQg" secondAttribute="leading" constant="25" id="QlZ-r6-uZ2"/>
+                                <constraint firstItem="sNd-c8-4NY" firstAttribute="top" secondItem="ZId-4m-dQg" secondAttribute="top" constant="45" id="mZV-GD-wsw"/>
                             </constraints>
                         </view>
                         <sections>
@@ -1563,7 +1563,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="职业" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMz-Ab-azt">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工种" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMz-Ab-azt">
                                                     <rect key="frame" x="28" y="12" width="40" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="2pz-9x-c91"/>
@@ -1661,7 +1661,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所属公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seT-qg-BVI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常驻点" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seT-qg-BVI">
                                                     <rect key="frame" x="28" y="11.5" width="71" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="71" id="7SY-id-BVf"/>
@@ -1671,12 +1671,12 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vIP-qA-Z0o">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vIP-qA-Z0o">
                                                     <rect key="frame" x="164" y="11.5" width="235" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="D7W-vT-Gts"/>
                                                     </constraints>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>

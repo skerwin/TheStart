@@ -297,12 +297,13 @@ struct HomeAPI {
     
     //添加评论
     static let addComentPath = "/api/article/comment"
-    static func addComentPathAndParams(model:CommentModel) -> PathAndParams {
+    static func addComentPathAndParams(model:CommentModel,isTopComment:Bool = false) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["article_id"] = model.article_id as AnyObject
         paramsDictionary["comment"] = model.comment as AnyObject
         paramsDictionary["rid"] = model.rid as AnyObject
+        paramsDictionary["ruid"] = model.uid as AnyObject
         return (addComentPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     //评论列表
@@ -317,6 +318,24 @@ struct HomeAPI {
         var urlPath = comentListPath + "\(articleId)"
         urlPath = generateUrlWithParams(paramsDictionary,path: urlPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    //根据评论查回复列表
+    static let comentSectionListPath = "/api/article/reply_list"
+    static func comentSectionListPathAndParams(rid:String) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["rid"] = rid as AnyObject
+        return (comentSectionListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //删除
+    static let comentDelPath = "/api/article/comment_del"
+    static func comentDelPathAndParams(rid:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["rid"] = rid as AnyObject
+        return (comentDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
     //jubao

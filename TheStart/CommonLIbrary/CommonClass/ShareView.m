@@ -180,9 +180,7 @@
         case JSHARELink:
             [self.currentContentSupportPlatform addObjectsFromArray:@[@(JSHAREPlatformWechatSession),
                                                                       @(JSHAREPlatformWechatTimeLine),
-                                                                      @(JSHAREPlatformWechatFavourite),
-                                                                      @(JSHAREPlatformQQ),
-                                                                      @(JSHAREPlatformQzone)]];
+                                                                      @(JSHAREPlatformWechatFavourite)]];
             break;
         case JSHAREGraphic:
             [self.currentContentSupportPlatform addObjectsFromArray:@[@(JSHAREPlatformJChatPro)]];
@@ -231,15 +229,14 @@
     NSArray * typeArr = @[@(JSHAREPlatformWechatSession),
                           @(JSHAREPlatformWechatTimeLine),
                           @(JSHAREPlatformWechatFavourite),
-                          @(JSHAREPlatformQQ),
-                          @(JSHAREPlatformQzone)];
+                          ];
     NSArray * titleArr = nil;
     if(isLogin){
-        titleArr = @[@"微信",@"微信朋友圈",@"微信收藏",@"QQ",@"QQ空间"];
+        titleArr = @[@"微信",@"微信朋友圈",@"微信收藏"];
     }else {
-        titleArr = @[@"微信好友",@"微信朋友圈",@"微信收藏",@"QQ好友",@"QQ空间"];
+        titleArr = @[@"微信好友",@"微信朋友圈",@"微信收藏"];
     }
-    NSArray * imageArr = @[@"wechat",@"wechat_moment",@"wechat_fav",@"qq",@"qzone"];
+    NSArray * imageArr = @[@"wechat",@"wechat_moment",@"wechat_fav"];
     for (int i=0; i<typeArr.count; i++) {
         [self.platformData setObject:@{@"title":titleArr[i], @"image":imageArr[i], @"item":[UIButton buttonWithType:UIButtonTypeCustom]} forKey:typeArr[i]];
     }

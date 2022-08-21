@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-TheStart/Pods-TheStart-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework
+${BUILT_PRODUCTS_DIR}/EasyAtrribute/EasyAtrribute.framework
 ${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework
 ${BUILT_PRODUCTS_DIR}/HXPHPicker/HXPHPicker.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework

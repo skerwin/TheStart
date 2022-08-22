@@ -29,6 +29,7 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     @IBOutlet weak var companyName: UITextField!
     @IBOutlet weak var summbitBtn: UIButton!
     
+    @IBOutlet weak var tipsLabel: UILabel!
     
     var genderPicker:ActionSheetStringPicker? = nil //性别选择器
     let genderList = ["男","女"]
@@ -104,36 +105,50 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
             showOnlyTextHUD(text: "请选择您的工种")
             return
         }
-         usermodel?.card_id = shenfenIDText.text ?? ""
+        usermodel?.card_id = shenfenIDText.text ?? ""
         usermodel?.shiming_company = companyName.text ?? ""
+        
+        let noticeView = UIAlertController.init(title: "温馨提示", message: "审核通过后，您的部分信息将公开展示在个人主页中，您可以在设置中选择关闭", preferredStyle: .alert)
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+            let authenPersonalParams = HomeAPI.shimingSumbitPathAndParams(model: usermodel!)
+            postRequest(pathAndParams: authenPersonalParams,showHUD: true)
+        }))
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
  
-     let authenPersonalParams = HomeAPI.shimingSumbitPathAndParams(model: usermodel!)
-        postRequest(pathAndParams: authenPersonalParams,showHUD: true)
+    
     }
  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "实名认证"
         prepareData()
-        if usermodel?.uid == 0{
-            initView()
-        }else{
+        tipsLabel.isHidden = true
+        
+        if usermodel?.is_shiming == 2 || usermodel?.shiming_status == 0{
             nameText.text = usermodel?.real_name
             genderLabel.text = usermodel?.gender
             mobileText.text = usermodel?.phone
             shenfenIDText.text = "********"
             ageLabel.text = usermodel?.birthday
-            workTypeLabel.text = "待定"
+            workTypeLabel.text = usermodel?.work_name
             addresslabel.text = usermodel?.address
             companyName.text = usermodel?.shiming_company
+            tipsLabel.isHidden = false
+            summbitBtn.isHidden = true
+          }else{
+            initView()
+            tipsLabel.isHidden = true
         }
-        
+       // tableView.tableFooterView = UIView()
+//
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
-    
-        tableView.separatorColor = UIColor.darkGray
-        if #available(iOS 15.0, *) {
+
+         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
         
@@ -193,33 +208,29 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     }
     
     override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType){
-//        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
-//
-//        if requestPath == HomeAPI.professionalPath {
-//            professionalModelList = getArrayFromJsonByArrayName(arrayName: "pro_list", content:  responseResult)
-//            departmentsModelList = getArrayFromJsonByArrayName(arrayName: "depart_list", content:  responseResult)
-//            nextDepartmentsList = departmentsModelList.first!.child
-//        }
-//
-//        else if requestPath == HomeAPI.addressPath {
-//            addressList = getArrayFromJson(content:responseResult)
-//            cityList = addressList.first!.children
-//            districtList = addressList.first!.children.first!.children
-//        }
-//
-//        else if requestPath == HomeAPI.authDoctorPath {
-//            //保存一下真实姓名
-//            setValueForKey(value:  userModel?.sex as AnyObject, key: Constants.gender)
-//            setValueForKey(value:  userModel?.user_realname as AnyObject, key: Constants.truename)
-//            let vc = UIStoryboard.getAuthenSubmitedController()
-//            vc.isFormMine = self.isFormMine
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+         if requestPath == HomeAPI.shimingSumbitPath {
+             let noticeView = UIAlertController.init(title: "提示", message: "实名认证提交成功", preferredStyle: .alert)
+             noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                 self.tipsLabel.isHidden = false
+                 
+                 nameText.isEnabled = false
+                 genderLabel.isEnabled = false
+                 mobileText.isEnabled = false
+                 shenfenIDText.isEnabled = false
+                 ageLabel.isEnabled = false
+                 workTypeLabel.isEnabled = false
+                 addresslabel.isEnabled = false
+                 companyName.isEnabled = false
+                 summbitBtn.isHidden = true
+                 
+             }))
+             
+             self.present(noticeView, animated: true, completion: nil)
+         }
     }
     
     // MARK: - Table view data source
- 
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -227,8 +238,12 @@ class AuthenController: BaseTableController,Requestable,UIImagePickerControllerD
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
- 
-        return 4
+    
+        if section == 0{
+            return 4
+        }else{
+            return 4
+        }
     }
     
     

@@ -77,7 +77,6 @@
                                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="complainActiion:" destination="Afd-jA-tUR" eventType="touchUpInside" id="HCf-vW-05G"/>
                                             <action selector="delbtnActioon:" destination="Afd-jA-tUR" eventType="touchUpInside" id="t4S-zz-YL0"/>
                                         </connections>
                                     </button>

@@ -32,6 +32,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     var commentSection = 0
     var addComment = false
+    var delCommet = false
     var adjustFrame = false
     
     var rightBarButton:UIButton!
@@ -43,7 +44,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
     
     var isFromMine = false
     
-    var delindex:IndexPath!
+    var delindex = IndexPath.init(row: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -206,7 +207,7 @@ class TipOffDetailViewController: BaseViewController,Requestable {
         }
         else if requestPath == HomeAPI.comentDelPath{
             showOnlyTextHUD(text: "删除成功")
-            addComment = true
+            delCommet = true
             addRefresh()
         }
         
@@ -230,18 +231,38 @@ class TipOffDetailViewController: BaseViewController,Requestable {
             }
             self.tableView.reloadData()
             if commentSection == 0 {
-                if addComment {
+                if addComment || delCommet{
                     if limit != 10{
                         let indexPath = IndexPath.init(row: 0, section: 1)
                         tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+                        addComment = false
+                        delCommet = false
                     }
                 }
 
             }else{
-                let row = dataCommentList[commentSection - 1].count - 1
-                let indexPath = IndexPath.init(row: row, section: commentSection)
-                tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-            }
+                
+                if delCommet {
+                    if self.delindex.section != 0 {
+                        //删回复
+                        var row = 0
+                        row = self.delindex.row - 1
+                        let indexPath = IndexPath.init(row: row, section: commentSection)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }else{
+                        let row = 0
+                        let indexPath = IndexPath.init(row: row, section: commentSection - 1)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }
+                    
+                    
+                }else if addComment{
+                    let row = dataCommentList[commentSection - 1].count - 1
+                    let indexPath = IndexPath.init(row: row, section: commentSection)
+                    tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    addComment = false
+                }
+             }
          }else if requestPath == HomeAPI.reportPath{
              showOnlyTextHUD(text: "投诉成功，将尽快处理")
             
@@ -648,23 +669,34 @@ extension TipOffDetailViewController:ReCommentCellDelegate{
     //举报和删除
     func redelActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath){
         
-        commentSection = index.section
-        let modelList = dataCommentList[commentSection - 1]
-        let tempm = modelList[index.row]
-        parentCommentID = tempm.rid
-        parentComment = tempm
-         
-        delindex = index
-        self.adjustFrame = true
-        let noticeView = UIAlertController.init(title: "", message: "非会员每天限拨打3次电话，请¥98元充值会员,无限次拨打", preferredStyle: .alert)
-        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-            self.commentDelete(delrid: cmodel.id)
-        }))
-        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
-            
-        }))
-        self.present(noticeView, animated: true, completion: nil)
         
+        if (cmodel.uid == getUserId()){
+            commentSection = index.section
+            let modelList = dataCommentList[commentSection - 1]
+            let tempm = modelList[index.row]
+            parentCommentID = tempm.rid
+            parentComment = tempm
+             
+            delindex = index
+            self.adjustFrame = true
+            
+            let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                self.commentDelete(delrid: cmodel.id)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            reportType = 2
+            let modelList = dataCommentList[commentSection - 1]
+            let tempm = modelList[index.row]
+            reportID = tempm.id
+            self.adjustFrame = true
+            didRecommetnClick()
+        }
+ 
      }
     
     
@@ -674,28 +706,28 @@ extension TipOffDetailViewController:CommentCellDelegate{
     
     //举报和删除
     func complainActiion(cmodel: CommentModel, section: Int) {
-        
-//        reportType = 2
-//        reportID = commentList[section - 1].id
-//        self.adjustFrame = true
-//        didRecommetnClick()
-        
-        
-        commentSection = section
-        parentCommentID = cmodel.id
-        parentComment = cmodel
-        self.adjustFrame = true
-        
-        let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
-        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
-            self.commentDelete(delrid: cmodel.id)
-        }))
-        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+ 
+        if (cmodel.uid == getUserId()){
+            commentSection = section
+            parentCommentID = cmodel.id
+            parentComment = cmodel
+            self.adjustFrame = true
             
-        }))
-        self.present(noticeView, animated: true, completion: nil)
-        
-        
+            let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                self.commentDelete(delrid: cmodel.id)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            reportType = 2
+            reportID = commentList[section - 1].id
+            self.adjustFrame = true
+            didRecommetnClick()
+        }
+ 
     }
     
     //回复

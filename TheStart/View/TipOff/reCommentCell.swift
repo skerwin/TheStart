@@ -44,7 +44,12 @@ class reCommentCell: UITableViewCell {
             
             nameLableTV.isEditable = false
             nameLableTV.isScrollEnabled = false
-           //
+            
+            if (model?.uid == getUserId()){
+                delBtn.setTitle("删除", for: .normal)
+            }else{
+                delBtn.setTitle("举报", for: .normal)
+            }
             nameLableTV
                 .removeAllAttribute()
                 .appendAttributedText(model!.nickname

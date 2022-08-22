@@ -33,16 +33,22 @@ class WorkerImgCell:UITableViewCell,UICollectionViewDataSource, UICollectionView
        
         configCollectionViewHeight()
     }
-
     
+    func configUserCell(model:UserModel){
+        imgLabel.text = "才艺图片"
+        previewAssets.removeAll()
+        for imageV in model.images {
+            if imageV != ""{
+               let networkImageURL = URL.init(string: imageV)!
+               let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
+               previewAssets.append(networkImageAsset)
+            }
+        }
+        collectionView.reloadData()
+        configCollectionViewHeight()
+    }
+ 
     
-//    func configCell(isjob:Bool){
-//        if isjob {
-//            imgLabel.font = UIFont.systemFont(ofSize: 16)
-//        }else{
-//            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
-//        }
-//    }
     var model:JobModel? {
         didSet {
             previewAssets.removeAll()

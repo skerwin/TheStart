@@ -20,7 +20,9 @@ struct ZYJColor {
     // 34 140 252
     static let main = UIColor.white //"#0F0F11"  F0F0F0 FAFDFF
     
+    
     static let barText = colorWithHexString(hex: "#A255FF")
+    static let goldColor = colorWithHexString(hex: "#CD7F32")
     static let mainText = colorWithHexString(hex: "#EBEBEB")
     static let barColor = colorWithHexString(hex: "#202322")//
     static let blueTextColor = colorWithHexString(hex: "#6A90CA")

@@ -132,7 +132,7 @@ extension AuthorViewController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = AuthorDetailController()
+        let controller = MyHomePageController()
         controller.authorId = dataList[indexPath.row].uid
         self.navigationController?.pushViewController(controller, animated: true)
     }

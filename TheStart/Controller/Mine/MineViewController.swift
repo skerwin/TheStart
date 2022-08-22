@@ -119,9 +119,15 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     @IBAction func editHeaderAction(_ sender: Any) {
-        let controller = UIStoryboard.getPersonsInfoController()
-        controller.userModel = self.usermodel
+        
+        let controller = MyHomePageController()
+        controller.isFromMine = true
+        controller.authorId = self.usermodel!.uid
         self.navigationController?.pushViewController(controller, animated: true)
+        
+//        let controller = UIStoryboard.getPersonsInfoController()
+//        controller.userModel = self.usermodel
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func refreshList() {
@@ -192,9 +198,7 @@ class MineViewController: BaseTableController,Requestable{
             controller.usermodel = self.usermodel
             self.navigationController?.pushViewController(controller, animated: true)
         }
-    
-       
-      }
+    }
     
     @objc private func myorderViewAction() {
         if checkMarketVer(){
@@ -217,7 +221,12 @@ class MineViewController: BaseTableController,Requestable{
         super.viewWillAppear(animated)
         self.title = "我的"
      }
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadData()
+    }
+       
+     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
      }
  

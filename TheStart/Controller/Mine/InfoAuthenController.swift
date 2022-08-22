@@ -49,30 +49,20 @@ class InfoAuthenController: BaseViewController {
         
         controller4 = UIStoryboard.getAuthenSuuccessController()
         controller4.title = "音乐人认证"
-        controller4.titlestr = "您已通过音乐人认证"
+        controller4.titlestr = "您已经通过音乐人认证，详情请在个人主页查看"
  
  
         toTopHeight = navigationHeaderAndStatusbarHeight
         
-//        if isShimin{
-//            if isAudio{
-//                controllerArray.append(controller3)
-//                controllerArray.append(controller4)
-//            }else{
-//                controllerArray.append(controller3)
-//                controllerArray.append(controller2)
-//            }
-//
-//        }else{
-//            if isAudio{
-//                controllerArray.append(controller1)
-//                controllerArray.append(controller4)
-//            }else{
+   
+            if isAudio{
+                controllerArray.append(controller1)
+                controllerArray.append(controller4)
+            }else{
                 controllerArray.append(controller1)
                 controllerArray.append(controller2)
-//            }
+            }
            
-//        }
        
         pageMenuController = PMKPageMenuController(controllers: controllerArray, menuStyle: .plain, menuColors:[colorWithHexString(hex: "A255FF")], startIndex: 1, topBarHeight: toTopHeight)
        pageMenuController?.delegate = self

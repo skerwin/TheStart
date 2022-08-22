@@ -42,6 +42,12 @@ class CommentCell: UITableViewCell {
             nameLable.text = model?.nickname
             contentlabel.text = model?.comment
             publishlabel.text = model?.add_time
+            
+            if (model?.uid == getUserId()){
+                complainBtn.setTitle("删除", for: .normal)
+            }else{
+                complainBtn.setTitle("举报", for: .normal)
+            }
          }
     }
     

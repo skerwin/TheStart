@@ -33,13 +33,21 @@ class WorkerVideoCell:UITableViewCell,UICollectionViewDataSource, UICollectionVi
     }
     
     
-//    func configCell(isjob:Bool){
-//        if isjob {
-//            imgLabel.font = UIFont.systemFont(ofSize: 16)
-//        }else{
-//            imgLabel.font = UIFont.boldSystemFont(ofSize: 16)
-//        }
-//    }
+    func configUserCell(model:UserModel){
+        imgLabel.text = "视频才艺"
+        previewAssets.removeAll()
+        if model.video_path != ""{
+            let networkVideoURL = URL.init(string: model.video_path)!
+            let networkVideoAsset = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL))
+            previewAssets.append(networkVideoAsset)
+        }
+        
+        collectionView.reloadData()
+       
+        configCollectionViewHeight()
+    }
+    
+    
     var model:JobModel? {
         didSet {
             previewAssets.removeAll()

@@ -11,7 +11,7 @@ class AuthenSuuccessController: BaseViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    var titlestr = "您已认证通过"
+    var titlestr = "您已经通过音乐人认证，详情请在个人主页查看"
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = titlestr

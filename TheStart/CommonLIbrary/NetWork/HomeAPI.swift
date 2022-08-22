@@ -658,6 +658,9 @@ struct HomeAPI {
         paramsDictionary["address"] = model.address as AnyObject
         paramsDictionary["shiming_company"] = model.shiming_company as AnyObject
         
+        paramsDictionary["if_open"] = 1 as AnyObject
+        
+        
          return (shimingSumbitPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     

@@ -14,7 +14,7 @@ class MusicDetailHeader: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UIButton!
     
-    @IBOutlet weak var infoLabel: UILabel!
+   // @IBOutlet weak var infoLabel: UILabel!
     
     @IBOutlet weak var countLabel: UILabel!
     
@@ -35,7 +35,7 @@ class MusicDetailHeader: UIView {
             priceLabel.setImage(UIImage.init(named: "jifen"), for: .normal)
         }
        
-        infoLabel.text = "简介:" + model.info
+       // infoLabel.text = "简介:" + model.info
         countLabel.text = "浏览:" + intToString(number:  model.browse) + "   " +  "下载:" + intToString(number: model.order_count)
         
     }

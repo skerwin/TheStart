@@ -32,6 +32,7 @@ class AuthorDetailHeader: UICollectionReusableView {
         isRealabel.textColor = ZYJColor.blueTextColor
         isRealabel.layer.borderColor = ZYJColor.blueTextColor.cgColor
         
+        
         addGestureRecognizerToView(view: headImage, target: self, actionName: "tapOnImageheadImage")
     }
     

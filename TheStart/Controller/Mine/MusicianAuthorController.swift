@@ -365,10 +365,18 @@ extension MusicianAuthorController:ChatBtnViewDelegate {
         
         userModel?.video_path = vodstr
         
-        let pathAndParams = HomeAPI.audioUserSumbitPathAndParams(model: userModel!)
-        postRequest(pathAndParams: pathAndParams,showHUD: false)
-//
-
+        let noticeView = UIAlertController.init(title: "温馨提示", message: "提交后暂不支持修改，请您确认后提交", preferredStyle: .alert)
+        noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+            let pathAndParams = HomeAPI.audioUserSumbitPathAndParams(model: userModel!)
+            postRequest(pathAndParams: pathAndParams,showHUD: false)
+        }))
+        noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+            
+        }))
+        self.present(noticeView, animated: true, completion: nil)
+        
+       
+ 
         
     }
     

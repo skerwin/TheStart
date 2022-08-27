@@ -567,6 +567,9 @@
 		B8B5BBCD28B1532A00B2D8AC /* StoreBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBCC28B1532A00B2D8AC /* StoreBottomView.xib */; };
 		B8B5BBCF28B1569F00B2D8AC /* TipOffListHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */; };
 		B8B5BBD128B156BC00B2D8AC /* TipOffListHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */; };
+		B8B5BBD328B1D8AC00B2D8AC /* TipOffRecordeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBD228B1D8AC00B2D8AC /* TipOffRecordeController.swift */; };
+		B8B5BBD828B1F0D700B2D8AC /* TipOffRecordeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B5BBD628B1F0D700B2D8AC /* TipOffRecordeCell.swift */; };
+		B8B5BBD928B1F0D700B2D8AC /* TipOffRecordeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B5BBD728B1F0D700B2D8AC /* TipOffRecordeCell.xib */; };
 		B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C52F2811897F00B882FC /* ContactListController.swift */; };
 		B8B6C53328118A1800B882FC /* ContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6C53128118A1800B882FC /* ContactViewCell.swift */; };
 		B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B6C53228118A1800B882FC /* ContactViewCell.xib */; };
@@ -1223,6 +1226,9 @@
 		B8B5BBCC28B1532A00B2D8AC /* StoreBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreBottomView.xib; sourceTree = "<group>"; };
 		B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffListHeadView.swift; sourceTree = "<group>"; };
 		B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffListHeadView.xib; sourceTree = "<group>"; };
+		B8B5BBD228B1D8AC00B2D8AC /* TipOffRecordeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffRecordeController.swift; sourceTree = "<group>"; };
+		B8B5BBD628B1F0D700B2D8AC /* TipOffRecordeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipOffRecordeCell.swift; sourceTree = "<group>"; };
+		B8B5BBD728B1F0D700B2D8AC /* TipOffRecordeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipOffRecordeCell.xib; sourceTree = "<group>"; };
 		B8B6C52F2811897F00B882FC /* ContactListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListController.swift; sourceTree = "<group>"; };
 		B8B6C53128118A1800B882FC /* ContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewCell.swift; sourceTree = "<group>"; };
 		B8B6C53228118A1800B882FC /* ContactViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactViewCell.xib; sourceTree = "<group>"; };
@@ -1730,6 +1736,8 @@
 				B8AD4036281C008B0001D7F4 /* TipOffAddressView.xib */,
 				B8B5BBCE28B1569F00B2D8AC /* TipOffListHeadView.swift */,
 				B8B5BBD028B156BC00B2D8AC /* TipOffListHeadView.xib */,
+				B8B5BBD628B1F0D700B2D8AC /* TipOffRecordeCell.swift */,
+				B8B5BBD728B1F0D700B2D8AC /* TipOffRecordeCell.xib */,
 			);
 			path = TipOff;
 			sourceTree = "<group>";
@@ -2168,6 +2176,7 @@
 				B8AD4032281B94590001D7F4 /* ClarifyViewController.swift */,
 				B8AB69DA280905250064861C /* TipOffDetailViewController.swift */,
 				B8AB69F9280A9F3A0064861C /* TipOffPostViewController.swift */,
+				B8B5BBD228B1D8AC00B2D8AC /* TipOffRecordeController.swift */,
 				B8AD402C281B8E940001D7F4 /* SuperManListController.swift */,
 				B8AD406628239A450001D7F4 /* NotifyWebDetailController.swift */,
 				B802E26A282E279500B5057A /* PayViewController.swift */,
@@ -2466,6 +2475,7 @@
 				B85FDA692824B76800EDA845 /* test.png in Resources */,
 				B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */,
 				B83C639A280D4D7600A3282D /* WokerPubHeaderView.xib in Resources */,
+				B8B5BBD928B1F0D700B2D8AC /* TipOffRecordeCell.xib in Resources */,
 				B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */,
 				B87352D92896500B0055437E /* windowClose@3x.png in Resources */,
 				B8AE031C282A05A800FBE3B7 /* MusicAuthorVideoHeader.xib in Resources */,
@@ -2821,6 +2831,7 @@
 				B86AEFF2283A1FCD0065B96E /* InfoAuthenController.swift in Sources */,
 				B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */,
 				B81C4DE628601D6C0005AFF2 /* ChatBarViewCxsdcontentExt.swift in Sources */,
+				B8B5BBD828B1F0D700B2D8AC /* TipOffRecordeCell.swift in Sources */,
 				B85FB02228116A8300D25B66 /* StringExtension.swift in Sources */,
 				B8B6C5302811897F00B882FC /* ContactListController.swift in Sources */,
 				B81C4D9528601D6B0005AFF2 /* ChatFindEmotionCxsdcontentExt.swift in Sources */,
@@ -2985,6 +2996,7 @@
 				B8B80502283DD42300EB9109 /* GoodDetailHeader.swift in Sources */,
 				B81C4D8028601D6B0005AFF2 /* ChargeRecordCellCxsdcontentExt.swift in Sources */,
 				B81C4D5A28601D6B0005AFF2 /* HomeJobCellCxsdcontentExt.swift in Sources */,
+				B8B5BBD328B1D8AC00B2D8AC /* TipOffRecordeController.swift in Sources */,
 				B81C4E0428601D6C0005AFF2 /* IQTextView+Cxsdcontent.m in Sources */,
 				B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */,
 				B8EA4B11286A98ED005E2111 /* UICollectionView+Extension.swift in Sources */,

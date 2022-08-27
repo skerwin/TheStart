@@ -25,7 +25,12 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
     var isMyCollect = false
     
     var rightBarButton:UIButton!
+    
     var isFreeZone = false
+    
+    var order = 0
+    
+    var type = 0
     
     
  
@@ -35,11 +40,11 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         //createRightNavItem()
         self.limit = 15
         loadData()
-        if isFreeZone{
-            self.title = "会员免费专区"
-        }else{
-            self.title = "音乐馆"
-        }
+//        if isFreeZone{
+//            self.title = "会员免费专区"
+//        }else{
+//            self.title = "音乐馆"
+//        }
         
         view.backgroundColor = ZYJColor.main
         view.addSubview(collectionView)
@@ -58,15 +63,14 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
         }else if isMyCollect{
             
         }else{
-            if isFreeZone{
-               y = navigationHeaderAndStatusbarHeight
-               collectionViewY = UIDevice.navigationBarHeight
-            }else{
-                collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
-                y = 10
-            }
+//            if isFreeZone{
+//               y = navigationHeaderAndStatusbarHeight
+//               collectionViewY = UIDevice.navigationBarHeight
+//            }else{
+             collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight + 44
+             y = 10
+//            }
         }
-        
         collectionView.frame = CGRect(
             x: 0,
             y: y,
@@ -74,20 +78,15 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
             height: view.hx.height - collectionViewY
         )
         if isFreeZone{
-            
         }else{
             if isMypub || isMyCollect{
-                
             }else{
                 createPubBtn()
             }
-            
-           
         }
         
         // Do any additional setup after loading the view.
     }
-    
     func loadData(){
         
         if isMypub {
@@ -97,12 +96,12 @@ class MuiscListController: BaseViewController, UICollectionViewDataSource, UICol
             let pathAndParams = HomeAPI.collectaudioListPathAndParams(page: page, limit: limit)
             getRequest(pathAndParams: pathAndParams,showHUD: true)
         }else{
-            if isFreeZone{
-                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 1)
+            if isFreeZone{ //s(page: page, limit: limit, vip_free: 1)
+                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 1, order: 0, type: type)
                 getRequest(pathAndParams: requestParams,showHUD:true)
               
             }else{
-                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 0)
+                let requestParams = HomeAPI.audioListPathAndParams(page: page, limit: limit, vip_free: 0, order: order, type: type)
                 getRequest(pathAndParams: requestParams,showHUD:true)
             }
            

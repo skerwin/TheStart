@@ -76,12 +76,15 @@ struct HomeAPI {
  
     //音乐列表
     static let audioListPath = "/api/audio/list"
-    static func audioListPathAndParams(page:Int = 1,limit:Int = 10,vip_free:Int) -> PathAndParams {
+    static func audioListPathAndParams(page:Int = 1,limit:Int = 10,vip_free:Int,order:Int,type:Int) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["page"] = page as AnyObject
         paramsDictionary["limit"] = limit as AnyObject
         paramsDictionary["vip_free"] = vip_free as AnyObject
+        paramsDictionary["order"] = order as AnyObject
+        paramsDictionary["type"] = type as AnyObject
+        
         let urlPath = generateUrlWithParams(paramsDictionary,path: audioListPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }

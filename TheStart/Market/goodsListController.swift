@@ -39,12 +39,10 @@ class goodsListController: BaseViewController, UICollectionViewDataSource, UICol
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 12, bottom: 20, right: 12)
         
         var collectionViewY = UIDevice.navigationBarHeight
-   
         collectionViewY = UIDevice.navigationBarHeight + bottomNavigationHeight
- 
         collectionView.frame = CGRect(
             x:0,
-            y: navigationHeaderAndStatusbarHeight,
+            y: 0,
             width: view.hx.width,
             height: view.hx.height - collectionViewY
         )

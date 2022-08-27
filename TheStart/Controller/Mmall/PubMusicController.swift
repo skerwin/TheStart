@@ -213,7 +213,7 @@ class PubMusicController: BaseViewController,Requestable {
     }
     var typePicker:ActionSheetStringPicker? = nil //性别选择器
 
-    let typeList = ["开场","颗粒or爆点","set套曲","其他"]
+    let typeList = ["开场","颗粒or爆点","set套曲","其他","教学"]
  
 }
 extension PubMusicController:PubMusicHeaderDelegate {

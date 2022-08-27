@@ -121,6 +121,9 @@ UITableViewDataSource
     CGPoint relyPoint = CGPointMake(absoluteRect.origin.x + absoluteRect.size.width / 2, absoluteRect.origin.y + absoluteRect.size.height);
     
     YBPopupMenu *popupMenu = [[YBPopupMenu alloc] init];
+    popupMenu.backColor = [UIColor darkGrayColor];
+    popupMenu.textColor = [UIColor whiteColor];
+    popupMenu.separatorColor = [UIColor lightGrayColor];
     popupMenu.point = relyPoint;
     popupMenu.relyRect = absoluteRect;
     popupMenu.titles = titles;
@@ -138,6 +141,7 @@ UITableViewDataSource
     popupMenu.titles = titles;
     popupMenu.images = icons;
     popupMenu.itemWidth = itemWidth;
+   
     YB_SAFE_BLOCK(otherSetting,popupMenu);
     [popupMenu show];
     return popupMenu;

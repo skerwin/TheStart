@@ -122,8 +122,6 @@ class HomePageMenuController: BaseViewController,Requestable {
         let workParams = HomeAPI.workCategoryPathAndParams()
         getRequest(pathAndParams: workParams,showHUD: false)
         
-        let salaryParams = HomeAPI.salaryPathAndParams()
-        getRequest(pathAndParams: salaryParams,showHUD: false)
         
         let requestParamsP3 = HomeAPI.openMarketPathAndParam()
         postRequest(pathAndParams: requestParamsP3,showHUD: false)
@@ -139,8 +137,15 @@ class HomePageMenuController: BaseViewController,Requestable {
  
         if requestPath.containsStr(find: HomeAPI.homePath){
              bannerList = getArrayFromJsonByArrayName(arrayName: "banner", content:  responseResult)
-            UpdateAdvertisementView(imageArr: bannerList)
-         } else if requestPath == HomeAPI.openMarketPath{
+             UpdateAdvertisementView(imageArr: bannerList)
+        }else if requestPath.containsStr(find: HomeAPI.workCategoryPath){
+            let salaryParams = HomeAPI.salaryPathAndParams()
+            getRequest(pathAndParams: salaryParams,showHUD: false)
+        }else if requestPath.containsStr(find: HomeAPI.salaryPath){
+            addController()
+        }
+        
+        else if requestPath == HomeAPI.openMarketPath{
             let isgoods = responseResult["if_goods"].intValue
             if isgoods == 1{
                 setStringValueForKey(value: "1", key: Constants.isMarketVer)
@@ -189,14 +194,8 @@ class HomePageMenuController: BaseViewController,Requestable {
         }
      }
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        self.view.backgroundColor = ZYJColor.main
-        
-        WebSocketManager.instance.openSocket()
-        loadData()
-        loadDictData()
+    
+    func addController(){
         jobVc = JobListViewController()
         jobVc.isFromHome = true
         jobVc.view.frame = CGRect.init(x: 0, y: topAdvertisementViewHeight + navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
@@ -211,11 +210,21 @@ class HomePageMenuController: BaseViewController,Requestable {
         storeVc.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
         
         goodsVc = goodsListController()
-        goodsVc.view.frame = CGRect.init(x: 0, y: topAdvertisementViewHeight + navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
-
+        goodsVc.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
         
-        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 260)/2, y: 0, width:240, height: 44))
+        self.addChild(jobVc)
+        self.view.addSubview(jobVc.view)
+    }
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        self.view.backgroundColor = ZYJColor.main
+        
+        WebSocketManager.instance.openSocket()
+        loadData()
+        loadDictData()
  
+        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 260)/2, y: 0, width:240, height: 44))
         jobVcButton = UIButton.init()
         jobVcButton.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
         jobVcButton.addTarget(self, action: #selector(jobVcButtonACtion(_:)), for: .touchUpInside)
@@ -243,10 +252,7 @@ class HomePageMenuController: BaseViewController,Requestable {
         goodsVcButton.setTitle("商店", for: .normal)
         goodsVcButton.setTitleColor(UIColor.white, for: .normal)
         goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
-        
-        
-       
-        
+ 
         navView.addSubview(jobVcButton)
         navView.addSubview(workVcButton)
         navView.addSubview(storeVcButton)
@@ -256,9 +262,7 @@ class HomePageMenuController: BaseViewController,Requestable {
         self.navigationController?.navigationBar.addSubview(navView)
       
         self.view.addSubview(getAdvertisementView(imageArr: bannerList))
-        self.addChild(jobVc)
        
-        self.view.addSubview(jobVc.view)
     }
  
     

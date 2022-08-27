@@ -60,7 +60,6 @@ class JobListViewController: BaseViewController,Requestable {
         initTableView()
         if isFromMine {
         }else{
-            //createRightNavItem()
             initDropView()
             initPubBtn()
         }

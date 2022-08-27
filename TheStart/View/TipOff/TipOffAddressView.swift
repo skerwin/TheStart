@@ -26,6 +26,10 @@ class TipOffAddressView: UIView {
         let attributedName = NSAttributedString.init(string: "请输入标题", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         titleLabel.attributedPlaceholder = attributedName
         
+//
+//        let attributedName = NSAttributedString.init(string: "请输入标题", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+//        titleLabel.attributedPlaceholder = attributedName
+
       
     }
     

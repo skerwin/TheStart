@@ -13,7 +13,9 @@ class TipOffMenuPageController: BaseViewController {
     var  tipOffVC:TipOffViewController!
     var  clarifyVC:ClarifyViewController!
     
-    var  supermanVC:SuperManListController!
+    var  superbbsVC:TipOffViewController!
+    
+   // var  supermanVC:SuperManListController!
     
     var tipOffVCButton:UIButton!
     
@@ -26,14 +28,10 @@ class TipOffMenuPageController: BaseViewController {
     var pubBtn:UIButton!
  
    
-//    var lineView1:UIView!
-//    var lineView2:UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
-        
+ 
         if navView == nil{
             createNavView()
         }
@@ -50,13 +48,17 @@ class TipOffMenuPageController: BaseViewController {
         
         tipOffVC = TipOffViewController()
         clarifyVC = ClarifyViewController()
-        supermanVC = SuperManListController()
+        superbbsVC = TipOffViewController()
         
-     
+        tipOffVC.type = 1
+        superbbsVC.type = 4
+        
         
         navView = UIView.init(frame: CGRect.init(x: (screenWidth - 210)/2, y: 2, width:210, height: 38))
         
-        tipOffVC.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 46, width: screenWidth, height: screenHeight)
+        tipOffVC.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight, width: screenWidth, height: screenHeight)
+        superbbsVC.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight, width: screenWidth, height: screenHeight)
+
         
         self.addChild(tipOffVC)
         self.view.addSubview(tipOffVC.view)
@@ -76,7 +78,7 @@ class TipOffMenuPageController: BaseViewController {
         clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
         supermanButton = UIButton.init()
-        supermanButton.frame = CGRect.init(x: 140, y: 2, width: 70, height: 38)
+        supermanButton.frame = CGRect.init(x: 140, y: 2, width: 75, height: 38)
         supermanButton.addTarget(self, action: #selector(supermanButtonACtion(_:)), for: .touchUpInside)
         supermanButton.setTitle("巅峰论坛", for: .normal)
         supermanButton.setTitleColor(UIColor.systemGray6, for: .normal)
@@ -134,21 +136,22 @@ class TipOffMenuPageController: BaseViewController {
         clarifyButton.setTitleColor(UIColor.systemGray6, for: .normal)
         clarifyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
-        self.addChild(supermanVC)
-        self.view.addSubview(supermanVC.view)
+        self.addChild(superbbsVC)
+        self.view.addSubview(superbbsVC.view)
         
     }
     
     @objc func tipOffButtonACtion(_ btn: UIButton){
         
+      
         if self.children.contains(clarifyVC){
             clarifyVC.removeFromParent()
             clarifyVC.view.removeFromSuperview()
         }
         
-        if self.children.contains(supermanVC){
-            supermanVC.removeFromParent()
-            supermanVC.view.removeFromSuperview()
+        if self.children.contains(superbbsVC){
+            superbbsVC.removeFromParent()
+            superbbsVC.view.removeFromSuperview()
         }
         
         
@@ -167,6 +170,7 @@ class TipOffMenuPageController: BaseViewController {
 //        lineView2.isHidden = true
         self.addChild(tipOffVC)
         self.view.addSubview(tipOffVC.view)
+        //tipOffVC.refreshList()
  
      }
     
@@ -177,9 +181,9 @@ class TipOffMenuPageController: BaseViewController {
             tipOffVC.view.removeFromSuperview()
         }
         
-        if self.children.contains(supermanVC){
-            supermanVC.removeFromParent()
-            supermanVC.view.removeFromSuperview()
+        if self.children.contains(superbbsVC){
+            superbbsVC.removeFromParent()
+            superbbsVC.view.removeFromSuperview()
         }
         
         

@@ -39,7 +39,7 @@ struct HttpRequest {
  
         var request: DataRequest?
         print("请求数据：")
-        print(Url!.absoluteString)
+        //print(Url!.absoluteString)
         let parametersJson = JSON(parameters!)
        // print(parametersJson)
         

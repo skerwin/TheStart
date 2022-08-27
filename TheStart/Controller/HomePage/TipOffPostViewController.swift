@@ -152,12 +152,22 @@ class TipOffPostViewController: BaseViewController,Requestable {
         present(pickerController, animated: true, completion: nil)
     }
     
-    func initFooterView(){
+    func initFooterView(){ //113 //200
+        
+        var footerHeight:CGFloat = 0
+        if articleType == 1{
+            footerHeight = 200
+        }else{
+            footerHeight = 113
+        }
+        
         addressView = Bundle.main.loadNibNamed("TipOffAddressView", owner: nil, options: nil)!.first as? TipOffAddressView
-        addressView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 113)
+        addressView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: footerHeight)
+        
         addressView.delegate = self
-        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 113))
+        footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: footerHeight))
         footerBgView.backgroundColor = ZYJColor.main
+        footerBgView.layer.masksToBounds = true
         footerBgView.addSubview(addressView)
     }
  

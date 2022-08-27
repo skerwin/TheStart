@@ -28,6 +28,8 @@ class TipOffViewController: BaseViewController,Requestable {
     
     var headerView:TipOffListHeadView!
     var headerViewbgView:UIView!
+    
+    var isRecorde = false
 
     
     override func viewDidLoad() {
@@ -38,7 +40,10 @@ class TipOffViewController: BaseViewController,Requestable {
             
         }else{
             createPubBtn()
-            initHeaderView()
+            if type == 1{
+                initHeaderView()
+            }
+            
         }
       
         self.title = "黑人馆"
@@ -50,16 +55,15 @@ class TipOffViewController: BaseViewController,Requestable {
     
     func initHeaderView(){
         headerView = Bundle.main.loadNibNamed("TipOffListHeadView", owner: nil, options: nil)!.first as? TipOffListHeadView
-        headerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 46)
-        //headerView.delegate = self
+        headerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 34)
+        headerView.delegate = self
         //headerView.parentNavigationController = self.navigationController
  
-        headerViewbgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 46))
+        headerViewbgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 34))
         headerViewbgView.backgroundColor = ZYJColor.barColor
         headerViewbgView.addSubview(headerView)
         self.view.addSubview(headerViewbgView)
-        
-      }
+       }
     
     func createPubBtn() {
         
@@ -69,11 +73,10 @@ class TipOffViewController: BaseViewController,Requestable {
         pubBtn.setImage(UIImage.init(named: "tipOffPost"), for: .normal)
         
         let bgview = UIView.init()
-        bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - 120 - 44, width: 60, height: 60)
+        bgview.frame = CGRect.init(x: screenWidth - 100, y: screenHeight - navigationHeaderAndStatusbarHeight - 44 - bottomNavigationHeight - 34, width: 60, height: 60)
         bgview.addSubview(pubBtn)
         
         self.view.addSubview(bgview)
- 
  
      }
     @objc func pubBtnClick(_ btn: UIButton){
@@ -125,8 +128,12 @@ class TipOffViewController: BaseViewController,Requestable {
         if isFromMine{
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
-            tableView = UITableView(frame: CGRect(x: 0, y: 46, width: screenWidth, height: screenHeight - 46), style: .plain)
-
+            if self.type == 1{
+                tableView = UITableView(frame: CGRect(x: 0, y: 34, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight - 34 - bottomNavigationHeight), style: .plain)
+            }else{
+                tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - navigationHeaderAndStatusbarHeight - bottomNavigationHeight), style: .plain)
+            }
+ 
         }
         tableView.delegate = self
         tableView.dataSource = self
@@ -143,6 +150,8 @@ class TipOffViewController: BaseViewController,Requestable {
         tableView.registerNibWithTableViewCellName(name: TipOffListCell2.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListCell1.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: TipOffListNoImgCell.nameOfClass)
+        tableView.registerNibWithTableViewCellName(name: TipOffRecordeCell.nameOfClass)
+        
  
         let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
         tableView.mj_header = addressHeadRefresh
@@ -176,22 +185,43 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
-        return dataList.count
+        if isRecorde{
+            return 5
+        }else{
+            return dataList.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-  //        if dataList[indexPath.row].images.count != 0{
- 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffListNoImgCell", for: indexPath) as! TipOffListNoImgCell
-        cell.selectionStyle = .none
-        cell.model = dataList[indexPath.row]
-        return cell
- 
+        if isRecorde{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffRecordeCell", for: indexPath) as! TipOffRecordeCell
+            if indexPath.row/2 == 0{
+                cell.nameLbael.text = "红玫瑰酒吧"
+                cell.tipLabel.text = "嘿店"
+            }else{
+                cell.nameLbael.text = "MC老杨"
+                cell.tipLabel.text = "嘿人"
+            }
+            cell.selectionStyle = .none
+            return cell
         
-    }
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffListNoImgCell", for: indexPath) as! TipOffListNoImgCell
+            cell.selectionStyle = .none
+            cell.model = dataList[indexPath.row]
+            return cell
+        }
  
-// 
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isRecorde{
+            return 44
+        }else{
+            return UITableView.automaticDimension
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = TipOffDetailViewController()
@@ -200,3 +230,27 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
          self.navigationController?.pushViewController(controller, animated: true)
     }
 }
+extension TipOffViewController:TipOffListHeadViewDelegate {
+    func allBtnAction() {
+        isRecorde = false
+        self.tableView.reloadData()
+    }
+    
+    func personBtnAction() {
+        isRecorde = false
+        self.tableView.reloadData()
+    }
+    
+    func storebtnAction() {
+        isRecorde = false
+        self.tableView.reloadData()
+    }
+    
+    func recordebtnAction() {
+        isRecorde = true
+        self.tableView.reloadData()
+    }
+    
+    
+}
+

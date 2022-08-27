@@ -62,7 +62,6 @@ class WorkListViewController: BaseViewController,Requestable  {
         initTableView()
         if isFromMine {
         }else{
-           // createRightNavItem()
             initDropView()
             initPubBtn()
         }

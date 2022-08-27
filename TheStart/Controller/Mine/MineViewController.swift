@@ -243,7 +243,7 @@ class MineViewController: BaseTableController,Requestable{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -340,13 +340,13 @@ class MineViewController: BaseTableController,Requestable{
         }
         else if indexPath.row == 4{
             
-            let controller = MyHomePageController()
-            self.navigationController?.pushViewController(controller, animated: true)
+           // let controller = MyHomePageController()
+            //self.navigationController?.pushViewController(controller, animated: true)
             
-//            let controller = UIStoryboard.getFreeOpenVipController()
-//            controller.paytype = .chargeVip
-//            controller.priceStr = "98.00"
-//            self.present(controller, animated: true)
+            let controller = UIStoryboard.getFreeOpenVipController()
+            controller.paytype = .chargeVip
+            controller.priceStr = "98.00"
+            self.present(controller, animated: true)
  
          }
         else if indexPath.row == 5{

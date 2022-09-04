@@ -134,6 +134,13 @@
                 <constraint firstAttribute="trailing" secondItem="NvF-JM-XIW" secondAttribute="trailing" id="brT-Ou-2SV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="callPhone" destination="bxu-UN-dnh" id="l3b-RY-nDm"/>
+                <outlet property="commetn" destination="Gsj-0r-hom" id="FYq-b4-akV"/>
+                <outlet property="likeImage" destination="Kw4-Nl-6uf" id="Jae-2W-w1K"/>
+                <outlet property="likeLabel" destination="pr1-Nj-Axe" id="mmx-Ds-BZk"/>
+                <outlet property="likeView" destination="FSC-rE-Vuy" id="dn2-sB-PZy"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="399.10714285714283"/>
         </view>
     </objects>

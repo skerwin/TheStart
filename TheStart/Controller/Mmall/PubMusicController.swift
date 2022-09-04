@@ -442,7 +442,7 @@ extension PubMusicController: PhotoPickerControllerDelegate {
         
         pickerController.dismiss(animated: true, completion: nil)
         
-        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.6, videoExportPreset: nil, videoQuality: 5)
  
         result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {

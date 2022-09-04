@@ -30,7 +30,7 @@ class SuperManListController: BaseViewController,Requestable {
     
     
     func loadData(){
-        let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+        let requestParams = HomeAPI.tipOffListPathAndParams(type:type,type1:0, page: page, limit: pagenum)
         getRequest(pathAndParams: requestParams,showHUD:false)
 
     }

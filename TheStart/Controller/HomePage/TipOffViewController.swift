@@ -18,9 +18,13 @@ class TipOffViewController: BaseViewController,Requestable {
     var tableView:UITableView!
     
     var dataList = [TipOffModel]()
+    
+    var dataRecord = [TipOffModel]()
         
     var pubBtn:UIButton!
+    
     var type = 1
+    var type1 = 0 //嘿人嘿场类型
     
     var isFromMine = false
     var isMypub = false
@@ -82,7 +86,7 @@ class TipOffViewController: BaseViewController,Requestable {
     @objc func pubBtnClick(_ btn: UIButton){
  
         let controller = TipOffPostViewController()
-        controller.articleType = 1
+        controller.articleType = self.type
         controller.reloadBlock = {[weak self] () -> Void in
             self!.refreshList()
         }
@@ -96,8 +100,9 @@ class TipOffViewController: BaseViewController,Requestable {
         }else if isMyCollect{
         
         }else{
-            let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+            let requestParams = HomeAPI.tipOffListPathAndParams(type:type, type1:type1,page: page, limit: pagenum)
             getRequest(pathAndParams: requestParams,showHUD:true)
+ 
         }
        
      
@@ -114,13 +119,24 @@ class TipOffViewController: BaseViewController,Requestable {
         tableView.mj_header?.endRefreshing()
         tableView.mj_footer?.endRefreshing()
 
-        let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
+        if requestPath == HomeAPI.tipOffRecordPath{
+            let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
 
-        dataList.append(contentsOf: list)
-        if list.count < 10 {
-            self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            dataRecord.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+            self.tableView.reloadData()
+        }else{
+            let list:[TipOffModel]  = getArrayFromJson(content: responseResult)
+
+            dataList.append(contentsOf: list)
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
+      
     }
     
     func initTableView(){
@@ -169,10 +185,20 @@ class TipOffViewController: BaseViewController,Requestable {
     }
     
     @objc func refreshList() {
-        self.tableView.mj_footer?.resetNoMoreData()
-        dataList.removeAll()
-        page = 1
-        self.loadData()
+        
+        if isRecorde{
+            self.tableView.mj_footer?.resetNoMoreData()
+            dataRecord.removeAll()
+            page = 1
+            let requestParams = HomeAPI.tipOffRecordPathAndParams(page: page, limit: limit)
+            postRequest(pathAndParams: requestParams,showHUD:false)
+        }else{
+            self.tableView.mj_footer?.resetNoMoreData()
+            dataList.removeAll()
+            page = 1
+            self.loadData()
+        }
+       
     }
     
  
@@ -186,24 +212,27 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
         if isRecorde{
-            return 5
+            return dataRecord.count
         }else{
             return dataList.count
         }
         
+ 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if isRecorde{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TipOffRecordeCell", for: indexPath) as! TipOffRecordeCell
-            if indexPath.row/2 == 0{
-                cell.nameLbael.text = "红玫瑰酒吧"
-                cell.tipLabel.text = "嘿店"
-            }else{
-                cell.nameLbael.text = "MC老杨"
+            cell.nameLbael.text = dataRecord[indexPath.row].name
+            if dataRecord[indexPath.row].type1 == 1{
                 cell.tipLabel.text = "嘿人"
+            }else if dataRecord[indexPath.row].type1 == 2{
+                cell.tipLabel.text = "嘿店"
+            }else {
+                cell.tipLabel.text = "其他"
             }
+            
             cell.selectionStyle = .none
             return cell
         
@@ -225,30 +254,43 @@ extension TipOffViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          let controller = TipOffDetailViewController()
-         controller.dateID = dataList[indexPath.row].id
-         controller.isFromMine = self.isMypub
+        if isRecorde{
+            controller.dateID = dataRecord[indexPath.row].id
+        }else{
+            controller.dateID = dataList[indexPath.row].id
+        }
+          controller.isFromMine = self.isMypub
          self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 extension TipOffViewController:TipOffListHeadViewDelegate {
     func allBtnAction() {
         isRecorde = false
-        self.tableView.reloadData()
+        type1 = 0
+        refreshList()
     }
     
     func personBtnAction() {
         isRecorde = false
-        self.tableView.reloadData()
+        type1 = 1
+        refreshList()
     }
     
     func storebtnAction() {
         isRecorde = false
-        self.tableView.reloadData()
+        type1 = 2
+        refreshList()
     }
     
     func recordebtnAction() {
+        
         isRecorde = true
-        self.tableView.reloadData()
+        refreshList()
+        
+        
+       // self.tableView.reloadData()
+        
+        
     }
     
     

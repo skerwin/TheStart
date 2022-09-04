@@ -12,6 +12,7 @@ import MJRefresh
 import Reachability
 import SnapKit
 import WMZDialog
+import CoreMIDI
 
 class MusicDetailController: BaseViewController,Requestable{
     
@@ -39,14 +40,28 @@ class MusicDetailController: BaseViewController,Requestable{
     
     var dataCoinList = [DictModel]()
     var myCoins = ""
-    
     var isVipAuudio = false
     var isBought = false
-    
-    
     var isFromMine = false
-    
     var bgview:UIView!
+    
+    //评论相关
+    var selectedSection = 0
+    var commentList = [CommentModel]()
+    var dataCommentList = [Array<CommentModel>]()
+    var parentCommentID = -1
+    var parentComment = CommentModel()
+    var commentSection = 0
+    var addComment = false
+    var delCommet = false
+    var adjustFrame = false
+    var reportType = 1
+    var reportID = 0
+    var reportReason = ""
+    
+    var rightBarButton2:UIButton!
+ 
+    var delindex = IndexPath.init(row: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +72,7 @@ class MusicDetailController: BaseViewController,Requestable{
         initHeadView()
         //initFooterView(bought: isBought)
         initTableView()
+        loadComment()
         // Do any additional setup after loading the view.
     }
     func loadData(){
@@ -68,6 +84,13 @@ class MusicDetailController: BaseViewController,Requestable{
         getRequest(pathAndParams: requestParams,showHUD:false)
         
     }
+    
+    func loadComment(){
+       //print(page,limit)
+       let requestCommentParams = HomeAPI.audioComentListPathAndParams(audioId: dateID,page: page,limit: limit)
+       getRequest(pathAndParams: requestCommentParams,showHUD:false)
+   }
+   
     
     func createRightNavItem() {
         
@@ -84,7 +107,49 @@ class MusicDetailController: BaseViewController,Requestable{
         bgview.addSubview(rightBarButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
         
+        
+        bgview = UIView.init()
+        
+        if isFromMine{
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 0, y: 0, width: 28, height: 28)
+            bgview.frame = CGRect.init(x: 0, y: 0, width: 58, height: 28)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+            bgview.addSubview(rightBarButton)
+        }else{
+             bgview.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
+            
+            rightBarButton = UIButton.init()
+            rightBarButton.frame = CGRect.init(x: 46, y: 8, width: 28, height: 28)
+            rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
+            rightBarButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton.setTitleColor(.darkGray, for: .normal)
+            rightBarButton.setBackgroundImage(UIImage.init(named: "shoucangs"), for: .normal)
+ 
+            rightBarButton2 = UIButton.init()
+            rightBarButton2.frame = CGRect.init(x: 0, y: 8, width: 28, height:28)
+            rightBarButton2.setImage(UIImage.init(named: "pl"), for: .normal)
+            rightBarButton2.addTarget(self, action: #selector(rightNavBtnClick2(_:)), for: .touchUpInside)
+            rightBarButton2.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            rightBarButton2.setTitleColor(.darkGray, for: .normal)
+            bgview.addSubview(rightBarButton)
+            bgview.addSubview(rightBarButton2)
+        }
+         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: bgview)
+        
     }
+    
+    
+    @objc func rightNavBtnClick2(_ btn: UIButton){
+        self.adjustFrame = true
+        commentSection = 0
+        parentCommentID = 0
+        parentComment = CommentModel()
+        commentBarVC.barView.inputTextView.becomeFirstResponder()
+        
+    }
+    
     
     @objc func rightNavBtnClic(_ btn: UIButton){
  
@@ -110,6 +175,7 @@ class MusicDetailController: BaseViewController,Requestable{
       
     }
     func changeCollectBtn(){
+        
         
         if isFromMine{
             rightBarButton.setBackgroundImage(UIImage.init(named: ""), for: .normal)
@@ -139,7 +205,74 @@ class MusicDetailController: BaseViewController,Requestable{
         
         super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
         
-        if requestPath == HomeAPI.audioCollectPath{
+        
+        if requestPath == HomeAPI.audioAddComentPath{
+            showOnlyTextHUD(text: "评论成功")
+            addComment = true
+            addRefresh()
+        }
+        else if requestPath == HomeAPI.audioComentDelPath{
+            showOnlyTextHUD(text: "删除成功")
+            delCommet = true
+            addRefresh()
+        }
+        
+        else if requestPath.containsStr(find: HomeAPI.audioComentListPath){
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
+            let list:[CommentModel]  = getArrayFromJson(content: responseResult)
+            commentList.append(contentsOf: list)
+            for cModel in list {
+                var tempList = [CommentModel]()
+                tempList.append(cModel)
+                if cModel.children_count != 0 {
+                    for subModel in cModel.children {
+                        tempList.append(subModel)
+                    }
+                }
+                dataCommentList.append(tempList)
+            }
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+            self.tableView.reloadData()
+            if commentSection == 0 {
+                if addComment || delCommet{
+                    if limit != 10{
+                        let indexPath = IndexPath.init(row: 0, section: 1)
+                        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+                        addComment = false
+                        delCommet = false
+                    }
+                }
+                
+            }else{
+                
+                if delCommet {
+                    if self.delindex.section != 0 {
+                        //删回复
+                        var row = 0
+                        row = self.delindex.row - 1
+                        let indexPath = IndexPath.init(row: row, section: commentSection)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }else{
+                        let row = 0
+                        let indexPath = IndexPath.init(row: row, section: commentSection - 1)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }
+                    
+                    
+                }else if addComment{
+                    let row = dataCommentList[commentSection - 1].count - 1
+                    let indexPath = IndexPath.init(row: row, section: commentSection)
+                    tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    addComment = false
+                }
+            }
+        }else if requestPath == HomeAPI.reportPath{
+             showOnlyTextHUD(text: "投诉成功，将尽快处理")
+            
+        }else if requestPath == HomeAPI.audioCollectPath{
             isCollect = responseResult["if_collect"].intValue
             changeCollectBtn()
             showOnlyTextHUD(text: "收藏成功")
@@ -226,12 +359,25 @@ class MusicDetailController: BaseViewController,Requestable{
                     tableView.tableFooterView = footerBgView
                 }
             }
-            
-            
+         }
+      }
+    
+    lazy var commentBarVC: CommentBarController = { [unowned self] in
+        let barVC = CommentBarController()
+        self.view.addSubview(barVC.view)
+        barVC.view.snp.makeConstraints { (make) in
+            make.left.right.width.equalTo(self.view)
+            if iphoneXOrIphoneX11 {
+                //make.bottom.equalTo(self.view.snp.bottom).offset(-distance)
+                make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
+            }else{
+                make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
+            }
+            make.height.equalTo(ZChatBarOriginHeight)
         }
-        
-        
-    }
+        barVC.delegate = self
+        return barVC
+    }()
     
     func buySuccess(){
         isBought = true
@@ -279,6 +425,8 @@ class MusicDetailController: BaseViewController,Requestable{
                 footerBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 85))
                 footerBgView.addSubview(footerView)
                 footerBgView.backgroundColor = UIColor.clear
+                
+                
                 
             }else{
                 if isBought{
@@ -331,6 +479,16 @@ class MusicDetailController: BaseViewController,Requestable{
         tableView.registerNibWithTableViewCellName(name: WorkerImgCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: WorkerInfoCell.nameOfClass)
         tableView.registerNibWithTableViewCellName(name: WorkerVideoCell.nameOfClass)
+        tableView.registerNibWithTableViewCellName(name: reCommentCell.nameOfClass)
+        tableView.registerNibWithTableViewCellName(name: CommentCell.nameOfClass)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        let addressHeadRefresh = GmmMJRefreshGifHeader(refreshingTarget: self, refreshingAction: #selector(refreshList))
+        tableView.mj_header = addressHeadRefresh
+        
+        let footerRefresh = GmmMJRefreshAutoGifFooter(refreshingTarget: self, refreshingAction: #selector(pullRefreshList))
+        tableView.mj_footer = footerRefresh
         
         self.tableView.tableHeaderView = headerBgView
         tableView.tableFooterView = footerBgView
@@ -419,7 +577,6 @@ class MusicDetailController: BaseViewController,Requestable{
                         lookInfoView.linkTv.text = dataModel?.link
                         lookInfoView.codeTv.text = dataModel?.code
                     }
-                 
                     
                     let lookInfoBgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth - 50, height: 200))
                     lookInfoBgView.backgroundColor = UIColor.clear
@@ -457,6 +614,132 @@ class MusicDetailController: BaseViewController,Requestable{
                 self.present(noticeView, animated: true, completion: nil)
             }
         }
+    }
+    
+    
+    @objc func refreshList() {
+        self.tableView.mj_footer?.resetNoMoreData()
+        commentList.removeAll()
+        dataCommentList.removeAll()
+        commentSection = 0
+        parentCommentID = 0
+        parentComment = CommentModel()
+        
+        limit = 10
+        page = 1
+        self.loadComment()
+    }
+    
+    @objc func pullRefreshList() {
+        if limit == 10{
+            page = page + 1
+        }else{
+            page = limit/10 + 1
+        }
+        limit = 10
+        self.loadComment()
+    }
+    
+    func addRefresh(){
+        self.tableView.mj_footer?.resetNoMoreData()
+        commentList.removeAll()
+        dataCommentList.removeAll()
+        if page != 1{
+            limit = page * 10
+        }
+        page = 1
+        self.loadComment()
+        
+    }
+    
+    func savemessage(text:String){
+        
+        if (text.hasEmoji()) {
+            showOnlyTextHUD(text: "不支持发送表情")
+            return
+            // message = message!.disable_emoji(text: message! as NSString)
+        }
+        
+        if (text.containsEmoji()) {
+            showOnlyTextHUD(text: "不支持发送表情")
+            return
+            // message = message!.disable_emoji(text: message! as NSString)
+        }
+        if text.isEmptyStr()  {
+            showOnlyTextHUD(text: "评论内容不能为空")
+            return
+        }
+        
+        var cModel = CommentModel()
+        cModel?.audio_id = self.dateID
+        cModel?.comment = text
+        if parentCommentID != -1{
+            cModel?.rid = parentCommentID
+            cModel?.uid = parentComment!.uid
+        }else{
+            cModel?.rid = 0
+        }
+        
+        
+        let requestParams = HomeAPI.audioAddComentPathAndParams(model: cModel!, isTopComment: true)
+        postRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+    
+    func commentDelete(delrid:Int){
+        let requestParams = HomeAPI.audioComentDelPathAndParams(rid: delrid)
+        postRequest(pathAndParams: requestParams,showHUD:false)
+        
+    }
+    
+    
+    func reportContent(){
+        delay(second: 1) { [self] in
+            showOnlyTextHUD(text: "投诉成功，将尽快处理")
+        }
+        
+       // let requestParams = HomeAPI.reportPathAndParams(articleId: reportID, type: reportType, reason: reportReason, remark: "我要举报")
+       // postRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+    
+    // MARK: 重置barView的位置
+    func resetChatBarFrame() {
+        
+        commentBarVC.resetKeyboard()
+        UIApplication.shared.keyWindow?.endEditing(true)
+        commentBarVC.view.snp.updateConstraints { (make) in
+            make.bottom.equalTo(self.view.snp.bottom).offset(ZChatBarOriginHeight)
+        }
+        UIView.animate(withDuration: kKeyboardChangeFrameTime, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func didRecommetnClick() {
+        
+        let acVC = ActionSheetViewController(cellTitleList: ["垃圾广告", "不良信息","骚扰信息"])!
+        acVC.valueBlock = { index in
+            if index == 0{
+                self.reportReason = "垃圾广告"
+            }else if index == 0{
+                self.reportReason = "低俗色情"
+            }else{
+                self.reportReason = "骚扰信息"
+            }
+            
+        }
+        acVC.confirmBlock = {
+            if self.reportReason == ""{
+                self.showOnlyTextHUD(text: "请选择投诉原因")
+            }
+            self.reportContent()
+        }
+        acVC.cellTitleColor = UIColor.darkGray
+        acVC.cellTitleFont = 16
+        acVC.titleString = "选择投诉原因"
+        present(acVC, animated: false, completion:  nil)
+        
     }
    
 }
@@ -497,9 +780,7 @@ extension MusicDetailController:BuyBtnViewDelegate {
 }
 extension MusicDetailController:ChatBtnViewDelegate {
     func sumbitAction() {
-        
-        
-        if checkMarketVer(){
+         if checkMarketVer(){
             lookInfo()
         }else{
 //            if getAcctount() == "18153684982"{
@@ -517,56 +798,262 @@ extension MusicDetailController:ChatBtnViewDelegate {
 extension MusicDetailController:UITableViewDataSource,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataCommentList.count + 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: notifyModelList.count ,isdisplay: true)
         
-        if dataModel?.name == ""{
-            return 0
+        if section == 0{
+            if dataModel?.name == ""{
+                return 0
+            }
+            if dataModel?.audio_path == "" && dataModel?.images.count == 0{
+                return 1
+            }
+            
+            if dataModel?.audio_path == "" || dataModel?.images.count == 0{
+                return 2
+            }
+            
+            return 3
+        }else{
+            return dataCommentList[section - 1].count
         }
-        if dataModel?.audio_path == "" && dataModel?.images.count == 0{
-            return 1
-        }
-        
-        if dataModel?.audio_path == "" || dataModel?.images.count == 0{
-            return 2
-        }
-        
-        return 3
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+ 
+            let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
+            hv.backgroundColor = ZYJColor.main
+            return hv
+     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+       
+            return 0.5
+     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        
+        if section == 0{
+            if dataCommentList.count > 0{
+                let sectionView = Bundle.main.loadNibNamed("TipOffCommentHeaderView", owner: nil, options: nil)!.first as! TipOffCommentHeaderView
+                sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 25)
+                let bgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 25))
+                bgView.addSubview(sectionView)
+                return bgView
+            }else{
+                let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
+                hv.backgroundColor = ZYJColor.main
+                return hv
+            }
+           
+        }else{
+            let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
+            hv.backgroundColor = ZYJColor.main
+            return hv
+         }
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+
+        if section == 0{
+            if dataCommentList.count > 0{
+                return 25
+            }else{
+                return 0.5
+            }
+            
+        }else{
+            return 0.5
+        }
+ 
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        if indexPath.row == 0{
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
-            cell.selectionStyle = .none
-            cell.configAudioCell(model: dataModel!)
-            return cell
-            
-        }else if indexPath.row == 1{
-            if dataModel?.images.count == 0 {
+        let section = indexPath.section
+        let row = indexPath.row
+        if indexPath.section == 0{
+            if indexPath.row == 0{
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerInfoCell", for: indexPath) as! WorkerInfoCell
+                cell.selectionStyle = .none
+                cell.configAudioCell(model: dataModel!)
+                return cell
+                
+            }else if indexPath.row == 1{
+                if dataModel?.images.count == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
+                    cell.selectionStyle = .none
+                    cell.configAudioCell(model: dataModel!)
+                    return cell
+                }else{
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
+                    cell.selectionStyle = .none
+                    cell.configAudioCell(model: dataModel!)
+                    return cell
+                }
+            }else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
                 cell.selectionStyle = .none
                 cell.configAudioCell(model: dataModel!)
                 return cell
-            }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerImgCell", for: indexPath) as! WorkerImgCell
+            }
+        }else{
+            let modelList = dataCommentList[section - 1]
+            if (modelList[row].rid) == 0{
+                let section = indexPath.section
+                let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.nameOfClass) as! CommentCell
                 cell.selectionStyle = .none
-                cell.configAudioCell(model: dataModel!)
+                cell.parentNavigationController = self.navigationController
+                cell.sectoin = section
+                cell.delegeta = self
+                cell.model = modelList[indexPath.row]
+                let childArr = modelList[row].children
+                if childArr.count != 0{
+                    cell.lineView.isHidden = true
+                }else{
+                    cell.lineView.isHidden = false
+                }
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reCommentCell", for: indexPath) as! reCommentCell
+                cell.selectionStyle = .none
+                cell.parentNavigationController = self.navigationController
+                cell.delegeta = self
+                cell.indexpath = indexPath
+                cell.model = modelList[indexPath.row]
                 return cell
             }
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkerVideoCell", for: indexPath) as! WorkerVideoCell
-            cell.selectionStyle = .none
-            cell.configAudioCell(model: dataModel!)
-            return cell
         }
+ 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+     }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if adjustFrame{
+            resetChatBarFrame()
+        }
+     }
+}
+extension MusicDetailController:ReCommentCellDelegate{
+    //回复
+    func reComplainActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath){
+        
+        commentSection = index.section
+        let modelList = dataCommentList[commentSection - 1]
+        let tempm = modelList[index.row]
+        parentCommentID = tempm.rid
+        parentComment = tempm
+        self.adjustFrame = true
+        commentBarVC.barView.inputTextView.becomeFirstResponder()
+    }
+    //举报和删除
+    func redelActiion(cmodel:CommentModel,onView:UIButton,index:IndexPath){
+        
+        
+        if (cmodel.uid == getUserId()){
+            commentSection = index.section
+            let modelList = dataCommentList[commentSection - 1]
+            let tempm = modelList[index.row]
+            parentCommentID = tempm.rid
+            parentComment = tempm
+            
+            delindex = index
+            self.adjustFrame = true
+            
+            let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                self.commentDelete(delrid: cmodel.id)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            commentSection = index.section
+            reportType = 2
+            let modelList = dataCommentList[commentSection - 1]
+            let tempm = modelList[index.row]
+            reportID = tempm.id
+            self.adjustFrame = true
+            didRecommetnClick()
+        }
         
     }
+    
+    
+    
+}
+extension MusicDetailController:CommentCellDelegate{
+    
+    //举报和删除
+    func complainActiion(cmodel: CommentModel, section: Int) {
+        
+        if (cmodel.uid == getUserId()){
+            commentSection = section
+            parentCommentID = cmodel.id
+            parentComment = cmodel
+            self.adjustFrame = true
+            
+            let noticeView = UIAlertController.init(title: "", message: "您确定要删除此条评论么", preferredStyle: .alert)
+            noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { [self] (action) in
+                self.commentDelete(delrid: cmodel.id)
+            }))
+            noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(noticeView, animated: true, completion: nil)
+        }else{
+            reportType = 2
+            reportID = commentList[section - 1].id
+            self.adjustFrame = true
+            didRecommetnClick()
+        }
+    }
+    //回复
+    func commentACtion(cmodel: CommentModel, section: Int) {
+        commentSection = section
+        parentCommentID = cmodel.id
+        parentComment = cmodel
+        self.adjustFrame = true
+        commentBarVC.barView.inputTextView.becomeFirstResponder()
+    }
+}
+
+extension MusicDetailController:CommentBarControllerDelegate{
+    func commentBarGood() {
+        
+    }
+    func sendMessage(messge: String) {
+        self.savemessage(text: messge)
+        adjustFrame = true
+        resetChatBarFrame()
+        adjustFrame = false
+    }
+    
+    
+    func commentBarUpdateHeight(height: CGFloat) {
+        commentBarVC.view.snp.updateConstraints { (make) in
+            make.height.equalTo(height)
+        }
+    }
+    func commentBarVC(commentBarVC: CommentBarController, didChageChatBoxBottomDistance distance: CGFloat) {
+        
+        commentBarVC.view.snp.updateConstraints { (make) in
+            make.bottom.equalTo(self.view.snp.bottom).offset(-distance)
+        }
+        UIView.animate(withDuration: kKeyboardChangeFrameTime, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.view.layoutIfNeeded()
+        
+        //self.tableView.scrollToRow(at: IndexPath(row: 0, section:selectedSection), at: .bottom, animated: true)
+    }
+    
 }

@@ -158,6 +158,10 @@ struct HomeAPI {
         if model.type == 3{
             paramsDictionary["clarify_id"] = model.clarify_id as AnyObject
         }
+        if model.type == 1{
+            paramsDictionary["type1"] = model.type1 as AnyObject
+            paramsDictionary["name"] = model.name as AnyObject
+        }
         return (addTipOffPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
@@ -174,16 +178,34 @@ struct HomeAPI {
     
     //黑人/澄清列表
     static let tipOffListPath = "/api/article/list"
-    static func tipOffListPathAndParams(type:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {
+    static func tipOffListPathAndParams(type:Int,type1:Int,page:Int = 1,limit:Int = 10) -> PathAndParams {
         
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["type"] = type as AnyObject
         paramsDictionary["page"] = page as AnyObject
         paramsDictionary["limit"] = limit as AnyObject
         
+        if type == 1{
+            paramsDictionary["type1"] = type1 as AnyObject
+        }
+        
+        
         let urlPath = generateUrlWithParams(paramsDictionary,path: tipOffListPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
+    
+    //嘿人记录表
+    static let tipOffRecordPath = "/api/article/record"
+    static func tipOffRecordPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+        
+        return (tipOffRecordPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+
+    }
+    
     
     //黑人/澄清详情
     static let tipOffDetailsPath = "/api/article/details/"
@@ -305,17 +327,7 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
     
-    //添加评论
-    static let addComentPath = "/api/article/comment"
-    static func addComentPathAndParams(model:CommentModel,isTopComment:Bool = false) -> PathAndParams {
-        
-        var paramsDictionary = Dictionary<String, AnyObject>()
-        paramsDictionary["article_id"] = model.article_id as AnyObject
-        paramsDictionary["comment"] = model.comment as AnyObject
-        paramsDictionary["rid"] = model.rid as AnyObject
-        paramsDictionary["ruid"] = model.uid as AnyObject
-        return (addComentPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
-    }
+  
     //评论列表
     static let comentListPath = "/api/article/comment_list/"
     static func comentListPathAndParams(articleId:Int,page:Int = 1,limit:Int = 10,order:String = "add_time") -> PathAndParams {
@@ -329,6 +341,7 @@ struct HomeAPI {
         urlPath = generateUrlWithParams(paramsDictionary,path: urlPath)
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
+  
     
     //根据评论查回复列表
     static let comentSectionListPath = "/api/article/reply_list"
@@ -346,6 +359,88 @@ struct HomeAPI {
         var paramsDictionary = Dictionary<String, AnyObject>()
         paramsDictionary["rid"] = rid as AnyObject
         return (comentDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+ 
+    //添加评论
+    static let addComentPath = "/api/article/comment"
+    static func addComentPathAndParams(model:CommentModel,isTopComment:Bool = false) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["article_id"] = model.article_id as AnyObject
+        paramsDictionary["comment"] = model.comment as AnyObject
+        paramsDictionary["rid"] = model.rid as AnyObject
+        paramsDictionary["ruid"] = model.uid as AnyObject
+        return (addComentPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //商店评论列表
+    static let shopComentListPath = "/api/shop/comment_list/"
+    static func shopComentListPathAndParams(shopId:Int,page:Int = 1,limit:Int = 10,order:String = "add_time") -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+        paramsDictionary["order"] = order as AnyObject
+ 
+        var urlPath = shopComentListPath + "\(shopId)"
+        urlPath = generateUrlWithParams(paramsDictionary,path: urlPath)
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    //商店添加评论
+    static let shopAddComentPath = "/api/shop/comment"
+    static func shopAddComentPathAndParams(model:CommentModel,isTopComment:Bool = false) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["shop_id"] = model.shop_id as AnyObject
+        paramsDictionary["comment"] = model.comment as AnyObject
+        paramsDictionary["rid"] = model.rid as AnyObject
+        paramsDictionary["ruid"] = model.uid as AnyObject
+        return (shopAddComentPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //商店删除评论
+    static let shopComentDelPath = "/api/shop/comment_del"
+    static func shopComentDelPathAndParams(rid:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["rid"] = rid as AnyObject
+        return (shopComentDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //音乐论列表
+    static let audioComentListPath = "/api/audio/comment_list/"
+    static func audioComentListPathAndParams(audioId:Int,page:Int = 1,limit:Int = 10,order:String = "add_time") -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+        paramsDictionary["order"] = order as AnyObject
+ 
+        var urlPath = audioComentListPath + "\(audioId)"
+        urlPath = generateUrlWithParams(paramsDictionary,path: urlPath)
+        return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
+    }
+    
+    //音乐添加评论
+    static let audioAddComentPath = "/api/audio/comment"
+    static func audioAddComentPathAndParams(model:CommentModel,isTopComment:Bool = false) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["audio_id"] = model.audio_id as AnyObject
+        paramsDictionary["comment"] = model.comment as AnyObject
+        paramsDictionary["rid"] = model.rid as AnyObject
+        paramsDictionary["ruid"] = model.uid as AnyObject
+        return (audioAddComentPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //音乐删除评论
+    static let audioComentDelPath = "/api/audio/comment_del"
+    static func audioComentDelPathAndParams(rid:Int) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["rid"] = rid as AnyObject
+        return (audioComentDelPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
     
     //jubao
@@ -824,6 +919,48 @@ struct HomeAPI {
    
           return (goodsInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
+   
+    
+    //商家列表
+    static let shopListPath = "/api/shop_list"
+    static func shopListPathAndParams(page:Int = 1,limit:Int = 10) -> PathAndParams {
+        
+        var paramsDictionary = Dictionary<String, AnyObject>()
+        paramsDictionary["page"] = page as AnyObject
+        paramsDictionary["limit"] = limit as AnyObject
+   
+         return (shopListPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //商家详情
+    static let shopInfoPath = "/api/shop_info"
+    static func shopInfoPathAndParams(id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["id"] = id as AnyObject
+          return (shopInfoPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+ 
+    //商家助力
+    static let shopPrestigePath = "/api/shop_prestige"
+    static func shopPrestigePathAndParams(shop_id:Int) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["shop_id"] = shop_id as AnyObject
+   
+          return (shopPrestigePath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
+    
+    //点赞关注
+    static let shopLikeFollowPath = "/api/shop_like_follow"
+    static func shopLikeFollowPathAndParams(shop_id:Int,type:String) -> PathAndParams {
+        
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          paramsDictionary["shop_id"] = shop_id as AnyObject
+          paramsDictionary["type"] = type as AnyObject
+   
+          return (shopLikeFollowPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+    }
     
     //商品下单
     static let orderAddPath = "/api/goods/order_add"
@@ -836,8 +973,7 @@ struct HomeAPI {
    
           return (orderAddPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
     }
-    
-    
+ 
     
     
     //商品订单列表

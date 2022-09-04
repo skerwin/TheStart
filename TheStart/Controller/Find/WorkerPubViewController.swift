@@ -625,7 +625,7 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
  
         
         pickerController.dismiss(animated: true, completion: nil)
-        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.6, videoExportPreset: nil, videoQuality: 6)
  
         result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {
@@ -895,7 +895,12 @@ extension WorkerPubViewController:ActionSheetCustomPickerDelegate,UIPickerViewDe
                 }
                 
             }
-            headView.addressTypeText.text = province + city
+            if (province == "不限"){
+                headView.addressTypeText.text = city
+            }else{
+                headView.addressTypeText.text = province + city
+            }
+            
         }
    
         

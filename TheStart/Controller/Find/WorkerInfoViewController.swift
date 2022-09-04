@@ -151,8 +151,8 @@ class WorkerInfoViewController: BaseViewController,Requestable {
     func shareInfoWithPlatform(platform:JSHAREPlatform){
         let message = JSHAREMessage.init()
        // let dateString = DateUtils.dateToDateString(Date.init(), dateFormat: "yyy-MM-dd HH:mm:ss")
-        message.title = "测试分享"
-        message.text = "这是分享内容"
+        message.title = dataModel?.title
+        message.text = dataModel?.detail
         message.platform = platform
         message.mediaType = .link;
         message.url = dataModel?.link_url

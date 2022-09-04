@@ -29,38 +29,26 @@ class PhotoBrowserViewController: BaseViewController, UICollectionViewDataSource
     
     var row_Count: Int = UIDevice.current.userInterfaceIdiom == .pad ? 5 : 3
     var previewAssets: [PhotoAsset] = []
+    
+    var images = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo Browser"
-        view.backgroundColor = .white
+        title = "图片浏览"
+        view.backgroundColor = ZYJColor.main
         view.addSubview(collectionView)
         
-        let networkVideoURL = URL.init(string: "http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/IMG_3385.MP4")!
-        let networkVideoAsset = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL))
-        previewAssets.append(networkVideoAsset)
-        
-        let networkVideoURL1 = URL.init(string: "http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/picker_examle_video.mp4")!
-        let networkVideoAsset1 = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL1))
-        previewAssets.append(networkVideoAsset1)
-        
-        #if canImport(Kingfisher)
-        let networkImageURL = URL.init(string: "https://wx4.sinaimg.cn/large/a6a681ebgy1gojng2qw07g208c093qv6.gif")!
-        let networkImageAsset = PhotoAsset.init(networkImageAsset: NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL)) // swiftlint:disable:this line_length
-        previewAssets.append(networkImageAsset)
-        #endif
-        
-        if let filePath = Bundle.main.path(forResource: "picker_example_gif_image", ofType: "GIF") {
-            let gifAsset = PhotoAsset.init(localImageAsset: .init(imageURL: URL.init(fileURLWithPath: filePath)))
-            previewAssets.append(gifAsset)
+        previewAssets.removeAll()
+        let itemWidth = 250
+        for imageV in images {
+            if imageV != ""{
+               let networkImageURL = URL.init(string: imageV)!
+                let netImg = NetworkImageAsset.init(thumbnailURL: networkImageURL, originalURL: networkImageURL, thumbnailSize: CGSize.init(width: itemWidth, height: itemWidth), placeholder: nil, imageSize: CGSize.init(width: itemWidth, height: itemWidth), fileSize: 0)
+                let networkImageAsset = PhotoAsset.init(networkImageAsset: netImg) // swiftlint:disable:this line_length
+               previewAssets.append(networkImageAsset)
+            }
         }
-        if let filePath = Bundle.main.path(forResource: "videoeditormatter", ofType: "MP4") {
-            let videoAsset = PhotoAsset.init(localVideoAsset: .init(videoURL: URL.init(fileURLWithPath: filePath)))
-            previewAssets.append(videoAsset)
-        }
-        
-        let networkVideoURL2 = URL.init(string: "http://tsnrhapp.oss-cn-hangzhou.aliyuncs.com/chartle/395826883-1-208.mp4")! // swiftlint:disable:this line_length
-        let networkVideoAsset2 = PhotoAsset.init(networkVideoAsset: .init(videoURL: networkVideoURL2))
-        previewAssets.append(networkVideoAsset2)
+ 
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

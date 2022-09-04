@@ -32,7 +32,7 @@ class ClarifyViewController: BaseViewController,Requestable {
             let requestParams = HomeAPI.clarifyListPathAndParams(clarify_id: clarifyId, page: page, limit: pagenum)
             postRequest(pathAndParams: requestParams, showHUD: true)
         }else{
-            let requestParams = HomeAPI.tipOffListPathAndParams(type:type, page: page, limit: pagenum)
+            let requestParams = HomeAPI.tipOffListPathAndParams(type:type,type1:0, page: page, limit: pagenum)
             getRequest(pathAndParams: requestParams,showHUD:true)
         }
     }

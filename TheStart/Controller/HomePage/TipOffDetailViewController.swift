@@ -777,12 +777,15 @@ extension TipOffDetailViewController:TipOffBottomViewDelegate{
                 self!.adjustFrame = false
             }
             self.navigationController?.pushViewController(controller, animated: true)
-        }else{
+        }else if dataModel?.type == 3{
             let controller = TipOffDetailViewController()
             controller.dateID = dataModel!.clarify_id
             self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            self.shareView.show(withContentType: JSHAREMediaType(rawValue: 3)!)
         }
-       
+        
+
     }
     
     func commentViewAction() {

@@ -143,6 +143,9 @@
                                     <state key="normal" title="嘿人" image="quanNO">
                                         <color key="titleColor" systemColor="systemGray6Color"/>
                                     </state>
+                                    <connections>
+                                        <action selector="heiRenAction:" destination="bFB-cu-3EP" eventType="touchUpInside" id="N6j-mV-H2f"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWT-xy-Ti0">
                                     <rect key="frame" x="337" y="12" width="60" height="30"/>
@@ -155,6 +158,9 @@
                                     <state key="normal" title="嘿场" image="quanYES">
                                         <color key="titleColor" systemColor="systemGray6Color"/>
                                     </state>
+                                    <connections>
+                                        <action selector="heiChangAction:" destination="bFB-cu-3EP" eventType="touchUpInside" id="qvJ-Ny-eGg"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
@@ -241,6 +247,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addrerssLabel" destination="IJK-da-mbp" id="IUW-pR-8oK"/>
+                <outlet property="heiChangBtn" destination="rWT-xy-Ti0" id="J42-Db-b1n"/>
+                <outlet property="hieRenBtn" destination="RSB-mW-OHa" id="Afe-PU-50q"/>
+                <outlet property="nameLabel" destination="osG-ht-GNx" id="x8t-El-1Pf"/>
                 <outlet property="titleLabel" destination="qkR-9l-aMd" id="XVB-gW-de5"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="263.83928571428572"/>

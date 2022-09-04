@@ -65,28 +65,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         
         JSHAREService.handleOpen(url)
-        return PaySDK.instance.handleOpenURL(url)
+        let result = PaySDK.instance.handleOpenURL(url)
+        return result
+         
     }
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
-         JSHAREService.handleOpen(url)
-         return PaySDK.instance.handleOpenURL(url)
-    }
+        JSHAREService.handleOpen(url)
+        let result = PaySDK.instance.handleOpenURL(url)
+        return result
+     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-         JSHAREService.handleOpen(url)
-         return PaySDK.instance.handleOpenURL(url)
+        let result = PaySDK.instance.handleOpenURL(url)
+        JSHAREService.handleOpen(url)
+        return result
+         
     }
     
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         
         JSHAREService.handleOpen(userActivity.webpageURL)
-        
-        return WXApi.handleOpenUniversalLink(userActivity, delegate: PaySDK.instance)
-    }
+        let result = WXApi.handleOpenUniversalLink(userActivity, delegate: PaySDK.instance)
+        return result
+     }
     
  
  }

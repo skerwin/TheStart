@@ -26,7 +26,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="5K5-rN-mML" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Qrf-VK-aiE"/>
                     <constraint firstItem="5K5-rN-mML" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fEL-Kd-Vu3"/>

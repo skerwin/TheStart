@@ -42,6 +42,10 @@ struct TipOffModel : Mappable {
     var cai = 0
     var operType = ""
     
+    
+    var type1 = 1 //黑人黑场类型
+    var name = "" //嘿人嘿场名称
+    
     init?(map: Map) {
         
     }
@@ -49,6 +53,10 @@ struct TipOffModel : Mappable {
         
     }
     mutating func mapping(map: Map) {
+        
+        
+        type1 <- map["type1"]
+        name <- map["name"]
         
         cai <- map["cai"]
         is_cai <- map["is_cai"]

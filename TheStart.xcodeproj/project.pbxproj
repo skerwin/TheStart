@@ -592,6 +592,7 @@
 		B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B80512283E0B1300EB9109 /* addressListCell.xib */; };
 		B8B80516283E0B8500EB9109 /* addressDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80515283E0B8500EB9109 /* addressDetailController.swift */; };
 		B8BFA6B72850A70000F5F41B /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */; };
+		B8DA023E28BB4ACE00C6B724 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA023D28BB4ACE00C6B724 /* StoreModel.swift */; };
 		B8EA4B11286A98ED005E2111 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */; };
 		B8EC0CDD28B2653E0066A740 /* MyHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */; };
 		B8EC0CDF28B2660E0066A740 /* PersonHomePageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC0CDE28B2660E0066A740 /* PersonHomePageHeader.swift */; };
@@ -1252,6 +1253,7 @@
 		B8B80515283E0B8500EB9109 /* addressDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressDetailController.swift; sourceTree = "<group>"; };
 		B8BFA6B42850A70000F5F41B /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
 		B8BFA6B52850A70000F5F41B /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
+		B8DA023D28BB4ACE00C6B724 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		B8EA4B10286A98ED005E2111 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		B8EC0CDC28B2653E0066A740 /* MyHomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomePageController.swift; sourceTree = "<group>"; };
 		B8EC0CDE28B2660E0066A740 /* PersonHomePageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHomePageHeader.swift; sourceTree = "<group>"; };
@@ -2081,6 +2083,7 @@
 				B839AF65283F7E4C00C9B25C /* CashOutModel.swift */,
 				B8B804F6283CF97E00EB9109 /* OrderModel.swift */,
 				B839AF57283E13E400C9B25C /* AddressModel.swift */,
+				B8DA023D28BB4ACE00C6B724 /* StoreModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2962,6 +2965,7 @@
 				B81C4DA328601D6B0005AFF2 /* VipCenterViewControllerCxsdcontentExt.swift in Sources */,
 				B8AB69E52809277E0064861C /* CommemtFooerLineView.swift in Sources */,
 				B81C4D2728601D6B0005AFF2 /* MyToPubControllerCxsdcontentExt.swift in Sources */,
+				B8DA023E28BB4ACE00C6B724 /* StoreModel.swift in Sources */,
 				B85FAF89280E9C4F00D25B66 /* MuiscListController.swift in Sources */,
 				B8AC50922807CF6B00C2CF26 /* NSObject.swift in Sources */,
 				B83C6383280CFC6100A3282D /* WorkerVideoCell.swift in Sources */,
@@ -3381,10 +3385,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aiping Ye (QP49MR7HV8)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 64Z8QMKT5M;
+				DEVELOPMENT_TEAM = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
@@ -3406,7 +3410,7 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = DevYE20220903;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3425,10 +3429,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: XIAOJING ZHAO (87U89NSCGF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aiping Ye (QP49MR7HV8)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 64Z8QMKT5M;
+				DEVELOPMENT_TEAM = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
@@ -3450,7 +3454,7 @@
 				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = dev20220512ProFile;
+				PROVISIONING_PROFILE_SPECIFIER = DevYE20220903;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

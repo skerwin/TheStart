@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "浏览(1).png",
+      "filename" : "pl.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "浏览.png",
+      "filename" : "pl@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "浏览(2).png",
+      "filename" : "pl@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

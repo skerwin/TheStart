@@ -80,9 +80,16 @@ struct UserModel: Mappable {
     
     var if_open = 0
     
+    var audio_score = 0
+    var integral = 0
     
     
     mutating func mapping(map: Map) {
+        
+        
+        audio_score <- map["audio_score"]
+        integral <- map["integral"]
+        
         
         vip_time <- map["vip_time"]
         if_open <- map["if_open"]

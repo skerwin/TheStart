@@ -39,9 +39,9 @@ struct HttpRequest {
  
         var request: DataRequest?
         print("请求数据：")
-        //print(Url!.absoluteString)
+        print(Url!.absoluteString)
         let parametersJson = JSON(parameters!)
-       // print(parametersJson)
+        print(parametersJson)
         
         let token = getToken()
         if token == "" && HomeAPI.userinfoPath == requestPath{//除登录外的
@@ -64,7 +64,7 @@ struct HttpRequest {
             let result = response.result
             switch result {
             case .success:
-                //print("响应数据：")
+                print("响应数据：")
                 guard let dict = response.value else {
                     DialogueUtils.dismiss()
                     completionHandler(.Failure(JSON(["code":"100888"])))

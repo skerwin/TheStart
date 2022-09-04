@@ -25,6 +25,7 @@ class TipOffPostViewController: BaseViewController,Requestable {
     var tipOffID = 0
     var articleType = 1
     
+    var postType = 0
     
     var reloadBlock:(() -> Void)?
     
@@ -58,6 +59,9 @@ class TipOffPostViewController: BaseViewController,Requestable {
     var config: PickerConfiguration = PhotoTools.getWXPickerConfig(isMoment: true)
     var rightBarButton:UIButton!
     
+    
+
+    
     var canSetAddCell: Bool {
         if selectedAssets.count == config.maximumSelectedCount &&
             config.maximumSelectedCount > 0 {
@@ -72,8 +76,10 @@ class TipOffPostViewController: BaseViewController,Requestable {
         self.edgesForExtendedLayout = []
         if articleType == 1{
             self.title = "嘿人信息"
-        }else{
+        }else if articleType == 3{
             self.title = "澄清信息"
+        }else if articleType == 4{
+            self.title = "巅峰论坛"
         }
         createRightNavItem()
         loadCityJson()
@@ -226,7 +232,10 @@ class TipOffPostViewController: BaseViewController,Requestable {
         articleModel?.type = articleType
         articleModel?.clarify_id = tipOffID
         articleModel?.title = addressView.titleLabel.text ?? ""
+        articleModel?.name = addressView.nameLabel.text ?? ""
+        
         articleModel?.content = contentCell.contentTV.text
+        
         var imgstr = ""
         if uploadImgArr.count != 0{
             for imgM in self.uploadImgArr {
@@ -240,6 +249,17 @@ class TipOffPostViewController: BaseViewController,Requestable {
             DialogueUtils.showError(withStatus: "内容不能为空")
             return
         }
+        if articleType == 1{
+            if articleModel?.name == ""{
+                DialogueUtils.showError(withStatus: "请输入嘿人嘿场名称")
+                return
+            }
+            if articleModel?.type1 == 0{
+                DialogueUtils.showError(withStatus: "请选择嘿人嘿场类型")
+                return
+            }
+        }
+ 
         articleModel?.address = province + city
         let pathAndParams = HomeAPI.addTipOffPathAndParams(model: articleModel!)
         postRequest(pathAndParams: pathAndParams,showHUD: false)
@@ -287,6 +307,16 @@ extension TipOffPostViewController:TipOffAddressViewDelegate{
         officesChoosePicker?.tapDismissAction  = .success;
         officesChoosePicker?.show()
     }
+ 
+    func heirenAction(){
+        articleModel?.type1 = 1
+    }
+    
+    
+    func heichangAction(){
+        articleModel?.type1 = 2
+    }
+    
  
 }
 extension TipOffPostViewController:UITableViewDataSource,UITableViewDelegate {
@@ -627,7 +657,7 @@ extension TipOffPostViewController: PhotoPickerControllerDelegate {
         
         pickerController.dismiss(animated: true, completion: nil)
         
-        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.5, videoExportPreset: nil, videoQuality: 5)
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.7, videoExportPreset: nil, videoQuality: 5)
         result.getURLs(options: .any, compression: commpres) { urls in
             self.imageURLArr = urls
         }

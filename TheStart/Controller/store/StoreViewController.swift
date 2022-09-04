@@ -17,7 +17,7 @@ class StoreViewController: BaseViewController, UICollectionViewDataSource, UICol
     var parentNavigationController: UINavigationController?
     var row_Count = 2
     
-    var dataList = [GoodsModel]()
+    var dataList = [StoreModel]()
     var pubBtn:UIButton!
     override func loadView() {
         super.loadView()
@@ -48,7 +48,7 @@ class StoreViewController: BaseViewController, UICollectionViewDataSource, UICol
     }
     
     func loadData(){
-            let requestParams = HomeAPI.goodsListPathAndParams(page: page, limit: limit)
+            let requestParams = HomeAPI.shopListPathAndParams(page: page, limit: limit)
             postRequest(pathAndParams: requestParams,showHUD:false)
      }
  
@@ -63,7 +63,7 @@ class StoreViewController: BaseViewController, UICollectionViewDataSource, UICol
         collectionView.mj_header?.endRefreshing()
         collectionView.mj_footer?.endRefreshing()
 
-        let list:[GoodsModel]  = getArrayFromJson(content: responseResult)
+        let list:[StoreModel]  = getArrayFromJson(content: responseResult)
 
         dataList.append(contentsOf: list)
         if list.count < 10 {
@@ -115,21 +115,20 @@ class StoreViewController: BaseViewController, UICollectionViewDataSource, UICol
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
-        return 5
-        //dataList.count
+        return  dataList.count
     }
     
     func collectionView(_ collectionView: UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreViewCell.nameOfClass, for: indexPath) as! StoreViewCell
-        //cell.configModel(model: dataList[indexPath.item])
+        cell.model = dataList[indexPath.item]
         return cell
     }
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let controller = PhotoBrowserViewController()
-             let controller = StoreDetailController()
-            //controller.dateID = dataList[indexPath.row].id
+            let controller = StoreDetailController()
+            controller.dateID = dataList[indexPath.row].id
             self.navigationController?.pushViewController(controller, animated: true)
  
         

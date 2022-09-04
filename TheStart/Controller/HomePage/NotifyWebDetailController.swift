@@ -64,6 +64,10 @@ class NotifyWebDetailController: BaseViewController ,Requestable, UIWebViewDeleg
         webView.scrollView.bounces = true
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
+        webView.isOpaque = false
+        webView.backgroundColor = ZYJColor.main
+        webView.scrollView.backgroundColor = ZYJColor.main
+ 
         webView.navigationDelegate = self
         
         

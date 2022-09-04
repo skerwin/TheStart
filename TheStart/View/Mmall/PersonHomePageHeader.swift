@@ -17,6 +17,9 @@ class PersonHomePageHeader: UIView {
     var delegate:PersonHomePageHeaderDelegate!
 
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var orangeLabel: UILabel!
+    
     @IBOutlet weak var bigbtn: UIButton!
     @IBOutlet weak var headImg: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -71,6 +74,11 @@ class PersonHomePageHeader: UIView {
         author = model
         nameLabel.text = model.nickname
         headImg.displayImageWithURL(url: model.avatar)
+        
+        scoreLabel.text = "音乐人指标:" + intToString(number: model.audio_score)
+        orangeLabel.text = "🍊橙子数:：" + intToString(number: model.integral)
+        
+        workTypelabel.text = "工种：" + model.shiming_work_name
         
         if ((model.is_vip == 1 || model.vip == 1) && !checkMarketVer()){
             vipImage.isHidden = false

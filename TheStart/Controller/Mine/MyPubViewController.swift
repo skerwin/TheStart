@@ -46,7 +46,7 @@ class MyPubViewController: BaseViewController {
         controller3 = TipOffViewController()
         controller3.isFromMine = true
         controller3.isMypub = true
-        controller3.title = "我的嘿人"
+        controller3.title = "我的部落"
         controller3.parentNavigationController = self.navigationController
         
         controller4 = MuiscListController()

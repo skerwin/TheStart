@@ -70,11 +70,23 @@ class TipOffHeaderView: UIView {
         nameLabel.text = model.nickname
       
         if model.type == 1{
-            tipLabel.text = "嘿人"
+            if model.type1 == 1{
+                tipLabel.text = "嘿人"
+            }else if model.type1 == 2{
+                tipLabel.text = "嘿场"
+            }else{
+                tipLabel.text = "嘿人"
+            }
+            
             tipLabel.backgroundColor = colorWithHexString(hex: "903207")
-        }else{
+        }else if model.type == 3{
             tipLabel.text = "澄清"
             tipLabel.backgroundColor = colorWithHexString(hex: "E19522")
+        }else if model.type == 4{
+            tipLabel.text = "论坛"
+            tipLabel.backgroundColor = colorWithHexString(hex: "E19522")
+        }else{
+            tipLabel.isHidden = true
         }
         timeLabel.text = model.add_time + "发布"
         

@@ -179,7 +179,9 @@
                 <outlet property="headImg" destination="Mkv-z9-wRh" id="RJv-dn-lnu"/>
                 <outlet property="isrealNameLabel" destination="mmh-KJ-mTG" id="3vi-f3-gp5"/>
                 <outlet property="nameLabel" destination="v4X-UA-aIW" id="2pA-Fl-b6w"/>
+                <outlet property="orangeLabel" destination="ry3-c1-z1A" id="e8T-85-ayk"/>
                 <outlet property="pingtairenzhengLabel" destination="TBb-Gn-mk7" id="ElL-S8-t4A"/>
+                <outlet property="scoreLabel" destination="iSV-C2-QiQ" id="EaN-pE-aCk"/>
                 <outlet property="vipImage" destination="4jV-W5-5yI" id="0Aj-cO-FHj"/>
                 <outlet property="workTypelabel" destination="smc-uP-7QG" id="g9h-Dc-Ktb"/>
             </connections>

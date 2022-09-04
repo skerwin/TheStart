@@ -26,5 +26,12 @@ class StoreViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 5
         // Initialization code
     }
+    var model:StoreModel? {
+        didSet {
+            imagev.displayImageWithURL(url: model?.image)
+            nameLabel.text = model?.name
+            scoreLabel.setTitle("声望值:" + intToString(number:model!.prestige), for: .normal)
+        }
+    }
 
 }

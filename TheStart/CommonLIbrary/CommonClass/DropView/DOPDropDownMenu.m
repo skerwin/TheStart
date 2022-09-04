@@ -599,6 +599,9 @@
         [self.superview addSubview:_buttomImageView];
         
         NSInteger num = [_leftTableView numberOfRowsInSection:0];
+        if (num >= 10){
+            num = 10;
+        }
         CGFloat tableViewHeight = num * kTableViewCellHeight > _tableViewHeight+1 ? _tableViewHeight:num*kTableViewCellHeight+1;
         
         [UIView animateWithDuration:0.2 animations:^{

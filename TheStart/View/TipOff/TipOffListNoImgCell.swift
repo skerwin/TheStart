@@ -36,11 +36,25 @@ class TipOffListNoImgCell: UITableViewCell {
                 vipImage.isHidden = true
             }
             if model?.type == 1{
-                tipsLabel.text = "嘿人曝光"
-                tipsLabel.backgroundColor = colorWithHexString(hex: "903207")
-            }else{
+                if model?.type1 == 2{
+                    tipsLabel.text = "嘿场曝光"
+                    tipsLabel.backgroundColor = colorWithHexString(hex: "903207")
+                  
+                }else{
+                    tipsLabel.text = "嘿人曝光"
+                    tipsLabel.backgroundColor = colorWithHexString(hex: "903207")
+                }
+               
+            }else if model?.type == 3{
                 tipsLabel.backgroundColor = colorWithHexString(hex: "E19522")
                 tipsLabel.text = "澄清声明"
+            }
+            else if model?.type == 4{
+                tipsLabel.backgroundColor = colorWithHexString(hex: "E19522")
+                tipsLabel.text = "巅峰论坛"
+            }else{
+                
+                tipsLabel.isHidden = true
             }
             headImage.displayHeadImageWithURL(url: model?.avatar)
             

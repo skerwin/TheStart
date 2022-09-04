@@ -27,6 +27,9 @@ struct CommentModel: Mappable {
     var children_count = 0
     var children = [CommentModel]()
     
+    var shop_id = 0
+    var audio_id = 0
+    
     init?(map: Map) {
            
     }
@@ -35,6 +38,8 @@ struct CommentModel: Mappable {
     }
     mutating func mapping(map: Map) {
                 
+        audio_id <- map["audio_id"]
+        shop_id <- map["shop_id"]
         r_nickname <- map["r_nickname"]
         id <- map["id"]
         rid <- map["rid"]

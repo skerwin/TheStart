@@ -40,11 +40,15 @@ class StoreDetailController: BaseViewController,Requestable  {
     var delindex = IndexPath.init(row: 0, section: 0)
     
     var bottoomView:StoreBottomView!
+    var dataModel = StoreModel()
     
+    var operateType = "like"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "商家详情"
+        loadDetail()
+        loadComment()
         initHeadView()
         initBootomView()
         initTableView()
@@ -52,20 +56,149 @@ class StoreDetailController: BaseViewController,Requestable  {
     }
     
     func loadDetail(){
-        let requestParams = HomeAPI.tipOffListPathAndParams(id: dateID)
-        getRequest(pathAndParams: requestParams,showHUD:false)
+        let requestParams = HomeAPI.shopInfoPathAndParams(id: dateID)
+        postRequest(pathAndParams: requestParams,showHUD:false)
     }
-    func loadComment(){
+    func prestige(){
+        let requestParams = HomeAPI.shopPrestigePathAndParams(shop_id: dateID)
+        postRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+    func careLike(){
+        let requestParams = HomeAPI.shopLikeFollowPathAndParams(shop_id:dateID,type:operateType)
+        postRequest(pathAndParams: requestParams,showHUD:false)
+    }
+    
+     func loadComment(){
         //print(page,limit)
-        let requestCommentParams = HomeAPI.comentListPathAndParams(articleId: dateID,page: page,limit: limit)
+        let requestCommentParams = HomeAPI.shopComentListPathAndParams(shopId: dateID,page: page,limit: limit)
         getRequest(pathAndParams: requestCommentParams,showHUD:false)
-        
-        
     }
+    
+    override func onFailure(responseCode: String, description: String, requestPath: String) {
+        tableView.mj_header?.endRefreshing()
+        tableView.mj_footer?.endRefreshing()
+        self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+    }
+    
+    override func onResponse(requestPath: String, responseResult: JSON, methodType: HttpMethodType) {
+        
+        super.onResponse(requestPath: requestPath, responseResult: responseResult, methodType: methodType)
+        if requestPath == HomeAPI.shopAddComentPath{
+            showOnlyTextHUD(text: "评论成功")
+            addComment = true
+            addRefresh()
+        }
+        else if requestPath == HomeAPI.shopComentDelPath{
+            showOnlyTextHUD(text: "删除成功")
+            delCommet = true
+            addRefresh()
+        }
+        
+        else if requestPath.containsStr(find: HomeAPI.shopComentListPath){
+            tableView.mj_header?.endRefreshing()
+            tableView.mj_footer?.endRefreshing()
+            let list:[CommentModel]  = getArrayFromJson(content: responseResult)
+            commentList.append(contentsOf: list)
+            for cModel in list {
+                var tempList = [CommentModel]()
+                tempList.append(cModel)
+                if cModel.children_count != 0 {
+                    for subModel in cModel.children {
+                        tempList.append(subModel)
+                    }
+                }
+                dataCommentList.append(tempList)
+            }
+            if list.count < 10 {
+                self.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            }
+            self.tableView.reloadData()
+            if commentSection == 0 {
+                if addComment || delCommet{
+                    if limit != 10{
+                        let indexPath = IndexPath.init(row: 0, section: 1)
+                        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+                        addComment = false
+                        delCommet = false
+                    }
+                }
+                
+            }else{
+                
+                if delCommet {
+                    if self.delindex.section != 0 {
+                        //删回复
+                        var row = 0
+                        row = self.delindex.row - 1
+                        let indexPath = IndexPath.init(row: row, section: commentSection)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }else{
+                        let row = 0
+                        let indexPath = IndexPath.init(row: row, section: commentSection - 1)
+                        tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    }
+                    
+                    
+                }else if addComment{
+                    let row = dataCommentList[commentSection - 1].count - 1
+                    let indexPath = IndexPath.init(row: row, section: commentSection)
+                    tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+                    addComment = false
+                }
+            }
+        }else if requestPath == HomeAPI.reportPath{
+             showOnlyTextHUD(text: "投诉成功，将尽快处理")
+            
+        }
+        else if requestPath == HomeAPI.shopPrestigePath{
+            
+            dataModel?.if_perstige = 1
+            headView.configModel(model: dataModel!)
+        }
+        else if requestPath == HomeAPI.shopLikeFollowPath{
+            
+            let num = responseResult["number"].intValue
+            //let type = responseResult["type"].stringValue
+            let status = responseResult["status"].intValue
+            if self.operateType == "follow"{
+                if status == 1{
+                    showOnlyTextHUD(text: "关注成功")
+                    dataModel?.if_follow = 1
+                    headView.configModel(model: dataModel!)
+                }else{
+                    showOnlyTextHUD(text: "取消关注")
+                    dataModel?.if_follow = 0
+                    headView.configModel(model: dataModel!)
+                }
+                           
+            }else{
+                if status == 1{
+                    showOnlyTextHUD(text: "点赞成功")
+                    dataModel?.if_like = 1
+                    bottoomView.configModel(model: dataModel!)
+                }else{
+                    showOnlyTextHUD(text: "取消点赞成功")
+                    dataModel?.if_like = 0
+                    bottoomView.configModel(model: dataModel!)
+                }
+            }
+        bottoomView.configModel(model: dataModel!)
+        }
+        else{
+            dataModel = Mapper<StoreModel>().map(JSONObject: responseResult.rawValue)
+            // dataModel?.operType = self.operType
+            headView.configModel(model: dataModel!)
+            // bottoomView.configModel(model: dataModel!)
+            
+            self.tableView.reloadData()
+        }
+    }
+ 
     func initHeadView(){
         headView = Bundle.main.loadNibNamed("StoreHeadView", owner: nil, options: nil)!.first as? StoreHeadView
         headView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height:615)
-        // headView.delegate = self
+         headView.delegate = self
         headView.parentNavigationController = self.navigationController
         headerBgView = UIView.init(frame:  CGRect.init(x: 0, y: navigationHeaderAndStatusbarHeight, width: screenWidth, height: 615))
         headView.backgroundColor = ZYJColor.main
@@ -75,14 +208,14 @@ class StoreDetailController: BaseViewController,Requestable  {
     func initBootomView(){
         bottoomView = Bundle.main.loadNibNamed("StoreBottomView", owner: nil, options: nil)!.first as? StoreBottomView
         bottoomView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 48)
-      //  bottoomView.delegate = self
+        bottoomView.delegate = self
         
         let bottoombgView = UIView.init(frame:  CGRect.init(x: 0, y: screenHeight - 48 - bottomBlankHeight, width: screenWidth, height: 48 + bottomBlankHeight))
         bottoombgView.backgroundColor = ZYJColor.barColor
         bottoombgView.addSubview(bottoomView)
         self.view.addSubview(bottoombgView)
         
-      }
+    }
     
     lazy var commentBarVC: CommentBarController = { [unowned self] in
         let barVC = CommentBarController()
@@ -184,7 +317,7 @@ class StoreDetailController: BaseViewController,Requestable  {
         }
         
         var cModel = CommentModel()
-        cModel?.article_id = self.dateID
+        cModel?.shop_id = self.dateID
         cModel?.comment = text
         if parentCommentID != -1{
             cModel?.rid = parentCommentID
@@ -194,21 +327,25 @@ class StoreDetailController: BaseViewController,Requestable  {
         }
         
         
-        let requestParams = HomeAPI.addComentPathAndParams(model: cModel!, isTopComment: true)
+        let requestParams = HomeAPI.shopAddComentPathAndParams(model: cModel!, isTopComment: true)
         postRequest(pathAndParams: requestParams,showHUD:false)
     }
     
     
     func commentDelete(delrid:Int){
-        let requestParams = HomeAPI.comentDelPathAndParams(rid: delrid)
+        let requestParams = HomeAPI.shopComentDelPathAndParams(rid: delrid)
         postRequest(pathAndParams: requestParams,showHUD:false)
         
     }
     
     
     func reportContent(){
-        let requestParams = HomeAPI.reportPathAndParams(articleId: reportID, type: reportType, reason: reportReason, remark: "我要举报")
-        postRequest(pathAndParams: requestParams,showHUD:false)
+        delay(second: 1) { [self] in
+            showOnlyTextHUD(text: "投诉成功，将尽快处理")
+        }
+        
+       // let requestParams = HomeAPI.reportPathAndParams(articleId: reportID, type: reportType, reason: reportReason, remark: "我要举报")
+       // postRequest(pathAndParams: requestParams,showHUD:false)
     }
     
     
@@ -263,53 +400,28 @@ extension StoreDetailController:UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataCommentList[section].count
     }
+ 
     
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        if section == 0{
-    //            let cell = tableView.dequeueReusableCell(withIdentifier: TipOffContentView.nameOfClass) as! TipOffContentView
-    //            cell.model = dataModel
-    //            cell.delegate = self
-    //            cell.selectionStyle = .none
-    //            return cell
-    //        }else{
-    //            let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
-    //            hv.backgroundColor = ZYJColor.main
-    //            return hv
-    //        }
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        if section == 0{
-    //            return UITableView.automaticDimension
-    //        }else{
-    //            return 0.5
-    //        }
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //
-    //        if section == 0{
-    //            let sectionView = Bundle.main.loadNibNamed("TipOffCommentHeaderView", owner: nil, options: nil)!.first as! TipOffCommentHeaderView
-    //            sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 25)
-    //            let bgView = UIView.init(frame:  CGRect.init(x: 0, y: 0, width: screenWidth, height: 25))
-    //            bgView.addSubview(sectionView)
-    //            return bgView
-    //        }else{
-    //            let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
-    //            hv.backgroundColor = ZYJColor.main
-    //            return hv
-    //         }
-    //    }
-    //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //
-    //        if section == 0{
-    //            return 25
-    //        }else{
-    //            return 0.5
-    //        }
-    //
-    //    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+ 
+            let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
+            hv.backgroundColor = ZYJColor.main
+            return hv
+     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+     
+            return 0.5
+     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let hv = UIView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 0.5))
+        hv.backgroundColor = ZYJColor.main
+        return hv
+     }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
+     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -347,9 +459,7 @@ extension StoreDetailController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
-    }
+     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if adjustFrame{
             resetChatBarFrame()
@@ -474,5 +584,47 @@ extension StoreDetailController:CommentBarControllerDelegate{
         //self.tableView.scrollToRow(at: IndexPath(row: 0, section:selectedSection), at: .bottom, animated: true)
     }
     
+}
+
+extension StoreDetailController:StoreBottomViewDelegate{
+    func callPhoneAction() {
+        let urlstr = "telprompt://" + dataModel!.tel
+        if let url = URL.init(string: urlstr){
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    func commetnAction() {
+        self.adjustFrame = true
+        commentSection = 0
+        parentCommentID = 0
+        parentComment = CommentModel()
+        commentBarVC.barView.inputTextView.becomeFirstResponder()
+    }
+    
+    func likeViewAction() {
+        operateType = "like"
+        self.careLike()
+    }
+    
+ }
+extension StoreDetailController:StoreHeadViewDelegate{
+    func zhuliAction(){
+        
+        if dataModel?.if_perstige == 1{
+            showOnlyTextHUD(text: "您已助力，请下次再来哦")
+            return
+        }
+        
+         self.prestige()
+     }
+    func guanzhuAction(){
+        operateType = "follow"
+        self.careLike()
+    }
 }
 

@@ -49,8 +49,10 @@ class TipOffBottomView: UIView {
       
         if model.type == 1{
             defecateLabel.text = "我要澄清"
-        }else{
+        }else if model.type == 3{
             defecateLabel.text = "原文链接"
+        }else{
+            defecateLabel.text = "原文分享"
         }
         if model.is_dianzan == 1{
             goodImg.image = UIImage.init(named: "dianzanzhong")

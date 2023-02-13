@@ -16,6 +16,7 @@ class JobListViewController: BaseViewController,Requestable {
     var tableView:UITableView!
     
     var dataList = [JobModel]()
+    var todayList = [JobModel]()
     
     var salaryList = [DictModel]()
     var workCateList = [DictModel]()
@@ -127,13 +128,10 @@ class JobListViewController: BaseViewController,Requestable {
     }
     
     @objc func pubWorkerClick(_ btn: UIButton){
- 
             let controller = WorkerPubViewController()
             controller.pubType = 2
             self.navigationController?.pushViewController(controller, animated: true)
-           
-   
-    }
+      }
     @objc func pubJobBtnClick(_ btn: UIButton){
         let controller = WorkerPubViewController()
         controller.pubType = 1
@@ -211,16 +209,14 @@ class JobListViewController: BaseViewController,Requestable {
                       // json is an array
                       let responseJson = JSON(object)
                       addressList = getArrayFromJson(content:responseJson)
-                      
-                      var modelall = AddressModel()
-                      modelall?.name = "城市"
-                      modelall?.level = "0"
-                      
-                      var sunModelall = AddressModel()
-                      sunModelall?.name = "城市"
-                      sunModelall?.level = "0"
-                      modelall?.children.append(sunModelall!)
-                      addressList.insert(modelall!, at: 0)
+//                      var modelall = AddressModel()
+//                      modelall?.name = "城市"
+//                      modelall?.level = "0"
+//                      var sunModelall = AddressModel()
+//                      sunModelall?.name = "城市"
+//                      sunModelall?.level = "0"
+//                      modelall?.children.append(sunModelall!)
+//                      addressList.insert(modelall!, at: 0)
                   } else {
                       //print("JSON is invalid")
                   }
@@ -283,7 +279,7 @@ class JobListViewController: BaseViewController,Requestable {
             tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 44 - navigationHeight), style: .plain)
         }else{
             if isFromHome{
-                tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 10 - 48 - bottomNavigationHeight), style: .plain)
+                tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - topAdvertisementViewHeight - navigationHeaderAndStatusbarHeight - 10 - 48 - bottomNavigationHeight), style: .grouped)
             }else{
                 tableView = UITableView(frame: CGRect(x: 0, y: 48, width: screenWidth, height: screenHeight - 48 - navigationHeight), style: .plain)
             }
@@ -320,6 +316,7 @@ class JobListViewController: BaseViewController,Requestable {
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
+            self.tableView.reloadData()
         } else if requestPath.containsStr(find: HomeAPI.myJobWorkerListPath){
             let list:[JobModel]  = getArrayFromJson(content: responseResult)
 
@@ -327,17 +324,26 @@ class JobListViewController: BaseViewController,Requestable {
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
+            self.tableView.reloadData()
         }else if requestPath == HomeAPI.userCallPath{
             callPhone()
         }else{
             let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
-
+            todayList  = getArrayFromJson(content: responseResult["list"]) //today_list
             dataList.append(contentsOf: list)
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
             }
+            self.tableView.reloadData()
+            
+          }
+    }
+    
+    func refreshScrollToRow(){
+        if (todayList.count > 0){
+            let indexPath = IndexPath.init(row: todayList.count - 1, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
         }
-        self.tableView.reloadData()
     }
     
     func callPhone(){
@@ -413,9 +419,7 @@ class JobListViewController: BaseViewController,Requestable {
 extension JobListViewController:JobViewCellDelegate {
     func JobCellCommunicateAction(mobile:String) {
         
-        
         callMobile = mobile
-        
         if checkMarketVer(){
             
         }else{
@@ -429,15 +433,12 @@ extension JobListViewController:JobViewCellDelegate {
             callPhone()
             return
         }
-        
         let noticeView = UIAlertController.init(title: "温馨提示", message: "会员无限，非会员每天仅可获取三次对方联系方式，您确定获取吗？", preferredStyle: .alert)
-        
          noticeView.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
              let pathAndParams = HomeAPI.userCallPathAndParams(type: 2)
              self.postRequest(pathAndParams: pathAndParams,showHUD: false)
  
         }))
-        
         noticeView.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: { (action) in
             
         }))
@@ -462,12 +463,9 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
                 
             } else {
                 let deleteAction = UITableViewRowAction(style: .destructive, title: "取消收藏") { (action, indexPath) in
-                    //print("1234")
                 }
-                
-                let shareAction = UITableViewRowAction(style: .normal, title: "分享") { (action, indexPath) in
-                    // TODO
-                    //print("4353")
+                 let shareAction = UITableViewRowAction(style: .normal, title: "分享") { (action, indexPath) in
+                  
                 }
                 shareAction.backgroundColor = RGBA(r: 255, g: 153, b: 0, a: 1.0)
                 //MSFColor.RGBA(red: 255, green: 153, blue: 0, alpha: 1.0)
@@ -482,34 +480,48 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
                 guard self != nil else {
                     return
                 }
-                //print("32454")
             }
-//            let shareAction = UIContextualAction(style: .normal, title: "") { [weak self] (action, view, resultClosure) in
-//                guard let `self` = self else {
-//                    return
-//                }
-//                //print("534534")
-//            }
             deleteAction.backgroundColor = .red
-            //shareAction.backgroundColor = RGBA(r: 255, g: 153, b: 0, a: 1.0)
-            //let actions = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
-            let actions = UISwipeActionsConfiguration(actions: [deleteAction])
+             let actions = UISwipeActionsConfiguration(actions: [deleteAction])
             actions.performsFirstActionWithFullSwipe = false; // 禁止侧滑到最左边触发删除或者分享回调事件
             return actions
         }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+        
+        if isFromHome{
+            return 2
+            if (todayList.count > 0){
+                 return 2
+             }
+             return 1
+        }else{
+            return 1
+        }
+     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.tableViewDisplayWithMsg(message: "暂无数据", rowCount: dataList.count ,isdisplay: true)
-        return dataList.count
+        if isFromHome{
+            //if (todayList.count > 0){
+                if (section == 0){
+                    return todayList.count
+                }else{
+                    return dataList.count
+                }
+    //        }else{
+    //            return dataList.count
+    //        }
+        }else{
+            return dataList.count
+        }
+  
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
+        let section = indexPath.section
+        let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "JobViewCell", for: indexPath) as! JobViewCell
         if isFromMine{
             cell.communiteBtn.isHidden = true
@@ -517,25 +529,84 @@ extension JobListViewController:UITableViewDataSource,UITableViewDelegate {
             cell.communiteBtn.isHidden = false
         }
         cell.delegate = self
-        cell.model = dataList[indexPath.row]
         cell.selectionStyle = .none
+        if isFromHome{
+            // if (todayList.count > 0){
+                 if (section == 0){
+                     cell.model = todayList[indexPath.row]
+                 }else{
+                     cell.model = dataList[indexPath.row]
+                 }
+     //        }else{
+     //            cell.model = dataList[indexPath.row]
+     //        }
+        }else{
+            cell.model = dataList[indexPath.row]
+        }
         return cell
-       
-      
+
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
         return 109
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.5
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+ 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 40
 
+        }else{
+            return 0.01
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0{
+            let sectionView = Bundle.main.loadNibNamed("FindTodayHeader", owner: nil, options: nil)!.first as! FindTodayHeader
+            sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 46)
+            if todayList.count > 0{
+                sectionView.titleLabel.text = "以上为今日更新" + "\(String(describing: todayList.count))" + "条找人信息"
+             }
+            else{
+                sectionView.titleLabel.text = "今日暂未更新找人信息，看看其他吧"
+            }
+            return sectionView
+        }else{
+            return UIView()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = JobInfoViewController()
-        controller.dateID = dataList[indexPath.row].id
-        controller.linkUrl = dataList[indexPath.row].link_url
-        controller.isFromMine = self.isMypub
-        self.navigationController?.pushViewController(controller, animated: true)
+        let section = indexPath.section
+        if isFromHome{
+            let controller = JobInfoViewController()
+            if (section == 0){
+                controller.dateID = todayList[indexPath.row].id
+                controller.linkUrl = todayList[indexPath.row].link_url
+            }else{
+                controller.dateID = dataList[indexPath.row].id
+                controller.linkUrl = dataList[indexPath.row].link_url
+            }
+            controller.dateID = dataList[indexPath.row].id
+            controller.linkUrl = dataList[indexPath.row].link_url
+            controller.isFromMine = self.isMypub
+            self.navigationController?.pushViewController(controller, animated: true)
+        }else{
+            let controller = JobInfoViewController()
+            controller.dateID = dataList[indexPath.row].id
+            controller.linkUrl = dataList[indexPath.row].link_url
+            controller.isFromMine = self.isMypub
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+      
     }
     
     

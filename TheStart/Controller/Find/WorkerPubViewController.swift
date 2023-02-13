@@ -625,7 +625,7 @@ extension WorkerPubViewController: PhotoPickerControllerDelegate {
  
         
         pickerController.dismiss(animated: true, completion: nil)
-        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.6, videoExportPreset: nil, videoQuality: 6)
+        let commpres =  PhotoAsset.Compression.init(imageCompressionQuality: 0.65, videoExportPreset: nil, videoQuality: 6)
  
         result.getURLs(options: .any, compression: commpres) { [self] urls in
             if self.isImgFile {

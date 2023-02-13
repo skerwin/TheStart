@@ -861,10 +861,15 @@
         return NO;
         
     } else {
-        
-        title.string = [_dataSource menu:self titleForRowAtIndexPath:
-                        [DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:self.isRemainMenuTitle ? 0 : row]];
-        [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
+        NSInteger currentSelectedMenudRow = [_currentSelectRowArray[_currentSelectedMenudIndex] integerValue];
+        NSString *tit = [_dataSource menu:self titleForRowAtIndexPath:
+                         [DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:self.isRemainMenuTitle ? 0 : row]];
+        if (currentSelectedMenudRow == 0 && [tit isEqualToString:@"不限"]){
+            title.string = @"性别";
+        }else{
+            title.string = tit;
+         }
+         [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
             self->_show = NO;
         }];
         return YES;
@@ -874,7 +879,16 @@
     
     CATextLayer *title = (CATextLayer *)_titles[_currentSelectedMenudIndex];
     NSInteger currentSelectedMenudRow = [_currentSelectRowArray[_currentSelectedMenudIndex] integerValue];
-    title.string = [_dataSource menu:self titleForItemsInRowAtIndexPath:[DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:currentSelectedMenudRow item:item]];
+    NSString *tit = [_dataSource menu:self titleForItemsInRowAtIndexPath:[DOPIndexPath indexPathWithCol:_currentSelectedMenudIndex row:currentSelectedMenudRow item:item]];
+    if (currentSelectedMenudRow == 0 && [tit isEqualToString:@"不限"]){
+        title.string = @"城市";
+    }else{
+        title.string = tit;
+        //title.string = tit;
+    }
+   
+    
+  
     [self animateIdicator:_indicators[_currentSelectedMenudIndex] background:_backGroundView tableView:_leftTableView title:_titles[_currentSelectedMenudIndex] forward:NO complecte:^{
         self->_show = NO;
     }];

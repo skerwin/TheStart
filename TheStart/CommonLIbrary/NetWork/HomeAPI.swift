@@ -16,6 +16,14 @@ struct HomeAPI {
     
     static let imageUpLoadUrl       = "/api/upload/image"
     
+    //广告图
+      static let boot_imgPath = "/api/index/launch_page"
+      static func boot_imgPathAndParams(type:String) -> PathAndParams {
+          var paramsDictionary = Dictionary<String, AnyObject>()
+          return (boot_imgPath, getRequestParamsDictionary(paramsDictionary: paramsDictionary))
+      }
+    
+    
     
     static let privacyUserAgreementPath = "/api/danye/"
     static func privacyUserAgreementPathAndParam(id:Int) -> PathAndParams {
@@ -496,8 +504,8 @@ struct HomeAPI {
         return (urlPath, getRequestParamsDictionary(paramsDictionary: nil))
     }
  
-    //工资
-    static let jobAndWorkerPath = "/api/work/list"
+    //工资 /api/work/list
+    static let jobAndWorkerPath = "/api/work/list1"
     static func jobAndWorkerPathAndParams(type:Int,cate_id:Int,salary:Int,page:Int = 1,limit:Int = 10,city:String,keyword:String = "",gender:String = "") -> PathAndParams {
 
         var paramsDictionary = Dictionary<String, AnyObject>()
@@ -513,7 +521,7 @@ struct HomeAPI {
         if salary != 0{
             paramsDictionary["salary"] = salary as AnyObject
         }
-        if city != ""{
+        if city != "" && city != "不限"{
             paramsDictionary["city"] = city as AnyObject
         }
         if keyword != ""{

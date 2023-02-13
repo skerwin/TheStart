@@ -105,7 +105,7 @@ class FreeOpenVipController:BaseTableController,PayRequestDelegate,Requestable {
 //           let requestParams = HomeAPI.buyVipPathAndParams(level_id: 3, pay_type: payStr, price: priceStr)
 //           postRequest(pathAndParams: requestParams,showHUD:false)
             
-            var phone = phoneTextv.text!
+            let phone = phoneTextv.text!
             if !(CheckoutUtils.isMobile(mobile: phone)){
                 DialogueUtils.showWarning(withStatus: "请输入正确的手机号")
                 return

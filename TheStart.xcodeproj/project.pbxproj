@@ -248,6 +248,8 @@
 		B81C4E0828601D6C0005AFF2 /* AuthenSuuccessViewCxsdcontentExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C4D2228601D6A0005AFF2 /* AuthenSuuccessViewCxsdcontentExt.swift */; };
 		B822E7CE283BB0FF002558D9 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B822E7CC283BB0FF002558D9 /* OrderCell.swift */; };
 		B822E7CF283BB0FF002558D9 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B822E7CD283BB0FF002558D9 /* OrderCell.xib */; };
+		B8256E842998F8C700AD4B35 /* FindTodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8256E822998F8C700AD4B35 /* FindTodayHeader.swift */; };
+		B8256E852998F8C700AD4B35 /* FindTodayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8256E832998F8C700AD4B35 /* FindTodayHeader.xib */; };
 		B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1702834D6F90008670C /* CloneMsgModel.swift */; };
 		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
 		B831E175283511EB0008670C /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E174283511EB0008670C /* ContactModel.swift */; };
@@ -894,6 +896,8 @@
 		B81C4D2228601D6A0005AFF2 /* AuthenSuuccessViewCxsdcontentExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenSuuccessViewCxsdcontentExt.swift; sourceTree = "<group>"; };
 		B822E7CC283BB0FF002558D9 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		B822E7CD283BB0FF002558D9 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		B8256E822998F8C700AD4B35 /* FindTodayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTodayHeader.swift; sourceTree = "<group>"; };
+		B8256E832998F8C700AD4B35 /* FindTodayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindTodayHeader.xib; sourceTree = "<group>"; };
 		B831E1702834D6F90008670C /* CloneMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloneMsgModel.swift; sourceTree = "<group>"; };
 		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B831E174283511EB0008670C /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
@@ -1633,6 +1637,8 @@
 		B83C639F280D612B00A3282D /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B8256E822998F8C700AD4B35 /* FindTodayHeader.swift */,
+				B8256E832998F8C700AD4B35 /* FindTodayHeader.xib */,
 				B85FDA6A2824B9B500EDA845 /* MineStarCoinHeder.swift */,
 				B85FDA6B2824B9B500EDA845 /* MineStarCoinHeder.xib */,
 				B855361A2835F20900E3C287 /* MyStarCoinFootView.swift */,
@@ -2479,6 +2485,7 @@
 				B8B80504283DD42F00EB9109 /* GoodDetailHeader.xib in Resources */,
 				B83C639A280D4D7600A3282D /* WokerPubHeaderView.xib in Resources */,
 				B8B5BBD928B1F0D700B2D8AC /* TipOffRecordeCell.xib in Resources */,
+				B8256E852998F8C700AD4B35 /* FindTodayHeader.xib in Resources */,
 				B8B6C53428118A1800B882FC /* ContactViewCell.xib in Resources */,
 				B87352D92896500B0055437E /* windowClose@3x.png in Resources */,
 				B8AE031C282A05A800FBE3B7 /* MusicAuthorVideoHeader.xib in Resources */,
@@ -2904,6 +2911,7 @@
 				B8AC503A2807C60E00C2CF26 /* ScreenUtils.swift in Sources */,
 				B81C4D9228601D6B0005AFF2 /* GmmMJRefreshGifHeaderCxsdcontentExt.swift in Sources */,
 				B81C4D3A28601D6B0005AFF2 /* MyStarCoinFootViewCxsdcontentExt.swift in Sources */,
+				B8256E842998F8C700AD4B35 /* FindTodayHeader.swift in Sources */,
 				B85FB01B28116A8300D25B66 /* ChatSelectorModel.swift in Sources */,
 				B81C4DC428601D6B0005AFF2 /* UIView+IQ_UIView_HierarchyCxsdcontent.m in Sources */,
 				B8AD4046281E5B8D0001D7F4 /* EmptyDataView.swift in Sources */,
@@ -3385,16 +3393,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Aiping Ye (QP49MR7HV8)";
+				CODE_SIGN_IDENTITY = "Apple Development: Aiping Ye (QP49MR7HV8)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6KR7FZVWMY;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
-				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
+				INFOPLIST_KEY_NSCameraUsageDescription = "请允许访问您的相机，为方便您拍照上传资料，或更改头像";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "请允许访问麦克风,为你您可以在应用内正常播放视频 音频等";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许访问您的相册，方便您选取照片上传图片资料，或保存图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许访问您的相册，方便您选取照片上传图片资料，或保存图片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -3407,10 +3417,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DevYE20220903;
+				PROVISIONING_PROFILE_SPECIFIER = 20230203Dev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 20230203Dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3429,16 +3440,18 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Aiping Ye (QP49MR7HV8)";
+				CODE_SIGN_IDENTITY = "Apple Development: Aiping Ye (QP49MR7HV8)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6KR7FZVWMY;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
-				INFOPLIST_KEY_NSCameraUsageDescription = "本服务需要照片功能请求使用您的相机";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "本服务需要麦克风功能,请求使用您的麦克风";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "本服务需要照片功能,请求使用您的相册";
+				INFOPLIST_KEY_NSCameraUsageDescription = "请允许访问您的相机，为方便您拍照上传资料，或更改头像";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "请允许访问麦克风,为你您可以在应用内正常播放视频 音频等";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "请允许访问您的相册，方便您选取照片上传图片资料，或保存图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "请允许访问您的相册，方便您选取照片上传图片资料，或保存图片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -3451,10 +3464,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = DevYE20220903;
+				PROVISIONING_PROFILE_SPECIFIER = 20230203Dev;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 20230203Dev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

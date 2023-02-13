@@ -47,16 +47,13 @@ class TipOffViewController: BaseViewController,Requestable {
             if type == 1{
                 initHeaderView()
             }
-            
         }
       
         self.title = "黑人馆"
         
         // Do any additional setup after loading the view.
     }
-    
-    
-    
+ 
     func initHeaderView(){
         headerView = Bundle.main.loadNibNamed("TipOffListHeadView", owner: nil, options: nil)!.first as? TipOffListHeadView
         headerView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 34)

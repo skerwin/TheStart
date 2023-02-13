@@ -27,8 +27,10 @@ class HomePageMenuController: BaseViewController,Requestable {
     var selectedfont:CGFloat = 17
     
     var jobVcButton:UIButton!
+    var jobVcRedView:UIView!
  
     var workVcButton:UIButton!
+    var workVcRedView:UIView!
     
     var goodsVcButton:UIButton!
     
@@ -43,6 +45,7 @@ class HomePageMenuController: BaseViewController,Requestable {
     var advertisementView:SDCycleScrollView!
     
     var bannerView:UIView!
+    var rightView:UIView!
     
     
     
@@ -209,8 +212,8 @@ class HomePageMenuController: BaseViewController,Requestable {
         storeVc = StoreViewController()
         storeVc.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
         
-        goodsVc = goodsListController()
-        goodsVc.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
+        //goodsVc = goodsListController()
+        //goodsVc.view.frame = CGRect.init(x: 0, y:navigationHeaderAndStatusbarHeight + 10, width: screenWidth, height: screenHeight)
         
         self.addChild(jobVc)
         self.view.addSubview(jobVc.view)
@@ -220,17 +223,26 @@ class HomePageMenuController: BaseViewController,Requestable {
         super.viewDidLoad()
         self.view.backgroundColor = ZYJColor.main
         
+        createRightNavItem()
+        
         WebSocketManager.instance.openSocket()
         loadData()
         loadDictData()
  
-        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 260)/2, y: 0, width:240, height: 44))
+       // navView = UIView.init(frame: CGRect.init(x: (screenWidth - 260)/2, y: 0, width:240, height: 44))
+        navView = UIView.init(frame: CGRect.init(x: (screenWidth - 220)/2, y: 0, width:220, height: 44))
         jobVcButton = UIButton.init()
         jobVcButton.frame = CGRect.init(x: 0, y: 0, width: 80, height: 44)
         jobVcButton.addTarget(self, action: #selector(jobVcButtonACtion(_:)), for: .touchUpInside)
         jobVcButton.setTitle("我要找人", for: .normal)
         jobVcButton.setTitleColor(ZYJColor.barText, for: .normal)
         jobVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: selectedfont)
+        
+        jobVcRedView = UIView.init(frame:  CGRect.init(x: 67, y: 10, width:10, height: 10))
+        jobVcRedView.backgroundColor = UIColor.red
+        jobVcRedView.layer.masksToBounds = true
+        jobVcRedView.layer.cornerRadius = 5
+        
       
         workVcButton = UIButton.init()
         workVcButton.frame = CGRect.init(x: 80, y: 0, width: 80, height: 44)
@@ -239,54 +251,131 @@ class HomePageMenuController: BaseViewController,Requestable {
         workVcButton.setTitleColor(UIColor.white, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
+        workVcRedView = UIView.init(frame:  CGRect.init(x: 67 + 80, y: 10, width:10, height: 10))
+        workVcRedView.backgroundColor = UIColor.red
+        workVcRedView.layer.masksToBounds = true
+        workVcRedView.layer.cornerRadius = 5
+        
+        
         storeVcButton = UIButton.init()
-        storeVcButton.frame = CGRect.init(x: 160, y: 0, width: 50, height: 44)
+        //storeVcButton.frame = CGRect.init(x: 160, y: 0, width: 50, height: 44)
+        storeVcButton.frame = CGRect.init(x: 160, y: 0, width: 60, height: 44)
+
         storeVcButton.addTarget(self, action: #selector(storeVcButtonACtion(_:)), for: .touchUpInside)
         storeVcButton.setTitle("商家", for: .normal)
         storeVcButton.setTitleColor(UIColor.white, for: .normal)
         storeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
-        goodsVcButton = UIButton.init()
-        goodsVcButton.frame = CGRect.init(x: 210, y: 0, width: 50, height: 44)
-        goodsVcButton.addTarget(self, action: #selector(goodsVcButtonACtion(_:)), for: .touchUpInside)
-        goodsVcButton.setTitle("商店", for: .normal)
-        goodsVcButton.setTitleColor(UIColor.white, for: .normal)
-        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
+//        goodsVcButton = UIButton.init()
+//        goodsVcButton.frame = CGRect.init(x: 210, y: 0, width: 50, height: 44)
+//        goodsVcButton.addTarget(self, action: #selector(goodsVcButtonACtion(_:)), for: .touchUpInside)
+//        goodsVcButton.setTitle("商店", for: .normal)
+//        goodsVcButton.setTitleColor(UIColor.white, for: .normal)
+//        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
  
         navView.addSubview(jobVcButton)
         navView.addSubview(workVcButton)
         navView.addSubview(storeVcButton)
-        navView.addSubview(goodsVcButton)
+       // navView.addSubview(goodsVcButton)
         
-        
+        let preDate = stringForKey(key: "predate")
+        if (preDate != nil){
+            print(preDate!)
+        }
+        if  (preDate != nil) && Calendar.current.isDate(self.dateTime(preDate!), inSameDayAs: self.dateTime(getNowDate())) {
+            print("它们是同一天")
+        }else {
+            navView.addSubview(jobVcRedView)
+            navView.addSubview(workVcRedView)
+            setValueForKey(value: getNowDate()  as AnyObject, key: "predate")
+         }
+ 
+        //getLastDay(_ nowDay: String)
+
         self.navigationController?.navigationBar.addSubview(navView)
-      
-        self.view.addSubview(getAdvertisementView(imageArr: bannerList))
+         self.view.addSubview(getAdvertisementView(imageArr: bannerList))
        
     }
  
     
+    func getNowDate() -> String {
+        
+        let format = DateFormatter.init()
+        format.dateFormat = "yyyy.MM.dd"
+        let now = format.string(from: Date.init()) as String
+        return now
+    }
+    
     func createRightNavItem() {
         
-        rightBarButton = UIButton.init()
-        rightBarButton.frame = CGRect.init(x: 0, y: 100, width: 28, height: 28)
+        rightBarButton = UIButton.init(type: .custom)
+        rightBarButton.frame = CGRect.init(x: 0, y: 1, width: 38, height: 38)
         rightBarButton.addTarget(self, action: #selector(rightNavBtnClic(_:)), for: .touchUpInside)
-        rightBarButton.setBackgroundImage(UIImage.init(named: "add"), for: .normal)
-        //rightBarButton.setImage(UIImage.init(named: "add"), for: .normal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightBarButton)
+        //rightBarButton.setBackgroundImage(UIImage.init(named: "release"), for: .normal)
+        rightBarButton.setImage(UIImage.init(named: "release"), for: .normal)
+        rightView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+        rightView.addSubview(rightBarButton)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightView)
  
     }
-    @objc func rightNavBtnClic(_ btn: UIButton){
-         YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
-    }
-  
     
+    func dateTime(_ dateStr: String) -> Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let date = dateFormatter.date(from:dateStr)!
+        return date
+    }
+    
+    @objc func rightNavBtnClic(_ btn: UIButton){
+        
+        let format = DateFormatter.init()
+        format.dateFormat = "yyyy.MM.dd"
+        var now = format.string(from: Date.init()) as String
+        print(now)
+        print(self.getLastDay(now))
+
+        setValueForKey(value: self.getLastDay(now) as AnyObject, key: "predate")
+        
+        let preDate = stringForKey(key: "predate")
+        print(preDate! as String)
+
+        
+        
+        if Calendar.current.isDate(self.dateTime(preDate!), inSameDayAs: self.dateTime(now)) {
+            print("它们是同一天")
+        }else {
+            print("它们不是同一天")
+        }
+       //  YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
+    }
+    
+    func getLastDay(_ nowDay: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        // 先把传入的时间转为 date
+        let date = dateFormatter.date(from: nowDay)
+        let lastTime: TimeInterval = -(24*60*60) // 往前减去一天的秒数，昨天
+//      let nextTime: TimeInterval = 24*60*60 // 这是后一天的时间，明天
+        let lastDate = date?.addingTimeInterval(lastTime)
+        let lastDay = dateFormatter.string(from: lastDate!)
+        return lastDay
+ 
+    }
     
     @objc func jobVcButtonACtion(_ btn: UIButton){
+        
+        if (!jobVcRedView.isHidden) {
+            jobVcRedView.isHidden = true;
+        }
         
         bannerView.isHidden = false
         advertisementView.isHidden = false
         let cons = self.children
+        
+      
         
         for con in cons {
             if con != jobVc{
@@ -295,24 +384,34 @@ class HomePageMenuController: BaseViewController,Requestable {
             }
         }
 
+        if cons.count > 0 && cons.contains(jobVc) {
+            jobVc.refreshScrollToRow()
+            return;
+        }
+        
         jobVcButton.setTitleColor(ZYJColor.barText, for: .normal)
         jobVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: selectedfont)
         
         workVcButton.setTitleColor(UIColor.white, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
-        goodsVcButton.setTitleColor(UIColor.white, for: .normal)
-        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
+       // goodsVcButton.setTitleColor(UIColor.white, for: .normal)
+       // goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
         storeVcButton.setTitleColor(UIColor.white, for: .normal)
         storeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
 
         self.addChild(jobVc)
+
         self.view.addSubview(jobVc.view)
      }
     
     @objc func workVcuttonACtion(_ btn: UIButton){
+        
+        if (!workVcRedView.isHidden) {
+            workVcRedView.isHidden = true;
+        }
         
         bannerView.isHidden = false
         advertisementView.isHidden = false
@@ -324,18 +423,20 @@ class HomePageMenuController: BaseViewController,Requestable {
                 con.view.removeFromSuperview()
             }
         }
+        if cons.count > 0 && cons.contains(workVc) {
+            workVc.refreshScrollToRow()
+            return;
+        }
  
-
         jobVcButton.setTitleColor(UIColor.white, for: .normal)
         jobVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
         workVcButton.setTitleColor(ZYJColor.barText, for: .normal)
         workVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: selectedfont)
         
-        goodsVcButton.setTitleColor(UIColor.white, for: .normal)
-        goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
-        
-        
+       // goodsVcButton.setTitleColor(UIColor.white, for: .normal)
+       // goodsVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
+ 
         storeVcButton.setTitleColor(UIColor.white, for: .normal)
         storeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
@@ -364,8 +465,8 @@ class HomePageMenuController: BaseViewController,Requestable {
         workVcButton.setTitleColor(UIColor.white, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
-        goodsVcButton.setTitleColor(ZYJColor.barText, for: .normal)
-        goodsVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: selectedfont)
+       // goodsVcButton.setTitleColor(ZYJColor.barText, for: .normal)
+       // goodsVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: selectedfont)
         
         storeVcButton.setTitleColor(UIColor.white, for: .normal)
         storeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
@@ -394,8 +495,8 @@ class HomePageMenuController: BaseViewController,Requestable {
         workVcButton.setTitleColor(UIColor.white, for: .normal)
         workVcButton.titleLabel?.font = UIFont.systemFont(ofSize: commonfont)
         
-        goodsVcButton.setTitleColor(UIColor.white, for: .normal)
-        goodsVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: commonfont)
+       // goodsVcButton.setTitleColor(UIColor.white, for: .normal)
+       // goodsVcButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: commonfont)
         
         storeVcButton.setTitleColor(ZYJColor.barText, for: .normal)
         storeVcButton.titleLabel?.font = UIFont.systemFont(ofSize: selectedfont)

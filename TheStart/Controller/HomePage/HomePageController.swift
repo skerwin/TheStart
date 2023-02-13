@@ -153,18 +153,14 @@ class HomePageController: BaseViewController,Requestable {
      }
     
     @objc func pubBtnClick(_ btn: UIButton){
-    
         if pubSubHidden {
             pubSubHidden = false
         }else{
             pubSubHidden = true
         }
          addjustPubBtn()
-   
     }
-    
-    
-    
+ 
     func UpdateAdvertisementView(imageArr:[ImageModel]) {
         
         let prarModel = imageArr

@@ -107,6 +107,9 @@ class NewLoginController: BaseViewController,Requestable {
     
      override func viewDidLoad() {
         super.viewDidLoad()
+         
+         logoImg.layer.masksToBounds = true
+         logoImg.layer.cornerRadius = 30
          //logoImg.displayImageWithURL(url: imgUrl)
          let attributedName = NSAttributedString.init(string: "请输入账号", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
          accountTextF.attributedPlaceholder = attributedName

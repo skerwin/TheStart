@@ -247,14 +247,14 @@ UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   
-    if ([indexPath row] == 1){
-        if ([_titles.firstObject isEqualToString:@"屏蔽"]){
-            if (_dismissOnSelected) [self dismiss];
-        }
-    }else{
-        if (_dismissOnSelected) [self dismiss];
-    }
+    if (_dismissOnSelected) [self dismiss];
+//    if ([indexPath row] == 1){
+//        if ([_titles.firstObject isEqualToString:@"屏蔽"]){
+//            if (_dismissOnSelected) [self dismiss];
+//        }
+//    }else{
+//        if (_dismissOnSelected) [self dismiss];
+//    }
  
     if (self.delegate && [self.delegate respondsToSelector:@selector(ybPopupMenuDidSelectedAtIndex:ybPopupMenu:)]) {
         

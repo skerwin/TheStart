@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import XHLaunchAd
+import SwiftyJSON
+import Alamofire
 
 let weixinAPPID = "wxce795feb2aac395a";
 let aliPayAPPID = "aliPay2021003109634497";
@@ -31,13 +34,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             self.window?.rootViewController = UIStoryboard.getNewLoginController()
         }
-     
-//        WXApi.checkUniversalLinkReady { step, resut in
+//      WXApi.checkUniversalLinkReady { step, resut in
+//           print(step)
+//           print(resut)
+//           print("2134")
+//       }
+        
+        let imageAdconfiguration = XHLaunchImageAdConfiguration.default()
+        XHLaunchAd.setLaunch(.launchImage)
+        XHLaunchAd.setWaitDataDuration(5)
+
+        let  Url = URL.init(string: (URLs.getHostAddress() + HomeAPI.boot_imgPath))
+        print(Url!.absoluteString)
+        var request: DataRequest?
+
+        let token = ""
+        let headers: HTTPHeaders = [
+             "x-access-appid": "ty9fd2848a039ab554",
+             "x-access-token": token
+         ]
+        request =  AF.request(Url!, method: .post, parameters: nil,encoding: JSONEncoding.default, headers: headers)
+
+        request?.responseJSON(completionHandler: { (response) in
+            let result = response.result
+            switch result {
+            case .success:
+                guard let dict = response.value else {
+                    print("数据请求出错")
+                    return
+                }
+                let responseJson = JSON(dict)
+                let responseData = responseJson[BerResponseConstants.responseData];
 //
-//            print(step)
-//            print(resut)
-//            print("2134")
-//        }
+//
+                let list:[ImageModel]  = getArrayFromJson(content: responseData)
+
+                imageAdconfiguration.duration = 3;
+                imageAdconfiguration.imageNameOrURLString = list.first!.pic;
+                //imageAdconfiguration.openModel = "http://www.it7090.com"
+                XHLaunchAd.imageAd(with: imageAdconfiguration, delegate: self)
+
+                print(Url!.absoluteString)
+                print(responseJson)
+             case .failure:
+                print("数据请求出错")
+             }
+        })
+
+        
         
         window?.makeKeyAndVisible()
         

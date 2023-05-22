@@ -71,8 +71,8 @@ struct HttpRequest {
                     return
                 }
                 let responseJson = JSON(dict)
-                print(Url!.absoluteString)
-                print(responseJson)
+               // print(Url!.absoluteString)
+                //print(responseJson)
                 if requestPath.containsStr(find: HomeAPI.salaryPath){
                     XHNetworkCache.save_asyncJsonResponse(toCacheFile: dict, andURL: HomeAPI.salaryPath) { (result) in
                      }
@@ -131,7 +131,6 @@ struct HttpRequest {
 //             multipartFormData.append(data, withName: "count")
              var count = 0
              for fileUrl in filePath {
-              //   print(fileUrl)
                  if fileUrl.absoluteString.containsStr(find: "mp4"){
                      multipartFormData.append(fileUrl, withName: "file\(count)", fileName: "image_\(count).mp4", mimeType: "image/png")
                   }else{
@@ -196,10 +195,7 @@ struct HttpRequest {
  
          }, to: upUrlstr, usingThreshold: MultipartFormData.encodingMemoryThreshold,method: .post, headers: headers, interceptor: nil, fileManager:.default).responseJSON { (response) in
             let dict = response.value
-             //let responseJson = JSON(dict)
-             //let responseData = responseJson[BerResponseConstants.responseData]
-             //print(upUrlstr)
-             //print(responseJson)
+             
              
             switch response.result {
             case .success:
@@ -208,20 +204,17 @@ struct HttpRequest {
                     return
                 }
                 let responseJson = JSON(dict)
-               // print(responseJson)
-                let responseData = responseJson[BerResponseConstants.responseData]
+                 let responseData = responseJson[BerResponseConstants.responseData]
               
                 if responseJson["status"].intValue == 200 {
                     success(responseData)
                 }else{
                     let msg = responseJson["msg"].stringValue
                     failure(msg)
-                    //print(content + msg)
-                }
+                 }
             case .failure:
                 failure("图片服务器出错")
-                //print("图片上传出错")
-            }
+             }
         }
     }
     

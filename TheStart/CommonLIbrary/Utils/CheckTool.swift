@@ -7,6 +7,10 @@
 
 import UIKit
 
+func randomInRange(range: Range<Int>) -> Int {
+       let count = UInt32(range.endIndex - range.startIndex) //定义随机数产生范围，endIndex为upper bounds，startIndex为low bounds
+       return Int(arc4random_uniform(count)) + range.startIndex //返回一个Int类型的随机数
+}
 
 func isPhoneNum (test:String) -> Bool {
 

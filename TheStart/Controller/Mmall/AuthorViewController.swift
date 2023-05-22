@@ -17,7 +17,6 @@ class AuthorViewController: BaseViewController,Requestable {
     var dataList = [AuthorModel]()
     
     var isFromMine = false
-    
     var isMyCollect = false
     
     

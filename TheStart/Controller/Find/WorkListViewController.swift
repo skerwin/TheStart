@@ -64,7 +64,7 @@ class WorkListViewController: BaseViewController,Requestable  {
         if isFromMine {
         }else{
             initDropView()
-            initPubBtn()
+           // initPubBtn()
         }
          self.title = "找场列表"
         // Do any additional setup after loading the view.
@@ -130,7 +130,7 @@ class WorkListViewController: BaseViewController,Requestable  {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         pubSubHidden = true
-        addjustPubBtn()
+       // addjustPubBtn()
     }
     @objc func pubWorkerClick(_ btn: UIButton){
  
@@ -331,7 +331,7 @@ class WorkListViewController: BaseViewController,Requestable  {
             let list:[JobModel]  = getArrayFromJson(content: responseResult["list"])
 
             dataList.append(contentsOf: list)
-            todayList  = getArrayFromJson(content: responseResult["list"]) //today_list
+            todayList  = getArrayFromJson(content: responseResult["today_list"]) //today_list
 
             if list.count < 10 {
                 self.tableView.mj_footer?.endRefreshingWithNoMoreData()
@@ -423,7 +423,7 @@ class WorkListViewController: BaseViewController,Requestable  {
 extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pubSubHidden = true
-        addjustPubBtn()
+        //addjustPubBtn()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -491,36 +491,46 @@ extension WorkListViewController:UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.5
+        
+        
+        if isFromHome{
+            if section == 0{
+                return 40
+
+            }else{
+                return 0.01
+            }
+        }
+        return 0.01
+        
+        
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isFromHome{
+            if section == 0{
+                let sectionView = Bundle.main.loadNibNamed("FindTodayHeader", owner: nil, options: nil)!.first as! FindTodayHeader
+                sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 46)
+                if todayList.count > 0{
+                    sectionView.titleLabel.text = "今日为您更新" + "\(String(describing: todayList.count))" + "条找人信息"
+                 }
+                else{
+                    sectionView.titleLabel.text = "今日暂未更新找场信息，看看其他吧"
+                }
+                return sectionView
+            }else{
+                return UIView()
+            }
+        }
         return UIView()
     }
  
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 40
-
-        }else{
-            return 0.01
-        }
+        return 0.5
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == 0{
-            let sectionView = Bundle.main.loadNibNamed("FindTodayHeader", owner: nil, options: nil)!.first as! FindTodayHeader
-            sectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 46)
-            if todayList.count > 0{
-                sectionView.titleLabel.text = "以上为今日更新" + "\(String(describing: todayList.count))" + "条找人信息"
-             }
-            else{
-                sectionView.titleLabel.text = "今日暂未更新找场信息，看看其他吧"
-            }
-            return sectionView
-        }else{
-            return UIView()
-        }
-        
+        return UIView()
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

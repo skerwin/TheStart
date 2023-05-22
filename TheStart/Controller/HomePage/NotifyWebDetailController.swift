@@ -54,6 +54,7 @@ class NotifyWebDetailController: BaseViewController ,Requestable, UIWebViewDeleg
         webConfiguration.preferences = WKPreferences()
         //是否支持JavaScript
         webConfiguration.preferences.javaScriptEnabled = true
+        webConfiguration.allowsInlineMediaPlayback = true
         //不通过用户交互，是否可以打开窗口
        // webConfiguration.preferences.javaScriptCanOpenWindowsAutomatically = false
         let webFrame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
@@ -61,15 +62,14 @@ class NotifyWebDetailController: BaseViewController ,Requestable, UIWebViewDeleg
         // webView.backgroundColor = UIColor.blue
         webView.navigationDelegate = self
         webView.scrollView.isScrollEnabled = true
-        webView.scrollView.bounces = true
+        webView.scrollView.bounces = false
         webView.scrollView.showsVerticalScrollIndicator = false
         webView.scrollView.showsHorizontalScrollIndicator = false
         webView.isOpaque = false
         webView.backgroundColor = ZYJColor.main
         webView.scrollView.backgroundColor = ZYJColor.main
- 
         webView.navigationDelegate = self
-        
+     
         
         return webView
     }()

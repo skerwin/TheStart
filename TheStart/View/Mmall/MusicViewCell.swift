@@ -18,9 +18,9 @@ class MusicViewCell: UICollectionViewCell {
     var model:AudioModel? {
         didSet {
             if checkMarketVer(){
-                moneyLabel.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-                moneyLabel.setTitle("浏览量:" + intToString(number: model!.browse), for: .normal)
-                moneyLabel.titleLabel?.text = "浏览量:" + intToString(number: model!.browse)
+                moneyLabel.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+                moneyLabel.setTitle("浏览:" + intToString(number: model!.browse), for: .normal)
+                moneyLabel.titleLabel?.text = "浏览:" + intToString(number: model!.browse)
                 moneyLabel.setTitleColor(UIColor.lightGray, for: .normal)
                 moneyLabel.setImage(UIImage.init(named: "yuedu"), for: .normal)
             }else{

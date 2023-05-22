@@ -355,11 +355,6 @@ class MineViewController: BaseTableController,Requestable{
 //            controller.paytype = .chargeVip
 //            controller.priceStr = "98.00"
 //            self.present(controller, animated: true)
-            
-            
-            
-          
-            
         }
         
         else if indexPath.row == 6{

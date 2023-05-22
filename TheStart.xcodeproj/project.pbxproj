@@ -250,6 +250,8 @@
 		B822E7CF283BB0FF002558D9 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B822E7CD283BB0FF002558D9 /* OrderCell.xib */; };
 		B8256E842998F8C700AD4B35 /* FindTodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8256E822998F8C700AD4B35 /* FindTodayHeader.swift */; };
 		B8256E852998F8C700AD4B35 /* FindTodayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8256E832998F8C700AD4B35 /* FindTodayHeader.xib */; };
+		B8256E8B29A1BE8300AD4B35 /* HomeWebDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8256E8A29A1BE8300AD4B35 /* HomeWebDetailController.swift */; };
+		B8256E8D29A1C05100AD4B35 /* plane.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B8256E8C29A1C05100AD4B35 /* plane.mp3 */; };
 		B831E1712834D6F90008670C /* CloneMsgModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1702834D6F90008670C /* CloneMsgModel.swift */; };
 		B831E1732834F1700008670C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E1722834F1700008670C /* UIButton+Extension.swift */; };
 		B831E175283511EB0008670C /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B831E174283511EB0008670C /* ContactModel.swift */; };
@@ -898,6 +900,8 @@
 		B822E7CD283BB0FF002558D9 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		B8256E822998F8C700AD4B35 /* FindTodayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTodayHeader.swift; sourceTree = "<group>"; };
 		B8256E832998F8C700AD4B35 /* FindTodayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FindTodayHeader.xib; sourceTree = "<group>"; };
+		B8256E8A29A1BE8300AD4B35 /* HomeWebDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWebDetailController.swift; sourceTree = "<group>"; };
+		B8256E8C29A1C05100AD4B35 /* plane.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = plane.mp3; sourceTree = "<group>"; };
 		B831E1702834D6F90008670C /* CloneMsgModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloneMsgModel.swift; sourceTree = "<group>"; };
 		B831E1722834F1700008670C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B831E174283511EB0008670C /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
@@ -2110,6 +2114,7 @@
 		B8AC500F2807C5A200C2CF26 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B8256E8C29A1C05100AD4B35 /* plane.mp3 */,
 				B8FAFED2289F8D75003D15D8 /* codeShare.png */,
 				B87352B128964FFA0055437E /* jiguang */,
 				B8B80507283DDC4800EB9109 /* part-00167-3579.jpg */,
@@ -2187,6 +2192,7 @@
 				B8AB69F9280A9F3A0064861C /* TipOffPostViewController.swift */,
 				B8B5BBD228B1D8AC00B2D8AC /* TipOffRecordeController.swift */,
 				B8AD402C281B8E940001D7F4 /* SuperManListController.swift */,
+				B8256E8A29A1BE8300AD4B35 /* HomeWebDetailController.swift */,
 				B8AD406628239A450001D7F4 /* NotifyWebDetailController.swift */,
 				B802E26A282E279500B5057A /* PayViewController.swift */,
 			);
@@ -2475,6 +2481,7 @@
 				B85FDA7F28250B1500EDA845 /* launch.png in Resources */,
 				B8AB69D3280901490064861C /* CommentCell.xib in Resources */,
 				B85FAFBD280FAFFD00D25B66 /* Loading_4@2x.tiff in Resources */,
+				B8256E8D29A1C05100AD4B35 /* plane.mp3 in Resources */,
 				B87352E32896500B0055437E /* weibo@3x.png in Resources */,
 				B8B80514283E0B1300EB9109 /* addressListCell.xib in Resources */,
 				B8AD4051281FD6D30001D7F4 /* TipOffListCell2.xib in Resources */,
@@ -2767,6 +2774,7 @@
 				B81C4DF328601D6C0005AFF2 /* GoodsDetailControllerCxsdcontentExt.swift in Sources */,
 				B81C4D9128601D6B0005AFF2 /* BaseTableViewCellCxsdcontentExt.swift in Sources */,
 				B85FAFC6280FD44600D25B66 /* FeedBackController.swift in Sources */,
+				B8256E8B29A1BE8300AD4B35 /* HomeWebDetailController.swift in Sources */,
 				B85FDA752824BCB500EDA845 /* MyCollectViewController.swift in Sources */,
 				B85FDA632823CB2D00EDA845 /* AudioModel.swift in Sources */,
 				B85FDA5F2823BB3800EDA845 /* PMKPageMenuItemTab.swift in Sources */,
@@ -3393,11 +3401,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStart.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Aiping Ye (QP49MR7HV8)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6KR7FZVWMY;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
@@ -3417,11 +3424,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = 20230203Dev;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 20230203Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3440,11 +3446,10 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_ENTITLEMENTS = TheStart/TheStartRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: Aiping Ye (QP49MR7HV8)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 6KR7FZVWMY;
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6KR7FZVWMY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheStart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "启程时代";
@@ -3464,11 +3469,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.CXYL.QiCheng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = 20230203Dev;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 20230203Dev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TheStart/CommonLIbrary/CommonClass/TheStart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

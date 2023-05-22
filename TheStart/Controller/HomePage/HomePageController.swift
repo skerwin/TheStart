@@ -101,10 +101,9 @@ class HomePageController: BaseViewController,Requestable {
        pubWorkerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 60, width: 110, height: 20))
        pubWorkerLabel.text = "我要找场"
        pubWorkerLabel.textColor = colorWithHexString(hex: "60BAF0")
-        pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
+       pubWorkerLabel.font = UIFont.boldSystemFont(ofSize: 15)
        pubWorkerLabel.textAlignment = .center
     
-       
        pubJobBtn = UIButton.init()
        pubJobBtn.frame = CGRect.init(x: 135, y: 0, width: 60, height: 60)
        pubJobBtn.addTarget(self, action: #selector(pubJobBtnClick(_:)), for: .touchUpInside)
@@ -143,8 +142,7 @@ class HomePageController: BaseViewController,Requestable {
             let controller = WorkerPubViewController()
             controller.pubType = 2
             self.navigationController?.pushViewController(controller, animated: true)
-           
-   
+ 
     }
     @objc func pubJobBtnClick(_ btn: UIButton){
         let controller = WorkerPubViewController()

@@ -353,9 +353,13 @@ class NewLoginController: BaseViewController,Requestable {
             if usermodel!.vip == 1{
                 setIntValueForKey(value: 1, key: Constants.isVip)
                 setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+                setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+
             }else{
                 setIntValueForKey(value: 0, key: Constants.isVip)
                 setIntValueForKey(value: usermodel?.vip_id, key: Constants.vipId)
+                setIntValueForKey(value: usermodel?.uid, key: Constants.userid)
+
             }
             
              delay(second: 0.5) { [self] in

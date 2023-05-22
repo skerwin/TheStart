@@ -329,26 +329,7 @@ class HomePageMenuController: BaseViewController,Requestable {
     }
     
     @objc func rightNavBtnClic(_ btn: UIButton){
-        
-        let format = DateFormatter.init()
-        format.dateFormat = "yyyy.MM.dd"
-        var now = format.string(from: Date.init()) as String
-        print(now)
-        print(self.getLastDay(now))
-
-        setValueForKey(value: self.getLastDay(now) as AnyObject, key: "predate")
-        
-        let preDate = stringForKey(key: "predate")
-        print(preDate! as String)
-
-        
-        
-        if Calendar.current.isDate(self.dateTime(preDate!), inSameDayAs: self.dateTime(now)) {
-            print("它们是同一天")
-        }else {
-            print("它们不是同一天")
-        }
-       //  YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
+         YBPopupMenu.showRely(on: btn, titles: ["我要找场","我要找人",], icons: [], menuWidth: 125, delegate: self)
     }
     
     func getLastDay(_ nowDay: String) -> String {
@@ -539,22 +520,31 @@ extension HomePageMenuController:YBPopupMenuDelegate{
             let controller = WorkerPubViewController()
             controller.pubType = 1
             self.navigationController?.pushViewController(controller, animated: true)
- 
         }
-      
-        
     }
 }
 extension HomePageMenuController:SDCycleScrollViewDelegate{
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
         if bannerList[index].link == ""{
-            return
+            return;
         }
+        if bannerList[index].link.containsStr(find: "stopPage"){
+            return;
+        }
+        
         let controller = NotifyWebDetailController()
-        if bannerList[index].link.containsStr(find: "baidu"){
-            return
-        }
+
         controller.urlString = bannerList[index].link
+        if bannerList[index].link.containsStr(find: "plane"){
+            let controller = HomeWebDetailController()
+            let uisid:Int = intForKey(key: Constants.userid) ?? 0
+            controller.urlString = "https://www.qichen123.com/web_view/dfj/index.html?user_id=" + intToString(number: uisid)
+            self.navigationController?.pushViewController(controller, animated: true)
+            return
+        }else if(bannerList[index].link.containsStr(find: "answer")){
+            let uisid:Int = intForKey(key: Constants.userid) ?? 0
+            controller.urlString = "https://www.qichen123.com//web_view/paper/questions_info.html?user_id=" + intToString(number: uisid)
+         }
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

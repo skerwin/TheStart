@@ -28,12 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         WXApi.registerApp(weixinAPPID, universalLink: weixinUniversalLink)
         
         UIApplication.shared.statusBarStyle = .lightContent
-        window?.backgroundColor = ZYJColor.main
-        if getAcctount() != "" && getToken() != ""{
-            self.window?.rootViewController = MainTabBarController()
-        }else{
-            self.window?.rootViewController = UIStoryboard.getNewLoginController()
-        }
+     
 //      WXApi.checkUniversalLinkReady { step, resut in
 //           print(step)
 //           print(resut)
@@ -41,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //       }
         
         let imageAdconfiguration = XHLaunchImageAdConfiguration.default()
-        XHLaunchAd.setLaunch(.launchImage)
+        XHLaunchAd.setLaunch(.launchScreen)
         XHLaunchAd.setWaitDataDuration(5)
 
         let  Url = URL.init(string: (URLs.getHostAddress() + HomeAPI.boot_imgPath))
@@ -81,9 +76,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              }
         })
 
+        if getAcctount() != "" && getToken() != ""{
+            self.window?.rootViewController = MainTabBarController()
+        }else{
+            self.window?.rootViewController = UIStoryboard.getNewLoginController()
+        }
         
-        
+        window?.backgroundColor = ZYJColor.main
+
         window?.makeKeyAndVisible()
+        
+        
         
         return true
     }
